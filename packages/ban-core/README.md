@@ -6,9 +6,8 @@ wire formats: RFC 9457 Problem Details, JSON:API, Google's AIP-193, and Stripe's
 built in, and your own shape is a `defineFormat` call away. No dependencies, no peer dependencies,
 web standards only.
 
-Using Hono?
-[@nizam-os/hono-ban](https://github.com/nizam-os/kit/tree/main/packages/hono-ban#readme) is this
-package plus `app.onError()` wiring and `HTTPException` adoption, under the same subpaths.
+Using Hono? [@nizam-os/hono-ban](https://github.com/nizam-os/kit/tree/main/packages/hono-ban#readme)
+is this package plus `app.onError()` wiring and `HTTPException` adoption, under the same subpaths.
 
 ## Install
 
@@ -564,15 +563,15 @@ match its schemas, with any JSON Schema 2020-12 compiler.
 
 ## Modules
 
-| Import                                                                                                                                                                                           | What it gives you                                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@nizam-os/ban-core`                                                                                                                                                                              | `createBan`, `assert`, `defineFormat`, `fromRequest`, `bearerChallenge`, `isErrorStatus`, `BanError`, `isBanError`, `problemDetails`, `BUILTIN_CATALOG`, `parseTraceparent`, pointer helpers |
+| Import                                                                                                                                                                                                | What it gives you                                                                                                                                                                            |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@nizam-os/ban-core`                                                                                                                                                                                  | `createBan`, `assert`, `defineFormat`, `fromRequest`, `bearerChallenge`, `isErrorStatus`, `BanError`, `isBanError`, `problemDetails`, `BUILTIN_CATALOG`, `parseTraceparent`, pointer helpers |
 | `@nizam-os/ban-core/formats/problem-details`, `@nizam-os/ban-core/formats/json-api`, `@nizam-os/ban-core/formats/plain`, `@nizam-os/ban-core/formats/google-api`, `@nizam-os/ban-core/formats/stripe` | the built-in wire formats; `json-api` also exports `responseStatus`                                                                                                                          |
-| `@nizam-os/ban-core/zod`, `@nizam-os/ban-core/valibot`, `@nizam-os/ban-core/standard-schema`                                                                                                        | validator hooks and issue converters                                                                                                                                                         |
-| `@nizam-os/ban-core/openapi`                                                                                                                                                                      | `errorResponses`, `errorResponseObjects`, `errorObjectSchemas`, `errorResponse`, `errorSchema`, `validationResponse`, `validationSchema`                                                     |
-| `@nizam-os/ban-core/otel`                                                                                                                                                                         | `traceIdFromOtel`                                                                                                                                                                            |
-| `@nizam-os/ban-core/postgresql`                                                                                                                                                                   | `postgresMapper`, `findPostgresError`, `readPostgresFields`                                                                                                                                  |
-| `@nizam-os/ban-core/testing`                                                                                                                                                                      | `expectBanError`, `renderError`, `assertFormatConformance`                                                                                                                                   |
+| `@nizam-os/ban-core/zod`, `@nizam-os/ban-core/valibot`, `@nizam-os/ban-core/standard-schema`                                                                                                          | validator hooks and issue converters                                                                                                                                                         |
+| `@nizam-os/ban-core/openapi`                                                                                                                                                                          | `errorResponses`, `errorResponseObjects`, `errorObjectSchemas`, `errorResponse`, `errorSchema`, `validationResponse`, `validationSchema`                                                     |
+| `@nizam-os/ban-core/otel`                                                                                                                                                                             | `traceIdFromOtel`                                                                                                                                                                            |
+| `@nizam-os/ban-core/postgresql`                                                                                                                                                                       | `postgresMapper`, `findPostgresError`, `readPostgresFields`                                                                                                                                  |
+| `@nizam-os/ban-core/testing`                                                                                                                                                                          | `expectBanError`, `renderError`, `assertFormatConformance`                                                                                                                                   |
 
 Other databases go through `createBan({ map })` the same way `@nizam-os/ban-core/postgresql` does:
 catalog entries with constant client-facing messages, never the driver's own text (a driver's detail
@@ -580,13 +579,13 @@ line can contain the failing row).
 
 ## Documentation
 
-- [`docs/ban/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/ban/DESIGN.md): goals,
-  the full API, architecture, security defaults, and roadmap
+- [`docs/ban/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/ban/DESIGN.md): goals, the
+  full API, architecture, security defaults, and roadmap
 - [`docs/ban/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/ban/SPEC.md): the normative
   implementation specification (exact types, catalog, rendering rules, handler algorithm, validator
   mappings, packaging, test plan)
-- [`docs/ban/adr/`](https://github.com/nizam-os/kit/blob/main/docs/ban/adr/): architecture
-  decision records
+- [`docs/ban/adr/`](https://github.com/nizam-os/kit/blob/main/docs/ban/adr/): architecture decision
+  records
 - [`CONTRIBUTING.md`](https://github.com/nizam-os/kit/blob/main/CONTRIBUTING.md): setup, quality
   gates, release process
 

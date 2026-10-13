@@ -66,7 +66,10 @@ beforeAll(async () => {
   for (const migration of ORACLE_MIGRATIONS) {
     await writeFile(join(project, 'migrations', migration.name), migration.sql);
   }
-  await writeFile(join(project, 'pg-catalog.config.mjs'), configFile('slotsText'));
+  await writeFile(
+    join(project, 'pg-catalog.config.mjs'),
+    configFile('slotsText'),
+  );
   await writeFile(join(project, 'faulty.config.mjs'), configFile(FAULTY_SLOTS));
   await writeFile(join(project, 'bare.config.mjs'), configFile(null));
 });

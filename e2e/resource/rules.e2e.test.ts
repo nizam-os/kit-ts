@@ -20,7 +20,10 @@ import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 
 import { checkRules } from '@nizam-os/pg-catalog';
-import { createDeclareResource, defineValidator } from '@nizam-os/resource-core';
+import {
+  createDeclareResource,
+  defineValidator,
+} from '@nizam-os/resource-core';
 import { oracleCases } from '@nizam-os/resource-core/testing';
 
 import { publicCatalog as contactsCatalog } from './fixtures/contacts/public-catalog.ts';

@@ -28,9 +28,9 @@ decides both where unqualified objects are created and whether deparsed names ar
 
 - The replay target is PGlite by default, with the configured extensions loaded (contrib extensions
   by name, any other PGlite extension as an object), or a server named by a connection URL. On a
-  server, extraction creates a database named `nizam_catalog_<random>` from `template0` with
-  `UTF8` encoding, replays into it, extracts, and drops it, so the user needs `CREATEDB`. The
-  library starts no containers; the documentation shows how to run one.
+  server, extraction creates a database named `nizam_catalog_<random>` from `template0` with `UTF8`
+  encoding, replays into it, extracts, and drops it, so the user needs `CREATEDB`. The library
+  starts no containers; the documentation shows how to run one.
 - Migrations come from a directory or from a function returning `{ name, sql }` entries. In a
   directory, `V<version>__*.sql` files run in numeric version order followed by `R__*.sql` in
   description order when every SQL file follows Flyway's naming; otherwise every `*.sql` file except

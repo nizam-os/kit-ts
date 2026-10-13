@@ -9,7 +9,11 @@ import type { Included } from '@nizam-os/jsonapi-core';
 
 import { describe, expect, it } from 'vitest';
 
-import { collectionDocument, include, parseQuery } from '@nizam-os/jsonapi-core';
+import {
+  collectionDocument,
+  include,
+  parseQuery,
+} from '@nizam-os/jsonapi-core';
 
 import { Articles, People, Tags } from '../test-support/blog';
 import { deserialize } from './deserialize';

@@ -37,9 +37,9 @@ service, or a test can build and render the same errors, and so that other adapt
 ### Non-goals
 
 - Replacing your logger or tracer. The handler emits one `ErrorReport` per error and stops there.
-- Forwarding database or driver text to clients. `@nizam-os/ban-core/postgresql` maps Postgres errors
-  to catalog entries with constant messages (ADR-0015); other drivers go through `map` the same way,
-  and no driver's `message`, `detail`, or `hint` is ever forwarded (ADR-0007).
+- Forwarding database or driver text to clients. `@nizam-os/ban-core/postgresql` maps Postgres
+  errors to catalog entries with constant messages (ADR-0015); other drivers go through `map` the
+  same way, and no driver's `message`, `detail`, or `hint` is ever forwarded (ADR-0007).
 - Content negotiation between formats per request. One format per `createBan` instance. If demand
   appears, it is additive.
 - Supporting CommonJS-only consumers on Node older than 22.12 (ADR-0006).
@@ -194,8 +194,8 @@ such a `map`, keyed on SQLSTATE, with constant client text and per-constraint ov
 
 `adopt` is the sibling hook for values that already describe an HTTP outcome, such as a framework's
 own exception class. It runs before `map`, inside `ban.from()` too, and what it returns counts as
-handled rather than unexpected. `@nizam-os/hono-ban` installs one for `HTTPException`; an application
-adds its own for, say, a fetch wrapper's error that carries an upstream status.
+handled rather than unexpected. `@nizam-os/hono-ban` installs one for `HTTPException`; an
+application adds its own for, say, a fetch wrapper's error that carries an upstream status.
 
 ### 3.6 Formats
 
@@ -478,9 +478,9 @@ literals with a conformance test (ADR-0003). @ref https://standardschema.dev
 `ban.handler(options)` returns `(thrown, request, ctx) => Promise<Response>`: the thrown value, the
 request facts (`method`, `path`, and a case-insensitive `header()`, which `fromRequest(request)`
 reads from a fetch `Request`), and a context of the caller's choosing that every callback receives.
-`@nizam-os/hono-ban`'s `ban.onError(options)` wraps it as a Hono `ErrorHandler` with the `Context` as
-that context, so `requestId`, `traceId`, `transform`, and `onReport` see `c` exactly as in 1.x. The
-pipeline for a thrown value `err`:
+`@nizam-os/hono-ban`'s `ban.onError(options)` wraps it as a Hono `ErrorHandler` with the `Context`
+as that context, so `requestId`, `traceId`, `transform`, and `onReport` see `c` exactly as in 1.x.
+The pipeline for a thrown value `err`:
 
 1. `BanError` → use as is.
 2. `adopt` → if the instance's hook returns a `BanError`, use it as a handled error.
@@ -614,9 +614,9 @@ that combines entries stays inline. `@hono/zod-openapi` accepts raw schema objec
 
 A conformance test in the repository renders every catalog entry in every built-in format and
 validates the body against `format.schema(entry)`.
-`assertFormatConformance(format, catalog, { compile })` is exported from `@nizam-os/ban-core/testing`
-for custom formats; `compile` turns a JSON Schema into a validator so the package does not depend on
-Ajv (ADR-0009).
+`assertFormatConformance(format, catalog, { compile })` is exported from
+`@nizam-os/ban-core/testing` for custom formats; `compile` turns a JSON Schema into a validator so
+the package does not depend on Ajv (ADR-0009).
 
 ### 4.9 Security defaults
 
@@ -640,8 +640,8 @@ several error statuses are heuristically cacheable.
 - Subpath exports, identical in both packages: `.`, `./formats/json-api`,
   `./formats/problem-details`, `./formats/plain`, `./formats/google-api`, `./formats/stripe`,
   `./zod`, `./valibot`, `./standard-schema`, `./openapi`, `./otel`, `./postgresql`, `./testing`. A
-  `@nizam-os/hono-ban` subpath is a one-line re-export of the `@nizam-os/ban-core` one; only the root
-  differs.
+  `@nizam-os/hono-ban` subpath is a one-line re-export of the `@nizam-os/ban-core` one; only the
+  root differs.
 
 ## 5. Package layout
 
@@ -674,7 +674,7 @@ Every module with behavior has `*.test.ts` beside it; types that are part of the
 
 ## 6. Comparison
 
-| Capability           | @nizam-os/ban-core 1.0 / @nizam-os/hono-ban 2.0                                  | hono-problem-details                                              | @hapi/boom         |
+| Capability           | @nizam-os/ban-core 1.0 / @nizam-os/hono-ban 2.0                                | hono-problem-details                                              | @hapi/boom         |
 | -------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------- | ------------------ |
 | Formats              | RFC 9457, JSON:API, Google API (AIP-193), Stripe, plain, custom (schema-typed) | RFC 9457                                                          | flat               |
 | Catalog              | built-in plus typed custom keys as factories                                   | user registry, `create(key)`                                      | built-in factories |
@@ -685,7 +685,7 @@ Every module with behavior has `*.test.ts` beside it; types that are part of the
 | Observability        | `ErrorReport` with shared id, request id, trace id                             | `traceId` extension via OTel                                      | none               |
 | Handler safety       | never throws, once per error, constant 500 detail                              | never throws, constant 500 detail                                 | n/a                |
 | Runtime              | web standards only                                                             | web standards only                                                | Node               |
-| Framework            | none in the core; Hono through `@nizam-os/hono-ban`                             | Hono                                                              | none               |
+| Framework            | none in the core; Hono through `@nizam-os/hono-ban`                            | Hono                                                              | none               |
 
 Neither package depends on or wraps hono-problem-details.
 

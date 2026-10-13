@@ -6,8 +6,9 @@
 ## Context
 
 A binding depends on its core through `workspace:^` and re-exports it: `@nizam-os/hono-jsonapi`
-re-exports `@nizam-os/jsonapi-core`, and `@nizam-os/kysely-keyset` re-exports `@nizam-os/keyset-core`.
-An application imports from the binding alone, so one copy of the core serves both.
+re-exports `@nizam-os/jsonapi-core`, and `@nizam-os/kysely-keyset` re-exports
+`@nizam-os/keyset-core`. An application imports from the binding alone, so one copy of the core
+serves both.
 
 The resource family has another shape. The application imports `@nizam-os/resource-core` itself, to
 declare its resources, and hands the declarations to two bindings, `@nizam-os/kysely-resource` and
@@ -27,8 +28,8 @@ relationship npm calls a plugin's to its host. npm 7 and later install peer depe
 and "trying to install another plugin with a conflicting requirement may cause an error if the tree
 cannot be resolved correctly"
 ([npm docs](https://docs.npmjs.com/cli/v11/configuring-npm/package-json#peerdependencies)).
-`@nizam-os/pg-catalog` already takes `@nizam-os/resource-core` as a peer, since `rules --check` loads
-the application's declarations.
+`@nizam-os/pg-catalog` already takes `@nizam-os/resource-core` as a peer, since `rules --check`
+loads the application's declarations.
 
 ## Decision
 
@@ -41,8 +42,8 @@ the application's declarations.
   `@nizam-os/hono-jsonapi` (the `jsonApi()` negotiation and the `BanError`s its handlers render) as
   peers, beside `hono`.
 - `@nizam-os/kysely-resource` takes `@nizam-os/resource-core` (the declarations, behaviors, and
-  scopes) and `@nizam-os/keyset-core` (the keyset definer, whose refusals it maps by class) as peers,
-  beside `kysely` (#106).
+  scopes) and `@nizam-os/keyset-core` (the keyset definer, whose refusals it maps by class) as
+  peers, beside `kysely` (#106).
 
 ## Consequences
 

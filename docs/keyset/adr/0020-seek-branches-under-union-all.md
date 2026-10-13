@@ -80,13 +80,13 @@ reads its rows once per branch instead of once; `@nizam-os/kysely-resource` alre
 about a sortable member that no index serves.
 
 Measured on stern after the change, with the setup of issue #101 and its row security, through
-`@nizam-os/kysely-resource`'s own list statement: `-createdAt` inside the tie reads 101 index entries
-in 0.17 ms, `-title` after a value 102 in 0.15 ms, and `name` 101 in 0.13 ms, each page holding the
-rows an offset over the same order gives. When each branch arrives in the union's order, the planner
-merges the branches (`Merge Append`) and stops at the page's limit, so a page reads its own rows and
-at most one more per other branch. Inside the tie the planner bounded the key through the primary
-key instead, `id > ` the cursor's key, which the equality on the earlier key leaves in the sort's
-order.
+`@nizam-os/kysely-resource`'s own list statement: `-createdAt` inside the tie reads 101 index
+entries in 0.17 ms, `-title` after a value 102 in 0.15 ms, and `name` 101 in 0.13 ms, each page
+holding the rows an offset over the same order gives. When each branch arrives in the union's order,
+the planner merges the branches (`Merge Append`) and stops at the page's limit, so a page reads its
+own rows and at most one more per other branch. Inside the tie the planner bounded the key through
+the primary key instead, `id > ` the cursor's key, which the equality on the earlier key leaves in
+the sort's order.
 
 The SQL of every page with two or more branches changes: the branches, the value aliases, and the
 union's order. The rows, their order, and the cursors do not, and neither do the cursor format or

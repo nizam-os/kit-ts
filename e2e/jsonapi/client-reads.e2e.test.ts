@@ -9,7 +9,11 @@ import type { AnyRecord, Identifier } from '@nizam-os/jsonapi-client';
 
 import { describe, expect, expectTypeOf, it } from 'vitest';
 
-import { cursorOf, pageCursors, serializeQuery } from '@nizam-os/jsonapi-client';
+import {
+  cursorOf,
+  pageCursors,
+  serializeQuery,
+} from '@nizam-os/jsonapi-client';
 import { CURSOR_PAGINATION_PROFILE } from '@nizam-os/jsonapi-core';
 
 import { useClientBlog } from './support/clients.ts';

@@ -21,8 +21,8 @@ None of them reaches the SQL `paginate` builds. It reads no JSON path, and its t
 PostgreSQL (ADR 0009). They reach the application: the adapter runs on the application's own copy of
 Kysely, and a range that admits 0.28.0 lets the application keep an affected one. The repository's
 other adapters already start their ranges past their peer's published advisories:
-`@nizam-os/hono-ban` at Hono's ("upstream security floor", ban DESIGN) and `@nizam-os/drizzle-keyset`
-at `drizzle-orm >=0.45.2` (CVE-2026-39356, ADR 0017).
+`@nizam-os/hono-ban` at Hono's ("upstream security floor", ban DESIGN) and
+`@nizam-os/drizzle-keyset` at `drizzle-orm >=0.45.2` (CVE-2026-39356, ADR 0017).
 
 Measured: the adapter's typecheck and its 40 unit tests pass on Kysely 0.28.0 as on 0.28.17, so the
 oldest API it needs is still 0.28.0's. Kysely 0.29.0, published five days after 0.28.17, ships both

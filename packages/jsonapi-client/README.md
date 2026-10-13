@@ -378,8 +378,8 @@ server refuses a request over it with a 400, and a screen reads the cap from the
 
 ## Documentation
 
-- [`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md),
-  sections 15 and 17: the client's contract, with the tests that prove it
+- [`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md), sections
+  15 and 17: the client's contract, with the tests that prove it
 - [ADR 0017](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0017-a-typed-client-on-fetch-over-the-servers-definitions.md):
   a typed client on fetch over the server's definitions
 - [ADR 0018](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0018-definitions-carry-the-types-a-client-reads-and-writes.md):

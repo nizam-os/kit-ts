@@ -237,10 +237,10 @@ predicate tree has thirteen kinds (`and`, `or`, `not`, `literal`, `compare`, `nu
 subquery, a concatenation);
 [`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md) section 6
 lists each with its SQL, and
-[`@nizam-os/kysely-keyset`](https://github.com/nizam-os/kit/tree/main/packages/kysely-keyset) is
-the reference rendering in under two hundred lines, and
-[`@nizam-os/drizzle-keyset`](https://github.com/nizam-os/kit/tree/main/packages/drizzle-keyset)
-the same plan as Drizzle `sql`.
+[`@nizam-os/kysely-keyset`](https://github.com/nizam-os/kit/tree/main/packages/kysely-keyset) is the
+reference rendering in under two hundred lines, and
+[`@nizam-os/drizzle-keyset`](https://github.com/nizam-os/kit/tree/main/packages/drizzle-keyset) the
+same plan as Drizzle `sql`.
 
 Why text? A cursor must round-trip a value exactly, and drivers parse values for convenience, not
 exactness (a `timestamptz` becomes a millisecond `Date`, a `numeric` a string or a number). The
@@ -376,8 +376,8 @@ try {
 
 ## Documentation
 
-- [`docs/keyset/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/DESIGN.md):
-  what the packages are, the principles, and the API by example
+- [`docs/keyset/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/DESIGN.md): what
+  the packages are, the principles, and the API by example
 - [`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md): the
   normative contract, section by section, with the tests that prove it
 - [`docs/keyset/adr/`](https://github.com/nizam-os/kit/tree/main/docs/keyset/adr): the decisions,

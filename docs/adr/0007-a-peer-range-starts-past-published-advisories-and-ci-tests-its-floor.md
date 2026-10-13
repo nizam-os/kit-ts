@@ -13,8 +13,8 @@ application: every release from there on works with the package.
 Running each package that declares a peer range on its floor, with one copy of the peer as an
 application has, found the claims unchecked (#142):
 
-- `@nizam-os/hono-resource` could not load on its floor, `hono` 4.12.34: `hono/utils/url` exports the
-  `tryDecodeURIComponent` it imports from 4.13.0 on.
+- `@nizam-os/hono-resource` could not load on its floor, `hono` 4.12.34: `hono/utils/url` exports
+  the `tryDecodeURIComponent` it imports from 4.13.0 on.
 - `@nizam-os/kysely-resource`'s tests could not run on its floor, `kysely` 0.28.0: they reach PGlite
   through `PGliteDialect`, which 0.29.0 added.
 - No CI job ran the Hono packages, `@nizam-os/pg-catalog`, or `@nizam-os/kysely-resource` on their

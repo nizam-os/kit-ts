@@ -34,7 +34,11 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { FlexRender, useTable } from '@tanstack/react-table';
 import { useState } from 'react';
 
-import { bulkActions, recordActions, resourceList } from '@nizam-os/resource-ui';
+import {
+  bulkActions,
+  recordActions,
+  resourceList,
+} from '@nizam-os/resource-ui';
 
 import { contactMessages } from '../../localization/contact-messages.ts';
 import { m } from '../../localization/paraglide/messages.js';

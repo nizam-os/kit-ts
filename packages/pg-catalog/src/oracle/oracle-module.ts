@@ -4,7 +4,10 @@
  * imports PGlite (SPEC 6.1).
  * @packageDocumentation
  */
-import type { OracleCase, OracleOptions } from '@nizam-os/resource-core/testing';
+import type {
+  OracleCase,
+  OracleOptions,
+} from '@nizam-os/resource-core/testing';
 
 import { PgCatalogError } from '../errors';
 

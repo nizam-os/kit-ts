@@ -64,8 +64,9 @@ of them.
 - `query/` `parseQuery`: `include`, `fields`, `sort`, `page`, `filter`, search, custom
 - `pagination/` the Cursor Pagination profile: links, meta, errors, `paginatedDocument`
 - `request/` request documents: identifiers, resource objects, relationship documents
-- `atomic/` the Atomic Operations extension (`@nizam-os/jsonapi-core/atomic`): `operationsProcessor`,
-  `assertOperationsContentType`, `errorAtOperation`, the document parser, lids, executors
+- `atomic/` the Atomic Operations extension (`@nizam-os/jsonapi-core/atomic`):
+  `operationsProcessor`, `assertOperationsContentType`, `errorAtOperation`, the document parser,
+  lids, executors
 - `test-support/` the vendored JSON:API 1.0 JSON Schema and the Ajv conformance helper for the
   repository's own tests; not published
 

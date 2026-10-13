@@ -8,8 +8,8 @@ validator, run when the form is first submitted and on every change after, so no
 before submitting, and `bindResponseErrors(form, model, error)` puts a refused write's texts on
 their fields. The package binds `@tanstack/form-core`, the core every adapter is built on, and
 imports no framework and no adapter. The contract is section 20.5 of
-[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md), and
-the decisions behind it
+[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md), and the
+decisions behind it
 [ADR 0017](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0017-a-refusal-of-several-fields-binds-where-a-change-to-any-clears-it.md)
 and
 [ADR 0018](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0018-forms-and-lists-are-a-model-and-a-tanstack-form-binding-in-two-packages.md).

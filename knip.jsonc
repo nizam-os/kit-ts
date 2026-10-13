@@ -1,5 +1,15 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema.json",
+  // The catalog lives in the workspace file of the repository this tree is checked
+  // into: the suite's monorepo root when developed, this directory in the public
+  // mirror the export writes. knip reads only a workspace file next to it, so
+  // the two catalog checks are off here; `pnpm install` refuses an unresolved
+  // catalog reference anyway, and the export writes the mirror's catalog as the
+  // subset the packages reference, so neither check can find anything.
+  "rules": {
+    "catalog": "off",
+    "catalogReferences": "off"
+  },
   "workspaces": {
     ".": {
       // The scripts' entry points are found through the package.json scripts

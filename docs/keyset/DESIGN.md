@@ -11,8 +11,8 @@ explains the intent behind it. When the two disagree, fix one in the same PR.
 
 @nizam-os/keyset-core is the pagination layer between an API and a PostgreSQL database: a
 database-free core (`@nizam-os/keyset-core`) and two adapters that re-export it and add the SQL,
-`@nizam-os/kysely-keyset` for Kysely (ADR-0004) and `@nizam-os/drizzle-keyset` for Drizzle (ADR-0017).
-They give an application:
+`@nizam-os/kysely-keyset` for Kysely (ADR-0004) and `@nizam-os/drizzle-keyset` for Drizzle
+(ADR-0017). They give an application:
 
 1. one definition per collection, from which the request type, the validation, the seek predicate,
    the cursors, and the SQL all derive, so a client cannot sort, filter, or search on anything the
@@ -195,8 +195,8 @@ const request: KeysetRequestOf<typeof contacts> = {
 ```
 
 The filter is a tree, not a grammar (ADR-0005): an API layer builds it from its own syntax
-(`@nizam-os/jsonapi-core`'s parsed conditions map one to one). Values arrive as JSON or as the type's
-text form, because query strings carry text. Values the types do not accept are one
+(`@nizam-os/jsonapi-core`'s parsed conditions map one to one). Values arrive as JSON or as the
+type's text form, because query strings carry text. Values the types do not accept are one
 `InvalidFilterValueError` listing, for each such condition in request order, the field, the
 operator, and what was expected (ADR-0019), so a client fixes them all in one round trip.
 
@@ -395,25 +395,25 @@ checks from the schema object's type, `createDefineKeyset(schema, defaults?)`, a
 
 ## 5. Decisions
 
-| ADR  | Decision                                                                                                    |
-| ---- | ----------------------------------------------------------------------------------------------------------- |
-| 0001 | Record architecture decisions                                                                               |
-| 0002 | Web standards only; no ambient environment reads                                                            |
-| 0003 | ESM only, TypeScript 7 `isolatedDeclarations`, erasable syntax                                              |
+| ADR  | Decision                                                                                                      |
+| ---- | ------------------------------------------------------------------------------------------------------------- |
+| 0001 | Record architecture decisions                                                                                 |
+| 0002 | Web standards only; no ambient environment reads                                                              |
+| 0003 | ESM only, TypeScript 7 `isolatedDeclarations`, erasable syntax                                                |
 | 0004 | Two packages: the database-free core `@nizam-os/keyset-core` and the Kysely adapter `@nizam-os/kysely-keyset` |
-| 0005 | The filter is a typed tree with a per-type operator table                                                   |
-| 0006 | Cursors: HMAC-signed, versioned, bound to the request context, with expiry and rotation                     |
-| 0007 | Sort-key values travel as text under private aliases                                                        |
-| 0008 | The key is a mandatory tie-breaker; `NULLS LAST` forward, inverted on backward pages                        |
-| 0009 | PostgreSQL first                                                                                            |
-| 0010 | Typed error classes with constant messages; no @nizam-os/ban-core dependency                                 |
-| 0011 | Definitions are validated at definition time, never at request time                                         |
-| 0012 | Totals are an opt-in second query; the base query must be a plain selection                                 |
-| 0013 | Page size bounds, defaults, and range requests                                                              |
-| 0014 | Definer defaults are merged member by member                                                                |
-| 0015 | Cursors can be bound to a caller-supplied context                                                           |
-| 0016 | The seek leads with a range on the first key; declared nullability shapes seek and order                    |
-| 0017 | The Drizzle binding takes names from the schema object and builds the select itself                         |
-| 0018 | The `kysely` peer range starts past Kysely's published advisories                                           |
-| 0019 | The planner reports every refused filter value at once                                                      |
-| 0020 | A seek of two or more branches runs as one select per branch, joined with `union all`                       |
+| 0005 | The filter is a typed tree with a per-type operator table                                                     |
+| 0006 | Cursors: HMAC-signed, versioned, bound to the request context, with expiry and rotation                       |
+| 0007 | Sort-key values travel as text under private aliases                                                          |
+| 0008 | The key is a mandatory tie-breaker; `NULLS LAST` forward, inverted on backward pages                          |
+| 0009 | PostgreSQL first                                                                                              |
+| 0010 | Typed error classes with constant messages; no @nizam-os/ban-core dependency                                  |
+| 0011 | Definitions are validated at definition time, never at request time                                           |
+| 0012 | Totals are an opt-in second query; the base query must be a plain selection                                   |
+| 0013 | Page size bounds, defaults, and range requests                                                                |
+| 0014 | Definer defaults are merged member by member                                                                  |
+| 0015 | Cursors can be bound to a caller-supplied context                                                             |
+| 0016 | The seek leads with a range on the first key; declared nullability shapes seek and order                      |
+| 0017 | The Drizzle binding takes names from the schema object and builds the select itself                           |
+| 0018 | The `kysely` peer range starts past Kysely's published advisories                                             |
+| 0019 | The planner reports every refused filter value at once                                                        |
+| 0020 | A seek of two or more branches runs as one select per branch, joined with `union all`                         |

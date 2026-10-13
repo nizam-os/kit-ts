@@ -37,8 +37,9 @@ thin adapters) @ref https://tsdown.dev/options/package-exports#devexports
   between, while the published map (`publishConfig.exports`, applied by `pnpm publish` and
   `pnpm pack`) and `e2e/keyset/` see only `dist/`. One Vitest run covers both packages through
   `test.projects`, with coverage thresholds over the combined source. Versions are independent;
-  Changesets bumps `@nizam-os/kysely-keyset` by a patch whenever its `@nizam-os/keyset-core` range has
-  to move (`updateInternalDependencies: patch`), and each package has its own npm trusted publisher.
+  Changesets bumps `@nizam-os/kysely-keyset` by a patch whenever its `@nizam-os/keyset-core` range
+  has to move (`updateInternalDependencies: patch`), and each package has its own npm trusted
+  publisher.
 
 ## Consequences
 

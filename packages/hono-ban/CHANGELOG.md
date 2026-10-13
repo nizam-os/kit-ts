@@ -6,7 +6,7 @@
 
 - [`dd1a1b1`](https://github.com/nizam-os/kit/commit/dd1a1b1188aa722d263ab8592c26e1f097b63a51) Thanks [@ali-issa](https://github.com/ali-issa)! - `ban.validation()` accepts `cause`, and `hono-ban/postgresql` keeps its reporting contract for every
   mapping kind.
-  
+
   - `ValidationOptions` gains an optional `cause`, stored on the error like every other `cause` and
     never rendered, so a converted validator or driver failure reaches `ErrorReport.error.cause`.
   - `postgresMapper()` passes the driver error as `cause` for `{ issue }` mappings too. Previously an
@@ -22,7 +22,7 @@
 - [`4a17ce0`](https://github.com/nizam-os/kit/commit/4a17ce0676177c9ceff6f877731ab8f7ce513e2b) Thanks [@ali-issa](https://github.com/ali-issa)! - Add `hono-ban/postgresql`: `postgresMapper(options?)` turns a Postgres driver error into a catalog
   entry by SQLSTATE with constant client-facing text, for `createBan({ map })` or
   `ban.onError({ map })`.
-  
+
   - Recognizes the errors of node-postgres, PGlite, postgres.js, Neon, and Bun, directly or through
     the `cause` of an ORM wrapper such as Drizzle's `DrizzleQueryError` (also Sequelize 6 `original`
     and Objection `nativeError`). Nothing from the driver's `message`, `detail`, or `hint` reaches
@@ -42,7 +42,7 @@
 ### Minor Changes
 
 - [`95a62e1`](https://github.com/nizam-os/kit/commit/95a62e17f663f5f30522eda7fb76d4ef63b3487c) Thanks [@ali-issa](https://github.com/ali-issa)! - Validate options at construction instead of producing broken responses.
-  
+
   - `problemDetails()` throws `TypeError` when `traceIdMember` names a reserved member (`status`,
     `id`, `errors`, ...) or is not an RFC 9457 extension member name; `jsonApi()` rejects a
     `traceIdMetaKey` the format writes itself (`stack`, `location`, `code`, ...) or that is not a
@@ -59,7 +59,7 @@
 ### Patch Changes
 
 - [`95a62e1`](https://github.com/nizam-os/kit/commit/95a62e17f663f5f30522eda7fb76d4ef63b3487c) Thanks [@ali-issa](https://github.com/ali-issa)! - Keep every rendered validation body inside its own schema and the handler inside its guarantee.
-  
+
   - `jsonApi()` renders one summary error object for `ban.validation([])` instead of an empty `errors`
     array its schema rejects; `googleApi()` omits `BadRequest` when there are no issues instead of
     sending an empty `fieldViolations`.

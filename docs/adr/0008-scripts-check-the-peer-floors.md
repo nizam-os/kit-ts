@@ -7,9 +7,9 @@
 
 ADR 0007 set two rules for every peer range on a package outside the workspace: the floor starts
 past the peer's published advisories, and a CI job runs the package's typecheck and tests on it. It
-left both to review (#153), and review had already missed each: `@nizam-os/kysely-keyset`'s floor was
-set below a published advisory, `@nizam-os/hono-ban`'s fell behind advisories published the day after
-it was set, and `@nizam-os/pg-catalog`'s and `@nizam-os/kysely-resource`'s had no job (#142).
+left both to review (#153), and review had already missed each: `@nizam-os/kysely-keyset`'s floor
+was set below a published advisory, `@nizam-os/hono-ban`'s fell behind advisories published the day
+after it was set, and `@nizam-os/pg-catalog`'s and `@nizam-os/kysely-resource`'s had no job (#142).
 
 The two checks need different things:
 

@@ -19,13 +19,24 @@ describe('parseCommand (SPEC 11.2)', () => {
       config: undefined,
     });
     expect(
-      parseCommand(['--config', 'db/pg-catalog.config.ts', 'extract', '--check']),
-    ).toEqual({ name: 'extract', check: true, config: 'db/pg-catalog.config.ts' });
-    expect(parseCommand(['extract', '--config=pg-catalog.config.mjs'])).toEqual({
+      parseCommand([
+        '--config',
+        'db/pg-catalog.config.ts',
+        'extract',
+        '--check',
+      ]),
+    ).toEqual({
       name: 'extract',
-      check: false,
-      config: 'pg-catalog.config.mjs',
+      check: true,
+      config: 'db/pg-catalog.config.ts',
     });
+    expect(parseCommand(['extract', '--config=pg-catalog.config.mjs'])).toEqual(
+      {
+        name: 'extract',
+        check: false,
+        config: 'pg-catalog.config.mjs',
+      },
+    );
   });
 
   it('reads drift with its environment and options', () => {

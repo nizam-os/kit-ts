@@ -4,9 +4,9 @@
 
 @nizam-os/hono-ban 2.0 is the Hono adapter for `@nizam-os/ban-core`, which now holds everything that
 does not need Hono. Every subpath keeps its name and exports (`@nizam-os/hono-ban/formats/json-api`
-is `@nizam-os/ban-core/formats/json-api`), `createBan` keeps `ban.onError()` for `app.onError()`, and
-the callbacks still receive the Hono `Context`. The root also exports `fromHttpException` and the
-core's new members (`ban.handler`, `fromRequest`, `isErrorStatus`, `ban.fromStatus`,
+is `@nizam-os/ban-core/formats/json-api`), `createBan` keeps `ban.onError()` for `app.onError()`,
+and the callbacks still receive the Hono `Context`. The root also exports `fromHttpException` and
+the core's new members (`ban.handler`, `fromRequest`, `isErrorStatus`, `ban.fromStatus`,
 `createBan({ adopt })`).
 
 Breaking changes:

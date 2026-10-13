@@ -8,8 +8,8 @@ models a form, a list screen, and the actions of a row and of a selection from t
 restates none of them. It imports no framework and nothing of TanStack: a screen in React, Vue,
 Solid, Svelte, Angular, or Lit reads the same model, and TanStack Form and TanStack Table v9 take
 its values as they are. Every choice is written down in
-[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md),
-sections 20 and 21, and the decisions behind it in
+[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md), sections
+20 and 21, and the decisions behind it in
 [ADR 0014](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0014-react-bindings-render-the-applications-one-messages-object.md),
 [ADR 0015](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0015-react-bindings-a-model-under-tanstack-query-form-and-table.md),
 [ADR 0016](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0016-a-form-sends-a-cleared-input-as-null.md),

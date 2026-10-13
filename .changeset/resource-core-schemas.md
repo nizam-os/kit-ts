@@ -15,10 +15,10 @@ servers refuse what PostgreSQL would refuse or store differently.
   U+0000, unpaired surrogates, and other spellings of `int8` and `numeric` values, which travel as
   decimal strings.
 - `validate.create` and `validate.update` are Standard Schema validators of the attributes, and
-  `write.create` and `write.update` of a resource object as `@nizam-os/jsonapi-core` parses it, where
-  the CHECKs over a field and a relationship run. Their issues are `ResourceIssue`s, named by a JSON
-  Schema keyword from `ISSUE_KINDS` or by a constraint's code, with constant messages that never
-  repeat request data.
+  `write.create` and `write.update` of a resource object as `@nizam-os/jsonapi-core` parses it,
+  where the CHECKs over a field and a relationship run. Their issues are `ResourceIssue`s, named by
+  a JSON Schema keyword from `ISSUE_KINDS` or by a constraint's code, with constant messages that
+  never repeat request data.
 - `tsc` checks that each validator accepts what its rule hands it: the field's value, `null`
   included for a nullable column, a relationship's id, or an object of them by public name; and that
   a domain's validator accepts every value of the domain. A domain rule may give `code`.

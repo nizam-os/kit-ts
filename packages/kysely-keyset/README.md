@@ -352,8 +352,8 @@ when it is a plain token and otherwise writes `A sort field is not supported by 
 ([jsonapi ADR 0016](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0016-details-quote-request-text-as-plain-tokens.md)),
 so they pass through as they came. The `default` branch's `error.message` is constant.
 
-With `@nizam-os/jsonapi-core`, the parsed query's `page` is the request's `page`, and the page is the
-document's input:
+With `@nizam-os/jsonapi-core`, the parsed query's `page` is the request's `page`, and the page is
+the document's input:
 `paginatedDocument(Contacts, { rows: page.rows, next: page.next, prev: page.prev, total: page.total, cursor: (row) => page.cursor(row) }, { url, query })`.
 Keep both definitions' page bounds equal, since each applies its own default and max.
 
@@ -422,8 +422,8 @@ Keep both definitions' page bounds equal, since each applies its own default and
 
 ## Documentation
 
-- [`docs/keyset/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/DESIGN.md):
-  what the packages are, the principles, and the API by example
+- [`docs/keyset/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/DESIGN.md): what
+  the packages are, the principles, and the API by example
 - [`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md): the
   normative contract, section by section, with the tests that prove it
 - [`docs/keyset/adr/`](https://github.com/nizam-os/kit/tree/main/docs/keyset/adr): the decisions,

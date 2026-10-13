@@ -70,14 +70,15 @@ else, `e2e/*` included, resolves `dist/`.
 CI runs the same commands, plus these packages' tests on the floors of their peer ranges:
 `@nizam-os/kysely-keyset` on Kysely 0.28.17, `@nizam-os/kysely-resource` on Kysely 0.29.0,
 `@nizam-os/drizzle-keyset` on drizzle-orm 0.45.2, `@nizam-os/resource-core` on Zod 4.5.0,
-`@nizam-os/tanstack-query-jsonapi` on TanStack Query's core 5.89.0, `@nizam-os/tanstack-form-resource`
-on TanStack Form's core 1.17.0, `@nizam-os/hono-ban`, `@nizam-os/hono-jsonapi`, and
-`@nizam-os/hono-resource` on Hono 4.13.7, `@nizam-os/pg-catalog` on PGlite 0.5.0, and
-`@nizam-os/paraglide-intl` on Paraglide JS 2.11.0. It also runs the keyset e2e suite on a PostgreSQL
-server, and `@nizam-os/pg-catalog`'s tests and the catalog e2e suite on PostgreSQL servers. A pull
-request must be green on all of them: the last CI job, `CI passed`, needs every other job and is the
-one check `main` requires ([ADR 0004](docs/adr/0004-protect-main-with-one-aggregate-check.md)), so a
-new CI job goes into its `needs` list. To work on one package or family, filter by name:
+`@nizam-os/tanstack-query-jsonapi` on TanStack Query's core 5.89.0,
+`@nizam-os/tanstack-form-resource` on TanStack Form's core 1.17.0, `@nizam-os/hono-ban`,
+`@nizam-os/hono-jsonapi`, and `@nizam-os/hono-resource` on Hono 4.13.7, `@nizam-os/pg-catalog` on
+PGlite 0.5.0, and `@nizam-os/paraglide-intl` on Paraglide JS 2.11.0. It also runs the keyset e2e
+suite on a PostgreSQL server, and `@nizam-os/pg-catalog`'s tests and the catalog e2e suite on
+PostgreSQL servers. A pull request must be green on all of them: the last CI job, `CI passed`, needs
+every other job and is the one check `main` requires
+([ADR 0004](docs/adr/0004-protect-main-with-one-aggregate-check.md)), so a new CI job goes into its
+`needs` list. To work on one package or family, filter by name:
 
 ```bash
 pnpm --filter @nizam-os/keyset-core test

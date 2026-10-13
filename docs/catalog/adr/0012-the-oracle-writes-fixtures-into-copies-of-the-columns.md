@@ -30,12 +30,12 @@ and a refusal is an error: PostgreSQL refuses 3,690 of stern's 12,288 member fix
 
 ## Decision
 
-- For each case, the replayed database gets a temporary table, `pg_temp.nizam_probe`, holding a
-  copy of each column the case writes: the column's `format_type`, so its modifier and its domains
-  apply, its collation when it differs from the type's, its NOT NULL when the case keeps it, and the
-  CHECKs the case names, each over the expression `pg_get_expr` deparses under the search path
-  extraction pinned. A domain's validator writes into a column of the domain. Nothing else of the
-  table is copied, and the probe is dropped after its case.
+- For each case, the replayed database gets a temporary table, `pg_temp.nizam_probe`, holding a copy
+  of each column the case writes: the column's `format_type`, so its modifier and its domains apply,
+  its collation when it differs from the type's, its NOT NULL when the case keeps it, and the CHECKs
+  the case names, each over the expression `pg_get_expr` deparses under the search path extraction
+  pinned. A domain's validator writes into a column of the domain. Nothing else of the table is
+  copied, and the probe is dropped after its case.
 - A fixture is written with `insert ... values (%L, ...) returning <column>::text`, each text a
   literal `format` quotes, which the column reads with its input function and assignment semantics,
   as it reads an untyped parameter. A parameter typed `text` would need a cast to most column types,

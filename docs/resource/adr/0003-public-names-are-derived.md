@@ -40,9 +40,9 @@ https://kysely.dev/docs/plugins#camel-case-plugin
 - Every derived or overridden name is checked: types, fields, and relationships are JSON:API member
   names, fields and relationships share one namespace that excludes `id` and `type`, types are
   unique in a registry, and codes match `^[A-Z][A-Z0-9_]*$` and are unique across the registry, the
-  application's own codes, and `@nizam-os/jsonapi-core`'s. A name that fails, such as a column called
-  `type` or a foreign key not ending in `_id`, needs `as` or `code`. TypeScript reports what it can
-  see; the rest throws `TypeError` naming the option path.
+  application's own codes, and `@nizam-os/jsonapi-core`'s. A name that fails, such as a column
+  called `type` or a foreign key not ending in `_id`, needs `as` or `code`. TypeScript reports what
+  it can see; the rest throws `TypeError` naming the option path.
 - A foreign-key column is exposed only as a relationship, never as an attribute.
 - The derived public surface of each resource (names, codes, requiredness, enum values, operators)
   is snapshotted, and the API diff in CI shows every change to it, overrides included.

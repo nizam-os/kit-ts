@@ -1,7 +1,8 @@
 # ADR 0009: Integrations are typed structurally; hono is the only peer dependency
 
-- Status: accepted; amended by ADR-0016 (since the split, `@nizam-os/ban-core` has no peer dependency
-  and `@nizam-os/hono-ban` peers on `hono` alone; the structural-typing rule below is unchanged)
+- Status: accepted; amended by ADR-0016 (since the split, `@nizam-os/ban-core` has no peer
+  dependency and `@nizam-os/hono-ban` peers on `hono` alone; the structural-typing rule below is
+  unchanged)
 - Date: 2026-09-07
 
 ## Context

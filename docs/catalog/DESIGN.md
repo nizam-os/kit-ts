@@ -34,8 +34,8 @@ TypeScript value:
 
 Applications that write SQL migrations by hand (Flyway, dbmate, golang-migrate, or plain files) and
 want their API layer, forms, and query builder typed by what the migrations actually create. The
-model is consumed by `@nizam-os/resource-core` and `@nizam-os/kysely-resource`, but it is plain data:
-anything can read it.
+model is consumed by `@nizam-os/resource-core` and `@nizam-os/kysely-resource`, but it is plain
+data: anything can read it.
 
 ### Non-goals
 
@@ -301,18 +301,18 @@ committed catalog.ts ──parse──▶ Catalog ◀──diffCatalogs──▶
 
 ## 5. Decisions
 
-| ADR  | Decision                                                                                        |
-| ---- | ----------------------------------------------------------------------------------------------- |
-| 0001 | Record architecture decisions                                                                   |
+| ADR  | Decision                                                                                          |
+| ---- | ------------------------------------------------------------------------------------------------- |
+| 0001 | Record architecture decisions                                                                     |
 | 0002 | A database-free core (`@nizam-os/catalog-core`) and a PostgreSQL binding (`@nizam-os/pg-catalog`) |
-| 0003 | Replay migrations into PGlite or a throwaway database on a server; Flyway-aware ordering        |
-| 0004 | The catalog is deterministic TypeScript: JSON under `as const`, fixed order, no volatile facts  |
-| 0005 | The public catalog is an explicit, expression-free slice                                        |
-| 0006 | CHECK constraints become rules only when the rule is equivalent                                 |
-| 0007 | Kysely types are generated from the catalog with node-postgres's default mapping (amended)      |
-| 0008 | Drift compares a live database with the committed catalog                                       |
-| 0009 | A unique index that no constraint backs is a public unique constraint                           |
-| 0010 | A NOT ENFORCED constraint is public and marked as such                                          |
-| 0011 | The catalog's type is a named interface, so compile errors print its name                       |
-| 0012 | The oracle writes fixtures into copies of the columns, catching refusals in the database        |
-| 0013 | The Kysely types follow the application's driver: node-postgres or PGlite's own parsers         |
+| 0003 | Replay migrations into PGlite or a throwaway database on a server; Flyway-aware ordering          |
+| 0004 | The catalog is deterministic TypeScript: JSON under `as const`, fixed order, no volatile facts    |
+| 0005 | The public catalog is an explicit, expression-free slice                                          |
+| 0006 | CHECK constraints become rules only when the rule is equivalent                                   |
+| 0007 | Kysely types are generated from the catalog with node-postgres's default mapping (amended)        |
+| 0008 | Drift compares a live database with the committed catalog                                         |
+| 0009 | A unique index that no constraint backs is a public unique constraint                             |
+| 0010 | A NOT ENFORCED constraint is public and marked as such                                            |
+| 0011 | The catalog's type is a named interface, so compile errors print its name                         |
+| 0012 | The oracle writes fixtures into copies of the columns, catching refusals in the database          |
+| 0013 | The Kysely types follow the application's driver: node-postgres or PGlite's own parsers           |

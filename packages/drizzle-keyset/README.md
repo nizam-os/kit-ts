@@ -434,8 +434,8 @@ has one.
 
 ## Documentation
 
-- [`docs/keyset/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/DESIGN.md):
-  what the packages are, the principles, and the API by example
+- [`docs/keyset/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/DESIGN.md): what
+  the packages are, the principles, and the API by example
 - [`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md): the
   normative contract, section by section, with the tests that prove it; section 14 is this adapter
 - [`docs/keyset/adr/`](https://github.com/nizam-os/kit/tree/main/docs/keyset/adr): the decisions,

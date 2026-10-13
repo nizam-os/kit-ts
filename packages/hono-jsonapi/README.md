@@ -24,8 +24,8 @@ pnpm add @nizam-os/hono-jsonapi hono @nizam-os/hono-ban
 Node 22.12+, Bun, Deno, and Cloudflare Workers are supported. CI runs the unit and end-to-end suites
 on Node 22 and 24, the unit suite on Hono 4.13.7, and a smoke test of both subpaths on Bun, Deno,
 and workerd. `hono >= 4.13.7`, the first release no published Hono advisory affects, and
-[`@nizam-os/hono-ban`](https://github.com/nizam-os/kit) are the peer dependencies: every error is
-a @nizam-os/ban-core error and `errorHandler()` is a @nizam-os/hono-ban handler (see Errors).
+[`@nizam-os/hono-ban`](https://github.com/nizam-os/kit) are the peer dependencies: every error is a
+@nizam-os/ban-core error and `errorHandler()` is a @nizam-os/hono-ban handler (see Errors).
 Validators are accepted through [Standard Schema](https://standardschema.dev) (Zod 4, Valibot,
 ArkType, and others) without importing any of them.
 
@@ -355,10 +355,10 @@ application may mount every relationship's route and let the definition decide.
 ### Errors
 
 Every error is a [@nizam-os/ban-core](https://github.com/nizam-os/kit) `BanError` from a closed
-catalog (`ERROR_CATALOG` over @nizam-os/ban-core's built-ins) in which each `code` fixes `status` and
-`title`; `detail` and `source` vary per occurrence. `jsonApiError` builds one error object; a list
-of `errorItem`s reports several problems at once, each object with its own identity and the response
-status the specification derives from them.
+catalog (`ERROR_CATALOG` over @nizam-os/ban-core's built-ins) in which each `code` fixes `status`
+and `title`; `detail` and `source` vary per occurrence. `jsonApiError` builds one error object; a
+list of `errorItem`s reports several problems at once, each object with its own identity and the
+response status the specification derives from them.
 
 ```ts
 throw jsonApiError('NOT_FOUND', { detail: 'The article does not exist' });
@@ -516,19 +516,19 @@ before sending. See the
 
 ## Modules
 
-| Subpath                        | What it holds                                                                                                                                                                              |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Subpath                         | What it holds                                                                                                                                                                               |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `@nizam-os/hono-jsonapi`        | All of `@nizam-os/jsonapi-core`, plus `jsonApi()`, `respond`, `respondError`, `readDocument`, `queryValidator`, `bodyValidator`, `relationshipValidator`, `errorHandler`, `notFoundHandler` |
 | `@nizam-os/hono-jsonapi/atomic` | All of `@nizam-os/jsonapi-core/atomic`, plus `atomicOperations()`                                                                                                                           |
 
 ## Documentation
 
-- [`docs/jsonapi/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/DESIGN.md):
-  what the packages are, the principles, and the API by example
+- [`docs/jsonapi/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/DESIGN.md): what
+  the packages are, the principles, and the API by example
 - [`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md): the
   normative contract, section by section, with the tests that prove it
-- [`docs/jsonapi/adr/`](https://github.com/nizam-os/kit/tree/main/docs/jsonapi/adr): the
-  decisions, including every choice the specification leaves to the server
+- [`docs/jsonapi/adr/`](https://github.com/nizam-os/kit/tree/main/docs/jsonapi/adr): the decisions,
+  including every choice the specification leaves to the server
 
 ## License
 

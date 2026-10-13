@@ -1,8 +1,8 @@
 # ban family: instructions for coding agents
 
 Read with the root [`AGENTS.md`](../../AGENTS.md), which holds the rules every family shares; this
-file adds what is specific to `@nizam-os/ban-core` (the framework-free core) and `@nizam-os/hono-ban`
-(the Hono binding). Humans: see [`CONTRIBUTING.md`](CONTRIBUTING.md).
+file adds what is specific to `@nizam-os/ban-core` (the framework-free core) and
+`@nizam-os/hono-ban` (the Hono binding). Humans: see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Ground rules
 
@@ -19,8 +19,8 @@ file adds what is specific to `@nizam-os/ban-core` (the framework-free core) and
   `packages/ban-core/src/handler/` must keep the single-invocation and constant-500-detail tests
   green.
 - `packages/ban-core` imports nothing from Hono, not even types; anything that needs a Hono type
-  belongs in `packages/hono-ban`, which imports `@nizam-os/ban-core` by package name (resolved to the
-  core's `src/` in-repo through the `source` export condition).
+  belongs in `packages/hono-ban`, which imports `@nizam-os/ban-core` by package name (resolved to
+  the core's `src/` in-repo through the `source` export condition).
 
 ## Repository map
 

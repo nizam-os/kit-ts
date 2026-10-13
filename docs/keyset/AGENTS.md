@@ -2,8 +2,8 @@
 
 Read with the root [`AGENTS.md`](../../AGENTS.md), which holds the rules every family shares; this
 file adds what is specific to `@nizam-os/keyset-core` (the database-free core),
-`@nizam-os/kysely-keyset` (the Kysely binding), and `@nizam-os/drizzle-keyset` (the Drizzle binding).
-Humans: see [`CONTRIBUTING.md`](CONTRIBUTING.md).
+`@nizam-os/kysely-keyset` (the Kysely binding), and `@nizam-os/drizzle-keyset` (the Drizzle
+binding). Humans: see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Ground rules
 

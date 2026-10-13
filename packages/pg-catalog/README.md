@@ -16,10 +16,11 @@ pnpm add -D @nizam-os/pg-catalog @electric-sql/pglite
 ```
 
 Node 22.12+, Bun, and Deno. It depends on [`pg`](https://node-postgres.com) and on
-[`@nizam-os/catalog-core`](https://www.npmjs.com/package/@nizam-os/catalog-core), which it re-exports
-in full. `@electric-sql/pglite` (0.5, PostgreSQL 18) is an optional peer dependency: leave it out
-when you extract against a server. So is `@nizam-os/resource-core`, which only `rules --check` loads.
-The generated files import nothing, so neither package reaches your application bundle.
+[`@nizam-os/catalog-core`](https://www.npmjs.com/package/@nizam-os/catalog-core), which it
+re-exports in full. `@electric-sql/pglite` (0.5, PostgreSQL 18) is an optional peer dependency:
+leave it out when you extract against a server. So is `@nizam-os/resource-core`, which only
+`rules --check` loads. The generated files import nothing, so neither package reaches your
+application bundle.
 
 ## Quick start
 
@@ -88,10 +89,10 @@ change from it (see [The API surface](#the-api-surface)). Failures go to standar
 `pg-catalog: <message>`, and a mistake in the arguments adds a pointer to `--help`.
 
 Without `--config`, the CLI loads the first of `pg-catalog.config.ts`, `pg-catalog.config.mts`,
-`pg-catalog.config.js`, and `pg-catalog.config.mjs` in the working directory. Relative paths in it resolve
-against its own directory, so `pg-catalog extract --config db/pg-catalog.config.ts` works from
-anywhere. Its default export must be a configuration. `defineExtraction` types it and checks it as
-the file loads: an unknown option (`postgres:` where `database:` was meant), an empty path, a
+`pg-catalog.config.js`, and `pg-catalog.config.mjs` in the working directory. Relative paths in it
+resolve against its own directory, so `pg-catalog extract --config db/pg-catalog.config.ts` works
+from anywhere. Its default export must be a configuration. `defineExtraction` types it and checks it
+as the file loads: an unknown option (`postgres:` where `database:` was meant), an empty path, a
 `database` with both or neither of `pglite` and `url`, a system or duplicate schema, a
 `types.driver` other than `'node-postgres'` and `'pglite'`, an interface name that does not start
 with an uppercase letter or that both modules share, or a drift environment name outside
@@ -100,9 +101,9 @@ command that needs them, so `extract` never reads the variable behind a drift UR
 
 A TypeScript configuration needs a runtime that strips types: Node.js 22.18 or later, Bun, or Deno.
 On Node.js 22.12 to 22.17, set `NODE_OPTIONS=--experimental-strip-types`, or write
-`pg-catalog.config.mjs`. Node.js strips types without compiling, so imports of your own modules carry
-their extension (`'./db/migrations.ts'`), and `enum` and `namespace` are not available. Bun runs the
-CLI as `bunx --bun pg-catalog`, and Deno as `deno run -A npm:@nizam-os/pg-catalog`.
+`pg-catalog.config.mjs`. Node.js strips types without compiling, so imports of your own modules
+carry their extension (`'./db/migrations.ts'`), and `enum` and `namespace` are not available. Bun
+runs the CLI as `bunx --bun pg-catalog`, and Deno as `deno run -A npm:@nizam-os/pg-catalog`.
 
 The same commands are functions. `extract(config, { check, cwd })` returns the status of each file
 without printing anything, and relative paths resolve against `cwd`, which defaults to the working
@@ -645,7 +646,7 @@ and exits 2. `defineExtraction` throws a `TypeError` instead, since its mistakes
 | `camel_case_mismatch`   | with `camelCase`, names `CamelCasePlugin` would not turn back into themselves; all are listed                                                                       |
 | `catalog_unreadable`    | `drift` cannot read the committed catalog, or `parseCatalogModule` was given a file that is not a catalog module                                                    |
 | `catalog_format`        | `parseCatalogModule` was given a catalog written in another format                                                                                                  |
-| `resource_core_missing` | `rules --check` or `surface` cannot load `@nizam-os/resource-core`                                                                                                   |
+| `resource_core_missing` | `rules --check` or `surface` cannot load `@nizam-os/resource-core`                                                                                                  |
 | `registry_invalid`      | `resources.registry` returned anything but a list of declared resources, or the declarations or storage codecs are refused, such as a codec without a storage codec |
 | `surface_unreadable`    | `surface --check` found a surface file that is not JSON, or not a surface this version reads                                                                        |
 

@@ -1,7 +1,8 @@
 # @nizam-os/jsonapi-core: design
 
-This document describes what @nizam-os/jsonapi-core, @nizam-os/hono-jsonapi, @nizam-os/jsonapi-client,
-and @nizam-os/tanstack-query-jsonapi are, the API they expose, and how they are built.
+This document describes what @nizam-os/jsonapi-core, @nizam-os/hono-jsonapi,
+@nizam-os/jsonapi-client, and @nizam-os/tanstack-query-jsonapi are, the API they expose, and how
+they are built.
 
 Architecture decisions referenced as ADR-NNNN live in `docs/jsonapi/adr/`. The normative,
 clause-by-clause specification that implementers work from is `docs/jsonapi/SPEC.md`; this document
@@ -65,10 +66,10 @@ It is a library for teams who treat their JSON:API surface as a contract.
    nothing reads `process` (ADR-0003).
 7. **One error model, shared with the application.** Every error is a
    [@nizam-os/ban-core](https://github.com/nizam-os/kit) `BanError`; `@nizam-os/jsonapi-core`
-   depends on `@nizam-os/ban-core` and on nothing else, imports no framework, and the adapter renders
-   through `@nizam-os/hono-ban`, so an application's own catalog, this package's, and any other
-   library's on @nizam-os/ban-core go through one handler (ADR-0014). Validators arrive through
-   Standard Schema; the types are vendored (ADR-0002, ADR-0013).
+   depends on `@nizam-os/ban-core` and on nothing else, imports no framework, and the adapter
+   renders through `@nizam-os/hono-ban`, so an application's own catalog, this package's, and any
+   other library's on @nizam-os/ban-core go through one handler (ADR-0014). Validators arrive
+   through Standard Schema; the types are vendored (ADR-0002, ADR-0013).
 8. **Headers follow the body.** `Content-Type` parameters are derived from the document's `jsonapi`
    object; `Location` from the created resource's `self` link (ADR-0005).
 9. **Client input is hostile.** Prototype keys are rejected wherever a name becomes a key; lookups
@@ -282,8 +283,8 @@ request ──jsonApi()──▶ 415 on bad parameters or unsupported ext
 ### 4.4 Error rendering
 
 Every error is a `BanError` from `jsonApiBan`, the package's @nizam-os/ban-core instance:
-`ERROR_CATALOG` over @nizam-os/ban-core's built-in catalog, rendered by @nizam-os/ban-core's JSON:API
-format with `mixedEntries` on so one document can combine entries. A parser accumulates
+`ERROR_CATALOG` over @nizam-os/ban-core's built-in catalog, rendered by @nizam-os/ban-core's
+JSON:API format with `mixedEntries` on so one document can combine entries. A parser accumulates
 `ErrorItem`s, each with the entry's identity and the occurrence's `detail` and address, and throws
 once; a detail quotes what the client sent only when it is a plain token, such as a member name or
 an id, and otherwise names the value without it (ADR-0016). The response status is the shared
@@ -345,28 +346,28 @@ a cited clause with a test.
 
 ## 5. Decisions
 
-| ADR  | Decision                                                                                                      |
-| ---- | ------------------------------------------------------------------------------------------------------------- |
-| 0001 | Record architecture decisions                                                                                 |
-| 0002 | Validators through vendored Standard Schema types; `hono` is the adapter's peer dependency                    |
-| 0003 | Web standards only; no ambient environment reads                                                              |
-| 0004 | ESM only, TypeScript 7 `isolatedDeclarations`, erasable syntax                                                |
-| 0005 | `Content-Type` parameters and `Location` are derived from the document                                        |
-| 0006 | Thrown errors render in `errorHandler`; validators and `jsonApi()` answer their own (superseded)              |
-| 0007 | The `filter` grammar                                                                                          |
-| 0008 | Cursor pagination: bounds, defaults, link rebuilding, the profile URI                                         |
-| 0009 | A closed error catalog over registered status codes                                                           |
-| 0010 | Atomic operations: caller-owned transaction, lid scope, two-phase processing                                  |
-| 0011 | Conformance tests against the vendored JSON:API 1.0 schema with 1.1 deltas                                    |
-| 0012 | Definitions are validated at definition time, never at request time                                           |
+| ADR  | Decision                                                                                                        |
+| ---- | --------------------------------------------------------------------------------------------------------------- |
+| 0001 | Record architecture decisions                                                                                   |
+| 0002 | Validators through vendored Standard Schema types; `hono` is the adapter's peer dependency                      |
+| 0003 | Web standards only; no ambient environment reads                                                                |
+| 0004 | ESM only, TypeScript 7 `isolatedDeclarations`, erasable syntax                                                  |
+| 0005 | `Content-Type` parameters and `Location` are derived from the document                                          |
+| 0006 | Thrown errors render in `errorHandler`; validators and `jsonApi()` answer their own (superseded)                |
+| 0007 | The `filter` grammar                                                                                            |
+| 0008 | Cursor pagination: bounds, defaults, link rebuilding, the profile URI                                           |
+| 0009 | A closed error catalog over registered status codes                                                             |
+| 0010 | Atomic operations: caller-owned transaction, lid scope, two-phase processing                                    |
+| 0011 | Conformance tests against the vendored JSON:API 1.0 schema with 1.1 deltas                                      |
+| 0012 | Definitions are validated at definition time, never at request time                                             |
 | 0013 | Two packages: the framework-neutral core `@nizam-os/jsonapi-core` and the Hono adapter `@nizam-os/hono-jsonapi` |
 | 0014 | Errors are @nizam-os/ban-core errors; the adapter renders through @nizam-os/hono-ban; everything throws         |
-| 0015 | Resource links by convention: opt-in `base`, a configured definer, no implicit defaults                       |
-| 0016 | Error details quote request text only as a plain token; `source` locates the rest                             |
-| 0017 | A typed client in the family, on fetch, over the server's definitions                                         |
-| 0018 | Definitions carry the types a client reads and writes                                                         |
-| 0019 | Records are flat and resolve relationships along the requested include paths                                  |
-| 0020 | TanStack Query options are the clients' binding, typed through query-core                                     |
-| 0021 | A list's pages key is tagged as TanStack Query's adapters tag an infinite key                                 |
-| 0022 | Atomic Operations are values built from definitions and sent through the transport in one request             |
-| 0023 | The operations endpoint and its cap are the definitions'                                                      |
+| 0015 | Resource links by convention: opt-in `base`, a configured definer, no implicit defaults                         |
+| 0016 | Error details quote request text only as a plain token; `source` locates the rest                               |
+| 0017 | A typed client in the family, on fetch, over the server's definitions                                           |
+| 0018 | Definitions carry the types a client reads and writes                                                           |
+| 0019 | Records are flat and resolve relationships along the requested include paths                                    |
+| 0020 | TanStack Query options are the clients' binding, typed through query-core                                       |
+| 0021 | A list's pages key is tagged as TanStack Query's adapters tag an infinite key                                   |
+| 0022 | Atomic Operations are values built from definitions and sent through the transport in one request               |
+| 0023 | The operations endpoint and its cap are the definitions'                                                        |

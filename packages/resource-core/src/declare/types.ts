@@ -5,7 +5,11 @@
  * @packageDocumentation
  */
 import type { PageCapabilitiesInit } from '@nizam-os/jsonapi-core';
-import type { Operator, SortInput, TextSearchMode } from '@nizam-os/keyset-core';
+import type {
+  Operator,
+  SortInput,
+  TextSearchMode,
+} from '@nizam-os/keyset-core';
 
 /** The operations a resource serves (SPEC 3.3). */
 export type Operation = 'list' | 'get' | 'create' | 'update' | 'remove';

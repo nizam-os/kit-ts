@@ -31,15 +31,15 @@ Contents
 
 ## 1. Public surface and module map
 
-Two packages (ADR 0002). `@nizam-os/catalog-core` is the model and the pure functions over it; it has
-no dependencies and runs anywhere the other cores run. `@nizam-os/pg-catalog` replays, extracts,
+Two packages (ADR 0002). `@nizam-os/catalog-core` is the model and the pure functions over it; it
+has no dependencies and runs anywhere the other cores run. `@nizam-os/pg-catalog` replays, extracts,
 renders, compares, checks declared resources against the database (10.3), records their API surface
 (10.4), and runs the CLI; it depends on `@nizam-os/catalog-core` (and re-exports all of it) and on
 `pg`, and takes `@electric-sql/pglite` and `@nizam-os/resource-core` as optional peer dependencies.
 
-| Package                 | Exports                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@nizam-os/catalog-core` | Values: `toPublicCatalog`, `diffCatalogs`, `toCamelCase`, `toSnakeCase`, `CATALOG_FORMAT`; and the types of sections 2 to 4 and 9.2 (`CamelCaseOptions`, `Catalog`, `CatalogTable`, `CatalogColumn`, `ColumnDefault`, `ColumnGenerated`, `TypeKind`, `Identity`, `Constraint`, `PrimaryKeyConstraint`, `UniqueConstraint`, `ForeignKeyConstraint`, `CheckConstraint`, `ExclusionConstraint`, `ReferentialAction`, `CatalogIndex`, `RowSecurity`, `Policy`, `PolicyCommand`, `CatalogDomain`, `DomainConstraint`, `Rule`, `LengthRule`, `RangeRule`, `RangeBound`, `EnumRule`, `NotNullRule`, `PatternRule`, `PublicCatalog`, `PublicTable`, `PublicColumn`, `PublicColumnDefault`, `PublicColumnGenerated`, `PublicConstraint` and its five kinds, `PublicDomain`, `PublicDomainConstraint`, `CatalogDiff`, `CatalogChange`, `JsonValue`)                                                                                                                                                                              |
+| Package                  | Exports                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@nizam-os/catalog-core` | Values: `toPublicCatalog`, `diffCatalogs`, `toCamelCase`, `toSnakeCase`, `CATALOG_FORMAT`; and the types of sections 2 to 4 and 9.2 (`CamelCaseOptions`, `Catalog`, `CatalogTable`, `CatalogColumn`, `ColumnDefault`, `ColumnGenerated`, `TypeKind`, `Identity`, `Constraint`, `PrimaryKeyConstraint`, `UniqueConstraint`, `ForeignKeyConstraint`, `CheckConstraint`, `ExclusionConstraint`, `ReferentialAction`, `CatalogIndex`, `RowSecurity`, `Policy`, `PolicyCommand`, `CatalogDomain`, `DomainConstraint`, `Rule`, `LengthRule`, `RangeRule`, `RangeBound`, `EnumRule`, `NotNullRule`, `PatternRule`, `PublicCatalog`, `PublicTable`, `PublicColumn`, `PublicColumnDefault`, `PublicColumnGenerated`, `PublicConstraint` and its five kinds, `PublicDomain`, `PublicDomainConstraint`, `CatalogDiff`, `CatalogChange`, `JsonValue`)                                                                                                                                                                               |
 | `@nizam-os/pg-catalog`   | Everything of `@nizam-os/catalog-core` (the same bindings), plus `defineExtraction`, `extract`, `drift`, `extractCatalog`, `introspectCatalog`, `renderCatalogModule`, `renderPublicCatalogModule`, `parseCatalogModule`, `renderKyselyTypes`, `formatDiff`, `checkRules`, `formatRules`, `writeSurface`, `checkSurface`, `formatSurface`, `PgCatalogError`, `isPgCatalogError`; the types `ExtractionConfig`, `MigrationSource`, `Migration`, `DatabaseConfig`, `PgliteExtension`, `OutputConfig`, `CatalogFileConfig`, `PublicFileConfig`, `CatalogModuleOptions`, `TypesConfig`, `KyselyDriver`, `TypeOverride`, `DriftEnvironment`, `ResourcesConfig`, `TextStorageCodec`, `DriftOptions`, `DriftReport`, `ExtractOptions`, `ExtractReport`, `ExtractedFile`, `ExtractCatalogOptions`, `IntrospectOptions`, `KyselyTypesOptions`, `RulesOptions`, `RulesReport`, `RuleCaseReport`, `RuleDisagreement`, `SurfaceOptions`, `SurfaceWriteReport`, `SurfaceCheckReport`, `PgCatalogErrorCode`; and the `pg-catalog` bin |
 
 `e2e/catalog/package-surface.e2e.test.ts` asserts the exact value export lists against the built
@@ -1007,9 +1007,9 @@ https://github.com/electric-sql/pglite/blob/%40electric-sql/pglite%400.5.8/packa
   back into `line1`. Every name that does not survive the round trip is listed in one
   `camel_case_mismatch`. The conversions are `toCamelCase` and `toSnakeCase` of
   `@nizam-os/catalog-core`, a port of the plugin's that `render/key-names.test.ts` runs against the
-  plugin itself over every short string, and that `@nizam-os/resource-core` also derives public names
-  with. Unless `maintainNestedObjectKeys` is set, the plugin also camelCases the keys of objects
-  inside parsed `json` and `jsonb` values, while values written keep their keys. @ref
+  plugin itself over every short string, and that `@nizam-os/resource-core` also derives public
+  names with. Unless `maintainNestedObjectKeys` is set, the plugin also camelCases the keys of
+  objects inside parsed `json` and `jsonb` values, while values written keep their keys. @ref
   https://github.com/kysely-org/kysely/blob/v0.28.17/src/plugin/camel-case/camel-case.ts @ref
   https://kysely.dev/docs/plugins#camel-case-plugin
 
@@ -1062,9 +1062,9 @@ Catalog. The text is for people and may change between minor versions; the CLI's
 
 `checkRules(config, { cwd })` runs the fixtures of the declared resources through their schemas and
 through the database the migrations build, and reports where the two disagree. The cases come from
-`oracleCases` of `@nizam-os/resource-core/testing` (resource SPEC 7.3): each names a probe (copies of
-a table's columns holding some of its CHECKs, or a value of a domain), and each fixture carries the
-texts to write and a judge of the database's verdict. This package builds the probes, writes the
+`oracleCases` of `@nizam-os/resource-core/testing` (resource SPEC 7.3): each names a probe (copies
+of a table's columns holding some of its CHECKs, or a value of a domain), and each fixture carries
+the texts to write and a judge of the database's verdict. This package builds the probes, writes the
 texts, and hands each verdict to its judge; what the schemas say is resource-core's to decide.
 
 1. Without `config.resources`, it fails with `config_invalid`
@@ -1308,14 +1308,15 @@ only when a command needs the URL, so a missing environment variable only fails 
 needs it. Relative paths resolve against the configuration file's directory, or the `cwd` option of
 the programmatic API.
 
-The CLI loads `--config <file>`, or else the first of `pg-catalog.config.ts`, `pg-catalog.config.mts`,
-`pg-catalog.config.js`, and `pg-catalog.config.mjs` in the working directory, with a dynamic `import()`;
-the default export must pass `defineExtraction`'s validation. A file that does not exist, fails to
-import, has no default export, or fails validation is a `config_invalid` naming it, as is a working
-directory without one. A TypeScript configuration needs a runtime that strips types: Node.js 22.18
-or later, Node.js 22.12 to 22.17 with `--experimental-strip-types` (which `NODE_OPTIONS` can carry),
-Bun, or Deno. Where Node.js does not strip types it reports the file as an unknown extension, and
-the message says what to do instead. @ref https://nodejs.org/api/typescript.html
+The CLI loads `--config <file>`, or else the first of `pg-catalog.config.ts`,
+`pg-catalog.config.mts`, `pg-catalog.config.js`, and `pg-catalog.config.mjs` in the working
+directory, with a dynamic `import()`; the default export must pass `defineExtraction`'s validation.
+A file that does not exist, fails to import, has no default export, or fails validation is a
+`config_invalid` naming it, as is a working directory without one. A TypeScript configuration needs
+a runtime that strips types: Node.js 22.18 or later, Node.js 22.12 to 22.17 with
+`--experimental-strip-types` (which `NODE_OPTIONS` can carry), Bun, or Deno. Where Node.js does not
+strip types it reports the file as an unknown extension, and the message says what to do instead.
+@ref https://nodejs.org/api/typescript.html
 
 ### 11.2 The CLI (`cli.ts`, `cli/arguments.ts`, `cli/main.ts`)
 
@@ -1383,7 +1384,7 @@ all of them. `defineExtraction` and `toPublicCatalog` throw `TypeError` for prog
 | `camel_case_mismatch`   | with `types.camelCase`, table or column keys that `CamelCasePlugin` would not turn back into their names; the message lists every one                                                                                  |
 | `catalog_unreadable`    | the committed catalog file is missing or not a catalog module                                                                                                                                                          |
 | `catalog_format`        | the committed catalog was written in another `format`                                                                                                                                                                  |
-| `resource_core_missing` | `rules --check` cannot import `@nizam-os/resource-core/testing`, or `surface` its `openapi` entry; the message ends with the reason                                                                                     |
+| `resource_core_missing` | `rules --check` cannot import `@nizam-os/resource-core/testing`, or `surface` its `openapi` entry; the message ends with the reason                                                                                    |
 | `registry_invalid`      | `resources.registry` returns anything but an array of objects, or `oracleCases` refuses the registry or the storage codecs, with its message after `rules: `, or `surfaceOf` the registry, after `surface: `           |
 | `surface_unreadable`    | the committed surface file is not JSON, or not a surface `parseSurface` reads, such as one of another format                                                                                                           |
 
@@ -1420,7 +1421,7 @@ produce for them, reviewed by hand, `db-camel.ts`, the types rendered with `came
 
 | File                          | Covers                                                                                                                                                                                                                                                                                                                                                                                |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `package-surface.e2e.test.ts` | the exact export lists, and that `@nizam-os/pg-catalog` re-exports the core's own bindings                                                                                                                                                                                                                                                                                             |
+| `package-surface.e2e.test.ts` | the exact export lists, and that `@nizam-os/pg-catalog` re-exports the core's own bindings                                                                                                                                                                                                                                                                                            |
 | `extract.e2e.test.ts`         | the three files equal `expected/` byte for byte, on two runs; `--check` passes, then fails after a migration changes                                                                                                                                                                                                                                                                  |
 | `server.e2e.test.ts`          | when `CATALOG_PG_URL` is set: the server target produces the same bytes as PGlite, and drops its database                                                                                                                                                                                                                                                                             |
 | `drift.e2e.test.ts`           | a live database built from the migrations shows no drift; after a column is added, a policy dropped, and a CHECK changed, exactly those three changes; on PGlite over a socket and on the server, where it also runs as the read-only role the README recommends                                                                                                                      |
@@ -1451,11 +1452,11 @@ where `server.e2e.test.ts`, `kysely.e2e.test.ts`, and `drift.e2e.test.ts` reach 
   (`isolatedDeclarations`). `publint --strict` and `attw --profile esm-only` run in the build.
 - `@nizam-os/catalog-core`: `platform: 'neutral'`, no dependencies, `sideEffects: false`.
 - `@nizam-os/pg-catalog`: `platform: 'node'`, two entries (`index` and `cli`), `bin` `pg-catalog`
-  pointing at `dist/cli.mjs` with a `#!/usr/bin/env node` line, dependencies `@nizam-os/catalog-core`
-  (`workspace:^`) and `pg`, `@electric-sql/pglite` `^0.5.0` (CI runs the package's tests on 0.5.0)
-  and `@nizam-os/resource-core` `^0.1.0` as optional peer dependencies (`rules --check` imports the
-  latter's `testing` entry and `surface` its `openapi` entry on demand, so `extract` and `drift`
-  never load it), and `sideEffects` listing only the bin.
+  pointing at `dist/cli.mjs` with a `#!/usr/bin/env node` line, dependencies
+  `@nizam-os/catalog-core` (`workspace:^`) and `pg`, `@electric-sql/pglite` `^0.5.0` (CI runs the
+  package's tests on 0.5.0) and `@nizam-os/resource-core` `^0.1.0` as optional peer dependencies
+  (`rules --check` imports the latter's `testing` entry and `surface` its `openapi` entry on demand,
+  so `extract` and `drift` never load it), and `sideEffects` listing only the bin.
 - The `exports` maps, `source` conditions, `publishConfig`, `files`, and release flow follow the
   keyset family (its SPEC 12).
 
@@ -1463,16 +1464,16 @@ where `server.e2e.test.ts`, `kysely.e2e.test.ts`, and `drift.e2e.test.ts` reach 
 
 ## 15. Constants
 
-| Name                    | Value                                                                                                     | Exported |
-| ----------------------- | --------------------------------------------------------------------------------------------------------- | -------- |
-| `CATALOG_FORMAT`        | 3                                                                                                         | yes      |
-| default schemas         | `['public']`                                                                                              | no       |
-| minimum server version  | 140000 (PostgreSQL 14)                                                                                    | no       |
-| throwaway database name | `nizam_catalog_` followed by 16 lowercase hex digits                                                    | no       |
-| `SESSION_SETTINGS`      | the six settings of 7.1                                                                                   | no       |
-| configuration files     | `pg-catalog.config.ts`, `.mts`, `.js`, `.mjs`, in that order                                                 | no       |
-| pattern bound limit     | 255 (PostgreSQL's `DUPMAX`)                                                                               | no       |
-| schema name limit       | 63 bytes (`NAMEDATALEN - 1`)                                                                              | no       |
+| Name                    | Value                                                                                                      | Exported |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------- | -------- |
+| `CATALOG_FORMAT`        | 3                                                                                                          | yes      |
+| default schemas         | `['public']`                                                                                               | no       |
+| minimum server version  | 140000 (PostgreSQL 14)                                                                                     | no       |
+| throwaway database name | `nizam_catalog_` followed by 16 lowercase hex digits                                                       | no       |
+| `SESSION_SETTINGS`      | the six settings of 7.1                                                                                    | no       |
+| configuration files     | `pg-catalog.config.ts`, `.mts`, `.js`, `.mjs`, in that order                                               | no       |
+| pattern bound limit     | 255 (PostgreSQL's `DUPMAX`)                                                                                | no       |
+| schema name limit       | 63 bytes (`NAMEDATALEN - 1`)                                                                               | no       |
 | file header             | `// Generated by @nizam-os/pg-catalog. Do not edit: change the migrations and run \`pg-catalog extract\`.` | no       |
-| default interfaces      | `ExtractedCatalog`, `ExtractedPublicCatalog`                                                              | no       |
-| `INTERFACE_NAME`        | `^[A-Z][A-Za-z0-9_]*$`                                                                                    | no       |
+| default interfaces      | `ExtractedCatalog`, `ExtractedPublicCatalog`                                                               | no       |
+| `INTERFACE_NAME`        | `^[A-Z][A-Za-z0-9_]*$`                                                                                     | no       |

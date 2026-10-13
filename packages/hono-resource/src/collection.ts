@@ -25,7 +25,10 @@ import {
   resourceDocument,
   respond,
 } from '@nizam-os/hono-jsonapi';
-import { filterParameters, keysetRequest } from '@nizam-os/resource-core/server';
+import {
+  filterParameters,
+  keysetRequest,
+} from '@nizam-os/resource-core/server';
 
 import { includedOf, notRun, operationsOf } from './context';
 import { allow } from './methods';

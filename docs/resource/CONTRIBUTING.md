@@ -1,12 +1,13 @@
 # Contributing to the resource family
 
-`@nizam-os/resource-core` (declarations, derivations, messages, the `server` contracts, OpenAPI) and,
-as their epics start, `@nizam-os/kysely-resource`, `@nizam-os/hono-resource`, `@nizam-os/resource-ui`,
-and `@nizam-os/tanstack-form-resource`. The root [`CONTRIBUTING.md`](../../CONTRIBUTING.md) covers
-setup, the quality gates, the shared conventions, commits, changesets, and releases; this guide adds
-what is specific to the family. Design intent lives in [`DESIGN.md`](DESIGN.md), the normative
-contract in [`SPEC.md`](SPEC.md), and decisions in [`adr/`](adr); read those before proposing
-changes to the grammar, the derivations, or the error model.
+`@nizam-os/resource-core` (declarations, derivations, messages, the `server` contracts, OpenAPI)
+and, as their epics start, `@nizam-os/kysely-resource`, `@nizam-os/hono-resource`,
+`@nizam-os/resource-ui`, and `@nizam-os/tanstack-form-resource`. The root
+[`CONTRIBUTING.md`](../../CONTRIBUTING.md) covers setup, the quality gates, the shared conventions,
+commits, changesets, and releases; this guide adds what is specific to the family. Design intent
+lives in [`DESIGN.md`](DESIGN.md), the normative contract in [`SPEC.md`](SPEC.md), and decisions in
+[`adr/`](adr); read those before proposing changes to the grammar, the derivations, or the error
+model.
 
 ## Conventions
 

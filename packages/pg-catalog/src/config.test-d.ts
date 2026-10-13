@@ -1,4 +1,7 @@
-import type { AnyDeclaredResource, StorageCodec } from '@nizam-os/resource-core';
+import type {
+  AnyDeclaredResource,
+  StorageCodec,
+} from '@nizam-os/resource-core';
 import type { SurfaceChange } from '@nizam-os/resource-core/openapi';
 import type { OracleCase } from '@nizam-os/resource-core/testing';
 

@@ -46,8 +46,8 @@ https://www.postgresql.org/docs/18/tutorial-transactions.html
   the input: a relationship document's `/data...`, an operation's
   `/atomic:operations/<index>/data...`. Only the host knows where it read the input, and one
   mechanism covers both.
-- The host owns negotiation, the error handler, and `notFound`; `@nizam-os/hono-resource` adds routes
-  and `resourceTypeOf` for `localizeErrors`. The actor resolves once per request, before any
+- The host owns negotiation, the error handler, and `notFound`; `@nizam-os/hono-resource` adds
+  routes and `resourceTypeOf` for `localizeErrors`. The actor resolves once per request, before any
   validator, so a request without a session learns nothing about the resource from a 400.
 - A known path answers another method with 405 and `Allow`, as RFC 9110 requires.
 

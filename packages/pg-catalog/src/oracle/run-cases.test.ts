@@ -6,7 +6,10 @@
  * fresh probe.
  */
 import type { Catalog } from '@nizam-os/catalog-core';
-import type { OracleCase, OracleVerdict } from '@nizam-os/resource-core/testing';
+import type {
+  OracleCase,
+  OracleVerdict,
+} from '@nizam-os/resource-core/testing';
 
 import type { SqlSession } from '../target/session';
 

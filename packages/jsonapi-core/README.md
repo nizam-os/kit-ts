@@ -10,8 +10,8 @@ server, the choice is written down in
 [`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md).
 
 Using [Hono](https://hono.dev)?
-[`@nizam-os/hono-jsonapi`](https://www.npmjs.com/package/@nizam-os/hono-jsonapi) wraps this package as
-middleware, validators, response helpers, and handlers, and re-exports all of it.
+[`@nizam-os/hono-jsonapi`](https://www.npmjs.com/package/@nizam-os/hono-jsonapi) wraps this package
+as middleware, validators, response helpers, and handlers, and re-exports all of it.
 
 ## Install
 
@@ -592,19 +592,19 @@ operation's failure.
 
 ## Modules
 
-| Subpath                        | What it holds                                                                                                                                                          |
-| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Subpath                         | What it holds                                                                                                                                                          |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `@nizam-os/jsonapi-core`        | Resource definitions, documents, query parsing, request parsing, errors, content negotiation, cursor pagination, and the constants                                     |
 | `@nizam-os/jsonapi-core/atomic` | `operationsProcessor()`, `assertOperationsContentType()`, the operations document parser, and `DEFAULT_MAX_OPERATIONS`, a definition's `atomic.max` when it gives none |
 
 ## Documentation
 
-- [`docs/jsonapi/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/DESIGN.md):
-  what the packages are, the principles, and the API by example
+- [`docs/jsonapi/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/DESIGN.md): what
+  the packages are, the principles, and the API by example
 - [`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md): the
   normative contract, section by section, with the tests that prove it
-- [`docs/jsonapi/adr/`](https://github.com/nizam-os/kit/tree/main/docs/jsonapi/adr): the
-  decisions, including every choice the specification leaves to the server
+- [`docs/jsonapi/adr/`](https://github.com/nizam-os/kit/tree/main/docs/jsonapi/adr): the decisions,
+  including every choice the specification leaves to the server
 
 ## License
 

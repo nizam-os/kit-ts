@@ -25,8 +25,8 @@ family. Design intent lives in [`DESIGN.md`](DESIGN.md), the normative contract 
   `mkdtemp` directories and call the emitted functions; no compiler mocks.
 - **End-to-end tests live in `e2e/intl/`.** That package consumes the built packages through
   `workspace:*`; never import from `src/` there. Run one file with
-  `pnpm --filter @nizam-os/intl-e2e exec vitest run <name>` after `pnpm build`, and the runtime smoke
-  with `pnpm --filter @nizam-os/intl-e2e run smoke:bun` (`smoke:deno`, `smoke:workerd`): each
+  `pnpm --filter @nizam-os/intl-e2e exec vitest run <name>` after `pnpm build`, and the runtime
+  smoke with `pnpm --filter @nizam-os/intl-e2e run smoke:bun` (`smoke:deno`, `smoke:workerd`): each
   compiles the fixture on its runtime first, `smoke:bun` and `smoke:deno` then watch an edit
   compile, and `smoke:deno` needs Deno 2.6.10 or later.
 

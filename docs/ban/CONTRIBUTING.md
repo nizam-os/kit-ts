@@ -40,8 +40,8 @@ as `@nizam-os/ban-core/<name>`), observability sources (`observability/<name>.ts
 `@nizam-os/ban-core/<name>`), and database error mappers (`<database>/index.ts`, exported as
 `@nizam-os/ban-core/<database>`; `@nizam-os/ban-core/postgresql` is the one so far). Each subpath is
 mirrored by a one-line re-export in `packages/hono-ban/src` so it is also
-`@nizam-os/hono-ban/<subpath>`. Formats are namespaced because several ship and a consumer picks one;
-hooks, sources, and mappers are top-level because a consumer picks the one matching a library
+`@nizam-os/hono-ban/<subpath>`. Formats are namespaced because several ship and a consumer picks
+one; hooks, sources, and mappers are top-level because a consumer picks the one matching a library
 already installed. A fifth kind, a host adapter, is its own package next to `@nizam-os/hono-ban`: it
 depends on `@nizam-os/ban-core`, installs an `adopt` hook for the host's exceptions, and maps the
 host's request to `ErrorRequest` (ADR 0016, ADR 0018).

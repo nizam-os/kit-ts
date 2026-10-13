@@ -10,12 +10,12 @@ defaults in OpenAPI, enum labels and length limits in forms, constraint names in
 copy drifts on its own schedule, and the drift shows up as a 500 or a confusing 422 in production
 rather than as a compile error.
 
-`@nizam-os/pg-catalog` already writes the database's own description as committed TypeScript (catalog
-ADR 0004): the full catalog for servers, the public catalog for browsers (catalog ADR 0005), and
-Kysely types (catalog ADR 0007). The public catalog is an `as const` literal, so TypeScript sees
-every table, column, type name, nullability, default literal, identity, generation, constraint, and
-translated rule as a literal type. It holds only the tables the configuration names in
-`public.tables` and drops expressions, policies, and indexes, so a browser may import it.
+`@nizam-os/pg-catalog` already writes the database's own description as committed TypeScript
+(catalog ADR 0004): the full catalog for servers, the public catalog for browsers (catalog ADR
+0005), and Kysely types (catalog ADR 0007). The public catalog is an `as const` literal, so
+TypeScript sees every table, column, type name, nullability, default literal, identity, generation,
+constraint, and translated rule as a literal type. It holds only the tables the configuration names
+in `public.tables` and drops expressions, policies, and indexes, so a browser may import it.
 
 A declaration is imported by servers and by clients: forms validate with its schemas and render its
 limits and options. A core imports no query builder, not even its types (root `AGENTS.md`).

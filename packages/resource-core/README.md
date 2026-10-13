@@ -16,8 +16,8 @@ keyset definition a declaration derives (SPEC 9.4 and 11), the `server` subpath 
 `constraintError`, `relationshipTargets`, and the storage adapter contract and its suite, `list`
 included (SPEC 9.5 and 12), and the `openapi` entry: the OpenAPI document, the surface, and its diff
 (SPEC 13);
-[`docs/resource/README.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/README.md)
-shows where the family is going.
+[`docs/resource/README.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/README.md) shows
+where the family is going.
 
 ## Install
 
@@ -124,7 +124,7 @@ Contacts.names.fields.get('createdAt'); // 'created_at'
 | `scope`                | a scope of the definer whose column the table has                                                                                                                              |
 | `clientIds`            | a primary key that accepts a client value: not a generated column and not an identity `ALWAYS` column                                                                          |
 | `search`               | a `tsvector` column; `config` equals the one the column is generated with, or is given, and is an unqualified name (`english`, not `pg_catalog.english`)                       |
-| `filter`, `sort`       | operators `@nizam-os/keyset-core` runs for the member's type, each once, at least one; `isNull` only on a nullable column; none on `json`, `jsonb`, a codec; no sort on arrays  |
+| `filter`, `sort`       | operators `@nizam-os/keyset-core` runs for the member's type, each once, at least one; `isNull` only on a nullable column; none on `json`, `jsonb`, a codec; no sort on arrays |
 | `as`                   | on a member that filters or sorts, ASCII letters, digits, `_`, and `-`, starting with a letter or a digit; on a filtered member, not `or`, nor `q` with `search`               |
 | `sort.default`         | fields declared with `sort: true`, each once                                                                                                                                   |
 | `rules`                | constraint names and NOT NULL keys (`contacts_name_not_null`); a validator only on an enforced CHECK without a rule, and required on every such CHECK over a written column    |
@@ -323,7 +323,7 @@ CHECKs the catalog translates, its nullability, and its validators:
 | `schema.id`, `validate.id`                         | a resource id its key's form takes, output as the server sends it: a URL's or a client id | Zod's, `ResourceIssue`s |
 | `linkage.read`, `linkage.create`, `linkage.update` | the relationships, each `{ type, id }`, or `null` where the foreign key is nullable       | Zod's                   |
 | `validate.create`, `validate.update`               | the attributes, as Standard Schema validators                                             | `ResourceIssue`s        |
-| `write.create`, `write.update`                     | a resource object as `@nizam-os/jsonapi-core` parses it, `{ attributes, relationships }`   | `ResourceIssue`s        |
+| `write.create`, `write.update`                     | a resource object as `@nizam-os/jsonapi-core` parses it, `{ attributes, relationships }`  | `ResourceIssue`s        |
 
 `create` requires exactly the columns PostgreSQL requires on insert, `update` requires none, and
 both reject unknown keys; over JSON:API a declared member the operation does not write never reaches
@@ -1098,8 +1098,8 @@ export function typesOf(runtime: ResourceRuntime<AppDomain>): ReadonlyArray<stri
 
 ## OpenAPI and the API diff
 
-`@nizam-os/resource-core/openapi` documents the resources you serve as an OpenAPI 3.1.2 document, and
-records what clients depend on as a surface you commit and diff (SPEC 13):
+`@nizam-os/resource-core/openapi` documents the resources you serve as an OpenAPI 3.1.2 document,
+and records what clients depend on as a surface you commit and diff (SPEC 13):
 
 ```ts
 import { openapi } from '@nizam-os/resource-core/openapi';
@@ -1456,8 +1456,7 @@ and 129 MB to 0.52 s and 202 MB, and the GitLab slice's from 0.27 s and 151 MB t
   what the family is, the principles, and the API by example
 - [`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md): the
   normative contract, section by section, with the tests that prove it
-- [`docs/resource/adr/`](https://github.com/nizam-os/kit/tree/main/docs/resource/adr): the
-  decisions
+- [`docs/resource/adr/`](https://github.com/nizam-os/kit/tree/main/docs/resource/adr): the decisions
 
 ## License
 

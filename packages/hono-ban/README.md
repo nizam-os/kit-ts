@@ -7,9 +7,9 @@ JSON:API, Google's AIP-193, and Stripe's error object are built in, and your own
 `defineFormat` call away.
 
 @nizam-os/hono-ban is the Hono adapter: everything that does not need Hono lives in
-`@nizam-os/ban-core`, which it re-exports under the same subpaths, and its `createBan` adds `onError`
-for `app.onError()` and adopts Hono's `HTTPException`. Code that needs the same errors outside Hono
-imports `@nizam-os/ban-core`.
+`@nizam-os/ban-core`, which it re-exports under the same subpaths, and its `createBan` adds
+`onError` for `app.onError()` and adopts Hono's `HTTPException`. Code that needs the same errors
+outside Hono imports `@nizam-os/ban-core`.
 
 ## Install
 
@@ -394,12 +394,12 @@ for (const [key, response] of Object.entries(errorResponseObjects(ban, codes, { 
 ```
 
 Hooks for `@hono/zod-validator` (`hook` from `@nizam-os/hono-ban/zod`), `@hono/valibot-validator`
-(`@nizam-os/hono-ban/valibot`), and `@hono/standard-validator` (`@nizam-os/hono-ban/standard-schema`)
-work the same way: they throw into `onError`, so validation failures get the same id, header, and
-report as every other error, rendered by the active format. Under the hood
-`ban.validation(issues, { location })` builds an `errors` list of items (`detail`, `path`, `reason`,
-`expected`, `received`); any factory accepts `errors` too, so several problems that did not come
-from a validator render the same way:
+(`@nizam-os/hono-ban/valibot`), and `@hono/standard-validator`
+(`@nizam-os/hono-ban/standard-schema`) work the same way: they throw into `onError`, so validation
+failures get the same id, header, and report as every other error, rendered by the active format.
+Under the hood `ban.validation(issues, { location })` builds an `errors` list of items (`detail`,
+`path`, `reason`, `expected`, `received`); any factory accepts `errors` too, so several problems
+that did not come from a validator render the same way:
 
 ```ts
 throw ban.badRequest('Two fields are wrong', {
@@ -497,30 +497,30 @@ recognizing other frameworks' exceptions the way `@nizam-os/hono-ban` recognizes
 
 ## Modules
 
-| Import                                                                                                                                                                                           | What it gives you                                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@nizam-os/hono-ban`                                                                                                                                                                              | everything `@nizam-os/ban-core` exports, with `createBan` adding `onError`; plus `fromHttpException`, `assert`, `defineFormat`, `bearerChallenge`, `BanError`, `isBanError`, `problemDetails` |
-| `@nizam-os/hono-ban/formats/problem-details`, `@nizam-os/hono-ban/formats/json-api`, `@nizam-os/hono-ban/formats/plain`, `@nizam-os/hono-ban/formats/google-api`, `@nizam-os/hono-ban/formats/stripe` | the built-in wire formats                                                                                                                                                                    |
-| `@nizam-os/hono-ban/zod`, `@nizam-os/hono-ban/valibot`, `@nizam-os/hono-ban/standard-schema`                                                                                                        | validator hooks and issue converters                                                                                                                                                         |
-| `@nizam-os/hono-ban/openapi`                                                                                                                                                                      | `errorResponses`, `errorResponseObjects`, `errorObjectSchemas`, `errorResponse`, `errorSchema`, `validationResponse`, `validationSchema`                                                     |
-| `@nizam-os/hono-ban/otel`                                                                                                                                                                         | `traceIdFromOtel`                                                                                                                                                                            |
-| `@nizam-os/hono-ban/postgresql`                                                                                                                                                                   | `postgresMapper`, `findPostgresError`, `readPostgresFields`                                                                                                                                  |
-| `@nizam-os/hono-ban/testing`                                                                                                                                                                      | `expectBanError`, `renderError`, `assertFormatConformance`                                                                                                                                   |
+| Import                                                                                                                                                                                                | What it gives you                                                                                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@nizam-os/hono-ban`                                                                                                                                                                                  | everything `@nizam-os/ban-core` exports, with `createBan` adding `onError`; plus `fromHttpException`, `assert`, `defineFormat`, `bearerChallenge`, `BanError`, `isBanError`, `problemDetails` |
+| `@nizam-os/hono-ban/formats/problem-details`, `@nizam-os/hono-ban/formats/json-api`, `@nizam-os/hono-ban/formats/plain`, `@nizam-os/hono-ban/formats/google-api`, `@nizam-os/hono-ban/formats/stripe` | the built-in wire formats                                                                                                                                                                     |
+| `@nizam-os/hono-ban/zod`, `@nizam-os/hono-ban/valibot`, `@nizam-os/hono-ban/standard-schema`                                                                                                          | validator hooks and issue converters                                                                                                                                                          |
+| `@nizam-os/hono-ban/openapi`                                                                                                                                                                          | `errorResponses`, `errorResponseObjects`, `errorObjectSchemas`, `errorResponse`, `errorSchema`, `validationResponse`, `validationSchema`                                                      |
+| `@nizam-os/hono-ban/otel`                                                                                                                                                                             | `traceIdFromOtel`                                                                                                                                                                             |
+| `@nizam-os/hono-ban/postgresql`                                                                                                                                                                       | `postgresMapper`, `findPostgresError`, `readPostgresFields`                                                                                                                                   |
+| `@nizam-os/hono-ban/testing`                                                                                                                                                                          | `expectBanError`, `renderError`, `assertFormatConformance`                                                                                                                                    |
 
 Every subpath is the same module as the matching `@nizam-os/ban-core/<subpath>`; importing either is
 fine in one application. Other databases go through `createBan({ map })` the same way
-`@nizam-os/hono-ban/postgresql` does: catalog entries with constant client-facing messages, never the
-driver's own text (a driver's detail line can contain the failing row).
+`@nizam-os/hono-ban/postgresql` does: catalog entries with constant client-facing messages, never
+the driver's own text (a driver's detail line can contain the failing row).
 
 ## Documentation
 
-- [`docs/ban/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/ban/DESIGN.md): goals,
-  the full API, architecture, security defaults, and roadmap
+- [`docs/ban/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/ban/DESIGN.md): goals, the
+  full API, architecture, security defaults, and roadmap
 - [`docs/ban/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/ban/SPEC.md): the normative
   implementation specification (exact types, catalog, rendering rules, handler algorithm, validator
   mappings, packaging, test plan)
-- [`docs/ban/adr/`](https://github.com/nizam-os/kit/blob/main/docs/ban/adr/): architecture
-  decision records
+- [`docs/ban/adr/`](https://github.com/nizam-os/kit/blob/main/docs/ban/adr/): architecture decision
+  records
 - [`CONTRIBUTING.md`](https://github.com/nizam-os/kit/blob/main/CONTRIBUTING.md): setup, quality
   gates, release process
 - [`CHANGELOG.md`](./CHANGELOG.md): what changed in each release, including the 2.0 migration notes
@@ -553,7 +553,7 @@ standard that shape follows.
 
 ## Comparison
 
-|                                         | @nizam-os/hono-ban 2.0                                           | hono-problem-details          | @hapi/boom |
+|                                         | @nizam-os/hono-ban 2.0                                          | hono-problem-details          | @hapi/boom |
 | --------------------------------------- | --------------------------------------------------------------- | ----------------------------- | ---------- |
 | Wire formats                            | RFC 9457, JSON:API, Google API (AIP-193), Stripe, plain, custom | RFC 9457                      | flat JSON  |
 | Typed error catalog with custom entries | yes                                                             | registry                      | no         |
@@ -561,7 +561,7 @@ standard that shape follows.
 | OpenAPI response helpers                | yes, derived from the format schema                             | yes                           | no         |
 | Error report hook with shared error id  | yes                                                             | no                            | no         |
 | Hono `HTTPException` interop            | adopts it                                                       | maps it                       | n/a        |
-| Usable without Hono                     | yes, through `@nizam-os/ban-core`                                | no                            | yes        |
+| Usable without Hono                     | yes, through `@nizam-os/ban-core`                               | no                            | yes        |
 | Runtime                                 | web standards only                                              | web standards only            | Node       |
 
 ## License

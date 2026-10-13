@@ -61,9 +61,9 @@ under two codes, `VALIDATION_FAILED` with `maxLength` from the schema and the co
 the database; the second only appears when a writer bypassed the schema, which is itself worth
 seeing in a report.
 
-One sibling changes with this family: `@nizam-os/jsonapi-core` keeps an issue's `code` and `expected`
-as the item's `reason` and `expected` when they are strings (ban-core's `ValidationIssue` members),
-an additive change (SPEC 9.3).
+One sibling changes with this family: `@nizam-os/jsonapi-core` keeps an issue's `code` and
+`expected` as the item's `reason` and `expected` when they are strings (ban-core's `ValidationIssue`
+members), an additive change (SPEC 9.3).
 
 Item pointers are built from a base the caller passes, `/data` for a single request and the
 operation's own `data` (`/atomic:operations/2/data`) inside Atomic Operations, because

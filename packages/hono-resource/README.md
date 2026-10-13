@@ -7,8 +7,8 @@ with no handler written per resource:
 [`@nizam-os/hono-jsonapi`](https://github.com/nizam-os/kit/tree/main/packages/hono-jsonapi)
 negotiates, validates, and builds documents, the runtime authorizes and runs, and your error handler
 renders every error. Every choice is written down in
-[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md),
-section 19, and the decisions behind it in
+[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md), section
+19, and the decisions behind it in
 [ADR 0013](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0013-hosts-take-the-runtime-contract-and-mount-where-the-links-point.md).
 
 Status: in development and unreleased. The collection, resource, relationship, and related routes,
@@ -22,9 +22,9 @@ localized errors.
 pnpm add @nizam-os/hono-resource @nizam-os/hono-jsonapi @nizam-os/hono-ban @nizam-os/resource-core hono zod
 ```
 
-`hono >= 4.13.7`, `@nizam-os/hono-jsonapi`, and `@nizam-os/resource-core` are peer dependencies: your
-application declares the resources and mounts `jsonApi()` with its own copies, and the routes must
-work with those same copies
+`hono >= 4.13.7`, `@nizam-os/hono-jsonapi`, and `@nizam-os/resource-core` are peer dependencies:
+your application declares the resources and mounts `jsonApi()` with its own copies, and the routes
+must work with those same copies
 ([ADR 0006](https://github.com/nizam-os/kit/blob/main/docs/adr/0006-a-binding-takes-the-packages-the-application-hands-it-values-from-as-peers.md)).
 The routes import no runtime: any runtime of the contract runs behind them, such as
 [`@nizam-os/kysely-resource`](https://github.com/nizam-os/kit/tree/main/packages/kysely-resource)'s.

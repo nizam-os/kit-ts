@@ -1,10 +1,11 @@
 # Contributing to the catalog family
 
-`@nizam-os/catalog-core` (the database-free model) and `@nizam-os/pg-catalog` (the extractor and CLI).
-The root [`CONTRIBUTING.md`](../../CONTRIBUTING.md) covers setup, the quality gates, the shared
-conventions, commits, changesets, and releases; this guide adds what is specific to the family.
-Design intent lives in [`DESIGN.md`](DESIGN.md), the normative contract in [`SPEC.md`](SPEC.md), and
-decisions in [`adr/`](adr); read those before proposing changes to the model or the recognizer.
+`@nizam-os/catalog-core` (the database-free model) and `@nizam-os/pg-catalog` (the extractor and
+CLI). The root [`CONTRIBUTING.md`](../../CONTRIBUTING.md) covers setup, the quality gates, the
+shared conventions, commits, changesets, and releases; this guide adds what is specific to the
+family. Design intent lives in [`DESIGN.md`](DESIGN.md), the normative contract in
+[`SPEC.md`](SPEC.md), and decisions in [`adr/`](adr); read those before proposing changes to the
+model or the recognizer.
 
 ## Conventions
 

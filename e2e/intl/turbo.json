@@ -1,0 +1,16 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "outputs": [".tmp/smoke/**"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build", "build"]
+    },
+    "test": {
+      "dependsOn": ["^build", "build"],
+      "env": ["CI"]
+    }
+  }
+}

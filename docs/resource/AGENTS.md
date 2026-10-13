@@ -54,25 +54,25 @@ file adds what is specific to `@nizam-os/resource-core`, `@nizam-os/kysely-resou
   request is checked against them before it is used as a key.
 - The runtime binds the core to Kysely and PostgreSQL and nothing else: `packages/kysely-resource/`
   imports Kysely, never a driver or a Node.js module, so it runs wherever a Kysely dialect does.
-  `@nizam-os/resource-core` and `@nizam-os/keyset-core` are its peers, since the application hands it
-  declarations, behaviors, and the keyset definer made with its own copies (root ADR 0006). Its
+  `@nizam-os/resource-core` and `@nizam-os/keyset-core` are its peers, since the application hands
+  it declarations, behaviors, and the keyset definer made with its own copies (root ADR 0006). Its
   tests run on PGlite through Kysely's PGlite dialect, never on a mocked database, and what only a
   server shows (the isolation level, pooled connections) runs in `e2e/resource` on PostgreSQL 14
   and 18.
 - The routes bind the runtime contract to Hono and nothing else: `packages/hono-resource/` imports
-  Hono, `@nizam-os/hono-jsonapi`, and `@nizam-os/resource-core`, never a runtime, Kysely, or a Node.js
-  module, so any runtime of the contract runs behind it, wherever Hono runs (ADR 0013). The three
-  are peers, since the application hands the routes values made with its own copies (root ADR 0006):
-  never move them to `dependencies`. Its tests drive the routes with `app.request()` over a runtime
-  held in memory; a real runtime behind real HTTP runs in `e2e/resource`.
+  Hono, `@nizam-os/hono-jsonapi`, and `@nizam-os/resource-core`, never a runtime, Kysely, or a
+  Node.js module, so any runtime of the contract runs behind it, wherever Hono runs (ADR 0013). The
+  three are peers, since the application hands the routes values made with its own copies (root ADR
+  0006): never move them to `dependencies`. Its tests drive the routes with `app.request()` over a
+  runtime held in memory; a real runtime behind real HTTP runs in `e2e/resource`.
 - Forms and lists are a model first (ADR 0015, ADR 0018): `packages/resource-ui/` imports no
   framework and nothing of TanStack, and a table is driven by state TanStack Table v9 reads, with no
   Table import; the binding in `packages/tanstack-form-resource/` imports `@tanstack/form-core`, the
   core every TanStack Form adapter is built on, as an optional peer, and of it only
   `revalidateLogic` at runtime, never an adapter or a framework (root ADR 0010, root ADR 0011); and
-  the clients' TanStack Query options are `@nizam-os/tanstack-query-jsonapi`'s, of the jsonapi family
-  (jsonapi SPEC 16). Every text comes from the application's messages object, passed in, and is
-  computed when it is asked for: no provider, no `useMessages`, no text built when a module loads
+  the clients' TanStack Query options are `@nizam-os/tanstack-query-jsonapi`'s, of the jsonapi
+  family (jsonapi SPEC 16). Every text comes from the application's messages object, passed in, and
+  is computed when it is asked for: no provider, no `useMessages`, no text built when a module loads
   (ADR 0014). Never render an error's `message`; a response's error objects are shown by their
   `detail` as the server localized it. A form's write carries only what the person changed and sends
   a cleared input as `null` (ADR 0016); never fill a write from the record or drop a blank. A

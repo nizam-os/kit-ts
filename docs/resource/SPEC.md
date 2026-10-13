@@ -48,8 +48,8 @@ One package with four entry points (ADR 0008). It depends on `@nizam-os/catalog-
 takes `zod` `^4.5.0` as a peer dependency. Nothing in it imports a framework, a query builder, a
 driver, or a Node.js module.
 
-| Entry point                      | Exports                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Entry point                       | Exports                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `@nizam-os/resource-core`         | `createDeclareResource`, `defineCodec`, `defineValidator`, `errorCatalog`, `defineMessages`, `defaultMessages`, `localizeErrors`, `localizeIssues`, `ISSUE_KINDS`, and the types `DeclareResource`, `DeclareResourceConfig`, `DeclareContext`, `DeclarationCheck`, `CodecRegistry`, `CodecTypes`, `ValidatorRegistry`, `ScopeRegistry`, `ScopeColumn`, `DomainRule`, `DomainRules`, `EmptyRegistry`, `DeclaredResource`, `AnyDeclaredResource`, `ResourceNames`, `Declaration`, `FieldDeclaration`, `RelationshipDeclaration`, `RelationshipOperator`, `RuleDeclaration`, `SearchDeclaration`, `SortDeclaration`, `Access`, `Operation`, `Infer`, `ClientTypesOf`, `FieldMeta`, `FieldFacts`, `FieldLimits`, `ItemMeta`, `WireType`, `ErrorCatalog`, `ErrorEntry`, `ConstraintKind`, `IssueKind`, `ResourceIssue`, `Codec`, `Validator`, `StorageCodec`, `StorageCodecs`, `Messages`, `MessagesFor`, `Message`, `Label`, `ErrorText`, `CodeInputs`, `ConstraintInputs`, `IssueInputs`, `LocalizeErrorsOptions`, `ErrorTransform`, `IssueText`                                                                                                                          |
 | `@nizam-os/resource-core/server`  | `createDomainDefiners`, `defineScope`, `scopeValues`, `scopeColumnOf`, `defineQuota`, `quotaExceeded`, `defineEvent`, `reject`, `Rejection`, `rejectionError`, `denyAll`, `isResourceBehavior`, `constraintError`, `partitionViolation`, `PARTITION_ROOT_SQL`, `relationshipTargets`, `keysetRequest`, `filterParameters`, and the types `Actor`, `AppCodeOf`, `DomainShape`, `DomainContext`, `DomainDefiners`, `Policy`, `PolicyContexts`, `PolicyInit`, `ResourceBehavior`, `CreateBehavior`, `UpdateBehavior`, `RemoveBehavior`, `Rule`, `RuleContext`, `Effect`, `ValuesContext`, `ServerValuesOf`, `PublicRowOf`, `CreateInputOf`, `UpdateInputOf`, `OperationOf`, `MemberNameOf`, `IncludableOf`, `Scope`, `ScopeBindings`, `ScopeKey`, `ScopeValue`, `Quota`, `QuotaContext`, `DomainEvent`, `EventDefinition`, `Reject`, `RejectOptions`, `RejectionErrorOptions`, `ConstraintErrorOptions`, `RelationshipTarget`, `RelationshipTargetsOptions`, `StorageAdapter`, `StorageWrite`, `StorageListRequest`, `StoragePage`, `PublicRow`, `ResourceRuntime`, `RuntimeResources`, `Domain`, `ResourceOperations`, `ResourceInput`, `ListOptions`, `FilterParameter` |
 | `@nizam-os/resource-core/openapi` | `openapi`, `surfaceOf`, `diffSurfaces`, `parseSurface`, `SURFACE_FORMAT`, and the types `OpenApiOptions`, `OpenApiDocument`, `InfoObject`, `OperationCodes`, `ResourceExamples`, `ResourceExample`, `ExampleObject`, `Surface`, `ResourceSurface`, `FieldSurface`, `ValueSurface`, `RelationshipSurface`, `PageSurface`, `SurfaceChange`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -109,8 +109,8 @@ interface DeclareResourceConfig<TCatalog, TCodecs, TValidators, TScopes, TDomain
 type-level check reads.
 
 - `catalog` MUST be a public catalog (`toPublicCatalog`, catalog SPEC 3) of format 3
-  (`CATALOG_FORMAT` of `@nizam-os/catalog-core`); a catalog of another format throws `TypeError`, and
-  its literal type fails the `TCatalog` constraint. The full catalog is rejected too, because
+  (`CATALOG_FORMAT` of `@nizam-os/catalog-core`); a catalog of another format throws `TypeError`,
+  and its literal type fails the `TCatalog` constraint. The full catalog is rejected too, because
   declarations reach browsers (ADR 0002): structurally it comes close to `PublicCatalog`, lacking
   only the `partial` of its unique constraints, so the constraint first requires the absence of its
   `schemas` member (`NotFullCatalog`), whose requirement (3, "How mistakes are reported") reads
@@ -131,12 +131,13 @@ type-level check reads.
   (`createDeclareResource.codecs: must be an object, received null`), since only `undefined` means
   absent, as for JavaScript default parameters. @ref
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters
-- `links` and `page` are the application's defaults, checked here with `@nizam-os/jsonapi-core`'s own
-  rules (`links.base` by its link convention, `page.default` and `page.max` positive integers with
-  `default <= max`) and merged under every declaration member by member, as `createDefineResource`
-  and `createDefineKeyset` merge theirs (jsonapi ADR 0015, keyset ADR 0014). A message from those
-  rules gains the definer's prefix (`createDeclareResource.links.base must not end with "/"`). They
-  live in the module that exports the configured definer, never in module-level state.
+- `links` and `page` are the application's defaults, checked here with `@nizam-os/jsonapi-core`'s
+  own rules (`links.base` by its link convention, `page.default` and `page.max` positive integers
+  with `default <= max`) and merged under every declaration member by member, as
+  `createDefineResource` and `createDefineKeyset` merge theirs (jsonapi ADR 0015, keyset ADR 0014).
+  A message from those rules gains the definer's prefix
+  (`createDeclareResource.links.base must not end with "/"`). They live in the module that exports
+  the configured definer, never in module-level state.
 - `atomic` is the cap on one Atomic Operations request (jsonapi SPEC 5.1, jsonapi ADR 0023), checked
   with jsonapi-core's rule (`atomic.max` a positive safe integer) and set on every declaration's
   definition. A declaration has no `atomic` of its own: one endpoint serves every resource of a
@@ -331,14 +332,14 @@ validated by it: an id outside the form is a 422 `VALIDATION_FAILED` at `/data/i
 would refuse the text or store the key under a spelling the form does not take, and the handler
 receives the id as the server sends it. Without `clientIds` a create that carries an id is rejected
 by `@nizam-os/jsonapi-core` (403, JSON:API "Client-Generated IDs"). An update's document may spell
-the URL's key another way the form takes: `@nizam-os/jsonapi-core` matches the two by `validate.id`'s
-output (its SPEC 9.2), so a client that requests a key in its own spelling and repeats the one the
-server sent is no conflict. A URL's id outside the form names no row, so a runtime answers
-`NOT_FOUND` for it without a query, and looks one in the form up as `schema.id` outputs it (12.3).
-`clientIds` requires a primary key that accepts a client value: a generated column and an identity
-column `GENERATED ALWAYS` reject an explicit value on insert ("cannot insert a non-DEFAULT value"),
-while an identity column `BY DEFAULT` accepts one. A primary key with no default and no identity,
-and no `clientIds`, is a server value on create.
+the URL's key another way the form takes: `@nizam-os/jsonapi-core` matches the two by
+`validate.id`'s output (its SPEC 9.2), so a client that requests a key in its own spelling and
+repeats the one the server sent is no conflict. A URL's id outside the form names no row, so a
+runtime answers `NOT_FOUND` for it without a query, and looks one in the form up as `schema.id`
+outputs it (12.3). `clientIds` requires a primary key that accepts a client value: a generated
+column and an identity column `GENERATED ALWAYS` reject an explicit value on insert ("cannot insert
+a non-DEFAULT value"), while an identity column `BY DEFAULT` accepts one. A primary key with no
+default and no identity, and no `clientIds`, is a server value on create.
 
 @ref https://jsonapi.org/format/1.1/#document-resource-object-identification @ref
 https://jsonapi.org/format/1.1/#crud-creating-client-ids @ref
@@ -401,10 +402,10 @@ runtime, since an input type has no runtime form.
 - `search.column` MUST be a `tsvector` column of the table. When the column is generated and the
   catalog records its `searchConfig`, that is the configuration; a declared `config` MUST equal it.
   When it is not generated, `config` is REQUIRED. The configuration MUST be a name
-  `@nizam-os/keyset-core` accepts, `^[a-z_][a-z0-9_]{0,62}$` (keyset SPEC 3.4, its `isSearchConfig`):
-  keyset-core emits it as a SQL literal, so it is an unqualified name such as `english` or `simple`,
-  which PostgreSQL resolves through the session's `search_path`. A declared `pg_catalog.english`
-  throws
+  `@nizam-os/keyset-core` accepts, `^[a-z_][a-z0-9_]{0,62}$` (keyset SPEC 3.4, its
+  `isSearchConfig`): keyset-core emits it as a SQL literal, so it is an unqualified name such as
+  `english` or `simple`, which PostgreSQL resolves through the session's `search_path`. A declared
+  `pg_catalog.english` throws
   `documents.search.config: "pg_catalog.english" is not a text search configuration @nizam-os/keyset-core accepts (^[a-z_][a-z0-9_]{0,62}$)`,
   and a column generated with a configuration outside the extracted schemas, which the catalog
   records qualified because PostgreSQL prints it so, cannot be searched:
@@ -463,11 +464,11 @@ offending option); and `e2e/resource/fails/`, which pins the compiler's message 
 | error code   | the rule key, upper-cased                  | `code` on the rule       | `contacts_email_unique` is `CONTACTS_EMAIL_UNIQUE` |
 | `id`         | the primary key column                     | none                     |                                                    |
 
-`camelCase` is CamelCasePlugin's conversion with default options, the one `@nizam-os/pg-catalog` uses
-for `camelCase` Kysely types: the first character is kept, every `_` is dropped, and a character
-that follows a `_` is upper-cased with `String.prototype.toUpperCase` (`a__b` is `aB`, `_tmp` is
-`_Tmp`, `Mixed Case` is unchanged). Both packages read one implementation, `toCamelCase` of
-`@nizam-os/catalog-core`, and `names/camel-case.ts` holds its type-level twin `CamelCase<S>`.
+`camelCase` is CamelCasePlugin's conversion with default options, the one `@nizam-os/pg-catalog`
+uses for `camelCase` Kysely types: the first character is kept, every `_` is dropped, and a
+character that follows a `_` is upper-cased with `String.prototype.toUpperCase` (`a__b` is `aB`,
+`_tmp` is `_Tmp`, `Mixed Case` is unchanged). Both packages read one implementation, `toCamelCase`
+of `@nizam-os/catalog-core`, and `names/camel-case.ts` holds its type-level twin `CamelCase<S>`.
 Upper-casing uses `String.prototype.toUpperCase` at runtime and the intrinsic `Uppercase<S>` in
 types, which applies the same function. The two differ in one case: the plugin reads UTF-16 code
 units, so it leaves a cased letter outside the Basic Multilingual Plane after `_` as it is (`x_𐐨`),
@@ -2359,9 +2360,9 @@ resources, after the checks of every list of resources (4.2). The options:
   whether an earlier `add` defined a `lid`, are the server's to judge.
 - **Bodies** use `application/vnd.api+json` without parameters, which matches the media type with
   the Cursor Pagination profile a page carries (RFC 9110 media ranges). Documents are those
-  `@nizam-os/jsonapi-core` builds and parses (11.1): a resource document with the includable targets'
-  resource objects in `included`, a page with the profile's links and meta, a relationship document,
-  and the request documents of a create, an update, and a relationship's update. Top-level
+  `@nizam-os/jsonapi-core` builds and parses (11.1): a resource document with the includable
+  targets' resource objects in `included`, a page with the profile's links and meta, a relationship
+  document, and the request documents of a create, an update, and a relationship's update. Top-level
   `jsonapi`, `links`, and `meta` are open. A create answers 201 with a `Location` header, an update
   and a relationship's update 200, and a remove 204 without a body.
 - **Schemas**: `components.schemas` holds, per resource, `<type>.resource`, the resource object a
@@ -2540,11 +2541,11 @@ option, in the two forms of 3; its message names the option relative to the decl
 | a domain rule with a validator for a CHECK with a rule (3.6)                                     | `createDeclareResource.domains.short_text.short_text_check.validator: the CHECK has a rule, which enforces it already`                                      |
 | a domain rule's code, given or derived, that does not match `CODE_PATTERN` (3.6)                 | `createDeclareResource.domains.email.email_check.code: "Email" is not A-Z, 0-9, _`                                                                          |
 | a codec schema that accepts `undefined` or `null` (7.1)                                          | `defineCodec.schema: must reject null; the column's nullability decides null`                                                                               |
-| `links` or `page` that `@nizam-os/jsonapi-core`'s rules refuse                                    | `createDeclareResource.links.base must not end with "/"`                                                                                                    |
+| `links` or `page` that `@nizam-os/jsonapi-core`'s rules refuse                                   | `createDeclareResource.links.base must not end with "/"`                                                                                                    |
 | a table outside the public catalog                                                               | `declareResource: "accounts" is not a table of the public catalog`                                                                                          |
 | no single-column primary key                                                                     | `contact_phones: a resource needs a single-column primary key`                                                                                              |
 | a primary key whose type cannot carry a resource id (3.4)                                        | `import_batches: the primary key's type jsonb cannot carry a resource id`                                                                                   |
-| a primary key keyset-core cannot order (3.4)                                                     | `things: the primary key is an enum without values, which @nizam-os/keyset-core cannot order`                                                                |
+| a primary key keyset-core cannot order (3.4)                                                     | `things: the primary key is an enum without values, which @nizam-os/keyset-core cannot order`                                                               |
 | `clientIds` on a primary key that takes no client value (3.4)                                    | `organizations.clientIds: the primary key is an identity column generated always, which takes no client value`                                              |
 | an unknown column, foreign key, constraint, scope, codec, or validator                           | `contacts.fields.nick: "nick" is not a column of contacts`                                                                                                  |
 | a column declared against 3.1                                                                    | `contacts.fields.organization_id: a foreign-key column is declared under relationships`                                                                     |
@@ -2558,11 +2559,11 @@ option, in the two forms of 3; its message names the option relative to the decl
 | a scope whose column the table does not have (3.2)                                               | `audit.changes.scope: scope organization names column organization_id, which audit.changes does not have`                                                   |
 | a codec that does not accept the column's type                                                   | `contacts.fields.tags.codec: codec "phone" does not accept type text[]`                                                                                     |
 | a type without a wire form and no codec                                                          | `meetings.fields.during: type tstzrange has no wire form; name a codec`                                                                                     |
-| an operator `@nizam-os/keyset-core` does not have                                                 | `contacts.fields.name.filter[0]: "like" is not an operator of @nizam-os/keyset-core`                                                                         |
+| an operator `@nizam-os/keyset-core` does not have                                                | `contacts.fields.name.filter[0]: "like" is not an operator of @nizam-os/keyset-core`                                                                        |
 | an operator the keyset type does not accept, or `isNull` on a non-null field                     | `contacts.fields.tags.filter: operator "gt" is not available for array fields`                                                                              |
 | `filter` or `sort: true` on a member without a keyset type, or `sort: true` on an array (11.3)   | `import_rows.fields.payload.filter: type jsonb is not filterable`                                                                                           |
 | an empty `filter`, or one that lists an operator twice (11.3)                                    | `contacts.fields.name.filter: list at least one operator`                                                                                                   |
-| a filtered or sortable member's public name that keyset-core or jsonapi-core refuses (11.2)      | `notes.fields.size.filter: public name "größe" is outside @nizam-os/keyset-core's field names (^[A-Za-z0-9][A-Za-z0-9_-]*$)`                                 |
+| a filtered or sortable member's public name that keyset-core or jsonapi-core refuses (11.2)      | `notes.fields.size.filter: public name "größe" is outside @nizam-os/keyset-core's field names (^[A-Za-z0-9][A-Za-z0-9_-]*$)`                                |
 | empty or repeated operations, or `update` with no member writable on update                      | `contacts.operations: update needs a field or relationship writable on update`                                                                              |
 | a sort entry that is not sortable, or a field listed twice (3.7)                                 | `contacts.sort.default[0]: "kind" is not declared with sort: true`                                                                                          |
 | a search column not `tsvector`; a config missing, mismatched, or refused by keyset-core (3.7)    | `contacts.search.config: the column is generated with config "simple"`                                                                                      |
@@ -2745,14 +2746,14 @@ definer (3.6), which the declared errors, `errorCatalog`, and `constraintError` 
 refusal on PGlite and the server, while the definer refuses a validator on that CHECK and a code
 alone on a CHECK without a rule (`domain-codes.e2e.test.ts`); localized error documents
 (`localization.e2e.test.ts`): messages the Paraglide compiler builds from `localization/messages/`,
-mapped with `defineMessages` and served through Hono and `@nizam-os/hono-ban`, answer a 422 in German
-with option labels, in English with its plural forms, in the base locale for a language the project
-lacks, in a regional tag's language, and a 409, which `constraintError` makes of a real violation,
-with a code's own texts, each with `Content-Language` and `Vary`, while `tsc` accepts the mapping
-and refuses a translation that names a variable its kind does not receive; that a row breaking every
-NOT ENFORCED constraint is stored by the database and accepted by the schemas, while the enforced
-CHECK beside them refuses in both (`not-enforced.e2e.test.ts`); the storage contract, passed by the
-reference adapter on PGlite and on the server and failed by each of its defects
+mapped with `defineMessages` and served through Hono and `@nizam-os/hono-ban`, answer a 422 in
+German with option labels, in English with its plural forms, in the base locale for a language the
+project lacks, in a regional tag's language, and a 409, which `constraintError` makes of a real
+violation, with a code's own texts, each with `Content-Language` and `Vary`, while `tsc` accepts the
+mapping and refuses a translation that names a variable its kind does not receive; that a row
+breaking every NOT ENFORCED constraint is stored by the database and accepted by the schemas, while
+the enforced CHECK beside them refuses in both (`not-enforced.e2e.test.ts`); the storage contract,
+passed by the reference adapter on PGlite and on the server and failed by each of its defects
 (`contract.e2e.test.ts`, `contract-faults.e2e.test.ts`, 12.9); the oracle's cases (7.3), run by
 `pg-catalog rules --check` over the oracle's schema, the contacts application, and the PostgreSQL 18
 schema, agreeing with PGlite and the server, while each fault a review misses is reported: a
@@ -3274,8 +3275,8 @@ A CI job runs the package's unit tests with `zod` 4.5.0, the floor of the peer r
 
 | Name                                         | Value                                                                                                        | Exported |
 | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------- |
-| `CATALOG_FORMAT`                             | 3, from `@nizam-os/catalog-core`                                                                              | no       |
-| `DEFAULT_PAGE_SIZE`, `DEFAULT_MAX_PAGE_SIZE` | 20 and 100, from `@nizam-os/keyset-core`                                                                      | no       |
+| `CATALOG_FORMAT`                             | 3, from `@nizam-os/catalog-core`                                                                             | no       |
+| `DEFAULT_PAGE_SIZE`, `DEFAULT_MAX_PAGE_SIZE` | 20 and 100, from `@nizam-os/keyset-core`                                                                     | no       |
 | `SEARCH_PARAMETER`                           | `filter[q]`                                                                                                  | no       |
 | `SEARCH_MEMBER`, `FILTER_OR_MEMBER`          | `q` and `or`, the members of `filter` jsonapi-core reserves (11.2)                                           | no       |
 | `FIELD_NAME_SYNTAX`                          | `^[A-Za-z0-9][A-Za-z0-9_-]*$`, keyset-core's field names, which its `isFieldName` tests                      | no       |
@@ -3288,7 +3289,7 @@ A CI job runs the package's unit tests with `zod` 4.5.0, the floor of the peer r
 | `real` limit                                 | `Math.fround` finite and nonzero for a nonzero input                                                         | no       |
 | fraction digits of a second                  | at most 6                                                                                                    | no       |
 | date years                                   | 0001 to 9999                                                                                                 | no       |
-| Standard Schema vendor                       | `nizam`                                                                                                    | no       |
+| Standard Schema vendor                       | `nizam`                                                                                                      | no       |
 | `QUOTA_EXCEEDED`                             | 403, `Quota Exceeded`                                                                                        | no       |
 
 ---
@@ -3341,12 +3342,12 @@ of `list`, and the `catalog` and `outbox` it was created with, the outbox as `{ 
 `undefined`. It does not hand out `db`: boot runs its connected checks through the storage (18.3),
 on the connection the operations run on. A `TextCodec` is
 `{ read: (stored: string) => unknown; write: (value: never) => string }`, the `TextStorageCodec` of
-`resources.storage` in `pg-catalog.config` (catalog SPEC 10.3): `write` takes `never`, so the storage
-codec of any codec fits, and one object of storage codecs serves `rules --check` and the runtime. A
-codec field without a storage codec throws `Error('no storage codec <name>')` the first time the
-adapter reads or writes it. An outbox without `schema` is in `public`, the schema PostgreSQL creates
-in every database and the catalog's default `schemas` (catalog SPEC 11.1): the public catalog names
-no default schema, and `relayOutbox` takes no catalog.
+`resources.storage` in `pg-catalog.config` (catalog SPEC 10.3): `write` takes `never`, so the
+storage codec of any codec fits, and one object of storage codecs serves `rules --check` and the
+runtime. A codec field without a storage codec throws `Error('no storage codec <name>')` the first
+time the adapter reads or writes it. An outbox without `schema` is in `public`, the schema
+PostgreSQL creates in every database and the catalog's default `schemas` (catalog SPEC 11.1): the
+public catalog names no default schema, and `relayOutbox` takes no catalog.
 
 Creating the adapter runs no query. It checks its options, and a value it cannot use, or a key that
 is not an option, throws `TypeError` naming it, among them
@@ -3824,10 +3825,10 @@ what `report` itself throws; neither reaches the operation's caller, whose write
   entry, `index`.
 - Dependencies, each `workspace:^`: `@nizam-os/catalog-core` (whose catalog types the options name),
   `@nizam-os/kysely-keyset` (the renderers), `@nizam-os/jsonapi-core`, and `@nizam-os/ban-core`.
-- Peer dependencies: `kysely` `>=0.29.0`, `@nizam-os/resource-core`, and `@nizam-os/keyset-core`, the
-  last two each a `workspace:^` development dependency too. 0.29.0 is the oldest Kysely the tests
-  run on: they reach PGlite through its `PGliteDialect`, which that release added, and CI runs them
-  there. It also ships the fixes for Kysely's published SQL injection advisories, which set
+- Peer dependencies: `kysely` `>=0.29.0`, `@nizam-os/resource-core`, and `@nizam-os/keyset-core`,
+  the last two each a `workspace:^` development dependency too. 0.29.0 is the oldest Kysely the
+  tests run on: they reach PGlite through its `PGliteDialect`, which that release added, and CI runs
+  them there. It also ships the fixes for Kysely's published SQL injection advisories, which set
   kysely-keyset's own floor at 0.28.17. The application declares its resources, behaviors, and
   scopes and makes the keyset definer with its own copies, and the runtime must work with those same
   copies: a declaration and a behavior are recognized by the copy that made them, and a keyset's
@@ -4130,8 +4131,8 @@ related route and the failing operation's on the operations endpoint, or `undefi
 
 A declared resource gives a browser application its forms and its lists: labels, options, limits,
 validation, the write, and where a refusal lands all come from the declaration, so a screen restates
-none of them. `@nizam-os/resource-ui` (`packages/resource-ui/src/`) is a model of a declared resource
-that imports no framework and no TanStack package. `@nizam-os/tanstack-form-resource`
+none of them. `@nizam-os/resource-ui` (`packages/resource-ui/src/`) is a model of a declared
+resource that imports no framework and no TanStack package. `@nizam-os/tanstack-form-resource`
 (`packages/tanstack-form-resource/src/`) binds its form model to TanStack Form's framework-free
 core, `@tanstack/form-core`, so the form of every TanStack Form adapter takes it (root ADR 0010). A
 table reads the list model's state as TanStack Table v9 holds it, and the reads and writes are the
@@ -4662,8 +4663,9 @@ operators, and search, `withSearch` as `never` without one, and `@tanstack/table
   a TanStack adapter.
 - `@nizam-os/tanstack-form-resource`: the tests of 20.5, over form models of resources declared over
   the storage contract's catalog (`@nizam-os/resource-core/testing`, 12.9), as
-  `@nizam-os/hono-resource`'s tests declare theirs, with messages whose texts read a locale variable:
-  a refusal of one field, and one of two fields a unique constraint holds together (ADR 0017).
+  `@nizam-os/hono-resource`'s tests declare theirs, with messages whose texts read a locale
+  variable: a refusal of one field, and one of two fields a unique constraint holds together (ADR
+  0017).
 - End to end (`e2e/resource/`): the built packages against the contacts application over HTTP
   (`support/contacts-server.ts`), on PGlite and, with `RESOURCE_PG_URL`, a PostgreSQL server, with
   the application's Paraglide messages and nothing mocked.
@@ -4717,10 +4719,10 @@ operators, and search, `withSearch` as `never` without one, and `@tanstack/table
     list; the plan's quota in the banner; a removal that refetches the list, which makes room for
     the same create; and a selection's removal, a bulk action (21.3) sent through `useMutation` of
     `operationsMutation` in one request that refetches the list.
-- Smoke (`e2e/resource/smoke/ui-checks.ts`, `form-checks.ts`): the built `@nizam-os/resource-ui` runs
-  a form model's validator and write and a list model's `query`, `withPageSize`, and `next`, and the
-  built `@nizam-os/tanstack-form-resource` validates a submitted form-core `FormApi` made with its
-  options, on Bun, Deno, and workerd, where server rendering runs.
+- Smoke (`e2e/resource/smoke/ui-checks.ts`, `form-checks.ts`): the built `@nizam-os/resource-ui`
+  runs a form model's validator and write and a list model's `query`, `withPageSize`, and `next`,
+  and the built `@nizam-os/tanstack-form-resource` validates a submitted form-core `FormApi` made
+  with its options, on Bun, Deno, and workerd, where server rendering runs.
 - Floors: CI runs `@nizam-os/tanstack-form-resource`'s tests on `@tanstack/form-core` 1.17.0, the
   lowest release its peer range admits (20.9).
 
@@ -4738,21 +4740,21 @@ operators, and search, `withSearch` as `never` without one, and `@tanstack/table
   peer: the list model imports nothing of it and reads and writes its sorting and column filters as
   plain values; `@tanstack/table-core` 9 is a development dependency, for the type tests that assign
   Table's state to and from the model's. No framework is a dependency of any kind.
-- `@nizam-os/tanstack-form-resource` takes `@nizam-os/resource-ui` (the application's form models) as
-  a peer, a `workspace:^` development dependency too, and `@tanstack/form-core` `^1.17.0` as an
+- `@nizam-os/tanstack-form-resource` takes `@nizam-os/resource-ui` (the application's form models)
+  as a peer, a `workspace:^` development dependency too, and `@tanstack/form-core` `^1.17.0` as an
   optional peer (`peerDependenciesMeta`, root ADR 0011), from which it imports `revalidateLogic` and
   types: `revalidateLogic` first shipped in TanStack Form 1.17.0. An application installs its
   TanStack Form adapter, which depends on one exact release of form-core and re-exports it, and
   lists form-core itself only under Yarn Plug'n'Play, at that release. Its development dependencies
-  add form-core at the catalog's release, and `@nizam-os/resource-core` and `@nizam-os/jsonapi-client`
-  for its tests' declarations and refusals. CI runs its tests on form-core 1.17.0, and a floor that
-  fails them is raised in the same change.
+  add form-core at the catalog's release, and `@nizam-os/resource-core` and
+  `@nizam-os/jsonapi-client` for its tests' declarations and refusals. CI runs its tests on
+  form-core 1.17.0, and a floor that fails them is raised in the same change.
 
 ## 21. Record and bulk actions (`@nizam-os/resource-ui`, ADR 0019)
 
 ADR 0020 (2026-10-13) supersedes the one-request bulk write of this section: under the suite's API
-contract a selection fans out over the per-id endpoints with a per-id outcome. This section describes
-the shipped code until the binding under the contract replaces it.
+contract a selection fans out over the per-id endpoints with a per-id outcome. This section
+describes the shipped code until the binding under the contract replaces it.
 
 A record's actions in its row and a selection's in a bar, built from the declaration: what each
 writes, whether the person may run it now, the texts it shows, and where a refusal lands. A record

@@ -21,7 +21,10 @@ import { sql } from 'kysely';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import { createDefineKeyset as createDrizzleDefineKeyset } from '@nizam-os/drizzle-keyset';
-import { createDefineKeyset, InvalidCursorError } from '@nizam-os/kysely-keyset';
+import {
+  createDefineKeyset,
+  InvalidCursorError,
+} from '@nizam-os/kysely-keyset';
 
 import { databases } from './support/db.ts';
 import { SECRET } from './support/keysets.ts';

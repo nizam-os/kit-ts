@@ -2,8 +2,8 @@
 
 - Status: accepted; scope narrowed by ADR-0013 (`hono` is the peer dependency of
   `@nizam-os/hono-jsonapi`) and amended by ADR-0014 (`@nizam-os/jsonapi-core` depends on
-  `@nizam-os/ban-core`; `@nizam-os/hono-ban` is `@nizam-os/hono-jsonapi`'s second peer dependency). The
-  Standard Schema decision stands unchanged.
+  `@nizam-os/ban-core`; `@nizam-os/hono-ban` is `@nizam-os/hono-jsonapi`'s second peer dependency).
+  The Standard Schema decision stands unchanged.
 - Date: 2026-10-08
 
 ## Context

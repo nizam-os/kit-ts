@@ -17,8 +17,8 @@ accepts what the database rejects, or a 500.
 `@nizam-os/resource-core` replaces the copies with one declaration per resource, keyed by database
 names, from which the public API follows:
 
-1. **Extract.** `@nizam-os/pg-catalog` writes the public catalog: every exposed table with its column
-   types, nullability, defaults, constraints, and the CHECK rules it could translate exactly
+1. **Extract.** `@nizam-os/pg-catalog` writes the public catalog: every exposed table with its
+   column types, nullability, defaults, constraints, and the CHECK rules it could translate exactly
    (catalog ADR 0005, 0006).
 2. **Declare.** A declaration states only what the catalog cannot know: the operations, which
    columns are exposed and how, filters, sorting, search, codecs for types the API cannot represent
@@ -32,8 +32,8 @@ names, from which the public API follows:
    derived surface is snapshotted and diffed in CI.
 5. **Serve.** The `server` subpath adds policies, scopes, quotas, rules, and effects;
    `@nizam-os/kysely-resource` runs the operations and `@nizam-os/hono-resource` serves them, while
-   `@nizam-os/jsonapi-client`, `@nizam-os/resource-ui`, and `@nizam-os/tanstack-form-resource` consume
-   the same declarations in clients (ADR-0008).
+   `@nizam-os/jsonapi-client`, `@nizam-os/resource-ui`, and `@nizam-os/tanstack-form-resource`
+   consume the same declarations in clients (ADR-0008).
 
 ### Who it is for
 
@@ -48,8 +48,8 @@ plain data plus Zod schemas: anything can read it.
 - Databases other than PostgreSQL, and API styles other than JSON:API.
 - Business logic. Validators restate CHECKs with fixtures; rules that need outside state are server
   code (`reject`), and the library only gives them a typed place to live.
-- Hiding SQL. Storage is Kysely through `@nizam-os/kysely-resource`; a custom query is still a Kysely
-  query.
+- Hiding SQL. Storage is Kysely through `@nizam-os/kysely-resource`; a custom query is still a
+  Kysely query.
 - UI components. `@nizam-os/resource-ui` provides a model and `@nizam-os/tanstack-form-resource` its
   TanStack Form binding, not widgets: an application keeps its own field components, table markup,
   and router (ADR-0015, ADR-0018).
@@ -270,8 +270,8 @@ fixtures then run against the new CHECK in CI.
 
 ### 4.1 The family
 
-| Package                           | Role                                                                                                   | Epic     |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------ | -------- |
+| Package                            | Role                                                                                                   | Epic     |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------ | -------- |
 | `@nizam-os/resource-core`          | declarations, derivations, messages, the `server` contracts, OpenAPI, the storage contract suite       | E1       |
 | `@nizam-os/kysely-resource`        | the runtime: the storage adapter over Kysely, boot checks against the full catalog, quotas, the outbox | E3       |
 | `@nizam-os/hono-resource`          | routes for every declared operation on Hono, localized errors, the OpenAPI route                       | E4       |
@@ -281,8 +281,8 @@ fixtures then run against the new CHECK in CI.
 Companions in other families: `@nizam-os/pg-catalog` extracts the catalog and runs the oracle
 (`rules --check`); `@nizam-os/jsonapi-client` is the typed fetch client over the JSON:API
 definitions, and `@nizam-os/tanstack-query-jsonapi` keys TanStack Query by its requests;
-`@nizam-os/jsonapi-core`, `@nizam-os/keyset-core`, and `@nizam-os/ban-core` provide the definitions and
-the error model this family derives.
+`@nizam-os/jsonapi-core`, `@nizam-os/keyset-core`, and `@nizam-os/ban-core` provide the definitions
+and the error model this family derives.
 
 ### 4.2 Modules
 
@@ -328,12 +328,12 @@ binds it to TanStack Form. The model knows no framework: field descriptors whose
 application's message functions, a form model whose values are what inputs edit and whose write
 carries only what the person changed, validation by the declaration's own write validators with the
 server's words for each refusal, a refused write's error objects placed by pointer, and a list model
-whose state is the JSON:API query, read back leniently from a URL. `@nizam-os/tanstack-form-resource`
-turns the form model into TanStack Form options and binds a refusal onto the fields, through
-TanStack Form's framework-free core, so every adapter's form takes them;
-`@nizam-os/tanstack-query-jsonapi`, of the jsonapi family, keys TanStack Query by the request and
-invalidates a type after a write; TanStack Table v9 reads and writes the list's sorting and filters
-as state, with paging by cursor outside it. An application keeps its framework, its field
+whose state is the JSON:API query, read back leniently from a URL.
+`@nizam-os/tanstack-form-resource` turns the form model into TanStack Form options and binds a
+refusal onto the fields, through TanStack Form's framework-free core, so every adapter's form takes
+them; `@nizam-os/tanstack-query-jsonapi`, of the jsonapi family, keys TanStack Query by the request
+and invalidates a type after a write; TanStack Table v9 reads and writes the list's sorting and
+filters as state, with paging by cursor outside it. An application keeps its framework, its field
 components, its table markup, and its router. ADRs 0014, 0015, 0016, 0017, and 0018 record why.
 
 ## 5. Decisions
@@ -359,7 +359,7 @@ components, its table markup, and its router. ADRs 0014, 0015, 0016, 0017, and 0
 | 0017 | A refusal of several fields binds where a change to any of them clears it                                      |
 | 0018 | Forms and lists are a framework-free model and a TanStack Form binding, in two packages                        |
 | 0019 | Record and bulk actions are a model over the declaration, and a selection writes in one request                |
-| 0020 | A selection's writes fan out over the per-id endpoints; rows that commit together belong to one aggregate     |
+| 0020 | A selection's writes fan out over the per-id endpoints; rows that commit together belong to one aggregate      |
 
 ## 6. Later
 

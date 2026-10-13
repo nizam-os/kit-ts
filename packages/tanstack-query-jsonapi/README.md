@@ -225,8 +225,8 @@ what that helper returns for a key it was handed tagged
 
 ## Documentation
 
-- [`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md),
-  sections 16 and 17.4: the binding's contract, with the tests that prove it
+- [`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md), sections
+  16 and 17.4: the binding's contract, with the tests that prove it
 - [ADR 0020](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0020-tanstack-query-options-are-the-clients-binding-typed-through-query-core.md):
   TanStack Query options are the clients' binding, typed through query-core, and
   [ADR 0021](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0021-a-lists-pages-key-is-tagged-as-the-adapters-tag-an-infinite-key.md):

@@ -52,7 +52,9 @@ describe('declarations of exported resources', () => {
     '%s names types only through package entry points',
     async (file) => {
       const emitted = await readFile(join(outDir, file), 'utf8');
-      expect(emitted).toMatch(/import\("@nizam-os\/(?:resource|jsonapi)-core"/u);
+      expect(emitted).toMatch(
+        /import\("@nizam-os\/(?:resource|jsonapi)-core"/u,
+      );
       expect(emitted).not.toMatch(/node_modules|\/dist\//u);
     },
   );

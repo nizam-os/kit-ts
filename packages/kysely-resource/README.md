@@ -6,8 +6,8 @@ declarations on PostgreSQL. It runs every operation in one transaction that sets
 for that transaction only, so row security policies and the runtime's own scope predicate both see
 it, on a pooled connection, without anything leaking into the next transaction. Every choice is
 written down in
-[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md),
-section 18, and the decisions behind it in
+[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md), section
+18, and the decisions behind it in
 [ADR 0012](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0012-the-runtime-runs-declarations-over-the-storage-contract.md).
 
 Status: in development and unreleased. The storage adapter has its transaction protocol, scopes,
@@ -19,8 +19,8 @@ composition against the catalog and the role it connects as, then runs each oper
 through `runtime.as(actor)`, or several in one transaction through
 `runtime.transaction(actor, work)`; `checkResourceRuntime` runs the same static checks in CI,
 without a database.
-[`@nizam-os/hono-resource`](https://github.com/nizam-os/kit/tree/main/packages/hono-resource)
-serves the runtime over HTTP on Hono.
+[`@nizam-os/hono-resource`](https://github.com/nizam-os/kit/tree/main/packages/hono-resource) serves
+the runtime over HTTP on Hono.
 
 ## Install
 
@@ -210,8 +210,8 @@ commit;
 ## Reads and writes
 
 The storage implements the storage contract of
-[resource SPEC 12.8](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md); the
-runtime calls it, and you rarely do. What it does to your rows:
+[resource SPEC 12.8](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md); the runtime
+calls it, and you rarely do. What it does to your rows:
 
 - **Only what the input holds.** `create` inserts exactly the members present, plus the client id,
   the server values, and the scope column, so your column defaults fill the rest; `update` sets
@@ -419,8 +419,8 @@ on; with nothing running beside a transaction, its level has nothing to change.
 
 ## Documentation
 
-- [SPEC section 18](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md): the
-  runtime's contract, its boot checks, its failures, and the outbox
+- [SPEC section 18](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md): the runtime's
+  contract, its boot checks, its failures, and the outbox
 - [DESIGN](https://github.com/nizam-os/kit/blob/main/docs/resource/DESIGN.md): what the resource
   family builds and why
 - [ADR 0012](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0012-the-runtime-runs-declarations-over-the-storage-contract.md):

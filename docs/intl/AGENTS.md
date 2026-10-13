@@ -2,7 +2,8 @@
 
 Read with the root [`AGENTS.md`](../../AGENTS.md), which holds the rules every family shares; this
 file adds what is specific to `@nizam-os/intl-core` (the framework-free core) and
-`@nizam-os/paraglide-intl` (the Paraglide binding). Humans: see [`CONTRIBUTING.md`](CONTRIBUTING.md).
+`@nizam-os/paraglide-intl` (the Paraglide binding). Humans: see
+[`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Ground rules
 

@@ -1,11 +1,11 @@
 # Contributing to the keyset family
 
-`@nizam-os/keyset-core` (the database-free core), `@nizam-os/kysely-keyset` (the Kysely binding), and
-`@nizam-os/drizzle-keyset` (the Drizzle binding). The root [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
-covers setup, the quality gates, the shared conventions, commits, changesets, and releases; this
-guide adds what is specific to the family. Design intent lives in [`DESIGN.md`](DESIGN.md), the
-normative contract in [`SPEC.md`](SPEC.md), and decisions in [`adr/`](adr); read those before
-proposing API changes.
+`@nizam-os/keyset-core` (the database-free core), `@nizam-os/kysely-keyset` (the Kysely binding),
+and `@nizam-os/drizzle-keyset` (the Drizzle binding). The root
+[`CONTRIBUTING.md`](../../CONTRIBUTING.md) covers setup, the quality gates, the shared conventions,
+commits, changesets, and releases; this guide adds what is specific to the family. Design intent
+lives in [`DESIGN.md`](DESIGN.md), the normative contract in [`SPEC.md`](SPEC.md), and decisions in
+[`adr/`](adr); read those before proposing API changes.
 
 ## Conventions
 

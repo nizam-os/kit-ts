@@ -7,7 +7,10 @@
  */
 import type { PageCapabilitiesInit } from '@nizam-os/jsonapi-core';
 
-import { DEFAULT_MAX_PAGE_SIZE, DEFAULT_PAGE_SIZE } from '@nizam-os/keyset-core';
+import {
+  DEFAULT_MAX_PAGE_SIZE,
+  DEFAULT_PAGE_SIZE,
+} from '@nizam-os/keyset-core';
 
 import {
   expectKnownKeys,

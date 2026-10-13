@@ -4,9 +4,9 @@ Structured, extensible HTTP errors for JavaScript APIs: one typed catalog, one h
 anything thrown into a well-formed response, and pluggable wire formats (RFC 9457 Problem Details,
 JSON:API, Google's AIP-193, Stripe, or your own). Two packages, same subpaths:
 
-| Package                                               | Use it when                                                                                                       |
-| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| [`@nizam-os/ban-core`](../../packages/ban-core#readme) | you render errors from a `fetch` handler, a worker, a library, or a test; no framework, no peers                  |
+| Package                                                | Use it when                                                                                                        |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| [`@nizam-os/ban-core`](../../packages/ban-core#readme) | you render errors from a `fetch` handler, a worker, a library, or a test; no framework, no peers                   |
 | [`@nizam-os/hono-ban`](../../packages/hono-ban#readme) | you are on [Hono](https://hono.dev): `@nizam-os/ban-core` plus `app.onError()` wiring and `HTTPException` adoption |
 
 ## Install

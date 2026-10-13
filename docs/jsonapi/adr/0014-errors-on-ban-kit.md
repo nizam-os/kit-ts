@@ -12,10 +12,10 @@ table, factories per catalog entry, structural recognition for a second installe
 library: a catalog of definitions, one `BanError` class with a per-item `errors` list, a JSON:API
 format that renders those items as error objects with `source.pointer`, `source.parameter`, or
 `source.header`, a handler with an error id, W3C `traceparent`, a report hook, a body cap, and a
-never-throwing fallback, and `@nizam-os/hono-ban`, its Hono adapter, which adopts `HTTPException` and
-passes thrown redirects through. An application on both libraries had two error models to reconcile:
-two base classes, two handlers, two ways to add a code. @ref https://jsonapi.org/format/1.1/#errors
-@ref https://jsonapi.org/format/1.1/#errors-processing @ref
+never-throwing fallback, and `@nizam-os/hono-ban`, its Hono adapter, which adopts `HTTPException`
+and passes thrown redirects through. An application on both libraries had two error models to
+reconcile: two base classes, two handlers, two ways to add a code. @ref
+https://jsonapi.org/format/1.1/#errors @ref https://jsonapi.org/format/1.1/#errors-processing @ref
 https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (sections 4, 6, 6.11, 7.2)
 
 ## Decision
@@ -39,8 +39,8 @@ https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (sections 4, 6, 6
   `createBan({ errors: ERROR_CATALOG, format: jsonApi({ mixedEntries: true }) }).onError(options)`
   from `@nizam-os/hono-ban`, with `document` and `format` added for the JSON:API document's own
   members. Rendering, `HTTPException` adoption, the constant 500, the id header,
-  `Cache-Control: no-store`, `traceparent`, `onReport`, and the fallback are @nizam-os/hono-ban's. An
-  application with its own entries builds that instance itself and installs its `onError`; it
+  `Cache-Control: no-store`, `traceparent`, `onReport`, and the fallback are @nizam-os/hono-ban's.
+  An application with its own entries builds that instance itself and installs its `onError`; it
   renders this package's errors identically.
 - Validators, `jsonApi()`, and `atomicOperations()` throw instead of rendering their own rejections.
   Hono's default error handler answers any thrown value with a `getResponse()` method through it, so
