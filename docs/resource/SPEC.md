@@ -4750,6 +4750,10 @@ operators, and search, `withSearch` as `never` without one, and `@tanstack/table
 
 ## 21. Record and bulk actions (`@netvark/resource-ui`, ADR 0019)
 
+ADR 0020 (2026-10-13) supersedes the one-request bulk write of this section: under the suite's API
+contract a selection fans out over the per-id endpoints with a per-id outcome. This section describes
+the shipped code until the binding under the contract replaces it.
+
 A record's actions in its row and a selection's in a bar, built from the declaration: what each
 writes, whether the person may run it now, the texts it shows, and where a refusal lands. A record
 action makes the client's own call; a bulk action writes the selection in one Atomic Operations

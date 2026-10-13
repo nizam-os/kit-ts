@@ -1,6 +1,7 @@
 # ADR 0019: Record and bulk actions are a model over the declaration, and a selection writes in one request
 
-- Status: accepted
+- Status: accepted; superseded in part by ADR 0020 (a selection's writes fan out over the per-id
+  endpoints under the suite's API contract; the action model stands)
 - Date: 2026-10-12
 
 ## Context

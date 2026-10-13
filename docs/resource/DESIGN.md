@@ -359,6 +359,7 @@ components, its table markup, and its router. ADRs 0014, 0015, 0016, 0017, and 0
 | 0017 | A refusal of several fields binds where a change to any of them clears it                                      |
 | 0018 | Forms and lists are a framework-free model and a TanStack Form binding, in two packages                        |
 | 0019 | Record and bulk actions are a model over the declaration, and a selection writes in one request                |
+| 0020 | A selection's writes fan out over the per-id endpoints; rows that commit together belong to one aggregate     |
 
 ## 6. Later
 
