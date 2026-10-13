@@ -1,16 +1,16 @@
-import type { ErrorFormat, IssueLocation } from '@netvark/hono-ban';
+import type { ErrorFormat, IssueLocation } from '@nizam-os/hono-ban';
 
 import type { RunningServer } from './support/server';
 
 import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
-import { googleApi } from '@netvark/hono-ban/formats/google-api';
-import { jsonApi } from '@netvark/hono-ban/formats/json-api';
-import { plain } from '@netvark/hono-ban/formats/plain';
-import { problemDetails } from '@netvark/hono-ban/formats/problem-details';
-import { stripe } from '@netvark/hono-ban/formats/stripe';
+import { createBan } from '@nizam-os/hono-ban';
+import { googleApi } from '@nizam-os/hono-ban/formats/google-api';
+import { jsonApi } from '@nizam-os/hono-ban/formats/json-api';
+import { plain } from '@nizam-os/hono-ban/formats/plain';
+import { problemDetails } from '@nizam-os/hono-ban/formats/problem-details';
+import { stripe } from '@nizam-os/hono-ban/formats/stripe';
 
 import { compileWithAjv } from './support/ajv';
 import { startServer } from './support/server';

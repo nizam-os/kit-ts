@@ -5,11 +5,11 @@
  * and the problems of a case whose objects the replayed database does not
  * hold.
  */
-import type { Catalog } from '@netvark/catalog-core';
+import type { Catalog } from '@nizam-os/catalog-core';
 import type {
   OracleProbe,
   OracleVerdict,
-} from '@netvark/resource-core/testing';
+} from '@nizam-os/resource-core/testing';
 
 import type { SqlSession } from '../target/session';
 import type { BuiltProbe } from './probe';
@@ -38,12 +38,12 @@ create table crm."odd ""name""" ("50%" text constraint odd_check check ("50%" <>
 const PROBED_COLUMNS = `select a.attname as name, format_type(a.atttypid, a.atttypmod) as type,
   a.attnotnull as "notNull", co.collname as collation
 from pg_attribute a left join pg_collation co on co.oid = a.attcollation
-where a.attrelid = 'pg_temp.netvark_probe'::regclass and a.attnum > 0
+where a.attrelid = 'pg_temp.nizam_probe'::regclass and a.attnum > 0
 order by a.attnum`;
 
 /** CHECKs only: PostgreSQL 18 also records each NOT NULL in pg_constraint. */
 const PROBED_CHECKS = `select conname as name from pg_constraint
-where conrelid = 'pg_temp.netvark_probe'::regclass and contype = 'c' order by conname`;
+where conrelid = 'pg_temp.nizam_probe'::regclass and contype = 'c' order by conname`;
 
 /** A judge that reports each refusal; these tests read the verdicts themselves. */
 function refusalOf(verdict: OracleVerdict): string | undefined {

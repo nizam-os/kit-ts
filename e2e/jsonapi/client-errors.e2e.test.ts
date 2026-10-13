@@ -8,7 +8,7 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import { isResponseError } from '@netvark/jsonapi-client';
+import { isResponseError } from '@nizam-os/jsonapi-client';
 
 import { refusal, rejection, useClientBlog } from './support/clients.ts';
 

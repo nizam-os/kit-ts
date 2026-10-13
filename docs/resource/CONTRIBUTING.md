@@ -1,8 +1,8 @@
 # Contributing to the resource family
 
-`@netvark/resource-core` (declarations, derivations, messages, the `server` contracts, OpenAPI) and,
-as their epics start, `@netvark/kysely-resource`, `@netvark/hono-resource`, `@netvark/resource-ui`,
-and `@netvark/tanstack-form-resource`. The root [`CONTRIBUTING.md`](../../CONTRIBUTING.md) covers
+`@nizam-os/resource-core` (declarations, derivations, messages, the `server` contracts, OpenAPI) and,
+as their epics start, `@nizam-os/kysely-resource`, `@nizam-os/hono-resource`, `@nizam-os/resource-ui`,
+and `@nizam-os/tanstack-form-resource`. The root [`CONTRIBUTING.md`](../../CONTRIBUTING.md) covers
 setup, the quality gates, the shared conventions, commits, changesets, and releases; this guide adds
 what is specific to the family. Design intent lives in [`DESIGN.md`](DESIGN.md), the normative
 contract in [`SPEC.md`](SPEC.md), and decisions in [`adr/`](adr); read those before proposing
@@ -26,7 +26,7 @@ changes to the grammar, the derivations, or the error model.
   SPEC 15.5 (`tsc --extendedDiagnostics --checkers 1`) before it merges, and the numbers go into the
   pull request; the package README's performance notes say what keeps the valid path cheap.
 - **End-to-end tests live in `e2e/resource/`.** Run one file with
-  `pnpm --filter @netvark/resource-e2e exec vitest run <name>` after `pnpm build`; set
+  `pnpm --filter @nizam-os/resource-e2e exec vitest run <name>` after `pnpm build`; set
   `RESOURCE_PG_URL` to a PostgreSQL server (a role with `CREATEDB`) to include the server files.
 
 ## Adding a capability
@@ -36,7 +36,7 @@ changes to the grammar, the derivations, or the error model.
   and both servers, the storage contract's read form, and an amendment to ADR 0005 when it relaxes
   or tightens what a write accepts. A `minor` changeset when a type gains a form, `major` when an
   existing form changes.
-- **A rule shape.** It is recognized in `@netvark/pg-catalog` first (catalog SPEC 8.3); here it
+- **A rule shape.** It is recognized in `@nizam-os/pg-catalog` first (catalog SPEC 8.3); here it
   needs its check in SPEC 6.1, an issue kind, its JSON Schema keyword, its fold into `limits`,
   boundary fixtures, and oracle cases.
 - **An issue kind or a constraint kind.** SPEC 6.4 or 9.1, the `Messages` types, the English
@@ -51,14 +51,14 @@ changes to the grammar, the derivations, or the error model.
 
 **Constraints every contribution inherits.**
 
-- `@netvark/resource-core` depends on `@netvark/catalog-core`, `@netvark/jsonapi-core`,
-  `@netvark/keyset-core`, and `@netvark/ban-core`, and on `zod` as a peer dependency; a new
+- `@nizam-os/resource-core` depends on `@nizam-os/catalog-core`, `@nizam-os/jsonapi-core`,
+  `@nizam-os/keyset-core`, and `@nizam-os/ban-core`, and on `zod` as a peer dependency; a new
   dependency needs an ADR.
 - The `zod` floor is 4.5.0 and CI runs the unit tests there; code that needs a newer Zod raises the
   floor in the same PR, with a `major` changeset.
 - Errors from declarations are `TypeError`s whose message starts with the option path (SPEC 14);
   errors on the wire are catalog entries (SPEC 9).
-- `@netvark/tanstack-form-resource` takes TanStack Form's core, `@tanstack/form-core`, as an
+- `@nizam-os/tanstack-form-resource` takes TanStack Form's core, `@tanstack/form-core`, as an
   optional peer at the lowest release with what it uses (SPEC 20.9), and CI runs its tests there;
   code that needs a newer release raises the floor in the same PR, with a `major` changeset.
   `e2e/resource/form/adapters/` type-checks it with every adapter; a new adapter goes there.

@@ -4,8 +4,8 @@
  * registries (`declaration-check.ts`), so the keys here are plain strings.
  * @packageDocumentation
  */
-import type { PageCapabilitiesInit } from '@netvark/jsonapi-core';
-import type { Operator, SortInput, TextSearchMode } from '@netvark/keyset-core';
+import type { PageCapabilitiesInit } from '@nizam-os/jsonapi-core';
+import type { Operator, SortInput, TextSearchMode } from '@nizam-os/keyset-core';
 
 /** The operations a resource serves (SPEC 3.3). */
 export type Operation = 'list' | 'get' | 'create' | 'update' | 'remove';
@@ -23,7 +23,7 @@ export interface FieldDeclaration {
   readonly as?: string | undefined;
   /** A codec whose `types` include the column's type (SPEC 7.1). */
   readonly codec?: string | undefined;
-  /** `@netvark/keyset-core` operators clients may filter with (SPEC 11.3). */
+  /** `@nizam-os/keyset-core` operators clients may filter with (SPEC 11.3). */
   readonly filter?: ReadonlyArray<Operator> | undefined;
   /** Whether clients may sort by the field; default false. */
   readonly sort?: boolean | undefined;

@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 `defineScope` takes a session parameter of two or more parts, such as `app.user.organization_id`, as

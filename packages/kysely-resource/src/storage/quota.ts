@@ -9,7 +9,7 @@
  * @ref https://github.com/postgres/postgres/blob/REL_18_STABLE/src/backend/access/hash/hashfunc.c (hashtextextended: a 64-bit hash of text with a seed)
  * @packageDocumentation
  */
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import type { KyselyTransaction } from './transaction';
 import type { ValueContext } from './values';

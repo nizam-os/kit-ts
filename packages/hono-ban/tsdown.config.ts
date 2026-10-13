@@ -4,8 +4,8 @@ import { defineConfig } from 'tsdown';
 
 /**
  * Library build. ESM only, runtime neutral, declarations via oxc
- * (isolatedDeclarations). Every subpath of `@netvark/ban-core` has a twin here that
- * re-exports it, so a Hono application imports one package. `@netvark/ban-core` is a
+ * (isolatedDeclarations). Every subpath of `@nizam-os/ban-core` has a twin here that
+ * re-exports it, so a Hono application imports one package. `@nizam-os/ban-core` is a
  * dependency, never bundled. `exports` keeps package.json in sync with the
  * entry map below; publint and attw run as part of the build.
  * @ref https://tsdown.dev/options/config-file

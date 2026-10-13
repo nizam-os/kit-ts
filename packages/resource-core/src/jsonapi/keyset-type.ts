@@ -1,5 +1,5 @@
 /**
- * A member's keyset type (SPEC 11.2): what `@netvark/keyset-core` filters
+ * A member's keyset type (SPEC 11.2): what `@nizam-os/keyset-core` filters
  * and sorts it as. It is read from the member's value spec, where domains
  * are already followed to their base type and `enum` rules already read,
  * so a text column with an `enum` rule filters as an enum. `json`, `jsonb`,
@@ -7,7 +7,7 @@
  * do arrays of enums, since its arrays hold no enum, nor an enum without
  * values (no labels, or rules whose values do not meet), since its enums
  * need values.
- * @ref https://github.com/netvark/netvark/blob/main/docs/keyset/SPEC.md (sections 3.1 and 4.2)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md (sections 3.1 and 4.2)
  * @packageDocumentation
  */
 import type {
@@ -16,7 +16,7 @@ import type {
   EnumFieldInit,
   ScalarFieldInit,
   TextFieldInit,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import type { ValueSpec } from '../schema/value-form';
 

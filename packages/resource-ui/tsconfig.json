@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    // Resolve `@netvark/resource-core`, and the packages it builds on, to
+    // Resolve `@nizam-os/resource-core`, and the packages it builds on, to
     // their source through the `source` condition of their exports maps
     // (written by tsdown's `devExports`), so the model type-checks against
     // the declarations as they are edited, without a build in between.

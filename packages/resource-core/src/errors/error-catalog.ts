@@ -1,15 +1,15 @@
 /**
  * `errorCatalog(resources, appErrors?)` (SPEC 9.2): the codes of every
  * listed resource, resource-core's own `QUOTA_EXCEEDED`, and the
- * application's own codes, as one `@netvark/ban-core` catalog fragment to
+ * application's own codes, as one `@nizam-os/ban-core` catalog fragment to
  * spread into `createBan({ errors })` next to `ERROR_CATALOG` of
- * `@netvark/jsonapi-core`. The registry checks of SPEC 4.2 run first, so a
+ * `@nizam-os/jsonapi-core`. The registry checks of SPEC 4.2 run first, so a
  * derived code never replaces another code without a `TypeError`. The
  * result's type keeps every key, so `ban.error('CONTACTS_EMAIL_UNIQUE')`
  * type-checks and a misspelled code does not.
  * @packageDocumentation
  */
-import type { Catalog, EmptyCatalog } from '@netvark/ban-core';
+import type { Catalog, EmptyCatalog } from '@nizam-os/ban-core';
 
 import type { AnyDeclaredResource } from '../declare/declared-resource';
 import type { RegistryCheck } from '../registry/registry-check';
@@ -52,7 +52,7 @@ export type ErrorCatalog<
  * The catalog fragment of `resources`' derived codes, `QUOTA_EXCEEDED`,
  * and `appErrors`, in that order, frozen. Throws `TypeError` listing every
  * registry conflict (SPEC 4.2): repeated types, a code derived from two
- * constraints or taken by `@netvark/ban-core`, `@netvark/jsonapi-core`,
+ * constraints or taken by `@nizam-os/ban-core`, `@nizam-os/jsonapi-core`,
  * resource-core, or the application, and a relationship whose target is
  * not listed.
  */

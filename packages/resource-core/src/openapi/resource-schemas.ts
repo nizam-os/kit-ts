@@ -5,7 +5,7 @@
  * as `schema.read` strips the keys it does not know, so a client that
  * validates responses keeps working when the server adds a member, and
  * requires no attribute, since a sparse fieldset may leave any out. A
- * request object is closed, as `@netvark/jsonapi-core`'s parser is: a
+ * request object is closed, as `@nizam-os/jsonapi-core`'s parser is: a
  * member the resource does not declare is a 400, one the operation does
  * not write a 403 (SPEC 9.4), a create's `id` without client ids a 403.
  * `@`-members are skipped by the parser, so the schemas allow them. An
@@ -14,11 +14,11 @@
  * made (jsonapi SPEC 11.3); only a type with `create` has lids to name.
  * @ref https://jsonapi.org/format/1.1/#document-resource-objects
  * @ref https://jsonapi.org/format/1.1/#document-member-names-at-members
- * @ref https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md (sections 9.2 and 11.3)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (sections 9.2 and 11.3)
  * @ref https://jsonapi.org/ext/atomic/#operation-objects (lid)
  * @packageDocumentation
  */
-import type { JsonSchema } from '@netvark/ban-core';
+import type { JsonSchema } from '@nizam-os/ban-core';
 
 import type { DeclaredInternals } from '../declare/declared-resource';
 import type { FieldMeta } from '../meta/types';

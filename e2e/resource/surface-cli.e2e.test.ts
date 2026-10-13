@@ -35,7 +35,7 @@ function configFile(module: string, name: string, surface: string): string {
 
 beforeAll(async () => {
   project = await mkdtemp(join(tmpdir(), 'resource-e2e-surface-'));
-  bin = await binPath('@netvark/pg-catalog', 'pg-catalog');
+  bin = await binPath('@nizam-os/pg-catalog', 'pg-catalog');
   const files: Readonly<Record<string, string>> = {
     'app.config.mjs': configFile(
       'runtime/api.ts',

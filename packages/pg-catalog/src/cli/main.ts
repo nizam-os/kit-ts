@@ -42,7 +42,7 @@ const JSON_INDENT = 2;
 /** The installed package's version, read through the package's own `exports` map. */
 function version(): string {
   const manifest: unknown = createRequire(import.meta.url)(
-    '@netvark/pg-catalog/package.json',
+    '@nizam-os/pg-catalog/package.json',
   );
   const value: unknown =
     typeof manifest === 'object' && manifest !== null
@@ -61,7 +61,7 @@ async function loadConfig(
   if (path === null) {
     throw new PgCatalogError(
       'config_invalid',
-      `no configuration file in ${cwd}: create netvark.config.ts (or .mts, .js, .mjs), or pass --config <file>`,
+      `no configuration file in ${cwd}: create pg-catalog.config.ts (or .mts, .js, .mjs), or pass --config <file>`,
     );
   }
   return { config: await loadConfigFile(path), directory: dirname(path) };

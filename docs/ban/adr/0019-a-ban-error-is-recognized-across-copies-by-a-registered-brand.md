@@ -6,18 +6,18 @@
 ## Context
 
 `isBanError(value)` was `value instanceof BanError`, and the handler resolves a thrown value with it
-(SPEC 6.3), as do `ban.from()`, `@netvark/jsonapi-core`'s negotiation and Atomic Operations, and the
+(SPEC 6.3), as do `ban.from()`, `@nizam-os/jsonapi-core`'s negotiation and Atomic Operations, and the
 testing helpers. `instanceof` compares prototypes, so a `BanError` built by a second copy of the
 package, which has a class of its own, is not one: the handler treats it as an unexpected failure
 and answers 500.
 
 A package manager installs a second copy whenever two dependents' ranges do not meet, and before 1.0
 every minor release makes ranges that cannot meet: `^0.1.0` and `^0.2.0` share no version. Every
-package of the family depends on `@netvark/ban-core`, directly or through `@netvark/jsonapi-core`,
+package of the family depends on `@nizam-os/ban-core`, directly or through `@nizam-os/jsonapi-core`,
 so upgrading one of them without the others is enough. Built from the packed packages, an
-application that serves `@netvark/kysely-resource`'s runtime with `@netvark/hono-resource` answered
-the runtime's `NOT_FOUND` with 500 once a second copy of `@netvark/ban-core` sat under the runtime
-(#107). Root ADR 0006 makes the application's own packages peers, but `@netvark/ban-core` reaches
+application that serves `@nizam-os/kysely-resource`'s runtime with `@nizam-os/hono-resource` answered
+the runtime's `NOT_FOUND` with 500 once a second copy of `@nizam-os/ban-core` sat under the runtime
+(#107). Root ADR 0006 makes the application's own packages peers, but `@nizam-os/ban-core` reaches
 the runtime and the handler as a dependency of each, and left recognizing an error across copies to
 this family.
 
@@ -34,7 +34,7 @@ https://tc39.es/ecma262/#sec-symbol.for @ref https://tc39.es/ecma262/#sec-instan
 
 ## Decision
 
-- `BanError.prototype` carries the brand `Symbol.for('@netvark/ban-core/BanError')`, a
+- `BanError.prototype` carries the brand `Symbol.for('@nizam-os/ban-core/BanError')`, a
   non-enumerable, non-writable property whose value is the version of the shape SPEC 4 lists: `1`.
   It sits on the prototype, so an error has no extra own property and serializes as before.
 - `BanError[Symbol.hasInstance](value)` is the ordinary prototype check, or, called on `BanError`

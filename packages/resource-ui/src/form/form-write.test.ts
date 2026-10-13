@@ -1,4 +1,4 @@
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import type { FormOperation, FormRecord } from './form-types';
 

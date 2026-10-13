@@ -1,9 +1,9 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 Declared resources carry the error codes clients can cause, and `errorCatalog` assembles them into
-one `@netvark/ban-core` catalog.
+one `@nizam-os/ban-core` catalog.
 
 - `errors` on each resource maps every derived code to a frozen `{ status, title, kind, fields }`
   with literal types: one code per constraint over a member, per NOT NULL member an operation
@@ -19,7 +19,7 @@ one `@netvark/ban-core` catalog.
 - `errorCatalog(resources, appErrors?)` returns the listed resources' codes, then `QUOTA_EXCEEDED`
   (403), then the application's codes, frozen, to spread into `createBan({ errors })` next to
   `ERROR_CATALOG`. It refuses, in one `TypeError`, a resource listed twice, two resources of one
-  type, a code two constraints derive or that `@netvark/ban-core`, `@netvark/jsonapi-core`,
+  type, a code two constraints derive or that `@nizam-os/ban-core`, `@nizam-os/jsonapi-core`,
   resource-core, or the application already has, and a relationship whose target is not listed;
   `tsc` reports the last at the listed resource. The `ErrorCatalog`, `ErrorEntry`, and
   `ConstraintKind` types describe the results.

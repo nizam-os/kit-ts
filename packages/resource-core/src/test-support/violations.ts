@@ -26,7 +26,7 @@
  * @ref https://github.com/porsager/postgres/blob/master/src/errors.js
  * @packageDocumentation
  */
-import type { PublicColumn } from '@netvark/catalog-core';
+import type { PublicColumn } from '@nizam-os/catalog-core';
 
 import type { DeclaredResource } from '../declare/declared-resource';
 

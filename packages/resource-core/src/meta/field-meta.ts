@@ -10,7 +10,7 @@
  * @ref https://jsonapi.org/format/1.1/#document-resource-object-identification
  * @packageDocumentation
  */
-import type { Operator } from '@netvark/keyset-core';
+import type { Operator } from '@nizam-os/keyset-core';
 
 import type {
   Declaration,

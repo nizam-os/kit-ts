@@ -1,5 +1,5 @@
 ---
-'@netvark/kysely-resource': minor
+'@nizam-os/kysely-resource': minor
 ---
 
 The Kysely storage lists rows: `list` plans the request with the resource's keyset definition, binds

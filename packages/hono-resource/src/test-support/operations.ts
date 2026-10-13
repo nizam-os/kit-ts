@@ -5,12 +5,12 @@
  */
 import type { Hono } from 'hono';
 
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import type { TestEnv } from './app';
 import type { MemoryRuntime } from './memory-runtime';
 
-import { ATOMIC_OPERATIONS_EXTENSION } from '@netvark/hono-jsonapi';
+import { ATOMIC_OPERATIONS_EXTENSION } from '@nizam-os/hono-jsonapi';
 
 import { memoryRuntime } from './memory-runtime';
 import { RESOURCES } from './resources';

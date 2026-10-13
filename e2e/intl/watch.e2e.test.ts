@@ -4,14 +4,14 @@
  * `compile()` of the edited project writes, and nothing compiled once the
  * watch is closed.
  */
-import type { CompileResult } from '@netvark/paraglide-intl';
+import type { CompileResult } from '@nizam-os/paraglide-intl';
 
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 import { describe, expect, it, vi } from 'vitest';
 
-import { compile, watch } from '@netvark/paraglide-intl';
+import { compile, watch } from '@nizam-os/paraglide-intl';
 
 import { CATALOGS } from './support/catalogs';
 import { writeProject } from './support/project';

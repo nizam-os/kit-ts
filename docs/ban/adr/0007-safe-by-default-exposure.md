@@ -1,7 +1,7 @@
 # ADR 0007: Nothing about the server reaches a client unless a factory put it there
 
 - Status: accepted (clarified 2026-09-07: driver error mapping ships as the
-  `@netvark/hono-ban/postgresql` subpath, ADR 0015)
+  `@nizam-os/hono-ban/postgresql` subpath, ADR 0015)
 - Date: 2026-09-07
 
 ## Context

@@ -9,17 +9,17 @@
  * comma separates the values of `sort`, `include`, and `fields`; a list
  * filter repeats its parameter.
  * @ref https://jsonapi.org/format/1.1/#fetching
- * @ref https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md (sections 6.4 to 6.8)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (sections 6.4 to 6.8)
  * @ref https://jsonapi.org/profiles/ethanresnick/cursor-pagination/
  * @packageDocumentation
  */
-import type { JsonSchema } from '@netvark/ban-core';
-import type { AnyResource } from '@netvark/jsonapi-core';
-import type { FieldsInit } from '@netvark/keyset-core';
+import type { JsonSchema } from '@nizam-os/ban-core';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
+import type { FieldsInit } from '@nizam-os/keyset-core';
 
 import type { DeclaredInternals } from '../declare/declared-resource';
 
-import { relatedResource } from '@netvark/jsonapi-core';
+import { relatedResource } from '@nizam-os/jsonapi-core';
 
 import { filterSchema } from './filter-schemas';
 import { idSchema } from './resource-schemas';

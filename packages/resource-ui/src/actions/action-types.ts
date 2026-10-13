@@ -9,8 +9,8 @@
  * the functions infer, by name, what each action gives as `remove`.
  * @packageDocumentation
  */
-import type { Operation, RecordOf, UpdateInput } from '@netvark/jsonapi-client';
-import type { AnyResource } from '@netvark/jsonapi-core';
+import type { Operation, RecordOf, UpdateInput } from '@nizam-os/jsonapi-client';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
 
 import type { WriteValidator } from '../form/form-plan';
 import type { FormErrors } from '../form/form-types';

@@ -7,7 +7,7 @@
  * nothing here.
  * @packageDocumentation
  */
-import type { PublicCatalog, PublicTable } from '@netvark/catalog-core';
+import type { PublicCatalog, PublicTable } from '@nizam-os/catalog-core';
 
 import type { TypedRecord } from '../catalog/resolve-type';
 import type { ColumnName } from '../catalog/types';

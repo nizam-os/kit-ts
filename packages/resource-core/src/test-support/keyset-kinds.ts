@@ -7,11 +7,11 @@
  * only. Not published with the package.
  * @packageDocumentation
  */
-import type { FieldType } from '@netvark/keyset-core';
+import type { FieldType } from '@nizam-os/keyset-core';
 
 import type { DeclaredResource } from '../declare/declared-resource';
 
-import { operatorsFor } from '@netvark/keyset-core';
+import { operatorsFor } from '@nizam-os/keyset-core';
 
 import {
   catalogOf,

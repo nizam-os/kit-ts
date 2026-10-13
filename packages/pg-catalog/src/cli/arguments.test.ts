@@ -19,12 +19,12 @@ describe('parseCommand (SPEC 11.2)', () => {
       config: undefined,
     });
     expect(
-      parseCommand(['--config', 'db/netvark.config.ts', 'extract', '--check']),
-    ).toEqual({ name: 'extract', check: true, config: 'db/netvark.config.ts' });
-    expect(parseCommand(['extract', '--config=netvark.config.mjs'])).toEqual({
+      parseCommand(['--config', 'db/pg-catalog.config.ts', 'extract', '--check']),
+    ).toEqual({ name: 'extract', check: true, config: 'db/pg-catalog.config.ts' });
+    expect(parseCommand(['extract', '--config=pg-catalog.config.mjs'])).toEqual({
       name: 'extract',
       check: false,
-      config: 'netvark.config.mjs',
+      config: 'pg-catalog.config.mjs',
     });
   });
 

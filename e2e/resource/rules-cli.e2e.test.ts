@@ -12,7 +12,7 @@ import { binPath, runBin } from './support/run-bin';
 describe('pg-catalog rules --check', () => {
   it("prints the oracle's report and exits 0 when the declarations agree with the database", async () => {
     const run = await runBin(
-      await binPath('@netvark/pg-catalog', 'pg-catalog'),
+      await binPath('@nizam-os/pg-catalog', 'pg-catalog'),
       ['rules', '--check'],
       ORACLE_DIR,
     );

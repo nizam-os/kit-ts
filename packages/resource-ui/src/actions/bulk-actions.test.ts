@@ -5,12 +5,12 @@
  * request; and each `TypeError` of `operations` for a list `state` disables.
  * @ref https://jsonapi.org/ext/atomic/#operation-objects
  */
-import type { Operation } from '@netvark/jsonapi-client';
+import type { Operation } from '@nizam-os/jsonapi-client';
 
 import { describe, expect, it } from 'vitest';
 
-import { createTransport, sendOperations } from '@netvark/jsonapi-client';
-import { parseOperationsDocument } from '@netvark/jsonapi-core/atomic';
+import { createTransport, sendOperations } from '@nizam-os/jsonapi-client';
+import { parseOperationsDocument } from '@nizam-os/jsonapi-core/atomic';
 
 import { message, text } from '../test-support/messages';
 import { Contacts } from '../test-support/resources';

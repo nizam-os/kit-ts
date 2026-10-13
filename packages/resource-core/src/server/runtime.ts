@@ -14,7 +14,7 @@ import type {
   KeysetRequestOf,
   NoRelations,
   Page,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import type {
   AnyDeclaredResource,
@@ -26,7 +26,7 @@ import type { IncludableOf, OperationOf, PublicRowOf } from './resource-types';
 import type { PublicRow, StorageListRequest } from './storage';
 
 /**
- * A create's or an update's input, as `@netvark/jsonapi-core` parses a
+ * A create's or an update's input, as `@nizam-os/jsonapi-core` parses a
  * resource object: each relationship as its linkage, `{ type, id }` or
  * `null`. A missing member is `{}`. The write schemas validate it, so a
  * worker's input is held to what a request's is.
@@ -130,7 +130,7 @@ export type Domain<
 
 /**
  * A runtime of the declared operations, as a host or a worker takes it:
- * `@netvark/kysely-resource`'s `createResourceRuntime` resolves to one.
+ * `@nizam-os/kysely-resource`'s `createResourceRuntime` resolves to one.
  */
 export interface ResourceRuntime<
   TDomain extends DomainShape = DomainShape,

@@ -1,10 +1,10 @@
 ---
-'@netvark/hono-ban': major
+'@nizam-os/hono-ban': major
 ---
 
-@netvark/hono-ban 2.0 is the Hono adapter for `@netvark/ban-core`, which now holds everything that
-does not need Hono. Every subpath keeps its name and exports (`@netvark/hono-ban/formats/json-api`
-is `@netvark/ban-core/formats/json-api`), `createBan` keeps `ban.onError()` for `app.onError()`, and
+@nizam-os/hono-ban 2.0 is the Hono adapter for `@nizam-os/ban-core`, which now holds everything that
+does not need Hono. Every subpath keeps its name and exports (`@nizam-os/hono-ban/formats/json-api`
+is `@nizam-os/ban-core/formats/json-api`), `createBan` keeps `ban.onError()` for `app.onError()`, and
 the callbacks still receive the Hono `Context`. The root also exports `fromHttpException` and the
 core's new members (`ban.handler`, `fromRequest`, `isErrorStatus`, `ban.fromStatus`,
 `createBan({ adopt })`).
@@ -29,6 +29,6 @@ Breaking changes:
 
 Wire bodies for the built-in formats are unchanged for single errors and validation errors.
 
-This is the first release under the `@netvark` scope. Releases before 2.0.0 were published as
+This is the first release under the `@nizam-os` scope. Releases before 2.0.0 were published as
 `hono-ban`, without the scope; that name stays at 1.x and is deprecated in favor of
-`@netvark/hono-ban`.
+`@nizam-os/hono-ban`.

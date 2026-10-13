@@ -5,16 +5,16 @@ import type {
   EmptyCatalog,
   ErrorReport,
   HandlerOptions,
-} from '@netvark/hono-ban';
+} from '@nizam-os/hono-ban';
 
 import type { RunningServer } from './support/server';
 
 import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
-import { jsonApi } from '@netvark/hono-ban/formats/json-api';
-import { postgresMapper } from '@netvark/hono-ban/postgresql';
+import { createBan } from '@nizam-os/hono-ban';
+import { jsonApi } from '@nizam-os/hono-ban/formats/json-api';
+import { postgresMapper } from '@nizam-os/hono-ban/postgresql';
 
 import { compileWithAjv } from './support/ajv';
 import { startServer } from './support/server';

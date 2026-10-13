@@ -1,5 +1,5 @@
 ---
-'@netvark/paraglide-intl': patch
+'@nizam-os/paraglide-intl': patch
 ---
 
 A compile given `previousCompilation` no longer cleans the output directory first: it writes the

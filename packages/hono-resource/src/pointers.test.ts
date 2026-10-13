@@ -7,7 +7,7 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import { BanError, jsonApiError } from '@netvark/hono-jsonapi';
+import { BanError, jsonApiError } from '@nizam-os/hono-jsonapi';
 
 import { linkagePath, moveItems } from './pointers';
 

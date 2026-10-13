@@ -10,7 +10,7 @@
  * @ref https://www.rfc-editor.org/rfc/rfc8259#section-6
  * @packageDocumentation
  */
-import type { ItemMeta } from '@netvark/resource-core';
+import type { ItemMeta } from '@nizam-os/resource-core';
 
 import type { FormOperation } from './form-types';
 import type { HeldMember } from './form-values';

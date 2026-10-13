@@ -4,11 +4,11 @@
  * `createDeclareResource` runs.
  * @packageDocumentation
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
 import type {
   DefineResource,
   PageCapabilitiesInit,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import type { Codec, Validator } from '../codecs/types';
 import type {
@@ -20,8 +20,8 @@ import type {
   ValidatorRegistry,
 } from './registries';
 
-import { CATALOG_FORMAT } from '@netvark/catalog-core';
-import { createDefineResource } from '@netvark/jsonapi-core';
+import { CATALOG_FORMAT } from '@nizam-os/catalog-core';
+import { createDefineResource } from '@nizam-os/jsonapi-core';
 
 import { isCodec } from '../codecs/define-codec';
 import { isValidator } from '../codecs/define-validator';
@@ -53,7 +53,7 @@ export interface DefinerContext {
   readonly validators: ValidatorRegistry;
   readonly scopes: ScopeRegistry;
   readonly domains: DomainRules;
-  /** `@netvark/jsonapi-core`'s `defineResource` with the definer's `links` and `atomic` (SPEC 11.1). */
+  /** `@nizam-os/jsonapi-core`'s `defineResource` with the definer's `links` and `atomic` (SPEC 11.1). */
   readonly defineResource: DefineResource;
   readonly page: PageCapabilitiesInit;
 }
@@ -218,7 +218,7 @@ function optionalRecord(
 
 /**
  * The definer of every declaration's JSON:API definition, configured with
- * `links` and `atomic`, which `@netvark/jsonapi-core` checks by its own
+ * `links` and `atomic`, which `@nizam-os/jsonapi-core` checks by its own
  * rules; the message gains the definer's prefix. A declaration has no
  * `atomic` of its own, so every definition carries the definer's cap.
  */

@@ -3,10 +3,10 @@ import type { RunningServer } from './support/server';
 import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
-import { jsonApi } from '@netvark/hono-ban/formats/json-api';
-import { errorResponses, validationResponse } from '@netvark/hono-ban/openapi';
-import { defaultHook } from '@netvark/hono-ban/zod';
+import { createBan } from '@nizam-os/hono-ban';
+import { jsonApi } from '@nizam-os/hono-ban/formats/json-api';
+import { errorResponses, validationResponse } from '@nizam-os/hono-ban/openapi';
+import { defaultHook } from '@nizam-os/hono-ban/zod';
 
 import { documentValidator } from './support/openapi-document';
 import { startServer } from './support/server';

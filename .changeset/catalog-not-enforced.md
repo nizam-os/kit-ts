@@ -1,6 +1,6 @@
 ---
-'@netvark/catalog-core': minor
-'@netvark/pg-catalog': minor
+'@nizam-os/catalog-core': minor
+'@nizam-os/pg-catalog': minor
 ---
 
 A public CHECK or foreign key keeps `enforced`, false when the constraint is NOT ENFORCED

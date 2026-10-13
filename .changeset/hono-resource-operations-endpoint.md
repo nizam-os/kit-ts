@@ -1,5 +1,5 @@
 ---
-'@netvark/hono-resource': minor
+'@nizam-os/hono-resource': minor
 ---
 
 Serve the Atomic Operations endpoint at `<base>/operations` when a resource declares a write. A

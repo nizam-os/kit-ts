@@ -1,6 +1,6 @@
 /**
  * `operationsProcessor()` (SPEC 11.1): the framework-free core of an
- * operations endpoint. The host (an HTTP adapter such as `@netvark/hono-jsonapi`)
+ * operations endpoint. The host (an HTTP adapter such as `@nizam-os/hono-jsonapi`)
  * checks the method and the `Content-Type`, reads the JSON body, and hands
  * it here; the processor parses the document, runs every operation in
  * order inside the caller's transaction, and returns the results together
@@ -13,7 +13,7 @@ import type { ExtensionDocument, JsonApiObject } from '../document/types';
 import type { OperationResult } from './execute';
 import type { AnyResourceHandlers, AtomicOptions } from './types';
 
-import { isBanError } from '@netvark/ban-core';
+import { isBanError } from '@nizam-os/ban-core';
 
 import {
   ATOMIC_OPERATIONS_EXTENSION,

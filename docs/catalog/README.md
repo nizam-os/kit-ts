@@ -4,8 +4,8 @@ Your SQL migrations, replayed and read back from PostgreSQL's own catalog, as co
 
 | Package                                                | What it is                                                                                                                                                                                                                                                                                                                                                                  |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@netvark/catalog-core`](../../packages/catalog-core) | The catalog model as TypeScript types, plus two pure functions: `toPublicCatalog` (the browser-safe slice) and `diffCatalogs` (the structural comparison drift uses). No dependencies; runs on Node, Bun, Deno, Cloudflare Workers, and in browsers.                                                                                                                        |
-| [`@netvark/pg-catalog`](../../packages/pg-catalog)     | The extractor and its CLI: replays the migrations into PGlite or a throwaway database on a server, reads `pg_catalog`, translates the CHECK constraints it can translate exactly, and writes the full catalog, the public catalog, and Kysely types; `extract --check` keeps them current in CI and `drift` compares a live database with them. Node 22.12+, Bun, and Deno. |
+| [`@nizam-os/catalog-core`](../../packages/catalog-core) | The catalog model as TypeScript types, plus two pure functions: `toPublicCatalog` (the browser-safe slice) and `diffCatalogs` (the structural comparison drift uses). No dependencies; runs on Node, Bun, Deno, Cloudflare Workers, and in browsers.                                                                                                                        |
+| [`@nizam-os/pg-catalog`](../../packages/pg-catalog)     | The extractor and its CLI: replays the migrations into PGlite or a throwaway database on a server, reads `pg_catalog`, translates the CHECK constraints it can translate exactly, and writes the full catalog, the public catalog, and Kysely types; `extract --check` keeps them current in CI and `drift` compares a live database with them. Node 22.12+, Bun, and Deno. |
 
 One extraction gives you every table, column, constraint (with PostgreSQL's deparsed expression and
 the rule read from it), index, row security policy, enum, and domain, written deterministically so
@@ -15,8 +15,8 @@ that the files are reviewed with the migration that changed them. Every choice i
 ## Install
 
 ```bash
-pnpm add -D @netvark/pg-catalog @electric-sql/pglite   # extraction with in-process PostgreSQL
-pnpm add @netvark/catalog-core                          # only for libraries typed by a catalog
+pnpm add -D @nizam-os/pg-catalog @electric-sql/pglite   # extraction with in-process PostgreSQL
+pnpm add @nizam-os/catalog-core                          # only for libraries typed by a catalog
 ```
 
 `@electric-sql/pglite` (0.5, PostgreSQL 18) is an optional peer dependency: leave it out when you
@@ -26,8 +26,8 @@ neither package ends up in your application bundle. The Kysely types import `kys
 ## Quick start
 
 ```ts
-// netvark.config.ts
-import { defineExtraction } from '@netvark/pg-catalog';
+// pg-catalog.config.ts
+import { defineExtraction } from '@nizam-os/pg-catalog';
 
 export default defineExtraction({
   migrations: 'db/migrations', // Flyway V/R files or any *.sql, see "Migrations"
@@ -108,7 +108,7 @@ you want the exact major you run in production:
 database: { url: () => process.env['CATALOG_DATABASE_URL'] },
 ```
 
-Extraction creates a database named `netvark_catalog_<random>` from `template0`, replays into it,
+Extraction creates a database named `nizam_catalog_<random>` from `template0`, replays into it,
 and drops it, so the role needs `CREATEDB`. A local server for this is one command:
 
 ```bash
@@ -158,7 +158,7 @@ object kind, or as JSON with `--json`), and 2 when it could not run.
   regular expression features outside the subset (`\d`, `\w`, lookahead) stay `null`; cover them
   with a validator. SPEC section 8 lists every shape.
 - **Enforce rules the way PostgreSQL does.** Count code points, compare bounds as exact decimals,
-  keep a pattern's flags, and let null through; `@netvark/catalog-core`'s README has a function that
+  keep a pattern's flags, and let null through; `@nizam-os/catalog-core`'s README has a function that
   does all four.
 - **Use `now()`, never `'now'`.** A `'now'` default is converted to a constant when the migration
   runs, so every replay writes a different catalog (and production stores the deployment time).

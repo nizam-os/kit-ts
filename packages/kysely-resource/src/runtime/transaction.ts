@@ -21,12 +21,12 @@
  * @ref https://kysely-org.github.io/kysely-apidoc/classes/Kysely.html#transaction (rolls back when the callback throws)
  * @packageDocumentation
  */
-import type { DomainShape } from '@netvark/resource-core/server';
+import type { DomainShape } from '@nizam-os/resource-core/server';
 
 import type { Failure } from './session';
 import type { DomainOptions } from './types';
 
-import { scopeValues } from '@netvark/resource-core/server';
+import { scopeValues } from '@nizam-os/resource-core/server';
 
 import { afterCommit } from './events';
 import { operationFailure } from './failure';

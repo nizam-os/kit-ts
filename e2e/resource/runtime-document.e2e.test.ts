@@ -1,5 +1,5 @@
 /**
- * The OpenAPI document and the localized errors of `@netvark/hono-resource`
+ * The OpenAPI document and the localized errors of `@nizam-os/hono-resource`
  * (resource SPEC 19.5, 19.6) over the runtime `createResourceRuntime` boots
  * for the contacts application, on PGlite and on the server
  * `RESOURCE_PG_URL` names, each request through `app.request`: `GET
@@ -16,7 +16,7 @@
  */
 import type { Context } from 'hono';
 
-import type { JsonApiVariables } from '@netvark/hono-jsonapi';
+import type { JsonApiVariables } from '@nizam-os/hono-jsonapi';
 
 import type { RuntimeDatabase } from './runtime/database.ts';
 import type { AppActor } from './runtime/domain.ts';
@@ -25,20 +25,20 @@ import { Validator } from '@seriousme/openapi-schema-validator';
 import { Hono } from 'hono';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
-import { jsonApi as jsonApiFormat } from '@netvark/hono-ban/formats/json-api';
+import { createBan } from '@nizam-os/hono-ban';
+import { jsonApi as jsonApiFormat } from '@nizam-os/hono-ban/formats/json-api';
 import {
   ATOMIC_OPERATIONS_EXTENSION,
   CURSOR_PAGINATION_PROFILE,
   jsonApi,
   jsonApiError,
   notFoundHandler,
-} from '@netvark/hono-jsonapi';
-import { jsonApiRoutes, resourceTypeOf } from '@netvark/hono-resource';
-import { ERROR_CATALOG } from '@netvark/jsonapi-core';
-import { createResourceRuntime } from '@netvark/kysely-resource';
-import { errorCatalog, localizeErrors } from '@netvark/resource-core';
-import { openapi } from '@netvark/resource-core/openapi';
+} from '@nizam-os/hono-jsonapi';
+import { jsonApiRoutes, resourceTypeOf } from '@nizam-os/hono-resource';
+import { ERROR_CATALOG } from '@nizam-os/jsonapi-core';
+import { createResourceRuntime } from '@nizam-os/kysely-resource';
+import { errorCatalog, localizeErrors } from '@nizam-os/resource-core';
+import { openapi } from '@nizam-os/resource-core/openapi';
 
 import { contactMessages } from './localization/contact-messages.ts';
 import { paraglideMiddleware } from './localization/paraglide/server.js';

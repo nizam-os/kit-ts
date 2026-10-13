@@ -7,7 +7,7 @@
  * @ref https://jsonapi.org/profiles/ethanresnick/cursor-pagination/#auto-id-links (prev and next, null when no page)
  * @packageDocumentation
  */
-import type { PageInput } from '@netvark/keyset-core';
+import type { PageInput } from '@nizam-os/keyset-core';
 
 import type { DeclaredResource } from '../../declare/declared-resource';
 import type {

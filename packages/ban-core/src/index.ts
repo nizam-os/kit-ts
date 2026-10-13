@@ -1,5 +1,5 @@
 /**
- * `@netvark/ban-core`: typed HTTP errors with pluggable wire formats, for any runtime
+ * `@nizam-os/ban-core`: typed HTTP errors with pluggable wire formats, for any runtime
  * and any framework.
  * @packageDocumentation
  */

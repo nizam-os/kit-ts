@@ -5,7 +5,7 @@
  * and reads past row security. Acme (organization 1) has Ada, who has a
  * meeting, and an archived contact; Globex (organization 2) has Grace.
  */
-import type { DomainEvent } from '@netvark/resource-core/server';
+import type { DomainEvent } from '@nizam-os/resource-core/server';
 
 import type { RuntimeDatabase } from './database.ts';
 
@@ -62,7 +62,7 @@ function eventOf(row: Row): DomainEvent {
 /**
  * The roles by their names, each with `login` after its attributes. Each
  * may read and write every table but the outbox, which it may only insert
- * into, as `@netvark/kysely-resource` advises: an event holds any tenant's
+ * into, as `@nizam-os/kysely-resource` advises: an event holds any tenant's
  * data, and the identity column needs no sequence grant. `bypass` also has
  * BYPASSRLS, and `owner` owns `calls`.
  * @ref https://www.postgresql.org/docs/18/sql-createtable.html#SQL-CREATETABLE-PARMS-GENERATED-IDENTITY

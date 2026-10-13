@@ -1,5 +1,5 @@
 /**
- * Concurrent relays of the built `@netvark/kysely-resource` (resource SPEC
+ * Concurrent relays of the built `@nizam-os/kysely-resource` (resource SPEC
  * 18.6): a run claims its rows with `FOR UPDATE SKIP LOCKED`, so a second
  * run neither waits for the first nor delivers what the first holds, and
  * both commit though the server's sessions default to SERIALIZABLE, since
@@ -9,12 +9,12 @@
  * @ref https://www.postgresql.org/docs/18/sql-select.html#SQL-FOR-UPDATE-SHARE
  * @ref https://www.postgresql.org/docs/18/transaction-iso.html#XACT-SERIALIZABLE
  */
-import type { OutboxEvent } from '@netvark/kysely-resource';
+import type { OutboxEvent } from '@nizam-os/kysely-resource';
 
 import { sql } from 'kysely';
 import { afterAll, describe, expect, it } from 'vitest';
 
-import { relayOutbox } from '@netvark/kysely-resource';
+import { relayOutbox } from '@nizam-os/kysely-resource';
 
 import { OUTBOX, RESET } from './support/contract-database.ts';
 import { kyselyDatabases } from './support/kysely-database.ts';

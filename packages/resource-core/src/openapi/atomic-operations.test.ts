@@ -9,7 +9,7 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import { DEFAULT_MAX_OPERATIONS } from '@netvark/jsonapi-core/atomic';
+import { DEFAULT_MAX_OPERATIONS } from '@nizam-os/jsonapi-core/atomic';
 
 import { createDeclareResource } from '../declare/create-declare-resource';
 import { ACCEPTED } from '../test-support/atomic-documents';

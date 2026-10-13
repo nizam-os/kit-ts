@@ -1,21 +1,21 @@
 # ADR 0013: Hosts take the runtime contract, mount where the links point, and run an operations request in one transaction
 
-- Status: accepted; amended by jsonapi ADR 0017 (`resourcePaths` lives in `@netvark/jsonapi-core`,
+- Status: accepted; amended by jsonapi ADR 0017 (`resourcePaths` lives in `@nizam-os/jsonapi-core`,
   so a client reads the same paths; the decision stands)
 - Date: 2026-10-11
 
 ## Context
 
-`@netvark/hono-resource` serves declared resources on Hono. The epic's sketch predates the runtime:
+`@nizam-os/hono-resource` serves declared resources on Hono. The epic's sketch predates the runtime:
 it mounts a `domain` and serves `domain.openapi()`, neither of which exists. What exists:
 
 - `createResourceRuntime` resolves to `{ warnings, as(actor) }`. Its types (`ResourceRuntime`,
-  `Domain`, `ResourceOperations`) live in `@netvark/kysely-resource`, so a host that typed the
+  `Domain`, `ResourceOperations`) live in `@nizam-os/kysely-resource`, so a host that typed the
   runtime would install Kysely.
 - Each operation runs in a transaction of its own.
 - The OpenAPI document reads each resource's paths from its JSON:API links (`resourcePaths`), and
   `links.base` comes from the definer (jsonapi ADR 0015).
-- `@netvark/jsonapi-core`'s operations processor runs every operation inside a transaction the
+- `@nizam-os/jsonapi-core`'s operations processor runs every operation inside a transaction the
   caller owns (jsonapi ADR 0010) and points a failure without a source at its operation.
 - A refusal's items point where a single resource document holds the member: `/data/attributes/...`,
   `/data/relationships/<name>/data...`, `/data/id`.
@@ -28,10 +28,10 @@ https://www.postgresql.org/docs/18/tutorial-transactions.html
 
 ## Decision
 
-- The runtime contract is `@netvark/resource-core/server`'s (SPEC 12.10): `ResourceRuntime`,
+- The runtime contract is `@nizam-os/resource-core/server`'s (SPEC 12.10): `ResourceRuntime`,
   `RuntimeResources`, `Domain`, `ResourceOperations`, `ResourceInput`, and `ListOptions`.
-  `@netvark/kysely-resource` implements it and re-exports the types; `@netvark/hono-resource`
-  depends on `@netvark/resource-core` and `@netvark/hono-jsonapi` and imports no runtime.
+  `@nizam-os/kysely-resource` implements it and re-exports the types; `@nizam-os/hono-resource`
+  depends on `@nizam-os/resource-core` and `@nizam-os/hono-jsonapi` and imports no runtime.
 - The runtime lists what it runs as `resources`. The routes serve exactly those resources, so a host
   cannot mount one the runtime cannot run, and an include's target is found among them, as boot
   already requires its behavior.
@@ -46,15 +46,15 @@ https://www.postgresql.org/docs/18/tutorial-transactions.html
   the input: a relationship document's `/data...`, an operation's
   `/atomic:operations/<index>/data...`. Only the host knows where it read the input, and one
   mechanism covers both.
-- The host owns negotiation, the error handler, and `notFound`; `@netvark/hono-resource` adds routes
+- The host owns negotiation, the error handler, and `notFound`; `@nizam-os/hono-resource` adds routes
   and `resourceTypeOf` for `localizeErrors`. The actor resolves once per request, before any
   validator, so a request without a session learns nothing about the resource from a 400.
 - A known path answers another method with 405 and `Allow`, as RFC 9110 requires.
 
 ## Consequences
 
-`@netvark/kysely-resource` keeps its exports, now re-exported; it gains `resources` and
-`transaction`. `resourcePaths` becomes public in `@netvark/resource-core/openapi`. A host that
+`@nizam-os/kysely-resource` keeps its exports, now re-exported; it gains `resources` and
+`transaction`. `resourcePaths` becomes public in `@nizam-os/resource-core/openapi`. A host that
 serves under a prefix states it once, in the definer's `links.base`. Operations that change to-many
 relationships wait for to-many relationships (DESIGN 6). A worker that catches an operation's
 failure inside `transaction` cannot continue the transaction; it starts another.

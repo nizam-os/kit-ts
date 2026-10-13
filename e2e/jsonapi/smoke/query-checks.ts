@@ -1,6 +1,6 @@
 /**
  * The TanStack Query binding's runtime checks (SPEC 16.7, 17.5):
- * `@netvark/tanstack-query-jsonapi`'s options read and write a blog of their
+ * `@nizam-os/tanstack-query-jsonapi`'s options read and write a blog of their
  * own through a query-core `QueryClient`, Atomic Operations among the
  * writes, inside the runtime under test, where server rendering prefetches.
  * `app.ts` answers `GET /query-checks` with the outcome, which each harness
@@ -10,8 +10,8 @@
  */
 import type { DehydratedState } from '@tanstack/query-core';
 
-import type { Transport } from '@netvark/jsonapi-client';
-import type { ResourceQueries } from '@netvark/tanstack-query-jsonapi';
+import type { Transport } from '@nizam-os/jsonapi-client';
+import type { ResourceQueries } from '@nizam-os/tanstack-query-jsonapi';
 
 import type { InRuntimeCheck, SmokeResult } from './checks.ts';
 
@@ -29,11 +29,11 @@ import {
   createTransport,
   isResponseError,
   operationsOf,
-} from '@netvark/jsonapi-client';
+} from '@nizam-os/jsonapi-client';
 import {
   operationsMutation,
   resourceQueries,
-} from '@netvark/tanstack-query-jsonapi';
+} from '@nizam-os/tanstack-query-jsonapi';
 
 import { createBlog } from '../support/blog.ts';
 import { Articles, People, Tags } from '../support/resources.ts';

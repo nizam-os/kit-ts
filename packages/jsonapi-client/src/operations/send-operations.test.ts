@@ -11,7 +11,7 @@ import type { Transport } from '../transport/transport';
 
 import { describe, expect, it } from 'vitest';
 
-import { createDefineResource, defineResource } from '@netvark/jsonapi-core';
+import { createDefineResource, defineResource } from '@nizam-os/jsonapi-core';
 
 import { Articles, People } from '../test-support/blog';
 import { empty, fetchDouble, jsonApi } from '../test-support/fetch-double';

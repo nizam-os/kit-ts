@@ -7,7 +7,7 @@ import type {
   ErrorMapper,
   ErrorReport,
   HandlerOptions,
-} from '@netvark/hono-ban';
+} from '@nizam-os/hono-ban';
 
 import type { RunningServer } from './server';
 
@@ -17,7 +17,7 @@ import { drizzle } from 'drizzle-orm/pglite';
 import { Hono } from 'hono';
 import { afterAll, beforeAll, expect } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
+import { createBan } from '@nizam-os/hono-ban';
 
 import { startServer } from './server';
 

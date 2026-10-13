@@ -1,4 +1,4 @@
-import type { SchemaValidator } from '@netvark/hono-ban/testing';
+import type { SchemaValidator } from '@nizam-os/hono-ban/testing';
 
 import addFormats from 'ajv-formats';
 import Ajv2020 from 'ajv/dist/2020.js';
@@ -12,7 +12,7 @@ import Ajv2020 from 'ajv/dist/2020.js';
  * @ref https://ajv.js.org/api.html#ajv-addvocabulary-vocabulary-ajv
  * @ref https://www.rfc-editor.org/rfc/rfc6901
  */
-const DOCUMENT_ID = 'https://e2e.netvark.test/openapi.json';
+const DOCUMENT_ID = 'https://e2e.nizam-kit.test/openapi.json';
 
 /** An RFC 6901 reference token. */
 function token(segment: string): string {

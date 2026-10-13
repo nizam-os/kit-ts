@@ -1,4 +1,4 @@
-# ADR 0015: Postgres SQLSTATE mapping ships as the `@netvark/hono-ban/postgresql` subpath
+# ADR 0015: Postgres SQLSTATE mapping ships as the `@nizam-os/hono-ban/postgresql` subpath
 
 - Status: accepted
 - Date: 2026-09-07
@@ -16,7 +16,7 @@ its own driver peer dependency. Both were examined before building it:
   typed structurally like every other integration (ADR 0009).
 - No separate cadence is needed. The module has no dependencies, the SQLSTATE table comes from the
   Postgres manual's Appendix A and is stable across major versions, and the module changes when the
-  catalog or the handler change, which is when `@netvark/hono-ban` itself releases. `./zod`,
+  catalog or the handler change, which is when `@nizam-os/hono-ban` itself releases. `./zod`,
   `./valibot`, and `./otel` already ship optional integrations as subpaths under the same reasoning.
 
 Sources consulted, all fetched on 2026-09-07:
@@ -56,7 +56,7 @@ Sources consulted, all fetched on 2026-09-07:
 
 ## Decision
 
-`@netvark/hono-ban/postgresql` exports `postgresMapper(options?)`, `findPostgresError(value)`, and
+`@nizam-os/hono-ban/postgresql` exports `postgresMapper(options?)`, `findPostgresError(value)`, and
 `readPostgresFields(error)` (SPEC 6.10). The subpath is named after the database in full,
 `postgresql`, because `postgres` is postgres.js's npm name and the module serves every driver.
 

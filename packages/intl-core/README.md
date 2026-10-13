@@ -1,22 +1,22 @@
-# @netvark/intl-core
+# @nizam-os/intl-core
 
 Hydration-safe formatting for any JavaScript runtime, built for server-rendered applications that
 localize with [Paraglide JS](https://inlang.com/m/gerre34r/library-inlang-paraglideJs) and usable
 without it. Every rule is a cited clause of Unicode, ECMA-402, or an RFC; where a choice is the
 library's, it is written down in
-[`docs/intl/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/intl/SPEC.md), and the
+[`docs/intl/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/intl/SPEC.md), and the
 decisions, with their measurements, in
-[`docs/intl/adr`](https://github.com/netvark/netvark/tree/main/docs/intl/adr).
+[`docs/intl/adr`](https://github.com/nizam-os/kit/tree/main/docs/intl/adr).
 
 Compiling Paraglide messages?
-[`@netvark/paraglide-intl`](https://www.npmjs.com/package/@netvark/paraglide-intl) wraps every
+[`@nizam-os/paraglide-intl`](https://www.npmjs.com/package/@nizam-os/paraglide-intl) wraps every
 interpolated value of every message in the isolates below when it compiles them, and re-exports all
 of this package.
 
 ## Install
 
 ```bash
-pnpm add @netvark/intl-core
+pnpm add @nizam-os/intl-core
 ```
 
 No dependencies. Node 22.12+, Bun, Deno, Cloudflare Workers, and browsers are supported; the package
@@ -26,7 +26,7 @@ uses web standards only and never reads the environment.
 
 ```ts
 // src/lib/intl.ts: created once, at module scope, shared by the server and the browser
-import { createIntl, createTimeZone } from '@netvark/intl-core';
+import { createIntl, createTimeZone } from '@nizam-os/intl-core';
 
 import { getLocale } from './paraglide/runtime.js';
 
@@ -95,7 +95,7 @@ itself.
 
 During SSR the server sees the request, not the device, so the reader's zone comes from a cookie
 that both sides read before they render
-([ADR 0005](https://github.com/netvark/netvark/blob/main/docs/intl/adr/0005-the-readers-time-zone-comes-from-a-cookie.md)).
+([ADR 0005](https://github.com/nizam-os/kit/blob/main/docs/intl/adr/0005-the-readers-time-zone-comes-from-a-cookie.md)).
 
 ```ts
 // the server entry: each request formats in the zone of its cookie
@@ -111,7 +111,7 @@ export default {
 
 ```ts
 // the browser, after hydration: store the device's zone for the requests that follow
-import { detectTimeZone, timeZoneCookie, timeZoneFromCookie } from '@netvark/intl-core';
+import { detectTimeZone, timeZoneCookie, timeZoneFromCookie } from '@nizam-os/intl-core';
 
 if (timeZoneFromCookie(document.cookie, 'TIME_ZONE') === undefined) {
   document.cookie = timeZoneCookie(detectTimeZone() ?? 'UTC', { name: 'TIME_ZONE' });
@@ -161,7 +161,7 @@ returns the device's zone, or `undefined` when the engine reports an offset inst
 ## Isolate an interpolated value
 
 ```ts
-import { isolate } from '@netvark/intl-core';
+import { isolate } from '@nizam-os/intl-core';
 
 const title = `Shared by ${isolate(owner.name)} (${isolate(String(count))})`;
 ```

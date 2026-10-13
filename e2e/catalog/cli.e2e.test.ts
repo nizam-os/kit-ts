@@ -27,7 +27,7 @@ import { fileURLToPath } from 'node:url';
 
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { drift } from '@netvark/pg-catalog';
+import { drift } from '@nizam-os/pg-catalog';
 
 import {
   contactsConfig,
@@ -42,7 +42,7 @@ import {
 } from './support/contacts';
 import { liveDatabases } from './support/live-database';
 
-/** Projects live under this package, so their configuration resolves `@netvark/pg-catalog` from its node_modules. */
+/** Projects live under this package, so their configuration resolves `@nizam-os/pg-catalog` from its node_modules. */
 const PROJECTS = fileURLToPath(new URL('.tmp/', import.meta.url));
 const URL_VARIABLE = 'CONTACTS_DATABASE_URL';
 const WRITTEN =
@@ -70,7 +70,7 @@ async function manifest(): Promise<{
   readonly manifest: Manifest;
 }> {
   const path = createRequire(import.meta.url).resolve(
-    '@netvark/pg-catalog/package.json',
+    '@nizam-os/pg-catalog/package.json',
   );
   return {
     path,
@@ -112,8 +112,8 @@ async function pgCatalog(
 
 /** The contacts configuration as an application writes it; `typed` adds what only TypeScript accepts. */
 function configSource(typed: boolean): string {
-  return `import { defineExtraction } from '@netvark/pg-catalog';
-${typed ? "import type { ExtractionConfig } from '@netvark/pg-catalog';\n" : ''}
+  return `import { defineExtraction } from '@nizam-os/pg-catalog';
+${typed ? "import type { ExtractionConfig } from '@nizam-os/pg-catalog';\n" : ''}
 const schemas${typed ? ': ReadonlyArray<string>' : ''} = ['public', 'audit'];
 
 export default defineExtraction({
@@ -131,7 +131,7 @@ export default defineExtraction({
 }
 
 async function createProject(
-  configFile: 'netvark.config.mjs' | 'netvark.config.ts',
+  configFile: 'pg-catalog.config.mjs' | 'pg-catalog.config.ts',
 ): Promise<string> {
   await mkdir(PROJECTS, { recursive: true });
   const dir = await mkdtemp(join(PROJECTS, 'cli-'));
@@ -151,11 +151,11 @@ afterAll(async () => {
   await rm(PROJECTS, { recursive: true, force: true });
 });
 
-describe('the pg-catalog bin with netvark.config.mjs', () => {
+describe('the pg-catalog bin with pg-catalog.config.mjs', () => {
   let project: string;
 
   beforeAll(async () => {
-    project = await createProject('netvark.config.mjs');
+    project = await createProject('pg-catalog.config.mjs');
   });
 
   it('prints the installed version', async () => {
@@ -225,7 +225,7 @@ for (const [name, open] of liveDatabases()) {
     let live: LiveDatabase;
 
     beforeAll(async () => {
-      project = await createProject('netvark.config.mjs');
+      project = await createProject('pg-catalog.config.mjs');
       await mkdir(join(project, 'src/db'), { recursive: true });
       await cp(EXPECTED_CATALOG, join(project, 'src/db/catalog.ts'));
       live = await open();
@@ -261,11 +261,11 @@ for (const [name, open] of liveDatabases()) {
   });
 }
 
-describe('the pg-catalog bin with netvark.config.ts', () => {
+describe('the pg-catalog bin with pg-catalog.config.ts', () => {
   let project: string;
 
   beforeAll(async () => {
-    project = await createProject('netvark.config.ts');
+    project = await createProject('pg-catalog.config.ts');
   });
 
   it.runIf(Boolean(process.features.typescript))(
@@ -289,7 +289,7 @@ describe('the pg-catalog bin with netvark.config.ts', () => {
       code: 2,
       stdout: '',
       stderr:
-        'pg-catalog: cannot load netvark.config.ts: this Node.js does not strip TypeScript types; use Node.js 22.18 or later, set NODE_OPTIONS=--experimental-strip-types on Node.js 22.12 to 22.17, or write netvark.config.mjs\n',
+        'pg-catalog: cannot load pg-catalog.config.ts: this Node.js does not strip TypeScript types; use Node.js 22.18 or later, set NODE_OPTIONS=--experimental-strip-types on Node.js 22.12 to 22.17, or write pg-catalog.config.mjs\n',
     });
   });
 });

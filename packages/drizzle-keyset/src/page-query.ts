@@ -18,7 +18,7 @@
 import type { SQL } from 'drizzle-orm';
 import type { PgTable, SelectedFields } from 'drizzle-orm/pg-core';
 
-import type { PlanKey, QueryPlan } from '@netvark/keyset-core';
+import type { PlanKey, QueryPlan } from '@nizam-os/keyset-core';
 
 import type { KeysetDatabase, RenderContext } from './types';
 

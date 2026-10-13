@@ -1,4 +1,4 @@
-import type { PublicColumn } from '@netvark/catalog-core';
+import type { PublicColumn } from '@nizam-os/catalog-core';
 
 import { describe, expect, it } from 'vitest';
 

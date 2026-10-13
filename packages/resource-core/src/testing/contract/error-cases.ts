@@ -6,7 +6,7 @@
  * status, and an item per member under `/data`.
  * @packageDocumentation
  */
-import type { BanError } from '@netvark/ban-core';
+import type { BanError } from '@nizam-os/ban-core';
 
 import type { DeclaredResource } from '../../declare/declared-resource';
 import type { Operation } from '../../declare/types';

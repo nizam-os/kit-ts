@@ -1,6 +1,6 @@
 /**
  * The contacts application's API answers as its OpenAPI document says
- * (resource SPEC 13.1): over Hono and `@netvark/hono-jsonapi`, with the
+ * (resource SPEC 13.1): over Hono and `@nizam-os/hono-jsonapi`, with the
  * runtime on PGlite behind every route, each answer's status, media type,
  * body, and `Location` conform to the document (`support/api-session.ts`):
  * a page filtered, searched, sorted, sparse, and followed to the next; a

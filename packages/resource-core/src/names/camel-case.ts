@@ -1,6 +1,6 @@
 /**
  * `CamelCase<TText>`, the type-level twin of `toCamelCase` from
- * `@netvark/catalog-core` under its default options (SPEC 4.1), pinned to
+ * `@nizam-os/catalog-core` under its default options (SPEC 4.1), pinned to
  * it by one case table (`test-support/camel-cases.ts`). The runtime keeps
  * the first character, drops every `_`, and upper-cases the character
  * after one; this keeps the first character and joins the `_`-separated
@@ -31,7 +31,7 @@ type CamelSegments<
   : `${TOut}${TCapitalize extends true ? Capitalize<TText> : TText}`;
 
 /**
- * A name as `toCamelCase` from `@netvark/catalog-core` converts it with the
+ * A name as `toCamelCase` from `@nizam-os/catalog-core` converts it with the
  * default options. A name without `_` is itself; a leading `_` is kept and
  * capitalizes the segment after it.
  */

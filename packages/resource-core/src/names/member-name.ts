@@ -1,7 +1,7 @@
 /**
  * Public names must be JSON:API member names (SPEC 4.2), and a field or a
  * relationship must not take a member every resource object has or a
- * member of `Object.prototype`. `@netvark/jsonapi-core`'s `defineResource`
+ * member of `Object.prototype`. `@nizam-os/jsonapi-core`'s `defineResource`
  * refuses the same names, so a resource that passes here passes there.
  * `IsMemberName` is the type-level twin of `isMemberName`, pinned to it by
  * one case table (`test-support/member-name-cases.ts`): a name is at least
@@ -12,7 +12,7 @@
  * @ref https://jsonapi.org/format/1.1/#document-resource-object-fields
  * @packageDocumentation
  */
-import { isMemberName } from '@netvark/jsonapi-core';
+import { isMemberName } from '@nizam-os/jsonapi-core';
 
 /** U+0000 to U+001F, which JSON:API reserves with U+007F. */
 type ControlCharacter =
@@ -108,7 +108,7 @@ export type IsMemberName<TName extends string> = TName extends ''
 /** The members every resource object has, with which its fields share a namespace (jsonapi-core adds `lid`). */
 export type ResourceObjectMember = 'type' | 'id' | 'lid';
 
-/** Names whose lookup reaches `Object.prototype`, which `@netvark/jsonapi-core` refuses. */
+/** Names whose lookup reaches `Object.prototype`, which `@nizam-os/jsonapi-core` refuses. */
 export type PrototypeName = 'constructor' | 'prototype';
 
 const NOT_A_MEMBER_NAME = 'is not a JSON:API member name';

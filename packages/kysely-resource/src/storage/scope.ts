@@ -9,9 +9,9 @@ import type { RawBuilder, SqlBool } from 'kysely';
  * gets `true`, and runs only when boot allowed it (SPEC 18.3).
  * @packageDocumentation
  */
-import type { PublicCatalog, PublicTable } from '@netvark/catalog-core';
-import type { DeclaredResource } from '@netvark/resource-core';
-import type { ScopeValue } from '@netvark/resource-core/server';
+import type { PublicCatalog, PublicTable } from '@nizam-os/catalog-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
+import type { ScopeValue } from '@nizam-os/resource-core/server';
 
 import type { KyselyTransaction } from './transaction';
 

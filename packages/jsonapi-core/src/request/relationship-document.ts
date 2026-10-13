@@ -7,7 +7,7 @@
  * @ref https://jsonapi.org/format/1.1/#crud-updating-to-many-relationships
  * @packageDocumentation
  */
-import type { ErrorItem } from '@netvark/ban-core';
+import type { ErrorItem } from '@nizam-os/ban-core';
 
 import type { ResourceIdentifier } from '../document/types';
 import type { Cardinality } from '../resource/types';

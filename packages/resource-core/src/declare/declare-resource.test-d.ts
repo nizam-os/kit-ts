@@ -1,4 +1,4 @@
-import type { SortInput } from '@netvark/keyset-core';
+import type { SortInput } from '@nizam-os/keyset-core';
 
 import type { DeclaredResource } from './declared-resource';
 import type { Operation } from './types';

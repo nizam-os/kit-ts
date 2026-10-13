@@ -1,5 +1,5 @@
 /**
- * `@netvark/tanstack-form-resource`: a form model bound to TanStack Form's
+ * `@nizam-os/tanstack-form-resource`: a form model bound to TanStack Form's
  * framework-free core, so the form of every adapter takes it (resource
  * SPEC 20.5, root ADR 0010). `resourceFormOptions` gives a form the
  * model's values and validator, and `bindResponseErrors` puts a refused

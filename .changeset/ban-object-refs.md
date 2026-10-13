@@ -1,6 +1,6 @@
 ---
-'@netvark/ban-core': minor
-'@netvark/hono-ban': minor
+'@nizam-os/ban-core': minor
+'@nizam-os/hono-ban': minor
 ---
 
 `errorResponses` takes `objectRef`, where the document holds each entry's error object, and then

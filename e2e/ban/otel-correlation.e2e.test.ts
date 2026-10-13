@@ -15,7 +15,7 @@
 import type { ReadableSpan } from '@opentelemetry/sdk-trace-node';
 import type { MiddlewareHandler } from 'hono';
 
-import type { ErrorReport } from '@netvark/hono-ban';
+import type { ErrorReport } from '@nizam-os/hono-ban';
 
 import type { RunningServer } from './support/server';
 
@@ -28,8 +28,8 @@ import {
 import { Hono } from 'hono';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { createBan, parseTraceparent } from '@netvark/hono-ban';
-import { traceIdFromOtel } from '@netvark/hono-ban/otel';
+import { createBan, parseTraceparent } from '@nizam-os/hono-ban';
+import { traceIdFromOtel } from '@nizam-os/hono-ban/otel';
 
 import { startServer } from './support/server';
 
@@ -65,7 +65,7 @@ const DETAIL = 'Order 42 does not exist';
 /**
  * Opens an active span for the request. `startActiveSpan` runs `next()`
  * inside `context.with(...)`, and Hono calls `onError` from the same
- * `dispatch` frame that threw, so the span is still active while @netvark/hono-ban
+ * `dispatch` frame that threw, so the span is still active while @nizam-os/hono-ban
  * resolves the error. The incoming `traceparent` is deliberately not
  * extracted: the span starts a fresh trace so the tests can tell the option
  * apart from the header.

@@ -1,7 +1,7 @@
 {
-  "name": "@netvark/tanstack-query-jsonapi",
+  "name": "@nizam-os/tanstack-query-jsonapi",
   "version": "0.0.0",
-  "description": "TanStack Query options for @netvark/jsonapi-client's calls, for every adapter: keys that are the request each call sends, reads that pass the query's signal, infinite lists by the server's links, writes that stay pending until what they changed has refetched, and Atomic Operations as one mutation.",
+  "description": "TanStack Query options for @nizam-os/jsonapi-client's calls, for every adapter: keys that are the request each call sends, reads that pass the query's signal, infinite lists by the server's links, writes that stay pending until what they changed has refetched, and Atomic Operations as one mutation.",
   "keywords": [
     "atomic-operations",
     "cursor-pagination",
@@ -10,13 +10,13 @@
     "query-core",
     "tanstack-query"
   ],
-  "homepage": "https://github.com/netvark/netvark/tree/main/packages/tanstack-query-jsonapi#readme",
-  "bugs": "https://github.com/netvark/netvark/issues",
+  "homepage": "https://github.com/nizam-os/kit/tree/main/packages/tanstack-query-jsonapi#readme",
+  "bugs": "https://github.com/nizam-os/kit/issues",
   "license": "MIT",
   "author": "Ali Issa (https://github.com/ali-issa)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netvark/netvark.git",
+    "url": "git+https://github.com/nizam-os/kit.git",
     "directory": "packages/tanstack-query-jsonapi"
   },
   "files": [
@@ -51,12 +51,12 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@netvark/jsonapi-client": "workspace:^",
-    "@netvark/jsonapi-core": "workspace:^",
+    "@nizam-os/jsonapi-client": "workspace:^",
+    "@nizam-os/jsonapi-core": "workspace:^",
     "@tanstack/query-core": "catalog:"
   },
   "peerDependencies": {
-    "@netvark/jsonapi-client": "^0.1.0",
+    "@nizam-os/jsonapi-client": "^0.1.0",
     "@tanstack/query-core": "^5.89.0"
   },
   "peerDependenciesMeta": {

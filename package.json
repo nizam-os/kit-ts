@@ -1,15 +1,15 @@
 {
-  "name": "@netvark/monorepo",
+  "name": "@nizam-os/monorepo",
   "version": "0.0.0",
   "private": true,
-  "description": "The netvark packages: structured HTTP errors (ban), the PostgreSQL schema as a typed catalog (catalog), JSON:API 1.1 (jsonapi), and keyset pagination (keyset), each a framework-free core with bindings for a host.",
-  "homepage": "https://github.com/netvark/netvark#readme",
-  "bugs": "https://github.com/netvark/netvark/issues",
+  "description": "The Nizam Kit packages: structured HTTP errors (ban), the PostgreSQL schema as a typed catalog (catalog), JSON:API 1.1 (jsonapi), and keyset pagination (keyset), each a framework-free core with bindings for a host.",
+  "homepage": "https://github.com/nizam-os/kit#readme",
+  "bugs": "https://github.com/nizam-os/kit/issues",
   "license": "MIT",
   "author": "Ali Issa (https://github.com/ali-issa)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netvark/netvark.git"
+    "url": "git+https://github.com/nizam-os/kit.git"
   },
   "type": "module",
   "scripts": {

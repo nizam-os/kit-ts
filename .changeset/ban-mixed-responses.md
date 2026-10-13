@@ -1,6 +1,6 @@
 ---
-'@netvark/ban-core': minor
-'@netvark/hono-ban': minor
+'@nizam-os/ban-core': minor
+'@nizam-os/hono-ban': minor
 ---
 
 `errorResponses` describes the documents a format that combines entries sends. With

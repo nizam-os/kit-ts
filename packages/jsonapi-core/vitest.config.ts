@@ -4,7 +4,7 @@ import { defineProject } from 'vitest/config';
 
 /**
  * The core's test project; the root `vitest.config.ts` runs it and owns
- * coverage. `@netvark/ban-core` resolves to its source through the `source`
+ * coverage. `@nizam-os/ban-core` resolves to its source through the `source`
  * condition (see tsconfig.json), so the tests run against the error core as
  * it is edited and the combined coverage attributes core lines they execute.
  * @ref https://vitest.dev/guide/projects
@@ -20,7 +20,7 @@ const config: UserWorkspaceConfig = defineProject({
     },
   },
   test: {
-    name: '@netvark/jsonapi-core',
+    name: '@nizam-os/jsonapi-core',
     include: ['src/**/*.test.ts'],
     environment: 'node',
     restoreMocks: true,

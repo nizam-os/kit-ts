@@ -8,7 +8,7 @@
  */
 import type { Declaration } from './types';
 
-import { isOperator } from '@netvark/keyset-core';
+import { isOperator } from '@nizam-os/keyset-core';
 
 import {
   expectKnownKeys,
@@ -72,7 +72,7 @@ const SEARCH_MODES = ['websearch', 'plain', 'phrase'] as const;
 const SORT_DIRECTIONS = ['asc', 'desc'] as const;
 
 /**
- * `filter` lists at least one operator, each once, as `@netvark/jsonapi-core`
+ * `filter` lists at least one operator, each once, as `@nizam-os/jsonapi-core`
  * requires of the resource's query capabilities (SPEC 11.1); `check` names
  * the vocabulary.
  */
@@ -102,7 +102,7 @@ function checkFilterList(
 function checkFieldOperator(path: string, operator: unknown): void {
   if (!isOperator(operator)) {
     throw new TypeError(
-      `${path}: ${describe(operator)} is not an operator of @netvark/keyset-core`,
+      `${path}: ${describe(operator)} is not an operator of @nizam-os/keyset-core`,
     );
   }
 }

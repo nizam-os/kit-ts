@@ -10,11 +10,11 @@
  */
 import type { ZodType } from 'zod';
 
-import type { Validator } from '@netvark/resource-core';
+import type { Validator } from '@nizam-os/resource-core';
 
 import { z } from 'zod';
 
-import { defineValidator } from '@netvark/resource-core';
+import { defineValidator } from '@nizam-os/resource-core';
 
 interface EnterpriseVerified {
   readonly plan: string;

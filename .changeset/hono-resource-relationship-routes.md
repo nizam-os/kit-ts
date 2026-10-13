@@ -1,5 +1,5 @@
 ---
-'@netvark/hono-resource': minor
+'@nizam-os/hono-resource': minor
 ---
 
 Serve each to-one relationship's routes where its links point: `GET` of the relationship link

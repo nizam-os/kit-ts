@@ -12,7 +12,7 @@ import {
   operationOf,
   operationsOf,
   sendOperations,
-} from '@netvark/jsonapi-client';
+} from '@nizam-os/jsonapi-client';
 
 import { refusal, useClientBlog } from './support/clients.ts';
 import { Articles, People } from './support/resources.ts';

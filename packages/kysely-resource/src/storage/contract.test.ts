@@ -1,5 +1,5 @@
-import type { DomainEvent } from '@netvark/resource-core/server';
-import type { ContractHarness } from '@netvark/resource-core/testing';
+import type { DomainEvent } from '@nizam-os/resource-core/server';
+import type { ContractHarness } from '@nizam-os/resource-core/testing';
 
 import type { KyselyTransaction } from './transaction';
 
@@ -9,7 +9,7 @@ import { afterAll, describe, it } from 'vitest';
 import {
   contractFixture,
   storageContract,
-} from '@netvark/resource-core/testing';
+} from '@nizam-os/resource-core/testing';
 
 import { contractDatabase, storageOptions } from '../test-support/database';
 import { createKyselyStorage } from './create-storage';

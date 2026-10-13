@@ -8,15 +8,15 @@
  * both are declared over, is one code; from two constraints, a conflict.
  * @packageDocumentation
  */
-import type { Catalog, ErrorDefinition } from '@netvark/ban-core';
+import type { Catalog, ErrorDefinition } from '@nizam-os/ban-core';
 
 import type {
   DeclaredInternals,
   DeclaredResource,
 } from '../declare/declared-resource';
 
-import { BUILTIN_CATALOG, isErrorStatus } from '@netvark/ban-core';
-import { ERROR_CODES } from '@netvark/jsonapi-core';
+import { BUILTIN_CATALOG, isErrorStatus } from '@nizam-os/ban-core';
+import { ERROR_CODES } from '@nizam-os/jsonapi-core';
 
 import { internalsOf } from '../declare/declared-resource';
 import { QUOTA_EXCEEDED_CODE } from '../errors/quota-exceeded';
@@ -77,7 +77,7 @@ function checkAppErrors(caller: string, value: unknown): Catalog {
     Object.entries(value).map(([code, definition]) => {
       if (!isErrorDefinition(definition)) {
         throw new TypeError(
-          `${caller}.appErrors.${code}: must be an error definition of @netvark/ban-core: a 4xx or 5xx status, and title, code, type, and description strings when given`,
+          `${caller}.appErrors.${code}: must be an error definition of @nizam-os/ban-core: a 4xx or 5xx status, and title, code, type, and description strings when given`,
         );
       }
       return [code, definition];
@@ -133,10 +133,10 @@ function derivedCodes(
 /** Whose code a derived code would replace, if anyone's. */
 function ownerOf(code: string, appErrors: Catalog): string | undefined {
   if (Object.hasOwn(BUILTIN_CATALOG, code)) {
-    return 'a built-in code of @netvark/ban-core';
+    return 'a built-in code of @nizam-os/ban-core';
   }
   if (JSONAPI_CODES.has(code)) {
-    return 'a code of @netvark/jsonapi-core';
+    return 'a code of @nizam-os/jsonapi-core';
   }
   if (code === QUOTA_EXCEEDED_CODE) {
     return "resource-core's own code";
@@ -197,7 +197,7 @@ function targetConflicts(
 
 /**
  * The checked registry: `resources` every one a resource `declareResource`
- * returned, `appErrors` a `@netvark/ban-core` catalog fragment. Throws one
+ * returned, `appErrors` a `@nizam-os/ban-core` catalog fragment. Throws one
  * `TypeError`, prefixed by `caller`, listing every conflict of SPEC 4.2.
  */
 export function checkRegistry(

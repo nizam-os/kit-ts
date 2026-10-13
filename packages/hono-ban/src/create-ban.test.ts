@@ -1,6 +1,6 @@
 import type { Context } from 'hono';
 
-import type { ErrorReport } from '@netvark/ban-core';
+import type { ErrorReport } from '@nizam-os/ban-core';
 
 import { Hono } from 'hono';
 import { bearerAuth } from 'hono/bearer-auth';
@@ -8,7 +8,7 @@ import { HTTPException } from 'hono/http-exception';
 import { validator } from 'hono/validator';
 import { describe, expect, it } from 'vitest';
 
-import { fromRequest } from '@netvark/ban-core';
+import { fromRequest } from '@nizam-os/ban-core';
 
 import { createBan } from './create-ban';
 import { MALFORMED_JSON_MESSAGE } from './http-exception';
@@ -251,7 +251,7 @@ describe('ban.onError', () => {
   });
 });
 
-describe('createBan (@netvark/hono-ban)', () => {
+describe('createBan (@nizam-os/hono-ban)', () => {
   it('rejects the reserved catalog key onError', () => {
     expect(() =>
       createBan({ errors: { onError: { status: 400 } } as never }),

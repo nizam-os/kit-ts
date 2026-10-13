@@ -5,7 +5,7 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import { defineScope } from '@netvark/resource-core/server';
+import { defineScope } from '@nizam-os/resource-core/server';
 
 import { withoutTable } from '../test-support/boot-catalog';
 import { bootOptions } from '../test-support/boot-options';

@@ -1,7 +1,7 @@
 # ADR 0006: Thrown errors render in `errorHandler`; validators and `jsonApi()` answer their own
 
-- Status: superseded by ADR-0014 (errors are @netvark/ban-core errors; `errorHandler` is a
-  @netvark/hono-ban handler, and validators, `jsonApi()`, and the atomic endpoint throw instead of
+- Status: superseded by ADR-0014 (errors are @nizam-os/ban-core errors; `errorHandler` is a
+  @nizam-os/hono-ban handler, and validators, `jsonApi()`, and the atomic endpoint throw instead of
   rendering their own)
 - Date: 2026-10-08
 

@@ -8,9 +8,9 @@ import type { RawBuilder, SqlBool } from 'kysely';
  * public name, and the key as `"id"`.
  * @packageDocumentation
  */
-import type { PublicTable } from '@netvark/catalog-core';
-import type { DeclaredResource, FieldMeta } from '@netvark/resource-core';
-import type { ScopeValue, StorageWrite } from '@netvark/resource-core/server';
+import type { PublicTable } from '@nizam-os/catalog-core';
+import type { DeclaredResource, FieldMeta } from '@nizam-os/resource-core';
+import type { ScopeValue, StorageWrite } from '@nizam-os/resource-core/server';
 
 import type { ValueContext } from './values';
 

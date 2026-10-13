@@ -6,9 +6,9 @@
  * does not show: the member specs and the catalog.
  * @packageDocumentation
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
-import type { AnyResource } from '@netvark/jsonapi-core';
-import type { DefaultedKeysetInit } from '@netvark/keyset-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
+import type { DefaultedKeysetInit } from '@nizam-os/keyset-core';
 
 import type { ErrorEntry } from '../errors/error-entry';
 import type { ResourceErrors } from '../errors/error-types';
@@ -114,13 +114,13 @@ export interface DeclaredResource<
     TypedFields<TContext, TTable, TDecl>
   >;
   /**
-   * The `@netvark/keyset-core` definition of the list, everything but its
+   * The `@nizam-os/keyset-core` definition of the list, everything but its
    * cursor, which the server's `createDefineKeyset({ cursor })` adds
    * (SPEC 11.2).
    */
   readonly keyset: Typed<TTable, DefaultedKeysetInit, KeysetInitOf<TDecl>>;
   /**
-   * The `@netvark/jsonapi-core` definition (SPEC 11.1), built on first
+   * The `@nizam-os/jsonapi-core` definition (SPEC 11.1), built on first
    * read, which reads every target (SPEC 3.8).
    */
   readonly resource: Typed<

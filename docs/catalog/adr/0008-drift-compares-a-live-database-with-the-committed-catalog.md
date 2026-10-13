@@ -16,7 +16,7 @@ catalog at the deployed release states what the database should contain.
   with the same queries and normalization as `extract` inside a `REPEATABLE READ READ ONLY`
   transaction (replaying nothing, and unable to write even with a privileged URL), and compares it
   with the committed catalog file.
-- The comparison is structural (`diffCatalogs` in `@netvark/catalog-core`): every table, column,
+- The comparison is structural (`diffCatalogs` in `@nizam-os/catalog-core`): every table, column,
   constraint, index, policy, enum, domain, and extension present on one side only, and every member
   whose value differs, reported with its path and both values.
 - The command prints the differences grouped by object kind, or the structured diff as JSON with

@@ -5,8 +5,8 @@ Formatting and message isolation for server-rendered applications that use
 
 | Package                                                    | What it is                                                                                                                                                                                                                                                                                                    |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@netvark/intl-core`](../../packages/intl-core)           | Formatters that read the locale and the reader's time zone on every call, each through a cached `Intl` object built for a formatting tag that names its calendar and digits; the reader's time zone from a cookie, the same during SSR and after hydration; `isolate()`. Web standards only, no dependencies. |
-| [`@netvark/paraglide-intl`](../../packages/paraglide-intl) | Paraglide's `compile()` with every interpolated value wrapped in Unicode bidi isolates and every message that formats a value refused, and `watch()`, which compiles again on each change in development. Re-exports the core.                                                                                |
+| [`@nizam-os/intl-core`](../../packages/intl-core)           | Formatters that read the locale and the reader's time zone on every call, each through a cached `Intl` object built for a formatting tag that names its calendar and digits; the reader's time zone from a cookie, the same during SSR and after hydration; `isolate()`. Web standards only, no dependencies. |
+| [`@nizam-os/paraglide-intl`](../../packages/paraglide-intl) | Paraglide's `compile()` with every interpolated value wrapped in Unicode bidi isolates and every message that formats a value refused, and `watch()`, which compiles again on each change in development. Re-exports the core.                                                                                |
 
 Why each piece exists, with the measurements, is in [`DESIGN.md`](DESIGN.md); the contract is in
 [`SPEC.md`](SPEC.md); the decisions are in [`adr/`](adr).
@@ -14,22 +14,22 @@ Why each piece exists, with the measurements, is in [`DESIGN.md`](DESIGN.md); th
 ## Install
 
 ```bash
-pnpm add @netvark/intl-core                               # formatters and time zones
-pnpm add -D @netvark/paraglide-intl @inlang/paraglide-js  # the compile step
+pnpm add @nizam-os/intl-core                               # formatters and time zones
+pnpm add -D @nizam-os/paraglide-intl @inlang/paraglide-js  # the compile step
 ```
 
-`@netvark/intl-core` runs on Node 22.12+, Bun, Deno, Cloudflare Workers, and browsers.
-`@netvark/paraglide-intl` runs at build time on Node 22.12+, Bun, and Deno 2.6.10+, and takes
+`@nizam-os/intl-core` runs on Node 22.12+, Bun, Deno, Cloudflare Workers, and browsers.
+`@nizam-os/paraglide-intl` runs at build time on Node 22.12+, Bun, and Deno 2.6.10+, and takes
 `@inlang/paraglide-js` 2.11 or later as its peer. It loads projects with the inlang SDK that
 Paraglide itself depends on, so there is no SDK version to install or match. It re-exports the core
 for build scripts, but its entry also loads Paraglide's compiler, so application code imports the
-formatters from `@netvark/intl-core`.
+formatters from `@nizam-os/intl-core`.
 
 ## Quick start
 
 ```ts
 // src/lib/intl.ts, shared by the server and the browser
-import { createIntl, createTimeZone } from '@netvark/intl-core';
+import { createIntl, createTimeZone } from '@nizam-os/intl-core';
 
 import { getLocale } from './paraglide/runtime.js';
 
@@ -63,7 +63,7 @@ export default {
 
 ```ts
 // scripts/compile-messages.ts, run before the bundler instead of Paraglide's compile()
-import { compile } from '@netvark/paraglide-intl';
+import { compile } from '@nizam-os/paraglide-intl';
 
 const { warnings } = await compile({ project: './project.inlang', outdir: './src/lib/paraglide' });
 for (const warning of warnings) console.warn(warning);

@@ -8,10 +8,10 @@
 An application defines one keyset per collection, and most of them share the cursor secret, the page
 bounds, and the text-search configuration. Repeating those in every definition invites drift: one
 keyset left on the old secret after a rotation, one with another maximum page size, one searching
-with `simple` where the rest stem with `english`. `@netvark/jsonapi-core` already solves the same
+with `simple` where the rest stem with `english`. `@nizam-os/jsonapi-core` already solves the same
 problem for resource links with `createDefineResource(defaults)`
 ([jsonapi ADR 0015](../../jsonapi/adr/0015-resource-links-by-convention.md)), and
-`@netvark/resource-core` will derive keysets from one configured definer.
+`@nizam-os/resource-core` will derive keysets from one configured definer.
 
 Two merge rules were possible. Replacing a whole member (the definition's `cursor` replaces the
 default `cursor`) forces a definition that wants only a shorter `ttl` to repeat the secret, which is
@@ -28,7 +28,7 @@ https://www.postgresql.org/docs/current/textsearch-controls.html
 
 ## Decision
 
-`createDefineKeyset(defaults)` in `@netvark/keyset-core` takes
+`createDefineKeyset(defaults)` in `@nizam-os/keyset-core` takes
 `{ cursor?, page?, search?: { config? } }`, validates it at the call with the rules `defineKeyset`
 applies to the same options (ADR 0011), and returns a definer. For each definition the definer
 builds `cursor` as `{ ...defaults.cursor, ...definition.cursor }` and `page` as
@@ -39,7 +39,7 @@ spelled the defaults out. The merged cursor must have a secret.
 
 The types follow the values: with a `cursor` default, the definition's `cursor` is optional and
 partial; without one, it stays required, and `createDefineKeyset()` types as `defineKeyset`. Each
-definer owns its defaults; there is no global configuration. `@netvark/kysely-keyset` exports its
+definer owns its defaults; there is no global configuration. `@nizam-os/kysely-keyset` exports its
 own `createDefineKeyset<DB>(defaults)`, which keeps every compile-time name check and delegates the
 merge to the core's.
 

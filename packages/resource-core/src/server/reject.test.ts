@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/ban-core';
-import { jsonApi } from '@netvark/ban-core/formats/json-api';
+import { createBan } from '@nizam-os/ban-core';
+import { jsonApi } from '@nizam-os/ban-core/formats/json-api';
 
 import { Things } from '../test-support/violations';
 import { reject, Rejection, rejectionError } from './reject';

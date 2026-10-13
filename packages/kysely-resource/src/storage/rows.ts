@@ -15,8 +15,8 @@ import type { RawBuilder } from 'kysely';
  * @ref https://www.postgresql.org/docs/18/sql-insert.html (DEFAULT VALUES; RETURNING)
  * @packageDocumentation
  */
-import type { DeclaredResource } from '@netvark/resource-core';
-import type { PublicRow, StorageWrite } from '@netvark/resource-core/server';
+import type { DeclaredResource } from '@nizam-os/resource-core';
+import type { PublicRow, StorageWrite } from '@nizam-os/resource-core/server';
 
 import type { KyselyTransaction } from './transaction';
 import type { Row, ValueContext } from './values';

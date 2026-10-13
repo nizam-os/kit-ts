@@ -1,7 +1,7 @@
 {
-  "name": "@netvark/resource-ui",
+  "name": "@nizam-os/resource-ui",
   "version": "0.0.0",
-  "description": "Forms, lists, and record and bulk actions from @netvark/resource-core declarations, for any framework: labels and options from the application's messages, validation in the server's words, the write a form sends, refusals on their fields, list state as TanStack Table v9 holds it, and actions held to the writes the declaration serves, a selection's sent in one Atomic Operations request.",
+  "description": "Forms, lists, and record and bulk actions from @nizam-os/resource-core declarations, for any framework: labels and options from the application's messages, validation in the server's words, the write a form sends, refusals on their fields, list state as TanStack Table v9 holds it, and actions held to the writes the declaration serves, a selection's sent in one Atomic Operations request.",
   "keywords": [
     "atomic-operations",
     "bulk-actions",
@@ -11,13 +11,13 @@
     "standard-schema",
     "tanstack-table"
   ],
-  "homepage": "https://github.com/netvark/netvark/tree/main/packages/resource-ui#readme",
-  "bugs": "https://github.com/netvark/netvark/issues",
+  "homepage": "https://github.com/nizam-os/kit/tree/main/packages/resource-ui#readme",
+  "bugs": "https://github.com/nizam-os/kit/issues",
   "license": "MIT",
   "author": "Ali Issa (https://github.com/ali-issa)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netvark/netvark.git",
+    "url": "git+https://github.com/nizam-os/kit.git",
     "directory": "packages/resource-ui"
   },
   "files": [
@@ -52,19 +52,19 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@netvark/jsonapi-core": "workspace:^"
+    "@nizam-os/jsonapi-core": "workspace:^"
   },
   "devDependencies": {
-    "@netvark/jsonapi-client": "workspace:^",
-    "@netvark/resource-core": "workspace:^",
-    "@netvark/tanstack-query-jsonapi": "workspace:^",
+    "@nizam-os/jsonapi-client": "workspace:^",
+    "@nizam-os/resource-core": "workspace:^",
+    "@nizam-os/tanstack-query-jsonapi": "workspace:^",
     "@tanstack/query-core": "catalog:",
     "@tanstack/table-core": "9.2.8",
     "zod": "catalog:"
   },
   "peerDependencies": {
-    "@netvark/jsonapi-client": "^0.1.0",
-    "@netvark/resource-core": "^0.1.0"
+    "@nizam-os/jsonapi-client": "^0.1.0",
+    "@nizam-os/resource-core": "^0.1.0"
   },
   "engines": {
     "node": ">=22.12.0"

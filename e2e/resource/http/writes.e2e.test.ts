@@ -1,6 +1,6 @@
 /**
  * The contacts slice's writes over a socket (epic #32; resource SPEC 19.3,
- * 19.6): `@hono/node-server` serves the routes of `@netvark/hono-resource`
+ * 19.6): `@hono/node-server` serves the routes of `@nizam-os/hono-resource`
  * over the runtime, on PGlite and on the server `RESOURCE_PG_URL` names,
  * and every answer is held to the document the server serves
  * (`support/contacts-server.ts`). A create fills what it leaves out from
@@ -18,7 +18,7 @@ import type { ContactsServer } from '../support/contacts-server.ts';
 
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { localizeIssues } from '@netvark/resource-core';
+import { localizeIssues } from '@nizam-os/resource-core';
 
 import { contactMessages } from '../localization/contact-messages.ts';
 import { Contacts } from '../resources/contacts.ts';

@@ -16,16 +16,16 @@
  * `work` rejected, and it rejects with the failure, mapped, unless `work`
  * rejected with another value. Not published with the package.
  */
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 import type {
   Actor,
   Domain,
   PublicRow,
   ResourceOperations,
   ResourceRuntime,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
-import { jsonApiError } from '@netvark/hono-jsonapi';
+import { jsonApiError } from '@nizam-os/hono-jsonapi';
 
 import {
   checkConstraints,

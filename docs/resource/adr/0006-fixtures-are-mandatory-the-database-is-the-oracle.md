@@ -25,7 +25,7 @@ its CHECK gives the database's verdict on it, and the stored text its canonical 
   through the Zod schema and through the replayed database, and generated boundary fixtures for
   every member; a disagreement fails the check with the value and how the two verdicts differ.
   `oracleCases` (SPEC 7.3) builds what it runs.
-- The default wire forms and the rule translations of `@netvark/resource-core` are proven the same
+- The default wire forms and the rule translations of `@nizam-os/resource-core` are proven the same
   way in its end-to-end suite, on PGlite and on PostgreSQL 14 and 18 servers.
 
 ## Consequences

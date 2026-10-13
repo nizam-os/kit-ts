@@ -5,7 +5,7 @@
  * validators for.
  * @packageDocumentation
  */
-import type { PublicColumn, PublicTable } from '@netvark/catalog-core';
+import type { PublicColumn, PublicTable } from '@nizam-os/catalog-core';
 
 import type { DefinerContext } from './check-config';
 import type {

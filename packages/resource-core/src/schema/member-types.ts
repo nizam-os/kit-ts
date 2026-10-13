@@ -12,7 +12,7 @@ import type {
   PublicColumn,
   PublicDomain,
   PublicTable,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 /** The columns with a `notNull` rule among the enforced CHECKs over exactly them; computed once per table. */
 type NotNullRuleColumns<TTableDef extends PublicTable> = {

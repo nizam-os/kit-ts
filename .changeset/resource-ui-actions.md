@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-ui': minor
+'@nizam-os/resource-ui': minor
 ---
 
 Describe a row's and a selection's actions from the declaration. `recordActions(resource, options)`

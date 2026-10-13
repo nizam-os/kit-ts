@@ -2,7 +2,7 @@ import { PGlite } from '@electric-sql/pglite';
 import { Kysely, PGliteDialect } from 'kysely';
 import { describe, expect, it } from 'vitest';
 
-import { contractFixture } from '@netvark/resource-core/testing';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { storageOptions } from '../test-support/database';
 import { createKyselyStorage } from './create-storage';

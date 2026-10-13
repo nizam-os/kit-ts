@@ -3,7 +3,7 @@
  * default (SPEC 2.4, 2.8).
  * @packageDocumentation
  */
-import type { ColumnDefault, TypeKind } from '@netvark/catalog-core';
+import type { ColumnDefault, TypeKind } from '@nizam-os/catalog-core';
 
 import type { CheckSubject } from '../recognize/subject';
 import type { TypeModifiers } from './modifiers';

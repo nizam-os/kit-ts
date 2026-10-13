@@ -1,8 +1,8 @@
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import { describe, expect, it } from 'vitest';
 
-import { createDeclareResource, defaultMessages } from '@netvark/resource-core';
+import { createDeclareResource, defaultMessages } from '@nizam-os/resource-core';
 
 import { messages } from '../test-support/messages';
 import { publicCatalog } from '../test-support/public-catalog';

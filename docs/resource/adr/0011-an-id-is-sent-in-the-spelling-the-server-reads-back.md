@@ -52,7 +52,7 @@ https://w3c.github.io/webcrypto/#Crypto-method-randomUUID
 - A `citext` key, a `numeric` key without a scale, and an unbounded `bpchar` key keep the text sent:
   no spelling is the value's, so such ids compare in PostgreSQL. The SPEC and the README say so.
 - A runtime looks a URL's id up as `schema.id` outputs it and passes that on.
-  `@netvark/jsonapi-core` matches an update's document id to the URL's by `validate.id`'s output, so
+  `@nizam-os/jsonapi-core` matches an update's document id to the URL's by `validate.id`'s output, so
   a client that requests `/contacts/ABC…` and sends back the document the server gave it, with
   `abc…`, is no conflict; `validate.id` therefore serves every resource, not only one with client
   ids.

@@ -23,7 +23,7 @@ Declarations are typed by the catalog, so it must be a TypeScript value whose li
 
 - Each catalog file is a header comment and `export const catalog = <literal> as const;`
   (`publicCatalog` in the public file). Consumers name the type with `typeof catalog`, which leaves
-  the names `Catalog` and `PublicCatalog` to the model types of `@netvark/catalog-core`. The literal
+  the names `Catalog` and `PublicCatalog` to the model types of `@nizam-os/catalog-core`. The literal
   is the `JSON.stringify` output of the model with two-space indentation, which is valid TypeScript
   and parses back as JSON, so `extract --check` and drift read committed files without evaluating
   them. The literal starts with a `format` member, incremented on any change to the model's shape,

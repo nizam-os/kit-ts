@@ -1,5 +1,5 @@
 ---
-'@netvark/kysely-resource': minor
+'@nizam-os/kysely-resource': minor
 ---
 
 The Kysely storage reads and writes rows: `get`, `lock`, `create`, `update`, `remove`, `count`,

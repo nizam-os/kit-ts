@@ -16,8 +16,8 @@ import type { Method } from './support/openapi-contract.ts';
 import { Validator } from '@seriousme/openapi-schema-validator';
 import { describe, expect, it } from 'vitest';
 
-import { resourceDocument } from '@netvark/jsonapi-core';
-import { openapi } from '@netvark/resource-core/openapi';
+import { resourceDocument } from '@nizam-os/jsonapi-core';
+import { openapi } from '@nizam-os/resource-core/openapi';
 
 import { Calls } from './resources/calls.ts';
 import { APP_RESOURCES } from './runtime/api.ts';

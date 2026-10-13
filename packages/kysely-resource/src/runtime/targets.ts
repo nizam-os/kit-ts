@@ -11,13 +11,13 @@
  * @ref https://www.postgresql.org/docs/18/ddl-rowsecurity.html ("Referential integrity checks ... always bypass row security")
  * @packageDocumentation
  */
-import type { DeclaredResource } from '@netvark/resource-core';
-import type { StorageWrite } from '@netvark/resource-core/server';
+import type { DeclaredResource } from '@nizam-os/resource-core';
+import type { StorageWrite } from '@nizam-os/resource-core/server';
 
 import type { StorageConfig } from '../storage/options';
 import type { KyselyTransaction } from '../storage/transaction';
 
-import { relationshipTargets } from '@netvark/resource-core/server';
+import { relationshipTargets } from '@nizam-os/resource-core/server';
 
 import { rowExists } from '../storage/rows';
 

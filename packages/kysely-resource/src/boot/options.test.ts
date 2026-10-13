@@ -4,7 +4,7 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import { contractFixture } from '@netvark/resource-core/testing';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { createResourceRuntime } from '../runtime/create-runtime';
 import { bootOptions } from '../test-support/boot-options';
@@ -42,7 +42,7 @@ describe('boot: options (resource SPEC 18.3)', () => {
         ...options,
         resources: { ...BEHAVIORS, tasks: { ...BEHAVIORS.tasks } },
       }),
-      'resources.tasks must be a behavior defineResource returned (a second installed copy of @netvark/resource-core also fails this)',
+      'resources.tasks must be a behavior defineResource returned (a second installed copy of @nizam-os/resource-core also fails this)',
     ],
     [
       'scopes',

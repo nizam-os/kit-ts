@@ -5,7 +5,7 @@ import type { Expression, RawBuilder, SqlBool } from 'kysely';
  * request planned by the declared resource's keyset definition, with the
  * transaction's scope values as the cursor context, so a cursor issued in
  * one scope is refused in another. The plan is rendered with
- * `@netvark/kysely-keyset`'s `renderTarget` and `renderPredicate` onto one
+ * `@nizam-os/kysely-keyset`'s `renderTarget` and `renderPredicate` onto one
  * statement over the schema-qualified table aliased as the plan's table,
  * where the scope predicate, the plan's filter, and its seek hold. Each
  * sort key is selected as text, under its plan alias behind a `.`, which no
@@ -18,7 +18,7 @@ import type { Expression, RawBuilder, SqlBool } from 'kysely';
  * limited again, since a union keeps no order (keyset ADR 0020).
  * With `total`, a second statement counts the rows of the scope the filter
  * selects. `list` never counts rows to find a page.
- * @ref https://github.com/netvark/netvark/blob/main/docs/keyset/SPEC.md (section 6, the query plan)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md (section 6, the query plan)
  * @ref https://www.postgresql.org/docs/18/queries-order.html (NULLS FIRST / LAST)
  * @ref https://www.postgresql.org/docs/18/queries-union.html (no order; LIMIT on an operand needs parentheses)
  * @packageDocumentation
@@ -29,22 +29,22 @@ import type {
   Keyset,
   PlanKey,
   Predicate,
-} from '@netvark/keyset-core';
-import type { AnyDatabase, RenderContext } from '@netvark/kysely-keyset';
-import type { DeclaredResource } from '@netvark/resource-core';
+} from '@nizam-os/keyset-core';
+import type { AnyDatabase, RenderContext } from '@nizam-os/kysely-keyset';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 import type {
   ListOptions,
   PublicRow,
   StorageListRequest,
   StoragePage,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { KyselyTransaction } from './transaction';
 import type { Row, ValueContext } from './values';
 
 import { expressionBuilder, sql } from 'kysely';
 
-import { renderPredicate, renderTarget } from '@netvark/kysely-keyset';
+import { renderPredicate, renderTarget } from '@nizam-os/kysely-keyset';
 
 import { scopePredicate } from './scope';
 import { tableName, tableOf } from './sql';

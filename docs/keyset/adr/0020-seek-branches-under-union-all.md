@@ -64,11 +64,11 @@ For `-title` the planner joined the semi join's 202 keys to a sequential scan of
   union is ordered by the value aliases in the keys' directions and null placements and limited to
   the plan's limit again. A page therefore reads at most one limit of rows per branch and sorts at
   most that many in all.
-- `@netvark/kysely-keyset` builds on the caller's query, and Kysely does not parenthesize the query
+- `@nizam-os/kysely-keyset` builds on the caller's query, and Kysely does not parenthesize the query
   a set operation starts from. Its union therefore starts with the caller's query where `false`
   holds: an operand that holds no row and names the union's columns. Every branch follows it.
-  `@netvark/drizzle-keyset`'s builder parenthesizes every operand, so its first branch leads.
-  `@netvark/kysely-resource` writes its statement itself.
+  `@nizam-os/drizzle-keyset`'s builder parenthesizes every operand, so its first branch leads.
+  `@nizam-os/kysely-resource` writes its statement itself.
 
 ## Consequences
 
@@ -76,11 +76,11 @@ An index on the sort's columns in the sort's directions, followed by the key, no
 branch, so the pages inside a tie and after a value of a nullable key read about one page of
 entries, as the others do since ADR 0016. A page reads at most one limit of rows per branch, and a
 seek has at most one branch per key plus one per nullable key. A sort with no index on its first key
-reads its rows once per branch instead of once; `@netvark/kysely-resource` already warns at boot
+reads its rows once per branch instead of once; `@nizam-os/kysely-resource` already warns at boot
 about a sortable member that no index serves.
 
 Measured on stern after the change, with the setup of issue #101 and its row security, through
-`@netvark/kysely-resource`'s own list statement: `-createdAt` inside the tie reads 101 index entries
+`@nizam-os/kysely-resource`'s own list statement: `-createdAt` inside the tie reads 101 index entries
 in 0.17 ms, `-title` after a value 102 in 0.15 ms, and `name` 101 in 0.13 ms, each page holding the
 rows an offset over the same order gives. When each branch arrives in the union's order, the planner
 merges the branches (`Merge Append`) and stops at the page's limit, so a page reads its own rows and

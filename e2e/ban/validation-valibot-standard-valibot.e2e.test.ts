@@ -2,7 +2,7 @@
  * Valibot validation over HTTP (SPEC 8.1, 8.3, 8.4, 8.6; 7.1.3 and 7.2.2 for
  * the rendered entries).
  *
- * Proves that `hook(ban)` from `@netvark/hono-ban/valibot` turns a `vValidator`
+ * Proves that `hook(ban)` from `@nizam-os/hono-ban/valibot` turns a `vValidator`
  * failure into a 422 with one entry per issue (pointer for `json`, name for
  * `query` and `header`), that `fromValibotIssues` and `toIssues` called from
  * a route produce the same body as the hook, and that the hook is format
@@ -16,9 +16,9 @@ import { Hono } from 'hono';
 import * as v from 'valibot';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
-import { jsonApi } from '@netvark/hono-ban/formats/json-api';
-import { fromValibotIssues, hook, toIssues } from '@netvark/hono-ban/valibot';
+import { createBan } from '@nizam-os/hono-ban';
+import { jsonApi } from '@nizam-os/hono-ban/formats/json-api';
+import { fromValibotIssues, hook, toIssues } from '@nizam-os/hono-ban/valibot';
 
 import { startServer } from './support/server';
 
@@ -113,7 +113,7 @@ async function postJson(
 /** Handler reached only when the validator accepted the request. */
 const ok = (): Response => Response.json({ ok: true });
 
-describe('@netvark/hono-ban/valibot hook with vValidator', () => {
+describe('@nizam-os/hono-ban/valibot hook with vValidator', () => {
   const ban = createBan();
   const app = new Hono();
   app.onError(ban.onError());

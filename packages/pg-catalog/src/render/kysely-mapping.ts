@@ -8,7 +8,7 @@
  * @ref https://github.com/postgres/postgres/blob/REL_18_STABLE/src/backend/access/common/printtup.c (SendRowDescriptionMessage sends getBaseType)
  * @packageDocumentation
  */
-import type { Catalog } from '@netvark/catalog-core';
+import type { Catalog } from '@nizam-os/catalog-core';
 
 import type { KyselyDriver } from '../config';
 import type {

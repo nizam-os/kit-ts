@@ -1,7 +1,7 @@
 {
-  "name": "@netvark/tanstack-form-resource",
+  "name": "@nizam-os/tanstack-form-resource",
   "version": "0.0.0",
-  "description": "TanStack Form options and refusals for @netvark/resource-ui's form models, for every adapter: a form's values and validator from the model, and a refused write's texts on their fields.",
+  "description": "TanStack Form options and refusals for @nizam-os/resource-ui's form models, for every adapter: a form's values and validator from the model, and a refused write's texts on their fields.",
   "keywords": [
     "form-core",
     "forms",
@@ -9,13 +9,13 @@
     "jsonapi",
     "tanstack-form"
   ],
-  "homepage": "https://github.com/netvark/netvark/tree/main/packages/tanstack-form-resource#readme",
-  "bugs": "https://github.com/netvark/netvark/issues",
+  "homepage": "https://github.com/nizam-os/kit/tree/main/packages/tanstack-form-resource#readme",
+  "bugs": "https://github.com/nizam-os/kit/issues",
   "license": "MIT",
   "author": "Ali Issa (https://github.com/ali-issa)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netvark/netvark.git",
+    "url": "git+https://github.com/nizam-os/kit.git",
     "directory": "packages/tanstack-form-resource"
   },
   "files": [
@@ -50,14 +50,14 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@netvark/jsonapi-client": "workspace:^",
-    "@netvark/resource-core": "workspace:^",
-    "@netvark/resource-ui": "workspace:^",
+    "@nizam-os/jsonapi-client": "workspace:^",
+    "@nizam-os/resource-core": "workspace:^",
+    "@nizam-os/resource-ui": "workspace:^",
     "@tanstack/form-core": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {
-    "@netvark/resource-ui": "^0.1.0",
+    "@nizam-os/resource-ui": "^0.1.0",
     "@tanstack/form-core": "^1.17.0"
   },
   "peerDependenciesMeta": {

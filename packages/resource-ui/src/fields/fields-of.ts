@@ -8,7 +8,7 @@
  * control a filter takes.
  * @packageDocumentation
  */
-import type { FieldMeta, Label, Messages } from '@netvark/resource-core';
+import type { FieldMeta, Label, Messages } from '@nizam-os/resource-core';
 
 import type { DeclaredShape } from '../internal/declared';
 import type { TypeLabels } from '../internal/labels';

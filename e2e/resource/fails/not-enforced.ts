@@ -5,7 +5,7 @@
  * raises. Each `// error:` names a text the diagnostic on the next line
  * must contain.
  */
-import { createDeclareResource } from '@netvark/resource-core';
+import { createDeclareResource } from '@nizam-os/resource-core';
 
 import { publicCatalog } from '../fixtures/postgres18/public-catalog.ts';
 import { Owners } from '../resources/imported-contacts.ts';

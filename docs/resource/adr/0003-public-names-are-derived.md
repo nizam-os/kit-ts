@@ -14,7 +14,7 @@ JSON:API 1.1 constrains member names (letters, digits, and U+0080 and above anyw
 space only in the middle), requires type values to follow the same rules, puts a resource's fields
 in one namespace with `type` and `id`, and recommends that keys referencing related resources
 (`author_id`) appear as relationships rather than attributes. Many applications already map
-snake_case columns to camelCase keys with Kysely's `CamelCasePlugin`, and `@netvark/pg-catalog`
+snake_case columns to camelCase keys with Kysely's `CamelCasePlugin`, and `@nizam-os/pg-catalog`
 renders its `camelCase` Kysely types with a tested port of that conversion. PostgreSQL 18 names a
 column's NOT NULL constraint `<table>_<column>_not_null`, though a 23502 error still carries no
 constraint name on any supported major (checked on 14.19 and 18.3).
@@ -32,15 +32,15 @@ https://kysely.dev/docs/plugins#camel-case-plugin
   without its `_id` suffix, converted the same way (`owner_id` is `owner`). An error code is the
   constraint name upper-cased with `String.prototype.toUpperCase`; the code of a column's NOT NULL
   rule comes from PostgreSQL 18's name for it, `<table>_<column>_not_null`.
-- The conversion has one implementation, shared with `@netvark/pg-catalog`'s `camelCase` Kysely
-  types and moved to `@netvark/catalog-core` for that purpose, plus a type-level twin in
-  `@netvark/resource-core`; one table of cases pins both.
+- The conversion has one implementation, shared with `@nizam-os/pg-catalog`'s `camelCase` Kysely
+  types and moved to `@nizam-os/catalog-core` for that purpose, plus a type-level twin in
+  `@nizam-os/resource-core`; one table of cases pins both.
 - `as` renames a type, a field, or a relationship; `code` renames an error code. No other option
   takes a public name, so nothing else can introduce one.
 - Every derived or overridden name is checked: types, fields, and relationships are JSON:API member
   names, fields and relationships share one namespace that excludes `id` and `type`, types are
   unique in a registry, and codes match `^[A-Z][A-Z0-9_]*$` and are unique across the registry, the
-  application's own codes, and `@netvark/jsonapi-core`'s. A name that fails, such as a column called
+  application's own codes, and `@nizam-os/jsonapi-core`'s. A name that fails, such as a column called
   `type` or a foreign key not ending in `_id`, needs `as` or `code`. TypeScript reports what it can
   see; the rest throws `TypeError` naming the option path.
 - A foreign-key column is exposed only as a relationship, never as an attribute.

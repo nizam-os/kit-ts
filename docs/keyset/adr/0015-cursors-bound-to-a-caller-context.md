@@ -11,7 +11,7 @@ two organizations asking for the same page send identical requests. A cursor iss
 then accepted inside the other: it can be replayed across scopes, and the seek values of one
 tenant's row steer another tenant's query, skipping rows that tenant should see. The scope is the
 server's knowledge, not the client's, and the adapter cannot read reliable values back out of an
-arbitrary Kysely `where` clause. Issue #56; `@netvark/kysely-resource` will pass its scope values
+arbitrary Kysely `where` clause. Issue #56; `@nizam-os/kysely-resource` will pass its scope values
 here.
 
 Two shapes were possible. A `context` member on the request would sit next to client input, and an

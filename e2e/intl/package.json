@@ -1,8 +1,8 @@
 {
-  "name": "@netvark/intl-e2e",
+  "name": "@nizam-os/intl-e2e",
   "version": "0.0.0",
   "private": true,
-  "description": "End-to-end tests: a consumer of the built @netvark/intl-core and @netvark/paraglide-intl packages that compiles Paraglide projects, lays text out with a conforming implementation of the Unicode Bidirectional Algorithm, and runs on Bun, Deno, and workerd.",
+  "description": "End-to-end tests: a consumer of the built @nizam-os/intl-core and @nizam-os/paraglide-intl packages that compiles Paraglide projects, lays text out with a conforming implementation of the Unicode Bidirectional Algorithm, and runs on Bun, Deno, and workerd.",
   "type": "module",
   "imports": {
     "#compiled-messages": {
@@ -22,8 +22,8 @@
   "devDependencies": {
     "@inlang/paraglide-js": "catalog:",
     "@inlang/plugin-message-format": "catalog:",
-    "@netvark/intl-core": "workspace:*",
-    "@netvark/paraglide-intl": "workspace:*",
+    "@nizam-os/intl-core": "workspace:*",
+    "@nizam-os/paraglide-intl": "workspace:*",
     "@types/jsdom": "30.0.0",
     "@types/node": "catalog:",
     "bidi-js": "1.1.0",

@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   FIRST_STRONG_ISOLATE,
   POP_DIRECTIONAL_ISOLATE,
-} from '@netvark/intl-core';
+} from '@nizam-os/intl-core';
 
 import { isolateBundle, isolatePattern } from './isolate-patterns';
 import { bundle, text, variable } from './test-support/bundles';

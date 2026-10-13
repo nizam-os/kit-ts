@@ -3,7 +3,7 @@
  * for an application's test suite, which runs them without a database.
  * @packageDocumentation
  */
-import type { DomainShape } from '@netvark/resource-core/server';
+import type { DomainShape } from '@nizam-os/resource-core/server';
 
 import type { RuntimeOptions } from '../runtime/types';
 import type { BootReport } from './report';

@@ -7,8 +7,8 @@
  * @ref https://www.postgresql.org/docs/18/functions-comparisons.html#FUNCTIONS-COMPARISONS-ANY-SOME
  * @packageDocumentation
  */
-import type { DeclaredResource } from '@netvark/resource-core';
-import type { PublicRow } from '@netvark/resource-core/server';
+import type { DeclaredResource } from '@nizam-os/resource-core';
+import type { PublicRow } from '@nizam-os/resource-core/server';
 
 import type { KyselyTransaction } from './transaction';
 import type { Row, ValueContext } from './values';

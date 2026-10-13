@@ -1,6 +1,6 @@
 ---
-'@netvark/kysely-resource': patch
-'@netvark/resource-core': patch
+'@nizam-os/kysely-resource': patch
+'@nizam-os/resource-core': patch
 ---
 
 The Kysely storage adapter reads a `char(n)` member, key, or relationship padded to n, as PostgreSQL

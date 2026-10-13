@@ -10,7 +10,7 @@
 import type { DeclaredResource } from '../declare/declared-resource';
 import type { ErrorEntry } from '../errors/error-entry';
 
-import { BanError } from '@netvark/ban-core';
+import { BanError } from '@nizam-os/ban-core';
 
 import { KIND_DETAIL } from '../errors/error-entry';
 import { memberItems, memberTokens } from './member-items';

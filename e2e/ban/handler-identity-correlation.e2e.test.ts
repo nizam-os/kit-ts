@@ -14,15 +14,15 @@ import type {
   EmptyCatalog,
   ErrorReport,
   HandlerOptions,
-} from '@netvark/hono-ban';
+} from '@nizam-os/hono-ban';
 
 import type { RunningServer } from './support/server';
 
 import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan, defineFormat, parseTraceparent } from '@netvark/hono-ban';
-import { problemDetails } from '@netvark/hono-ban/formats/problem-details';
+import { createBan, defineFormat, parseTraceparent } from '@nizam-os/hono-ban';
+import { problemDetails } from '@nizam-os/hono-ban/formats/problem-details';
 
 import { startServer } from './support/server';
 

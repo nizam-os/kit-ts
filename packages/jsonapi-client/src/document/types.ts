@@ -12,7 +12,7 @@ import type {
   Links,
   Meta,
   Relationships,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 /** A resource identifier as a record's linkage holds it. */
 export interface Identifier<TType extends string = string> {

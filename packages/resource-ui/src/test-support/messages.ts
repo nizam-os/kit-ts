@@ -8,9 +8,9 @@
  * @ref https://paraglidejs.com/basics#dynamic-messages
  * @packageDocumentation
  */
-import type { Label, Message, Messages } from '@netvark/resource-core';
+import type { Label, Message, Messages } from '@nizam-os/resource-core';
 
-import { defaultMessages, defineMessages } from '@netvark/resource-core';
+import { defaultMessages, defineMessages } from '@nizam-os/resource-core';
 
 import { RESOURCES } from './resources';
 

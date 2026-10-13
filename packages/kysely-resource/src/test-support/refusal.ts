@@ -1,12 +1,12 @@
 /**
  * What an operation rejected with, as a client receives it: the
  * `BanError`, its status, and the JSON:API error objects
- * `@netvark/jsonapi-core` renders of it.
+ * `@nizam-os/jsonapi-core` renders of it.
  */
-import type { BanError } from '@netvark/ban-core';
-import type { ErrorObject } from '@netvark/jsonapi-core';
+import type { BanError } from '@nizam-os/ban-core';
+import type { ErrorObject } from '@nizam-os/jsonapi-core';
 
-import { errorObjects, isBanError } from '@netvark/jsonapi-core';
+import { errorObjects, isBanError } from '@nizam-os/jsonapi-core';
 
 /** A refusal: the error and the objects a client receives. */
 export interface Refusal {

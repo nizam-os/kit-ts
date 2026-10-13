@@ -1,5 +1,5 @@
 /**
- * `@netvark/keyset-core`: keyset pagination for any JavaScript runtime, database-free.
+ * `@nizam-os/keyset-core`: keyset pagination for any JavaScript runtime, database-free.
  * `defineKeyset` validates a definition (`createDefineKeyset` configures one
  * with an application's shared defaults); `plan` turns a request into a
  * query plan an adapter renders; `page` assembles the result with signed

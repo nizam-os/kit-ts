@@ -12,8 +12,8 @@ import type {
   CreateInput,
   UpdateInput,
   WriteResult,
-} from '@netvark/jsonapi-client';
-import type { AnyResource } from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-client';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
 
 import {
   InfiniteQueryObserver,
@@ -23,8 +23,8 @@ import {
 } from '@tanstack/query-core';
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { createClients, createTransport } from '@netvark/jsonapi-client';
-import { createDefineResource } from '@netvark/jsonapi-core';
+import { createClients, createTransport } from '@nizam-os/jsonapi-client';
+import { createDefineResource } from '@nizam-os/jsonapi-core';
 
 import { resourceQueries } from './queries';
 

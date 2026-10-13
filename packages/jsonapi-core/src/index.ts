@@ -1,14 +1,14 @@
 /**
- * `@netvark/jsonapi-core`: JSON:API 1.1 for any JavaScript runtime. Resource
+ * `@nizam-os/jsonapi-core`: JSON:API 1.1 for any JavaScript runtime. Resource
  * definitions, document building, query parsing, request document parsing,
  * content negotiation, and the Cursor Pagination profile, all as functions
  * over plain values; nothing here knows about a web framework. The Atomic
- * Operations extension lives in `@netvark/jsonapi-core/atomic`; the Hono integration
- * is the `@netvark/hono-jsonapi` package.
+ * Operations extension lives in `@nizam-os/jsonapi-core/atomic`; the Hono integration
+ * is the `@nizam-os/hono-jsonapi` package.
  * @ref https://jsonapi.org/format/1.1/
  * @packageDocumentation
  */
-export type { Ban, ErrorItem, ErrorStatusCode } from '@netvark/ban-core';
+export type { Ban, ErrorItem, ErrorStatusCode } from '@nizam-os/ban-core';
 
 export type { DocumentOptions, Included } from './document/build';
 export type {
@@ -163,7 +163,7 @@ export type {
   WritableFieldsInit,
 } from './resource/write-types';
 
-export { BanError, isBanError } from '@netvark/ban-core';
+export { BanError, isBanError } from '@nizam-os/ban-core';
 
 export {
   collectionDocument,

@@ -2,7 +2,7 @@ import type {
   Catalog,
   CatalogColumn,
   CatalogTable,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import { beforeAll, describe, expect, it } from 'vitest';
 

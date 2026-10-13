@@ -5,12 +5,12 @@
  * two applications in one process cannot collide.
  * @packageDocumentation
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
 import type {
   AtomicCapabilitiesInit,
   PageCapabilitiesInit,
   ResourceLinksInit,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import type { DeclareResource } from './declare-resource-type';
 import type { DomainsCheck } from './domains-check';
@@ -56,13 +56,13 @@ export interface DeclareResourceConfig<
   readonly scopes?: TScopes | undefined;
   /** Validators for domain CHECKs without a rule, and codes for any domain CHECK (SPEC 3.6). */
   readonly domains?: TDomains | undefined;
-  /** Merged under every declaration's links (`@netvark/jsonapi-core`). */
+  /** Merged under every declaration's links (`@nizam-os/jsonapi-core`). */
   readonly links?: ResourceLinksInit | undefined;
   /** Merged under every declaration's `page`, member by member. */
   readonly page?: PageCapabilitiesInit | undefined;
   /**
    * Every declaration's cap on one Atomic Operations request, 10
-   * operations by default (`@netvark/jsonapi-core`); one endpoint serves
+   * operations by default (`@nizam-os/jsonapi-core`); one endpoint serves
    * every resource of a runtime, so no declaration has its own.
    */
   readonly atomic?: AtomicCapabilitiesInit | undefined;

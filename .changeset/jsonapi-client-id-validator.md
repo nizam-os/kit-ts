@@ -1,6 +1,6 @@
 ---
-'@netvark/jsonapi-core': minor
-'@netvark/hono-jsonapi': minor
+'@nizam-os/jsonapi-core': minor
+'@nizam-os/hono-jsonapi': minor
 ---
 
 New `validate.id` on `defineResource`: a Standard Schema for the resource id. With

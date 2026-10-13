@@ -1,6 +1,6 @@
 ---
-'@netvark/catalog-core': minor
-'@netvark/pg-catalog': minor
+'@nizam-os/catalog-core': minor
+'@nizam-os/pg-catalog': minor
 ---
 
 The public catalog lists each unique index that no constraint backs among its table's constraints,

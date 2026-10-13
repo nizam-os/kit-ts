@@ -5,18 +5,18 @@
  * linking its team; contacts, created and updated, linking an
  * organization; organizations, updated but never created, so no `add`
  * gives one a lid; and meetings, updated, reading their organization. `processes` runs a document through
- * `@netvark/jsonapi-core`'s processor over handlers of the same
+ * `@nizam-os/jsonapi-core`'s processor over handlers of the same
  * resources, which keep nothing, with an `href` resolver of the links'
  * URL design, so a test holds the document's schema to what the processor
  * accepts. Not published with the package.
- * @ref https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md (section 11)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (section 11)
  * @packageDocumentation
  */
-import type { AnyResourceHandlers } from '@netvark/jsonapi-core/atomic';
+import type { AnyResourceHandlers } from '@nizam-os/jsonapi-core/atomic';
 
 import type { DeclaredResource } from '../declare/declared-resource';
 
-import { operationsProcessor } from '@netvark/jsonapi-core/atomic';
+import { operationsProcessor } from '@nizam-os/jsonapi-core/atomic';
 
 import { createDeclareResource } from '../declare/create-declare-resource';
 import { contactsCatalog } from './contacts';

@@ -4,11 +4,11 @@
  * and the catalog say. Each message starts with the resource's type.
  * @packageDocumentation
  */
-import type { ResourceBehavior } from '@netvark/resource-core/server';
+import type { ResourceBehavior } from '@nizam-os/resource-core/server';
 
 import type { BootContext } from './options';
 
-import { scopeColumnOf } from '@netvark/resource-core/server';
+import { scopeColumnOf } from '@nizam-os/resource-core/server';
 
 import { ownValue } from '../internal/object';
 

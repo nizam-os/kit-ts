@@ -1,5 +1,5 @@
 /**
- * `@netvark/kysely-resource`: the Kysely runtime for `@netvark/resource-core`
+ * `@nizam-os/kysely-resource`: the Kysely runtime for `@nizam-os/resource-core`
  * declarations on PostgreSQL (resource SPEC 18, ADR 0012). The storage
  * adapter runs each operation in one transaction that sets every scope's
  * session parameter for that transaction only, and adds the scope's
@@ -8,7 +8,7 @@
  * each operation's lifecycle for `runtime.as(actor)`, which HTTP hosts and
  * workers call alike; `checkResourceRuntime` runs the static checks in CI;
  * `relayOutbox` delivers the events operations recorded, after they
- * committed. The runtime's types are `@netvark/resource-core/server`'s
+ * committed. The runtime's types are `@nizam-os/resource-core/server`'s
  * contract (resource SPEC 12.10), re-exported here.
  * @ref https://kysely.dev/
  * @packageDocumentation
@@ -30,7 +30,7 @@ export type {
   ResourceOperations,
   ResourceRuntime,
   RuntimeResources,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 export { checkResourceRuntime } from './boot/check-runtime';
 export { BootError } from './boot/report';

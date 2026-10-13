@@ -1,6 +1,6 @@
 ---
-'@netvark/jsonapi-core': minor
-'@netvark/hono-jsonapi': minor
+'@nizam-os/jsonapi-core': minor
+'@nizam-os/hono-jsonapi': minor
 ---
 
 `validate.id` no longer needs `clientIds: true`. An update's document id names the request's

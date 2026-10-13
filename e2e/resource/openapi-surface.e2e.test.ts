@@ -9,7 +9,7 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import { diffSurfaces, surfaceOf } from '@netvark/resource-core/openapi';
+import { diffSurfaces, surfaceOf } from '@nizam-os/resource-core/openapi';
 
 import { APP_RESOURCES } from './runtime/api.ts';
 import { AFTER, BEFORE } from './support/surface-edits.ts';

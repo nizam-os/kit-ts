@@ -31,7 +31,7 @@ Commands:
 
 Options:
   --config <file>  The configuration file. Default: the first of
-                   netvark.config.ts, .mts, .js, and .mjs here.
+                   pg-catalog.config.ts, .mts, .js, and .mjs here.
 
 Exit codes: 0 current, no drift, no disagreement, or no breaking change; 1
 stale, drift, a disagreement, or a breaking change; 2 could not run.

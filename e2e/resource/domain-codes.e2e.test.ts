@@ -11,8 +11,8 @@ import type { OracleDatabase } from './support/oracle-database.ts';
 
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createDeclareResource, errorCatalog } from '@netvark/resource-core';
-import { constraintError } from '@netvark/resource-core/server';
+import { createDeclareResource, errorCatalog } from '@nizam-os/resource-core';
+import { constraintError } from '@nizam-os/resource-core/server';
 
 import { publicCatalog } from './fixtures/contacts/public-catalog.ts';
 import { scopes } from './resources/declare-resource.ts';

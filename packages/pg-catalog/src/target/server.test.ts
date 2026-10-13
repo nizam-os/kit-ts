@@ -15,9 +15,9 @@ const { Client } = pg;
 const SERVER = process.env['CATALOG_PG_URL'];
 
 describe('throwawayName and withDatabase (SPEC 6.2)', () => {
-  it('names the database netvark_catalog_ and 16 lowercase hex digits, different every time', () => {
+  it('names the database nizam_catalog_ and 16 lowercase hex digits, different every time', () => {
     const name = throwawayName();
-    expect(name).toMatch(/^netvark_catalog_[0-9a-f]{16}$/u);
+    expect(name).toMatch(/^nizam_catalog_[0-9a-f]{16}$/u);
     expect(throwawayName()).not.toBe(name);
   });
 
@@ -86,7 +86,7 @@ describe.skipIf(SERVER === undefined)(
       await client.connect();
       try {
         const result = await client.query<{ datname: string }>(
-          "select datname from pg_database where datname like 'netvark_catalog_%'",
+          "select datname from pg_database where datname like 'nizam_catalog_%'",
         );
         return result.rows.map((row) => row.datname);
       } finally {
@@ -106,7 +106,7 @@ describe.skipIf(SERVER === undefined)(
       );
       const [row] = facts.rows;
       expect(row?.encoding).toBe('UTF8');
-      expect(row?.db).toMatch(/^netvark_catalog_[0-9a-f]{16}$/u);
+      expect(row?.db).toMatch(/^nizam_catalog_[0-9a-f]{16}$/u);
       expect(facts.during).toContain(row?.db);
       // Other test files may hold throwaway databases of their own meanwhile.
       expect(await databases()).not.toContain(row?.db);
@@ -123,17 +123,17 @@ describe.skipIf(SERVER === undefined)(
           await session.exec('select * from missing_table');
         }),
       ).rejects.toThrow('relation "missing_table" does not exist');
-      expect(created).toMatch(/^netvark_catalog_[0-9a-f]{16}$/u);
+      expect(created).toMatch(/^nizam_catalog_[0-9a-f]{16}$/u);
       expect(await databases()).not.toContain(created);
     });
 
     it('fails with connection_failed, giving the server’s reason, when the server refuses the connection', async () => {
       await expect(
-        openThrowawayDatabase(withDatabase(url, 'netvark_no_such_database')),
+        openThrowawayDatabase(withDatabase(url, 'nizam_no_such_database')),
       ).rejects.toMatchObject({
         code: 'connection_failed',
         message:
-          'cannot connect to the PostgreSQL server: database "netvark_no_such_database" does not exist',
+          'cannot connect to the PostgreSQL server: database "nizam_no_such_database" does not exist',
       });
     });
   },

@@ -16,7 +16,7 @@ import {
   createTimeZone,
   timeZoneCookie,
   toTimeZone,
-} from '@netvark/intl-core';
+} from '@nizam-os/intl-core';
 
 import { equal } from './assert.ts';
 

@@ -1,4 +1,4 @@
-import type { CamelCaseOptions } from '@netvark/catalog-core';
+import type { CamelCaseOptions } from '@nizam-os/catalog-core';
 
 import type { ExtractionConfig } from '../config';
 

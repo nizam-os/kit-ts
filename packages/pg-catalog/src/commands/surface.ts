@@ -1,13 +1,13 @@
 /**
  * `writeSurface` and `checkSurface` (SPEC 10.4): the API surface of the
- * declared resources, `surfaceOf` of `@netvark/resource-core/openapi`,
+ * declared resources, `surfaceOf` of `@nizam-os/resource-core/openapi`,
  * written as the snapshot an application commits, and that snapshot
  * compared with the registry by `diffSurfaces`, which tells a breaking
  * change from a safe one (resource SPEC 13.2). Neither replays the
  * migrations: the surface comes from the declarations alone.
  * @packageDocumentation
  */
-import type { Surface, SurfaceChange } from '@netvark/resource-core/openapi';
+import type { Surface, SurfaceChange } from '@nizam-os/resource-core/openapi';
 
 import type { ExtractionConfig } from '../config';
 import type { OpenapiModule } from '../surface/openapi-module';
@@ -132,7 +132,7 @@ function committedSurface(
  * returns to `config.resources.surface`, creating directories, unless the
  * file already holds it byte for byte. Fails with `config_invalid` when
  * `resources` or `resources.surface` is not configured,
- * `resource_core_missing` when `@netvark/resource-core` cannot be loaded,
+ * `resource_core_missing` when `@nizam-os/resource-core` cannot be loaded,
  * and `registry_invalid` when the registry function returns anything but
  * a list of objects or `surfaceOf` refuses the registry. What the registry
  * function throws is thrown.

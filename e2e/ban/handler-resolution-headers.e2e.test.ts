@@ -1,4 +1,4 @@
-import type { ErrorReport } from '@netvark/hono-ban';
+import type { ErrorReport } from '@nizam-os/hono-ban';
 
 import type { RunningServer } from './support/server';
 
@@ -6,7 +6,7 @@ import { Hono } from 'hono';
 import { HTTPException } from 'hono/http-exception';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { bearerChallenge, createBan } from '@netvark/hono-ban';
+import { bearerChallenge, createBan } from '@nizam-os/hono-ban';
 
 import { startServer } from './support/server';
 

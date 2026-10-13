@@ -5,15 +5,15 @@ import type { Kysely, LogEvent } from 'kysely';
  * an outbox, the storage over it, and what a test reads back from it, the
  * events the outbox holds and the tasks a workspace holds.
  */
-import type { DomainEvent } from '@netvark/resource-core/server';
+import type { DomainEvent } from '@nizam-os/resource-core/server';
 
 import type { KyselyStorage } from '../storage/types';
 import type { TestDatabase } from './database';
 
 import { sql } from 'kysely';
 
-import { scopeValues } from '@netvark/resource-core/server';
-import { contractFixture } from '@netvark/resource-core/testing';
+import { scopeValues } from '@nizam-os/resource-core/server';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { createKyselyStorage } from '../storage/create-storage';
 import { contractDatabase, storageOptions } from './database';

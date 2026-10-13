@@ -11,16 +11,16 @@ import type {
   IssueLocation,
   JsonSchema,
   ValidationIssue,
-} from '@netvark/hono-ban';
+} from '@nizam-os/hono-ban';
 
 import type { FetchApp, RunningServer } from './support/server';
 
 import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
-import { PROBLEM_DETAILS_CONTENT_TYPE } from '@netvark/hono-ban/formats/problem-details';
-import { errorSchema, validationSchema } from '@netvark/hono-ban/openapi';
+import { createBan } from '@nizam-os/hono-ban';
+import { PROBLEM_DETAILS_CONTENT_TYPE } from '@nizam-os/hono-ban/formats/problem-details';
+import { errorSchema, validationSchema } from '@nizam-os/hono-ban/openapi';
 
 import { schemaErrors } from './support/ajv';
 import { startServer } from './support/server';

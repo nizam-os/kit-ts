@@ -6,7 +6,7 @@
  * query takes, and what a client reads and writes follow from it.
  * @packageDocumentation
  */
-import type { ResourceDefinition } from '@netvark/jsonapi-core';
+import type { ResourceDefinition } from '@nizam-os/jsonapi-core';
 
 import type { DeclareContext } from '../declare/registries';
 import type { Declaration } from '../declare/types';

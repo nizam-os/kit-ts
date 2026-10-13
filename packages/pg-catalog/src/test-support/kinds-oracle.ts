@@ -5,7 +5,7 @@
  * column through the driver under test, each value read back checked
  * against the column's select type.
  */
-import type { Catalog, CatalogColumn } from '@netvark/catalog-core';
+import type { Catalog, CatalogColumn } from '@nizam-os/catalog-core';
 
 import type { MappingContext } from '../render/kysely-mapping';
 import type { OracleContext } from './driver-oracle';

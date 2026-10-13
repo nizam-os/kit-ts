@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': patch
+'@nizam-os/resource-core': patch
 ---
 
 The oracle behind `pg-catalog rules --check` reads the elements of a `boolean[]` column as

@@ -1,5 +1,5 @@
 /**
- * Checks of the built `@netvark/tanstack-form-resource` (resource SPEC
+ * Checks of the built `@nizam-os/tanstack-form-resource` (resource SPEC
  * 20.8): a form-core `FormApi` made with `resourceFormOptions`, as every
  * adapter's form is made, with a mounted `FieldApi` per member, refuses a
  * first submit with the model's issue on its field, hands its handler the
@@ -13,13 +13,13 @@ import type { Checks } from './report.ts';
 
 import { FieldApi, FormApi } from '@tanstack/form-core';
 
-import { ResponseError } from '@netvark/jsonapi-client';
-import { defaultMessages } from '@netvark/resource-core';
-import { resourceForm } from '@netvark/resource-ui';
+import { ResponseError } from '@nizam-os/jsonapi-client';
+import { defaultMessages } from '@nizam-os/resource-core';
+import { resourceForm } from '@nizam-os/resource-ui';
 import {
   bindResponseErrors,
   resourceFormOptions,
-} from '@netvark/tanstack-form-resource';
+} from '@nizam-os/tanstack-form-resource';
 
 import { Contacts } from '../resources/contacts.ts';
 import { Organizations } from '../resources/organizations.ts';

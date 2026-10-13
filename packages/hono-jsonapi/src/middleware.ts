@@ -12,13 +12,13 @@ import type { Context, MiddlewareHandler, Next } from 'hono';
 import type {
   NegotiationOptions,
   NegotiationSuccess,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import type { JsonApiEnv } from './types';
 
 import { createMiddleware } from 'hono/factory';
 
-import { negotiate } from '@netvark/jsonapi-core';
+import { negotiate } from '@nizam-os/jsonapi-core';
 
 import { isJsonApiResponse, varyAccept } from './respond';
 

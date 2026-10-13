@@ -28,7 +28,7 @@ describe('pg_catalog codes', () => {
       expect.objectContaining({
         code: 'unsupported_server',
         message:
-          'the server returned typtype "x", which this version of @netvark/pg-catalog does not know',
+          'the server returned typtype "x", which this version of @nizam-os/pg-catalog does not know',
       }),
     );
     expect(() => decode(TYPE_KINDS, 'constructor', 'typtype')).toThrow(

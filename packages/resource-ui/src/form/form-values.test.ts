@@ -1,4 +1,4 @@
-import type { FieldDefault } from '@netvark/resource-core';
+import type { FieldDefault } from '@nizam-os/resource-core';
 
 import { describe, expect, it } from 'vitest';
 

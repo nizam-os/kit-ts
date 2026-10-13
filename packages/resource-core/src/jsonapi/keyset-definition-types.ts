@@ -14,7 +14,7 @@ import type {
   ColumnFieldInit,
   SearchInit,
   SortInit,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import type { Declaration } from '../declare/types';
 import type { FilterNameOf, SortNameOf } from './query-name-types';

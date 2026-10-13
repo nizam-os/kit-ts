@@ -13,12 +13,12 @@
  * @ref https://www.rfc-editor.org/rfc/rfc6901#section-4
  * @packageDocumentation
  */
-import type { ErrorObject } from '@netvark/jsonapi-core';
+import type { ErrorObject } from '@nizam-os/jsonapi-core';
 
 import type { FormPlan } from './form-plan';
 import type { FormErrors } from './form-types';
 
-import { isResponseError } from '@netvark/jsonapi-client';
+import { isResponseError } from '@nizam-os/jsonapi-client';
 
 import { memberAt } from './form-plan';
 

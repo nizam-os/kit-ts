@@ -5,7 +5,7 @@
  * one), and a codec written by hand instead of by `defineCodec`. Each
  * `// error:` names a text the diagnostic on the next line must contain.
  */
-import { createDeclareResource } from '@netvark/resource-core';
+import { createDeclareResource } from '@nizam-os/resource-core';
 
 import { catalog } from '../fixtures/contacts/catalog.ts';
 import { publicCatalog } from '../fixtures/contacts/public-catalog.ts';

@@ -10,7 +10,7 @@ import type {
   Constraint,
   Policy,
   Rule,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import type {
   ColumnRow,

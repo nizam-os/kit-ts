@@ -13,7 +13,7 @@ import type {
   JsonApiObject,
   Links,
   Meta,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import type { AnyRecord, Identifier } from '../document/types';
 import type {

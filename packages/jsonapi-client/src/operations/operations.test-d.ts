@@ -11,14 +11,14 @@ import type {
   Links,
   Meta,
   Relationships,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import type { Identifier } from '../document/types';
 import type { Operation, OperationResult, OperationsResult } from './types';
 
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { createDefineResource } from '@netvark/jsonapi-core';
+import { createDefineResource } from '@nizam-os/jsonapi-core';
 
 import { createTransport } from '../transport/transport';
 import { operationsOf } from './operations-of';

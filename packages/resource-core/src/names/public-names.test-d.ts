@@ -1,4 +1,4 @@
-import type { PublicTable } from '@netvark/catalog-core';
+import type { PublicTable } from '@nizam-os/catalog-core';
 
 import type { ScopeColumnOf } from '../declare/declaration-check';
 import type { ContactsCatalog } from '../test-support/contacts';

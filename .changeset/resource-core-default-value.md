@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 Field metadata states a default's value: `default` is a `FieldDefault`, `{ literal, value }`, where

@@ -4,7 +4,7 @@
  * one enum. Not published with the package.
  * @packageDocumentation
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
 
 import type { Bound } from '../schema/limits';
 import type { TypeRecord, ValueSpec } from '../schema/value-form';

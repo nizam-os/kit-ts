@@ -1,7 +1,7 @@
 /**
  * TanStack Query over the contacts application (resource SPEC 20.6): the
- * options `resourceQueries` of the built `@netvark/tanstack-query-jsonapi`
- * makes from the built `@netvark/jsonapi-client`'s clients, read and
+ * options `resourceQueries` of the built `@nizam-os/tanstack-query-jsonapi`
+ * makes from the built `@nizam-os/jsonapi-client`'s clients, read and
  * written through query-core's observers, which every adapter's hooks are
  * made of, against the application served over a socket
  * (`support/contacts-server.ts`, with meetings, `runtime/meetings.ts`),
@@ -38,8 +38,8 @@ import {
   vi,
 } from 'vitest';
 
-import { isResponseError, pageCursors } from '@netvark/jsonapi-client';
-import { resourceQueries } from '@netvark/tanstack-query-jsonapi';
+import { isResponseError, pageCursors } from '@nizam-os/jsonapi-client';
+import { resourceQueries } from '@nizam-os/tanstack-query-jsonapi';
 
 import { runtimeDatabases } from '../runtime/database.ts';
 import { openMeetingsRuntime } from '../runtime/meetings.ts';

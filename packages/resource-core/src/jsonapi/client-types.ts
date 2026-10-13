@@ -4,10 +4,10 @@
  * from the declaration and the catalog as `defineResource` infers them
  * from a definition written by hand. The attributes are the read types as
  * JSON, each write the input of its validator, and every name public.
- * @ref https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md (section 5.3)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (section 5.3)
  * @packageDocumentation
  */
-import type { JsonOf } from '@netvark/jsonapi-core';
+import type { JsonOf } from '@nizam-os/jsonapi-core';
 
 import type { DeclareContext } from '../declare/registries';
 import type { Declaration, DeclaredMembers, MemberOf } from '../declare/types';

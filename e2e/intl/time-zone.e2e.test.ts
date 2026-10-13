@@ -14,7 +14,7 @@ import {
   detectTimeZone,
   timeZoneCookie,
   timeZoneFromCookie,
-} from '@netvark/intl-core';
+} from '@nizam-os/intl-core';
 
 const COOKIE = 'TIME_ZONE';
 /** 2026-10-12 21:30 UTC: already 13 October in Riyadh, still 12 October in Los Angeles. */

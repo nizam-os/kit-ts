@@ -1,7 +1,7 @@
 /**
  * One error model across the packages (SPEC 4.2, ADR 0014): an application
- * instance built with `@netvark/hono-ban`, carrying this package's catalog next to
- * its own entries, renders what `@netvark/jsonapi-core` throws (directly, or through
+ * instance built with `@nizam-os/hono-ban`, carrying this package's catalog next to
+ * its own entries, renders what `@nizam-os/jsonapi-core` throws (directly, or through
  * the validators and the middleware) and what the application throws in
  * the same document shape, with the error id in the body and the header.
  * @ref https://jsonapi.org/format/1.1/#errors
@@ -12,14 +12,14 @@ import { Hono } from 'hono';
 import { HTTPException } from 'hono/http-exception';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
-import { jsonApi as jsonApiFormat } from '@netvark/hono-ban/formats/json-api';
+import { createBan } from '@nizam-os/hono-ban';
+import { jsonApi as jsonApiFormat } from '@nizam-os/hono-ban/formats/json-api';
 import {
   ERROR_CATALOG,
   jsonApi,
   jsonApiError,
   queryValidator,
-} from '@netvark/hono-jsonapi';
+} from '@nizam-os/hono-jsonapi';
 
 import { JSON_API } from './support/http.ts';
 import { Articles } from './support/resources.ts';
@@ -54,7 +54,7 @@ function createApp(): Hono {
   return app;
 }
 
-describe('a @netvark/hono-ban instance renders every package error', () => {
+describe('a @nizam-os/hono-ban instance renders every package error', () => {
   let server: RunningServer;
   beforeAll(async () => {
     server = await startServer(createApp());
@@ -75,7 +75,7 @@ describe('a @netvark/hono-ban instance renders every package error', () => {
     };
   }
 
-  it('renders a thrown @netvark/jsonapi-core error with the id in the body and the header', async () => {
+  it('renders a thrown @nizam-os/jsonapi-core error with the id in the body and the header', async () => {
     const { status, headers, body } = await get('/missing');
     expect(status).toBe(404);
     expect(headers.get('content-type')).toBe(JSON_API);

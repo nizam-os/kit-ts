@@ -6,14 +6,14 @@
  * the reverse; `drizzle-pg-schema.e2e.test.ts` covers a `pgSchema` table.
  * Expectations come from the seed, never from the SQL under test.
  */
-import type { Page } from '@netvark/drizzle-keyset';
+import type { Page } from '@nizam-os/drizzle-keyset';
 
 import { sql } from 'drizzle-orm';
 import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { drizzle } from 'drizzle-orm/pglite';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createDefineKeyset } from '@netvark/drizzle-keyset';
+import { createDefineKeyset } from '@nizam-os/drizzle-keyset';
 
 import { openPglite } from './support/db.ts';
 import { contactEmails, contacts as table } from './support/drizzle-schema.ts';

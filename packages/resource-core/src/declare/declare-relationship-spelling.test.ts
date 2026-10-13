@@ -7,7 +7,7 @@
  * `1.100000023841858`, and `char(4)` keeps the padding `text` never has.
  * @ref https://www.postgresql.org/docs/18/ddl-constraints.html#DDL-CONSTRAINTS-FK
  */
-import type { PublicColumn, PublicDomain } from '@netvark/catalog-core';
+import type { PublicColumn, PublicDomain } from '@nizam-os/catalog-core';
 
 import { describe, expect, it } from 'vitest';
 

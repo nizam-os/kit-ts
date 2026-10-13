@@ -1,7 +1,7 @@
 /**
  * Every refusal of a read by the contacts application's API is one its
  * OpenAPI document lists (resource SPEC 13.1): over Hono and
- * `@netvark/hono-jsonapi`, with the runtime on PGlite, the status of each
+ * `@nizam-os/hono-jsonapi`, with the runtime on PGlite, the status of each
  * is documented for the operation, its code is among the codes that
  * response lists, and its body passes that response's schema: the
  * authentication's `UNAUTHORIZED` (`codes.all`), negotiation,

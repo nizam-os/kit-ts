@@ -1,21 +1,21 @@
-import type { ErrorItem, ErrorStatusCode } from '@netvark/hono-ban';
+import type { ErrorItem, ErrorStatusCode } from '@nizam-os/hono-ban';
 
 import type { RunningServer } from './support/server';
 
 import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
+import { createBan } from '@nizam-os/hono-ban';
 import {
   JSON_API_CONTENT_TYPE,
   jsonApi,
   responseStatus,
-} from '@netvark/hono-ban/formats/json-api';
+} from '@nizam-os/hono-ban/formats/json-api';
 import {
   errorObjectSchemas,
   errorResponseObjects,
   errorResponses,
-} from '@netvark/hono-ban/openapi';
+} from '@nizam-os/hono-ban/openapi';
 
 import { documentValidator } from './support/openapi-document';
 import { startServer } from './support/server';

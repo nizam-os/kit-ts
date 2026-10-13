@@ -10,7 +10,7 @@
  * sent.
  * @packageDocumentation
  */
-import type { Operation } from '@netvark/jsonapi-client';
+import type { Operation } from '@nizam-os/jsonapi-client';
 
 import type { ActionCalls, GivenRemove } from './action-calls';
 import type { HeldAction } from './action-init';
@@ -21,7 +21,7 @@ import type {
   BulkActionsOptions,
 } from './action-types';
 
-import { operationsOf } from '@netvark/jsonapi-client';
+import { operationsOf } from '@nizam-os/jsonapi-client';
 
 import { checkDeclared } from '../internal/declared';
 import { selectionErrors } from './action-errors';

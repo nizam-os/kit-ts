@@ -16,7 +16,7 @@ async function secondCopy(): Promise<typeof BanCore> {
   return import('../index');
 }
 
-const BRAND = Symbol.for('@netvark/ban-core/BanError');
+const BRAND = Symbol.for('@nizam-os/ban-core/BanError');
 const init = { status: 404, code: 'NOT_FOUND', title: 'Not Found' } as const;
 
 describe('a BanError from another copy of the package', () => {

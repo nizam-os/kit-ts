@@ -125,7 +125,7 @@ describe('MessageFormattingError (SPEC 6.3)', () => {
     expect(error.name).toBe('MessageFormattingError');
     expect(error.message).toBe(
       [
-        "compile: 3 values are formatted inside messages, with the engine's defaults; format each with @netvark/intl-core and interpolate the string, or pass formatters: 'allow'",
+        "compile: 3 values are formatted inside messages, with the engine's defaults; format each with @nizam-os/intl-core and interpolate the string, or pass formatters: 'allow'",
         '  price (ar): amount: number',
         '  sent (every locale): day: date',
         '  half (en): a literal: number',

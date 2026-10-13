@@ -15,7 +15,7 @@
  * @ref https://jsonapi.org/format/1.1/#error-objects (`source.parameter`)
  * @packageDocumentation
  */
-import type { FilterInput, PageInput, Query } from '@netvark/jsonapi-client';
+import type { FilterInput, PageInput, Query } from '@nizam-os/jsonapi-client';
 import type {
   AnyResource,
   BanError,
@@ -23,12 +23,12 @@ import type {
   ParameterValue,
   ParsedFilter,
   ParsedQuery,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import type { ShapedSearch } from './search-shape';
 
-import { serializeQuery } from '@netvark/jsonapi-client';
-import { errorObjects, isBanError, parseQuery } from '@netvark/jsonapi-core';
+import { serializeQuery } from '@nizam-os/jsonapi-client';
+import { errorObjects, isBanError, parseQuery } from '@nizam-os/jsonapi-core';
 
 import { isRecord } from '../internal/object';
 import { pageOf } from './list-state';

@@ -4,7 +4,7 @@
  * time. `createClients` gives them the types of `ResourceClient`.
  * @packageDocumentation
  */
-import type { AnyResource } from '@netvark/jsonapi-core';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
 
 import type { Query } from '../query/types';
 import type { CallOptions } from '../transport/send';

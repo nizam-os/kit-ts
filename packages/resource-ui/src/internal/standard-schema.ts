@@ -1,6 +1,6 @@
 /**
  * A structural copy of the Standard Schema V1 interface, as the other
- * `@netvark` packages vendor theirs, so the declaration files never depend
+ * `@nizam-os` packages vendor theirs, so the declaration files never depend
  * on `@standard-schema/spec`. Any object that satisfies it satisfies the
  * published interface, which TanStack Form takes as a form's validator.
  * @ref https://standardschema.dev

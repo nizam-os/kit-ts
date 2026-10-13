@@ -1,7 +1,7 @@
 /**
  * The tests' resources (resource SPEC 20.8), declared over the storage
- * contract's catalog (`@netvark/resource-core/testing`, SPEC 12.9), as
- * `@netvark/hono-resource`'s tests declare theirs: tasks, with a member of
+ * contract's catalog (`@nizam-os/resource-core/testing`, SPEC 12.9), as
+ * `@nizam-os/hono-resource`'s tests declare theirs: tasks, with a member of
  * each kind their forms edit, and the workspaces and labels they relate
  * to. No scope holds a task's workspace, so its form writes it, and the
  * unique constraint `tasks_workspace_id_title_key` holds two of the form's
@@ -10,10 +10,10 @@
  * resources over the same catalog. Not published with the package.
  * @packageDocumentation
  */
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
-import { createDeclareResource } from '@netvark/resource-core';
-import { contractFixture } from '@netvark/resource-core/testing';
+import { createDeclareResource } from '@nizam-os/resource-core';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 const declareResource = createDeclareResource({
   catalog: contractFixture.catalog,

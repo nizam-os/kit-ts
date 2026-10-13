@@ -1,6 +1,6 @@
 /**
  * Field descriptors of the contacts application (resource SPEC 20.2):
- * `fieldsOf` from the built `@netvark/resource-ui`, over the
+ * `fieldsOf` from the built `@nizam-os/resource-ui`, over the
  * declarations of the realistic migrations, with the application's
  * Paraglide messages. The descriptors are built once, when this module
  * loads, as an application builds them at startup; each label is called
@@ -10,11 +10,11 @@
  * lists.
  * @ref https://paraglidejs.com/server-side-rendering
  */
-import type { FieldDescriptor } from '@netvark/resource-ui';
+import type { FieldDescriptor } from '@nizam-os/resource-ui';
 
 import { describe, expect, expectTypeOf, it } from 'vitest';
 
-import { fieldsOf } from '@netvark/resource-ui';
+import { fieldsOf } from '@nizam-os/resource-ui';
 
 import { contactMessages } from '../localization/contact-messages.ts';
 import { Contacts } from '../resources/contacts.ts';

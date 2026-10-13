@@ -7,7 +7,7 @@
  * server's answer read the same.
  * @packageDocumentation
  */
-import type { ErrorItem } from '@netvark/ban-core';
+import type { ErrorItem } from '@nizam-os/ban-core';
 
 import type { Dictionary } from './dictionary';
 import type { DerivedCode } from './message-index';

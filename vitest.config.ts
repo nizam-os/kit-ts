@@ -22,8 +22,8 @@ const config: ViteUserConfig = defineConfig({
       // Tests, the repository's own test helpers, and the files that hold
       // re-exports only: every package's root barrel, the nested barrels of
       // the jsonapi and keyset packages, and the one-line twins in
-      // @netvark/hono-ban of each @netvark/ban-core subpath. The nested
-      // index files of @netvark/ban-core implement its subpaths and stay in.
+      // @nizam-os/hono-ban of each @nizam-os/ban-core subpath. The nested
+      // index files of @nizam-os/ban-core implement its subpaths and stay in.
       // The pg-catalog bin only hands the process to runCli; the catalog
       // e2e suite runs it as a built bin. The storage contract's cases, and
       // the list data and walks they page through, need a database: the

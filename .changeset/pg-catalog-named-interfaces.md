@@ -1,5 +1,5 @@
 ---
-'@netvark/pg-catalog': minor
+'@nizam-os/pg-catalog': minor
 ---
 
 Generated catalog modules now type their binding with a named interface:

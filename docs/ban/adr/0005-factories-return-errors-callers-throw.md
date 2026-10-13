@@ -20,7 +20,7 @@ helper covers the guard case with narrowing: `assert(user, () => ban.notFound())
 Amendment: `assert` was first specified as `ban.assert()`. TypeScript applies assertion signatures
 only when every name in the call target has an explicit type annotation (TS2775), and
 `const ban = createBan()` has none, so the method form never narrowed. `assert` is a standalone
-export from `@netvark/hono-ban` instead (SPEC 5.4).
+export from `@nizam-os/hono-ban` instead (SPEC 5.4).
 
 ## Consequences
 

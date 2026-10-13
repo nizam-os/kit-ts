@@ -1,8 +1,8 @@
 {
-  "name": "@netvark/catalog-e2e",
+  "name": "@nizam-os/catalog-e2e",
   "version": "0.0.0",
   "private": true,
-  "description": "End-to-end tests: a consumer of the built @netvark/catalog-core and @netvark/pg-catalog packages, extracting a realistic application's migrations on PGlite and PostgreSQL servers.",
+  "description": "End-to-end tests: a consumer of the built @nizam-os/catalog-core and @nizam-os/pg-catalog packages, extracting a realistic application's migrations on PGlite and PostgreSQL servers.",
   "type": "module",
   "scripts": {
     "smoke:bun": "bun run smoke/run.ts",
@@ -15,8 +15,8 @@
   "devDependencies": {
     "@electric-sql/pglite": "catalog:",
     "@electric-sql/pglite-socket": "catalog:",
-    "@netvark/catalog-core": "workspace:*",
-    "@netvark/pg-catalog": "workspace:*",
+    "@nizam-os/catalog-core": "workspace:*",
+    "@nizam-os/pg-catalog": "workspace:*",
     "@types/node": "catalog:",
     "@types/pg": "catalog:",
     "kysely": "catalog:",

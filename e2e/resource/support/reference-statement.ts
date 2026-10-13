@@ -5,9 +5,9 @@
  * scope's predicate; and the key. Also the guard that keeps the errors a
  * transaction's statements raised.
  */
-import type { PublicTable } from '@netvark/catalog-core';
-import type { DeclaredResource, FieldMeta } from '@netvark/resource-core';
-import type { ScopeValue, StorageWrite } from '@netvark/resource-core/server';
+import type { PublicTable } from '@nizam-os/catalog-core';
+import type { DeclaredResource, FieldMeta } from '@nizam-os/resource-core';
+import type { ScopeValue, StorageWrite } from '@nizam-os/resource-core/server';
 
 import type {
   ReferenceTransaction,

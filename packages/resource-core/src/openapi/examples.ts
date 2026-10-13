@@ -10,7 +10,7 @@
  * instead of shipping in the document, and refuses examples of a type it
  * does not list or of a body its resource does not have, which would
  * otherwise be dropped unseen. A get's example is the document
- * `@netvark/jsonapi-core` builds for the row it stands for, links
+ * `@nizam-os/jsonapi-core` builds for the row it stands for, links
  * included, so it shows what the server sends. A field's declared example
  * is the `examples` of its property (SPEC 8), checked when it was declared.
  * @ref https://spec.openapis.org/oas/v3.1.2.html#example-object
@@ -25,7 +25,7 @@ import type { ExampleBody } from './operation-object';
 
 import { safeParse } from 'zod/v4/core';
 
-import { resourceDocument } from '@netvark/jsonapi-core';
+import { resourceDocument } from '@nizam-os/jsonapi-core';
 
 import { isRecord } from '../internal/object';
 import { idSchema } from '../schema/id-schema';

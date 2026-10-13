@@ -18,19 +18,19 @@
  */
 import type { Context, Env } from 'hono';
 
-import type { AnyResource } from '@netvark/hono-jsonapi';
+import type { AnyResource } from '@nizam-os/hono-jsonapi';
 import type {
   RelationshipHandlers,
   ResourceHandlers,
-} from '@netvark/hono-jsonapi/atomic';
-import type { DeclaredResource } from '@netvark/resource-core';
-import type { Domain, DomainShape } from '@netvark/resource-core/server';
+} from '@nizam-os/hono-jsonapi/atomic';
+import type { DeclaredResource } from '@nizam-os/resource-core';
+import type { Domain, DomainShape } from '@nizam-os/resource-core/server';
 
 import type { RouteContext } from './context';
 import type { PathPlan } from './paths';
 import type { Path } from './pointers';
 
-import { atomicOperations } from '@netvark/hono-jsonapi/atomic';
+import { atomicOperations } from '@nizam-os/hono-jsonapi/atomic';
 
 import { notRun, resourceOperations } from './context';
 import { hrefTargets } from './hrefs';

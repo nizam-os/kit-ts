@@ -1,5 +1,5 @@
 ---
-'@netvark/intl-core': minor
+'@nizam-os/intl-core': minor
 ---
 
 `createTimeZone({ cookieName })` resolves the reader's time zone from a cookie, the same during SSR

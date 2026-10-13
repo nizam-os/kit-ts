@@ -14,8 +14,8 @@ import type {
   PublicCatalog,
   PublicColumn,
   PublicTable,
-} from '@netvark/catalog-core';
-import type { DeclaredResource } from '@netvark/resource-core';
+} from '@nizam-os/catalog-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import { sql } from 'kysely';
 

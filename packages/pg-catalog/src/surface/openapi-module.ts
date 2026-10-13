@@ -1,10 +1,10 @@
 /**
- * `@netvark/resource-core/openapi`, an optional peer dependency imported
+ * `@nizam-os/resource-core/openapi`, an optional peer dependency imported
  * only when `surface` runs (SPEC 10.4, 14), as `rules --check` imports the
  * testing entry.
  * @packageDocumentation
  */
-import type { Surface, SurfaceChange } from '@netvark/resource-core/openapi';
+import type { Surface, SurfaceChange } from '@nizam-os/resource-core/openapi';
 
 import { PgCatalogError } from '../errors';
 
@@ -25,12 +25,12 @@ export interface OpenapiModule {
 /** Imports the OpenAPI entry; `resource_core_missing` with the reason when it cannot be loaded. */
 export async function importOpenapi(): Promise<OpenapiModule> {
   try {
-    return await import('@netvark/resource-core/openapi');
+    return await import('@nizam-os/resource-core/openapi');
   } catch (error) {
     const reason = error instanceof Error ? error.message : String(error);
     throw new PgCatalogError(
       'resource_core_missing',
-      `surface needs @netvark/resource-core, whose declarations it describes: ${reason}`,
+      `surface needs @nizam-os/resource-core, whose declarations it describes: ${reason}`,
       { cause: error },
     );
   }

@@ -3,7 +3,7 @@
  * fresh database, read its catalog, and write or check the generated files.
  * @packageDocumentation
  */
-import type { Catalog, PublicCatalog } from '@netvark/catalog-core';
+import type { Catalog, PublicCatalog } from '@nizam-os/catalog-core';
 
 import type {
   DatabaseConfig,
@@ -17,7 +17,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import process from 'node:process';
 
-import { toPublicCatalog } from '@netvark/catalog-core';
+import { toPublicCatalog } from '@nizam-os/catalog-core';
 
 import { catalogFile, DEFAULT_SCHEMAS } from '../config';
 import { PgCatalogError } from '../errors';

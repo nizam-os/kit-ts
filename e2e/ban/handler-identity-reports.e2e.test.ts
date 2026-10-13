@@ -12,7 +12,7 @@ import type {
   EmptyCatalog,
   ErrorReport,
   HandlerOptions,
-} from '@netvark/hono-ban';
+} from '@nizam-os/hono-ban';
 
 import type { RunningServer } from './support/server';
 
@@ -20,7 +20,7 @@ import { Hono } from 'hono';
 import { HTTPException } from 'hono/http-exception';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan, isBanError } from '@netvark/hono-ban';
+import { createBan, isBanError } from '@nizam-os/hono-ban';
 
 import { startServer } from './support/server';
 

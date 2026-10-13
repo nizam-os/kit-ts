@@ -3,8 +3,8 @@ import type { ParameterObject } from './parameters';
 
 import { describe, expect, it } from 'vitest';
 
-import { parseQuery } from '@netvark/jsonapi-core';
-import { OPERATORS } from '@netvark/keyset-core';
+import { parseQuery } from '@nizam-os/jsonapi-core';
+import { OPERATORS } from '@nizam-os/keyset-core';
 
 import { internalsOf } from '../declare/declared-resource';
 import { Contacts, Organizations } from '../test-support/definition-resources';
@@ -13,7 +13,7 @@ import { getParameters, idParameter, listParameters } from './parameters';
 
 /**
  * The documented parameters against the parser a route runs, `parseQuery`
- * of `@netvark/jsonapi-core`: every name and value the document offers is
+ * of `@nizam-os/jsonapi-core`: every name and value the document offers is
  * accepted, and every filter, sort, include, and fieldset name it leaves
  * out is refused. Filter values are keyset-core's to interpret, which
  * `filter-schemas.test.ts` holds the schemas to.

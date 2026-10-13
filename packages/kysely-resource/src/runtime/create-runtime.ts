@@ -14,7 +14,7 @@ import type {
   DomainShape,
   ResourceRuntime,
   RuntimeResources,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { RuntimeOptions } from './types';
 

@@ -1,5 +1,5 @@
 /**
- * `@netvark/resource-core/server`: what only a server composes, typed by
+ * `@nizam-os/resource-core/server`: what only a server composes, typed by
  * the application's registries (SPEC 12, ADR 0008): the domain definers,
  * policies, behavior, scopes, quotas, events, `reject`, the database
  * rejections of SPEC 9.5, the storage adapter contract, and the runtime

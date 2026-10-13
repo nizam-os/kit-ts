@@ -1,7 +1,7 @@
 /**
  * Extraction checks for runtimes with a file system and WebAssembly (Bun
  * and Deno): replay the contacts migrations into PGlite through the built
- * `@netvark/pg-catalog` and compare with the reviewed catalog module and
+ * `@nizam-os/pg-catalog` and compare with the reviewed catalog module and
  * Kysely types of both drivers, byte for byte.
  */
 import type { Checks } from './report.ts';
@@ -12,7 +12,7 @@ import {
   extractCatalog,
   renderCatalogModule,
   renderKyselyTypes,
-} from '@netvark/pg-catalog';
+} from '@nizam-os/pg-catalog';
 
 import { catalog } from '../fixtures/contacts/expected/catalog.ts';
 import {

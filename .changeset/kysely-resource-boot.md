@@ -1,5 +1,5 @@
 ---
-'@netvark/kysely-resource': minor
+'@nizam-os/kysely-resource': minor
 ---
 
 Add `checkResourceRuntime` and `createResourceRuntime`. Both check the composition against the full

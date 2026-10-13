@@ -9,7 +9,7 @@ import type { $strict } from 'zod/v4/core';
  * (`?`) and, the parse never outputting `undefined`, never `undefined`.
  * @packageDocumentation
  */
-import type { PublicTable } from '@netvark/catalog-core';
+import type { PublicTable } from '@nizam-os/catalog-core';
 
 import type { DeclareContext } from '../declare/registries';
 import type { Declaration, DeclaredMembers, MemberOf } from '../declare/types';

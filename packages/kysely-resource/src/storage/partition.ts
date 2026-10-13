@@ -8,12 +8,12 @@ import type { Kysely } from 'kysely';
  * system catalogs, which every role may read.
  * @packageDocumentation
  */
-import type { AnyDatabase } from '@netvark/kysely-keyset';
-import type { ViolationNames } from '@netvark/resource-core/server';
+import type { AnyDatabase } from '@nizam-os/kysely-keyset';
+import type { ViolationNames } from '@nizam-os/resource-core/server';
 
 import { CompiledQuery } from 'kysely';
 
-import { PARTITION_ROOT_SQL } from '@netvark/resource-core/server';
+import { PARTITION_ROOT_SQL } from '@nizam-os/resource-core/server';
 
 /** A row of `PARTITION_ROOT_SQL`. */
 interface PartitionRow {

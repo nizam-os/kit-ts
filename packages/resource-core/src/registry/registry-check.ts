@@ -8,7 +8,7 @@
  * the runtime's message; the other registry checks are the runtime's.
  * @packageDocumentation
  */
-import type { PublicTable } from '@netvark/catalog-core';
+import type { PublicTable } from '@nizam-os/catalog-core';
 
 import type { ForeignKeyReference } from '../catalog/types';
 import type { DeclareContext } from '../declare/registries';

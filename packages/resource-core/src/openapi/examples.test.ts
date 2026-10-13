@@ -2,7 +2,7 @@ import type { ResourceExamples } from './examples';
 
 import { describe, expect, it } from 'vitest';
 
-import { resourceDocument } from '@netvark/jsonapi-core';
+import { resourceDocument } from '@nizam-os/jsonapi-core';
 
 import { Contacts, Organizations } from '../test-support/definition-resources';
 import { documentValidator } from '../test-support/openapi-document';

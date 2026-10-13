@@ -10,7 +10,7 @@
  * partition. On PGlite and on the server `RESOURCE_PG_URL` names, through
  * the domain alone.
  */
-import type { ResourceInput } from '@netvark/kysely-resource';
+import type { ResourceInput } from '@nizam-os/kysely-resource';
 
 import type { RuntimeDatabase } from './runtime/database.ts';
 import type { AppRuntime } from './runtime/fixture.ts';
@@ -28,7 +28,7 @@ const PARTITIONS = [
   ['archive.calls_odd_3', '00000000-0000-4000-8000-0000000000c2'],
 ] as const;
 
-/** A call as `@netvark/jsonapi-core` parses its resource object. */
+/** A call as `@nizam-os/jsonapi-core` parses its resource object. */
 function call(id: string, contact: string): ResourceInput {
   return {
     id,

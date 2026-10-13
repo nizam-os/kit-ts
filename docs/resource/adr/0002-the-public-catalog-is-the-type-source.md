@@ -10,7 +10,7 @@ defaults in OpenAPI, enum labels and length limits in forms, constraint names in
 copy drifts on its own schedule, and the drift shows up as a 500 or a confusing 422 in production
 rather than as a compile error.
 
-`@netvark/pg-catalog` already writes the database's own description as committed TypeScript (catalog
+`@nizam-os/pg-catalog` already writes the database's own description as committed TypeScript (catalog
 ADR 0004): the full catalog for servers, the public catalog for browsers (catalog ADR 0005), and
 Kysely types (catalog ADR 0007). The public catalog is an `as const` literal, so TypeScript sees
 every table, column, type name, nullability, default literal, identity, generation, constraint, and
@@ -28,7 +28,7 @@ as a type argument.
 - `createDeclareResource({ catalog })` takes the public catalog value, and its literal type is the
   only type source. There is no `DB` type parameter: the Kysely interface is a rendering of the same
   catalog that carries less (no constraints, rules, or default literals), and reading it would make
-  the core depend on Kysely's `ColumnType`. `@netvark/kysely-resource` takes `DB`.
+  the core depend on Kysely's `ColumnType`. `@nizam-os/kysely-resource` takes `DB`.
 - Only a table of the public catalog can be declared. A declaration that names any other table, or a
   column, foreign key, constraint, scope, codec, or validator that does not exist, fails `tsc`; for
   JavaScript callers the same mistake throws `TypeError` naming the option path.

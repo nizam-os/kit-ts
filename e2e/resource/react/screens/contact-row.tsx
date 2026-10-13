@@ -12,7 +12,7 @@
 import type { Row } from '@tanstack/react-table';
 import type { ReactElement } from 'react';
 
-import type { FormErrors, RecordAction } from '@netvark/resource-ui';
+import type { FormErrors, RecordAction } from '@nizam-os/resource-ui';
 
 import type { Contact } from '../../support/contact-queries.ts';
 
@@ -23,7 +23,7 @@ import {
   tableFeatures,
 } from '@tanstack/react-table';
 
-import { fieldsOf } from '@netvark/resource-ui';
+import { fieldsOf } from '@nizam-os/resource-ui';
 
 import { contactMessages } from '../../localization/contact-messages.ts';
 import { Contacts } from '../../resources/contacts.ts';

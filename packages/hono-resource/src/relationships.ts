@@ -20,9 +20,9 @@ import type { Env } from 'hono';
 import type {
   ResourceIdentifier,
   ToOneRelationshipDocument,
-} from '@netvark/hono-jsonapi';
-import type { DeclaredResource } from '@netvark/resource-core';
-import type { DomainShape, PublicRow } from '@netvark/resource-core/server';
+} from '@nizam-os/hono-jsonapi';
+import type { DeclaredResource } from '@nizam-os/resource-core';
+import type { DomainShape, PublicRow } from '@nizam-os/resource-core/server';
 
 import type { RouteContext } from './context';
 import type { MountedResource } from './paths';
@@ -35,7 +35,7 @@ import {
   resourceDocument,
   respond,
   serializeResource,
-} from '@netvark/hono-jsonapi';
+} from '@nizam-os/hono-jsonapi';
 
 import { idOf, includedOf, notRun, operationsOf, targetOf } from './context';
 import { allow } from './methods';

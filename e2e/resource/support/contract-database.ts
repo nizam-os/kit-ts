@@ -9,7 +9,7 @@
  * @ref https://node-postgres.com/features/transactions
  * @ref https://pglite.dev/docs/api#transaction
  */
-import type { DomainEvent } from '@netvark/resource-core/server';
+import type { DomainEvent } from '@nizam-os/resource-core/server';
 
 import type { Transact } from './reference-adapter.ts';
 import type { Row, SqlClient, TextCodec } from './reference-sql.ts';
@@ -17,7 +17,7 @@ import type { Row, SqlClient, TextCodec } from './reference-sql.ts';
 import { PGlite } from '@electric-sql/pglite';
 import pg from 'pg';
 
-import { contractFixture } from '@netvark/resource-core/testing';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { throwawayDatabase } from './oracle-database.ts';
 import { endPool } from './pool-closed.ts';

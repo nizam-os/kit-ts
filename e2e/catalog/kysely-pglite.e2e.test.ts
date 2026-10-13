@@ -29,7 +29,7 @@ import {
   it,
 } from 'vitest';
 
-import { parseCatalogModule, renderKyselyTypes } from '@netvark/pg-catalog';
+import { parseCatalogModule, renderKyselyTypes } from '@nizam-os/pg-catalog';
 
 import { EXPECTED_CATALOG, EXPECTED_PGLITE_TYPES } from './support/contacts';
 import { readDeclaredTypes } from './support/declared-types';

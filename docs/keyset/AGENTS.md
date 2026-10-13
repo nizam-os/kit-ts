@@ -1,8 +1,8 @@
 # keyset family: instructions for coding agents
 
 Read with the root [`AGENTS.md`](../../AGENTS.md), which holds the rules every family shares; this
-file adds what is specific to `@netvark/keyset-core` (the database-free core),
-`@netvark/kysely-keyset` (the Kysely binding), and `@netvark/drizzle-keyset` (the Drizzle binding).
+file adds what is specific to `@nizam-os/keyset-core` (the database-free core),
+`@nizam-os/kysely-keyset` (the Kysely binding), and `@nizam-os/drizzle-keyset` (the Drizzle binding).
 Humans: see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Ground rules
@@ -37,9 +37,9 @@ Humans: see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 ## Repository map
 
 A pnpm workspace: `packages/keyset-core` (the database-free core, published as
-`@netvark/keyset-core`), `packages/kysely-keyset` (the Kysely adapter, published as
-`@netvark/kysely-keyset`, depends on the core and re-exports it), `packages/drizzle-keyset` (the
-Drizzle adapter, published as `@netvark/drizzle-keyset`, the same), and `e2e/keyset/` (private).
+`@nizam-os/keyset-core`), `packages/kysely-keyset` (the Kysely adapter, published as
+`@nizam-os/kysely-keyset`, depends on the core and re-exports it), `packages/drizzle-keyset` (the
+Drizzle adapter, published as `@nizam-os/drizzle-keyset`, the same), and `e2e/keyset/` (private).
 Root configs (`vitest.config.ts` with `test.projects`, `tsconfig.base.json`, `knip.jsonc`,
 `.oxlintrc.json`, `.oxfmtrc.json`) apply to all of them.
 
@@ -63,7 +63,7 @@ Root configs (`vitest.config.ts` with `test.projects`, `tsconfig.base.json`, `kn
 
 `packages/kysely-keyset/src/`:
 
-- `index.ts` re-exports `@netvark/keyset-core` and adds the adapter
+- `index.ts` re-exports `@nizam-os/keyset-core` and adds the adapter
 - `define-keyset.ts` `createDefineKeyset<DB>()`: a `defineKeyset` that checks names against the
   Kysely `DB` interface and whose keysets carry `paginate`
 - `paginate.ts` the plan rendered onto the caller's select query: filter, total, seek, key
@@ -77,7 +77,7 @@ Root configs (`vitest.config.ts` with `test.projects`, `tsconfig.base.json`, `kn
 
 `packages/drizzle-keyset/src/`:
 
-- `index.ts` re-exports `@netvark/keyset-core` and adds the adapter
+- `index.ts` re-exports `@nizam-os/keyset-core` and adds the adapter
 - `define-keyset.ts` and `typed-init.ts` `createDefineKeyset(schema)`: a `defineKeyset` whose names
   are checked against the Drizzle schema's type and whose keysets carry `paginate`
 - `check-names.ts` every name of a validated definition resolved in the schema object at definition

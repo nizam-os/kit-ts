@@ -16,8 +16,8 @@
  * @ref https://jsonapi.org/format/1.1/#fetching-filtering
  * @packageDocumentation
  */
-import type { Condition, Query } from '@netvark/jsonapi-client';
-import type { AnyResource } from '@netvark/jsonapi-core';
+import type { Condition, Query } from '@nizam-os/jsonapi-client';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
 
 import type { AnyColumnFilter } from './list-types';
 

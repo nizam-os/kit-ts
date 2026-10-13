@@ -1,25 +1,25 @@
-# @netvark/paraglide-intl
+# @nizam-os/paraglide-intl
 
 [Paraglide JS](https://inlang.com/m/gerre34r/library-inlang-paraglideJs) messages whose interpolated
 values display in place in left-to-right and right-to-left text. `compile()` is Paraglide's
 `compile()` with one step added: before Paraglide compiles the project, every interpolated value of
 every message is wrapped in Unicode isolates. `watch()` compiles again on each change during
-development. It re-exports [`@netvark/intl-core`](https://www.npmjs.com/package/@netvark/intl-core),
+development. It re-exports [`@nizam-os/intl-core`](https://www.npmjs.com/package/@nizam-os/intl-core),
 which formats dates and numbers and isolates values in your own strings. The rules are written down
-in [`docs/intl/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/intl/SPEC.md), and the
+in [`docs/intl/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/intl/SPEC.md), and the
 decisions, with their measurements, in
-[`docs/intl/adr`](https://github.com/netvark/netvark/tree/main/docs/intl/adr).
+[`docs/intl/adr`](https://github.com/nizam-os/kit/tree/main/docs/intl/adr).
 
 ## Install
 
 ```bash
-pnpm add -D @netvark/paraglide-intl @inlang/paraglide-js
+pnpm add -D @nizam-os/paraglide-intl @inlang/paraglide-js
 ```
 
 A build-time tool for Node 22.12+, Bun, and Deno 2.6.10+, with `@inlang/paraglide-js` 2.11 or later
 as its peer. It loads your project with the inlang SDK that your Paraglide itself depends on, so
 there is no SDK to install or match: a Paraglide release that moves to a new SDK major works as it
-is. Application code imports the formatters from `@netvark/intl-core`, because this package's entry
+is. Application code imports the formatters from `@nizam-os/intl-core`, because this package's entry
 also loads Paraglide's compiler.
 
 On an older Deno, a compile with inlang SDK 3.1 or 4 finishes but the process does not exit, as with
@@ -33,7 +33,7 @@ the output, and Paraglide's logger reads `TERM` and the variables that name a CI
 
 ```ts
 // scripts/compile-messages.ts
-import { compile } from '@netvark/paraglide-intl';
+import { compile } from '@nizam-os/paraglide-intl';
 
 const { warnings } = await compile({
   project: './project.inlang',
@@ -87,12 +87,12 @@ message before it writes anything, with a `MessageFormattingError` that lists ea
 them in `findings`:
 
 ```text
-compile: 2 values are formatted inside messages, with the engine's defaults; format each with @netvark/intl-core and interpolate the string, or pass formatters: 'allow'
+compile: 2 values are formatted inside messages, with the engine's defaults; format each with @nizam-os/intl-core and interpolate the string, or pass formatters: 'allow'
   total (ar): amount: number
   total (en): amount: number
 ```
 
-Format the value with `@netvark/intl-core` and interpolate the string. A plural still selects its
+Format the value with `@nizam-os/intl-core` and interpolate the string. A plural still selects its
 variant on the raw count, so pass the count and its text:
 
 ```json
@@ -112,7 +112,7 @@ variant on the raw count, so pass the count and its text:
 ```
 
 ```ts
-// intl: createIntl() from @netvark/intl-core, created once at module scope
+// intl: createIntl() from @nizam-os/intl-core, created once at module scope
 m.total({ amount: intl.number(1234.5, { style: 'currency', currency: 'SAR' }) });
 m.items({ count, countText: intl.number(count) });
 ```
@@ -140,11 +140,11 @@ which Vite calls when the dev server closes:
 // vite.config.ts
 import type { Plugin } from 'vite';
 
-import type { Watcher } from '@netvark/paraglide-intl';
+import type { Watcher } from '@nizam-os/paraglide-intl';
 
 import { defineConfig } from 'vite';
 
-import { watch } from '@netvark/paraglide-intl';
+import { watch } from '@nizam-os/paraglide-intl';
 
 /** Compiles the messages before the dev server starts, and again on each change. */
 function messages(): Plugin {
@@ -171,7 +171,7 @@ Vite, run a script beside your dev server:
 // scripts/watch-messages.ts
 import process from 'node:process';
 
-import { watch } from '@netvark/paraglide-intl';
+import { watch } from '@nizam-os/paraglide-intl';
 
 const watcher = await watch({
   project: './project.inlang',
@@ -222,14 +222,14 @@ its own. Both examples are measured with Vite 8.3 on Node 24, Bun 1.4, and Deno 
 - **Remove bidi controls from names and other text you accept from users**, where you accept it:
   `value.replace(/\p{Bidi_Control}/gu, '')`. A value with an unmatched U+2069 of its own closes the
   isolate early
-  ([ADR 0006](https://github.com/netvark/netvark/blob/main/docs/intl/adr/0006-every-interpolated-value-is-isolated-in-every-locale.md)).
-- **Format in code, not in the message**: dates and numbers through `@netvark/intl-core`, so a value
+  ([ADR 0006](https://github.com/nizam-os/kit/blob/main/docs/intl/adr/0006-every-interpolated-value-is-isolated-in-every-locale.md)).
+- **Format in code, not in the message**: dates and numbers through `@nizam-os/intl-core`, so a value
   reads the same in a sentence as in a table cell, and the plural on the raw count.
 - **Never interpolate into a message that is not displayed as text**: a URL, an `href`, an
   identifier. The isolates are characters and travel with the string.
 - **Check catalogs with `inlang check`** in CI: Paraglide renders the base locale for a missing
   translation and the message key for a missing plural form
-  ([ADR 0009](https://github.com/netvark/netvark/blob/main/docs/intl/adr/0009-catalog-consistency-is-left-to-inlang-check.md)).
+  ([ADR 0009](https://github.com/nizam-os/kit/blob/main/docs/intl/adr/0009-catalog-consistency-is-left-to-inlang-check.md)).
 
 ## License
 

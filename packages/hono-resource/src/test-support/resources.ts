@@ -7,11 +7,11 @@
  * client ids. What this module exports is typed wide, as a host takes
  * it. Not published with the package.
  */
-import type { AtomicCapabilitiesInit } from '@netvark/hono-jsonapi';
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { AtomicCapabilitiesInit } from '@nizam-os/hono-jsonapi';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
-import { createDeclareResource } from '@netvark/resource-core';
-import { contractFixture } from '@netvark/resource-core/testing';
+import { createDeclareResource } from '@nizam-os/resource-core';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 /** The tests' declarations, by name. */
 interface TestResources {

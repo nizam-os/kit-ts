@@ -23,7 +23,7 @@ import type { Operation, OperationsResult } from './types';
 import {
   ATOMIC_OPERATIONS_EXTENSION,
   resourcePaths,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import { isRecord, ownMember } from '../internal/object';
 import { send } from '../transport/send';

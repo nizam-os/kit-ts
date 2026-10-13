@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { toCamelCase } from '@netvark/catalog-core';
+import { toCamelCase } from '@nizam-os/catalog-core';
 
 import { CAMEL_CASES } from '../test-support/camel-cases';
 

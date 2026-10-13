@@ -44,7 +44,7 @@ export function report(result: SmokeResult): void {
   const total = result.passed + result.failures.length;
   if (result.failures.length === 0) {
     console.log(
-      `@netvark/resource smoke: ${total} checks passed on ${result.runtime}`,
+      `@nizam-os/resource smoke: ${total} checks passed on ${result.runtime}`,
     );
     return;
   }
@@ -52,6 +52,6 @@ export function report(result: SmokeResult): void {
     console.error(`FAIL ${failure}`);
   }
   throw new Error(
-    `@netvark/resource smoke: ${result.failures.length} of ${total} checks failed on ${result.runtime}`,
+    `@nizam-os/resource smoke: ${result.failures.length} of ${total} checks failed on ${result.runtime}`,
   );
 }

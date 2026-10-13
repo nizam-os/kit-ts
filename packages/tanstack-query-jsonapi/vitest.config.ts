@@ -4,7 +4,7 @@ import { defineProject } from 'vitest/config';
 
 /**
  * The binding's test project; the root `vitest.config.ts` runs it and owns
- * coverage. `@netvark/jsonapi-client` resolves to its source through the
+ * coverage. `@nizam-os/jsonapi-client` resolves to its source through the
  * `source` condition (see tsconfig.json). The tests read and write through
  * a query-core `QueryClient` and the observers every adapter's hooks are
  * made of, so no test imports a framework.
@@ -21,7 +21,7 @@ const config: UserWorkspaceConfig = defineProject({
     },
   },
   test: {
-    name: '@netvark/tanstack-query-jsonapi',
+    name: '@nizam-os/tanstack-query-jsonapi',
     include: ['src/**/*.test.ts'],
     environment: 'node',
     restoreMocks: true,

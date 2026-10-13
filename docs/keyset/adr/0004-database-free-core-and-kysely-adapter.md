@@ -1,4 +1,4 @@
-# ADR 0004: Two packages: the database-free core (`@netvark/keyset-core`) and the Kysely adapter (`@netvark/kysely-keyset`)
+# ADR 0004: Two packages: the database-free core (`@nizam-os/keyset-core`) and the Kysely adapter (`@nizam-os/kysely-keyset`)
 
 - Status: accepted; amended by ADR-0018 (the `kysely` peer range starts at 0.28.17, the first
   release past Kysely's published SQL injection advisories)
@@ -17,12 +17,12 @@ thin adapters) @ref https://tsdown.dev/options/package-exports#devexports
 
 ## Decision
 
-- Two packages in one pnpm workspace. `@netvark/keyset-core` is the core: no dependencies, no peer
+- Two packages in one pnpm workspace. `@nizam-os/keyset-core` is the core: no dependencies, no peer
   dependencies, web standards only (ADR 0002). It exposes the plan as data: `QueryPlan` holds the
   sort keys with their aliases and null placement, the filter and the seek as `Predicate` trees over
   `Target`s, the limit, and the cursor context, every name in it a validated identifier from the
   definition.
-- `@netvark/kysely-keyset` is the Kysely adapter: it depends on `@netvark/keyset-core`
+- `@nizam-os/kysely-keyset` is the Kysely adapter: it depends on `@nizam-os/keyset-core`
   (`workspace:^`, published as a caret range), has `kysely >= 0.28.0` as its only peer dependency,
   and re-exports the core in full, so a Kysely application imports from one package and a second
   copy of the core never enters the graph (`e2e/keyset/package-surface.e2e.test.ts` checks the
@@ -32,12 +32,12 @@ thin adapters) @ref https://tsdown.dev/options/package-exports#devexports
 - The peer range floor is tested: CI runs the adapter's unit tests on Kysely 0.28.17. The e2e suite
   runs on 0.29, which ships the built-in PGlite dialect.
 - Repository mechanics. Each package's `exports` map carries a `source` condition pointing at `src/`
-  (tsdown `devExports: 'source'`); `@netvark/kysely-keyset`'s tsconfig and Vitest project enable
+  (tsdown `devExports: 'source'`); `@nizam-os/kysely-keyset`'s tsconfig and Vitest project enable
   that condition, so its type-check and tests run against the core as it is edited with no build in
   between, while the published map (`publishConfig.exports`, applied by `pnpm publish` and
   `pnpm pack`) and `e2e/keyset/` see only `dist/`. One Vitest run covers both packages through
   `test.projects`, with coverage thresholds over the combined source. Versions are independent;
-  Changesets bumps `@netvark/kysely-keyset` by a patch whenever its `@netvark/keyset-core` range has
+  Changesets bumps `@nizam-os/kysely-keyset` by a patch whenever its `@nizam-os/keyset-core` range has
   to move (`updateInternalDependencies: patch`), and each package has its own npm trusted publisher.
 
 ## Consequences

@@ -6,7 +6,7 @@
 ## Context
 
 [ADR 0003](0003-package-naming.md) names a binding `<host>-<thing>`, `<host>` being the host's npm
-name without scope. The resource family's forms and lists were built as `@netvark/react-resource`
+name without scope. The resource family's forms and lists were built as `@nizam-os/react-resource`
 under that rule, for its optional peers `@tanstack/react-form` and `@tanstack/react-query` (resource
 ADR 0015), yet nothing in it imports React: its bindings call TanStack Form's and TanStack Query's
 framework-free API, which the React adapters re-export.
@@ -42,8 +42,8 @@ and a binding per adapter would publish one package five or six times.
   depends on the core.
 - Its `<host>` is the library's name as its publisher writes it, in lower case and hyphenated, since
   `query` and `form` alone name no library: `tanstack-query`, `tanstack-form`. The TanStack Query
-  binding of the jsonapi family is `@netvark/tanstack-query-jsonapi`, and the TanStack Form binding
-  of the resource family is `@netvark/tanstack-form-resource`.
+  binding of the jsonapi family is `@nizam-os/tanstack-query-jsonapi`, and the TanStack Form binding
+  of the resource family is `@nizam-os/tanstack-form-resource`.
 - A binding that needs what only an adapter has, a hook or a component, binds that adapter and keeps
   ADR 0003's form, `<adapter>-<thing>`.
 - State a library holds as plain data needs no binding: a model reads and writes it as values, and

@@ -12,13 +12,13 @@
  * @ref https://fetch.spec.whatwg.org/#abort-fetch
  * @packageDocumentation
  */
-import type { Clients, Transport } from '@netvark/jsonapi-client';
-import type { AnyResource } from '@netvark/jsonapi-core';
+import type { Clients, Transport } from '@nizam-os/jsonapi-client';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
 
 import { QueryClient } from '@tanstack/query-core';
 
-import { createClients, createTransport } from '@netvark/jsonapi-client';
-import { JSON_API_MEDIA_TYPE } from '@netvark/jsonapi-core';
+import { createClients, createTransport } from '@nizam-os/jsonapi-client';
+import { JSON_API_MEDIA_TYPE } from '@nizam-os/jsonapi-core';
 
 import { Articles, People, Tags } from './blog';
 

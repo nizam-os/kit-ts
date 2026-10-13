@@ -2,11 +2,11 @@
  * Kysely's CamelCasePlugin conversions, ported line by line from its
  * mappers (identical in Kysely 0.28 and 0.29): the plugin renames result
  * keys from snake_case to camelCase and turns every identifier of a query
- * back into snake_case. `@netvark/pg-catalog` names its `camelCase` Kysely
- * types with them, and `@netvark/resource-core` derives public field names
+ * back into snake_case. `@nizam-os/pg-catalog` names its `camelCase` Kysely
+ * types with them, and `@nizam-os/resource-core` derives public field names
  * with `toCamelCase` under the default options, so both read one
  * implementation. Characters are read as UTF-16 code units, as the plugin
- * reads them. `@netvark/pg-catalog` holds the test that runs these against
+ * reads them. `@nizam-os/pg-catalog` holds the test that runs these against
  * the plugin itself, since a core imports no query builder.
  * @ref https://github.com/kysely-org/kysely/blob/v0.28.17/src/plugin/camel-case/camel-case.ts
  * @ref https://kysely.dev/docs/plugins#camel-case-plugin

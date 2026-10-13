@@ -10,7 +10,7 @@
 import type { AnyFieldApi } from '@tanstack/react-form';
 import type { ReactElement } from 'react';
 
-import type { FieldOption } from '@netvark/resource-ui';
+import type { FieldOption } from '@nizam-os/resource-ui';
 
 /** A field and the label its control shows. */
 export interface InputProps {

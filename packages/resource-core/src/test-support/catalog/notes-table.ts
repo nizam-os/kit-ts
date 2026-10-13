@@ -1,6 +1,6 @@
 /**
  * The notes table of the names catalog (`../names.ts`), as
- * `@netvark/pg-catalog` extracts it: each name fails one check of SPEC 4.2.
+ * `@nizam-os/pg-catalog` extracts it: each name fails one check of SPEC 4.2.
  * Not published with the package.
  * @packageDocumentation
  */

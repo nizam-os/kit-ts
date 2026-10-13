@@ -1,12 +1,12 @@
 /**
  * The client's runtime checks (SPEC 14.2, 15.9, 17.5):
- * `@netvark/jsonapi-client` calls a blog of its own through that blog's
+ * `@nizam-os/jsonapi-client` calls a blog of its own through that blog's
  * `fetch`, its calls and its Atomic Operations, inside the runtime under
  * test, so the client's module graph loads and runs where the app does.
  * `app.ts` answers `GET /client-checks` with the outcome, which each harness
  * reports beside the app's checks. Web standards only, as the client itself.
  */
-import type { Clients, Transport } from '@netvark/jsonapi-client';
+import type { Clients, Transport } from '@nizam-os/jsonapi-client';
 
 import type { InRuntimeCheck, SmokeResult } from './checks.ts';
 
@@ -19,7 +19,7 @@ import {
   operationsOf,
   pageCursors,
   sendOperations,
-} from '@netvark/jsonapi-client';
+} from '@nizam-os/jsonapi-client';
 
 import { createBlog } from '../support/blog.ts';
 import { Articles, People, Tags } from '../support/resources.ts';

@@ -17,7 +17,7 @@
  *    scope column and the server values on create, and nothing else
  *    (ADR 0004): an update without members changes nothing;
  * 5. page `list` with the declared resource's keyset definition and
- *    `@netvark/keyset-core`'s planner, filters and sorts addressed by
+ *    `@nizam-os/keyset-core`'s planner, filters and sorts addressed by
  *    public names, every value of the plan a parameter of its column's
  *    type, a cursor's included, never by counting rows;
  * 6. let every PostgreSQL error raised inside an operation reach the
@@ -37,13 +37,13 @@
  *    the top of its tree and that table's name for the constraint, when it
  *    has one; for any other table, `undefined`.
  *
- * `storageContract` (`@netvark/resource-core/testing`) checks them.
+ * `storageContract` (`@nizam-os/resource-core/testing`) checks them.
  * @ref https://github.com/postgres/postgres/blob/REL_18_STABLE/src/backend/access/transam/xact.c (EndTransactionBlock: "Since COMMIT may actually do a ROLLBACK")
  * @ref https://www.postgresql.org/docs/18/explicit-locking.html#LOCKING-ROWS
  * @ref https://jsonapi.org/profiles/ethanresnick/cursor-pagination/ (offset pages shift when a row of an earlier page goes away)
  * @packageDocumentation
  */
-import type { KeysetRequest, NoRelations, Page } from '@netvark/keyset-core';
+import type { KeysetRequest, NoRelations, Page } from '@nizam-os/keyset-core';
 
 import type { DeclaredResource } from '../declare/declared-resource';
 import type { DomainEvent } from './event';
@@ -79,7 +79,7 @@ export interface StorageWrite {
  */
 export type StorageListRequest = KeysetRequest<string, string, NoRelations>;
 
-/** A page of public rows, with the cursors `@netvark/keyset-core` signs. */
+/** A page of public rows, with the cursors `@nizam-os/keyset-core` signs. */
 export type StoragePage = Page<PublicRow>;
 
 /** What an adapter implements; `TTransaction` is its own transaction handle. */

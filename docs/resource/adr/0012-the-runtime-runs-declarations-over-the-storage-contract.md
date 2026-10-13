@@ -5,9 +5,9 @@
 
 ## Context
 
-ADR 0008 kept the core free of hosts. `@netvark/resource-core/server` defines the domain definers,
+ADR 0008 kept the core free of hosts. `@nizam-os/resource-core/server` defines the domain definers,
 the lifecycle every operation runs (SPEC 12.3), and the storage adapter contract with the suite that
-proves it (12.8, 12.9). It leaves the runtime to `@netvark/kysely-resource` (epic #23). The
+proves it (12.8, 12.9). It leaves the runtime to `@nizam-os/kysely-resource` (epic #23). The
 end-to-end suite composes a minimal runtime over a reference adapter written in plain SQL. An
 application needs that composition as a package: one place that runs every operation in a scoped
 transaction, maps every failure to its declared error, and refuses to start when the database would
@@ -40,7 +40,7 @@ https://www.postgresql.org/docs/18/sql-select.html#SQL-FOR-UPDATE-SHARE (`SKIP L
 
 ## Decision
 
-1. `@netvark/kysely-resource` ships two things. The first is a storage adapter over Kysely,
+1. `@nizam-os/kysely-resource` ships two things. The first is a storage adapter over Kysely,
    `createKyselyStorage`, which the contract suite proves on PGlite and on PostgreSQL servers. The
    second is `createResourceRuntime`, which runs the lifecycle of SPEC 12.3 over that adapter. The
    runtime takes the Kysely adapter rather than any adapter, because it verifies row security at
@@ -48,7 +48,7 @@ https://www.postgresql.org/docs/18/sql-select.html#SQL-FOR-UPDATE-SHARE (`SKIP L
    of the contract.
 2. Values cross the driver as text both ways. Every parameter of the adapter's own statements is
    sent as text and cast, `$n::text::<type>`, so the type's input function reads it as it would read
-   a literal. A list's plan is rendered by `@netvark/kysely-keyset`, whose values keyset-core has
+   a literal. A list's plan is rendered by `@nizam-os/kysely-keyset`, whose values keyset-core has
    validated and keeps as strings wherever a driver could alter them, temporal and
    arbitrary-precision values among them, so PostgreSQL types each from the column it is compared
    with (keyset SPEC 4.3). Every value is selected as `<column>::text` and turned into the read form

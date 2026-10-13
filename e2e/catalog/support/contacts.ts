@@ -3,7 +3,7 @@
  * configuration, relative to a project directory that holds the
  * `migrations/` folder, and the paths of the files `extract` must produce.
  */
-import type { ExtractionConfig } from '@netvark/pg-catalog';
+import type { ExtractionConfig } from '@nizam-os/pg-catalog';
 
 import { fileURLToPath } from 'node:url';
 
@@ -33,7 +33,7 @@ export const PGLITE_EXTENSIONS: ReadonlyArray<string> = [
   'citext',
 ];
 
-/** The configuration an application would keep in `netvark.config.ts`. */
+/** The configuration an application would keep in `pg-catalog.config.ts`. */
 export const contactsConfig: ExtractionConfig = {
   migrations: 'migrations',
   database: { pglite: { extensions: PGLITE_EXTENSIONS } },

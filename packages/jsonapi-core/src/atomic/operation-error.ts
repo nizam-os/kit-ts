@@ -9,9 +9,9 @@
  * @ref https://jsonapi.org/ext/atomic/#processing-errors ("the server SHOULD use the pointer ... to identify the operation that failed")
  * @packageDocumentation
  */
-import type { ErrorItem } from '@netvark/ban-core';
+import type { ErrorItem } from '@nizam-os/ban-core';
 
-import { BanError } from '@netvark/ban-core';
+import { BanError } from '@nizam-os/ban-core';
 
 import { pathFromPointer } from '../internal/pointer';
 

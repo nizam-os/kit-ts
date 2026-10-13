@@ -11,9 +11,9 @@
  */
 import type { Context, Env, Next } from 'hono';
 
-import type { OperationTarget } from '@netvark/hono-jsonapi/atomic';
+import type { OperationTarget } from '@nizam-os/hono-jsonapi/atomic';
 
-import { isBanError, readDocument } from '@netvark/hono-jsonapi';
+import { isBanError, readDocument } from '@nizam-os/hono-jsonapi';
 
 import { noteType } from './resource-type';
 

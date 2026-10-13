@@ -6,7 +6,7 @@
 ## Context
 
 JSON:API reserves the `filter` query parameter family and leaves its strategy to the server; URL
-grammars belong to the API layer (`@netvark/jsonapi-core` parses `filter[field][op]=v` into
+grammars belong to the API layer (`@nizam-os/jsonapi-core` parses `filter[field][op]=v` into
 conditions). The pagination layer has to turn conditions into SQL safely: an undeclared column name
 must never reach a query, a value must match the column's type, and nothing may be dropped silently.
 Query strings carry only text, so `18`, `true`, and `2024-01-01` arrive as strings even when the

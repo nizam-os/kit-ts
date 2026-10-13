@@ -1,5 +1,5 @@
 ---
-'@netvark/intl-core': minor
+'@nizam-os/intl-core': minor
 ---
 
 First release: `isolate(value)` wraps an interpolated value in U+2068 FIRST STRONG ISOLATE and

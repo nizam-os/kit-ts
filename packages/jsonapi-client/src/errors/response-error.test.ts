@@ -132,7 +132,7 @@ describe('isResponseError (SPEC 15.7)', () => {
   it('recognizes one made by another copy of the package', () => {
     const copy = Object.assign(new Error('x'), {
       errors: [{ code: 'X' }],
-      [Symbol.for('@netvark/jsonapi-client/response-error')]: true,
+      [Symbol.for('@nizam-os/jsonapi-client/response-error')]: true,
     });
     expect(isResponseError(copy, 'X')).toBe(true);
   });

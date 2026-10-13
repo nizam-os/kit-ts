@@ -1,9 +1,9 @@
-import type { ErrorItem } from '@netvark/ban-core';
+import type { ErrorItem } from '@nizam-os/ban-core';
 
 import { describe, expect, it } from 'vitest';
 
-import { createBan, isBanError } from '@netvark/ban-core';
-import { jsonApi } from '@netvark/ban-core/formats/json-api';
+import { createBan, isBanError } from '@nizam-os/ban-core';
+import { jsonApi } from '@nizam-os/ban-core/formats/json-api';
 
 import { ERROR_CATALOG, ERROR_CODES } from './catalog';
 import {
@@ -126,7 +126,7 @@ describe('errorItem', () => {
     expect('location' in bare).toBe(false);
   });
 
-  it('keeps meta and the entry type link, and accepts @netvark/ban-core built-in codes', () => {
+  it('keeps meta and the entry type link, and accepts @nizam-os/ban-core built-in codes', () => {
     expect(
       errorItem('MAX_PAGE_SIZE_EXCEEDED', {
         detail: 'x',

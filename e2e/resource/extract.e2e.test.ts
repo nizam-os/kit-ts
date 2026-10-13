@@ -7,7 +7,7 @@
  * the PostgreSQL 18 schema's type the NOT ENFORCED declarations. The
  * storage contract's catalog, which the testing entry ships next to its
  * migrations (SPEC 12.9), and the catalog of the unit-test fixture of
- * `@netvark/resource-ui` (SPEC 20.8) are what extraction gives for
+ * `@nizam-os/resource-ui` (SPEC 20.8) are what extraction gives for
  * theirs.
  */
 import { describe, expect, it } from 'vitest';
@@ -26,7 +26,7 @@ describe('the extracted catalogs', () => {
     ['PostgreSQL 18', POSTGRES18_DIR],
   ])('of the %s schema pass extract --check', async (_name, directory) => {
     const run = await runBin(
-      await binPath('@netvark/pg-catalog', 'pg-catalog'),
+      await binPath('@nizam-os/pg-catalog', 'pg-catalog'),
       ['extract', '--check'],
       directory,
     );

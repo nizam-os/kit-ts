@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { BanError } from '@netvark/ban-core';
+import { BanError } from '@nizam-os/ban-core';
 
 import { errorObjects } from '../errors/json-api-error';
 import { Lids } from './lids';

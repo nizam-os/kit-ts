@@ -6,7 +6,7 @@
  * @ref https://microservices.io/patterns/data/transactional-outbox.html
  * @packageDocumentation
  */
-import type { DomainEvent } from '@netvark/resource-core/server';
+import type { DomainEvent } from '@nizam-os/resource-core/server';
 
 import type { KyselyTransaction } from './transaction';
 import type { KyselyStorage } from './types';

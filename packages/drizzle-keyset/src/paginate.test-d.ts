@@ -1,4 +1,4 @@
-import type { Page } from '@netvark/keyset-core';
+import type { Page } from '@nizam-os/keyset-core';
 
 import type { KeysetDatabase } from './types';
 

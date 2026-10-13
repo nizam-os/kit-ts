@@ -6,7 +6,7 @@
  * page it came from. Run over several sorts, including ones with equal
  * values and nulls, and several page sizes.
  */
-import type { Page } from '@netvark/kysely-keyset';
+import type { Page } from '@nizam-os/kysely-keyset';
 
 import type { Row } from './bindings.ts';
 import type { Harness } from './db.ts';

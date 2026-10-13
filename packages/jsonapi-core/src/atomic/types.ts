@@ -2,7 +2,7 @@
  * Public types of the Atomic Operations extension support (SPEC 11). The
  * processor is framework-free: `TContext` is whatever the host hands to
  * `operationsProcessor` per request (the Hono `Context` under
- * `@netvark/hono-jsonapi`, a `Request` in a plain fetch handler, nothing at all in a
+ * `@nizam-os/hono-jsonapi`, a `Request` in a plain fetch handler, nothing at all in a
  * test) and reaches every handler as `ctx`.
  * @ref https://jsonapi.org/ext/atomic/
  * @packageDocumentation

@@ -179,7 +179,7 @@ describe('declareResource: the shape of a declaration (SPEC 14)', () => {
       'contacts.fields.name.access: "rw" is not one of read, readWrite, immutable, write',
     );
     expect(typeErrorOf(field({ access: 'read', filter: ['like'] }))).toBe(
-      'contacts.fields.name.filter[0]: "like" is not an operator of @netvark/keyset-core',
+      'contacts.fields.name.filter[0]: "like" is not an operator of @nizam-os/keyset-core',
     );
     expect(typeErrorOf(field({ access: 'read', filter: [] }))).toBe(
       'contacts.fields.name.filter: list at least one operator',

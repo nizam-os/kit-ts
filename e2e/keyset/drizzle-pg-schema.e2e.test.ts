@@ -10,7 +10,7 @@ import { pgSchema, serial, text, uuid } from 'drizzle-orm/pg-core';
 import { sql } from 'kysely';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createDefineKeyset } from '@netvark/drizzle-keyset';
+import { createDefineKeyset } from '@nizam-os/drizzle-keyset';
 
 import { openPglite } from './support/db.ts';
 import { contacts, schema } from './support/drizzle-schema.ts';

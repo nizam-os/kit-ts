@@ -7,7 +7,7 @@ import type { Kysely } from 'kysely';
  * throw `TypeError` naming the caller and the option, before any query.
  * @packageDocumentation
  */
-import type { AnyDatabase } from '@netvark/kysely-keyset';
+import type { AnyDatabase } from '@nizam-os/kysely-keyset';
 
 import { isRecord } from './object';
 

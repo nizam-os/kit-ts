@@ -14,11 +14,11 @@
  */
 
 /** The probe, by its qualified name; `pg_temp` holds it, so no migration's object can share it. */
-export const PROBE_TABLE = 'pg_temp.netvark_probe';
+export const PROBE_TABLE = 'pg_temp.nizam_probe';
 
 /** Creates the probe with column and constraint `definitions`. */
 export function createProbe(definitions: ReadonlyArray<string>): string {
-  return `create temporary table netvark_probe (${definitions.join(', ')})`;
+  return `create temporary table nizam_probe (${definitions.join(', ')})`;
 }
 
 /**
@@ -34,7 +34,7 @@ export function createProbe(definitions: ReadonlyArray<string>): string {
  * @ref https://www.postgresql.org/docs/18/runtime-config-client.html#GUC-SEARCH-PATH
  * @ref https://www.postgresql.org/docs/18/plpgsql-control-structures.html#PLPGSQL-EXCEPTION-DIAGNOSTICS
  */
-export const ATTEMPT_FUNCTION = `create or replace function pg_temp.netvark_attempt(template text, fixtures json)
+export const ATTEMPT_FUNCTION = `create or replace function pg_temp.nizam_attempt(template text, fixtures json)
 returns json
 language plpgsql
 as $attempt$
@@ -69,7 +69,7 @@ $attempt$`;
 
 /** Runs the attempt function: $1 the template, $2 the fixtures' texts as JSON. */
 export const ATTEMPT_QUERY =
-  'select pg_temp.netvark_attempt($1, $2::json)::text as verdicts';
+  'select pg_temp.nizam_attempt($1, $2::json)::text as verdicts';
 
 /**
  * The columns of the table `$1.$2` named in `$3`, in `attnum` order, each

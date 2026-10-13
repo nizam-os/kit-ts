@@ -1,6 +1,6 @@
 /**
  * The documents of the operations (SPEC 11.1, 13.1), as
- * `@netvark/jsonapi-core`'s builders write them and its parsers read them:
+ * `@nizam-os/jsonapi-core`'s builders write them and its parsers read them:
  * a resource document, with the includable targets' resource objects in
  * `included`; a list's page, with the Cursor Pagination profile's links
  * and meta; a relationship document of identifiers; and the request
@@ -8,10 +8,10 @@
  * `jsonapi`, `links`, and `meta` are open: a server adds its own.
  * @ref https://jsonapi.org/format/1.1/#document-top-level
  * @ref https://jsonapi.org/profiles/ethanresnick/cursor-pagination/
- * @ref https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md (sections 7 and 8)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (sections 7 and 8)
  * @packageDocumentation
  */
-import type { JsonSchema } from '@netvark/ban-core';
+import type { JsonSchema } from '@nizam-os/ban-core';
 
 import type { DeclaredInternals } from '../declare/declared-resource';
 import type { RequestSide } from './resource-schemas';

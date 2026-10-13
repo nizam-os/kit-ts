@@ -6,13 +6,13 @@
  * linkage. The definitions are local for the reason `client.test-d.ts`
  * gives.
  */
-import type { AnyResource, TypesOf } from '@netvark/jsonapi-core';
+import type { AnyResource, TypesOf } from '@nizam-os/jsonapi-core';
 
 import type { IdentifierObject, ReadResult } from './types';
 
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { createDefineResource } from '@netvark/jsonapi-core';
+import { createDefineResource } from '@nizam-os/jsonapi-core';
 
 import { createTransport } from '../transport/transport';
 import { createClients } from './create-clients';
@@ -62,7 +62,7 @@ const Notes = defineResource({
   writable: { update: ['text', 'owner', 'labels'] },
 });
 
-/** A definition that serves no update, as `@netvark/resource-core` types a declaration without the operation. */
+/** A definition that serves no update, as `@nizam-os/resource-core` types a declaration without the operation. */
 declare const Archives: Omit<typeof Notes, 'type' | '~types'> & {
   readonly type: 'archives';
   readonly '~types'?: Omit<TypesOf<typeof Notes>, 'update'> & {

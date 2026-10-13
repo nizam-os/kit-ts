@@ -1,5 +1,5 @@
 /** Expected rules for the recognizer tests, written the way SPEC 2.9 states them. */
-import type { RangeBound, Rule } from '@netvark/catalog-core';
+import type { RangeBound, Rule } from '@nizam-os/catalog-core';
 
 export function length(min: number | null, max: number | null): Rule {
   return { kind: 'length', min, max };

@@ -6,12 +6,12 @@
  * a `ResponseError` of the client. Not published with the package.
  * @packageDocumentation
  */
-import type { FormModel } from '@netvark/resource-ui';
+import type { FormModel } from '@nizam-os/resource-ui';
 
 import type { MountedForm } from './forms';
 
-import { ResponseError } from '@netvark/jsonapi-client';
-import { resourceForm } from '@netvark/resource-ui';
+import { ResponseError } from '@nizam-os/jsonapi-client';
+import { resourceForm } from '@nizam-os/resource-ui';
 
 import { bindResponseErrors } from '../bind-errors';
 import { mountForm } from './forms';

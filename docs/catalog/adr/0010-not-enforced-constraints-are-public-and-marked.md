@@ -19,7 +19,7 @@ https://www.postgresql.org/docs/18/sql-altertable.html All of this was verified 
 
 The full catalog records `enforced` (SPEC 2.5), and the recognizer reads no rule from an unenforced
 CHECK (ADR 0006), but ADR 0005 dropped the state from the public catalog. A consumer of the public
-catalog therefore took an unenforced constraint for an enforced one: `@netvark/resource-core`
+catalog therefore took an unenforced constraint for an enforced one: `@nizam-os/resource-core`
 required a validator for every unenforced CHECK, because its `rule` is `null`, refused in its
 schemas what a validator or a hand-written rule forbade although the table stores it, and derived an
 error code that no client can cause.
@@ -34,7 +34,7 @@ error code that no client can cause.
   still relates two tables.
 - `CATALOG_FORMAT` becomes 3, since the public file's shape changes.
 - A consumer that derives client-facing checks or error codes MUST skip a constraint whose
-  `enforced` is `false`. `@netvark/resource-core` applies no rule of it in its schemas, takes no
+  `enforced` is `false`. `@nizam-os/resource-core` applies no rule of it in its schemas, takes no
   validator for it, and derives no code for it, while an unenforced foreign key still declares a
   relationship.
 

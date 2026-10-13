@@ -5,9 +5,9 @@
  * `isolatedDeclarations` asks of an export; the type tests define what
  * they infer from locally. Never published.
  */
-import type { AnyResource } from '@netvark/jsonapi-core';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
 
-import { createDefineResource } from '@netvark/jsonapi-core';
+import { createDefineResource } from '@nizam-os/jsonapi-core';
 
 const defineResource = createDefineResource({
   links: { base: 'https://blog.example/api' },

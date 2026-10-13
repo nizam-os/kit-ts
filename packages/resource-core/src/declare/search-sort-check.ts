@@ -6,8 +6,8 @@
  * fields declared with `sort: true`, each once.
  * @packageDocumentation
  */
-import type { PublicTable } from '@netvark/catalog-core';
-import type { SortField } from '@netvark/keyset-core';
+import type { PublicTable } from '@nizam-os/catalog-core';
+import type { SortField } from '@nizam-os/keyset-core';
 
 import type { SearchColumn } from '../catalog/types';
 import type {
@@ -41,11 +41,11 @@ export type SearchCheck<
 type SearchConfigCheck<TConfig, TGenerated> = [TConfig] extends [string]
   ? IsSearchConfig<TConfig> extends true
     ? unknown
-    : Requirement<`search.config: "${TConfig}" is not a text search configuration @netvark/keyset-core accepts (${typeof SEARCH_CONFIG_SYNTAX})`>
+    : Requirement<`search.config: "${TConfig}" is not a text search configuration @nizam-os/keyset-core accepts (${typeof SEARCH_CONFIG_SYNTAX})`>
   : [TGenerated] extends [string]
     ? IsSearchConfig<TGenerated> extends true
       ? unknown
-      : Requirement<`search.column: the column is generated with config "${TGenerated}", which @netvark/keyset-core does not accept (${typeof SEARCH_CONFIG_SYNTAX})`>
+      : Requirement<`search.column: the column is generated with config "${TGenerated}", which @nizam-os/keyset-core does not accept (${typeof SEARCH_CONFIG_SYNTAX})`>
     : unknown;
 
 type SearchColumnCheck<

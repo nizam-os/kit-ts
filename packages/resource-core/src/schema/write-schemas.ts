@@ -1,6 +1,6 @@
 /**
  * The write validators of a resource (SPEC 6.2, 6.5): a create or an
- * update as `@netvark/jsonapi-core` parses it, `{ attributes,
+ * update as `@nizam-os/jsonapi-core` parses it, `{ attributes,
  * relationships }`, the attributes keyed by public name and each
  * relationship as its `data`. Each part is validated by its object schema,
  * and the multi-column CHECKs over both fields and relationships run here,

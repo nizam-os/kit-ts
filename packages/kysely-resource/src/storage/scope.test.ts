@@ -4,8 +4,8 @@ import type { KyselyStorage } from './types';
 import { sql } from 'kysely';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { scopeValues } from '@netvark/resource-core/server';
-import { contractFixture } from '@netvark/resource-core/testing';
+import { scopeValues } from '@nizam-os/resource-core/server';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { contractDatabase, storageOptions } from '../test-support/database';
 import { createKyselyStorage } from './create-storage';

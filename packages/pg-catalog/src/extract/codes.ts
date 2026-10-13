@@ -11,7 +11,7 @@ import type {
   PolicyCommand,
   ReferentialAction,
   TypeKind,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import { PgCatalogError } from '../errors';
 
@@ -67,7 +67,7 @@ export function decode<TValue>(
   if (value === undefined) {
     throw new PgCatalogError(
       'unsupported_server',
-      `the server returned ${column} "${code}", which this version of @netvark/pg-catalog does not know`,
+      `the server returned ${column} "${code}", which this version of @nizam-os/pg-catalog does not know`,
     );
   }
   return value;

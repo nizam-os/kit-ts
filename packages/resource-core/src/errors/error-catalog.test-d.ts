@@ -3,8 +3,8 @@ import type { ErrorCatalog } from './error-catalog';
 
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { createBan } from '@netvark/ban-core';
-import { ERROR_CATALOG } from '@netvark/jsonapi-core';
+import { createBan } from '@nizam-os/ban-core';
+import { ERROR_CATALOG } from '@nizam-os/jsonapi-core';
 
 import { createDeclareResource } from '../declare/create-declare-resource';
 import { contactsCatalog } from '../test-support/contacts';

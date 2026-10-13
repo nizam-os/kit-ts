@@ -4,7 +4,7 @@ import { defineProject } from 'vitest/config';
 
 /**
  * The client's test project; the root `vitest.config.ts` runs it and owns
- * coverage. `@netvark/jsonapi-core` resolves to its source through the
+ * coverage. `@nizam-os/jsonapi-core` resolves to its source through the
  * `source` condition (see tsconfig.json), so the round trip through
  * `parseQuery` runs against the core as it is edited.
  * @ref https://vitest.dev/guide/projects
@@ -20,7 +20,7 @@ const config: UserWorkspaceConfig = defineProject({
     },
   },
   test: {
-    name: '@netvark/jsonapi-client',
+    name: '@nizam-os/jsonapi-client',
     include: ['src/**/*.test.ts'],
     environment: 'node',
     restoreMocks: true,

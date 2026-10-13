@@ -1,8 +1,8 @@
 {
-  "name": "@netvark/ban-e2e",
+  "name": "@nizam-os/ban-e2e",
   "version": "0.0.0",
   "private": true,
-  "description": "End-to-end tests: a consumer of the built @netvark/ban-core and @netvark/hono-ban packages, exercised over real HTTP.",
+  "description": "End-to-end tests: a consumer of the built @nizam-os/ban-core and @nizam-os/hono-ban packages, exercised over real HTTP.",
   "type": "module",
   "scripts": {
     "test": "vitest run",
@@ -20,8 +20,8 @@
     "@hono/valibot-validator": "catalog:",
     "@hono/zod-openapi": "catalog:",
     "@hono/zod-validator": "catalog:",
-    "@netvark/ban-core": "workspace:*",
-    "@netvark/hono-ban": "workspace:*",
+    "@nizam-os/ban-core": "workspace:*",
+    "@nizam-os/hono-ban": "workspace:*",
     "@opentelemetry/api": "catalog:",
     "@opentelemetry/sdk-trace-node": "2.12.0",
     "@types/node": "catalog:",

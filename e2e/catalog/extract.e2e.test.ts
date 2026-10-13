@@ -11,7 +11,7 @@ import { join } from 'node:path';
 
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
-import { extract } from '@netvark/pg-catalog';
+import { extract } from '@nizam-os/pg-catalog';
 
 import {
   contactsConfig,

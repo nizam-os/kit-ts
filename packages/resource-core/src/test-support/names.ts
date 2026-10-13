@@ -1,6 +1,6 @@
 /**
  * The names catalog (SPEC 4, 15.1): tables whose names fail the checks of
- * SPEC 4.2, as the `extract` command of `@netvark/pg-catalog` writes them
+ * SPEC 4.2, as the `extract` command of `@nizam-os/pg-catalog` writes them
  * for this schema replayed on PGlite, typed by an explicit interface as
  * `contacts.ts` is.
  * `notes` holds a `type`, `lid`, and `constructor` column, a foreign key

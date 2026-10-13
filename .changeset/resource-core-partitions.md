@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 Violations raised through a partitioned table now map to the declared codes of that table.

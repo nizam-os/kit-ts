@@ -6,7 +6,7 @@
  * has; a JavaScript caller who hands anything else learns it at the call.
  * @packageDocumentation
  */
-import type { FieldMeta, ResourceNames } from '@netvark/resource-core';
+import type { FieldMeta, ResourceNames } from '@nizam-os/resource-core';
 
 import { isObject } from './object';
 

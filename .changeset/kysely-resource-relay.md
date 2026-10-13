@@ -1,5 +1,5 @@
 ---
-'@netvark/kysely-resource': minor
+'@nizam-os/kysely-resource': minor
 ---
 
 `relayOutbox({ db, outbox, deliver, limit })` delivers the events operations recorded, once their

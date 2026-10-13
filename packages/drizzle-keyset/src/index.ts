@@ -1,6 +1,6 @@
 /**
- * `@netvark/drizzle-keyset`: keyset pagination for Drizzle ORM on
- * PostgreSQL. Everything `@netvark/keyset-core` exports is re-exported, so
+ * `@nizam-os/drizzle-keyset`: keyset pagination for Drizzle ORM on
+ * PostgreSQL. Everything `@nizam-os/keyset-core` exports is re-exported, so
  * an application imports from one package; on top come
  * `createDefineKeyset`, whose definitions name the tables and columns of
  * the application's Drizzle schema object and whose keysets carry
@@ -10,7 +10,7 @@
  * @ref https://orm.drizzle.team/docs/sql
  * @packageDocumentation
  */
-export * from '@netvark/keyset-core';
+export * from '@nizam-os/keyset-core';
 
 export type { DefineDefaultedKeyset, DefineKeyset } from './define-keyset';
 export type {

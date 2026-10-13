@@ -1,6 +1,6 @@
 /**
  * The contacts application's HTTP API (resource SPEC 12.3, 13.1), as
- * `@netvark/hono-resource` will mount it: Hono with `@netvark/hono-jsonapi`
+ * `@nizam-os/hono-resource` will mount it: Hono with `@nizam-os/hono-jsonapi`
  * for negotiation, the request validators, `respond`, and the error
  * handler, and behind each declared operation of contacts and calls the
  * runtime `createResourceRuntime` booted, typed wide as a host takes any
@@ -19,13 +19,13 @@ import type {
   Included,
   JsonApiVariables,
   ParsedQuery,
-} from '@netvark/hono-jsonapi';
+} from '@nizam-os/hono-jsonapi';
 import type {
   ResourceOperations,
   ResourceRuntime,
-} from '@netvark/kysely-resource';
-import type { DeclaredResource } from '@netvark/resource-core';
-import type { PublicRow } from '@netvark/resource-core/server';
+} from '@nizam-os/kysely-resource';
+import type { DeclaredResource } from '@nizam-os/resource-core';
+import type { PublicRow } from '@nizam-os/resource-core/server';
 
 import type { AppActor, AppDomain } from './domain.ts';
 
@@ -43,8 +43,8 @@ import {
   queryValidator,
   resourceDocument,
   respond,
-} from '@netvark/hono-jsonapi';
-import { keysetRequest } from '@netvark/resource-core/server';
+} from '@nizam-os/hono-jsonapi';
+import { keysetRequest } from '@nizam-os/resource-core/server';
 
 import { Calls } from '../resources/calls.ts';
 import { Contacts } from '../resources/contacts.ts';

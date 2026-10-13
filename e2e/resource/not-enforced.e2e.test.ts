@@ -9,7 +9,7 @@
  * ENFORCED, so with an older server only PGlite runs.
  * @ref https://www.postgresql.org/docs/18/sql-createtable.html (`NOT ENFORCED`)
  */
-import type { ResourceIssue } from '@netvark/resource-core';
+import type { ResourceIssue } from '@nizam-os/resource-core';
 
 import type { OracleDatabase } from './support/oracle-database.ts';
 

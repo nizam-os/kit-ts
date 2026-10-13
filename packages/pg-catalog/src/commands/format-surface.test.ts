@@ -1,4 +1,4 @@
-import type { SurfaceChange } from '@netvark/resource-core/openapi';
+import type { SurfaceChange } from '@nizam-os/resource-core/openapi';
 
 import type { SurfaceCheckReport } from './surface';
 

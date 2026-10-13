@@ -10,7 +10,7 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import { JSON_API_MEDIA_TYPE } from '@netvark/jsonapi-core';
+import { JSON_API_MEDIA_TYPE } from '@nizam-os/jsonapi-core';
 
 import { useClientBlog } from './support/clients.ts';
 

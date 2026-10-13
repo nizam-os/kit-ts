@@ -9,20 +9,20 @@
  */
 import type { Context, Env, Hono } from 'hono';
 
-import type { Included, ParsedQuery } from '@netvark/hono-jsonapi';
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { Included, ParsedQuery } from '@nizam-os/hono-jsonapi';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 import type {
   Domain,
   DomainShape,
   PublicRow,
   ResourceOperations,
   ResourceRuntime,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { Actors } from './actor';
 import type { MethodTable } from './methods';
 
-import { include } from '@netvark/hono-jsonapi';
+import { include } from '@nizam-os/hono-jsonapi';
 
 /** What the routes of one `jsonApiRoutes` share. */
 export interface RouteContext<TEnv extends Env, TDomain extends DomainShape> {

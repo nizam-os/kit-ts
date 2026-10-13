@@ -1,5 +1,5 @@
 ---
-'@netvark/keyset-core': minor
+'@nizam-os/keyset-core': minor
 ---
 
 `OperatorsOf<TType>` is the operator table of SPEC 4.2 as a type: the operators a field of a type

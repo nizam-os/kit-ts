@@ -1,5 +1,5 @@
 ---
-'@netvark/pg-catalog': minor
+'@nizam-os/pg-catalog': minor
 ---
 
 The Kysely types can follow PGlite's own parsers, for applications on Kysely's `PGliteDialect`: set

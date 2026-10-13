@@ -4,7 +4,7 @@
  * helpers the PGlite table names. `kysely-pglite-driver.test.ts` holds the
  * same table against PGlite.
  */
-import type { Catalog } from '@netvark/catalog-core';
+import type { Catalog } from '@nizam-os/catalog-core';
 
 import { beforeAll, describe, expect, it } from 'vitest';
 

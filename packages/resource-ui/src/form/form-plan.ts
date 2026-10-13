@@ -9,7 +9,7 @@ import type {
   IssueText,
   Messages,
   ResourceIssue,
-} from '@netvark/resource-core';
+} from '@nizam-os/resource-core';
 
 import type { FormOperation } from './form-types';
 import type { HeldMember } from './form-values';

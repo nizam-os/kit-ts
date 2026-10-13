@@ -7,12 +7,12 @@
  * type-level twins are `names-check.ts` and `codes-check.ts`.
  * @packageDocumentation
  */
-import type { PublicTable } from '@netvark/catalog-core';
+import type { PublicTable } from '@nizam-os/catalog-core';
 
 import type { Declaration } from '../declare/types';
 import type { ResourceNames } from './types';
 
-import { toCamelCase } from '@netvark/catalog-core';
+import { toCamelCase } from '@nizam-os/catalog-core';
 
 import { ownValue } from '../internal/object';
 import { deriveCode, isCode } from './code';

@@ -16,7 +16,7 @@
  */
 import type { $ZodType } from 'zod/v4/core';
 
-import type { JsonSchema } from '@netvark/ban-core';
+import type { JsonSchema } from '@nizam-os/ban-core';
 
 import type { FieldLimits, ItemMeta, WireType } from '../meta/types';
 

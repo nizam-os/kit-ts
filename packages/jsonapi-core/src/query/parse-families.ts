@@ -10,7 +10,7 @@
  * @ref https://jsonapi.org/profiles/ethanresnick/cursor-pagination/
  * @packageDocumentation
  */
-import type { ErrorItem } from '@netvark/ban-core';
+import type { ErrorItem } from '@nizam-os/ban-core';
 
 import type { AnyResource } from '../resource/types';
 import type { Registry } from './registry';

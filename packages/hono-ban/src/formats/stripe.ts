@@ -1,1 +1,1 @@
-export * from '@netvark/ban-core/formats/stripe';
+export * from '@nizam-os/ban-core/formats/stripe';

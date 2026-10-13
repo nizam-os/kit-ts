@@ -5,7 +5,7 @@
  * schema, and the spec every level of a column's type is described with.
  * @packageDocumentation
  */
-import type { PublicColumn, PublicDomain } from '@netvark/catalog-core';
+import type { PublicColumn, PublicDomain } from '@nizam-os/catalog-core';
 
 import type { Codec, Validator } from '../codecs/types';
 import type { Limits } from './limits';

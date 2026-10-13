@@ -15,7 +15,7 @@ import type { Bundle, PatternPart } from './bundle';
 import {
   FIRST_STRONG_ISOLATE,
   POP_DIRECTIONAL_ISOLATE,
-} from '@netvark/intl-core';
+} from '@nizam-os/intl-core';
 
 function text(value: string): PatternPart & { readonly value: string } {
   return { type: 'text', value };

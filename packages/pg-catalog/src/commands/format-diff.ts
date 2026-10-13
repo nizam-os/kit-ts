@@ -8,7 +8,7 @@ import type {
   CatalogChange,
   CatalogDiff,
   JsonValue,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 /** The members whose entries are objects, with the heading of their group (SPEC 4). */
 const RECORDS: ReadonlyMap<string, string> = new Map([

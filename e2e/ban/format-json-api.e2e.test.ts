@@ -17,18 +17,18 @@
 import type {
   JsonApiBody,
   JsonApiErrorObject,
-} from '@netvark/hono-ban/formats/json-api';
+} from '@nizam-os/hono-ban/formats/json-api';
 
 import type { RunningServer } from './support/server';
 
 import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
+import { createBan } from '@nizam-os/hono-ban';
 import {
   JSON_API_CONTENT_TYPE,
   jsonApi,
-} from '@netvark/hono-ban/formats/json-api';
+} from '@nizam-os/hono-ban/formats/json-api';
 
 import { schemaErrors } from './support/ajv';
 import { startServer } from './support/server';

@@ -1,6 +1,6 @@
 /**
  * A declared resource's JSON:API definition (SPEC 11.1): the
- * `@netvark/jsonapi-core` resource that the definer's `defineResource`
+ * `@nizam-os/jsonapi-core` resource that the definer's `defineResource`
  * builds with the definer's `links`. Its attributes are every field's
  * public name, `write` fields included, so requests may carry them;
  * `writable` lists the members each write carries by their access, so the
@@ -12,7 +12,7 @@
  * holds (`keyset-definition.ts`). It reads every relationship's target for
  * the target's type, so the declared resource builds it on first read
  * (SPEC 3.8).
- * @ref https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md (sections 5 and 5.2)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (sections 5 and 5.2)
  * @packageDocumentation
  */
 import type {
@@ -20,7 +20,7 @@ import type {
   DefineResource,
   RelationshipDefinition,
   SerializedResource,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import type { KeysetMembers } from '../declare/check-filters';
 import type { ResolvedPage } from '../declare/check-page';

@@ -1,7 +1,7 @@
 {
-  "name": "@netvark/hono-jsonapi",
+  "name": "@nizam-os/hono-jsonapi",
   "version": "0.0.0",
-  "description": "JSON:API 1.1 for Hono: content negotiation middleware, typed validators, response helpers, error handlers, and the Atomic Operations endpoint, on top of @netvark/jsonapi-core.",
+  "description": "JSON:API 1.1 for Hono: content negotiation middleware, typed validators, response helpers, error handlers, and the Atomic Operations endpoint, on top of @nizam-os/jsonapi-core.",
   "keywords": [
     "atomic-operations",
     "cursor-pagination",
@@ -11,13 +11,13 @@
     "middleware",
     "rest"
   ],
-  "homepage": "https://github.com/netvark/netvark/tree/main/packages/hono-jsonapi#readme",
-  "bugs": "https://github.com/netvark/netvark/issues",
+  "homepage": "https://github.com/nizam-os/kit/tree/main/packages/hono-jsonapi#readme",
+  "bugs": "https://github.com/nizam-os/kit/issues",
   "license": "MIT",
   "author": "Ali Issa (https://github.com/ali-issa)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netvark/netvark.git",
+    "url": "git+https://github.com/nizam-os/kit.git",
     "directory": "packages/hono-jsonapi"
   },
   "files": [
@@ -57,15 +57,15 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@netvark/jsonapi-core": "workspace:^"
+    "@nizam-os/jsonapi-core": "workspace:^"
   },
   "devDependencies": {
-    "@netvark/hono-ban": "workspace:^",
+    "@nizam-os/hono-ban": "workspace:^",
     "hono": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {
-    "@netvark/hono-ban": ">=2.0.0",
+    "@nizam-os/hono-ban": ">=2.0.0",
     "hono": ">=4.13.7"
   },
   "engines": {

@@ -1,6 +1,6 @@
 /**
  * RFC 6901 JSON Pointers for `source.pointer` members: construction from
- * path segments, and the reverse for handing a pointer to @netvark/ban-core, whose
+ * path segments, and the reverse for handing a pointer to @nizam-os/ban-core, whose
  * error items carry the segments and render the pointer themselves.
  * @ref https://www.rfc-editor.org/rfc/rfc6901#section-3
  * @ref https://www.rfc-editor.org/rfc/rfc6901#section-4

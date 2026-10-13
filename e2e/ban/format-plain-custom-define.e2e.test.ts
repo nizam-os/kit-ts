@@ -4,7 +4,7 @@ import type {
   RenderContext,
   ResolvedDefinition,
   SchemaContext,
-} from '@netvark/hono-ban';
+} from '@nizam-os/hono-ban';
 
 import type { RunningServer } from './support/server';
 
@@ -12,8 +12,8 @@ import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { z } from 'zod';
 
-import { createBan, defineFormat, pointerFromPath } from '@netvark/hono-ban';
-import { assertFormatConformance } from '@netvark/hono-ban/testing';
+import { createBan, defineFormat, pointerFromPath } from '@nizam-os/hono-ban';
+import { assertFormatConformance } from '@nizam-os/hono-ban/testing';
 
 import { compileWithAjv, schemaErrors } from './support/ajv';
 import { startServer } from './support/server';

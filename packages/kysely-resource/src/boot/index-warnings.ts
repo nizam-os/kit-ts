@@ -15,15 +15,15 @@
  * @ref https://www.postgresql.org/docs/18/indexes-unique.html (NULLS NOT DISTINCT)
  * @packageDocumentation
  */
-import type { CatalogIndex, CatalogTable } from '@netvark/catalog-core';
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { CatalogIndex, CatalogTable } from '@nizam-os/catalog-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import type { BootContext } from './options';
 
 import {
   relationshipTargets,
   scopeColumnOf,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import { ownValue } from '../internal/object';
 

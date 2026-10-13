@@ -14,7 +14,7 @@ import { safeStringify } from '../internal/json';
  * member listed there changes its name, type, or meaning.
  * @ref https://tc39.es/ecma262/#sec-symbol.for
  */
-const BRAND: unique symbol = Symbol.for('@netvark/ban-core/BanError');
+const BRAND: unique symbol = Symbol.for('@nizam-os/ban-core/BanError');
 const BRAND_VERSION = 1;
 
 /** Whether `value` carries the brand at the version this copy reads. */

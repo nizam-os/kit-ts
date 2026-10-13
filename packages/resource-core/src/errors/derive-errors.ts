@@ -11,7 +11,7 @@
  * share from two constraints that derive one code (SPEC 4.2).
  * @packageDocumentation
  */
-import type { PublicCatalog, PublicTable } from '@netvark/catalog-core';
+import type { PublicCatalog, PublicTable } from '@nizam-os/catalog-core';
 
 import type { DomainRules } from '../declare/registries';
 import type { ResourceNames } from '../names/types';

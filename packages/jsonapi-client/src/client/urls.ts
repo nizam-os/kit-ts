@@ -9,7 +9,7 @@
  * @ref https://www.rfc-editor.org/rfc/rfc3986#section-5.2.4 (remove_dot_segments)
  * @packageDocumentation
  */
-import type { AnyResource, ResourcePaths } from '@netvark/jsonapi-core';
+import type { AnyResource, ResourcePaths } from '@nizam-os/jsonapi-core';
 
 import type { TransportState } from '../transport/transport';
 

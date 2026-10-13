@@ -5,7 +5,7 @@
  * Not published with the package.
  * @packageDocumentation
  */
-import type { PublicCatalog, PublicTable } from '@netvark/catalog-core';
+import type { PublicCatalog, PublicTable } from '@nizam-os/catalog-core';
 
 import { columnRules, domainRules, levelOf } from './value-levels';
 

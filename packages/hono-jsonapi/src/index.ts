@@ -1,14 +1,14 @@
 /**
- * `@netvark/hono-jsonapi`: JSON:API 1.1 for Hono. Everything `@netvark/jsonapi-core` exports is
+ * `@nizam-os/hono-jsonapi`: JSON:API 1.1 for Hono. Everything `@nizam-os/jsonapi-core` exports is
  * re-exported here, so a Hono application imports from one package; on top
  * comes the Hono integration (SPEC 10): the `jsonApi()` middleware,
  * `respond`, `readDocument`, the validators, and the error handlers. The
- * Atomic Operations endpoint lives in `@netvark/hono-jsonapi/atomic`.
+ * Atomic Operations endpoint lives in `@nizam-os/hono-jsonapi/atomic`.
  * @ref https://jsonapi.org/format/1.1/
  * @ref https://hono.dev/docs/guides/middleware
  * @packageDocumentation
  */
-export * from '@netvark/jsonapi-core';
+export * from '@nizam-os/jsonapi-core';
 
 export type { ErrorHandlerOptions, NotFoundHandlerOptions } from './handlers';
 export type { JsonApiOptions } from './middleware';

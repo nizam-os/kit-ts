@@ -8,7 +8,7 @@
  * @ref https://jsonapi.org/format/1.1/#crud
  * @packageDocumentation
  */
-import type { AnyResource, ResourcePaths } from '@netvark/jsonapi-core';
+import type { AnyResource, ResourcePaths } from '@nizam-os/jsonapi-core';
 
 import type { CallOptions, Outgoing } from '../transport/send';
 import type { TransportState } from '../transport/transport';

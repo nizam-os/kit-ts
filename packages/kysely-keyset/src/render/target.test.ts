@@ -1,6 +1,6 @@
 import type { Kysely } from 'kysely';
 
-import type { AggregateTarget, Target } from '@netvark/keyset-core';
+import type { AggregateTarget, Target } from '@nizam-os/keyset-core';
 
 import type { AnyDatabase } from '../types';
 

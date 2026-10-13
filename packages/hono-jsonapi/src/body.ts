@@ -11,7 +11,7 @@ import {
   isJsonApiMediaType,
   jsonApiError,
   parseMediaType,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 /** The parsed JSON body of a request declared as `application/vnd.api+json`. */
 export async function readDocument<E extends Env>(

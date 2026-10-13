@@ -26,7 +26,7 @@ import {
   isJsonApiMediaType,
   JSON_API_MEDIA_TYPE,
   parseMediaType,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import { ResponseError } from '../errors/response-error';
 import { isRecord } from '../internal/object';

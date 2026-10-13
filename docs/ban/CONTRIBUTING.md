@@ -1,6 +1,6 @@
 # Contributing to the ban family
 
-`@netvark/ban-core` (the framework-free core) and `@netvark/hono-ban` (the Hono binding). The root
+`@nizam-os/ban-core` (the framework-free core) and `@nizam-os/hono-ban` (the Hono binding). The root
 [`CONTRIBUTING.md`](../../CONTRIBUTING.md) covers setup, the quality gates, the shared conventions,
 commits, changesets, and releases; this guide adds what is specific to the family. Design intent
 lives in [`DESIGN.md`](DESIGN.md), the normative contract in [`SPEC.md`](SPEC.md), and decisions in
@@ -12,7 +12,7 @@ lives in [`DESIGN.md`](DESIGN.md), the normative contract in [`SPEC.md`](SPEC.md
   0016). Behavior lives in the core; the adapter owns only what needs a Hono type (`create-ban.ts`,
   `http-exception.ts`) and one-line re-exports of each core subpath. A change to a format, hook, or
   the handler is a core change, even when the motivating bug was seen through Hono.
-- `@netvark/hono-ban` imports `@netvark/ban-core` by package name. In the repository the `source`
+- `@nizam-os/hono-ban` imports `@nizam-os/ban-core` by package name. In the repository the `source`
   export condition resolves that to the core's `src/` (see `packages/hono-ban/tsconfig.json` and its
   `vitest.config.ts`), so no build is needed for tests and type checks; the published package
   resolves to `dist/`.
@@ -23,27 +23,27 @@ lives in [`DESIGN.md`](DESIGN.md), the normative contract in [`SPEC.md`](SPEC.md
 ## Conventions
 
 - **End-to-end tests live in `e2e/ban/`.** That directory is a private pnpm workspace package that
-  depends on `@netvark/ban-core` and `@netvark/hono-ban` through `workspace:*`, so its imports
+  depends on `@nizam-os/ban-core` and `@nizam-os/hono-ban` through `workspace:*`, so its imports
   resolve through the published `exports` maps into each `dist/` and its `tsc` run checks the
   emitted declarations. Each `*.e2e.test.ts` file starts a real Hono app on `@hono/node-server` and
   asserts over `fetch` (`core-handler` serves a plain `fetch` function instead, to prove the core
   alone). Never import from `src/` there. Run one file with
-  `pnpm --filter @netvark/ban-e2e exec vitest run <name>` after `pnpm build`.
+  `pnpm --filter @nizam-os/ban-e2e exec vitest run <name>` after `pnpm build`.
 - **Never throw inside the error handler.** See ADR 0002. The handler returns a `Response` on every
   path.
 
 ## Adding a format or adapter
 
 The extension points live in `packages/ban-core/src`: wire formats (`formats/<name>/index.ts`,
-exported as `@netvark/ban-core/formats/<name>`), validator hooks (`validation/<name>.ts`, exported
-as `@netvark/ban-core/<name>`), observability sources (`observability/<name>.ts`, exported as
-`@netvark/ban-core/<name>`), and database error mappers (`<database>/index.ts`, exported as
-`@netvark/ban-core/<database>`; `@netvark/ban-core/postgresql` is the one so far). Each subpath is
+exported as `@nizam-os/ban-core/formats/<name>`), validator hooks (`validation/<name>.ts`, exported
+as `@nizam-os/ban-core/<name>`), observability sources (`observability/<name>.ts`, exported as
+`@nizam-os/ban-core/<name>`), and database error mappers (`<database>/index.ts`, exported as
+`@nizam-os/ban-core/<database>`; `@nizam-os/ban-core/postgresql` is the one so far). Each subpath is
 mirrored by a one-line re-export in `packages/hono-ban/src` so it is also
-`@netvark/hono-ban/<subpath>`. Formats are namespaced because several ship and a consumer picks one;
+`@nizam-os/hono-ban/<subpath>`. Formats are namespaced because several ship and a consumer picks one;
 hooks, sources, and mappers are top-level because a consumer picks the one matching a library
-already installed. A fifth kind, a host adapter, is its own package next to `@netvark/hono-ban`: it
-depends on `@netvark/ban-core`, installs an `adopt` hook for the host's exceptions, and maps the
+already installed. A fifth kind, a host adapter, is its own package next to `@nizam-os/hono-ban`: it
+depends on `@nizam-os/ban-core`, installs an `adopt` hook for the host's exceptions, and maps the
 host's request to `ErrorRequest` (ADR 0016, ADR 0018).
 
 **What is accepted in-tree.** Open a discussion first (the issue templates link to it) so the scope
@@ -56,7 +56,7 @@ question is settled before code exists.
   the one deliberate exception to both. A shape that exists in one organization belongs in that
   organization as a `defineFormat()` call, which the README shows.
 - A validator hook must target a validator with its own `@hono/*` middleware that Standard Schema
-  does not already cover. `@netvark/ban-core/standard-schema` serves every Standard Schema library
+  does not already cover. `@nizam-os/ban-core/standard-schema` serves every Standard Schema library
   (ArkType, Effect Schema, Zod 4, Valibot), so a dedicated hook for one of them needs a reason the
   shared hook cannot meet.
 - An observability module supplies a request id or trace id source for `HandlerOptions`. Sinks
@@ -69,8 +69,8 @@ question is settled before code exists.
 
 **Constraints every contribution inherits.**
 
-- `@netvark/ban-core` has no dependencies and no peer dependencies, and `hono` stays
-  `@netvark/hono-ban`'s only peer. Type the third-party objects you read structurally (`*Like`
+- `@nizam-os/ban-core` has no dependencies and no peer dependencies, and `hono` stays
+  `@nizam-os/hono-ban`'s only peer. Type the third-party objects you read structurally (`*Like`
   interfaces) and never import the library at runtime or in types (ADR 0009). The real library is a
   devDependency of the package whose tests need it and of `e2e/ban/package.json`; pnpm refuses
   versions younger than a day (`minimumReleaseAge`). A database mapper's real driver is an
@@ -92,7 +92,7 @@ question is settled before code exists.
 1. Source file in the location above, with a `@packageDocumentation` header naming the SPEC section
    it implements and `@ref` links to the specification or upstream source.
 2. Entries in both `tsdown.config.ts` files (the key becomes the subpath): the core's points at the
-   source, `@netvark/hono-ban`'s at a new one-line re-export file. Run `pnpm build` and commit the
+   source, `@nizam-os/hono-ban`'s at a new one-line re-export file. Run `pnpm build` and commit the
    regenerated `exports` in both `package.json` files; CI fails on a diff. knip reads the tsdown
    entries, so `knip.jsonc` needs no change.
 3. Unit tests beside the file. Formats also run `assertFormatConformance()` from `testing/` with the

@@ -1,7 +1,7 @@
 /**
  * The camelCase case table (SPEC 4.1, 4.3): a name and what Kysely
  * 0.29.6's `CamelCasePlugin` makes of it under the default options,
- * captured by running the plugin. `toCamelCase` of `@netvark/catalog-core`
+ * captured by running the plugin. `toCamelCase` of `@nizam-os/catalog-core`
  * (`names/camel-case.test.ts`) and the type-level `CamelCase`
  * (`names/camel-case.test-d.ts`) are both held to it. A cased letter
  * outside the Basic Multilingual Plane after `_` is absent on purpose:

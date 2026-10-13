@@ -9,7 +9,7 @@
  * still reads, changes, and links only the actor's.
  * @ref https://www.postgresql.org/docs/18/sql-alterpolicy.html
  */
-import type { ResourceInput } from '@netvark/kysely-resource';
+import type { ResourceInput } from '@nizam-os/kysely-resource';
 
 import type { RuntimeDatabase } from './runtime/database.ts';
 import type { AppRuntime } from './runtime/fixture.ts';
@@ -30,7 +30,7 @@ const OR_TRUE = `alter policy contacts_tenant_isolation on contacts
   with check (${READS_SCOPE} or true)`;
 const CALL = '00000000-0000-4000-8000-0000000000c1';
 
-/** A call to `contact` as `@netvark/jsonapi-core` parses its resource object. */
+/** A call to `contact` as `@nizam-os/jsonapi-core` parses its resource object. */
 function call(contactId: string): ResourceInput {
   return {
     id: CALL,

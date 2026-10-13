@@ -1,1 +1,1 @@
-export * from '@netvark/ban-core/postgresql';
+export * from '@nizam-os/ban-core/postgresql';

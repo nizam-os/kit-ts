@@ -13,8 +13,8 @@
 import type { ReadableSpan } from '@opentelemetry/sdk-trace-node';
 import type { MiddlewareHandler } from 'hono';
 
-import type { ErrorReport } from '@netvark/hono-ban';
-import type { OtelSource, OtelSpanContextLike } from '@netvark/hono-ban/otel';
+import type { ErrorReport } from '@nizam-os/hono-ban';
+import type { OtelSource, OtelSpanContextLike } from '@nizam-os/hono-ban/otel';
 
 import type { RunningServer } from './support/server';
 
@@ -27,9 +27,9 @@ import {
 import { Hono } from 'hono';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
-import { jsonApi } from '@netvark/hono-ban/formats/json-api';
-import { traceIdFromOtel } from '@netvark/hono-ban/otel';
+import { createBan } from '@nizam-os/hono-ban';
+import { jsonApi } from '@nizam-os/hono-ban/formats/json-api';
+import { traceIdFromOtel } from '@nizam-os/hono-ban/otel';
 
 import { startServer } from './support/server';
 
@@ -66,7 +66,7 @@ const DETAIL = 'Order 42 does not exist';
 
 /**
  * Opens an active span for the request; Hono calls `onError` from the same
- * `dispatch` frame that threw, so the span is active while @netvark/hono-ban renders.
+ * `dispatch` frame that threw, so the span is active while @nizam-os/hono-ban renders.
  * @ref https://opentelemetry.io/docs/languages/js/instrumentation/#create-spans
  * @ref e2e/ban/node_modules/hono/dist/compose.js (onError runs inside the throwing dispatch)
  */

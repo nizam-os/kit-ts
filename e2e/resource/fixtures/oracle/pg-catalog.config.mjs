@@ -4,7 +4,7 @@
 // prove they are current, and `pg-catalog rules --check` to prove the
 // declarations agree with the database. The registry is imported only when
 // rules runs, since the declarations import the catalog extract writes.
-import { defineExtraction } from '@netvark/pg-catalog';
+import { defineExtraction } from '@nizam-os/pg-catalog';
 
 export default defineExtraction({
   migrations: 'migrations',

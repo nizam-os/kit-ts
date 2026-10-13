@@ -1,14 +1,14 @@
-# @netvark/kysely-resource
+# @nizam-os/kysely-resource
 
 The [Kysely](https://kysely.dev) runtime for
-[`@netvark/resource-core`](https://github.com/netvark/netvark/tree/main/packages/resource-core)
+[`@nizam-os/resource-core`](https://github.com/nizam-os/kit/tree/main/packages/resource-core)
 declarations on PostgreSQL. It runs every operation in one transaction that sets the actor's tenant
 for that transaction only, so row security policies and the runtime's own scope predicate both see
 it, on a pooled connection, without anything leaking into the next transaction. Every choice is
 written down in
-[`docs/resource/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/resource/SPEC.md),
+[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md),
 section 18, and the decisions behind it in
-[ADR 0012](https://github.com/netvark/netvark/blob/main/docs/resource/adr/0012-the-runtime-runs-declarations-over-the-storage-contract.md).
+[ADR 0012](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0012-the-runtime-runs-declarations-over-the-storage-contract.md).
 
 Status: in development and unreleased. The storage adapter has its transaction protocol, scopes,
 reads and writes, keyset pages with totals, `many` for includes, quotas, row locks, and the outbox
@@ -19,21 +19,21 @@ composition against the catalog and the role it connects as, then runs each oper
 through `runtime.as(actor)`, or several in one transaction through
 `runtime.transaction(actor, work)`; `checkResourceRuntime` runs the same static checks in CI,
 without a database.
-[`@netvark/hono-resource`](https://github.com/netvark/netvark/tree/main/packages/hono-resource)
+[`@nizam-os/hono-resource`](https://github.com/nizam-os/kit/tree/main/packages/hono-resource)
 serves the runtime over HTTP on Hono.
 
 ## Install
 
 ```bash
-pnpm add @netvark/kysely-resource @netvark/resource-core @netvark/keyset-core kysely zod
+pnpm add @nizam-os/kysely-resource @nizam-os/resource-core @nizam-os/keyset-core kysely zod
 ```
 
-`kysely >= 0.29`, `@netvark/resource-core`, and `@netvark/keyset-core` are peer dependencies: your
+`kysely >= 0.29`, `@nizam-os/resource-core`, and `@nizam-os/keyset-core` are peer dependencies: your
 application declares its resources and behaviors and makes the keyset definer with its own copies,
 and the runtime must work with those same copies, since it recognizes a behavior by the copy that
 made it and a keyset's refusal by its class
-([ADR 0006](https://github.com/netvark/netvark/blob/main/docs/adr/0006-a-binding-takes-the-packages-the-application-hands-it-values-from-as-peers.md)).
-Install one copy of each: a second copy of `@netvark/resource-core`, such as one nested under a
+([ADR 0006](https://github.com/nizam-os/kit/blob/main/docs/adr/0006-a-binding-takes-the-packages-the-application-hands-it-values-from-as-peers.md)).
+Install one copy of each: a second copy of `@nizam-os/resource-core`, such as one nested under a
 package that declares your resources, fails boot with a `TypeError`. The adapter runs on PostgreSQL
 14 or later and on PGlite, through any Kysely PostgreSQL dialect (`PostgresDialect` over `pg`,
 `PGliteDialect`, or your own), on Node 22.12+, Bun, Deno, and Cloudflare Workers. Kysely 0.29.0 is
@@ -44,8 +44,8 @@ release added, and CI runs them there.
 
 ```ts
 // src/server/storage.ts
-import { createDefineKeyset } from '@netvark/keyset-core';
-import { createKyselyStorage } from '@netvark/kysely-resource';
+import { createDefineKeyset } from '@nizam-os/keyset-core';
+import { createKyselyStorage } from '@nizam-os/kysely-resource';
 
 import { publicCatalog } from '../generated/public-catalog'; // what your declarations are built from
 import { db } from './db'; // your Kysely<DB>
@@ -72,7 +72,7 @@ security policies and the indexes the public catalog leaves out), and what your 
 
 ```ts
 // src/server/runtime-options.ts
-import type { RuntimeOptions } from '@netvark/kysely-resource';
+import type { RuntimeOptions } from '@nizam-os/kysely-resource';
 
 import type { AppDomain } from './domain'; // what createDomainDefiners was given
 
@@ -95,7 +95,7 @@ export const options = {
 
 ```ts
 // src/server/runtime.ts
-import { createResourceRuntime } from '@netvark/kysely-resource';
+import { createResourceRuntime } from '@nizam-os/kysely-resource';
 
 import { options } from './runtime-options';
 
@@ -114,7 +114,7 @@ const created = await contacts.create({ attributes: { name: 'Ada', kind: 'person
 import { expect, it } from 'vitest';
 
 // src/server/runtime.test.ts: no database needed
-import { checkResourceRuntime } from '@netvark/kysely-resource';
+import { checkResourceRuntime } from '@nizam-os/kysely-resource';
 
 import { options } from './runtime-options';
 
@@ -143,7 +143,7 @@ it('boots against the catalog', () => {
   fails to compile.
 - **The runtime contract.** `runtime.resources` lists each behavior's declared resource, in the
   order of `resources`. The runtime's types, `ResourceRuntime`, `Domain`, `ResourceOperations`,
-  `ResourceInput`, and `ListOptions`, are `@netvark/resource-core/server`'s, re-exported here, so a
+  `ResourceInput`, and `ListOptions`, are `@nizam-os/resource-core/server`'s, re-exported here, so a
   host or a worker that is given the runtime types it without Kysely or a driver.
 - **Options mistakes throw first.** A key that is not an option, a storage that
   `createKyselyStorage` did not return, or a copy of a behavior is a `TypeError` naming the option,
@@ -210,7 +210,7 @@ commit;
 ## Reads and writes
 
 The storage implements the storage contract of
-[resource SPEC 12.8](https://github.com/netvark/netvark/blob/main/docs/resource/SPEC.md); the
+[resource SPEC 12.8](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md); the
 runtime calls it, and you rarely do. What it does to your rows:
 
 - **Only what the input holds.** `create` inserts exactly the members present, plus the client id,
@@ -226,7 +226,7 @@ runtime calls it, and you rarely do. What it does to your rows:
   such as `'infinity'`, `NaN`, a BC date, or an array with a `NULL` element, fails the read instead
   of turning into something else.
 - **Codecs.** A codec field is stored through its storage codec over PostgreSQL's text, the same
-  object `resources.storage` names in `netvark.config`:
+  object `resources.storage` names in `pg-catalog.config`:
 
   ```ts
   createKyselyStorage({
@@ -241,7 +241,7 @@ runtime calls it, and you rarely do. What it does to your rows:
   ```
 
 - **Keyset pages, bound to the tenant.** `list` plans the request with the resource's keyset
-  definition from `@netvark/keyset-core` and pages with signed cursors bound to the transaction's
+  definition from `@nizam-os/keyset-core` and pages with signed cursors bound to the transaction's
   scope values: two tenants asking for the same page send the same request, and a cursor of one is
   refused in the other with `INVALID_CURSOR`, reason `context`. `{ total: true }` adds a count of
   the rows the filter selects, the same on every page. A page never counts rows to find its place,
@@ -272,7 +272,7 @@ them once the transaction has committed:
 
 ```ts
 // src/server/relay.ts
-import { relayOutbox } from '@netvark/kysely-resource';
+import { relayOutbox } from '@nizam-os/kysely-resource';
 
 import { db } from './db';
 import { queue } from './queue';
@@ -419,11 +419,11 @@ on; with nothing running beside a transaction, its level has nothing to change.
 
 ## Documentation
 
-- [SPEC section 18](https://github.com/netvark/netvark/blob/main/docs/resource/SPEC.md): the
+- [SPEC section 18](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md): the
   runtime's contract, its boot checks, its failures, and the outbox
-- [DESIGN](https://github.com/netvark/netvark/blob/main/docs/resource/DESIGN.md): what the resource
+- [DESIGN](https://github.com/nizam-os/kit/blob/main/docs/resource/DESIGN.md): what the resource
   family builds and why
-- [ADR 0012](https://github.com/netvark/netvark/blob/main/docs/resource/adr/0012-the-runtime-runs-declarations-over-the-storage-contract.md):
+- [ADR 0012](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0012-the-runtime-runs-declarations-over-the-storage-contract.md):
   the runtime's decisions
 
 ## License

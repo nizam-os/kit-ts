@@ -10,13 +10,13 @@
  */
 import type { Env } from 'hono';
 
-import type { OpenApiOptions } from '@netvark/resource-core/openapi';
-import type { DomainShape } from '@netvark/resource-core/server';
+import type { OpenApiOptions } from '@nizam-os/resource-core/openapi';
+import type { DomainShape } from '@nizam-os/resource-core/server';
 
 import type { RouteContext } from './context';
 import type { PathPlan } from './paths';
 
-import { openapi } from '@netvark/resource-core/openapi';
+import { openapi } from '@nizam-os/resource-core/openapi';
 
 import { allow } from './methods';
 import { claimRoute } from './paths';

@@ -4,11 +4,11 @@
  * a write schema whose output is not `{ attributes, relationships }` with
  * each relationship as its linkage is a `TypeError`, never a write.
  */
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import { describe, expect, it } from 'vitest';
 
-import { errorObjects } from '@netvark/jsonapi-core';
+import { errorObjects } from '@nizam-os/jsonapi-core';
 
 import { BEHAVIORS } from '../test-support/domain';
 import { writeOf } from './input';

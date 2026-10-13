@@ -22,7 +22,7 @@ index and may share its name with a unique index of its table; both then report 
 23514 or 23503 and under 23505 (verified on PostgreSQL 14.19 and PGlite 18.3).
 
 ADR 0005 drops indexes from the public catalog, so a consumer that maps errors or checks uniqueness
-from it sees none of these rules: `@netvark/resource-core` derived no code for them, and a duplicate
+from it sees none of these rules: `@nizam-os/resource-core` derived no code for them, and a duplicate
 surfaced as the generic 409 with no code and no pointer.
 
 ## Decision

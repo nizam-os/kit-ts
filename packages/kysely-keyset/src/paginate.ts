@@ -18,7 +18,7 @@ import type {
   Page,
   QueryPlan,
   RelationsInit,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import type {
   AnyQuery,

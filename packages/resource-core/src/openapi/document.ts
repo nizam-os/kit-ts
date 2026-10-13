@@ -1,7 +1,7 @@
 /**
  * `openapi(resources, options)` (SPEC 13.1): the OpenAPI 3.1 document of a
  * registry. It runs the registry checks (SPEC 4.2), builds the error
- * responses with the instance `@netvark/hono-jsonapi`'s `errorHandler`
+ * responses with the instance `@nizam-os/hono-jsonapi`'s `errorHandler`
  * renders with, the JSON:API catalog, every listed resource's codes, and
  * the application's, under the JSON:API format with combined entries
  * (jsonapi SPEC 10.5), and refuses a code the options name that this
@@ -15,9 +15,9 @@
  * @ref https://jsonapi.org/format/1.1/#content-negotiation
  * @packageDocumentation
  */
-import type { Catalog, JsonSchema } from '@netvark/ban-core';
-import type { JsonApiOptions } from '@netvark/ban-core/formats/json-api';
-import type { ResponseObject } from '@netvark/ban-core/openapi';
+import type { Catalog, JsonSchema } from '@nizam-os/ban-core';
+import type { JsonApiOptions } from '@nizam-os/ban-core/formats/json-api';
+import type { ResponseObject } from '@nizam-os/ban-core/openapi';
 
 import type {
   AnyDeclaredResource,
@@ -27,14 +27,14 @@ import type { ResourceExamples } from './examples';
 import type { DocumentOperation, OperationCodes } from './operation-codes';
 import type { OperationContext, PathItem } from './operation-object';
 
-import { createBan } from '@netvark/ban-core';
-import { jsonApi } from '@netvark/ban-core/formats/json-api';
+import { createBan } from '@nizam-os/ban-core';
+import { jsonApi } from '@nizam-os/ban-core/formats/json-api';
 import {
   errorObjectSchemas,
   errorResponseObjects,
   errorResponses,
-} from '@netvark/ban-core/openapi';
-import { ERROR_CATALOG, resourcePaths } from '@netvark/jsonapi-core';
+} from '@nizam-os/ban-core/openapi';
+import { ERROR_CATALOG, resourcePaths } from '@nizam-os/jsonapi-core';
 
 import { errorCatalog } from '../errors/error-catalog';
 import { checkRegistry } from '../registry/check-registry';

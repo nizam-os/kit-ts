@@ -1,5 +1,5 @@
 ---
-'@netvark/kysely-resource': patch
+'@nizam-os/kysely-resource': patch
 ---
 
 The operations of a runtime typed by its behaviors pass where a host or a worker takes them typed

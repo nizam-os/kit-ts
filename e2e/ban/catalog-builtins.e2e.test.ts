@@ -1,4 +1,4 @@
-import type { FactoryName } from '@netvark/hono-ban';
+import type { FactoryName } from '@nizam-os/hono-ban';
 
 import type { RunningServer } from './support/server';
 
@@ -7,7 +7,7 @@ import { request as httpRequest } from 'node:http';
 import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { BUILTIN_CATALOG, createBan, FACTORY_NAMES } from '@netvark/hono-ban';
+import { BUILTIN_CATALOG, createBan, FACTORY_NAMES } from '@nizam-os/hono-ban';
 
 import { startServer } from './support/server';
 

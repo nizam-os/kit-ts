@@ -10,22 +10,22 @@
  * refusal its code's error, with an item per member and the driver's
  * error as the cause. A remove's refusal, which names the referencing
  * table, is `CONFLICT`. `errorCatalog`
- * assembles the four resources into one `@netvark/ban-core` catalog, and
+ * assembles the four resources into one `@nizam-os/ban-core` catalog, and
  * JavaScript callers get its registry checks as a `TypeError`.
  * @ref https://www.postgresql.org/docs/18/errcodes-appendix.html
  */
-import type { DeclaredResource, ErrorEntry } from '@netvark/resource-core';
+import type { DeclaredResource, ErrorEntry } from '@nizam-os/resource-core';
 
 import type { OracleDatabase } from './support/oracle-database.ts';
 import type { Violation } from './support/violations.ts';
 
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/ban-core';
-import { jsonApi } from '@netvark/ban-core/formats/json-api';
-import { ERROR_CATALOG } from '@netvark/jsonapi-core';
-import { errorCatalog } from '@netvark/resource-core';
-import { constraintError } from '@netvark/resource-core/server';
+import { createBan } from '@nizam-os/ban-core';
+import { jsonApi } from '@nizam-os/ban-core/formats/json-api';
+import { ERROR_CATALOG } from '@nizam-os/jsonapi-core';
+import { errorCatalog } from '@nizam-os/resource-core';
+import { constraintError } from '@nizam-os/resource-core/server';
 
 import { publicCatalog } from './fixtures/contacts/public-catalog.ts';
 import { Contacts } from './resources/contacts.ts';

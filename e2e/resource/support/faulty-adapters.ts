@@ -3,18 +3,18 @@
  * `contract-faults.ts` (resource SPEC 12.9): built over statements that
  * pass through a rewrite, wrapped, or handed past its guard.
  */
-import type { DefineDefaultedKeyset } from '@netvark/keyset-core';
+import type { DefineDefaultedKeyset } from '@nizam-os/keyset-core';
 import type {
   DomainEvent,
   StorageAdapter,
   StorageWrite,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { ContractDatabase } from './contract-database.ts';
 import type { Transact } from './reference-adapter.ts';
 import type { ReferenceTransaction, Row, SqlClient } from './reference-sql.ts';
 
-import { contractFixture } from '@netvark/resource-core/testing';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { OUTBOX, POINT_TEXT } from './contract-database.ts';
 import { DEFINE_KEYSET } from './keyset-definer.ts';

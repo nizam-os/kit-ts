@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 The storage contract suite checks `list` (obligation 5). Five tasks are paged two at a time, each

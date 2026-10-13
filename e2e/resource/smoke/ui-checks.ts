@@ -1,5 +1,5 @@
 /**
- * Checks of the built `@netvark/resource-ui` (resource SPEC 20.8, 21.5):
+ * Checks of the built `@nizam-os/resource-ui` (resource SPEC 20.8, 21.5):
  * the models, which import no framework and nothing of TanStack, describe
  * the contacts application's members and run a form model, its start
  * values, its validator, its write, and the error mapping of a refused
@@ -13,14 +13,14 @@
  */
 import type { Checks } from './report.ts';
 
-import { ResponseError } from '@netvark/jsonapi-client';
-import { defaultMessages } from '@netvark/resource-core';
+import { ResponseError } from '@nizam-os/jsonapi-client';
+import { defaultMessages } from '@nizam-os/resource-core';
 import {
   bulkActions,
   fieldsOf,
   resourceForm,
   resourceList,
-} from '@netvark/resource-ui';
+} from '@nizam-os/resource-ui';
 
 import { Contacts } from '../resources/contacts.ts';
 import { Organizations } from '../resources/organizations.ts';

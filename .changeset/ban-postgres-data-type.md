@@ -1,6 +1,6 @@
 ---
-'@netvark/ban-core': minor
-'@netvark/hono-ban': minor
+'@nizam-os/ban-core': minor
+'@nizam-os/hono-ban': minor
 ---
 
 `readPostgresFields` returns `dataType`, the domain named by a violated domain constraint

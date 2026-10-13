@@ -7,7 +7,7 @@
  * Not published with the package.
  * @packageDocumentation
  */
-import type { PublicCatalog, Rule } from '@netvark/catalog-core';
+import type { PublicCatalog, Rule } from '@nizam-os/catalog-core';
 
 import type { ValueLevel } from './value-levels';
 

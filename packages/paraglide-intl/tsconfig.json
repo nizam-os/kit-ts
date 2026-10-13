@@ -4,7 +4,7 @@
   "compilerOptions": {
     // A build-time Node.js package: it reads and writes the project's files.
     "types": ["node"],
-    // Resolve `@netvark/intl-core` to its source through the `source`
+    // Resolve `@nizam-os/intl-core` to its source through the `source`
     // condition of its exports map, as the other bindings do.
     // @ref https://tsdown.dev/options/package-exports#devexports
     // @ref https://www.typescriptlang.org/tsconfig/#customConditions

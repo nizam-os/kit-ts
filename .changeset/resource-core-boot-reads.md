@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 Add `isResourceBehavior`, true for exactly what `defineResource` returned and never for a copy, and

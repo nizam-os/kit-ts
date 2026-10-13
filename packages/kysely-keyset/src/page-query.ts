@@ -16,7 +16,7 @@
  * @ref https://www.postgresql.org/docs/current/queries-order.html (NULLS FIRST / LAST)
  * @packageDocumentation
  */
-import type { PlanKey, Predicate, QueryPlan } from '@netvark/keyset-core';
+import type { PlanKey, Predicate, QueryPlan } from '@nizam-os/keyset-core';
 
 import type { AnyQuery, RenderContext } from './types';
 

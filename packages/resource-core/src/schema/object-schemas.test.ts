@@ -219,7 +219,7 @@ describe('the schemas of a declared resource', () => {
     expect(Contacts.validate).toBe(Contacts.validate);
     expect(Object.isFrozen(Contacts.validate)).toBe(true);
     expect(Object.isFrozen(Contacts.validate.create['~standard'])).toBe(true);
-    expect(Contacts.validate.create['~standard'].vendor).toBe('netvark');
+    expect(Contacts.validate.create['~standard'].vendor).toBe('nizam');
     expect(Contacts.validate.create['~standard'].version).toBe(1);
   });
 });

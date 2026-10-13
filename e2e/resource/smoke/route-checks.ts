@@ -1,5 +1,5 @@
 /**
- * Runtime-neutral checks of `@netvark/hono-resource` (resource SPEC 19.8)
+ * Runtime-neutral checks of `@nizam-os/hono-resource` (resource SPEC 19.8)
  * over the built package: the routes of a runtime of the contract held in
  * memory answer a declared resource at the path its links name, another
  * method with 405 and `Allow`, a request without an actor with what the
@@ -15,7 +15,7 @@ import type {
   PublicRow,
   ResourceInput,
   ResourceRuntime,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { Checks } from './report.ts';
 
@@ -28,8 +28,8 @@ import {
   jsonApi,
   jsonApiError,
   notFoundHandler,
-} from '@netvark/hono-jsonapi';
-import { jsonApiRoutes, resourceTypeOf } from '@netvark/hono-resource';
+} from '@nizam-os/hono-jsonapi';
+import { jsonApiRoutes, resourceTypeOf } from '@nizam-os/hono-resource';
 
 import { Contacts } from '../resources/contacts.ts';
 import { Organizations } from '../resources/organizations.ts';

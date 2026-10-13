@@ -1,4 +1,4 @@
-import type * as BanCore from '@netvark/ban-core';
+import type * as BanCore from '@nizam-os/ban-core';
 
 import type { RunningServer } from './support/server';
 
@@ -11,21 +11,21 @@ import { pathToFileURL } from 'node:url';
 import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { BanError, isBanError } from '@netvark/ban-core';
-import { createBan } from '@netvark/hono-ban';
+import { BanError, isBanError } from '@nizam-os/ban-core';
+import { createBan } from '@nizam-os/hono-ban';
 
 import { startServer } from './support/server';
 
 /**
- * Errors of another copy of `@netvark/ban-core` over real HTTP (ban ADR 0019, SPEC 4): the built
+ * Errors of another copy of `@nizam-os/ban-core` over real HTTP (ban ADR 0019, SPEC 4): the built
  * package copied to another directory, as a package manager nests a second copy, is a second
- * module instance with classes of its own, and the built `@netvark/hono-ban` handler answers what
+ * module instance with classes of its own, and the built `@nizam-os/hono-ban` handler answers what
  * that copy builds with its own status, code, and items.
  * @ref https://nodejs.org/api/esm.html#urls (a module is identified by its URL)
  */
 const COPY = await mkdtemp(join(tmpdir(), 'ban-copy-'));
 await cp(
-  dirname(createRequire(import.meta.url).resolve('@netvark/ban-core')),
+  dirname(createRequire(import.meta.url).resolve('@nizam-os/ban-core')),
   COPY,
   { recursive: true },
 );
@@ -63,7 +63,7 @@ afterAll(async () => {
   await rm(COPY, { recursive: true, force: true });
 });
 
-describe('an error of another copy of @netvark/ban-core', () => {
+describe('an error of another copy of @nizam-os/ban-core', () => {
   it('comes from a second module instance, and is a BanError to this one', () => {
     const error = theirs.notFound();
     expect(copy.BanError).not.toBe(BanError);

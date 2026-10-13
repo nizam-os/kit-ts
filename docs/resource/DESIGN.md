@@ -1,6 +1,6 @@
 # resource: design
 
-- Status: accepted for the 0.x line of `@netvark/resource-core`
+- Status: accepted for the 0.x line of `@nizam-os/resource-core`
 
 Architecture decisions referenced as ADR-NNNN live in `docs/resource/adr/`. The normative contract
 is [`SPEC.md`](SPEC.md); this document explains what the packages are for and why they are shaped
@@ -14,25 +14,25 @@ translates constraint names by hand, and the routes, filters, and sort keys pick
 Every copy drifts on its own schedule, and the drift reaches users as a confusing 422, a form that
 accepts what the database rejects, or a 500.
 
-`@netvark/resource-core` replaces the copies with one declaration per resource, keyed by database
+`@nizam-os/resource-core` replaces the copies with one declaration per resource, keyed by database
 names, from which the public API follows:
 
-1. **Extract.** `@netvark/pg-catalog` writes the public catalog: every exposed table with its column
+1. **Extract.** `@nizam-os/pg-catalog` writes the public catalog: every exposed table with its column
    types, nullability, defaults, constraints, and the CHECK rules it could translate exactly
    (catalog ADR 0005, 0006).
 2. **Declare.** A declaration states only what the catalog cannot know: the operations, which
    columns are exposed and how, filters, sorting, search, codecs for types the API cannot represent
    by itself, and validators for CHECKs the recognizer could not translate (ADR-0002).
 3. **Derive.** Public names (ADR-0003), Zod schemas for reads, creates, and updates (ADR-0004,
-   0005), field metadata for forms, the error catalog (ADR-0007), the `@netvark/jsonapi-core`
-   resource definition, the `@netvark/keyset-core` definition, and the OpenAPI document all come
+   0005), field metadata for forms, the error catalog (ADR-0007), the `@nizam-os/jsonapi-core`
+   resource definition, the `@nizam-os/keyset-core` definition, and the OpenAPI document all come
    from the declaration and the catalog. Nothing is restated.
 4. **Prove.** Codecs and validators carry fixtures that the oracle runs through Zod and through
    PostgreSQL (ADR-0006); the default wire forms and rule translations are proven the same way; the
    derived surface is snapshotted and diffed in CI.
 5. **Serve.** The `server` subpath adds policies, scopes, quotas, rules, and effects;
-   `@netvark/kysely-resource` runs the operations and `@netvark/hono-resource` serves them, while
-   `@netvark/jsonapi-client`, `@netvark/resource-ui`, and `@netvark/tanstack-form-resource` consume
+   `@nizam-os/kysely-resource` runs the operations and `@nizam-os/hono-resource` serves them, while
+   `@nizam-os/jsonapi-client`, `@nizam-os/resource-ui`, and `@nizam-os/tanstack-form-resource` consume
    the same declarations in clients (ADR-0008).
 
 ### Who it is for
@@ -48,9 +48,9 @@ plain data plus Zod schemas: anything can read it.
 - Databases other than PostgreSQL, and API styles other than JSON:API.
 - Business logic. Validators restate CHECKs with fixtures; rules that need outside state are server
   code (`reject`), and the library only gives them a typed place to live.
-- Hiding SQL. Storage is Kysely through `@netvark/kysely-resource`; a custom query is still a Kysely
+- Hiding SQL. Storage is Kysely through `@nizam-os/kysely-resource`; a custom query is still a Kysely
   query.
-- UI components. `@netvark/resource-ui` provides a model and `@netvark/tanstack-form-resource` its
+- UI components. `@nizam-os/resource-ui` provides a model and `@nizam-os/tanstack-form-resource` its
   TanStack Form binding, not widgets: an application keeps its own field components, table markup,
   and router (ADR-0015, ADR-0018).
 
@@ -108,7 +108,7 @@ has the rule `{ kind: 'length', min: 1, max: 200 }`, `status` the rule
 
 ```ts
 // src/resources/declare.ts
-import { createDeclareResource } from '@netvark/resource-core';
+import { createDeclareResource } from '@nizam-os/resource-core';
 
 import { publicCatalog } from '../generated/public-catalog';
 
@@ -215,7 +215,7 @@ export const contacts = defineResource(Contacts, {
 });
 ```
 
-`@netvark/kysely-resource` runs them on PostgreSQL:
+`@nizam-os/kysely-resource` runs them on PostgreSQL:
 
 ```ts
 const storage = createKyselyStorage({
@@ -246,7 +246,7 @@ the scope predicate to every statement, locks the row an update or a remove deci
 the members a request carried, records its events in an outbox table, and maps every PostgreSQL
 rejection to its declared code. Workers call the same domain HTTP does.
 
-`@netvark/hono-resource` serves the runtime on Hono, every declared operation at the path its links
+`@nizam-os/hono-resource` serves the runtime on Hono, every declared operation at the path its links
 name, with an operations endpoint that runs a request in one transaction and the OpenAPI document:
 
 ```ts
@@ -272,16 +272,16 @@ fixtures then run against the new CHECK in CI.
 
 | Package                           | Role                                                                                                   | Epic     |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------ | -------- |
-| `@netvark/resource-core`          | declarations, derivations, messages, the `server` contracts, OpenAPI, the storage contract suite       | E1       |
-| `@netvark/kysely-resource`        | the runtime: the storage adapter over Kysely, boot checks against the full catalog, quotas, the outbox | E3       |
-| `@netvark/hono-resource`          | routes for every declared operation on Hono, localized errors, the OpenAPI route                       | E4       |
-| `@netvark/resource-ui`            | a framework-free model of forms and lists, with TanStack Table v9's state as plain values              | E6, #174 |
-| `@netvark/tanstack-form-resource` | the form model bound to TanStack Form's core, for every adapter                                        | E6, #174 |
+| `@nizam-os/resource-core`          | declarations, derivations, messages, the `server` contracts, OpenAPI, the storage contract suite       | E1       |
+| `@nizam-os/kysely-resource`        | the runtime: the storage adapter over Kysely, boot checks against the full catalog, quotas, the outbox | E3       |
+| `@nizam-os/hono-resource`          | routes for every declared operation on Hono, localized errors, the OpenAPI route                       | E4       |
+| `@nizam-os/resource-ui`            | a framework-free model of forms and lists, with TanStack Table v9's state as plain values              | E6, #174 |
+| `@nizam-os/tanstack-form-resource` | the form model bound to TanStack Form's core, for every adapter                                        | E6, #174 |
 
-Companions in other families: `@netvark/pg-catalog` extracts the catalog and runs the oracle
-(`rules --check`); `@netvark/jsonapi-client` is the typed fetch client over the JSON:API
-definitions, and `@netvark/tanstack-query-jsonapi` keys TanStack Query by its requests;
-`@netvark/jsonapi-core`, `@netvark/keyset-core`, and `@netvark/ban-core` provide the definitions and
+Companions in other families: `@nizam-os/pg-catalog` extracts the catalog and runs the oracle
+(`rules --check`); `@nizam-os/jsonapi-client` is the typed fetch client over the JSON:API
+definitions, and `@nizam-os/tanstack-query-jsonapi` keys TanStack Query by its requests;
+`@nizam-os/jsonapi-core`, `@nizam-os/keyset-core`, and `@nizam-os/ban-core` provide the definitions and
 the error model this family derives.
 
 ### 4.2 Modules
@@ -308,7 +308,7 @@ server: createDomainDefiners, scopes, quotas ──▶ kysely-resource ──▶
 
 ### 4.4 The runtime
 
-`@netvark/kysely-resource` is two layers. `createKyselyStorage` is the storage adapter of the
+`@nizam-os/kysely-resource` is two layers. `createKyselyStorage` is the storage adapter of the
 contract: values cross the driver as text both ways, in a session whose printing settings it fixes,
 so no driver parser or client serialization changes a value, and the contract suite proves it on
 PGlite and on servers. `createResourceRuntime` runs the lifecycle over it and is where the tenant
@@ -323,15 +323,15 @@ cursor from one tenant is refused in another. ADR 0012 records why.
 
 ### 4.5 Forms and lists
 
-`@netvark/resource-ui` is a model of a declared resource, and `@netvark/tanstack-form-resource`
+`@nizam-os/resource-ui` is a model of a declared resource, and `@nizam-os/tanstack-form-resource`
 binds it to TanStack Form. The model knows no framework: field descriptors whose labels are the
 application's message functions, a form model whose values are what inputs edit and whose write
 carries only what the person changed, validation by the declaration's own write validators with the
 server's words for each refusal, a refused write's error objects placed by pointer, and a list model
-whose state is the JSON:API query, read back leniently from a URL. `@netvark/tanstack-form-resource`
+whose state is the JSON:API query, read back leniently from a URL. `@nizam-os/tanstack-form-resource`
 turns the form model into TanStack Form options and binds a refusal onto the fields, through
 TanStack Form's framework-free core, so every adapter's form takes them;
-`@netvark/tanstack-query-jsonapi`, of the jsonapi family, keys TanStack Query by the request and
+`@nizam-os/tanstack-query-jsonapi`, of the jsonapi family, keys TanStack Query by the request and
 invalidates a type after a write; TanStack Table v9 reads and writes the list's sorting and filters
 as state, with paging by cursor outside it. An application keeps its framework, its field
 components, its table markup, and its router. ADRs 0014, 0015, 0016, 0017, and 0018 record why.

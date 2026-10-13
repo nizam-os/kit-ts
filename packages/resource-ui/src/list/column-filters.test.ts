@@ -8,7 +8,7 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import { serializeQuery } from '@netvark/jsonapi-client';
+import { serializeQuery } from '@nizam-os/jsonapi-client';
 
 import { messages } from '../test-support/messages';
 import { Contacts } from '../test-support/resources';

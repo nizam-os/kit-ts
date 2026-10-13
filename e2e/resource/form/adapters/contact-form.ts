@@ -6,13 +6,13 @@
  * handler runs, which sends the model's write through the built client
  * and binds a refusal onto the form. Read by the type check only.
  */
-import type { FormErrors } from '@netvark/resource-ui';
-import type { BindableForm } from '@netvark/tanstack-form-resource';
+import type { FormErrors } from '@nizam-os/resource-ui';
+import type { BindableForm } from '@nizam-os/tanstack-form-resource';
 
 import type { ContactClients } from '../../support/recorded-clients.ts';
 
-import { resourceForm } from '@netvark/resource-ui';
-import { bindResponseErrors } from '@netvark/tanstack-form-resource';
+import { resourceForm } from '@nizam-os/resource-ui';
+import { bindResponseErrors } from '@nizam-os/tanstack-form-resource';
 
 import { contactMessages } from '../../localization/contact-messages.ts';
 import { Contacts } from '../../resources/contacts.ts';

@@ -10,14 +10,14 @@
  * function is this one.
  * @packageDocumentation
  */
-import type { Catalog, ErrorDefinition } from '@netvark/ban-core';
+import type { Catalog, ErrorDefinition } from '@nizam-os/ban-core';
 
 import type {
   AnyDeclaredResource,
   DeclaredInternals,
 } from '../declare/declared-resource';
 
-import { BanError, resolveDefinition } from '@netvark/ban-core';
+import { BanError, resolveDefinition } from '@nizam-os/ban-core';
 
 import { internalsOf } from '../declare/declared-resource';
 import { isRecord, ownValue } from '../internal/object';

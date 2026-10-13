@@ -9,9 +9,9 @@
  * @ref https://tanstack.com/query/v5/docs/framework/react/guides/infinite-queries
  * @packageDocumentation
  */
-import type { Query, ReadResult } from '@netvark/jsonapi-client';
+import type { Query, ReadResult } from '@nizam-os/jsonapi-client';
 
-import { pageCursors } from '@netvark/jsonapi-client';
+import { pageCursors } from '@nizam-os/jsonapi-client';
 
 /** Where a page starts: after a cursor, before one, or at the query's own cursors. */
 export interface PageParam {

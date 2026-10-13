@@ -1,5 +1,5 @@
 {
-  "name": "@netvark/intl-core",
+  "name": "@nizam-os/intl-core",
   "version": "0.0.0",
   "description": "Hydration-safe formatting for any JavaScript runtime: formatters that read the locale and the reader's time zone on every call through cached Intl objects built for pinned formatting tags, the reader's time zone from a cookie, and Unicode bidi isolation. No dependencies.",
   "keywords": [
@@ -12,13 +12,13 @@
     "ssr",
     "time-zone"
   ],
-  "homepage": "https://github.com/netvark/netvark/tree/main/packages/intl-core#readme",
-  "bugs": "https://github.com/netvark/netvark/issues",
+  "homepage": "https://github.com/nizam-os/kit/tree/main/packages/intl-core#readme",
+  "bugs": "https://github.com/nizam-os/kit/issues",
   "license": "MIT",
   "author": "Ali Issa (https://github.com/ali-issa)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netvark/netvark.git",
+    "url": "git+https://github.com/nizam-os/kit.git",
     "directory": "packages/intl-core"
   },
   "files": [

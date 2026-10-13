@@ -4,9 +4,9 @@ Keyset pagination for PostgreSQL in TypeScript, as three packages:
 
 | Package                                                    | What it is                                                                                                                                                                                                                                                                                                                                      |
 | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@netvark/keyset-core`](../../packages/keyset-core)       | The database-free core: a definition of what a collection can sort, filter, and search on; a planner that turns a request into a query plan; HMAC-signed cursors bound to the request; page assembly with `prev` and `next`. Functions over plain values, web standards only; runs on Node, Bun, Deno, and Cloudflare Workers. No dependencies. |
-| [`@netvark/kysely-keyset`](../../packages/kysely-keyset)   | The [Kysely](https://kysely.dev) adapter: `createDefineKeyset<DB>()` checks every table and column name of a definition against your `DB` interface, and `paginate` renders the plan onto your own select query and runs it. Re-exports the core in full, so a Kysely application imports from one package.                                     |
-| [`@netvark/drizzle-keyset`](../../packages/drizzle-keyset) | The [Drizzle](https://orm.drizzle.team) adapter: `createDefineKeyset(schema)` checks every table and column name of a definition against your Drizzle schema, in the types and at startup, and `paginate` builds the select over your table, with your selection and your condition, and runs it. Re-exports the core in full.                  |
+| [`@nizam-os/keyset-core`](../../packages/keyset-core)       | The database-free core: a definition of what a collection can sort, filter, and search on; a planner that turns a request into a query plan; HMAC-signed cursors bound to the request; page assembly with `prev` and `next`. Functions over plain values, web standards only; runs on Node, Bun, Deno, and Cloudflare Workers. No dependencies. |
+| [`@nizam-os/kysely-keyset`](../../packages/kysely-keyset)   | The [Kysely](https://kysely.dev) adapter: `createDefineKeyset<DB>()` checks every table and column name of a definition against your `DB` interface, and `paginate` renders the plan onto your own select query and runs it. Re-exports the core in full, so a Kysely application imports from one package.                                     |
+| [`@nizam-os/drizzle-keyset`](../../packages/drizzle-keyset) | The [Drizzle](https://orm.drizzle.team) adapter: `createDefineKeyset(schema)` checks every table and column name of a definition against your Drizzle schema, in the types and at startup, and `paginate` builds the select over your table, with your selection and your condition, and runs it. Re-exports the core in full.                  |
 
 Declare once what a collection can sort, filter, and search on; the request type, the validation,
 the seek predicate, the cursors, and the SQL all follow from the definition. The page semantics are
@@ -19,13 +19,13 @@ page, range requests, `rangeTruncated`), and every choice the profile leaves ope
 ## Install
 
 ```bash
-pnpm add @netvark/kysely-keyset kysely         # Kysely applications (pulls in @netvark/keyset-core)
-pnpm add @netvark/drizzle-keyset drizzle-orm   # Drizzle applications (pulls in @netvark/keyset-core)
-pnpm add @netvark/keyset-core                   # another query builder, a driver, a client
+pnpm add @nizam-os/kysely-keyset kysely         # Kysely applications (pulls in @nizam-os/keyset-core)
+pnpm add @nizam-os/drizzle-keyset drizzle-orm   # Drizzle applications (pulls in @nizam-os/keyset-core)
+pnpm add @nizam-os/keyset-core                   # another query builder, a driver, a client
 ```
 
-Node 22.12+, Bun, Deno, and Cloudflare Workers are supported. `@netvark/kysely-keyset` has
-`kysely >= 0.28.17` as its peer dependency and `@netvark/drizzle-keyset` has
+Node 22.12+, Bun, Deno, and Cloudflare Workers are supported. `@nizam-os/kysely-keyset` has
+`kysely >= 0.28.17` as its peer dependency and `@nizam-os/drizzle-keyset` has
 `drizzle-orm >=0.45.2 <1.0.0`, each floor the first release past its builder's published SQL
 injection advisories; both target PostgreSQL 14+ (and PGlite). CI runs the unit suites on Node 22
 and 24, the adapters' tests on Kysely 0.28.17 and drizzle-orm 0.45.2, the end-to-end suite through
@@ -37,7 +37,7 @@ the three packages on Bun, Deno, and workerd.
 ```ts
 import type { DB } from './db'; // your Kysely database interface
 
-import { createDefineKeyset } from '@netvark/kysely-keyset';
+import { createDefineKeyset } from '@nizam-os/kysely-keyset';
 
 // keysets/define.ts: one definer for the whole application, holding what every keyset shares.
 export const defineKeyset = createDefineKeyset<DB>({
@@ -126,7 +126,7 @@ wrong.
 ## Quick start with Drizzle
 
 ```ts
-import { createDefineKeyset } from '@netvark/drizzle-keyset';
+import { createDefineKeyset } from '@nizam-os/drizzle-keyset';
 
 import * as schema from './schema'; // your Drizzle tables
 
@@ -172,7 +172,7 @@ issues and accepts the same cursors.
 The core is the same library without the SQL: it plans, you render, it assembles the page.
 
 ```ts
-import { defineKeyset } from '@netvark/keyset-core';
+import { defineKeyset } from '@nizam-os/keyset-core';
 
 const contacts = defineKeyset({
   table: 'contacts',
@@ -220,11 +220,11 @@ The three quick starts answer with the same `Page`, and the cursors they issue a
   against PostgreSQL's name syntax.
 
 The package READMEs walk through each area:
-[`@netvark/keyset-core`](../../packages/keyset-core/README.md) for the definition, the request, the
+[`@nizam-os/keyset-core`](../../packages/keyset-core/README.md) for the definition, the request, the
 plan, the page, the cursors, and the errors;
-[`@netvark/kysely-keyset`](../../packages/kysely-keyset/README.md) for the typed definer and its
+[`@nizam-os/kysely-keyset`](../../packages/kysely-keyset/README.md) for the typed definer and its
 shared defaults, `paginate`, the SQL it renders, and the best practices for secrets, indexes,
-totals, and `CamelCasePlugin`; [`@netvark/drizzle-keyset`](../../packages/drizzle-keyset/README.md)
+totals, and `CamelCasePlugin`; [`@nizam-os/drizzle-keyset`](../../packages/drizzle-keyset/README.md)
 for the definer over your schema, `paginate` and its options, and the best practices for scoping,
 related data, and `casing`.
 
@@ -243,7 +243,7 @@ related data, and `casing`.
 Offset pagination drifts under writes and gets slower with every page. Hand-written keyset
 pagination is usually right on the happy path and wrong on ties, nulls, backward pages, and
 precision, and its cursors are usually base64 of whatever the last row had, which a client can edit
-or replay under another sort. @netvark/keyset-core takes the position that the definition is the
+or replay under another sort. @nizam-os/keyset-core takes the position that the definition is the
 contract and the profile and the PostgreSQL manual are the test plan: every rule is cited where it
 is implemented and pinned by a test, the adapters' tests assert the exact SQL, and the e2e suite
 walks real tables with ties and nulls in both directions on three databases.

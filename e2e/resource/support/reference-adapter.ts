@@ -2,7 +2,7 @@
  * The reference storage adapter (resource SPEC 12.9): the obligations of
  * SPEC 12.8 in plain SQL, over a client that runs one parameterized
  * statement at a time, which shows the contract implementable before
- * `@netvark/kysely-resource` exists. Each transaction runs in UTC with ISO
+ * `@nizam-os/kysely-resource` exists. Each transaction runs in UTC with ISO
  * dates, so values print one way, and first sets each scope's parameter
  * for the transaction only. Every statement on a scoped table carries the
  * scope's predicate; a create writes the scope column and the server
@@ -23,13 +23,13 @@
  * @ref https://www.postgresql.org/docs/18/explicit-locking.html#LOCKING-ROWS
  * @ref https://github.com/postgres/postgres/blob/REL_18_STABLE/src/backend/access/transam/xact.c (EndTransactionBlock: "Since COMMIT may actually do a ROLLBACK")
  */
-import type { DefineDefaultedKeyset, Keyset } from '@netvark/keyset-core';
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DefineDefaultedKeyset, Keyset } from '@nizam-os/keyset-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 import type {
   PublicRow,
   StorageAdapter,
   ViolationNames,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type {
   ReferenceTransaction,
@@ -38,7 +38,7 @@ import type {
   SqlContext,
 } from './reference-sql.ts';
 
-import { PARTITION_ROOT_SQL } from '@netvark/resource-core/server';
+import { PARTITION_ROOT_SQL } from '@nizam-os/resource-core/server';
 
 import { keysetPage } from './reference-list.ts';
 import { quoted, readRow, selectList } from './reference-sql.ts';

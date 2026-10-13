@@ -1,17 +1,17 @@
 import type { Generated, Kysely } from 'kysely';
 
-import type { StorageCodecs } from '@netvark/resource-core';
+import type { StorageCodecs } from '@nizam-os/resource-core';
 import type {
   ListOptions,
   PublicRow,
   ScopeValue,
   StorageAdapter,
   StoragePage,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 import type {
   ContractCodecs,
   TextStorageCodec,
-} from '@netvark/resource-core/testing';
+} from '@nizam-os/resource-core/testing';
 
 import type { KyselyTransaction } from './transaction';
 import type { KyselyStorage, KyselyStorageOptions, TextCodec } from './types';

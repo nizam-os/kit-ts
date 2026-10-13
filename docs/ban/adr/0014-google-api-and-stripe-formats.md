@@ -33,8 +33,8 @@ https://github.com/stripe/stripe-node/blob/master/src/Error.ts
 
 ## Decision
 
-Two formats ship as subpaths, `@netvark/hono-ban/formats/google-api` (`googleApi(options)`, SPEC
-7.6) and `@netvark/hono-ban/formats/stripe` (`stripe(options?)`, SPEC 7.7), and the acceptance
+Two formats ship as subpaths, `@nizam-os/hono-ban/formats/google-api` (`googleApi(options)`, SPEC
+7.6) and `@nizam-os/hono-ban/formats/stripe` (`stripe(options?)`, SPEC 7.7), and the acceptance
 policy in `CONTRIBUTING.md` gains a second admission route: a vendor shape that is publicly
 documented with a machine-readable schema, has been unchanged for years, and is copied by unrelated
 APIs. Stripe is the one shape admitted under it; a shape that exists in one organization still stays

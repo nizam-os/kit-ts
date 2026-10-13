@@ -30,7 +30,7 @@ and a refusal is an error: PostgreSQL refuses 3,690 of stern's 12,288 member fix
 
 ## Decision
 
-- For each case, the replayed database gets a temporary table, `pg_temp.netvark_probe`, holding a
+- For each case, the replayed database gets a temporary table, `pg_temp.nizam_probe`, holding a
   copy of each column the case writes: the column's `format_type`, so its modifier and its domains
   apply, its collation when it differs from the type's, its NOT NULL when the case keeps it, and the
   CHECKs the case names, each over the expression `pg_get_expr` deparses under the search path
@@ -43,9 +43,9 @@ and a refusal is an error: PostgreSQL refuses 3,690 of stern's 12,288 member fix
 - A PL/pgSQL function writes a case's fixtures in one call and catches each refusal in the block's
   subtransaction, returning the SQLSTATE and constraint name from `get stacked diagnostics`. No
   refusal reaches the client: a case costs one round trip, and PGlite runs any number of them.
-- `@netvark/resource-core/testing` builds the cases (`oracleCases`): the probe, each fixture's
+- `@nizam-os/resource-core/testing` builds the cases (`oracleCases`): the probe, each fixture's
   texts, and a judge that turns the database's verdict into a disagreement or none. It knows the
-  schemas, the wire forms, and what agreement means; `@netvark/pg-catalog` knows the database. The
+  schemas, the wire forms, and what agreement means; `@nizam-os/pg-catalog` knows the database. The
   registry's codecs reach the oracle through storage codecs over text (`resources.storage`), since
   the oracle writes and reads text, whatever an application's driver converts.
 - A validator's probe drops the columns' NOT NULL: a CHECK passes `NULL`, so the CHECK alone decides

@@ -14,8 +14,8 @@ import type {
   PublicCatalog,
   PublicColumn,
   PublicTable,
-} from '@netvark/catalog-core';
-import type { FieldType } from '@netvark/keyset-core';
+} from '@nizam-os/catalog-core';
+import type { FieldType } from '@nizam-os/keyset-core';
 
 import type {
   CodecTypeName,
@@ -141,7 +141,7 @@ type KeyOrderError<
 > =
   KeysetTypeOf<TCatalog, TTableDef, TKey> extends FieldType
     ? never
-    : `${TTable}: the primary key is ${KeysetTypeOf<TCatalog, TTableDef, TKey> & string}, which @netvark/keyset-core cannot order`;
+    : `${TTable}: the primary key is ${KeysetTypeOf<TCatalog, TTableDef, TKey> & string}, which @nizam-os/keyset-core cannot order`;
 
 /** Why `TTableDef`'s primary key cannot be a resource id (SPEC 3.4, 11.2), or `never`. */
 type IdentityError<

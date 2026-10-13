@@ -6,7 +6,7 @@
  * Not published with the package.
  * @packageDocumentation
  */
-import type { Rule } from '@netvark/catalog-core';
+import type { Rule } from '@nizam-os/catalog-core';
 
 import type { ModelBound } from './decimal';
 import type { LevelBase, ValueLevel } from './value-levels';

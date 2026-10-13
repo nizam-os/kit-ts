@@ -5,8 +5,8 @@
  * parameter (jsonapi SPEC 6.8), and the condition `parseQuery` reads from
  * it, which `keysetRequest` maps onto the keyset's request.
  */
-import type { FilterCondition as ParsedCondition } from '@netvark/jsonapi-core';
-import type { FieldInit, Operator } from '@netvark/keyset-core';
+import type { FilterCondition as ParsedCondition } from '@nizam-os/jsonapi-core';
+import type { FieldInit, Operator } from '@nizam-os/keyset-core';
 
 /** Two values of each keyset type in their text form, as a query string carries them. */
 const SAMPLES: Readonly<Record<string, readonly [string, string]>> = {

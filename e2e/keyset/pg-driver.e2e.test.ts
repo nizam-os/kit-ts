@@ -5,13 +5,13 @@
  * identical to the in-process driver's, so cursors issued through either
  * decode to the same values.
  */
-import type { CursorDecodeResult, CursorValue } from '@netvark/kysely-keyset';
+import type { CursorDecodeResult, CursorValue } from '@nizam-os/kysely-keyset';
 
 import type { Harness } from './support/db.ts';
 
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createCursorCodec } from '@netvark/kysely-keyset';
+import { createCursorCodec } from '@nizam-os/kysely-keyset';
 
 import { BINDINGS } from './support/bindings.ts';
 import { openPglite, openPgOverSocket } from './support/db.ts';

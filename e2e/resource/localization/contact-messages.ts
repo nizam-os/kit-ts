@@ -8,9 +8,9 @@
  * locale, are not the ones its kind receives.
  * @ref https://paraglidejs.com/basics#dynamic-messages
  */
-import type { MessagesFor } from '@netvark/resource-core';
+import type { MessagesFor } from '@nizam-os/resource-core';
 
-import { defineMessages } from '@netvark/resource-core';
+import { defineMessages } from '@nizam-os/resource-core';
 
 import { Contacts } from '../resources/contacts.ts';
 import { Organizations } from '../resources/organizations.ts';
@@ -55,7 +55,7 @@ export const contactMessages: MessagesFor<typeof RESOURCES> = defineMessages(
         title: m.error_forbidden_title,
         detail: m.error_forbidden_detail,
       },
-      // A built-in of @netvark/ban-core that the actor resolver throws. Its
+      // A built-in of @nizam-os/ban-core that the actor resolver throws. Its
       // entry is optional; without one, a 401 keeps its English text.
       UNAUTHORIZED: {
         title: m.error_unauthorized_title,

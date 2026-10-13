@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { ResponseError } from '@netvark/jsonapi-client';
+import { ResponseError } from '@nizam-os/jsonapi-client';
 
 import { messages } from '../test-support/messages';
 import { Contacts } from '../test-support/resources';
@@ -183,7 +183,7 @@ describe('errors by field (resource SPEC 20.4)', () => {
 
   it('maps a ResponseError of another copy of the client, which carries the brand', () => {
     const foreign = {
-      [Symbol.for('@netvark/jsonapi-client/response-error')]: true,
+      [Symbol.for('@nizam-os/jsonapi-client/response-error')]: true,
       status: 422,
       errors: [at('/data/attributes/name', 'Zu lang.')],
     };

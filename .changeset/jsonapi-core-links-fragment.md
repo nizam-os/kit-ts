@@ -1,5 +1,5 @@
 ---
-'@netvark/jsonapi-core': patch
+'@nizam-os/jsonapi-core': patch
 ---
 
 `paginationLinks` drops the request URL's fragment before deriving any link, so `self`, `first`,

@@ -20,17 +20,17 @@ compiled by a Paraglide built against another.
 
 ## Decision
 
-- `@netvark/intl-core` is the core ([root ADR 0003](../../adr/0003-package-naming.md)): web
+- `@nizam-os/intl-core` is the core ([root ADR 0003](../../adr/0003-package-naming.md)): web
   standards only, no dependencies, nothing imported from Paraglide or the inlang SDK, not even
   types. The application hands it getters (`getLocale` from its Paraglide runtime) and a request
   scope (an `AsyncLocalStorage` it creates); the core imports neither.
-- `@netvark/paraglide-intl` is the binding to Paraglide. It re-exports the core in full, so an
+- `@nizam-os/paraglide-intl` is the binding to Paraglide. It re-exports the core in full, so an
   application imports one package. It takes `@inlang/paraglide-js` as its peer dependency and loads
   the project with the inlang SDK that Paraglide itself depends on, resolved from Paraglide's
   package, so the project it hands to `compileProject()` and Paraglide's compiler share one copy of
   the SDK whichever Paraglide the application installs
   ([root ADR 0009](../../adr/0009-a-binding-makes-what-it-hands-its-host-with-the-hosts-own-dependency.md)).
-- The binding is a build-time tool, like `@netvark/pg-catalog`: it reads and writes files through
+- The binding is a build-time tool, like `@nizam-os/pg-catalog`: it reads and writes files through
   the file system Paraglide's compiler is given (`node:fs` by default), so it is the second
   exception to the web-standards rule. It reads no environment at module scope.
 

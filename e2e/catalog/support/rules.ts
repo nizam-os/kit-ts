@@ -4,7 +4,7 @@
  * compare as exact decimals (or as the nearest double for `float8`), and
  * patterns compile with their flags. Every rule but `notNull` passes on null.
  */
-import type { RangeBound, Rule } from '@netvark/catalog-core';
+import type { RangeBound, Rule } from '@nizam-os/catalog-core';
 
 function compareDecimals(left: string, right: string): number {
   const [leftWhole = '', leftFraction = ''] = left.split('.');

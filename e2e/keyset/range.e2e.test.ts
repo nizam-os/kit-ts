@@ -9,7 +9,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
  * binding.
  * @ref https://jsonapi.org/profiles/ethanresnick/cursor-pagination/#query-range-pagination
  */
-import { RangeNotSupportedError } from '@netvark/kysely-keyset';
+import { RangeNotSupportedError } from '@nizam-os/kysely-keyset';
 
 import { BINDINGS } from './support/bindings.ts';
 import { openPglite } from './support/db.ts';

@@ -4,7 +4,7 @@
  * are NOT ENFORCED, beside one enforced CHECK on `score`. The definer names
  * no validator, since none covers an unenforced CHECK (catalog ADR 0010).
  */
-import { createDeclareResource } from '@netvark/resource-core';
+import { createDeclareResource } from '@nizam-os/resource-core';
 
 import { publicCatalog } from '../fixtures/postgres18/public-catalog.ts';
 

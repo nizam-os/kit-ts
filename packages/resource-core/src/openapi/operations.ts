@@ -11,7 +11,7 @@
  * @ref https://spec.openapis.org/oas/v3.1.2.html#operation-object
  * @packageDocumentation
  */
-import type { ResourcePaths } from '@netvark/jsonapi-core';
+import type { ResourcePaths } from '@nizam-os/jsonapi-core';
 
 import type { DeclaredInternals } from '../declare/declared-resource';
 import type { OperationContext, PathItem } from './operation-object';

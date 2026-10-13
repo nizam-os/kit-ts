@@ -19,7 +19,7 @@ import type {
   KeysetDefinition,
   Relation,
   SearchSpec,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import type { KeysetSchema } from './types';
 

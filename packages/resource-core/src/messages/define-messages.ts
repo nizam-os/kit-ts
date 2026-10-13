@@ -8,7 +8,7 @@
  * known again only after it passes through `defineMessages`.
  * @packageDocumentation
  */
-import type { Catalog, EmptyCatalog } from '@netvark/ban-core';
+import type { Catalog, EmptyCatalog } from '@nizam-os/ban-core';
 
 import type { AnyDeclaredResource } from '../declare/declared-resource';
 import type { RegistryCheck } from '../registry/registry-check';

@@ -1,7 +1,7 @@
 {
-  "name": "@netvark/jsonapi-client",
+  "name": "@nizam-os/jsonapi-client",
   "version": "0.0.0",
-  "description": "A typed fetch client for JSON:API 1.1 servers: calls, queries, records, errors, and Atomic Operations typed from the @netvark/jsonapi-core definitions the server is built from, with nothing generated. Runs wherever fetch does.",
+  "description": "A typed fetch client for JSON:API 1.1 servers: calls, queries, records, errors, and Atomic Operations typed from the @nizam-os/jsonapi-core definitions the server is built from, with nothing generated. Runs wherever fetch does.",
   "keywords": [
     "atomic-operations",
     "client",
@@ -12,13 +12,13 @@
     "rest",
     "typed"
   ],
-  "homepage": "https://github.com/netvark/netvark/tree/main/packages/jsonapi-client#readme",
-  "bugs": "https://github.com/netvark/netvark/issues",
+  "homepage": "https://github.com/nizam-os/kit/tree/main/packages/jsonapi-client#readme",
+  "bugs": "https://github.com/nizam-os/kit/issues",
   "license": "MIT",
   "author": "Ali Issa (https://github.com/ali-issa)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netvark/netvark.git",
+    "url": "git+https://github.com/nizam-os/kit.git",
     "directory": "packages/jsonapi-client"
   },
   "files": [
@@ -53,7 +53,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@netvark/jsonapi-core": "workspace:^"
+    "@nizam-os/jsonapi-core": "workspace:^"
   },
   "engines": {
     "node": ">=22.12.0"

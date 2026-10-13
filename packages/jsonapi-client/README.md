@@ -1,7 +1,7 @@
-# @netvark/jsonapi-client
+# @nizam-os/jsonapi-client
 
 A typed client for [JSON:API 1.1](https://jsonapi.org/format/1.1/) servers built with
-[`@netvark/jsonapi-core`](../jsonapi-core#readme). Its calls, the queries they send, the documents
+[`@nizam-os/jsonapi-core`](../jsonapi-core#readme). Its calls, the queries they send, the documents
 they write, and the records they read are typed by the definitions the server is built from, so an
 include path, sort, filter, fieldset, or attribute the server would refuse fails `tsc` first, and a
 record holds exactly what the query asked for. Error documents become a `ResponseError` that keeps
@@ -9,15 +9,15 @@ each error's code. Nothing is generated: the client imports the definitions. It 
 only (`fetch`, `Request`, `Headers`, `URL`, `URLSearchParams`), so one build runs in browsers,
 workers, Node, Bun, and Deno. Writes that must commit together go in one request through the Atomic
 Operations extension. The contract is sections 15 and 17 of
-[`docs/jsonapi/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md).
+[`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md).
 
 ## Install
 
 ```bash
-pnpm add @netvark/jsonapi-client
+pnpm add @nizam-os/jsonapi-client
 ```
 
-`@netvark/jsonapi-core` is the one dependency. The definitions are the server's: see
+`@nizam-os/jsonapi-core` is the one dependency. The definitions are the server's: see
 [What a client sees](../jsonapi-core#what-a-client-sees) for what they carry and how to share them.
 
 ## Calls
@@ -28,7 +28,7 @@ client per definition:
 ```ts
 import { Articles, People, Tags } from '@acme/api/definitions';
 
-import { createClients, createTransport } from '@netvark/jsonapi-client';
+import { createClients, createTransport } from '@nizam-os/jsonapi-client';
 
 import { getLocale } from './paraglide/runtime.js';
 
@@ -68,7 +68,7 @@ const { data: created } = await api.articles.create({
 Each call takes `{ signal, headers }` last and resolves to `{ status, data, links, meta, jsonapi }`.
 `api.articles.definition` is the definition the client was made from, so a cache that keys a read by
 its request serializes the query with it (`serializeQuery(api.articles.definition, query)`), as
-[`@netvark/tanstack-query-jsonapi`](../tanstack-query-jsonapi#readme) does for TanStack Query. The
+[`@nizam-os/tanstack-query-jsonapi`](../tanstack-query-jsonapi#readme) does for TanStack Query. The
 paths come from the definitions' links; a definition's own origin, from an absolute `links.base`, is
 ignored, so one set of definitions serves development, staging, and production.
 
@@ -105,7 +105,7 @@ code that sends its own requests:
 ```ts
 import { Articles, People, Tags } from '@acme/api/definitions';
 
-import { serializeQuery, type ListQuery } from '@netvark/jsonapi-client';
+import { serializeQuery, type ListQuery } from '@nizam-os/jsonapi-client';
 
 const definitions = { articles: Articles, people: People, tags: Tags };
 type ArticleQuery = ListQuery<typeof definitions, typeof Articles>;
@@ -181,7 +181,7 @@ collides with them). A relationship on a path the request included is the includ
 records in linkage order; every other one is its linkage, `{ type, id }`.
 
 ```ts
-import { deserialize, type RecordOf } from '@netvark/jsonapi-client';
+import { deserialize, type RecordOf } from '@nizam-os/jsonapi-client';
 
 const { data, included, links, meta } = deserialize(await response.json(), {
   include: ['author'],
@@ -213,7 +213,7 @@ HTML page), `document`, and `headers` (`allow`, `retryAfter`). Its message names
 the call, and the status, never the URL or the body, so it is safe to log.
 
 ```ts
-import { isResponseError } from '@netvark/jsonapi-client';
+import { isResponseError } from '@nizam-os/jsonapi-client';
 
 type AppCode = 'CONTACT_EMAIL_TAKEN' | 'QUOTA_EXCEEDED';
 
@@ -255,7 +255,7 @@ for (;;) {
 keys each page by its cursor and lists with `page: { after }`:
 
 ```ts
-import { pageCursors } from '@netvark/jsonapi-client';
+import { pageCursors } from '@nizam-os/jsonapi-client';
 
 const { next } = pageCursors(page);
 if (next !== undefined) {
@@ -276,7 +276,7 @@ of its name takes, so a model that holds the definition builds them without a cl
 path, `/operations` beside the collections:
 
 ```ts
-import { operationsOf, sendOperations } from '@netvark/jsonapi-client';
+import { operationsOf, sendOperations } from '@nizam-os/jsonapi-client';
 
 const people = operationsOf(People);
 const articles = operationsOf(Articles);
@@ -315,7 +315,7 @@ at, `{ index, pointer }`, its `pointer` what a single call's refusal names; an e
 operation, such as a request over the cap, gives `undefined`:
 
 ```ts
-import { isResponseError, operationOf } from '@netvark/jsonapi-client';
+import { isResponseError, operationOf } from '@nizam-os/jsonapi-client';
 
 try {
   await sendOperations(transport, operations);
@@ -378,15 +378,15 @@ server refuses a request over it with a 400, and a screen reads the cap from the
 
 ## Documentation
 
-- [`docs/jsonapi/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md),
+- [`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md),
   sections 15 and 17: the client's contract, with the tests that prove it
-- [ADR 0017](https://github.com/netvark/netvark/blob/main/docs/jsonapi/adr/0017-a-typed-client-on-fetch-over-the-servers-definitions.md):
+- [ADR 0017](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0017-a-typed-client-on-fetch-over-the-servers-definitions.md):
   a typed client on fetch over the server's definitions
-- [ADR 0018](https://github.com/netvark/netvark/blob/main/docs/jsonapi/adr/0018-definitions-carry-the-types-a-client-reads-and-writes.md):
+- [ADR 0018](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0018-definitions-carry-the-types-a-client-reads-and-writes.md):
   definitions carry the types a client reads and writes
-- [ADR 0022](https://github.com/netvark/netvark/blob/main/docs/jsonapi/adr/0022-atomic-operations-are-values-built-from-definitions-and-sent-in-one-request.md):
+- [ADR 0022](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0022-atomic-operations-are-values-built-from-definitions-and-sent-in-one-request.md):
   Atomic Operations are values built from definitions and sent in one request
-- [ADR 0023](https://github.com/netvark/netvark/blob/main/docs/jsonapi/adr/0023-the-operations-endpoint-and-its-cap-are-the-definitions.md):
+- [ADR 0023](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0023-the-operations-endpoint-and-its-cap-are-the-definitions.md):
   the operations endpoint and its cap are the definitions'
 
 ## License

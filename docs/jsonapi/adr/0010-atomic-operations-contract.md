@@ -1,7 +1,7 @@
 # ADR 0010: Atomic operations: caller-owned transaction, lid scope, two-phase processing
 
 - Status: accepted; amended by ADR-0013 (`transaction(c, run)` is `transaction(ctx, run)`, the
-  processor lives in `@netvark/jsonapi-core` as `operationsProcessor`, and "propagate to
+  processor lives in `@nizam-os/jsonapi-core` as `operationsProcessor`, and "propagate to
   `app.onError`" reads "propagate to the host") and by ADR-0023 (the cap is the `atomic.max` the
   processor's definitions share, 10 by default, and `maxOperations` is no option)
 - Date: 2026-10-08

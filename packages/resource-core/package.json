@@ -1,7 +1,7 @@
 {
-  "name": "@netvark/resource-core",
+  "name": "@nizam-os/resource-core",
   "version": "0.0.0",
-  "description": "One declaration per PostgreSQL table, keyed by its database names and typed by the catalog @netvark/pg-catalog extracts, from which the public API follows: public names, Zod schemas, field metadata, error codes, localized messages, JSON:API and keyset definitions, and OpenAPI. Runs in browsers and servers.",
+  "description": "One declaration per PostgreSQL table, keyed by its database names and typed by the catalog @nizam-os/pg-catalog extracts, from which the public API follows: public names, Zod schemas, field metadata, error codes, localized messages, JSON:API and keyset definitions, and OpenAPI. Runs in browsers and servers.",
   "keywords": [
     "api",
     "catalog",
@@ -13,13 +13,13 @@
     "schema",
     "zod"
   ],
-  "homepage": "https://github.com/netvark/netvark/tree/main/packages/resource-core#readme",
-  "bugs": "https://github.com/netvark/netvark/issues",
+  "homepage": "https://github.com/nizam-os/kit/tree/main/packages/resource-core#readme",
+  "bugs": "https://github.com/nizam-os/kit/issues",
   "license": "MIT",
   "author": "Ali Issa (https://github.com/ali-issa)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netvark/netvark.git",
+    "url": "git+https://github.com/nizam-os/kit.git",
     "directory": "packages/resource-core"
   },
   "files": [
@@ -69,10 +69,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@netvark/ban-core": "workspace:^",
-    "@netvark/catalog-core": "workspace:^",
-    "@netvark/jsonapi-core": "workspace:^",
-    "@netvark/keyset-core": "workspace:^"
+    "@nizam-os/ban-core": "workspace:^",
+    "@nizam-os/catalog-core": "workspace:^",
+    "@nizam-os/jsonapi-core": "workspace:^",
+    "@nizam-os/keyset-core": "workspace:^"
   },
   "devDependencies": {
     "ajv": "catalog:",

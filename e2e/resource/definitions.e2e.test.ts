@@ -2,7 +2,7 @@
  * The runtime twins of `fails/definitions.ts` (resource SPEC 11.2, 14),
  * through the built package: JavaScript callers get a `TypeError` naming
  * the option for each declaration whose derived keyset or JSON:API
- * resource `@netvark/keyset-core` or `@netvark/jsonapi-core` would refuse.
+ * resource `@nizam-os/keyset-core` or `@nizam-os/jsonapi-core` would refuse.
  */
 import { describe, expect, it } from 'vitest';
 
@@ -10,7 +10,7 @@ import { Organizations } from './resources/organizations.ts';
 import { declareUntyped, typeErrorOf } from './support/untyped.ts';
 
 const FIELD_NAMES =
-  "@netvark/keyset-core's field names (^[A-Za-z0-9][A-Za-z0-9_-]*$)";
+  "@nizam-os/keyset-core's field names (^[A-Za-z0-9][A-Za-z0-9_-]*$)";
 
 const list = (members: object): object => ({
   operations: ['list'],

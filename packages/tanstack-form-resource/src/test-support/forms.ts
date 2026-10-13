@@ -10,7 +10,7 @@
  */
 import type { AnyFieldApi, AnyFormApi } from '@tanstack/form-core';
 
-import type { FormModel } from '@netvark/resource-ui';
+import type { FormModel } from '@nizam-os/resource-ui';
 
 import { FieldApi, FormApi } from '@tanstack/form-core';
 

@@ -8,7 +8,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-import { watch } from '@netvark/paraglide-intl';
+import { watch } from '@nizam-os/paraglide-intl';
 
 import { CATALOGS } from '../support/catalogs.ts';
 import { writeProject } from '../support/project.ts';
@@ -55,5 +55,5 @@ if (!code.includes('Sent by')) {
   );
 }
 console.log(
-  `@netvark/intl smoke: watch compiled an edit and closed on ${runtime()}`,
+  `@nizam-os/intl smoke: watch compiled an edit and closed on ${runtime()}`,
 );

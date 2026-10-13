@@ -8,7 +8,7 @@ import type {
   PublicCatalog,
   PublicColumn,
   TypeKind,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import type { WireTypeName } from '../wire/types';
 

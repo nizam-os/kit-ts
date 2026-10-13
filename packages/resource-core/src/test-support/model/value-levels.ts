@@ -12,7 +12,7 @@ import type {
   PublicDomain,
   PublicTable,
   Rule,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 /** A base type or an enum, with the modifiers of the level that names it. */
 export interface LevelBase {

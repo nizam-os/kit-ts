@@ -3,7 +3,7 @@
  * configuration eagerly (SPEC 11.1).
  * @packageDocumentation
  */
-import type { CamelCaseOptions } from '@netvark/catalog-core';
+import type { CamelCaseOptions } from '@nizam-os/catalog-core';
 
 import type { MigrationSource } from './migrations/load';
 import type { PgliteExtension } from './target/pglite';
@@ -113,7 +113,7 @@ export interface TextStorageCodec {
 }
 
 /**
- * The declared resources of `@netvark/resource-core` and what the commands
+ * The declared resources of `@nizam-os/resource-core` and what the commands
  * over them need (SPEC 10.3, 10.4). `registry` returns the resources; it
  * is called only when `rules --check` or `surface` runs, since the
  * declarations import the catalog `extract` writes. `storage` gives each
@@ -157,7 +157,7 @@ export function catalogFile(
 
 /**
  * Validates a configuration eagerly and returns it unchanged, for the
- * default export of `netvark.config.ts`. A mistake throws `TypeError`
+ * default export of `pg-catalog.config.ts`. A mistake throws `TypeError`
  * naming the option: an unknown key at any level, an empty string, a
  * `database` with both or neither of `pglite` and `url`, a system,
  * duplicate, or overlong schema name, an empty or duplicate

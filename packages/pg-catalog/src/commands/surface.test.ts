@@ -6,7 +6,7 @@
  * configuration, the registry, and the file, each with its code. Neither
  * replays the migrations.
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
 
 import type { ExtractionConfig } from '../config';
 
@@ -16,8 +16,8 @@ import { join } from 'node:path';
 
 import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { toPublicCatalog } from '@netvark/catalog-core';
-import { surfaceOf } from '@netvark/resource-core/openapi';
+import { toPublicCatalog } from '@nizam-os/catalog-core';
+import { surfaceOf } from '@nizam-os/resource-core/openapi';
 
 import { PgCatalogError } from '../errors';
 import {

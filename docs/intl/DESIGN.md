@@ -52,7 +52,7 @@ reports both (ADR 0009), so the family documents it instead of repeating it.
 
 ## Shape
 
-**`@netvark/intl-core`** (web standards only, no dependencies):
+**`@nizam-os/intl-core`** (web standards only, no dependencies):
 
 - `createIntl({ locale, timeZone, formattingLocales })` returns formatters over ECMA-402's
   constructors. Each call reads the getters, takes an `Intl` object from a bounded cache built for
@@ -63,7 +63,7 @@ reports both (ADR 0009), so the family documents it instead of repeating it.
   the zone the way Paraglide stores the locale.
 - `isolate(value)` for a string built outside a message.
 
-**`@netvark/paraglide-intl`** (build time; re-exports the core):
+**`@nizam-os/paraglide-intl`** (build time; re-exports the core):
 
 - `compile(options)` is Paraglide's `compile()` with two steps added between loading the project and
   compiling it: refuse messages that format (ADR 0008), and wrap every interpolated value in FIRST
@@ -75,7 +75,7 @@ reports both (ADR 0009), so the family documents it instead of repeating it.
 
 ```ts
 // src/lib/intl.ts, shared by the server and the browser
-import { createIntl, createTimeZone } from '@netvark/intl-core';
+import { createIntl, createTimeZone } from '@nizam-os/intl-core';
 
 import { getLocale } from './paraglide/runtime.js';
 
@@ -105,7 +105,7 @@ export default {
 
 ```ts
 // scripts/compile-messages.ts, run before the bundler
-import { compile } from '@netvark/paraglide-intl';
+import { compile } from '@nizam-os/paraglide-intl';
 
 await compile({ project: './project.inlang', outdir: './src/lib/paraglide' });
 ```

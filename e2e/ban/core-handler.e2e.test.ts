@@ -1,15 +1,15 @@
-import type { ErrorReport } from '@netvark/ban-core';
+import type { ErrorReport } from '@nizam-os/ban-core';
 
 import type { RunningServer } from './support/server';
 
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan, fromRequest } from '@netvark/ban-core';
+import { createBan, fromRequest } from '@nizam-os/ban-core';
 
 import { startServer } from './support/server';
 
 /**
- * `@netvark/ban-core` without Hono (SPEC 6): a plain `fetch` handler that catches what
+ * `@nizam-os/ban-core` without Hono (SPEC 6): a plain `fetch` handler that catches what
  * its routes throw and answers through `ban.handler()` with the request facts
  * read by `fromRequest`. The server is `@hono/node-server`, used here only
  * as a `fetch` host; nothing from Hono touches the error path.
@@ -63,7 +63,7 @@ const app = {
   },
 };
 
-describe('@netvark/ban-core handler without Hono', () => {
+describe('@nizam-os/ban-core handler without Hono', () => {
   let server: RunningServer;
 
   beforeAll(async () => {

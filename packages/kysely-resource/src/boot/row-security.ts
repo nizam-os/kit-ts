@@ -14,9 +14,9 @@
  * @ref https://www.postgresql.org/docs/18/ddl-rowsecurity.html
  * @packageDocumentation
  */
-import type { Policy, PolicyCommand } from '@netvark/catalog-core';
-import type { Operation } from '@netvark/resource-core';
-import type { ResourceBehavior } from '@netvark/resource-core/server';
+import type { Policy, PolicyCommand } from '@nizam-os/catalog-core';
+import type { Operation } from '@nizam-os/resource-core';
+import type { ResourceBehavior } from '@nizam-os/resource-core/server';
 
 import type { BootContext } from './options';
 

@@ -1,10 +1,10 @@
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import type { FieldDescriptor } from './fields-of';
 
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { createDeclareResource } from '@netvark/resource-core';
+import { createDeclareResource } from '@nizam-os/resource-core';
 
 import { messages } from '../test-support/messages';
 import { publicCatalog } from '../test-support/public-catalog';

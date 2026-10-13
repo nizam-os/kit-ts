@@ -17,11 +17,11 @@
  */
 import type { QueryKey } from '@tanstack/query-core';
 
-import type { Operation, Transport } from '@netvark/jsonapi-client';
+import type { Operation, Transport } from '@nizam-os/jsonapi-client';
 
 import type { OperationsOptions, WriteSettings } from './query-types';
 
-import { sendOperations } from '@netvark/jsonapi-client';
+import { sendOperations } from '@nizam-os/jsonapi-client';
 
 import { invalidate, settingsKeys } from './invalidation';
 

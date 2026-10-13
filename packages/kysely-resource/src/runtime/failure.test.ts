@@ -1,16 +1,16 @@
-import type { StorageWrite } from '@netvark/resource-core/server';
+import type { StorageWrite } from '@nizam-os/resource-core/server';
 
 import { sql } from 'kysely';
 import { afterAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { BanError } from '@netvark/ban-core';
-import { errorObjects } from '@netvark/jsonapi-core';
+import { BanError } from '@nizam-os/ban-core';
+import { errorObjects } from '@nizam-os/jsonapi-core';
 import {
   quotaExceeded,
   Rejection,
   scopeValues,
-} from '@netvark/resource-core/server';
-import { contractFixture } from '@netvark/resource-core/testing';
+} from '@nizam-os/resource-core/server';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { createKyselyStorage } from '../storage/create-storage';
 import { contractDatabase, storageOptions } from '../test-support/database';

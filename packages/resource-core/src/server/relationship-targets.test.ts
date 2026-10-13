@@ -3,7 +3,7 @@
  * name, each with the error its foreign key raises for a missing target,
  * which is the error `constraintError` makes of that violation.
  */
-import type { BanError } from '@netvark/ban-core';
+import type { BanError } from '@nizam-os/ban-core';
 
 import { describe, expect, it } from 'vitest';
 

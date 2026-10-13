@@ -1,5 +1,5 @@
 ---
-'@netvark/pg-catalog': minor
+'@nizam-os/pg-catalog': minor
 ---
 
 CHECK constraints become rules that a client can enforce and get PostgreSQL's verdict.

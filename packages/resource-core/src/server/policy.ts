@@ -24,7 +24,7 @@ import type {
   UpdateInputOf,
 } from './resource-types';
 
-import { BanError, BUILTIN_CATALOG } from '@netvark/ban-core';
+import { BanError, BUILTIN_CATALOG } from '@nizam-os/ban-core';
 
 import { OPERATIONS } from '../declare/check-options';
 import { internalsOf } from '../declare/declared-resource';

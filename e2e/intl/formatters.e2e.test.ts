@@ -9,7 +9,7 @@ import { setTimeout as sleep } from 'node:timers/promises';
 
 import { describe, expect, it } from 'vitest';
 
-import { createIntl } from '@netvark/intl-core';
+import { createIntl } from '@nizam-os/intl-core';
 
 const AR_TAG = 'ar-SA-u-ca-gregory-nu-latn';
 /** 2026-10-12 21:30 UTC: already 13 October in Riyadh (UTC+3). */

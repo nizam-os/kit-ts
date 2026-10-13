@@ -301,10 +301,10 @@ importers:
       '@hono/zod-validator':
         specifier: 'catalog:'
         version: 0.9.1(hono@4.13.13)(zod@4.6.5)
-      '@netvark/ban-core':
+      '@nizam-os/ban-core':
         specifier: workspace:*
         version: link:../../packages/ban-core
-      '@netvark/hono-ban':
+      '@nizam-os/hono-ban':
         specifier: workspace:*
         version: link:../../packages/hono-ban
       '@opentelemetry/api':
@@ -364,10 +364,10 @@ importers:
       '@electric-sql/pglite-socket':
         specifier: 'catalog:'
         version: 0.2.11(@electric-sql/pglite-age@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pg_hashids@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pg_ivm@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pg_textsearch@0.0.10(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pg_uuidv7@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pgtap@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pgvector@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite@0.5.8)
-      '@netvark/catalog-core':
+      '@nizam-os/catalog-core':
         specifier: workspace:*
         version: link:../../packages/catalog-core
-      '@netvark/pg-catalog':
+      '@nizam-os/pg-catalog':
         specifier: workspace:*
         version: link:../../packages/pg-catalog
       '@types/node':
@@ -403,10 +403,10 @@ importers:
       '@inlang/plugin-message-format':
         specifier: 'catalog:'
         version: 4.5.1
-      '@netvark/intl-core':
+      '@nizam-os/intl-core':
         specifier: workspace:*
         version: link:../../packages/intl-core
-      '@netvark/paraglide-intl':
+      '@nizam-os/paraglide-intl':
         specifier: workspace:*
         version: link:../../packages/paraglide-intl
       '@types/jsdom':
@@ -445,19 +445,19 @@ importers:
       '@hono/node-server':
         specifier: 'catalog:'
         version: 2.1.3(hono@4.13.13)
-      '@netvark/hono-ban':
+      '@nizam-os/hono-ban':
         specifier: workspace:*
         version: link:../../packages/hono-ban
-      '@netvark/hono-jsonapi':
+      '@nizam-os/hono-jsonapi':
         specifier: workspace:*
         version: link:../../packages/hono-jsonapi
-      '@netvark/jsonapi-client':
+      '@nizam-os/jsonapi-client':
         specifier: workspace:*
         version: link:../../packages/jsonapi-client
-      '@netvark/jsonapi-core':
+      '@nizam-os/jsonapi-core':
         specifier: workspace:*
         version: link:../../packages/jsonapi-core
-      '@netvark/tanstack-query-jsonapi':
+      '@nizam-os/tanstack-query-jsonapi':
         specifier: workspace:*
         version: link:../../packages/tanstack-query-jsonapi
       '@tanstack/angular-query-experimental':
@@ -526,13 +526,13 @@ importers:
       '@electric-sql/pglite-socket':
         specifier: 'catalog:'
         version: 0.2.11(@electric-sql/pglite-age@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pg_hashids@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pg_ivm@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pg_textsearch@0.0.10(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pg_uuidv7@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pgtap@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pgvector@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite@0.5.8)
-      '@netvark/drizzle-keyset':
+      '@nizam-os/drizzle-keyset':
         specifier: workspace:*
         version: link:../../packages/drizzle-keyset
-      '@netvark/keyset-core':
+      '@nizam-os/keyset-core':
         specifier: workspace:*
         version: link:../../packages/keyset-core
-      '@netvark/kysely-keyset':
+      '@nizam-os/kysely-keyset':
         specifier: workspace:*
         version: link:../../packages/kysely-keyset
       '@types/node':
@@ -583,46 +583,46 @@ importers:
       '@inlang/plugin-message-format':
         specifier: 'catalog:'
         version: 4.5.1
-      '@netvark/ban-core':
+      '@nizam-os/ban-core':
         specifier: workspace:*
         version: link:../../packages/ban-core
-      '@netvark/catalog-core':
+      '@nizam-os/catalog-core':
         specifier: workspace:*
         version: link:../../packages/catalog-core
-      '@netvark/hono-ban':
+      '@nizam-os/hono-ban':
         specifier: workspace:*
         version: link:../../packages/hono-ban
-      '@netvark/hono-jsonapi':
+      '@nizam-os/hono-jsonapi':
         specifier: workspace:*
         version: link:../../packages/hono-jsonapi
-      '@netvark/hono-resource':
+      '@nizam-os/hono-resource':
         specifier: workspace:*
         version: link:../../packages/hono-resource
-      '@netvark/jsonapi-client':
+      '@nizam-os/jsonapi-client':
         specifier: workspace:*
         version: link:../../packages/jsonapi-client
-      '@netvark/jsonapi-core':
+      '@nizam-os/jsonapi-core':
         specifier: workspace:*
         version: link:../../packages/jsonapi-core
-      '@netvark/keyset-core':
+      '@nizam-os/keyset-core':
         specifier: workspace:*
         version: link:../../packages/keyset-core
-      '@netvark/kysely-resource':
+      '@nizam-os/kysely-resource':
         specifier: workspace:*
         version: link:../../packages/kysely-resource
-      '@netvark/pg-catalog':
+      '@nizam-os/pg-catalog':
         specifier: workspace:*
         version: link:../../packages/pg-catalog
-      '@netvark/resource-core':
+      '@nizam-os/resource-core':
         specifier: workspace:*
         version: link:../../packages/resource-core
-      '@netvark/resource-ui':
+      '@nizam-os/resource-ui':
         specifier: workspace:*
         version: link:../../packages/resource-ui
-      '@netvark/tanstack-form-resource':
+      '@nizam-os/tanstack-form-resource':
         specifier: workspace:*
         version: link:../../packages/tanstack-form-resource
-      '@netvark/tanstack-query-jsonapi':
+      '@nizam-os/tanstack-query-jsonapi':
         specifier: workspace:*
         version: link:../../packages/tanstack-query-jsonapi
       '@seriousme/openapi-schema-validator':
@@ -765,7 +765,7 @@ importers:
 
   packages/drizzle-keyset:
     dependencies:
-      '@netvark/keyset-core':
+      '@nizam-os/keyset-core':
         specifier: workspace:^
         version: link:../keyset-core
     devDependencies:
@@ -775,7 +775,7 @@ importers:
 
   packages/hono-ban:
     dependencies:
-      '@netvark/ban-core':
+      '@nizam-os/ban-core':
         specifier: workspace:^
         version: link:../ban-core
     devDependencies:
@@ -803,11 +803,11 @@ importers:
 
   packages/hono-jsonapi:
     dependencies:
-      '@netvark/jsonapi-core':
+      '@nizam-os/jsonapi-core':
         specifier: workspace:^
         version: link:../jsonapi-core
     devDependencies:
-      '@netvark/hono-ban':
+      '@nizam-os/hono-ban':
         specifier: workspace:^
         version: link:../hono-ban
       hono:
@@ -819,13 +819,13 @@ importers:
 
   packages/hono-resource:
     devDependencies:
-      '@netvark/hono-ban':
+      '@nizam-os/hono-ban':
         specifier: workspace:^
         version: link:../hono-ban
-      '@netvark/hono-jsonapi':
+      '@nizam-os/hono-jsonapi':
         specifier: workspace:^
         version: link:../hono-jsonapi
-      '@netvark/resource-core':
+      '@nizam-os/resource-core':
         specifier: workspace:^
         version: link:../resource-core
       hono:
@@ -839,13 +839,13 @@ importers:
 
   packages/jsonapi-client:
     dependencies:
-      '@netvark/jsonapi-core':
+      '@nizam-os/jsonapi-core':
         specifier: workspace:^
         version: link:../jsonapi-core
 
   packages/jsonapi-core:
     dependencies:
-      '@netvark/ban-core':
+      '@nizam-os/ban-core':
         specifier: workspace:^
         version: link:../ban-core
     devDependencies:
@@ -863,7 +863,7 @@ importers:
 
   packages/kysely-keyset:
     dependencies:
-      '@netvark/keyset-core':
+      '@nizam-os/keyset-core':
         specifier: workspace:^
         version: link:../keyset-core
     devDependencies:
@@ -873,29 +873,29 @@ importers:
 
   packages/kysely-resource:
     dependencies:
-      '@netvark/ban-core':
+      '@nizam-os/ban-core':
         specifier: workspace:^
         version: link:../ban-core
-      '@netvark/catalog-core':
+      '@nizam-os/catalog-core':
         specifier: workspace:^
         version: link:../catalog-core
-      '@netvark/jsonapi-core':
+      '@nizam-os/jsonapi-core':
         specifier: workspace:^
         version: link:../jsonapi-core
-      '@netvark/kysely-keyset':
+      '@nizam-os/kysely-keyset':
         specifier: workspace:^
         version: link:../kysely-keyset
     devDependencies:
       '@electric-sql/pglite':
         specifier: 'catalog:'
         version: 0.5.8
-      '@netvark/keyset-core':
+      '@nizam-os/keyset-core':
         specifier: workspace:^
         version: link:../keyset-core
-      '@netvark/pg-catalog':
+      '@nizam-os/pg-catalog':
         specifier: workspace:^
         version: link:../pg-catalog
-      '@netvark/resource-core':
+      '@nizam-os/resource-core':
         specifier: workspace:^
         version: link:../resource-core
       kysely:
@@ -907,7 +907,7 @@ importers:
 
   packages/paraglide-intl:
     dependencies:
-      '@netvark/intl-core':
+      '@nizam-os/intl-core':
         specifier: workspace:^
         version: link:../intl-core
     devDependencies:
@@ -923,7 +923,7 @@ importers:
 
   packages/pg-catalog:
     dependencies:
-      '@netvark/catalog-core':
+      '@nizam-os/catalog-core':
         specifier: workspace:^
         version: link:../catalog-core
       pg:
@@ -936,7 +936,7 @@ importers:
       '@electric-sql/pglite-socket':
         specifier: 'catalog:'
         version: 0.2.11(@electric-sql/pglite-age@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pg_hashids@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pg_ivm@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pg_textsearch@0.0.10(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pg_uuidv7@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pgtap@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite-pgvector@0.0.9(@electric-sql/pglite@0.5.8))(@electric-sql/pglite@0.5.8)
-      '@netvark/resource-core':
+      '@nizam-os/resource-core':
         specifier: workspace:^
         version: link:../resource-core
       '@types/node':
@@ -954,16 +954,16 @@ importers:
 
   packages/resource-core:
     dependencies:
-      '@netvark/ban-core':
+      '@nizam-os/ban-core':
         specifier: workspace:^
         version: link:../ban-core
-      '@netvark/catalog-core':
+      '@nizam-os/catalog-core':
         specifier: workspace:^
         version: link:../catalog-core
-      '@netvark/jsonapi-core':
+      '@nizam-os/jsonapi-core':
         specifier: workspace:^
         version: link:../jsonapi-core
-      '@netvark/keyset-core':
+      '@nizam-os/keyset-core':
         specifier: workspace:^
         version: link:../keyset-core
     devDependencies:
@@ -979,17 +979,17 @@ importers:
 
   packages/resource-ui:
     dependencies:
-      '@netvark/jsonapi-core':
+      '@nizam-os/jsonapi-core':
         specifier: workspace:^
         version: link:../jsonapi-core
     devDependencies:
-      '@netvark/jsonapi-client':
+      '@nizam-os/jsonapi-client':
         specifier: workspace:^
         version: link:../jsonapi-client
-      '@netvark/resource-core':
+      '@nizam-os/resource-core':
         specifier: workspace:^
         version: link:../resource-core
-      '@netvark/tanstack-query-jsonapi':
+      '@nizam-os/tanstack-query-jsonapi':
         specifier: workspace:^
         version: link:../tanstack-query-jsonapi
       '@tanstack/query-core':
@@ -1004,13 +1004,13 @@ importers:
 
   packages/tanstack-form-resource:
     devDependencies:
-      '@netvark/jsonapi-client':
+      '@nizam-os/jsonapi-client':
         specifier: workspace:^
         version: link:../jsonapi-client
-      '@netvark/resource-core':
+      '@nizam-os/resource-core':
         specifier: workspace:^
         version: link:../resource-core
-      '@netvark/resource-ui':
+      '@nizam-os/resource-ui':
         specifier: workspace:^
         version: link:../resource-ui
       '@tanstack/form-core':
@@ -1022,10 +1022,10 @@ importers:
 
   packages/tanstack-query-jsonapi:
     devDependencies:
-      '@netvark/jsonapi-client':
+      '@nizam-os/jsonapi-client':
         specifier: workspace:^
         version: link:../jsonapi-client
-      '@netvark/jsonapi-core':
+      '@nizam-os/jsonapi-core':
         specifier: workspace:^
         version: link:../jsonapi-core
       '@tanstack/query-core':

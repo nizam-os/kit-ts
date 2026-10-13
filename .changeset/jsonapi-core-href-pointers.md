@@ -1,5 +1,5 @@
 ---
-'@netvark/jsonapi-core': patch
+'@nizam-os/jsonapi-core': patch
 ---
 
 Point the errors about an operation's target at `href` when the operation named its target through

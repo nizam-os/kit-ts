@@ -13,7 +13,7 @@ import type { AppRuntime } from './runtime/fixture.ts';
 
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { createDomainDefiners } from '@netvark/resource-core/server';
+import { createDomainDefiners } from '@nizam-os/resource-core/server';
 
 import { Contacts } from './resources/contacts.ts';
 import { runtimeDatabases } from './runtime/database.ts';

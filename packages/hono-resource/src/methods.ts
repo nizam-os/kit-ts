@@ -11,7 +11,7 @@
  */
 import type { Env, Hono } from 'hono';
 
-import { jsonApiError } from '@netvark/hono-jsonapi';
+import { jsonApiError } from '@nizam-os/hono-jsonapi';
 
 /** A method a route answers. */
 export type Method = 'GET' | 'POST' | 'PATCH' | 'DELETE';

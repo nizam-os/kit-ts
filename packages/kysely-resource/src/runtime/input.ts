@@ -8,7 +8,7 @@
  * issue names it, and under a relationship's `data`, which carries its
  * linkage. A create's `id` is validated by the key's form on a resource
  * that takes client ids, and stored as the form outputs it; any other
- * resource refuses it, as `@netvark/jsonapi-core` refuses it in a request.
+ * resource refuses it, as `@nizam-os/jsonapi-core` refuses it in a request.
  * An update's row is named by its URL's id, so the input's own is not
  * read. The id of a get, an update, or a remove that the key's form
  * refuses names no row, so it is `NOT_FOUND` before any query (SPEC 3.4,
@@ -17,15 +17,15 @@
  * @ref https://jsonapi.org/format/1.1/#document-resource-object-relationships
  * @packageDocumentation
  */
-import type { ErrorItem } from '@netvark/ban-core';
-import type { DeclaredResource, ResourceIssue } from '@netvark/resource-core';
+import type { ErrorItem } from '@nizam-os/ban-core';
+import type { DeclaredResource, ResourceIssue } from '@nizam-os/resource-core';
 import type {
   ResourceInput,
   StorageWrite,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
-import { BanError, BUILTIN_CATALOG } from '@netvark/ban-core';
-import { errorItem, jsonApiError } from '@netvark/jsonapi-core';
+import { BanError, BUILTIN_CATALOG } from '@nizam-os/ban-core';
+import { errorItem, jsonApiError } from '@nizam-os/jsonapi-core';
 
 import { isRecord } from '../internal/object';
 
@@ -55,7 +55,7 @@ function documentPath(issue: ResourceIssue): ReadonlyArray<string> {
     : [DATA, ...segments];
 }
 
-/** One `VALIDATION_FAILED` item, as `@netvark/jsonapi-core` makes it of an issue (SPEC 9.3). */
+/** One `VALIDATION_FAILED` item, as `@nizam-os/jsonapi-core` makes it of an issue (SPEC 9.3). */
 function issueItem(
   issue: ResourceIssue,
   path: ReadonlyArray<string>,

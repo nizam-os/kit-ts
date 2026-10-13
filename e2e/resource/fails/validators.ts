@@ -9,7 +9,7 @@ import { z } from 'zod';
  * code must be a code. Each `// error:` names a text the diagnostic on the
  * next line must contain.
  */
-import { createDeclareResource, defineValidator } from '@netvark/resource-core';
+import { createDeclareResource, defineValidator } from '@nizam-os/resource-core';
 
 import { publicCatalog } from '../fixtures/contacts/public-catalog.ts';
 import { codecs } from '../resources/codecs.ts';

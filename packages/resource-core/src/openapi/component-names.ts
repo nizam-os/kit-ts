@@ -15,7 +15,7 @@
  * @ref https://jsonapi.org/format/1.1/#document-member-names-allowed-characters
  * @packageDocumentation
  */
-import type { JsonSchema } from '@netvark/ban-core';
+import type { JsonSchema } from '@nizam-os/ban-core';
 
 /**
  * The schemas a resource has: the resource object, its identifier, and the

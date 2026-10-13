@@ -7,7 +7,7 @@ import type { $ZodType, output } from 'zod/v4/core';
  * of `string`, an array of the element's type, and a codec's output.
  * @packageDocumentation
  */
-import type { PublicCatalog, PublicTable } from '@netvark/catalog-core';
+import type { PublicCatalog, PublicTable } from '@nizam-os/catalog-core';
 
 import type { ResolveColumnType, TypedRecord } from '../catalog/resolve-type';
 

@@ -1,4 +1,4 @@
-import type { Catalog, CatalogTable } from '@netvark/catalog-core';
+import type { Catalog, CatalogTable } from '@nizam-os/catalog-core';
 
 import { beforeAll, describe, expect, it } from 'vitest';
 

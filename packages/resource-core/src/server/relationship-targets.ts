@@ -15,7 +15,7 @@
  * @ref https://www.postgresql.org/docs/18/ddl-constraints.html#DDL-CONSTRAINTS-FK
  * @packageDocumentation
  */
-import type { BanError } from '@netvark/ban-core';
+import type { BanError } from '@nizam-os/ban-core';
 
 import type {
   AnyDeclaredResource,

@@ -13,7 +13,7 @@ import type {
   PublicCatalog,
   PublicColumn,
   PublicTable,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import type { Access, ModelMember } from '../model/members';
 import type { Random } from './random';

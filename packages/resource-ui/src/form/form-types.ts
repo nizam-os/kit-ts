@@ -5,8 +5,8 @@
  * A resource TypeScript does not know types every value `unknown`.
  * @packageDocumentation
  */
-import type { CreateInput, UpdateInput } from '@netvark/jsonapi-client';
-import type { Messages } from '@netvark/resource-core';
+import type { CreateInput, UpdateInput } from '@nizam-os/jsonapi-client';
+import type { Messages } from '@nizam-os/resource-core';
 
 import type { FieldDescriptor } from '../fields/fields-of';
 import type { DeclaredShape } from '../internal/declared';

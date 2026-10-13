@@ -3,8 +3,8 @@ import type { RunningServer } from './support/server';
 import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { bearerChallenge, createBan, defineFormat } from '@netvark/hono-ban';
-import { assertFormatConformance } from '@netvark/hono-ban/testing';
+import { bearerChallenge, createBan, defineFormat } from '@nizam-os/hono-ban';
+import { assertFormatConformance } from '@nizam-os/hono-ban/testing';
 
 import { compileWithAjv, schemaErrors } from './support/ajv';
 import { startServer } from './support/server';

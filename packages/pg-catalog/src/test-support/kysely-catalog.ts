@@ -8,13 +8,13 @@ import type {
   CatalogColumn,
   CatalogDomain,
   CatalogTable,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import type { KyselyDriver } from '../config';
 import type { MappingContext } from '../render/kysely-mapping';
 import type { PositionTypes, TypeRef } from '../render/kysely-type-table';
 
-import { CATALOG_FORMAT } from '@netvark/catalog-core';
+import { CATALOG_FORMAT } from '@nizam-os/catalog-core';
 
 /** A nullable base-type column without a default; `facts` replaces any member. */
 export function column(

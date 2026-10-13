@@ -3,7 +3,7 @@ import type { Context } from 'hono';
 import { Hono } from 'hono';
 import { describe, expect, it } from 'vitest';
 
-import { jsonApiError } from '@netvark/jsonapi-core';
+import { jsonApiError } from '@nizam-os/jsonapi-core';
 
 import {
   isJsonApiResponse,

@@ -1,7 +1,7 @@
 /**
  * The contacts application's list on screen (resource SPEC 20.8): the
  * README's list screen (`screens/contacts-screen.tsx`), rendered by React
- * in jsdom with the built `@netvark/resource-ui`, TanStack Router,
+ * in jsdom with the built `@nizam-os/resource-ui`, TanStack Router,
  * Query, and Table v9, for a person whose browser prefers German, against
  * the application served over a socket (`support/contacts-server.ts`) on
  * PGlite and on the server `RESOURCE_PG_URL` names. Nothing between a

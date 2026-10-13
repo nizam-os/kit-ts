@@ -1,5 +1,5 @@
 /**
- * Checks of the built `@netvark/resource-core/openapi` entry (resource
+ * Checks of the built `@nizam-os/resource-core/openapi` entry (resource
  * SPEC 13, 15.4): the contacts application's resources make an OpenAPI
  * 3.1.2 document whose responses reference error objects and lone
  * responses in its components, and two surfaces diff with a removed type
@@ -12,7 +12,7 @@ import {
   diffSurfaces,
   openapi,
   surfaceOf,
-} from '@netvark/resource-core/openapi';
+} from '@nizam-os/resource-core/openapi';
 
 import { Contacts } from '../resources/contacts.ts';
 import { Organizations } from '../resources/organizations.ts';

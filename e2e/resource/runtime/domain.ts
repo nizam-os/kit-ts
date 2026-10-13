@@ -14,7 +14,7 @@ import type {
   Actor,
   QuotaContext,
   ScopeBindings,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { scopes } from '../resources/declare-resource.ts';
 
@@ -25,7 +25,7 @@ import {
   defineEvent,
   defineQuota,
   defineScope,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import { Calls } from '../resources/calls.ts';
 import { Contacts } from '../resources/contacts.ts';

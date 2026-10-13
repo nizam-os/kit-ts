@@ -8,7 +8,7 @@
  * Not published with the package.
  * @packageDocumentation
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
 
 import type { DeclaredResource } from '../../declare/declared-resource';
 import type { ModelDeclaration } from '../model/members';
@@ -16,7 +16,7 @@ import type { RuleEntry, TableChoices } from './choices';
 
 import { z } from 'zod';
 
-import { CATALOG_FORMAT } from '@netvark/catalog-core';
+import { CATALOG_FORMAT } from '@nizam-os/catalog-core';
 
 import { defineValidator } from '../../codecs/define-validator';
 import { untypedDeclare } from '../catalog-builder';

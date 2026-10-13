@@ -5,7 +5,7 @@
  * definers take it as a type argument and nothing else.
  * @packageDocumentation
  */
-import type { Catalog } from '@netvark/ban-core';
+import type { Catalog } from '@nizam-os/ban-core';
 
 /**
  * Who runs an operation. Declare the application's actor as
@@ -27,7 +27,7 @@ export interface DomainShape {
   readonly quotas: string;
   /** What the runtime hands to policies, rules, and effects. */
   readonly services: unknown;
-  /** The application's `@netvark/ban-core` catalog fragment. */
+  /** The application's `@nizam-os/ban-core` catalog fragment. */
   readonly errors: Catalog;
 }
 

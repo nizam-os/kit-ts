@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-ui': minor
+'@nizam-os/resource-ui': minor
 ---
 
 New package: a framework-free model of forms and lists over resource-core declarations, starting

@@ -6,13 +6,13 @@ import { describe, expect, it } from 'vitest';
  * the SPEC lists. Value imports on purpose: a missing dist file or a wrong
  * `exports` entry fails here before any feature test runs.
  */
-import { BanError } from '@netvark/hono-ban';
-import * as hono from '@netvark/hono-jsonapi';
-import * as honoAtomic from '@netvark/hono-jsonapi/atomic';
-import * as client from '@netvark/jsonapi-client';
-import * as kit from '@netvark/jsonapi-core';
-import * as kitAtomic from '@netvark/jsonapi-core/atomic';
-import * as query from '@netvark/tanstack-query-jsonapi';
+import { BanError } from '@nizam-os/hono-ban';
+import * as hono from '@nizam-os/hono-jsonapi';
+import * as honoAtomic from '@nizam-os/hono-jsonapi/atomic';
+import * as client from '@nizam-os/jsonapi-client';
+import * as kit from '@nizam-os/jsonapi-core';
+import * as kitAtomic from '@nizam-os/jsonapi-core/atomic';
+import * as query from '@nizam-os/tanstack-query-jsonapi';
 
 function names(module: object): Array<string> {
   return Object.keys(module).toSorted();
@@ -123,7 +123,7 @@ const CLIENT = [
   'serializeQuery',
 ].toSorted();
 
-describe('@netvark/jsonapi-core surface', () => {
+describe('@nizam-os/jsonapi-core surface', () => {
   it('the root exports the SPEC section 1 values', () => {
     expect(names(kit)).toEqual(CORE);
     expect(kit.JSON_API_MEDIA_TYPE).toBe('application/vnd.api+json');
@@ -141,10 +141,10 @@ describe('@netvark/jsonapi-core surface', () => {
   });
 });
 
-describe('@netvark/hono-jsonapi surface', () => {
+describe('@nizam-os/hono-jsonapi surface', () => {
   it('the root re-exports the core, the same bindings, and adds the Hono integration', () => {
     expect(names(hono)).toEqual([...CORE, ...HONO].toSorted());
-    // One copy of the core in the graph, and one copy of @netvark/ban-core under it:
+    // One copy of the core in the graph, and one copy of @nizam-os/ban-core under it:
     // an error thrown through any of the packages is the same class, so
     // instanceof holds across them.
     expect(hono.BanError).toBe(kit.BanError);
@@ -160,13 +160,13 @@ describe('@netvark/hono-jsonapi surface', () => {
   });
 });
 
-describe('@netvark/jsonapi-client surface', () => {
+describe('@nizam-os/jsonapi-client surface', () => {
   it('the root exports the SPEC section 15.1 values', () => {
     expect(names(client)).toEqual(CLIENT);
   });
 });
 
-describe('@netvark/tanstack-query-jsonapi surface', () => {
+describe('@nizam-os/tanstack-query-jsonapi surface', () => {
   it('the root exports the SPEC section 16.1 values', () => {
     expect(names(query)).toEqual(['operationsMutation', 'resourceQueries']);
   });

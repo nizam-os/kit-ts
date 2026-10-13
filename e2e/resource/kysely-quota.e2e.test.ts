@@ -1,5 +1,5 @@
 /**
- * The reach of the quota lock in the built `@netvark/kysely-resource`
+ * The reach of the quota lock in the built `@nizam-os/kysely-resource`
  * (resource SPEC 18.2): `count` locks per quota and scope value, so a
  * count waits for another transaction's count of the same scope value and
  * for no other. The storage contract proves the wait (obligation 8); this
@@ -10,9 +10,9 @@
  */
 import { afterAll, describe, expect, it } from 'vitest';
 
-import { createKyselyStorage } from '@netvark/kysely-resource';
-import { scopeValues } from '@netvark/resource-core/server';
-import { contractFixture } from '@netvark/resource-core/testing';
+import { createKyselyStorage } from '@nizam-os/kysely-resource';
+import { scopeValues } from '@nizam-os/resource-core/server';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { OUTBOX, RESET } from './support/contract-database.ts';
 import { DEFINE_KEYSET } from './support/keyset-definer.ts';

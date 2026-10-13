@@ -1,6 +1,6 @@
 # catalog: implementation specification
 
-- Status: normative for the 0.x line of `@netvark/catalog-core` and `@netvark/pg-catalog`;
+- Status: normative for the 0.x line of `@nizam-os/catalog-core` and `@nizam-os/pg-catalog`;
   `docs/catalog/DESIGN.md` explains the why
 
 The key words MUST, MUST NOT, SHOULD, and MAY are used as in RFC 2119. Every section names the
@@ -31,16 +31,16 @@ Contents
 
 ## 1. Public surface and module map
 
-Two packages (ADR 0002). `@netvark/catalog-core` is the model and the pure functions over it; it has
-no dependencies and runs anywhere the other cores run. `@netvark/pg-catalog` replays, extracts,
+Two packages (ADR 0002). `@nizam-os/catalog-core` is the model and the pure functions over it; it has
+no dependencies and runs anywhere the other cores run. `@nizam-os/pg-catalog` replays, extracts,
 renders, compares, checks declared resources against the database (10.3), records their API surface
-(10.4), and runs the CLI; it depends on `@netvark/catalog-core` (and re-exports all of it) and on
-`pg`, and takes `@electric-sql/pglite` and `@netvark/resource-core` as optional peer dependencies.
+(10.4), and runs the CLI; it depends on `@nizam-os/catalog-core` (and re-exports all of it) and on
+`pg`, and takes `@electric-sql/pglite` and `@nizam-os/resource-core` as optional peer dependencies.
 
 | Package                 | Exports                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@netvark/catalog-core` | Values: `toPublicCatalog`, `diffCatalogs`, `toCamelCase`, `toSnakeCase`, `CATALOG_FORMAT`; and the types of sections 2 to 4 and 9.2 (`CamelCaseOptions`, `Catalog`, `CatalogTable`, `CatalogColumn`, `ColumnDefault`, `ColumnGenerated`, `TypeKind`, `Identity`, `Constraint`, `PrimaryKeyConstraint`, `UniqueConstraint`, `ForeignKeyConstraint`, `CheckConstraint`, `ExclusionConstraint`, `ReferentialAction`, `CatalogIndex`, `RowSecurity`, `Policy`, `PolicyCommand`, `CatalogDomain`, `DomainConstraint`, `Rule`, `LengthRule`, `RangeRule`, `RangeBound`, `EnumRule`, `NotNullRule`, `PatternRule`, `PublicCatalog`, `PublicTable`, `PublicColumn`, `PublicColumnDefault`, `PublicColumnGenerated`, `PublicConstraint` and its five kinds, `PublicDomain`, `PublicDomainConstraint`, `CatalogDiff`, `CatalogChange`, `JsonValue`)                                                                                                                                                                              |
-| `@netvark/pg-catalog`   | Everything of `@netvark/catalog-core` (the same bindings), plus `defineExtraction`, `extract`, `drift`, `extractCatalog`, `introspectCatalog`, `renderCatalogModule`, `renderPublicCatalogModule`, `parseCatalogModule`, `renderKyselyTypes`, `formatDiff`, `checkRules`, `formatRules`, `writeSurface`, `checkSurface`, `formatSurface`, `PgCatalogError`, `isPgCatalogError`; the types `ExtractionConfig`, `MigrationSource`, `Migration`, `DatabaseConfig`, `PgliteExtension`, `OutputConfig`, `CatalogFileConfig`, `PublicFileConfig`, `CatalogModuleOptions`, `TypesConfig`, `KyselyDriver`, `TypeOverride`, `DriftEnvironment`, `ResourcesConfig`, `TextStorageCodec`, `DriftOptions`, `DriftReport`, `ExtractOptions`, `ExtractReport`, `ExtractedFile`, `ExtractCatalogOptions`, `IntrospectOptions`, `KyselyTypesOptions`, `RulesOptions`, `RulesReport`, `RuleCaseReport`, `RuleDisagreement`, `SurfaceOptions`, `SurfaceWriteReport`, `SurfaceCheckReport`, `PgCatalogErrorCode`; and the `pg-catalog` bin |
+| `@nizam-os/catalog-core` | Values: `toPublicCatalog`, `diffCatalogs`, `toCamelCase`, `toSnakeCase`, `CATALOG_FORMAT`; and the types of sections 2 to 4 and 9.2 (`CamelCaseOptions`, `Catalog`, `CatalogTable`, `CatalogColumn`, `ColumnDefault`, `ColumnGenerated`, `TypeKind`, `Identity`, `Constraint`, `PrimaryKeyConstraint`, `UniqueConstraint`, `ForeignKeyConstraint`, `CheckConstraint`, `ExclusionConstraint`, `ReferentialAction`, `CatalogIndex`, `RowSecurity`, `Policy`, `PolicyCommand`, `CatalogDomain`, `DomainConstraint`, `Rule`, `LengthRule`, `RangeRule`, `RangeBound`, `EnumRule`, `NotNullRule`, `PatternRule`, `PublicCatalog`, `PublicTable`, `PublicColumn`, `PublicColumnDefault`, `PublicColumnGenerated`, `PublicConstraint` and its five kinds, `PublicDomain`, `PublicDomainConstraint`, `CatalogDiff`, `CatalogChange`, `JsonValue`)                                                                                                                                                                              |
+| `@nizam-os/pg-catalog`   | Everything of `@nizam-os/catalog-core` (the same bindings), plus `defineExtraction`, `extract`, `drift`, `extractCatalog`, `introspectCatalog`, `renderCatalogModule`, `renderPublicCatalogModule`, `parseCatalogModule`, `renderKyselyTypes`, `formatDiff`, `checkRules`, `formatRules`, `writeSurface`, `checkSurface`, `formatSurface`, `PgCatalogError`, `isPgCatalogError`; the types `ExtractionConfig`, `MigrationSource`, `Migration`, `DatabaseConfig`, `PgliteExtension`, `OutputConfig`, `CatalogFileConfig`, `PublicFileConfig`, `CatalogModuleOptions`, `TypesConfig`, `KyselyDriver`, `TypeOverride`, `DriftEnvironment`, `ResourcesConfig`, `TextStorageCodec`, `DriftOptions`, `DriftReport`, `ExtractOptions`, `ExtractReport`, `ExtractedFile`, `ExtractCatalogOptions`, `IntrospectOptions`, `KyselyTypesOptions`, `RulesOptions`, `RulesReport`, `RuleCaseReport`, `RuleDisagreement`, `SurfaceOptions`, `SurfaceWriteReport`, `SurfaceCheckReport`, `PgCatalogErrorCode`; and the `pg-catalog` bin |
 
 `e2e/catalog/package-surface.e2e.test.ts` asserts the exact value export lists against the built
 packages and that the re-exports are the core's own bindings.
@@ -60,7 +60,7 @@ packages/catalog-core/src/
   camel-case.ts                toCamelCase(), toSnakeCase(), CamelCaseOptions: CamelCasePlugin's conversions (9.2)
   internal/json.ts             JsonValue, isPlainObject(), jsonEqual() (4)
 packages/pg-catalog/src/
-  index.ts                     root entry: re-exports @netvark/catalog-core, adds the rest
+  index.ts                     root entry: re-exports @nizam-os/catalog-core, adds the rest
   cli.ts                       the bin entry (11.2)
   errors.ts                    PgCatalogError, isPgCatalogError() (12)
   config.ts                    defineExtraction(), the config types (11.1)
@@ -565,7 +565,7 @@ https://pglite.dev/extensions/
 ### 6.2 A server (`target/server.ts`)
 
 With `database.url`, extraction connects with `pg` to the URL (a `postgres://` or `postgresql://`
-URL), creates `netvark_catalog_<16 hex digits>` with
+URL), creates `nizam_catalog_<16 hex digits>` with
 `CREATE DATABASE ... TEMPLATE template0 ENCODING 'UTF8'`, connects to it by replacing the URL's
 path, replays and extracts, then closes that connection and drops the database in a `finally` block.
 A failed drop fails an otherwise successful extraction; when the extraction itself failed, its error
@@ -835,7 +835,7 @@ Each renderer is a pure function returning the file's full text, ending in one n
 ### 9.1 Catalog modules (`render/catalog-module.ts`, ADR 0004, 0011)
 
 ```ts
-// Generated by @netvark/pg-catalog. Do not edit: change the migrations and run `pg-catalog extract`.
+// Generated by @nizam-os/pg-catalog. Do not edit: change the migrations and run `pg-catalog extract`.
 const value = {
   "format": 3,
   ...
@@ -1006,8 +1006,8 @@ https://github.com/electric-sql/pglite/blob/%40electric-sql/pglite%400.5.8/packa
   so a key works only when that gives the database name again: `line_1` becomes `line1`, which turns
   back into `line1`. Every name that does not survive the round trip is listed in one
   `camel_case_mismatch`. The conversions are `toCamelCase` and `toSnakeCase` of
-  `@netvark/catalog-core`, a port of the plugin's that `render/key-names.test.ts` runs against the
-  plugin itself over every short string, and that `@netvark/resource-core` also derives public names
+  `@nizam-os/catalog-core`, a port of the plugin's that `render/key-names.test.ts` runs against the
+  plugin itself over every short string, and that `@nizam-os/resource-core` also derives public names
   with. Unless `maintainNestedObjectKeys` is set, the plugin also camelCases the keys of objects
   inside parsed `json` and `jsonb` values, while values written keep their keys. @ref
   https://github.com/kysely-org/kysely/blob/v0.28.17/src/plugin/camel-case/camel-case.ts @ref
@@ -1062,16 +1062,16 @@ Catalog. The text is for people and may change between minor versions; the CLI's
 
 `checkRules(config, { cwd })` runs the fixtures of the declared resources through their schemas and
 through the database the migrations build, and reports where the two disagree. The cases come from
-`oracleCases` of `@netvark/resource-core/testing` (resource SPEC 7.3): each names a probe (copies of
+`oracleCases` of `@nizam-os/resource-core/testing` (resource SPEC 7.3): each names a probe (copies of
 a table's columns holding some of its CHECKs, or a value of a domain), and each fixture carries the
 texts to write and a judge of the database's verdict. This package builds the probes, writes the
 texts, and hands each verdict to its judge; what the schemas say is resource-core's to decide.
 
 1. Without `config.resources`, it fails with `config_invalid`
    (`resources is not configured: set resources.registry to a function that returns the declared resources`).
-2. It imports `@netvark/resource-core/testing`; an optional peer dependency (14) that cannot be
+2. It imports `@nizam-os/resource-core/testing`; an optional peer dependency (14) that cannot be
    loaded fails with `resource_core_missing`
-   (`rules --check needs @netvark/resource-core, whose declarations it checks: <reason>`).
+   (`rules --check needs @nizam-os/resource-core, whose declarations it checks: <reason>`).
 3. It calls and awaits `resources.registry()`. Anything but an array of objects is
    `registry_invalid` (`resources.registry must return an array of declared resources`); what the
    function throws is thrown.
@@ -1084,7 +1084,7 @@ texts, and hands each verdict to its judge; what the schemas say is resource-cor
    database. It returns `{ cases, unusedTables }`.
 
 **The attempt function** (`oracle/probe-sql.ts`, `oracle/attempt.ts`). Before the first case it
-creates `pg_temp.netvark_attempt(template text, fixtures json) returns json` in PL/pgSQL. For each
+creates `pg_temp.nizam_attempt(template text, fixtures json) returns json` in PL/pgSQL. For each
 fixture, an array of texts and nulls, it runs `execute format(template, variadic texts)` in a block
 with an `exception when others` handler, which PL/pgSQL runs as a subtransaction, and records
 `{ "accepted": true, "stored": [...] }` or `{ "accepted": false, "code": ..., "constraint": ... }`
@@ -1096,14 +1096,14 @@ https://www.postgresql.org/docs/18/plpgsql-control-structures.html#PLPGSQL-ERROR
 https://github.com/electric-sql/pglite/issues/1115
 
 **The template** is
-`insert into pg_temp.netvark_probe ("a", "b") values (%L, %L) returning array["a"::text, "b"::text]`,
+`insert into pg_temp.nizam_probe ("a", "b") values (%L, %L) returning array["a"::text, "b"::text]`,
 with `%` doubled in quoted identifiers. `format`'s `%L` writes each text as a quoted literal, or
 `NULL`, so the column reads it with its input function and assignment semantics, as it reads an
 untyped parameter: `'abcd'` into `varchar(3)` is refused with 22001, `'1.005'` into `numeric(5,2)`
 is stored as `1.01`. An explicit cast would truncate the first. @ref
 https://www.postgresql.org/docs/18/functions-string.html#FUNCTIONS-STRING-FORMAT
 
-**The probe** (`oracle/probe.ts`) is `create temporary table netvark_probe (...)`, read from the
+**The probe** (`oracle/probe.ts`) is `create temporary table nizam_probe (...)`, read from the
 replayed database rather than the catalog file:
 
 - for a `columns` probe, one column per case column,
@@ -1168,16 +1168,16 @@ the report is the format for machines.
 
 `writeSurface(config, { cwd })` and `checkSurface(config, { cwd })` keep the snapshot of the API
 surface of the declared resources that resource SPEC 13.2 describes: `surfaceOf(registry)` of
-`@netvark/resource-core/openapi`, committed next to the catalog, and compared with the declarations
+`@nizam-os/resource-core/openapi`, committed next to the catalog, and compared with the declarations
 by `diffSurfaces`, which marks each change breaking or safe. Neither loads the migrations or opens a
 database; the surface comes from the declarations alone.
 
 1. Without `config.resources`, it fails with `config_invalid`, as `rules --check` does (10.3); with
    it but without `resources.surface`, with `config_invalid`
    (`resources.surface is not configured: set it to the file the surface is written to, such as api-surface.json`).
-2. It imports `@netvark/resource-core/openapi`; an optional peer dependency (14) that cannot be
+2. It imports `@nizam-os/resource-core/openapi`; an optional peer dependency (14) that cannot be
    loaded fails with `resource_core_missing`
-   (`surface needs @netvark/resource-core, whose declarations it describes: <reason>`).
+   (`surface needs @nizam-os/resource-core, whose declarations it describes: <reason>`).
 3. It calls and awaits `resources.registry()`, with the failures of 10.3 step 3.
 4. `surfaceOf(registry)` gives the surface. A `TypeError` whose message starts with `surfaceOf:` or
    `surfaceOf.`, a registry the checks of resource SPEC 4.2 refuse, becomes `registry_invalid` with
@@ -1308,8 +1308,8 @@ only when a command needs the URL, so a missing environment variable only fails 
 needs it. Relative paths resolve against the configuration file's directory, or the `cwd` option of
 the programmatic API.
 
-The CLI loads `--config <file>`, or else the first of `netvark.config.ts`, `netvark.config.mts`,
-`netvark.config.js`, and `netvark.config.mjs` in the working directory, with a dynamic `import()`;
+The CLI loads `--config <file>`, or else the first of `pg-catalog.config.ts`, `pg-catalog.config.mts`,
+`pg-catalog.config.js`, and `pg-catalog.config.mjs` in the working directory, with a dynamic `import()`;
 the default export must pass `defineExtraction`'s validation. A file that does not exist, fails to
 import, has no default export, or fails validation is a `config_invalid` naming it, as is a working
 directory without one. A TypeScript configuration needs a runtime that strips types: Node.js 22.18
@@ -1383,7 +1383,7 @@ all of them. `defineExtraction` and `toPublicCatalog` throw `TypeError` for prog
 | `camel_case_mismatch`   | with `types.camelCase`, table or column keys that `CamelCasePlugin` would not turn back into their names; the message lists every one                                                                                  |
 | `catalog_unreadable`    | the committed catalog file is missing or not a catalog module                                                                                                                                                          |
 | `catalog_format`        | the committed catalog was written in another `format`                                                                                                                                                                  |
-| `resource_core_missing` | `rules --check` cannot import `@netvark/resource-core/testing`, or `surface` its `openapi` entry; the message ends with the reason                                                                                     |
+| `resource_core_missing` | `rules --check` cannot import `@nizam-os/resource-core/testing`, or `surface` its `openapi` entry; the message ends with the reason                                                                                     |
 | `registry_invalid`      | `resources.registry` returns anything but an array of objects, or `oracleCases` refuses the registry or the storage codecs, with its message after `rules: `, or `surfaceOf` the registry, after `surface: `           |
 | `surface_unreadable`    | the committed surface file is not JSON, or not a surface `parseSurface` reads, such as one of another format                                                                                                           |
 
@@ -1393,7 +1393,7 @@ all of them. `defineExtraction` and `toPublicCatalog` throw `TypeError` for prog
 
 One Vitest run with a project per package, `typecheck` enabled for `*.test-d.ts`, and V8 coverage
 thresholds of 90% over `packages/*/src/`. Every test names the rule or choice it pins. Extraction is
-database code, so `@netvark/pg-catalog`'s own tests run it against PGlite in-process, a real
+database code, so `@nizam-os/pg-catalog`'s own tests run it against PGlite in-process, a real
 PostgreSQL 18; nothing is mocked.
 
 | Area                  | Files                                                                                                                                                                                                                                                                                                                                                           | What is pinned                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -1420,7 +1420,7 @@ produce for them, reviewed by hand, `db-camel.ts`, the types rendered with `came
 
 | File                          | Covers                                                                                                                                                                                                                                                                                                                                                                                |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `package-surface.e2e.test.ts` | the exact export lists, and that `@netvark/pg-catalog` re-exports the core's own bindings                                                                                                                                                                                                                                                                                             |
+| `package-surface.e2e.test.ts` | the exact export lists, and that `@nizam-os/pg-catalog` re-exports the core's own bindings                                                                                                                                                                                                                                                                                             |
 | `extract.e2e.test.ts`         | the three files equal `expected/` byte for byte, on two runs; `--check` passes, then fails after a migration changes                                                                                                                                                                                                                                                                  |
 | `server.e2e.test.ts`          | when `CATALOG_PG_URL` is set: the server target produces the same bytes as PGlite, and drops its database                                                                                                                                                                                                                                                                             |
 | `drift.e2e.test.ts`           | a live database built from the migrations shows no drift; after a column is added, a policy dropped, and a CHECK changed, exactly those three changes; on PGlite over a socket and on the server, where it also runs as the read-only role the README recommends                                                                                                                      |
@@ -1430,7 +1430,7 @@ produce for them, reviewed by hand, `db-camel.ts`, the types rendered with `came
 | `rules.e2e.test.ts`           | the public catalog's rules enforced as a client would: each value's verdict equals the database's evaluation of the recorded CHECK, for tables and domains, and the rules are literal types                                                                                                                                                                                           |
 | `cli.e2e.test.ts`             | the built bin run as a package manager runs it, in a temporary project whose configuration imports `defineExtraction`: `--version`, the three files byte for byte, `--check` passing and then failing on a hand edit, `drift` output and exit codes on PGlite over a socket and on the server, a missing URL variable, and a TypeScript configuration with and without type stripping |
 
-`rules --check` reads declarations, so its end-to-end tests live with `@netvark/resource-core`'s
+`rules --check` reads declarations, so its end-to-end tests live with `@nizam-os/resource-core`'s
 (resource SPEC 15.4): `e2e/resource/rules.e2e.test.ts` runs `checkRules` over the oracle's and the
 contacts application's declarations, on PGlite and on the server, and finds no disagreement, and
 finds each fault it plants; `rules-cli.e2e.test.ts` runs the built bin. `surface-cli.e2e.test.ts`
@@ -1449,11 +1449,11 @@ where `server.e2e.test.ts`, `kysely.e2e.test.ts`, and `drift.e2e.test.ts` reach 
 
 - ESM only, `engines.node >= 22.12.0`, built by tsdown with declarations through oxc
   (`isolatedDeclarations`). `publint --strict` and `attw --profile esm-only` run in the build.
-- `@netvark/catalog-core`: `platform: 'neutral'`, no dependencies, `sideEffects: false`.
-- `@netvark/pg-catalog`: `platform: 'node'`, two entries (`index` and `cli`), `bin` `pg-catalog`
-  pointing at `dist/cli.mjs` with a `#!/usr/bin/env node` line, dependencies `@netvark/catalog-core`
+- `@nizam-os/catalog-core`: `platform: 'neutral'`, no dependencies, `sideEffects: false`.
+- `@nizam-os/pg-catalog`: `platform: 'node'`, two entries (`index` and `cli`), `bin` `pg-catalog`
+  pointing at `dist/cli.mjs` with a `#!/usr/bin/env node` line, dependencies `@nizam-os/catalog-core`
   (`workspace:^`) and `pg`, `@electric-sql/pglite` `^0.5.0` (CI runs the package's tests on 0.5.0)
-  and `@netvark/resource-core` `^0.1.0` as optional peer dependencies (`rules --check` imports the
+  and `@nizam-os/resource-core` `^0.1.0` as optional peer dependencies (`rules --check` imports the
   latter's `testing` entry and `surface` its `openapi` entry on demand, so `extract` and `drift`
   never load it), and `sideEffects` listing only the bin.
 - The `exports` maps, `source` conditions, `publishConfig`, `files`, and release flow follow the
@@ -1468,11 +1468,11 @@ where `server.e2e.test.ts`, `kysely.e2e.test.ts`, and `drift.e2e.test.ts` reach 
 | `CATALOG_FORMAT`        | 3                                                                                                         | yes      |
 | default schemas         | `['public']`                                                                                              | no       |
 | minimum server version  | 140000 (PostgreSQL 14)                                                                                    | no       |
-| throwaway database name | `netvark_catalog_` followed by 16 lowercase hex digits                                                    | no       |
+| throwaway database name | `nizam_catalog_` followed by 16 lowercase hex digits                                                    | no       |
 | `SESSION_SETTINGS`      | the six settings of 7.1                                                                                   | no       |
-| configuration files     | `netvark.config.ts`, `.mts`, `.js`, `.mjs`, in that order                                                 | no       |
+| configuration files     | `pg-catalog.config.ts`, `.mts`, `.js`, `.mjs`, in that order                                                 | no       |
 | pattern bound limit     | 255 (PostgreSQL's `DUPMAX`)                                                                               | no       |
 | schema name limit       | 63 bytes (`NAMEDATALEN - 1`)                                                                              | no       |
-| file header             | `// Generated by @netvark/pg-catalog. Do not edit: change the migrations and run \`pg-catalog extract\`.` | no       |
+| file header             | `// Generated by @nizam-os/pg-catalog. Do not edit: change the migrations and run \`pg-catalog extract\`.` | no       |
 | default interfaces      | `ExtractedCatalog`, `ExtractedPublicCatalog`                                                              | no       |
 | `INTERFACE_NAME`        | `^[A-Z][A-Za-z0-9_]*$`                                                                                    | no       |

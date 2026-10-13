@@ -6,9 +6,9 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import * as drizzle from '@netvark/drizzle-keyset';
-import * as core from '@netvark/keyset-core';
-import * as kysely from '@netvark/kysely-keyset';
+import * as drizzle from '@nizam-os/drizzle-keyset';
+import * as core from '@nizam-os/keyset-core';
+import * as kysely from '@nizam-os/kysely-keyset';
 
 function names(module: object): Array<string> {
   return Object.keys(module).toSorted();
@@ -65,11 +65,11 @@ const ADAPTER = [
 const DRIZZLE = ['createDefineKeyset', 'renderPredicate', 'renderTarget'];
 
 describe('package surface', () => {
-  it('@netvark/keyset-core exports the documented values', () => {
+  it('@nizam-os/keyset-core exports the documented values', () => {
     expect(names(core)).toEqual(CORE);
   });
 
-  it('@netvark/kysely-keyset re-exports the core and adds the adapter', () => {
+  it('@nizam-os/kysely-keyset re-exports the core and adds the adapter', () => {
     expect(names(kysely)).toEqual(
       [...new Set([...CORE, ...ADAPTER])].toSorted(),
     );
@@ -78,7 +78,7 @@ describe('package surface', () => {
     expect(kysely.InvalidCursorError).toBe(core.InvalidCursorError);
   });
 
-  it('@netvark/drizzle-keyset re-exports the core and adds the adapter', () => {
+  it('@nizam-os/drizzle-keyset re-exports the core and adds the adapter', () => {
     expect(names(drizzle)).toEqual(
       [...new Set([...CORE, ...DRIZZLE])].toSorted(),
     );
@@ -88,23 +88,23 @@ describe('package surface', () => {
   });
 
   it('resolves package.json through the exports map', async () => {
-    const corePkg = (await import('@netvark/keyset-core/package.json', {
+    const corePkg = (await import('@nizam-os/keyset-core/package.json', {
       with: { type: 'json' },
     })) as {
       default: { name: string };
     };
-    const adapterPkg = (await import('@netvark/kysely-keyset/package.json', {
+    const adapterPkg = (await import('@nizam-os/kysely-keyset/package.json', {
       with: { type: 'json' },
     })) as {
       default: { name: string };
     };
-    const drizzlePkg = (await import('@netvark/drizzle-keyset/package.json', {
+    const drizzlePkg = (await import('@nizam-os/drizzle-keyset/package.json', {
       with: { type: 'json' },
     })) as {
       default: { name: string };
     };
-    expect(corePkg.default.name).toBe('@netvark/keyset-core');
-    expect(adapterPkg.default.name).toBe('@netvark/kysely-keyset');
-    expect(drizzlePkg.default.name).toBe('@netvark/drizzle-keyset');
+    expect(corePkg.default.name).toBe('@nizam-os/keyset-core');
+    expect(adapterPkg.default.name).toBe('@nizam-os/kysely-keyset');
+    expect(drizzlePkg.default.name).toBe('@nizam-os/drizzle-keyset');
   });
 });

@@ -7,11 +7,11 @@
  * @ref https://jsonapi.org/format/1.1/#content-negotiation-servers
  * @packageDocumentation
  */
-import type { BanError } from '@netvark/ban-core';
+import type { BanError } from '@nizam-os/ban-core';
 
 import type { MediaRange, MediaType } from '../media-type/parse';
 
-import { isBanError } from '@netvark/ban-core';
+import { isBanError } from '@nizam-os/ban-core';
 
 import { jsonApiError } from '../errors/json-api-error';
 import { quotable } from '../internal/quotable';

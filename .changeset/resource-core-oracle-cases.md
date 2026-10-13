@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 `oracleCases(resources, { storage })`, from the `testing` entry, lists what

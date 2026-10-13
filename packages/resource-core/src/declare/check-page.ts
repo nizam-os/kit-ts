@@ -1,13 +1,13 @@
 /**
  * The page bounds of the definer and of each declaration (SPEC 2, 3.7),
- * checked by the rules `@netvark/jsonapi-core` and `@netvark/keyset-core`
+ * checked by the rules `@nizam-os/jsonapi-core` and `@nizam-os/keyset-core`
  * share: positive integers, a default no larger than the max, and their
  * common defaults (20 and 100) for a member neither sets.
  * @packageDocumentation
  */
-import type { PageCapabilitiesInit } from '@netvark/jsonapi-core';
+import type { PageCapabilitiesInit } from '@nizam-os/jsonapi-core';
 
-import { DEFAULT_MAX_PAGE_SIZE, DEFAULT_PAGE_SIZE } from '@netvark/keyset-core';
+import { DEFAULT_MAX_PAGE_SIZE, DEFAULT_PAGE_SIZE } from '@nizam-os/keyset-core';
 
 import {
   expectKnownKeys,
@@ -46,8 +46,8 @@ export function checkPageInit(
 }
 
 /**
- * A merged page with every member set, as both `@netvark/jsonapi-core` and
- * `@netvark/keyset-core` resolve it: given to both derived definitions
+ * A merged page with every member set, as both `@nizam-os/jsonapi-core` and
+ * `@nizam-os/keyset-core` resolve it: given to both derived definitions
  * (SPEC 11), a default of a server's own definer cannot set them apart.
  */
 export function resolvePage(page: PageCapabilitiesInit): ResolvedPage {

@@ -5,7 +5,7 @@
  * every operator tasks declares on a value of its member's keyset type.
  * @packageDocumentation
  */
-import type { FilterCondition } from '@netvark/keyset-core';
+import type { FilterCondition } from '@nizam-os/keyset-core';
 
 import { MISSING } from './context';
 import { LIST_IDS } from './list-data';

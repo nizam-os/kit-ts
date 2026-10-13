@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 Declared resources carry their public names, derived from the database names as JSON:API clients

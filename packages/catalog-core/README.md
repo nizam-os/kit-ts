@@ -1,32 +1,32 @@
-# @netvark/catalog-core
+# @nizam-os/catalog-core
 
 The PostgreSQL catalog model as TypeScript types, and the pure functions over it. A catalog
 describes every table, column, constraint, index, row security policy, enum, and domain of the
 schemas you configure, as PostgreSQL itself built them.
-[`@netvark/pg-catalog`](https://www.npmjs.com/package/@netvark/pg-catalog) writes one from your
+[`@nizam-os/pg-catalog`](https://www.npmjs.com/package/@nizam-os/pg-catalog) writes one from your
 migrations as an `as const` module; this package is what reads it: the types, `toPublicCatalog` for
 the browser-safe slice, and `diffCatalogs` to compare two catalogs. Every member and rule is
 specified in
-[`docs/catalog/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/catalog/SPEC.md).
+[`docs/catalog/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/catalog/SPEC.md).
 
 ## Install
 
 ```bash
-pnpm add @netvark/catalog-core
+pnpm add @nizam-os/catalog-core
 ```
 
 No dependencies. Node 22.12+, Bun, Deno, Cloudflare Workers, and browsers are supported; the package
 is plain functions over JSON data and never reads the environment. Install it in libraries and
-applications that read a catalog; the extractor, `@netvark/pg-catalog`, re-exports all of it.
+applications that read a catalog; the extractor, `@nizam-os/pg-catalog`, re-exports all of it.
 
 ## Usage
 
 ```ts
-import type { Catalog } from '@netvark/catalog-core';
+import type { Catalog } from '@nizam-os/catalog-core';
 
-import { diffCatalogs, toPublicCatalog } from '@netvark/catalog-core';
+import { diffCatalogs, toPublicCatalog } from '@nizam-os/catalog-core';
 
-import { catalog } from './generated/catalog'; // written by @netvark/pg-catalog
+import { catalog } from './generated/catalog'; // written by @nizam-os/pg-catalog
 
 const model: Catalog = catalog; // a generated literal is assignable to the model
 
@@ -67,7 +67,7 @@ one column in `columns`; a domain's apply to every column of that type, through 
 domains. Enforced like this, a rule gives PostgreSQL's verdict on every value:
 
 ```ts
-import type { RangeBound, Rule } from '@netvark/catalog-core';
+import type { RangeBound, Rule } from '@nizam-os/catalog-core';
 
 /** Exact comparison of decimal strings such as `-12.50`: negative, zero, or positive. */
 function compareDecimals(left: string, right: string): number {
@@ -187,7 +187,7 @@ Kysely's `CamelCasePlugin` conversions, ported line by line and tested against t
 computed from the catalog is the key the plugin produces at runtime:
 
 ```ts
-import { toCamelCase, toSnakeCase } from '@netvark/catalog-core';
+import { toCamelCase, toSnakeCase } from '@nizam-os/catalog-core';
 
 toCamelCase('created_at'); // 'createdAt'
 toCamelCase('address_line_1'); // 'addressLine1'
@@ -197,13 +197,13 @@ toSnakeCase('addressLine1', { underscoreBeforeDigits: true }); // 'address_line_
 
 The options are the plugin's `upperCase`, `underscoreBeforeDigits`, and
 `underscoreBetweenUppercaseLetters`; pass the ones your application gives the plugin. Characters are
-read as UTF-16 code units, as the plugin reads them. `@netvark/pg-catalog` uses both for its
-`camelCase` Kysely types, and `@netvark/resource-core` uses `toCamelCase` for public field names.
+read as UTF-16 code units, as the plugin reads them. `@nizam-os/pg-catalog` uses both for its
+`camelCase` Kysely types, and `@nizam-os/resource-core` uses `toCamelCase` for public field names.
 
 ## Versioning
 
 `CATALOG_FORMAT` is the shape of the model. A release that changes the shape increments it and is a
-major release; a catalog of another format is not comparable, and `@netvark/pg-catalog` asks you to
+major release; a catalog of another format is not comparable, and `@nizam-os/pg-catalog` asks you to
 extract again.
 
 ## License

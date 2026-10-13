@@ -8,8 +8,8 @@
  * without one. On PGlite and on the server `RESOURCE_PG_URL` names.
  * @ref https://www.postgresql.org/docs/18/errcodes-appendix.html
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
-import type { DeclaredResource, FieldMeta } from '@netvark/resource-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
+import type { DeclaredResource, FieldMeta } from '@nizam-os/resource-core';
 
 import type { OracleDatabase } from './support/oracle-database.ts';
 

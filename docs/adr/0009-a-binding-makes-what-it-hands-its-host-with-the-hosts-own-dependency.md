@@ -10,7 +10,7 @@ sibling binding it builds on, and
 [ADR 0006](0006-a-binding-takes-the-packages-the-application-hands-it-values-from-as-peers.md) adds
 each workspace package whose values the application makes and hands it. A third case arrived with
 the intl family: a binding that makes values with one of its host's dependencies and hands them to
-the host. `@netvark/paraglide-intl` loads a project with the inlang SDK
+the host. `@nizam-os/paraglide-intl` loads a project with the inlang SDK
 (`loadProjectFromDirectory()`) and hands it to Paraglide's `compileProject()`, which reads it
 through its own copy of the SDK. Paraglide depends on one SDK major per minor range (SDK 2 through
 2.23, SDK 3 from 2.24, SDK 4 from 2.27), and a project loaded by another major does not compile:

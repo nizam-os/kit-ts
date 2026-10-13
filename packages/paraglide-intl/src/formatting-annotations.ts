@@ -151,7 +151,7 @@ export class MessageFormattingError extends Error {
         ? '1 value is formatted inside a message'
         : `${findings.length} values are formatted inside messages`;
     super(
-      `compile: ${count}, with the engine's defaults; format each with @netvark/intl-core and interpolate the string, or pass formatters: 'allow'\n${findings
+      `compile: ${count}, with the engine's defaults; format each with @nizam-os/intl-core and interpolate the string, or pass formatters: 'allow'\n${findings
         .map((finding) => `  ${findingLine(finding)}`)
         .join('\n')}`,
     );

@@ -12,7 +12,7 @@ schema its route documents, and every built-in format pinned `status`, `code`, a
 
 Those two decisions disagree. RFC 9457 lets a title change between occurrences "except for
 localization (e.g., using proactive content negotiation; see Section 12.5.1 of [HTTP])" (section
-3.1.3), and `transform` is where a host makes that change: `@netvark/resource-core`'s
+3.1.3), and `transform` is where a host makes that change: `@nizam-os/resource-core`'s
 `localizeErrors` replaces each title and detail with the request's language. Every localized body
 then failed the schema of the response its route documented. The contacts application in
 `e2e/resource` showed it over HTTP: a German 409 answered

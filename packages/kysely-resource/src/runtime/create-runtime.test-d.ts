@@ -4,20 +4,20 @@
  * it resolves to passes where a host takes resource-core's runtime
  * contract typed wide (SPEC 12.10), whose own types resource-core tests.
  */
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 import type {
   ResourceOperations,
   ResourceRuntime,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { Member, TestDomain } from '../test-support/domain';
 import type { RuntimeOptions } from './types';
 
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { createDeclareResource } from '@netvark/resource-core';
-import { createDomainDefiners } from '@netvark/resource-core/server';
-import { contractFixture } from '@netvark/resource-core/testing';
+import { createDeclareResource } from '@nizam-os/resource-core';
+import { createDomainDefiners } from '@nizam-os/resource-core/server';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { createResourceRuntime } from './create-runtime';
 

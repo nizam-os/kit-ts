@@ -2,16 +2,16 @@
  * A host of the routes, composed as an application composes one
  * (resource SPEC 19.2): `jsonApi()` with the Cursor Pagination profile
  * and the Atomic Operations extension,
- * the error and not-found handlers of `@netvark/hono-jsonapi`, and the
+ * the error and not-found handlers of `@nizam-os/hono-jsonapi`, and the
  * routes at `/`, each request acting as the member its `X-Member` header
  * names; a request that names none answers UNAUTHORIZED. Not published
  * with the package.
  */
 import type { Context, ErrorHandler } from 'hono';
 
-import type { JsonApiVariables } from '@netvark/hono-jsonapi';
-import type { OpenApiOptions } from '@netvark/resource-core/openapi';
-import type { ResourceRuntime } from '@netvark/resource-core/server';
+import type { JsonApiVariables } from '@nizam-os/hono-jsonapi';
+import type { OpenApiOptions } from '@nizam-os/resource-core/openapi';
+import type { ResourceRuntime } from '@nizam-os/resource-core/server';
 
 import type { Member, TestDomain } from './memory-runtime';
 
@@ -24,7 +24,7 @@ import {
   jsonApi,
   jsonApiError,
   notFoundHandler,
-} from '@netvark/hono-jsonapi';
+} from '@nizam-os/hono-jsonapi';
 
 import { jsonApiRoutes } from '../routes';
 import { member } from './memory-runtime';

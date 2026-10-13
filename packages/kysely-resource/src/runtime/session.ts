@@ -12,11 +12,11 @@
  * @ref https://www.postgresql.org/docs/18/tutorial-transactions.html
  * @packageDocumentation
  */
-import type { AnyDeclaredResource, Operation } from '@netvark/resource-core';
+import type { AnyDeclaredResource, Operation } from '@nizam-os/resource-core';
 import type {
   DomainEvent,
   FilterParameter,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { KyselyTransaction } from '../storage/transaction';
 

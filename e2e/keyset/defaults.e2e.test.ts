@@ -12,11 +12,11 @@ import type { DB, Harness } from './support/db.ts';
  */
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createDefineKeyset as createDrizzleDefineKeyset } from '@netvark/drizzle-keyset';
+import { createDefineKeyset as createDrizzleDefineKeyset } from '@nizam-os/drizzle-keyset';
 import {
   createDefineKeyset,
   PageSizeExceededError,
-} from '@netvark/kysely-keyset';
+} from '@nizam-os/kysely-keyset';
 
 import { drizzlePager, kyselyPager } from './support/bindings.ts';
 import { databases } from './support/db.ts';

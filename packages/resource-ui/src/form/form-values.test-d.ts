@@ -1,12 +1,12 @@
-import type { CreateInput, UpdateInput } from '@netvark/jsonapi-client';
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { CreateInput, UpdateInput } from '@nizam-os/jsonapi-client';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import type { FormValue, FormValues } from './form-types';
 
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { createClients, createTransport } from '@netvark/jsonapi-client';
-import { createDeclareResource } from '@netvark/resource-core';
+import { createClients, createTransport } from '@nizam-os/jsonapi-client';
+import { createDeclareResource } from '@nizam-os/resource-core';
 
 import { messages } from '../test-support/messages';
 import { publicCatalog } from '../test-support/public-catalog';

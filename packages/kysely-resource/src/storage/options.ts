@@ -7,13 +7,13 @@ import type { Kysely } from 'kysely';
  * and so does a key that is not an option, such as a misspelled `outbox`.
  * @packageDocumentation
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
-import type { DefineDefaultedKeyset } from '@netvark/keyset-core';
-import type { AnyDatabase } from '@netvark/kysely-keyset';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
+import type { DefineDefaultedKeyset } from '@nizam-os/keyset-core';
+import type { AnyDatabase } from '@nizam-os/kysely-keyset';
 
 import type { KyselyStorage, KyselyStorageOptions, TextCodec } from './types';
 
-import { CATALOG_FORMAT } from '@netvark/catalog-core';
+import { CATALOG_FORMAT } from '@nizam-os/catalog-core';
 
 import {
   checkDb,

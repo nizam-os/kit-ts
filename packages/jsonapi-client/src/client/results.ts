@@ -12,7 +12,7 @@
  * @ref https://jsonapi.org/format/1.1/#crud-creating-responses-202
  * @packageDocumentation
  */
-import type { Cardinality } from '@netvark/jsonapi-core';
+import type { Cardinality } from '@nizam-os/jsonapi-core';
 
 import type { AnyRecord } from '../document/types';
 import type { JsonRecord } from '../internal/object';

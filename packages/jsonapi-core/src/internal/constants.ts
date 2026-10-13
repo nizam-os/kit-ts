@@ -70,7 +70,7 @@ export const PAGE_SIZE_PATTERN: RegExp = /^[0-9]+$/u;
  * characters. A member name, a member path, a parameter name such as
  * `page[size]`, an integer, or a UUID passes; a quote, markup, whitespace, a
  * control character, a URL, or a long text does not. The same character
- * set as the request id `@netvark/ban-core` echoes (ban ADR 0007), with the
+ * set as the request id `@nizam-os/ban-core` echoes (ban ADR 0007), with the
  * brackets added and a shorter bound.
  * @ref https://jsonapi.org/format/1.1/#query-parameters-families
  */

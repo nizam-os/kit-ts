@@ -1,21 +1,21 @@
 /**
  * The storage contract (resource SPEC 12.9) over the built
- * `@netvark/kysely-resource`'s `createKyselyStorage`, on PGlite and on the
+ * `@nizam-os/kysely-resource`'s `createKyselyStorage`, on PGlite and on the
  * server `RESOURCE_PG_URL` names, where its concurrent cases hold a row
  * lock or a quota's lock in one transaction while a second, on another
  * connection, tries to write past it (SPEC 18.7).
  */
-import type { KyselyTransaction } from '@netvark/kysely-resource';
-import type { ContractHarness } from '@netvark/resource-core/testing';
+import type { KyselyTransaction } from '@nizam-os/kysely-resource';
+import type { ContractHarness } from '@nizam-os/resource-core/testing';
 
 import { sql } from 'kysely';
 import { afterAll, describe, it } from 'vitest';
 
-import { createKyselyStorage } from '@netvark/kysely-resource';
+import { createKyselyStorage } from '@nizam-os/kysely-resource';
 import {
   contractFixture,
   storageContract,
-} from '@netvark/resource-core/testing';
+} from '@nizam-os/resource-core/testing';
 
 import {
   EVENTS,

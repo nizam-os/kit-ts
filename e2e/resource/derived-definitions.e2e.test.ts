@@ -1,8 +1,8 @@
 /**
  * The two definitions every declared resource derives (resource SPEC 11),
  * through the built packages: the server's `createDefineKeyset({ cursor })`
- * accepts `keyset`; every request `@netvark/jsonapi-core`'s `parseQuery`
- * accepts on `resource`, `@netvark/keyset-core` plans, its filters mapped
+ * accepts `keyset`; every request `@nizam-os/jsonapi-core`'s `parseQuery`
+ * accepts on `resource`, `@nizam-os/keyset-core` plans, its filters mapped
  * by `keysetRequest`; and what parseQuery refuses, keyset-core refuses
  * too, except a sort by the key, which only keyset-core names. SPEC 15.5
  * holds the same property on two real catalogs, where every page query
@@ -11,19 +11,19 @@
 import type {
   FilterCondition as ParsedCondition,
   ParsedQuery,
-} from '@netvark/jsonapi-core';
-import type { Keyset } from '@netvark/keyset-core';
-import type { DeclaredResource } from '@netvark/resource-core';
+} from '@nizam-os/jsonapi-core';
+import type { Keyset } from '@nizam-os/keyset-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import { describe, expect, it } from 'vitest';
 
-import { isBanError, parseQuery } from '@netvark/jsonapi-core';
+import { isBanError, parseQuery } from '@nizam-os/jsonapi-core';
 import {
   createDefineKeyset,
   isKeysetError,
   OPERATORS,
-} from '@netvark/keyset-core';
-import { keysetRequest } from '@netvark/resource-core/server';
+} from '@nizam-os/keyset-core';
+import { keysetRequest } from '@nizam-os/resource-core/server';
 
 import { Calls } from './resources/calls.ts';
 import { Contacts } from './resources/contacts.ts';

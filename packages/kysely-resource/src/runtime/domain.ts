@@ -9,12 +9,12 @@
  * the session's transaction.
  * @packageDocumentation
  */
-import type { Operation } from '@netvark/resource-core';
+import type { Operation } from '@nizam-os/resource-core';
 import type {
   DomainShape,
   ResourceBehavior,
   ResourceOperations,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { Run } from './operation';
 import type { Session } from './session';

@@ -1,6 +1,6 @@
 /**
  * A keyset refusal as the client's error (resource SPEC 18.5), as keyset's
- * design maps refusals onto `@netvark/jsonapi-core` (keyset DESIGN 3.6):
+ * design maps refusals onto `@nizam-os/jsonapi-core` (keyset DESIGN 3.6):
  * the Cursor Pagination profile's error where the profile defines one,
  * and `INVALID_QUERY_PARAMETER` at the parameter the refusal names
  * otherwise, one object per refused filter value (keyset ADR 0019): at
@@ -13,8 +13,8 @@
  * @ref https://jsonapi.org/format/1.1/#query-parameters ("the server MUST respond with 400 Bad Request")
  * @packageDocumentation
  */
-import type { BanError } from '@netvark/ban-core';
-import type { FilterParameter } from '@netvark/resource-core/server';
+import type { BanError } from '@nizam-os/ban-core';
+import type { FilterParameter } from '@nizam-os/resource-core/server';
 
 import {
   errorItem,
@@ -23,7 +23,7 @@ import {
   maxPageSizeExceededError,
   rangePaginationNotSupportedError,
   unsupportedSortError,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 import {
   InvalidCursorError,
   InvalidFilterError,
@@ -34,7 +34,7 @@ import {
   UnsupportedFilterError,
   UnsupportedSearchError,
   UnsupportedSortError,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 /** The profile's own error for a refusal it defines one for. */
 function profileError(error: unknown): BanError | undefined {

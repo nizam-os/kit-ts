@@ -70,7 +70,7 @@ async function createProject(
     ([name, url]) => `${name}: { url: ${JSON.stringify(url)} }`,
   );
   await writeFile(
-    join(dir, 'netvark.config.mjs'),
+    join(dir, 'pg-catalog.config.mjs'),
     `export default {
   migrations: 'migrations',
   out: ${JSON.stringify(OUTPUTS)},
@@ -183,7 +183,7 @@ describe('runCli: extract (SPEC 10.1, 11.2)', () => {
       parent,
       'extract',
       '--config',
-      join(dir, 'netvark.config.mjs'),
+      join(dir, 'pg-catalog.config.mjs'),
     );
     const name = dir.slice(parent.length + 1);
     expect(run).toEqual({
@@ -194,11 +194,11 @@ describe('runCli: extract (SPEC 10.1, 11.2)', () => {
   });
 
   it('fails with exit code 2 when there is no configuration file', async () => {
-    await rm(join(dir, 'netvark.config.mjs'));
+    await rm(join(dir, 'pg-catalog.config.mjs'));
     expect(await cli(dir, 'extract')).toEqual({
       code: 2,
       stdout: '',
-      stderr: `pg-catalog: no configuration file in ${dir}: create netvark.config.ts (or .mts, .js, .mjs), or pass --config <file>\n`,
+      stderr: `pg-catalog: no configuration file in ${dir}: create pg-catalog.config.ts (or .mts, .js, .mjs), or pass --config <file>\n`,
     });
   });
 
@@ -278,7 +278,7 @@ describe('runCli: drift (SPEC 10.2, 11.2)', () => {
     });
     const json = await cli(dir, 'drift', '--env', 'local', '--json');
     expect(json.code).toBe(1);
-    const config = await loadConfigFile(join(dir, 'netvark.config.mjs'));
+    const config = await loadConfigFile(join(dir, 'pg-catalog.config.mjs'));
     const { diff } = await drift(config, 'local', { cwd: dir });
     expect(JSON.parse(json.stdout)).toEqual(diff);
     expect(json.stdout).toBe(`${JSON.stringify(diff, null, 2)}\n`);

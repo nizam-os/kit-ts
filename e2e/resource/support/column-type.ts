@@ -3,7 +3,7 @@
  * in, whether it is an enum, and whether the column is an array, read
  * from the public catalog (resource SPEC 5.1).
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
 
 /** What a column holds, followed through its domains. */
 export interface ColumnType {

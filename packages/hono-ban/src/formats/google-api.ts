@@ -1,1 +1,1 @@
-export * from '@netvark/ban-core/formats/google-api';
+export * from '@nizam-os/ban-core/formats/google-api';

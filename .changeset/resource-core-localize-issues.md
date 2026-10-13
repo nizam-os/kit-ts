@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 `localizeIssues(messages)` returns the text of an issue of `write.create` or `write.update` on a

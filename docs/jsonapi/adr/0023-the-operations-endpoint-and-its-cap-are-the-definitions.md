@@ -6,13 +6,13 @@
 ## Context
 
 `operationsProcessor` takes `maxOperations`, 10 by default (ADR 0010, JsonApiDotNetCore's default),
-and `@netvark/hono-resource` passes none (resource SPEC 19.4). Nothing a client imports holds the
+and `@nizam-os/hono-resource` passes none (resource SPEC 19.4). Nothing a client imports holds the
 cap, so a screen that writes a selection in one request (ADR 0022) cannot know it: a bulk action
 over a page of 50 records is a `400` it could not foresee. The OpenAPI document states the default
 as the request's `maxItems` (resource SPEC 13.1), whatever the processor was given.
 
 The endpoint's path is derived twice, `<base>/operations` with the base the collection path without
-its last segment, by `@netvark/hono-resource`'s routes and by `@netvark/resource-core`'s OpenAPI
+its last segment, by `@nizam-os/hono-resource`'s routes and by `@nizam-os/resource-core`'s OpenAPI
 document; the client would derive it a third time. Every other path the three name comes from
 `resourcePaths` (SPEC 5.4), which reads it from the definition's links, so they agree.
 
@@ -29,7 +29,7 @@ https://jsonapi.org/ext/atomic/#processing
 - A definition holds `atomic: { max }`, the most operations one request at its base takes: a
   positive safe integer, 10 by default (`DEFAULT_MAX_OPERATIONS`), refused with `TypeError` naming
   `atomic.max` otherwise. `createDefineResource`'s defaults take `atomic` and merge it as they merge
-  `links`; `@netvark/resource-core`'s definer takes it and passes it on (resource SPEC 2).
+  `links`; `@nizam-os/resource-core`'s definer takes it and passes it on (resource SPEC 2).
 - `ResourcePaths.operations` is `<base>/operations`, the collection path without its last segment
   followed by `/operations`, where the extension's examples and JsonApiDotNetCore's post. The host
   serves the endpoint there, the OpenAPI document lists it there, and the client sends there.

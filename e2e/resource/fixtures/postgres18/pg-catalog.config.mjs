@@ -3,7 +3,7 @@
 // replays into PGlite (PostgreSQL 18) only. `pg-catalog extract` run in this
 // directory writes catalog.ts and public-catalog.ts; the suite runs
 // `pg-catalog extract --check` here to prove they are current.
-import { defineExtraction } from '@netvark/pg-catalog';
+import { defineExtraction } from '@nizam-os/pg-catalog';
 
 export default defineExtraction({
   migrations: 'migrations',

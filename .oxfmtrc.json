@@ -47,12 +47,12 @@
       {
         "groupName": "self-type",
         "modifiers": ["type"],
-        "elementNamePattern": ["@netvark/**"]
+        "elementNamePattern": ["@nizam-os/**"]
       },
       {
         "groupName": "self-value",
         "modifiers": ["value"],
-        "elementNamePattern": ["@netvark/**"]
+        "elementNamePattern": ["@nizam-os/**"]
       }
     ]
   },

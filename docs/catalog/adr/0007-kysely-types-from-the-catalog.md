@@ -28,7 +28,7 @@ https://kysely-org.github.io/kysely-apidoc/types/GeneratedAlways.html
 
 ## Decision
 
-- `@netvark/pg-catalog` generates the Kysely types from the extracted catalog, in the same run and
+- `@nizam-os/pg-catalog` generates the Kysely types from the extracted catalog, in the same run and
   with the same determinism as the catalog files, and `extract --check` covers them.
 - The select types follow pg-types 2.x as above. The insert and update types are the values
   node-postgres serializes into text PostgreSQL accepts: it sends a JavaScript array as a PostgreSQL

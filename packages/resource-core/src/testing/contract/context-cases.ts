@@ -5,7 +5,7 @@
  * cursor of workspace 1's pages, sent in workspace 2 with the same
  * request, must be refused with keyset-core's `INVALID_CURSOR`, reason
  * `context`, and still page in workspace 1.
- * @ref https://github.com/netvark/netvark/blob/main/docs/keyset/adr/0015-cursors-bound-to-a-caller-context.md
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/keyset/adr/0015-cursors-bound-to-a-caller-context.md
  * @packageDocumentation
  */
 import type { Contract } from './context';

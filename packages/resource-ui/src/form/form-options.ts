@@ -7,7 +7,7 @@
  * declaration's names.
  * @packageDocumentation
  */
-import type { Messages } from '@netvark/resource-core';
+import type { Messages } from '@nizam-os/resource-core';
 
 import type { FieldDescriptor } from '../fields/fields-of';
 import type { FormOperation, FormRecord } from './form-types';

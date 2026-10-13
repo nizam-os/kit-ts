@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 The JSON:API resource a declaration derives now lists the members each write accepts by their

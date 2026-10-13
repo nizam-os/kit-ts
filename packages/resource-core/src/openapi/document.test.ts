@@ -8,7 +8,7 @@ import {
   parseCreateDocument,
   resourceDocument,
   toOneRelationshipDocument,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import { Contacts, Organizations } from '../test-support/definition-resources';
 import { openApiErrors } from '../test-support/openapi-conformance';

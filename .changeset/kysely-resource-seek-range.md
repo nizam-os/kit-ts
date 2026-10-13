@@ -1,6 +1,6 @@
 ---
-'@netvark/kysely-resource': patch
-'@netvark/resource-core': patch
+'@nizam-os/kysely-resource': patch
+'@nizam-os/resource-core': patch
 ---
 
 `list` orders a key that is not nullable without a null placement, so an index of the scope column,

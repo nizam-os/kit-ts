@@ -1,6 +1,6 @@
 /**
  * The unit tests' resources (resource SPEC 20.8), declared over the
- * fixture's public catalog, which `@netvark/pg-catalog` extracts from
+ * fixture's public catalog, which `@nizam-os/pg-catalog` extracts from
  * `migrations/` (e2e/resource proves it current): contacts and their
  * organizations, modeled on the contacts application of e2e/resource, and
  * the plans an organization is on, a lookup table keyed by an enum. Between
@@ -12,9 +12,9 @@
  * catalog. Not published with the package.
  * @packageDocumentation
  */
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
-import { createDeclareResource } from '@netvark/resource-core';
+import { createDeclareResource } from '@nizam-os/resource-core';
 
 import { publicCatalog } from './public-catalog';
 import { FIXTURE_REGISTRIES } from './registries';

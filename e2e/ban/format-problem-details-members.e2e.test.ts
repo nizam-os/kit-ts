@@ -6,19 +6,19 @@
  * checked against the JSON Schema the package publishes for it.
  * @ref https://www.rfc-editor.org/rfc/rfc9457
  */
-import type { Ban, EmptyCatalog, JsonSchema } from '@netvark/hono-ban';
+import type { Ban, EmptyCatalog, JsonSchema } from '@nizam-os/hono-ban';
 
 import type { FetchApp, RunningServer } from './support/server';
 
 import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
+import { createBan } from '@nizam-os/hono-ban';
 import {
   PROBLEM_DETAILS_CONTENT_TYPE,
   problemDetails,
-} from '@netvark/hono-ban/formats/problem-details';
-import { errorSchema } from '@netvark/hono-ban/openapi';
+} from '@nizam-os/hono-ban/formats/problem-details';
+import { errorSchema } from '@nizam-os/hono-ban/openapi';
 
 import { schemaErrors } from './support/ajv';
 import { startServer } from './support/server';

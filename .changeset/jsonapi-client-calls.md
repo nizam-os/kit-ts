@@ -1,5 +1,5 @@
 ---
-'@netvark/jsonapi-client': minor
+'@nizam-os/jsonapi-client': minor
 ---
 
 Calls the server. `createTransport({ origin, headers, language, fetch })` names the server once and

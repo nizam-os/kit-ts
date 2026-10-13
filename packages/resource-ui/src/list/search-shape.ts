@@ -21,8 +21,8 @@ import type {
   FilterValues,
   PageInput,
   Query,
-} from '@netvark/jsonapi-client';
-import type { AnyResource } from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-client';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
 
 import { isRecord } from '../internal/object';
 import { isStringList, pageOf } from './list-state';

@@ -284,7 +284,7 @@ export async function routeChecks(
 /** Prints the outcome for `name`; throws on failure so the process exits non-zero everywhere. */
 export function report(
   result: SmokeResult,
-  name = '@netvark/jsonapi-core',
+  name = '@nizam-os/jsonapi-core',
 ): void {
   const total = result.passed + result.failures.length;
   if (result.failures.length === 0) {

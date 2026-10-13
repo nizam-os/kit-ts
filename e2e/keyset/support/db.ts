@@ -12,7 +12,7 @@ import type { Generated, GeneratedAlways } from 'kysely';
  * @ref https://orm.drizzle.team/docs/get-started-postgresql (an existing node-postgres pool)
  * @ref https://orm.drizzle.team/docs/connect-pglite (an existing PGlite client)
  */
-import type { KeysetDatabase } from '@netvark/drizzle-keyset';
+import type { KeysetDatabase } from '@nizam-os/drizzle-keyset';
 
 import { PGlite } from '@electric-sql/pglite';
 import { PGLiteSocketServer } from '@electric-sql/pglite-socket';

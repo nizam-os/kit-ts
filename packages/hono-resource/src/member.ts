@@ -11,7 +11,7 @@
  */
 import type { Env } from 'hono';
 
-import type { DomainShape } from '@netvark/resource-core/server';
+import type { DomainShape } from '@nizam-os/resource-core/server';
 
 import type { RouteContext } from './context';
 import type { MountedResource } from './paths';
@@ -21,7 +21,7 @@ import {
   queryValidator,
   resourceDocument,
   respond,
-} from '@netvark/hono-jsonapi';
+} from '@nizam-os/hono-jsonapi';
 
 import { idOf, includedOf, notRun, operationsOf } from './context';
 import { allow } from './methods';

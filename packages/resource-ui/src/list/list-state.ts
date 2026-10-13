@@ -11,11 +11,11 @@
  * @ref https://jsonapi.org/profiles/ethanresnick/cursor-pagination/#auto-id-links
  * @packageDocumentation
  */
-import type { PageInput, Query } from '@netvark/jsonapi-client';
+import type { PageInput, Query } from '@nizam-os/jsonapi-client';
 
 import type { PageResult } from './list-types';
 
-import { pageCursors } from '@netvark/jsonapi-client';
+import { pageCursors } from '@nizam-os/jsonapi-client';
 
 import { isRecord } from '../internal/object';
 

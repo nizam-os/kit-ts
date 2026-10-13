@@ -1,7 +1,7 @@
-# @netvark/jsonapi-core: design
+# @nizam-os/jsonapi-core: design
 
-This document describes what @netvark/jsonapi-core, @netvark/hono-jsonapi, @netvark/jsonapi-client,
-and @netvark/tanstack-query-jsonapi are, the API they expose, and how they are built.
+This document describes what @nizam-os/jsonapi-core, @nizam-os/hono-jsonapi, @nizam-os/jsonapi-client,
+and @nizam-os/tanstack-query-jsonapi are, the API they expose, and how they are built.
 
 Architecture decisions referenced as ADR-NNNN live in `docs/jsonapi/adr/`. The normative,
 clause-by-clause specification that implementers work from is `docs/jsonapi/SPEC.md`; this document
@@ -9,8 +9,8 @@ explains the intent behind it. When the two disagree, fix one in the same PR.
 
 ## 1. Purpose
 
-@netvark/jsonapi-core is the JSON:API layer for JavaScript servers: a framework-free core
-(`@netvark/jsonapi-core`) and a Hono adapter (`@netvark/hono-jsonapi`) that re-exports it and adds
+@nizam-os/jsonapi-core is the JSON:API layer for JavaScript servers: a framework-free core
+(`@nizam-os/jsonapi-core`) and a Hono adapter (`@nizam-os/hono-jsonapi`) that re-exports it and adds
 the framework glue (ADR-0013). They give an application:
 
 1. one resource definition per type, from which field names, relationships, query capabilities,
@@ -41,7 +41,7 @@ It is a library for teams who treat their JSON:API surface as a contract.
   Kysely is a separate package.
 - OpenAPI generation. Definitions carry enough to generate schemas, and a future subpath may; this
   line does not.
-- A client for every JSON:API server. `@netvark/jsonapi-client` (section 3.6) calls servers whose
+- A client for every JSON:API server. `@nizam-os/jsonapi-client` (section 3.6) calls servers whose
   resources are this family's definitions, and reads paths from their links; it is not a generic
   client for an arbitrary API (ADR-0017).
 - Supporting CommonJS-only consumers or Node older than 22.12 (ADR-0004).
@@ -64,10 +64,10 @@ It is a library for teams who treat their JSON:API surface as a contract.
 6. **Web standards only. No ambient environment.** `URL`, `URLSearchParams`, `Response`, `btoa`;
    nothing reads `process` (ADR-0003).
 7. **One error model, shared with the application.** Every error is a
-   [@netvark/ban-core](https://github.com/netvark/netvark) `BanError`; `@netvark/jsonapi-core`
-   depends on `@netvark/ban-core` and on nothing else, imports no framework, and the adapter renders
-   through `@netvark/hono-ban`, so an application's own catalog, this package's, and any other
-   library's on @netvark/ban-core go through one handler (ADR-0014). Validators arrive through
+   [@nizam-os/ban-core](https://github.com/nizam-os/kit) `BanError`; `@nizam-os/jsonapi-core`
+   depends on `@nizam-os/ban-core` and on nothing else, imports no framework, and the adapter renders
+   through `@nizam-os/hono-ban`, so an application's own catalog, this package's, and any other
+   library's on @nizam-os/ban-core go through one handler (ADR-0014). Validators arrive through
    Standard Schema; the types are vendored (ADR-0002, ADR-0013).
 8. **Headers follow the body.** `Content-Type` parameters are derived from the document's `jsonapi`
    object; `Location` from the created resource's `self` link (ADR-0005).
@@ -77,8 +77,8 @@ It is a library for teams who treat their JSON:API surface as a contract.
 
 ## 3. The API by example
 
-The examples use `@netvark/hono-jsonapi`. Every function in them that is not a Hono hook is
-`@netvark/jsonapi-core`'s, and the core README shows the same minimal server as a plain `fetch`
+The examples use `@nizam-os/hono-jsonapi`. Every function in them that is not a Hono hook is
+`@nizam-os/jsonapi-core`'s, and the core README shows the same minimal server as a plain `fetch`
 handler.
 
 ### 3.1 Minimal
@@ -165,7 +165,7 @@ and `params` for links. Or it throws one 400 with every problem, which `errorHan
 }
 ```
 
-The `id` is the error id @netvark/hono-ban also sends as `X-Error-Id` and hands to `onReport`.
+The `id` is the error id @nizam-os/hono-ban also sends as `X-Error-Id` and hands to `onReport`.
 
 ### 3.4 Request documents
 
@@ -212,7 +212,7 @@ const page = await clients.articles.list({
 page.data[0]?.author?.name; // string | undefined: resolved, since the query includes author
 ```
 
-`@netvark/jsonapi-client` takes the definitions the server is built from. The paths come from their
+`@nizam-os/jsonapi-client` takes the definitions the server is built from. The paths come from their
 links, the query serializes to what `parseQuery` reads, and the types come from `'~types'`, which
 `defineResource` infers from `serialize`, the relationships, the query capabilities, and the
 validators' inputs (ADR-0018). Records are flat, `type`, `id`, and the fields, with a relationship
@@ -228,7 +228,7 @@ const page = useQuery(articles.list({ include: ['author'], sort: ['-createdAt'] 
 const create = useMutation(articles.create());
 ```
 
-`@netvark/tanstack-query-jsonapi` turns a client's calls into TanStack Query options keyed by the
+`@nizam-os/tanstack-query-jsonapi` turns a client's calls into TanStack Query options keyed by the
 request each sends, so two calls that send one request share one cache entry, and each write
 invalidates its type and settles once the reads on screen have refetched. It binds TanStack Query's
 framework-free core, so the options go into the hooks of React, Vue, Solid, Svelte, and Angular
@@ -240,23 +240,23 @@ so an application without the resource family uses it as it is.
 ### 4.1 Modules
 
 ```
-@netvark/jsonapi-core (packages/jsonapi-core/src)
+@nizam-os/jsonapi-core (packages/jsonapi-core/src)
   media-type   RFC 9110 parsing and serialization; the JSON:API media type and its parameters
   negotiate    the server negotiation rules as a pure function of two header values
-  errors       the catalog fragment, the @netvark/ban-core instance, jsonApiError and errorItem
+  errors       the catalog fragment, the @nizam-os/ban-core instance, jsonApiError and errorItem
   document     types, member names, serialization, builders, full linkage
   resource     defineResource and query capability resolution
   query        parseQuery and the family parsers
   pagination   the Cursor Pagination profile
   request      identifiers, resource documents, relationship documents
   atomic       the extension: processor, content type check, document parser, lids, executors
-@netvark/hono-jsonapi (packages/hono-jsonapi/src)
+@nizam-os/hono-jsonapi (packages/hono-jsonapi/src)
   middleware, respond, body, validators, handlers; atomic/handler wraps the core processor
 ```
 
-Imports form a DAG from `internal` outward. Nothing in `@netvark/jsonapi-core` imports a framework;
-it imports `@netvark/ban-core` for the error class, the catalog shape, and the JSON:API format.
-`@netvark/hono-jsonapi` imports `@netvark/jsonapi-core`, `hono`, and `@netvark/hono-ban`, and
+Imports form a DAG from `internal` outward. Nothing in `@nizam-os/jsonapi-core` imports a framework;
+it imports `@nizam-os/ban-core` for the error class, the catalog shape, and the JSON:API format.
+`@nizam-os/hono-jsonapi` imports `@nizam-os/jsonapi-core`, `hono`, and `@nizam-os/hono-ban`, and
 re-exports the core so applications see one package (ADR-0013). `import/no-cycle` is enforced.
 
 ### 4.2 Data flow for a read
@@ -281,15 +281,15 @@ request ──jsonApi()──▶ 415 on bad parameters or unsupported ext
 
 ### 4.4 Error rendering
 
-Every error is a `BanError` from `jsonApiBan`, the package's @netvark/ban-core instance:
-`ERROR_CATALOG` over @netvark/ban-core's built-in catalog, rendered by @netvark/ban-core's JSON:API
+Every error is a `BanError` from `jsonApiBan`, the package's @nizam-os/ban-core instance:
+`ERROR_CATALOG` over @nizam-os/ban-core's built-in catalog, rendered by @nizam-os/ban-core's JSON:API
 format with `mixedEntries` on so one document can combine entries. A parser accumulates
 `ErrorItem`s, each with the entry's identity and the occurrence's `detail` and address, and throws
 once; a detail quotes what the client sent only when it is a plain token, such as a member name or
 an id, and otherwise names the value without it (ADR-0016). The response status is the shared
 entry's, else the "most generally applicable" one. Everything in the adapter throws: the validators,
 `jsonApi()`, `readDocument`, and `atomicOperations()`. Hono hands a thrown error to `app.onError`,
-where `errorHandler()`, a @netvark/hono-ban handler over the same catalog, renders it with an error
+where `errorHandler()`, a @nizam-os/hono-ban handler over the same catalog, renders it with an error
 id in the header and the body, `Cache-Control: no-store`, the trace id from `traceparent`, and a
 report; Hono's `HTTPException` is adopted by status and anything else is a constant 500. Without
 `errorHandler()`, Hono's default handler still answers a thrown `BanError` through its
@@ -359,8 +359,8 @@ a cited clause with a test.
 | 0010 | Atomic operations: caller-owned transaction, lid scope, two-phase processing                                  |
 | 0011 | Conformance tests against the vendored JSON:API 1.0 schema with 1.1 deltas                                    |
 | 0012 | Definitions are validated at definition time, never at request time                                           |
-| 0013 | Two packages: the framework-neutral core `@netvark/jsonapi-core` and the Hono adapter `@netvark/hono-jsonapi` |
-| 0014 | Errors are @netvark/ban-core errors; the adapter renders through @netvark/hono-ban; everything throws         |
+| 0013 | Two packages: the framework-neutral core `@nizam-os/jsonapi-core` and the Hono adapter `@nizam-os/hono-jsonapi` |
+| 0014 | Errors are @nizam-os/ban-core errors; the adapter renders through @nizam-os/hono-ban; everything throws         |
 | 0015 | Resource links by convention: opt-in `base`, a configured definer, no implicit defaults                       |
 | 0016 | Error details quote request text only as a plain token; `source` locates the rest                             |
 | 0017 | A typed client in the family, on fetch, over the server's definitions                                         |

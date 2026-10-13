@@ -1,5 +1,5 @@
 ---
-'@netvark/pg-catalog': minor
+'@nizam-os/pg-catalog': minor
 ---
 
 `drift` compares a live database with the committed catalog, for a scheduled job that watches

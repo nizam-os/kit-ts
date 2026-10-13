@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-ui': minor
+'@nizam-os/resource-ui': minor
 ---
 
 Add `resourceList(resource, messages)`, a framework-free model of a list screen whose state is the
@@ -13,4 +13,4 @@ search back leniently, as JSON or as the API's own parameters, dropping each mem
 refuses so a stale or edited link still opens the list, and keeping JSON in its own forms so a
 router that validates its search after every navigation reads the same state. `columns` holds the
 descriptors of the members a read returns. Table is not a peer: the model imports nothing of it.
-`@netvark/jsonapi-core` is a dependency.
+`@nizam-os/jsonapi-core` is a dependency.

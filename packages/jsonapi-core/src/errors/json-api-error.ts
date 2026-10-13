@@ -1,19 +1,19 @@
 /**
- * JSON:API errors on @netvark/ban-core (SPEC 4.2). Every error this package throws is
- * a @netvark/ban-core `BanError` built by `jsonApiBan`, an instance whose catalog adds
- * `ERROR_CATALOG` to the built-ins and whose format is @netvark/ban-core's JSON:API
+ * JSON:API errors on @nizam-os/ban-core (SPEC 4.2). Every error this package throws is
+ * a @nizam-os/ban-core `BanError` built by `jsonApiBan`, an instance whose catalog adds
+ * `ERROR_CATALOG` to the built-ins and whose format is @nizam-os/ban-core's JSON:API
  * format with `mixedEntries` on. The error's `errors` list holds one
  * `ErrorItem` per JSON:API error object: the object's `source` is the
  * item's `location` and `path` (the format turns them back into `pointer`,
  * `parameter`, or `header`), its `links.type` is the item's `type`, and its
  * `status`, `code`, and `title` are the item's own, so one document can
  * combine catalog entries. The response status is the one the specification
- * derives from the objects. Any @netvark/ban-core handler renders such an error in its
+ * derives from the objects. Any @nizam-os/ban-core handler renders such an error in its
  * own format; `errorDocument` renders it here as the JSON:API format does,
  * for callers that build a response by hand.
  * @ref https://jsonapi.org/format/1.1/#errors
  * @ref https://jsonapi.org/format/1.1/#errors-processing
- * @ref https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md (sections 4.2 and 7.2)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (sections 4.2 and 7.2)
  * @packageDocumentation
  */
 import type {
@@ -22,8 +22,8 @@ import type {
   BanErrorOptions,
   ErrorItem,
   ErrorKey,
-} from '@netvark/ban-core';
-import type { JsonApiBody } from '@netvark/ban-core/formats/json-api';
+} from '@nizam-os/ban-core';
+import type { JsonApiBody } from '@nizam-os/ban-core/formats/json-api';
 
 import type {
   DocumentBase,
@@ -34,21 +34,21 @@ import type {
 } from '../document/types';
 import type { JsonApiCatalog } from './catalog';
 
-import { createBan } from '@netvark/ban-core';
-import { jsonApi, responseStatus } from '@netvark/ban-core/formats/json-api';
+import { createBan } from '@nizam-os/ban-core';
+import { jsonApi, responseStatus } from '@nizam-os/ban-core/formats/json-api';
 
 import { HTTP_INTERNAL_SERVER_ERROR } from '../internal/constants';
 import { compact } from '../internal/object';
 import { pathFromPointer } from '../internal/pointer';
 import { ERROR_CATALOG } from './catalog';
 
-/** A code the builders accept: one of this package's or a @netvark/ban-core built-in. */
+/** A code the builders accept: one of this package's or a @nizam-os/ban-core built-in. */
 export type JsonApiErrorCode = ErrorKey<JsonApiCatalog>;
 
 /**
  * The instance behind every error this package builds. Its factories
  * (`jsonApiBan.notFound()`, `jsonApiBan.INVALID_DOCUMENT()`, ...),
- * `validation()`, `from()`, `handler()`, and `render()` are @netvark/ban-core's; an
+ * `validation()`, `from()`, `handler()`, and `render()` are @nizam-os/ban-core's; an
  * application that needs its own entries creates its own instance with
  * `ERROR_CATALOG` spread into `errors`, since any instance renders any
  * `BanError`.
@@ -89,7 +89,7 @@ function isList(
 }
 
 /**
- * A `source` as @netvark/ban-core addresses it: a pointer is a path with no location
+ * A `source` as @nizam-os/ban-core addresses it: a pointer is a path with no location
  * (the format renders a located-nowhere path as `pointer`), a parameter or
  * header name is a one-segment path in that location.
  */
@@ -196,7 +196,7 @@ function fromCode(
  * One error object from the catalog, or an error over a list of items.
  * `jsonApiError('NOT_FOUND')` renders the entry's identity alone;
  * `jsonApiError('CONFLICT', { detail, source: { pointer: '/data/id' } })`
- * adds the occurrence's members. Callers throw the result; a @netvark/ban-core
+ * adds the occurrence's members. Callers throw the result; a @nizam-os/ban-core
  * handler, Hono's default error handler (through `getResponse()`), or
  * `errorDocument` renders it.
  */
@@ -225,7 +225,7 @@ export function jsonApiError(
  */
 export function errorObjects(error: BanError): ReadonlyArray<ErrorObject> {
   const { body } = jsonApiBan.render(error);
-  // oxlint-disable-next-line typescript/no-unsafe-type-assertion -- reason: @netvark/ban-core types every format's rendered body as `unknown` (`RenderedError.body`); this instance renders with `jsonApi()`, whose body is a `JsonApiBody` by its own contract (@netvark/ban-core SPEC 7.2)
+  // oxlint-disable-next-line typescript/no-unsafe-type-assertion -- reason: @nizam-os/ban-core types every format's rendered body as `unknown` (`RenderedError.body`); this instance renders with `jsonApi()`, whose body is a `JsonApiBody` by its own contract (@nizam-os/ban-core SPEC 7.2)
   return (body as JsonApiBody).errors;
 }
 

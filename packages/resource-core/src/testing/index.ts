@@ -1,5 +1,5 @@
 /**
- * `@netvark/resource-core/testing`: what a test suite runs a declared
+ * `@nizam-os/resource-core/testing`: what a test suite runs a declared
  * resource or a storage adapter against. `boundaryFixtures` generates the
  * values an oracle compares with PostgreSQL (SPEC 15.3); `oracleCases`
  * gives `pg-catalog rules --check` every fixture of a registry with how to

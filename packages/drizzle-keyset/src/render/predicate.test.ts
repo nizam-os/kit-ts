@@ -1,4 +1,4 @@
-import type { ColumnTarget, Predicate } from '@netvark/keyset-core';
+import type { ColumnTarget, Predicate } from '@nizam-os/keyset-core';
 
 import { QueryBuilder } from 'drizzle-orm/pg-core';
 import { describe, expect, it } from 'vitest';

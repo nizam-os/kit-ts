@@ -6,7 +6,7 @@
  * `check-columns.ts` and `checkFilters` in `check-filters.ts`.
  * @packageDocumentation
  */
-import type { PublicColumn, PublicTable } from '@netvark/catalog-core';
+import type { PublicColumn, PublicTable } from '@nizam-os/catalog-core';
 
 import type {
   CodecTypeName,

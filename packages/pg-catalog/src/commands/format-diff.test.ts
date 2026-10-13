@@ -7,11 +7,11 @@ import type {
   CatalogChange,
   CatalogTable,
   CheckConstraint,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import { describe, expect, it } from 'vitest';
 
-import { diffCatalogs } from '@netvark/catalog-core';
+import { diffCatalogs } from '@nizam-os/catalog-core';
 
 import {
   catalogOf,

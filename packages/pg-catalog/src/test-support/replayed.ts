@@ -2,7 +2,7 @@
  * Opens PGlite with the contrib extensions the test schema creates and
  * replays migrations into it, for tests that read real catalogs.
  */
-import type { Catalog } from '@netvark/catalog-core';
+import type { Catalog } from '@nizam-os/catalog-core';
 
 import type { Migration } from '../migrations/load';
 import type { SqlSession } from '../target/session';

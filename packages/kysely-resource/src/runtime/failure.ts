@@ -11,19 +11,19 @@
  * detail by its ban.
  * @packageDocumentation
  */
-import type { Catalog } from '@netvark/ban-core';
-import type { AnyDeclaredResource, Operation } from '@netvark/resource-core';
+import type { Catalog } from '@nizam-os/ban-core';
+import type { AnyDeclaredResource, Operation } from '@nizam-os/resource-core';
 import type {
   FilterParameter,
   StorageAdapter,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import {
   constraintError,
   partitionViolation,
   Rejection,
   rejectionError,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import { keysetRefusal } from './keyset-refusal';
 

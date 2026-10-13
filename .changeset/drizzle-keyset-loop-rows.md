@@ -1,5 +1,5 @@
 ---
-'@netvark/drizzle-keyset': patch
+'@nizam-os/drizzle-keyset': patch
 ---
 
 A page reassigned in a loop, `page = await keyset.paginate(db, { page: { after: page.next } })`,

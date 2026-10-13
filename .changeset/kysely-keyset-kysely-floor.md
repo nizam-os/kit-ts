@@ -1,5 +1,5 @@
 ---
-'@netvark/kysely-keyset': minor
+'@nizam-os/kysely-keyset': minor
 ---
 
 Requires `kysely` 0.28.17 or later, the first release past Kysely's published SQL injection

@@ -1,6 +1,6 @@
 /**
  * The configuration file the CLI reads (SPEC 11.1): `--config <file>`, or
- * the first of `netvark.config.ts`, `.mts`, `.js`, and `.mjs` in the
+ * the first of `pg-catalog.config.ts`, `.mts`, `.js`, and `.mjs` in the
  * working directory, loaded with a dynamic `import()`. A TypeScript file
  * needs a runtime that strips types.
  * @ref https://nodejs.org/api/typescript.html
@@ -18,10 +18,10 @@ import { PgCatalogError } from './errors';
 
 /** Looked up in this order (SPEC 15). */
 export const CONFIG_FILES: ReadonlyArray<string> = [
-  'netvark.config.ts',
-  'netvark.config.mts',
-  'netvark.config.js',
-  'netvark.config.mjs',
+  'pg-catalog.config.ts',
+  'pg-catalog.config.mts',
+  'pg-catalog.config.js',
+  'pg-catalog.config.mjs',
 ];
 
 async function exists(path: string): Promise<boolean> {
@@ -56,7 +56,7 @@ function loadFailure(name: string, error: unknown): string {
   const reason = error instanceof Error ? error.message : String(error);
   const code = error instanceof Error && 'code' in error ? error.code : null;
   return code === 'ERR_UNKNOWN_FILE_EXTENSION'
-    ? `cannot load ${name}: this Node.js does not strip TypeScript types; use Node.js 22.18 or later, set NODE_OPTIONS=--experimental-strip-types on Node.js 22.12 to 22.17, or write netvark.config.mjs`
+    ? `cannot load ${name}: this Node.js does not strip TypeScript types; use Node.js 22.18 or later, set NODE_OPTIONS=--experimental-strip-types on Node.js 22.12 to 22.17, or write pg-catalog.config.mjs`
     : `cannot load ${name}: ${reason}`;
 }
 

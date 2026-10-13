@@ -1,5 +1,5 @@
 /**
- * The contacts application's clients, as the built `@netvark/jsonapi-client`
+ * The contacts application's clients, as the built `@nizam-os/jsonapi-client`
  * makes them, over a transport to a contacts server that records each
  * request as it leaves: the method, the path, the query, and the request
  * document. Each request acts as the editor and sends the language
@@ -12,13 +12,13 @@ import type {
   Clients,
   ResponseError,
   Transport,
-} from '@netvark/jsonapi-client';
+} from '@nizam-os/jsonapi-client';
 
 import {
   createClients,
   createTransport,
   isResponseError,
-} from '@netvark/jsonapi-client';
+} from '@nizam-os/jsonapi-client';
 
 import { Contacts } from '../resources/contacts.ts';
 import { Meetings } from '../resources/meetings.ts';

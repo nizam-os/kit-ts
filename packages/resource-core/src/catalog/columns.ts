@@ -12,7 +12,7 @@ import type {
   PublicForeignKeyConstraint,
   PublicTable,
   TypeKind,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import { ownValue } from '../internal/object';
 import { isWireType, JSON_TYPES } from '../wire/types';

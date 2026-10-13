@@ -5,12 +5,12 @@
  * and sparse fieldsets, each record typed as `tsc` reads the built
  * declarations.
  */
-import type { AnyRecord, Identifier } from '@netvark/jsonapi-client';
+import type { AnyRecord, Identifier } from '@nizam-os/jsonapi-client';
 
 import { describe, expect, expectTypeOf, it } from 'vitest';
 
-import { cursorOf, pageCursors, serializeQuery } from '@netvark/jsonapi-client';
-import { CURSOR_PAGINATION_PROFILE } from '@netvark/jsonapi-core';
+import { cursorOf, pageCursors, serializeQuery } from '@nizam-os/jsonapi-client';
+import { CURSOR_PAGINATION_PROFILE } from '@nizam-os/jsonapi-core';
 
 import { useClientBlog } from './support/clients.ts';
 

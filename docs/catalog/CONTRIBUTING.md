@@ -1,6 +1,6 @@
 # Contributing to the catalog family
 
-`@netvark/catalog-core` (the database-free model) and `@netvark/pg-catalog` (the extractor and CLI).
+`@nizam-os/catalog-core` (the database-free model) and `@nizam-os/pg-catalog` (the extractor and CLI).
 The root [`CONTRIBUTING.md`](../../CONTRIBUTING.md) covers setup, the quality gates, the shared
 conventions, commits, changesets, and releases; this guide adds what is specific to the family.
 Design intent lives in [`DESIGN.md`](DESIGN.md), the normative contract in [`SPEC.md`](SPEC.md), and
@@ -25,7 +25,7 @@ decisions in [`adr/`](adr); read those before proposing changes to the model or 
 - **End-to-end tests live in `e2e/catalog/`.** That directory is a private pnpm workspace package
   that depends on both packages through `workspace:*`, so its imports resolve into `dist/` and its
   `tsc` run checks the emitted declarations. Run one file with
-  `pnpm --filter @netvark/catalog-e2e exec vitest run <name>` after `pnpm build`; set
+  `pnpm --filter @nizam-os/catalog-e2e exec vitest run <name>` after `pnpm build`; set
   `CATALOG_PG_URL` to a PostgreSQL server (a role with `CREATEDB`) to include the server files.
 
 ## Adding a capability
@@ -33,7 +33,7 @@ decisions in [`adr/`](adr); read those before proposing changes to the model or 
 - **A rule shape.** The captured deparse forms, the grammar or shape in `recognize/`, SPEC 8.3 (and
   8.4 for patterns), an amendment to ADR 0006 stating why the shape is equivalent, table-driven
   tests including the near misses that must stay `null`, a CHECK in the e2e fixture, the regenerated
-  `expected/`, and a `minor` changeset for `@netvark/pg-catalog`.
+  `expected/`, and a `minor` changeset for `@nizam-os/pg-catalog`.
 - **A model member or object kind.** An ADR, SPEC 2 (and 3 when it is public), the query in
   `extract/queries.ts` for every supported major, `CATALOG_FORMAT` incremented, the core types, the
   e2e fixture and `expected/`, and a `major` changeset for both packages: every committed catalog
@@ -46,8 +46,8 @@ decisions in [`adr/`](adr); read those before proposing changes to the model or 
 
 **Constraints every contribution inherits.**
 
-- `@netvark/catalog-core` has no dependencies and imports no runtime API beyond the language.
-  `@netvark/pg-catalog` depends on `pg` and the core only; PGlite stays an optional peer imported
+- `@nizam-os/catalog-core` has no dependencies and imports no runtime API beyond the language.
+  `@nizam-os/pg-catalog` depends on `pg` and the core only; PGlite stays an optional peer imported
   dynamically.
 - PostgreSQL 14 is the oldest supported major. A query that reads a column added later selects a
   constant on older majors (SPEC 7.2), and CI runs the server suite on 14 and 18.

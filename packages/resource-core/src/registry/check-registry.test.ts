@@ -33,14 +33,14 @@ describe('registry checks: the list (SPEC 4.2, 14)', () => {
     );
   });
 
-  it("takes the application's codes as an object of @netvark/ban-core error definitions", () => {
+  it("takes the application's codes as an object of @nizam-os/ban-core error definitions", () => {
     expect(() => untypedCatalog([], 'SEAT_LIMIT')).toThrow(
       new TypeError(
         'errorCatalog.appErrors: must be an object of error definitions, received "SEAT_LIMIT"',
       ),
     );
     const definition =
-      'must be an error definition of @netvark/ban-core: a 4xx or 5xx status, and title, code, type, and description strings when given';
+      'must be an error definition of @nizam-os/ban-core: a 4xx or 5xx status, and title, code, type, and description strings when given';
     for (const entry of [
       { status: 301 },
       { status: '402' },
@@ -117,11 +117,11 @@ describe('registry checks: conflicts (SPEC 4.2)', () => {
     ).not.toThrow();
   });
 
-  it('refuses a derived code that @netvark/ban-core, @netvark/jsonapi-core, resource-core, or the application already has', () => {
+  it('refuses a derived code that @nizam-os/ban-core, @nizam-os/jsonapi-core, resource-core, or the application already has', () => {
     const cases = [
-      ['CONFLICT', 'a built-in code of @netvark/ban-core'],
-      ['INVALID_DOCUMENT', 'a code of @netvark/jsonapi-core'],
-      ['VALIDATION_FAILED', 'a built-in code of @netvark/ban-core'],
+      ['CONFLICT', 'a built-in code of @nizam-os/ban-core'],
+      ['INVALID_DOCUMENT', 'a code of @nizam-os/jsonapi-core'],
+      ['VALIDATION_FAILED', 'a built-in code of @nizam-os/ban-core'],
       ['QUOTA_EXCEEDED', "resource-core's own code"],
       ['SEAT_LIMIT', 'an application code'],
     ] as const;

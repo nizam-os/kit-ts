@@ -11,7 +11,7 @@ import type { ContractDatabase } from './support/contract-database.ts';
 
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { storageContract } from '@netvark/resource-core/testing';
+import { storageContract } from '@nizam-os/resource-core/testing';
 
 import { contractDatabases } from './support/contract-database.ts';
 import { FAULTS } from './support/contract-faults.ts';

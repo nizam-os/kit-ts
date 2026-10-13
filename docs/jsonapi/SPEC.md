@@ -1,7 +1,7 @@
-# @netvark/jsonapi-core: implementation specification
+# @nizam-os/jsonapi-core: implementation specification
 
-- Status: normative for the 0.x line of `@netvark/jsonapi-core`, `@netvark/hono-jsonapi`,
-  `@netvark/jsonapi-client`, and `@netvark/tanstack-query-jsonapi`; `docs/jsonapi/DESIGN.md`
+- Status: normative for the 0.x line of `@nizam-os/jsonapi-core`, `@nizam-os/hono-jsonapi`,
+  `@nizam-os/jsonapi-client`, and `@nizam-os/tanstack-query-jsonapi`; `docs/jsonapi/DESIGN.md`
   explains the why
 
 The key words MUST, MUST NOT, SHOULD, and MAY are used as in RFC 2119. Every section names the
@@ -20,42 +20,42 @@ Contents
 7. Document building
 8. Cursor pagination
 9. Request documents
-10. Hono integration (`@netvark/hono-jsonapi`)
+10. Hono integration (`@nizam-os/hono-jsonapi`)
 11. Atomic operations
 12. Packaging
 13. Constants
 14. Test plan
-15. The client (`@netvark/jsonapi-client`)
-16. TanStack Query (`@netvark/tanstack-query-jsonapi`)
+15. The client (`@nizam-os/jsonapi-client`)
+16. TanStack Query (`@nizam-os/tanstack-query-jsonapi`)
 17. Atomic Operations from the client
 
 ---
 
 ## 1. Public surface and module map
 
-Two packages, one repository (ADR 0013). `@netvark/jsonapi-core` is the framework-free core: every
+Two packages, one repository (ADR 0013). `@nizam-os/jsonapi-core` is the framework-free core: every
 module is a function over plain values (strings, parsed JSON, `URL`s) and none imports a web
-framework or a runtime API beyond web standards. `@netvark/hono-jsonapi` is the Hono adapter: it
-depends on `@netvark/jsonapi-core`, re-exports all of it (one import for a Hono application), and
+framework or a runtime API beyond web standards. `@nizam-os/hono-jsonapi` is the Hono adapter: it
+depends on `@nizam-os/jsonapi-core`, re-exports all of it (one import for a Hono application), and
 adds the middleware, validators, response helpers, error handlers, and the operations endpoint
-(sections 10 and 11.1). Errors are [@netvark/ban-core](https://github.com/netvark/netvark) errors
-(ADR 0014): `@netvark/jsonapi-core` depends on `@netvark/ban-core` and on nothing else;
-`@netvark/hono-jsonapi` has two peer dependencies, `hono` and `@netvark/hono-ban`,
-@netvark/ban-core's Hono adapter, through which its error handler renders (ADR 0002). Validators are
+(sections 10 and 11.1). Errors are [@nizam-os/ban-core](https://github.com/nizam-os/kit) errors
+(ADR 0014): `@nizam-os/jsonapi-core` depends on `@nizam-os/ban-core` and on nothing else;
+`@nizam-os/hono-jsonapi` has two peer dependencies, `hono` and `@nizam-os/hono-ban`,
+@nizam-os/ban-core's Hono adapter, through which its error handler renders (ADR 0002). Validators are
 consumed through Standard Schema V1, whose interfaces are vendored in
 `packages/jsonapi-core/src/internal/standard-schema-types.ts`, so installing either package never
 pulls in Zod, Valibot, ArkType, or Ajv. The declarations name no type only the DOM library declares:
 an error's `headers` are `BanErrorOptions['headers']`, the Fetch Standard's `HeadersInit` as
-@netvark/ban-core vendors it, so a Node consumer compiles them with Node's types alone (14.1).
+@nizam-os/ban-core vendors it, so a Node consumer compiles them with Node's types alone (14.1).
 
 | Subpath                           | Exports                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `@netvark/jsonapi-core`           | Values: `defineResource`, `createDefineResource`, `relatedResource`, `resourcePaths`, `serializeResource`, `applyFields`, `identify`, `resourceDocument`, `collectionDocument`, `toOneRelationshipDocument`, `toManyRelationshipDocument`, `include`, `jsonApiObject`, `assertFullLinkage`, `isMemberName`, `isMemberPath`, `isAtMember`, `isExtensionMemberName`, `assertMemberName`, `BanError`, `isBanError`, `jsonApiBan`, `jsonApiError`, `errorItem`, `errorObjects`, `errorDocument`, `ERROR_CATALOG`, `ERROR_CODES`, `parseMediaType`, `parseAccept`, `isJsonApiMediaType`, `jsonApiParameters`, `formatJsonApiMediaType`, `negotiate`, `parseQuery`, `paginatedDocument`, `paginationLinks`, `pageMeta`, `itemCursorMeta`, `maxPageSizeExceededError`, `unsupportedSortError`, `unsupportedSort`, `rangePaginationNotSupportedError`, `invalidCursorError`, `invalidCursor`, `UNSUPPORTED_SORT_TYPE`, `MAX_SIZE_EXCEEDED_TYPE`, `RANGE_PAGINATION_NOT_SUPPORTED_TYPE`, `parseIdentifier`, `parseLinkage`, `parseResourceObject`, `parseCreateDocument`, `parseUpdateDocument`, `primaryData`, `parseToOneRelationshipDocument`, `parseToManyRelationshipDocument`, `toOneLinkage`, `toManyLinkage`, `JSON_API_MEDIA_TYPE`, `JSON_API_VERSION`, `ATOMIC_OPERATIONS_EXTENSION`, `CURSOR_PAGINATION_PROFILE`; and every type in sections 2, 3, 4, 5 (`ResourceTypes`, `TypesOf`, `JsonOf`, `InferredTypes`, `DefinitionOf`, `ResourcePaths`, and `ResourcePathsOptions` included, so a module that exports a definition emits declarations that name only exported types), 6.1, 7.2, 8, 9, with `Ban`, `BanError`, `ErrorItem`, and `ErrorStatusCode` re-exported from `@netvark/ban-core` |
-| `@netvark/jsonapi-core/atomic`    | `operationsProcessor`, `assertOperationsContentType`, `errorAtOperation`, `parseOperationsDocument`, `DEFAULT_MAX_OPERATIONS`, and the types `AtomicOptions`, `ResourceHandlers`, `AnyResourceHandlers`, `RelationshipHandlers`, `OperationContext`, `OperationTarget`, `OperationCode`, `OperationResult`, `OperationsOutcome`, `OperationsProcessor`, `OperationsResultDocument`, `ResolvedResourceObject`, `RawOperation`, `MaybePromise`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| `@netvark/hono-jsonapi`           | Everything of `@netvark/jsonapi-core` (the same bindings), plus `jsonApi`, `respond`, `respondError`, `isJsonApiResponse`, `varyAccept`, `readDocument`, `queryValidator`, `bodyValidator`, `relationshipValidator`, `errorHandler`, `notFoundHandler`; and every type in section 10                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `@netvark/hono-jsonapi/atomic`    | Everything of `@netvark/jsonapi-core/atomic`, plus `atomicOperations`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| `@netvark/jsonapi-client`         | Section 15.1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| `@netvark/tanstack-query-jsonapi` | Section 16.1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `@nizam-os/jsonapi-core`           | Values: `defineResource`, `createDefineResource`, `relatedResource`, `resourcePaths`, `serializeResource`, `applyFields`, `identify`, `resourceDocument`, `collectionDocument`, `toOneRelationshipDocument`, `toManyRelationshipDocument`, `include`, `jsonApiObject`, `assertFullLinkage`, `isMemberName`, `isMemberPath`, `isAtMember`, `isExtensionMemberName`, `assertMemberName`, `BanError`, `isBanError`, `jsonApiBan`, `jsonApiError`, `errorItem`, `errorObjects`, `errorDocument`, `ERROR_CATALOG`, `ERROR_CODES`, `parseMediaType`, `parseAccept`, `isJsonApiMediaType`, `jsonApiParameters`, `formatJsonApiMediaType`, `negotiate`, `parseQuery`, `paginatedDocument`, `paginationLinks`, `pageMeta`, `itemCursorMeta`, `maxPageSizeExceededError`, `unsupportedSortError`, `unsupportedSort`, `rangePaginationNotSupportedError`, `invalidCursorError`, `invalidCursor`, `UNSUPPORTED_SORT_TYPE`, `MAX_SIZE_EXCEEDED_TYPE`, `RANGE_PAGINATION_NOT_SUPPORTED_TYPE`, `parseIdentifier`, `parseLinkage`, `parseResourceObject`, `parseCreateDocument`, `parseUpdateDocument`, `primaryData`, `parseToOneRelationshipDocument`, `parseToManyRelationshipDocument`, `toOneLinkage`, `toManyLinkage`, `JSON_API_MEDIA_TYPE`, `JSON_API_VERSION`, `ATOMIC_OPERATIONS_EXTENSION`, `CURSOR_PAGINATION_PROFILE`; and every type in sections 2, 3, 4, 5 (`ResourceTypes`, `TypesOf`, `JsonOf`, `InferredTypes`, `DefinitionOf`, `ResourcePaths`, and `ResourcePathsOptions` included, so a module that exports a definition emits declarations that name only exported types), 6.1, 7.2, 8, 9, with `Ban`, `BanError`, `ErrorItem`, and `ErrorStatusCode` re-exported from `@nizam-os/ban-core` |
+| `@nizam-os/jsonapi-core/atomic`    | `operationsProcessor`, `assertOperationsContentType`, `errorAtOperation`, `parseOperationsDocument`, `DEFAULT_MAX_OPERATIONS`, and the types `AtomicOptions`, `ResourceHandlers`, `AnyResourceHandlers`, `RelationshipHandlers`, `OperationContext`, `OperationTarget`, `OperationCode`, `OperationResult`, `OperationsOutcome`, `OperationsProcessor`, `OperationsResultDocument`, `ResolvedResourceObject`, `RawOperation`, `MaybePromise`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `@nizam-os/hono-jsonapi`           | Everything of `@nizam-os/jsonapi-core` (the same bindings), plus `jsonApi`, `respond`, `respondError`, `isJsonApiResponse`, `varyAccept`, `readDocument`, `queryValidator`, `bodyValidator`, `relationshipValidator`, `errorHandler`, `notFoundHandler`; and every type in section 10                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `@nizam-os/hono-jsonapi/atomic`    | Everything of `@nizam-os/jsonapi-core/atomic`, plus `atomicOperations`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `@nizam-os/jsonapi-client`         | Section 15.1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `@nizam-os/tanstack-query-jsonapi` | Section 16.1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 `e2e/jsonapi/package-surface.e2e.test.ts` asserts the exact value export list of all six subpaths
 against the built packages, and that the adapter's re-exports are the core's own bindings.
@@ -139,7 +139,7 @@ packages/jsonapi-core/src/
     jsonapi-schema-1-0.ts        the official JSON:API 1.0 JSON Schema, vendored; not published
     conformance.ts               schemaErrors(): Ajv over the schema with the 1.1 deltas; not published
 packages/hono-jsonapi/src/
-  index.ts                       root entry: re-exports @netvark/jsonapi-core, adds section 10
+  index.ts                       root entry: re-exports @nizam-os/jsonapi-core, adds section 10
   internal/object.ts             isRecord(), ownMember(): the two prototype-safe reads respond() needs
   types.ts                       JsonApiEnv, JsonApiContext (10.1)
   middleware.ts                  jsonApi() (10.1)
@@ -148,7 +148,7 @@ packages/hono-jsonapi/src/
   validators.ts                  queryValidator(), bodyValidator(), relationshipValidator() (10.4)
   handlers.ts                    errorHandler(), notFoundHandler() (10.5)
   atomic/
-    index.ts                     subpath entry: re-exports @netvark/jsonapi-core/atomic, adds atomicOperations
+    index.ts                     subpath entry: re-exports @nizam-os/jsonapi-core/atomic, adds atomicOperations
     handler.ts                   atomicOperations() (11.1)
 ```
 
@@ -265,11 +265,11 @@ Tests: `negotiate.test.ts` names each rule.
 
 ### 4.1 Catalog (`errors/catalog.ts`)
 
-Every error the package emits is a @netvark/ban-core `BanError` (ADR 0014) carrying one of
-`ERROR_CODES`. `ERROR_CATALOG` holds the entries @netvark/ban-core's built-in catalog does not have,
-in @netvark/ban-core's `ErrorDefinition` shape
+Every error the package emits is a @nizam-os/ban-core `BanError` (ADR 0014) carrying one of
+`ERROR_CODES`. `ERROR_CATALOG` holds the entries @nizam-os/ban-core's built-in catalog does not have,
+in @nizam-os/ban-core's `ErrorDefinition` shape
 (`JsonApiCatalog = Record<JsonApiCatalogKey, ErrorDefinition>`), so an application spreads them into
-its own `createBan({ errors })` next to its own entries; the other codes are @netvark/ban-core
+its own `createBan({ errors })` next to its own entries; the other codes are @nizam-os/ban-core
 built-ins with the same `status` and `title`. `ErrorCode` is the union of all sixteen, `ERROR_CODES`
 lists them in status order, and each fixes `status` and `title`; `detail` and `source` vary per
 occurrence (`#error-objects`: `title` SHOULD NOT change from occurrence to occurrence). The three
@@ -280,27 +280,27 @@ profile entries carry the profile's error `type` URI (8.4).
 | `INVALID_QUERY_PARAMETER`           | 400    | Invalid Query Parameter           | this package      |
 | `UNKNOWN_QUERY_PARAMETER`           | 400    | Unknown Query Parameter           | this package      |
 | `INVALID_DOCUMENT`                  | 400    | Invalid Document                  | this package      |
-| `MALFORMED_JSON`                    | 400    | Malformed JSON                    | @netvark/ban-core |
+| `MALFORMED_JSON`                    | 400    | Malformed JSON                    | @nizam-os/ban-core |
 | `UNSUPPORTED_SORT`                  | 400    | Unsupported Sort                  | this package      |
 | `MAX_PAGE_SIZE_EXCEEDED`            | 400    | Max Page Size Exceeded            | this package      |
 | `RANGE_PAGINATION_NOT_SUPPORTED`    | 400    | Range Pagination Not Supported    | this package      |
-| `FORBIDDEN`                         | 403    | Forbidden                         | @netvark/ban-core |
+| `FORBIDDEN`                         | 403    | Forbidden                         | @nizam-os/ban-core |
 | `CLIENT_GENERATED_ID_NOT_SUPPORTED` | 403    | Client-Generated ID Not Supported | this package      |
-| `NOT_FOUND`                         | 404    | Not Found                         | @netvark/ban-core |
-| `METHOD_NOT_ALLOWED`                | 405    | Method Not Allowed                | @netvark/ban-core |
-| `NOT_ACCEPTABLE`                    | 406    | Not Acceptable                    | @netvark/ban-core |
-| `CONFLICT`                          | 409    | Conflict                          | @netvark/ban-core |
-| `UNSUPPORTED_MEDIA_TYPE`            | 415    | Unsupported Media Type            | @netvark/ban-core |
-| `VALIDATION_FAILED`                 | 422    | Validation Failed                 | @netvark/ban-core |
-| `INTERNAL_SERVER_ERROR`             | 500    | Internal Server Error             | @netvark/ban-core |
+| `NOT_FOUND`                         | 404    | Not Found                         | @nizam-os/ban-core |
+| `METHOD_NOT_ALLOWED`                | 405    | Method Not Allowed                | @nizam-os/ban-core |
+| `NOT_ACCEPTABLE`                    | 406    | Not Acceptable                    | @nizam-os/ban-core |
+| `CONFLICT`                          | 409    | Conflict                          | @nizam-os/ban-core |
+| `UNSUPPORTED_MEDIA_TYPE`            | 415    | Unsupported Media Type            | @nizam-os/ban-core |
+| `VALIDATION_FAILED`                 | 422    | Validation Failed                 | @nizam-os/ban-core |
+| `INTERNAL_SERVER_ERROR`             | 500    | Internal Server Error             | @nizam-os/ban-core |
 
-### 4.2 Errors on @netvark/ban-core (`errors/json-api-error.ts`)
+### 4.2 Errors on @nizam-os/ban-core (`errors/json-api-error.ts`)
 
-`jsonApiBan` is the @netvark/ban-core instance behind every error the package builds:
+`jsonApiBan` is the @nizam-os/ban-core instance behind every error the package builds:
 `createBan({ errors: ERROR_CATALOG, format: jsonApi({ mixedEntries: true }) })`. Its catalog is
-`ERROR_CATALOG` over @netvark/ban-core's built-ins (`JsonApiErrorCode = ErrorKey<JsonApiCatalog>`),
-and its format is @netvark/ban-core's JSON:API format with `mixedEntries` on, so one document can
-combine entries (@netvark/ban-core SPEC 7.2.4). Any @netvark/ban-core instance renders any
+`ERROR_CATALOG` over @nizam-os/ban-core's built-ins (`JsonApiErrorCode = ErrorKey<JsonApiCatalog>`),
+and its format is @nizam-os/ban-core's JSON:API format with `mixedEntries` on, so one document can
+combine entries (@nizam-os/ban-core SPEC 7.2.4). Any @nizam-os/ban-core instance renders any
 `BanError`, so an application with entries of its own builds its own instance with `ERROR_CATALOG`
 spread into `errors` and renders this package's errors the same way;
 `e2e/jsonapi/custom-catalog.e2e.test.ts` drives that over HTTP.
@@ -310,11 +310,11 @@ An error object is an `ErrorItem` on `error.errors`:
 - `errorItem(code, { detail, source?, meta?, reason?, expected? })`: the entry's `status`, `code`,
   `title`, and `type` (when it declares one), then the occurrence's `detail`, address, `meta`, and a
   validator's `reason` and `expected` (rendered as `meta.code` and `meta.expected`). The address is
-  the `source` as @netvark/ban-core locates it: `pointer` is a path with no location
+  the `source` as @nizam-os/ban-core locates it: `pointer` is a path with no location
   (`pathFromPointer`, RFC 6901 unescaping), `parameter` is a one-segment path in `query`, `header`
   one in `header`; one item addresses one part of the request, with that precedence when several are
   given. The format renders them back as `source.pointer`, `source.parameter`, and `source.header`
-  (@netvark/ban-core SPEC 7.2.2); a parameter or header item also carries `meta.location`.
+  (@nizam-os/ban-core SPEC 7.2.2); a parameter or header item also carries `meta.location`.
 - `jsonApiError(code, { detail?, source?, meta?, cause?, headers? })`: one error object from the
   catalog. With no `source` and no `meta` it is
   `jsonApiBan.error(code, { detail, cause, headers })`; otherwise the error carries one item, and a
@@ -322,7 +322,7 @@ An error object is an `ErrorItem` on `error.errors`:
 - `jsonApiError(items, { cause?, headers? })`: one error over one item or a non-empty list (empty:
   `TypeError`). When every item carries the same catalog code the error is that entry; otherwise it
   is the primary entry for the response status, `responseStatus(items)` from
-  `@netvark/ban-core/formats/json-api` (the common status; 400 when the items differ and are all
+  `@nizam-os/ban-core/formats/json-api` (the common status; 400 when the items differ and are all
   4xx; else 500; 500 when no item has a status) through `jsonApiBan.fromStatus`
   (`#errors-processing`: "the most generally applicable HTTP error code"). A single item's `detail`
   becomes the error's, so logs and the other formats show it.
@@ -331,15 +331,15 @@ An error object is an `ErrorItem` on `error.errors`:
 - `errorObjects(error)`: the error objects the JSON:API format renders for any `BanError`, in
   document order: one per item, or one for the error itself when it has no list, each with the
   error's `id`. `errorDocument(error, base?)` is `{ jsonapi?, links?, meta?, errors }` for callers
-  that build a response by hand; handlers (10.5) render through @netvark/ban-core instead.
-- `BanError` and `isBanError` are re-exported from `@netvark/ban-core` so a consumer narrows a
+  that build a response by hand; handlers (10.5) render through @nizam-os/ban-core instead.
+- `BanError` and `isBanError` are re-exported from `@nizam-os/ban-core` so a consumer narrows a
   caught error without a second import. `error.status` is the response status, `error.getResponse()`
   a bare rendering, `error.cause` the underlying failure.
 
 ### 4.3 Status codes
 
-`ErrorStatusCode` is @netvark/ban-core's union of the registered 4xx and 5xx codes, re-exported; an
-unregistered status is a `TypeError` in @netvark/ban-core at construction (ADR 0009). The adapter
+`ErrorStatusCode` is @nizam-os/ban-core's union of the registered 4xx and 5xx codes, re-exported; an
+unregistered status is a `TypeError` in @nizam-os/ban-core at construction (ADR 0009). The adapter
 hands `error.status` to `c.json` without assertions.
 
 ### 4.4 Request text in details (`internal/quotable.ts`, ADR 0016)
@@ -364,7 +364,7 @@ what the value was without it, and `source` locates it:
 
 Tests: `json-api-error.test.ts` (catalog closure and spreading into `createBan`, item mapping and
 precedence, both call forms, status derivation for mixed lists), `error-document.test.ts` (document
-order, a foreign @netvark/ban-core validation error, `getResponse` with the error's headers),
+order, a foreign @nizam-os/ban-core validation error, `getResponse` with the error's headers),
 `quotable.test.ts` (the token's characters and bounds), and the sweeps `errors/request-text.test.ts`
 and `atomic/request-text.test.ts`: quotes, markup, CR LF, C0 and C1 controls, a URL, a bidi
 override, a line separator, an inner space, and 10 kB through every builder and parser that quotes,
@@ -513,8 +513,8 @@ of the definitions sharing that base (ADR 0023). It throws `TypeError`, starting
 (default `resourcePaths`), when `links.self` is absent, a link is neither an absolute URL nor a path
 starting with `/`, a link holds the id other than once or has a query or a fragment, `links.self`
 does not end with the id after the collection's path, or a relationship link has another origin than
-`links.self`. `@netvark/resource-core`'s OpenAPI document (resource SPEC 13.1),
-`@netvark/hono-resource`'s routes (resource SPEC 19.2, 19.4), and the client (15.4, 17.2) read paths
+`links.self`. `@nizam-os/resource-core`'s OpenAPI document (resource SPEC 13.1),
+`@nizam-os/hono-resource`'s routes (resource SPEC 19.2, 19.4), and the client (15.4, 17.2) read paths
 only through it, so the three name the same URLs.
 
 Tests: `paths.test.ts`.
@@ -827,9 +827,9 @@ object at `pointer` (default `/data`):
    client-generated id to be "a universally unique identifier" and leaves its spelling to the
    server, whose keys decide it (`#crud-creating-client-ids`); the parsed `id` and `attributes` are
    the validators' output. The issue's `code` and `expected`, when they are strings, become the
-   item's `reason` and `expected`, which `@netvark/ban-core`'s JSON:API format renders as
+   item's `reason` and `expected`, which `@nizam-os/ban-core`'s JSON:API format renders as
    `meta.code` and `meta.expected`; nothing else of a vendor's issue is kept. The detail is the
-   issue's `message`, the application's text (4.4): @netvark/resource-core's and Zod 4.6's messages
+   issue's `message`, the application's text (4.4): @nizam-os/resource-core's and Zod 4.6's messages
    name what was expected, never the value, while Valibot 1.5's defaults quote the received value,
    so an application on Valibot gives its schemas messages of its own. Without a validator the
    attributes pass through.
@@ -866,11 +866,11 @@ id, and an atomic update's id matched to its target's), `relationship-document.t
 
 ---
 
-## 10. Hono integration (`@netvark/hono-jsonapi`, `packages/hono-jsonapi/src/`)
+## 10. Hono integration (`@nizam-os/hono-jsonapi`, `packages/hono-jsonapi/src/`)
 
-`@netvark/hono-jsonapi` depends on `@netvark/jsonapi-core`, re-exports everything of both its
+`@nizam-os/hono-jsonapi` depends on `@nizam-os/jsonapi-core`, re-exports everything of both its
 subpaths (`export *`, so the bindings are the core's own), and adds the functions of this section
-and 11.1. Its peer dependencies are `hono` and `@netvark/hono-ban` (ADR 0014).
+and 11.1. Its peer dependencies are `hono` and `@nizam-os/hono-ban` (ADR 0014).
 
 ### 10.1 `jsonApi(options?)` and types (`middleware.ts`, `types.ts`)
 
@@ -931,20 +931,20 @@ every relationship's route and let the definition decide.
 
 ### 10.5 Handlers (`handlers.ts`, ADR 0014)
 
-- `errorHandler(options?)` for `app.onError` is a @netvark/hono-ban handler:
+- `errorHandler(options?)` for `app.onError` is a @nizam-os/hono-ban handler:
   `createBan({ errors: ERROR_CATALOG, format: jsonApi({ ...format, mixedEntries: true, document }) }).onError(handlerOptions)`,
   where `document` and `format` are this package's options and the rest (`ErrorHandlerOptions<E>`
-  extends @netvark/hono-ban's `HandlerOptions<E, JsonApiCatalog>`) are @netvark/hono-ban's:
+  extends @nizam-os/hono-ban's `HandlerOptions<E, JsonApiCatalog>`) are @nizam-os/hono-ban's:
   `onReport(report, c)` (called exactly once, anything it throws is swallowed), `headers` (error
   headers and `Content-Type` win), `map` (receives the handler's instance, whose catalog is
   `ERROR_CATALOG` over the built-ins), `includeStack`, `transform`, `requestIdHeader`, `requestId`,
-  `traceId`, `errorIdHeader`, `maxBodyBytes` (@netvark/ban-core SPEC 6 and 6.11). `document` adds
+  `traceId`, `errorIdHeader`, `maxBodyBytes` (@nizam-os/ban-core SPEC 6 and 6.11). `document` adds
   top-level `jsonapi`, `links`, and `meta` members to every error document; `format` is the JSON:API
   format's own options (`typeLinkBaseUrl`, `aboutLink`, `includeId`, `traceIdMetaKey`),
   `mixedEntries` being always on since this package's errors combine entries.
 - What it renders: a `BanError` as is (this package's, the application's own instance's, or any
-  other library's on @netvark/ban-core); Hono's `HTTPException` with a 4xx or 5xx status adopted by
-  status (@netvark/ban-core's primary entry for that status, `detail` from the message unless empty,
+  other library's on @nizam-os/ban-core); Hono's `HTTPException` with a 4xx or 5xx status adopted by
+  status (@nizam-os/ban-core's primary entry for that status, `detail` from the message unless empty,
   its response headers kept except the body-describing ones, the exception as `cause`); an
   `HTTPException` outside those classes passed through as its own `getResponse()` (a thrown
   redirect); anything else as a constant 500 whose `detail` is "An unexpected error occurred", the
@@ -960,7 +960,7 @@ Tests: `middleware.test.ts`, `respond.test.ts`, `body.test.ts`, `validators.test
 
 ---
 
-## 11. Atomic operations (`@netvark/jsonapi-core/atomic`, `@netvark/hono-jsonapi/atomic`, ADR 0010, ADR 0013)
+## 11. Atomic operations (`@nizam-os/jsonapi-core/atomic`, `@nizam-os/hono-jsonapi/atomic`, ADR 0010, ADR 0013)
 
 Types (`types.ts`):
 
@@ -971,7 +971,7 @@ Types (`types.ts`):
   produced.
 - `OperationContext<TTransaction, TContext = unknown> = { ctx, tx, index, pointer, meta }`: `ctx` is
   what the host handed the processor for this request (Hono's `Context` under
-  `@netvark/hono-jsonapi`).
+  `@nizam-os/hono-jsonapi`).
 - `ResourceHandlers<TResource, TTransaction, TContext> = { resource; create?; update?; remove?; relationships? }`
   where `create({ data })` and `update({ id, data })` return a row (the result's `data`) or
   `undefined` (an empty result), `remove({ id })` returns nothing, and `relationships[name]` is
@@ -983,7 +983,7 @@ Types (`types.ts`):
 - `OperationsOutcome = { results, document }` and `OperationsProcessor<TContext>` (11.1);
   `OperationsResultDocument` is the `atomic:results` document.
 
-### 11.1 `operationsProcessor(options)` (`process.ts`), `assertOperationsContentType` (`content-type.ts`), and `atomicOperations(options)` (`@netvark/hono-jsonapi/atomic`, `handler.ts`)
+### 11.1 `operationsProcessor(options)` (`process.ts`), `assertOperationsContentType` (`content-type.ts`), and `atomicOperations(options)` (`@nizam-os/hono-jsonapi/atomic`, `handler.ts`)
 
 The core processes; the host (an HTTP adapter) does what needs the request and the response.
 `operationsProcessor(options)` returns
@@ -1011,7 +1011,7 @@ ADR 0023), since one endpoint takes one cap. Per call, in order:
 with the extension in `ext` (extension: the request "MUST ... specify the extension in the `ext`
 media type parameter"). Other parameters are the negotiation layer's concern (3.3).
 
-`atomicOperations(options)` in `@netvark/hono-jsonapi/atomic` is a Hono `Handler` built on the two;
+`atomicOperations(options)` in `@nizam-os/hono-jsonapi/atomic` is a Hono `Handler` built on the two;
 `ctx` is Hono's `Context<E>` (`AtomicOptions<TTransaction, Context<E>>`). Per request, in order:
 
 1. A method other than `POST` is 405 with `Allow: POST` (extension: "MUST be sent via POST").
@@ -1074,7 +1074,7 @@ Tests: `parse-document.test.ts`, `lids.test.ts`, `content-type.test.ts`, `proces
 extension's examples, lid flow, the empty outcome, the host context, rollback, pointers),
 `process-semantics.test.ts` (every rule above), `writable.test.ts` (the fields an `add` or an
 `update` writes, a relationship operation on a relationship updates do not write, no handler run),
-and `process-coverage.test.ts` in the core; `atomic/handler.test.ts` in `@netvark/hono-jsonapi`
+and `process-coverage.test.ts` in the core; `atomic/handler.test.ts` in `@nizam-os/hono-jsonapi`
 (405, 415, malformed JSON, 200 with the extension on `Content-Type`, 204, rendering and propagation
 after the rollback); `atomic.e2e.test.ts` over HTTP.
 
@@ -1086,13 +1086,13 @@ Three packages under `packages/`, each ESM only with `type: module`, `sideEffect
 of `dist`, `CHANGELOG.md`, `LICENSE`, `README.md`, `engines.node >= 22.12.0`, and
 `publishConfig.provenance` (ADR 0013).
 
-- `@netvark/jsonapi-core`: `dependencies.@netvark/ban-core` (`workspace:^`, a caret range when
-  published), no `peerDependencies`. `@netvark/hono-jsonapi`: `dependencies.@netvark/jsonapi-core`
+- `@nizam-os/jsonapi-core`: `dependencies.@nizam-os/ban-core` (`workspace:^`, a caret range when
+  published), no `peerDependencies`. `@nizam-os/hono-jsonapi`: `dependencies.@nizam-os/jsonapi-core`
   (`workspace:^`, a caret range when published) and `peerDependencies.hono >= 4.13.7` (the first
-  release no published Hono advisory affects) and `@netvark/hono-ban >= 2.0.0` (ADR 0014), and CI
-  runs its tests on hono 4.13.7; one copy of `@netvark/ban-core` and of `hono` in the graph is what
+  release no published Hono advisory affects) and `@nizam-os/hono-ban >= 2.0.0` (ADR 0014), and CI
+  runs its tests on hono 4.13.7; one copy of `@nizam-os/ban-core` and of `hono` in the graph is what
   keeps `instanceof` true across the packages.
-- `@netvark/jsonapi-client`: `dependencies.@netvark/jsonapi-core` (`workspace:^`, a caret range when
+- `@nizam-os/jsonapi-client`: `dependencies.@nizam-os/jsonapi-core` (`workspace:^`, a caret range when
   published), no `peerDependencies`; its `exports` map has `.` and `./package.json` (15.9).
 - Each of the other two `exports` maps has `.`, `./atomic`, and `./package.json`, with declarations
   next to the `dist/*.js` files. tsdown rewrites both maps from its entry map on every build
@@ -1102,12 +1102,12 @@ of `dist`, `CHANGELOG.md`, `LICENSE`, `README.md`, `engines.node >= 22.12.0`, an
   (`ssr.resolve.conditions`) enable; `publishConfig.exports` holds the dist-only map that
   `pnpm publish` and `pnpm pack` apply. CI fails on a diff of either `package.json`.
 - Built with `platform: 'neutral'`, `target: es2023`, source maps, declarations from
-  `isolatedDeclarations` (ADR 0004); `@netvark/jsonapi-core`'s build leaves `@netvark/ban-core`
-  external and `@netvark/hono-jsonapi`'s leaves `@netvark/jsonapi-core`, `hono`, and
-  `@netvark/hono-ban` external. `publint --strict` and `attw --profile esm-only` run on every build
+  `isolatedDeclarations` (ADR 0004); `@nizam-os/jsonapi-core`'s build leaves `@nizam-os/ban-core`
+  external and `@nizam-os/hono-jsonapi`'s leaves `@nizam-os/jsonapi-core`, `hono`, and
+  `@nizam-os/hono-ban` external. `publint --strict` and `attw --profile esm-only` run on every build
   and in `check:pkg`.
-- Versions are independent; Changesets patch-bumps `@netvark/hono-jsonapi` when its
-  `@netvark/jsonapi-core` range moves. Both are published with npm provenance through trusted
+- Versions are independent; Changesets patch-bumps `@nizam-os/hono-jsonapi` when its
+  `@nizam-os/jsonapi-core` range moves. Both are published with npm provenance through trusted
   publishing (`release.yml`), one trusted publisher per package.
 
 ---
@@ -1139,7 +1139,7 @@ of `dist`, `CHANGELOG.md`, `LICENSE`, `README.md`, `engines.node >= 22.12.0`, an
 ## 14. Test plan
 
 One Vitest run over three projects (`packages/*/vitest.config.ts`), each with `typecheck` enabled
-for its `*.test-d.ts`; `@netvark/hono-jsonapi`'s project resolves `@netvark/jsonapi-core` from
+for its `*.test-d.ts`; `@nizam-os/hono-jsonapi`'s project resolves `@nizam-os/jsonapi-core` from
 source (section 12). V8 coverage thresholds of 90% for statements, branches, functions, and lines
 over `packages/*/src/` combined (the `index.ts` barrels excluded). Every test names the clause or
 server choice it pins. Fixtures with IO (`test-fixtures.ts`) are real in-memory stores, not mocks of
@@ -1156,18 +1156,18 @@ the packages' own modules.
 | Query                              | `parse-query.test.ts`, `parse-families.test.ts`, `parse-filter.test.ts`, `parameter-name.test.ts`                                                                                        | dispatch, aggregation, each family, the filter grammar                                                                                                                                           |
 | Pagination                         | `links.test.ts`, `paginated.test.ts`, `errors.test.ts`                                                                                                                                   | link rebuilding, meta members, the profile's error objects                                                                                                                                       |
 | Requests                           | `resource-document.test.ts`, `resource-update.test.ts`, `resource-writable.test.ts`, `resource-client-id.test.ts`, `relationship-document.test.ts`, `cardinality.test.ts`                | pointers for every structural error, 403/409/422 cases, the fields each operation writes, a client id's validation, an update's id in another spelling, lids                                     |
-| Hono (`@netvark/hono-jsonapi`)     | `middleware.test.ts`, `respond.test.ts`, `body.test.ts`, `validators.test.ts`, `validators.test-d.ts`, `handlers.test.ts`, `atomic/handler.test.ts`                                      | `Vary`, `Content-Type` derivation, `Location`, validator storage and typing, the @netvark/hono-ban handler's rendering, ids, and reports, the operations endpoint's 405, 415, 204, and rendering |
+| Hono (`@nizam-os/hono-jsonapi`)     | `middleware.test.ts`, `respond.test.ts`, `body.test.ts`, `validators.test.ts`, `validators.test-d.ts`, `handlers.test.ts`, `atomic/handler.test.ts`                                      | `Vary`, `Content-Type` derivation, `Location`, validator storage and typing, the @nizam-os/hono-ban handler's rendering, ids, and reports, the operations endpoint's 405, 415, 204, and rendering |
 | Atomic                             | `parse-document.test.ts`, `lids.test.ts`, `content-type.test.ts`, `process.test.ts`, `process-semantics.test.ts`, `writable.test.ts`, `process-coverage.test.ts`                         | the extension's examples, the host context, and every processing rule                                                                                                                            |
-| Client (`@netvark/jsonapi-client`) | section 15.9                                                                                                                                                                             | section 15                                                                                                                                                                                       |
+| Client (`@nizam-os/jsonapi-client`) | section 15.9                                                                                                                                                                             | section 15                                                                                                                                                                                       |
 
 ### 14.1 End-to-end suite (`e2e/jsonapi/`)
 
-A private workspace package that depends on `@netvark/jsonapi-core`, `@netvark/hono-jsonapi`, and
-`@netvark/jsonapi-client` through `workspace:*`, so imports resolve through the published `exports`
+A private workspace package that depends on `@nizam-os/jsonapi-core`, `@nizam-os/hono-jsonapi`, and
+`@nizam-os/jsonapi-client` through `workspace:*`, so imports resolve through the published `exports`
 maps into each `dist/` (never the `source` condition) and `tsc` checks the emitted declarations.
 `e2e/jsonapi/support/` holds a blog API (people, articles, tags; a keyset pagination engine over an
 in-memory store; a snapshot transaction) built only from the packages: `store.ts` and `resources.ts`
-import `@netvark/jsonapi-core`, the routes and handlers `@netvark/hono-jsonapi`. It serves every
+import `@nizam-os/jsonapi-core`, the routes and handlers `@nizam-os/hono-jsonapi`. It serves every
 link its documents name: each resource, relationship, and related link, a person's articles paged
 like the collection. Each file starts it on `@hono/node-server` and asserts over `fetch`;
 `clients.ts` builds the client's transport at the server's origin and records each request as the
@@ -1175,13 +1175,13 @@ server received it.
 
 | File                               | Covers                                                                                                                                                                                                                                |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `package-surface.e2e.test.ts`      | the exact export lists of all five subpaths, and that `@netvark/hono-jsonapi` re-exports the core's own bindings                                                                                                                      |
+| `package-surface.e2e.test.ts`      | the exact export lists of all five subpaths, and that `@nizam-os/hono-jsonapi` re-exports the core's own bindings                                                                                                                      |
 | `fetch.e2e.test.ts`                | resources, compound documents, sparse fieldsets, sort, filter, 400 and 404 documents, constant 500                                                                                                                                    |
 | `pagination.e2e.test.ts`           | profile on `Content-Type`, default and max size, walking `next` and `prev`, the profile's errors                                                                                                                                      |
 | `mutations.e2e.test.ts`            | create with 201 and `Location`, pointers for bad documents, 403 for a field a write does not accept, alone and beside a 400, update, relationship endpoints and a read-only relationship's 403, delete                                |
 | `negotiation.e2e.test.ts`          | 415, 406, usable instances, requested profiles, the atomic extension on both headers                                                                                                                                                  |
 | `atomic.e2e.test.ts`               | lid flow, positional results, 204, rollback with pointers, a field an operation does not write, 415 and 400 for bad requests                                                                                                          |
-| `custom-catalog.e2e.test.ts`       | an application's own @netvark/hono-ban instance rendering the packages' errors, its entries, and `HTTPException`                                                                                                                      |
+| `custom-catalog.e2e.test.ts`       | an application's own @nizam-os/hono-ban instance rendering the packages' errors, its entries, and `HTTPException`                                                                                                                      |
 | `client-types.e2e.test.ts`         | the client types the blog's definitions carry, read through the built declarations (5.3)                                                                                                                                              |
 | `declarations.e2e.test.ts`         | `tsc --declaration` over modules that export definitions: no diagnostics, and only package entry points named                                                                                                                         |
 | `node-types.e2e.test.ts`           | every subpath of the three packages compiled by `tsc` as a Node consumer without the DOM library compiles it (`lib: ["es2023"]`, `types: ["node"]`, `skipLibCheck` off): no diagnostics in their declarations or in those they import |
@@ -1203,11 +1203,11 @@ three; CI runs them on every pull request and every push to `main`.
 
 ---
 
-## 15. The client (`@netvark/jsonapi-client`, `packages/jsonapi-client/src/`, ADR 0017, ADR 0019)
+## 15. The client (`@nizam-os/jsonapi-client`, `packages/jsonapi-client/src/`, ADR 0017, ADR 0019)
 
-`@netvark/jsonapi-client` calls a JSON:API server from the definitions the server is built from: the
+`@nizam-os/jsonapi-client` calls a JSON:API server from the definitions the server is built from: the
 paths come from their links (5.4), the query from their capabilities (5.2), and every type from
-`'~types'` (5.3). It depends on `@netvark/jsonapi-core` and on nothing else, imports no framework,
+`'~types'` (5.3). It depends on `@nizam-os/jsonapi-core` and on nothing else, imports no framework,
 and uses web standards only (`fetch`, `Request`, `Response`, `Headers`, `URL`, `URLSearchParams`),
 so the same build runs in browsers, workers, Node, Bun, and Deno. Its declarations name those and no
 alias only the DOM library declares: `headers` take `HeadersInit`, the Fetch Standard's, vendored in
@@ -1219,7 +1219,7 @@ the alias (14.1). The client reads a definition's `type`, `relationships`, `link
 
 | Subpath                   | Exports                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `@netvark/jsonapi-client` | Values: `createTransport`, `createClients`, `serializeQuery`, `deserialize`, `ResponseError`, `isResponseError`, `pageCursors`, `cursorOf`, `operationsOf`, `sendOperations`, `operationOf`; types: `Transport`, `TransportOptions`, `CallOptions`, `Clients`, `ResourceClient`, `RecordOf`, `AnyRecord`, `Identifier`, `IdentifierObject`, `RecordMembers`, `Query`, `ListQuery`, `GetQuery`, `FieldsInput`, `FilterInput`, `TypedFilterInput`, `WideFilterInput`, `Conditions`, `Condition`, `FilterValue`, `FilterValues`, `PageInput`, `CustomValues`, `CreateInput`, `UpdateInput`, `LinkageInput`, `ReadResult`, `WriteResult`, `Deserialized`, `DeserializeOptions`, `ResponseErrorInit`, `ResponseErrorHeaders`, `PageCursors`, `Operation`, `OperationBuilders`, `CreateOperationInput`, `UpdateOperationInput`, `LocalIdentifier`, `OperationsResult`, `OperationResult`, `OperationPointer` |
+| `@nizam-os/jsonapi-client` | Values: `createTransport`, `createClients`, `serializeQuery`, `deserialize`, `ResponseError`, `isResponseError`, `pageCursors`, `cursorOf`, `operationsOf`, `sendOperations`, `operationOf`; types: `Transport`, `TransportOptions`, `CallOptions`, `Clients`, `ResourceClient`, `RecordOf`, `AnyRecord`, `Identifier`, `IdentifierObject`, `RecordMembers`, `Query`, `ListQuery`, `GetQuery`, `FieldsInput`, `FilterInput`, `TypedFilterInput`, `WideFilterInput`, `Conditions`, `Condition`, `FilterValue`, `FilterValues`, `PageInput`, `CustomValues`, `CreateInput`, `UpdateInput`, `LinkageInput`, `ReadResult`, `WriteResult`, `Deserialized`, `DeserializeOptions`, `ResponseErrorInit`, `ResponseErrorHeaders`, `PageCursors`, `Operation`, `OperationBuilders`, `CreateOperationInput`, `UpdateOperationInput`, `LocalIdentifier`, `OperationsResult`, `OperationResult`, `OperationPointer` |
 
 ```
 packages/jsonapi-client/src/
@@ -1520,9 +1520,9 @@ copies) and `response-error.test-d.ts` (the guard's code typed by the catalog).
 
 ### 15.9 Packaging and tests
 
-ESM only, as the other packages (12): `dependencies` holds `@netvark/jsonapi-core` (`workspace:^`, a
+ESM only, as the other packages (12): `dependencies` holds `@nizam-os/jsonapi-core` (`workspace:^`, a
 caret range when published); no peer dependencies; one subpath, `.`. Built with
-`platform: 'neutral'`, `@netvark/jsonapi-core` external.
+`platform: 'neutral'`, `@nizam-os/jsonapi-core` external.
 
 Unit tests sit beside each module: `origin.test.ts`, `send.test.ts` and `responses.test.ts` (the
 request, the fetch called, each response), `request-documents.test.ts` (each write's document, read
@@ -1535,7 +1535,7 @@ every error status the blog answers into a `ResponseError`, and the headers and 
 the server receives. `e2e/jsonapi/smoke/client-checks.ts` runs the client against a blog in-process
 on Bun, Deno, and workerd (14.2).
 
-## 16. TanStack Query (`@netvark/tanstack-query-jsonapi`, `packages/tanstack-query-jsonapi/src/`, ADR 0020)
+## 16. TanStack Query (`@nizam-os/tanstack-query-jsonapi`, `packages/tanstack-query-jsonapi/src/`, ADR 0020)
 
 The client's reads and writes as TanStack Query options, keyed by the request each call sends, so
 two calls that send one request share one cache entry and a write refetches what it changed. The
@@ -1558,7 +1558,7 @@ const remove = useMutation(contacts.remove({ invalidates: [meetings.all] }));
 
 | Subpath                           | Exports                                                                                                                                                                                                                                                                    |
 | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@netvark/tanstack-query-jsonapi` | Values: `resourceQueries`, `operationsMutation`; types: `ResourceQueries`, `OperationsOptions`, `ReadOptions`, `PagesOptions`, `WriteOptions`, `WriteSettings`, `ListResult`, `UpdateVariables`, `PageParam`, `KeyedDefinition`, `AllKey`, `ListKey`, `PagesKey`, `GetKey` |
+| `@nizam-os/tanstack-query-jsonapi` | Values: `resourceQueries`, `operationsMutation`; types: `ResourceQueries`, `OperationsOptions`, `ReadOptions`, `PagesOptions`, `WriteOptions`, `WriteSettings`, `ListResult`, `UpdateVariables`, `PageParam`, `KeyedDefinition`, `AllKey`, `ListKey`, `PagesKey`, `GetKey` |
 
 ```
 packages/tanstack-query-jsonapi/src/
@@ -1650,7 +1650,7 @@ never a value.
 
 ### 16.7 Packaging and tests
 
-ESM only, as the other packages (12): `@netvark/jsonapi-client` (the application's clients and their
+ESM only, as the other packages (12): `@nizam-os/jsonapi-client` (the application's clients and their
 `definition`) is a peer dependency and a `workspace:^` development dependency, and
 `@tanstack/query-core` `^5.89.0` an optional peer (`peerDependenciesMeta`, root ADR 0011), imported
 for types only: 5.89.0, the release after 5.87.4, is the first whose mutation callbacks receive the
@@ -1686,7 +1686,7 @@ was. `e2e/jsonapi/smoke/query-checks.ts` reads and writes the blog in-process th
 `QueryClient` on Bun, Deno, and workerd, where server rendering prefetches. The resource family
 drives it against a database (resource SPEC 20.8).
 
-## 17. Atomic Operations from the client (`@netvark/jsonapi-client`, `@netvark/tanstack-query-jsonapi`, ADR 0022, ADR 0023)
+## 17. Atomic Operations from the client (`@nizam-os/jsonapi-client`, `@nizam-os/tanstack-query-jsonapi`, ADR 0022, ADR 0023)
 
 A client sends several writes as one request through the Atomic Operations extension, which commits
 them all or none (11). Each operation is a value built from a definition, so a model that holds the
@@ -1795,7 +1795,7 @@ followed by digits), and `pointer` the rest, `''` for the operation itself, so
 object gives `undefined`. An index past the request's operations is returned as it is; a caller that
 maps it to what it sent holds the list.
 
-### 17.4 The mutation: `operationsMutation(transport, settings?)` (`@netvark/tanstack-query-jsonapi`, `operations.ts`)
+### 17.4 The mutation: `operationsMutation(transport, settings?)` (`@nizam-os/tanstack-query-jsonapi`, `operations.ts`)
 
 ```ts
 const operations = operationsMutation(transport);
@@ -1820,7 +1820,7 @@ writes do (16.6); a transport `createTransport` did not make is refused by the f
 
 ### 17.5 Tests
 
-`@netvark/jsonapi-client`: `operations-of.test.ts` (each builder's operation, read back by
+`@nizam-os/jsonapi-client`: `operations-of.test.ts` (each builder's operation, read back by
 jsonapi-core's own `parseOperationsDocument`, a `lid` and a `LocalIdentifier`, an undeclared
 relationship), `send-operations.test.ts` (the request and its headers, each `TypeError` before
 sending) and `operation-results.test.ts` (a 200 read per operation, a 204, each result shape
@@ -1831,7 +1831,7 @@ blog's endpoint over HTTP with the built client: a create linked by its `lid` wi
 the server received it, a `204`, a refusal at an operation and at a member of one, each with nothing
 committed, a request over the cap refused by the server, and the `TypeError`s before sending,
 nothing sent; `e2e/jsonapi/smoke/client-checks.ts` sends operations linked by a `lid` and a refusal
-at its index in-process on Bun, Deno, and workerd (14.2). `@netvark/tanstack-query-jsonapi`:
+at its index in-process on Bun, Deno, and workerd (14.2). `@nizam-os/tanstack-query-jsonapi`:
 `operations.test.ts` through a `QueryClient` and a `MutationObserver` (one request for every
 operation, pending until the reads shown of each type written have refetched, the removed records'
 entries removed first and a relationship's removal keeping its record's, `invalidates`, a refused

@@ -4,7 +4,7 @@
  * value of an input left empty. An array has no blank: `[]` is a value.
  * @packageDocumentation
  */
-import type { FieldMeta } from '@netvark/resource-core';
+import type { FieldMeta } from '@nizam-os/resource-core';
 
 /**
  * `text`: a string wire or a relationship's id, as typed; `number`: an

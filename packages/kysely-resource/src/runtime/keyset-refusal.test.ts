@@ -1,4 +1,4 @@
-import type { Keyset } from '@netvark/keyset-core';
+import type { Keyset } from '@nizam-os/keyset-core';
 
 import { describe, expect, it } from 'vitest';
 
@@ -7,8 +7,8 @@ import {
   MAX_SIZE_EXCEEDED_TYPE,
   RANGE_PAGINATION_NOT_SUPPORTED_TYPE,
   UNSUPPORTED_SORT_TYPE,
-} from '@netvark/jsonapi-core';
-import { defineKeyset } from '@netvark/keyset-core';
+} from '@nizam-os/jsonapi-core';
+import { defineKeyset } from '@nizam-os/keyset-core';
 
 import { keysetRefusal } from './keyset-refusal';
 

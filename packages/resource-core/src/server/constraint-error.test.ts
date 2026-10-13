@@ -2,8 +2,8 @@ import type { Violation } from '../test-support/violations';
 
 import { describe, expect, it } from 'vitest';
 
-import { BanError, createBan } from '@netvark/ban-core';
-import { jsonApi } from '@netvark/ban-core/formats/json-api';
+import { BanError, createBan } from '@nizam-os/ban-core';
+import { jsonApi } from '@nizam-os/ban-core/formats/json-api';
 
 import { errorCatalog } from '../errors/error-catalog';
 import {

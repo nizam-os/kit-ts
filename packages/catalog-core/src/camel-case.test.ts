@@ -1,6 +1,6 @@
 /**
  * The CamelCasePlugin conversions on names that reach every branch. The
- * expected values are Kysely 0.29.6's own; `@netvark/pg-catalog`'s
+ * expected values are Kysely 0.29.6's own; `@nizam-os/pg-catalog`'s
  * `key-names.test.ts` runs these functions against the plugin itself over
  * every short string, since a core imports no query builder.
  */

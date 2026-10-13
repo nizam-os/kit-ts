@@ -1,6 +1,6 @@
 /**
  * The documents a write sends (SPEC 15.4), sent as JSON and read back by
- * `@netvark/jsonapi-core`'s own request parsers, are the writes meant.
+ * `@nizam-os/jsonapi-core`'s own request parsers, are the writes meant.
  */
 import { describe, expect, it } from 'vitest';
 
@@ -10,7 +10,7 @@ import {
   parseToManyRelationshipDocument,
   parseToOneRelationshipDocument,
   parseUpdateDocument,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import { Articles } from '../test-support/blog';
 import {

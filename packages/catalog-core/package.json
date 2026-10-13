@@ -1,5 +1,5 @@
 {
-  "name": "@netvark/catalog-core",
+  "name": "@nizam-os/catalog-core",
   "version": "0.0.0",
   "description": "The PostgreSQL catalog model as TypeScript types: tables, columns, constraints with the rules read from their CHECK expressions, indexes, row security policies, enums, and domains, plus the browser-safe public slice. Database-free, no dependencies.",
   "keywords": [
@@ -11,13 +11,13 @@
     "schema",
     "types"
   ],
-  "homepage": "https://github.com/netvark/netvark/tree/main/packages/catalog-core#readme",
-  "bugs": "https://github.com/netvark/netvark/issues",
+  "homepage": "https://github.com/nizam-os/kit/tree/main/packages/catalog-core#readme",
+  "bugs": "https://github.com/nizam-os/kit/issues",
   "license": "MIT",
   "author": "Ali Issa (https://github.com/ali-issa)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netvark/netvark.git",
+    "url": "git+https://github.com/nizam-os/kit.git",
     "directory": "packages/catalog-core"
   },
   "files": [

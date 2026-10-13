@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   parseCreateDocument,
   parseUpdateDocument,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import { internalsOf } from '../declare/declared-resource';
 import { Contacts, Organizations } from '../test-support/definition-resources';
@@ -15,7 +15,7 @@ import { identifierSchema, resourceObjectSchema } from './resource-schemas';
  * The request objects against what a route runs on a body, two-sided:
  * over the structural cases of a create and an update, the document's
  * schema accepts exactly the bodies that `parseCreateDocument` or
- * `parseUpdateDocument` of `@netvark/jsonapi-core` parse and the
+ * `parseUpdateDocument` of `@nizam-os/jsonapi-core` parse and the
  * declaration's `write` schema then takes (SPEC 6.2), which holds the
  * relationships' requiredness and nullability. Values are the value
  * schemas' concern (`value-schema-oracle.test.ts`). An update's id that

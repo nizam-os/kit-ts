@@ -1,20 +1,20 @@
 /**
  * RFC 9457 Problem Details, part 3: the JSON Schema the built format
  * publishes for catalog entries and validation bodies (SPEC 7.1.4), the
- * `@netvark/hono-ban/openapi` helpers that expose it, and `assertFormatConformance`
- * from `@netvark/hono-ban/testing` run against the built format (SPEC 7.4, 11).
+ * `@nizam-os/hono-ban/openapi` helpers that expose it, and `assertFormatConformance`
+ * from `@nizam-os/hono-ban/testing` run against the built format (SPEC 7.4, 11).
  * Parts 1 and 2 (`-members`, `-extensions`) exercise the bodies over HTTP
  * and validate each one against these schemas.
  * @ref https://www.rfc-editor.org/rfc/rfc9457#section-3.1
  */
-import type { SchemaValidator } from '@netvark/hono-ban/testing';
+import type { SchemaValidator } from '@nizam-os/hono-ban/testing';
 
 import { describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
-import { problemDetails } from '@netvark/hono-ban/formats/problem-details';
-import { errorSchema, validationSchema } from '@netvark/hono-ban/openapi';
-import { assertFormatConformance } from '@netvark/hono-ban/testing';
+import { createBan } from '@nizam-os/hono-ban';
+import { problemDetails } from '@nizam-os/hono-ban/formats/problem-details';
+import { errorSchema, validationSchema } from '@nizam-os/hono-ban/openapi';
+import { assertFormatConformance } from '@nizam-os/hono-ban/testing';
 
 import { compileWithAjv } from './support/ajv';
 

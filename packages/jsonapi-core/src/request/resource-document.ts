@@ -10,7 +10,7 @@
  * @ref https://jsonapi.org/format/1.1/#crud-updating-resource-relationships
  * @packageDocumentation
  */
-import type { ErrorItem } from '@netvark/ban-core';
+import type { ErrorItem } from '@nizam-os/ban-core';
 
 import type { Meta, ResourceLinkage } from '../document/types';
 import type {
@@ -74,7 +74,7 @@ function stringMember(
 /**
  * A 422 item for one issue: the attributes pointer plus the issue path, and
  * the issue's `code` and `expected` when they are strings, which
- * `@netvark/ban-core`'s JSON:API format renders as `meta.code` and
+ * `@nizam-os/ban-core`'s JSON:API format renders as `meta.code` and
  * `meta.expected`. Nothing else of the issue is kept, so a value from the
  * request never reaches the response.
  */

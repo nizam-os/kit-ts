@@ -12,8 +12,8 @@
  * @ref https://tanstack.com/table/v9/docs/framework/react/guide/column-filtering
  * @packageDocumentation
  */
-import type { FilterValues, ListQuery } from '@netvark/jsonapi-client';
-import type { AnyResource, TypesOf } from '@netvark/jsonapi-core';
+import type { FilterValues, ListQuery } from '@nizam-os/jsonapi-client';
+import type { AnyResource, TypesOf } from '@nizam-os/jsonapi-core';
 
 import type { FieldDescriptor } from '../fields/fields-of';
 import type { DeclaredShape } from '../internal/declared';

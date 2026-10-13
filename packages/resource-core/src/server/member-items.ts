@@ -3,7 +3,7 @@
  * public member, each pointing at it under the operation's resource object.
  * The base is an RFC 6901 pointer the caller passes, `/data` for a single
  * request and the operation's own `data` inside Atomic Operations, because
- * `@netvark/jsonapi-core`'s operation processor keeps an item's pointer
+ * `@nizam-os/jsonapi-core`'s operation processor keeps an item's pointer
  * when it has one (ADR 0007). A field is under `attributes`, a relationship
  * under `relationships`, and the resource id is `id`.
  * @ref https://www.rfc-editor.org/rfc/rfc6901#section-3
@@ -11,7 +11,7 @@
  * @ref https://jsonapi.org/ext/atomic/#processing
  * @packageDocumentation
  */
-import type { ErrorItem } from '@netvark/ban-core';
+import type { ErrorItem } from '@nizam-os/ban-core';
 
 import type { ResourceNames } from '../names/types';
 

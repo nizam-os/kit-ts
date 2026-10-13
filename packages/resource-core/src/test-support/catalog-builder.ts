@@ -12,7 +12,7 @@ import type {
   PublicDomain,
   PublicTable,
   Rule,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import type { DeclaredResource } from '../declare/declared-resource';
 

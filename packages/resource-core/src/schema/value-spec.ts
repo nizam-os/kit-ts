@@ -14,7 +14,7 @@ import type {
   PublicCatalog,
   PublicColumnDefault,
   Rule,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import type {
   TypeRecord,

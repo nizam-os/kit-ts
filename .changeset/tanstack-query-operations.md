@@ -1,5 +1,5 @@
 ---
-'@netvark/tanstack-query-jsonapi': minor
+'@nizam-os/tanstack-query-jsonapi': minor
 ---
 
 Send Atomic Operations as one mutation. `operationsMutation(transport, settings?)` returns mutation

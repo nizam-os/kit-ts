@@ -1,5 +1,5 @@
 {
-  "name": "@netvark/jsonapi-core",
+  "name": "@nizam-os/jsonapi-core",
   "version": "0.0.0",
   "description": "JSON:API 1.1 for any JavaScript runtime: resource definitions, documents, query parsing, request parsing, content negotiation, the Cursor Pagination profile, and the Atomic Operations extension. Framework-free.",
   "keywords": [
@@ -11,13 +11,13 @@
     "rest",
     "sparse-fieldsets"
   ],
-  "homepage": "https://github.com/netvark/netvark/tree/main/packages/jsonapi-core#readme",
-  "bugs": "https://github.com/netvark/netvark/issues",
+  "homepage": "https://github.com/nizam-os/kit/tree/main/packages/jsonapi-core#readme",
+  "bugs": "https://github.com/nizam-os/kit/issues",
   "license": "MIT",
   "author": "Ali Issa (https://github.com/ali-issa)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netvark/netvark.git",
+    "url": "git+https://github.com/nizam-os/kit.git",
     "directory": "packages/jsonapi-core"
   },
   "files": [
@@ -57,7 +57,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@netvark/ban-core": "workspace:^"
+    "@nizam-os/ban-core": "workspace:^"
   },
   "devDependencies": {
     "ajv": "catalog:",

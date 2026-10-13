@@ -1,5 +1,5 @@
 /**
- * The operations endpoint of `@netvark/hono-resource` answers as the
+ * The operations endpoint of `@nizam-os/hono-resource` answers as the
  * document it serves says (resource SPEC 13.1, 19.4, 19.5), over the
  * runtime `createResourceRuntime` boots for the contacts application, on
  * PGlite and on the server `RESOURCE_PG_URL` names, each request through
@@ -13,8 +13,8 @@
  */
 import type { Context } from 'hono';
 
-import type { JsonApiVariables } from '@netvark/hono-jsonapi';
-import type { OpenApiDocument } from '@netvark/resource-core/openapi';
+import type { JsonApiVariables } from '@nizam-os/hono-jsonapi';
+import type { OpenApiDocument } from '@nizam-os/resource-core/openapi';
 
 import type { RuntimeDatabase } from './runtime/database.ts';
 import type { AppActor } from './runtime/domain.ts';
@@ -30,9 +30,9 @@ import {
   jsonApi,
   jsonApiError,
   notFoundHandler,
-} from '@netvark/hono-jsonapi';
-import { jsonApiRoutes } from '@netvark/hono-resource';
-import { createResourceRuntime } from '@netvark/kysely-resource';
+} from '@nizam-os/hono-jsonapi';
+import { jsonApiRoutes } from '@nizam-os/hono-resource';
+import { createResourceRuntime } from '@nizam-os/kysely-resource';
 
 import { runtimeDatabases } from './runtime/database.ts';
 import { editor, runtimeOptions } from './runtime/fixture.ts';

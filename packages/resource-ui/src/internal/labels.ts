@@ -7,9 +7,9 @@
  * `TypeError`s name the calling function and the declaration's names.
  * @packageDocumentation
  */
-import type { Label, Messages } from '@netvark/resource-core';
+import type { Label, Messages } from '@nizam-os/resource-core';
 
-import { localizeIssues } from '@netvark/resource-core';
+import { localizeIssues } from '@nizam-os/resource-core';
 
 import { ownValue } from './object';
 

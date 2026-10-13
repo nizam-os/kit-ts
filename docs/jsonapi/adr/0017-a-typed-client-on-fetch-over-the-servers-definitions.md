@@ -48,13 +48,13 @@ https://fetch.spec.whatwg.org/#cors-safelisted-request-header
 
 ## Decision
 
-- `@netvark/jsonapi-client` joins the family: it depends on `@netvark/jsonapi-core` and on nothing
+- `@nizam-os/jsonapi-client` joins the family: it depends on `@nizam-os/jsonapi-core` and on nothing
   else, uses web standards only, and imports no framework. `createClients(definitions, transport)`
   gives each definition a client whose methods and records are typed by `'~types'` (ADR 0018) and by
   the definitions passed beside it, which resolve related types.
 - The application states where the server is, once: `createTransport({ origin })`. Every path comes
-  from the definitions' links through `resourcePaths`, which moves from `@netvark/resource-core` to
-  `@netvark/jsonapi-core` so the OpenAPI document, the routes, and the client read paths through one
+  from the definitions' links through `resourcePaths`, which moves from `@nizam-os/resource-core` to
+  `@nizam-os/jsonapi-core` so the OpenAPI document, the routes, and the client read paths through one
   function. A definition's own origin, from an absolute `links.base`, is ignored: the transport's
   origin is the client's view of the server.
 - Queries serialize to what `parseQuery` reads, through `URLSearchParams`, the

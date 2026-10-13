@@ -4,14 +4,14 @@
  * this file against the built declarations), and consistent with the pure
  * functions of the core.
  */
-import type { Catalog, PublicCatalog } from '@netvark/catalog-core';
+import type { Catalog, PublicCatalog } from '@nizam-os/catalog-core';
 
 import { readFile } from 'node:fs/promises';
 
 import { describe, expect, expectTypeOf, it } from 'vitest';
 
-import { diffCatalogs, toPublicCatalog } from '@netvark/catalog-core';
-import { parseCatalogModule } from '@netvark/pg-catalog';
+import { diffCatalogs, toPublicCatalog } from '@nizam-os/catalog-core';
+import { parseCatalogModule } from '@nizam-os/pg-catalog';
 
 import { catalog } from './fixtures/contacts/expected/catalog.ts';
 import { publicCatalog } from './fixtures/contacts/expected/public-catalog.ts';

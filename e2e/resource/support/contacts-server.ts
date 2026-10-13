@@ -1,7 +1,7 @@
 /**
  * The contacts application served over a socket (resource SPEC 19, epic
  * #32's acceptance): the runtime `createResourceRuntime` boots over the
- * application's role, and the routes of `@netvark/hono-resource` run
+ * application's role, and the routes of `@nizam-os/hono-resource` run
  * behind Paraglide's middleware, the JSON:API middleware, and a ban that
  * localizes with the application's messages and `resourceTypeOf`, as the
  * package's README composes a host; `@hono/node-server` serves them on a
@@ -17,12 +17,12 @@
 import type { ServerType } from '@hono/node-server';
 import type { Context } from 'hono';
 
-import type { JsonApiVariables } from '@netvark/hono-jsonapi';
-import type { ResourceRuntime } from '@netvark/kysely-resource';
+import type { JsonApiVariables } from '@nizam-os/hono-jsonapi';
+import type { ResourceRuntime } from '@nizam-os/kysely-resource';
 import type {
   OpenApiDocument,
   OpenApiOptions,
-} from '@netvark/resource-core/openapi';
+} from '@nizam-os/resource-core/openapi';
 
 import type { RuntimeDatabase } from '../runtime/database.ts';
 import type { AppActor, AppDomain } from '../runtime/domain.ts';
@@ -33,20 +33,20 @@ import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
 import { expect } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
-import { jsonApi as jsonApiFormat } from '@netvark/hono-ban/formats/json-api';
+import { createBan } from '@nizam-os/hono-ban';
+import { jsonApi as jsonApiFormat } from '@nizam-os/hono-ban/formats/json-api';
 import {
   ATOMIC_OPERATIONS_EXTENSION,
   CURSOR_PAGINATION_PROFILE,
   jsonApi,
   jsonApiError,
   notFoundHandler,
-} from '@netvark/hono-jsonapi';
-import { jsonApiRoutes, resourceTypeOf } from '@netvark/hono-resource';
-import { ERROR_CATALOG } from '@netvark/jsonapi-core';
-import { createResourceRuntime } from '@netvark/kysely-resource';
-import { errorCatalog, localizeErrors } from '@netvark/resource-core';
-import { openapi } from '@netvark/resource-core/openapi';
+} from '@nizam-os/hono-jsonapi';
+import { jsonApiRoutes, resourceTypeOf } from '@nizam-os/hono-resource';
+import { ERROR_CATALOG } from '@nizam-os/jsonapi-core';
+import { createResourceRuntime } from '@nizam-os/kysely-resource';
+import { errorCatalog, localizeErrors } from '@nizam-os/resource-core';
+import { openapi } from '@nizam-os/resource-core/openapi';
 
 import { contactMessages } from '../localization/contact-messages.ts';
 import { paraglideMiddleware } from '../localization/paraglide/server.js';

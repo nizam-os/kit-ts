@@ -4,7 +4,7 @@
  * Kysely ran, the events `afterCommit` received, and `runTransaction` as
  * the runtime calls it, with the domain a test calls by name.
  */
-import type { DomainEvent } from '@netvark/resource-core/server';
+import type { DomainEvent } from '@nizam-os/resource-core/server';
 
 import type { DomainOptions } from '../runtime/types';
 import type { KyselyStorage } from '../storage/types';

@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 The definer's `domains` can rename the code of any domain CHECK, including one whose rule the

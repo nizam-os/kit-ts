@@ -1,5 +1,5 @@
 ---
-'@netvark/keyset-core': minor
+'@nizam-os/keyset-core': minor
 ---
 
 First release: keyset pagination for any JavaScript runtime, database-free.

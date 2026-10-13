@@ -13,17 +13,17 @@
  * @ref https://github.com/googleapis/googleapis/blob/master/google/rpc/error_details.proto (BadRequest)
  * @ref https://google.aip.dev/193#status-details
  */
-import type { IssueLocation, ValidationIssue } from '@netvark/hono-ban';
-import type { GoogleApiBody } from '@netvark/hono-ban/formats/google-api';
+import type { IssueLocation, ValidationIssue } from '@nizam-os/hono-ban';
+import type { GoogleApiBody } from '@nizam-os/hono-ban/formats/google-api';
 
 import type { RunningServer } from './support/server';
 
 import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
-import { googleApi } from '@netvark/hono-ban/formats/google-api';
-import { assertFormatConformance } from '@netvark/hono-ban/testing';
+import { createBan } from '@nizam-os/hono-ban';
+import { googleApi } from '@nizam-os/hono-ban/formats/google-api';
+import { assertFormatConformance } from '@nizam-os/hono-ban/testing';
 
 import { compileWithAjv, schemaErrors } from './support/ajv';
 import { startServer } from './support/server';

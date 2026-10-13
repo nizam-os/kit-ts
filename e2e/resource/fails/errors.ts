@@ -5,9 +5,9 @@
  * where it is assembled. Each `// error:` names a text the diagnostic on
  * the next line must contain.
  */
-import { createBan } from '@netvark/ban-core';
-import { ERROR_CATALOG } from '@netvark/jsonapi-core';
-import { errorCatalog } from '@netvark/resource-core';
+import { createBan } from '@nizam-os/ban-core';
+import { ERROR_CATALOG } from '@nizam-os/jsonapi-core';
+import { errorCatalog } from '@nizam-os/resource-core';
 
 import { Contacts } from '../resources/contacts.ts';
 import { Meetings } from '../resources/meetings.ts';

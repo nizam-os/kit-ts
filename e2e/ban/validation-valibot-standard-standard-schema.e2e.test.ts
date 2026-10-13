@@ -2,13 +2,13 @@
  * Standard Schema validation and `ban.validation` over HTTP (SPEC 8.1 to 8.4,
  * 8.7; 7.1.3 for the rendered entries).
  *
- * Proves that `hook(ban)` from `@netvark/hono-ban/standard-schema` turns an
+ * Proves that `hook(ban)` from `@nizam-os/hono-ban/standard-schema` turns an
  * `sValidator` failure into a 422 for any Standard Schema library (Zod and
  * Valibot here), that `fromIssues` and `toIssues` called from a route produce
  * the same body as the hook, and that `ban.validation` with hand-built
  * `ValidationIssue`s honours `detail`, `meta`, and `location`.
  */
-import type { ValidationIssue } from '@netvark/hono-ban';
+import type { ValidationIssue } from '@nizam-os/hono-ban';
 
 import type { RunningServer } from './support/server';
 
@@ -18,8 +18,8 @@ import * as v from 'valibot';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { z } from 'zod';
 
-import { createBan } from '@netvark/hono-ban';
-import { fromIssues, hook, toIssues } from '@netvark/hono-ban/standard-schema';
+import { createBan } from '@nizam-os/hono-ban';
+import { fromIssues, hook, toIssues } from '@nizam-os/hono-ban/standard-schema';
 
 import { startServer } from './support/server';
 
@@ -76,7 +76,7 @@ async function postJson(
 /** Handler reached only when the validator accepted the request. */
 const ok = (): Response => Response.json({ ok: true });
 
-describe('@netvark/hono-ban/standard-schema hook with sValidator', () => {
+describe('@nizam-os/hono-ban/standard-schema hook with sValidator', () => {
   const ban = createBan();
   const app = new Hono();
   app.onError(ban.onError());

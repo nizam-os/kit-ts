@@ -9,7 +9,7 @@ ADR 0010 gave `InvalidFilterValueError` the `field`, `operator`, and `expected` 
 the planner threw at the first value a field's type refused (ADR 0005), and a client heard of the
 next bad value only after fixing the first. The other request problems that can concern several
 items are reported together: `UnsupportedSortError` lists every refused sort item (SPEC 5), and
-`@netvark/jsonapi-core`'s `parseQuery` reports one error object per parameter it refuses. Measured
+`@nizam-os/jsonapi-core`'s `parseQuery` reports one error object per parameter it refuses. Measured
 over HTTP on the contacts resource of the resource end-to-end suite: `filter[nickname]=x`,
 `page[size]=0`, and `sort=bogus` in one query answered 400 with three error objects, while
 `filter[priority][gte]=high`, `filter[createdAt][lt]=yesterday`, and `filter[status]=gone` answered
@@ -40,9 +40,9 @@ multiple problems." @ref https://jsonapi.org/format/1.1/#errors-processing
 ## Consequences
 
 An API layer maps each entry to its own error object, as it maps `UnsupportedSortError`'s fields.
-`@netvark/kysely-resource` answers one `INVALID_QUERY_PARAMETER` per entry, at the parameter the
+`@nizam-os/kysely-resource` answers one `INVALID_QUERY_PARAMETER` per entry, at the parameter the
 entry's path leads to as the request spelled it (`filter[status]`, `filter[or][0][status]`), where
-`@netvark/resource-core`'s `filterParameters` tells it, and at `filter[<field>][<operator>]`
+`@nizam-os/resource-core`'s `filterParameters` tells it, and at `filter[<field>][<operator>]`
 otherwise (resource SPEC 18.5). The request above answers with three objects, the last at
 `filter[status]`. Code that read `field`, `operator`, or `expected` from the error reads them from
 each entry of `values`. `conditionPredicate` still throws for its one condition; `normalizeFilter`

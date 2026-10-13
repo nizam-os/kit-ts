@@ -13,7 +13,7 @@
  * @ref https://www.postgresql.org/docs/18/datatype-numeric.html#DATATYPE-NUMERIC-DECIMAL
  * @packageDocumentation
  */
-import type { PublicCatalog, PublicColumn } from '@netvark/catalog-core';
+import type { PublicCatalog, PublicColumn } from '@nizam-os/catalog-core';
 
 import type { ResolveColumnType } from './resolve-type';
 

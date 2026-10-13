@@ -198,7 +198,7 @@ const CHECKS: Readonly<Record<string, Check>> = {
     const required = list(member(schemaOf('422'), 'required'), '422 required');
     check(required.includes('errors'), '422 requires errors');
   },
-  '@netvark/ban-core handler without Hono': async (dispatch) => {
+  '@nizam-os/ban-core handler without Hono': async (dispatch) => {
     const res = await dispatch('/core/missing');
     equal(res.status, 404, 'status');
     equal(res.headers.get('content-type'), 'application/json', 'content-type');
@@ -207,7 +207,7 @@ const CHECKS: Readonly<Record<string, Check>> = {
     equal(body['detail'], 'Order 42 does not exist', 'detail');
     equal(res.headers.get('x-error-id'), body['id'], 'X-Error-Id');
   },
-  'renderError from @netvark/hono-ban/testing': async (dispatch) => {
+  'renderError from @nizam-os/hono-ban/testing': async (dispatch) => {
     const res = await dispatch('/rendered');
     equal(res.status, 410, 'status');
     equal(res.headers.get('content-type'), PROBLEM_JSON, 'content-type');
@@ -240,7 +240,7 @@ export function report(result: SmokeResult): void {
   const total = result.passed + result.failures.length;
   if (result.failures.length === 0) {
     console.log(
-      `@netvark/ban-core smoke: ${total} checks passed on ${result.runtime}`,
+      `@nizam-os/ban-core smoke: ${total} checks passed on ${result.runtime}`,
     );
     return;
   }
@@ -248,6 +248,6 @@ export function report(result: SmokeResult): void {
     console.error(`FAIL ${failure}`);
   }
   throw new Error(
-    `@netvark/ban-core smoke: ${result.failures.length} of ${total} checks failed on ${result.runtime}`,
+    `@nizam-os/ban-core smoke: ${result.failures.length} of ${total} checks failed on ${result.runtime}`,
   );
 }

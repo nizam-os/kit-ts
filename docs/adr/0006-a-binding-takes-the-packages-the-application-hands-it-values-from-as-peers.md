@@ -5,20 +5,20 @@
 
 ## Context
 
-A binding depends on its core through `workspace:^` and re-exports it: `@netvark/hono-jsonapi`
-re-exports `@netvark/jsonapi-core`, and `@netvark/kysely-keyset` re-exports `@netvark/keyset-core`.
+A binding depends on its core through `workspace:^` and re-exports it: `@nizam-os/hono-jsonapi`
+re-exports `@nizam-os/jsonapi-core`, and `@nizam-os/kysely-keyset` re-exports `@nizam-os/keyset-core`.
 An application imports from the binding alone, so one copy of the core serves both.
 
-The resource family has another shape. The application imports `@netvark/resource-core` itself, to
-declare its resources, and hands the declarations to two bindings, `@netvark/kysely-resource` and
-`@netvark/hono-resource`, neither of which can re-export the core for the other. Some values that
+The resource family has another shape. The application imports `@nizam-os/resource-core` itself, to
+declare its resources, and hands the declarations to two bindings, `@nizam-os/kysely-resource` and
+`@nizam-os/hono-resource`, neither of which can re-export the core for the other. Some values that
 cross that boundary are recognized by identity, so a value made by one copy fails in another:
 
 - A declared resource and a behavior are registered in module-level `WeakMap`s and `WeakSet`s of the
   copy that made them (`isDeclaredResource`, `isResourceBehavior`). Another copy refuses them with a
   `TypeError`.
 - A `BanError` is recognized with `instanceof` (`isBanError`). A refusal thrown by one copy of
-  `@netvark/ban-core` reaches the handler of another as an unknown error, which answers 500.
+  `@nizam-os/ban-core` reaches the handler of another as an unknown error, which answers 500.
 
 When two packages depend on one package with ranges that one version satisfies, the package manager
 installs one copy. When the ranges do not overlap, as `^0.1.0` and `^0.2.0` never do, each package
@@ -27,7 +27,7 @@ relationship npm calls a plugin's to its host. npm 7 and later install peer depe
 and "trying to install another plugin with a conflicting requirement may cause an error if the tree
 cannot be resolved correctly"
 ([npm docs](https://docs.npmjs.com/cli/v11/configuring-npm/package-json#peerdependencies)).
-`@netvark/pg-catalog` already takes `@netvark/resource-core` as a peer, since `rules --check` loads
+`@nizam-os/pg-catalog` already takes `@nizam-os/resource-core` as a peer, since `rules --check` loads
 the application's declarations.
 
 ## Decision
@@ -37,11 +37,11 @@ the application's declarations.
   `workspace:^` in `devDependencies`.
 - A binding whose core the application imports only through the binding keeps depending on it and
   re-exporting it.
-- `@netvark/hono-resource` takes `@netvark/resource-core` (the declarations) and
-  `@netvark/hono-jsonapi` (the `jsonApi()` negotiation and the `BanError`s its handlers render) as
+- `@nizam-os/hono-resource` takes `@nizam-os/resource-core` (the declarations) and
+  `@nizam-os/hono-jsonapi` (the `jsonApi()` negotiation and the `BanError`s its handlers render) as
   peers, beside `hono`.
-- `@netvark/kysely-resource` takes `@netvark/resource-core` (the declarations, behaviors, and
-  scopes) and `@netvark/keyset-core` (the keyset definer, whose refusals it maps by class) as peers,
+- `@nizam-os/kysely-resource` takes `@nizam-os/resource-core` (the declarations, behaviors, and
+  scopes) and `@nizam-os/keyset-core` (the keyset definer, whose refusals it maps by class) as peers,
   beside `kysely` (#106).
 
 ## Consequences
@@ -50,6 +50,6 @@ the application's declarations.
   whose ranges cannot meet fails at install instead of on a request.
 - Adding a binding means answering one question: does the application hand it values made with
   another workspace package? `CONTRIBUTING.md`'s "Adding a package" asks it.
-- A second copy can still come from outside these peers, such as `@netvark/ban-core` under the
+- A second copy can still come from outside these peers, such as `@nizam-os/ban-core` under the
   runtime and under the handler. The ban family recognizes a `BanError` across copies by a
   registered brand (ban ADR 0019, #107).

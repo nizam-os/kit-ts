@@ -15,8 +15,8 @@ import { join } from 'node:path';
 
 import { beforeAll, describe, expect, it } from 'vitest';
 
-import { isolate } from '@netvark/intl-core';
-import { compile } from '@netvark/paraglide-intl';
+import { isolate } from '@nizam-os/intl-core';
+import { compile } from '@nizam-os/paraglide-intl';
 
 import { isolatedLayout, layout, write } from './support/layout';
 import { importMessages, message, writeProject } from './support/project';

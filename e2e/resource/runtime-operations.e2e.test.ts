@@ -1,5 +1,5 @@
 /**
- * The operations endpoint of `@netvark/hono-resource` (resource SPEC 19.4)
+ * The operations endpoint of `@nizam-os/hono-resource` (resource SPEC 19.4)
  * over the runtime `createResourceRuntime` boots for the contacts
  * application, on PGlite and on the server `RESOURCE_PG_URL` names, each
  * request through `app.request`: the operations of a request commit
@@ -14,8 +14,8 @@
  */
 import type { Context } from 'hono';
 
-import type { JsonApiVariables } from '@netvark/hono-jsonapi';
-import type { DomainEvent } from '@netvark/resource-core/server';
+import type { JsonApiVariables } from '@nizam-os/hono-jsonapi';
+import type { DomainEvent } from '@nizam-os/resource-core/server';
 
 import type { RuntimeDatabase } from './runtime/database.ts';
 import type { AppActor } from './runtime/domain.ts';
@@ -29,9 +29,9 @@ import {
   jsonApi,
   jsonApiError,
   notFoundHandler,
-} from '@netvark/hono-jsonapi';
-import { jsonApiRoutes } from '@netvark/hono-resource';
-import { createResourceRuntime } from '@netvark/kysely-resource';
+} from '@nizam-os/hono-jsonapi';
+import { jsonApiRoutes } from '@nizam-os/hono-resource';
+import { createResourceRuntime } from '@nizam-os/kysely-resource';
 
 import { runtimeDatabases } from './runtime/database.ts';
 import { editor, globex, runtimeOptions } from './runtime/fixture.ts';

@@ -1,7 +1,7 @@
 # Contributing to the keyset family
 
-`@netvark/keyset-core` (the database-free core), `@netvark/kysely-keyset` (the Kysely binding), and
-`@netvark/drizzle-keyset` (the Drizzle binding). The root [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+`@nizam-os/keyset-core` (the database-free core), `@nizam-os/kysely-keyset` (the Kysely binding), and
+`@nizam-os/drizzle-keyset` (the Drizzle binding). The root [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
 covers setup, the quality gates, the shared conventions, commits, changesets, and releases; this
 guide adds what is specific to the family. Design intent lives in [`DESIGN.md`](DESIGN.md), the
 normative contract in [`SPEC.md`](SPEC.md), and decisions in [`adr/`](adr); read those before
@@ -34,7 +34,7 @@ proposing API changes.
   node-postgres over a PGlite socket server, or a PostgreSQL server) and asserts over real rows;
   expectations are computed in JavaScript from the seed, never read back from the SQL under test. A
   file that runs plans against rows runs once per adapter (`support/bindings.ts`). Never import from
-  `src/` there. Run one file with `pnpm --filter @netvark/keyset-e2e exec vitest run <name>` after
+  `src/` there. Run one file with `pnpm --filter @nizam-os/keyset-e2e exec vitest run <name>` after
   `pnpm build`.
 - **Client input is hostile.** Names from a request become object keys only through
   `internal/object.ts` or after a `PROTO_KEYS` check; reads of client-shaped objects use
@@ -55,15 +55,15 @@ New library surface falls into one of these:
   and the cursor context), then code.
 - **An adapter for another query builder or driver.** A new package `packages/<name>-keyset/`
   following `packages/kysely-keyset/` and `packages/drizzle-keyset/` as the precedents: depends on
-  `@netvark/keyset-core` (`workspace:^`), re-exports it in full, renders every `Predicate` and
+  `@nizam-os/keyset-core` (`workspace:^`), re-exports it in full, renders every `Predicate` and
   `Target` kind (or rejects the ones its target cannot express, documented), and exposes a
   `paginate` that calls `plan` and `page`. Its own e2e coverage joins `e2e/keyset/`.
 
 **Constraints every contribution inherits.**
 
-- `@netvark/keyset-core` has no dependencies and imports no runtime API beyond web standards (ADR
-  0002). `kysely` is `@netvark/kysely-keyset`'s only peer dependency, at `>= 0.28.17`, and
-  `drizzle-orm` is `@netvark/drizzle-keyset`'s, at `>=0.45.2 <1.0.0`. Each floor is the first
+- `@nizam-os/keyset-core` has no dependencies and imports no runtime API beyond web standards (ADR
+  0002). `kysely` is `@nizam-os/kysely-keyset`'s only peer dependency, at `>= 0.28.17`, and
+  `drizzle-orm` is `@nizam-os/drizzle-keyset`'s, at `>=0.45.2 <1.0.0`. Each floor is the first
   release past its builder's published SQL injection advisories (ADR 0017, ADR 0018), and an
   advisory published against a release in a range raises that floor (root ADR 0007). CI tests both
   floors, so an API an adapter uses must exist at its floor: Kysely 0.28.17, drizzle-orm 0.45.2.

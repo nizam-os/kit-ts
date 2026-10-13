@@ -1,8 +1,8 @@
 {
-  "name": "@netvark/keyset-e2e",
+  "name": "@nizam-os/keyset-e2e",
   "version": "0.0.0",
   "private": true,
-  "description": "End-to-end tests: a consumer of the built @netvark/keyset-core, @netvark/kysely-keyset, and @netvark/drizzle-keyset packages, exercised against PGlite, node-postgres, and a PostgreSQL server.",
+  "description": "End-to-end tests: a consumer of the built @nizam-os/keyset-core, @nizam-os/kysely-keyset, and @nizam-os/drizzle-keyset packages, exercised against PGlite, node-postgres, and a PostgreSQL server.",
   "type": "module",
   "scripts": {
     "test": "vitest run",
@@ -15,9 +15,9 @@
   "devDependencies": {
     "@electric-sql/pglite": "catalog:",
     "@electric-sql/pglite-socket": "catalog:",
-    "@netvark/drizzle-keyset": "workspace:*",
-    "@netvark/keyset-core": "workspace:*",
-    "@netvark/kysely-keyset": "workspace:*",
+    "@nizam-os/drizzle-keyset": "workspace:*",
+    "@nizam-os/keyset-core": "workspace:*",
+    "@nizam-os/kysely-keyset": "workspace:*",
     "@types/node": "catalog:",
     "@types/pg": "catalog:",
     "drizzle-orm": "catalog:",

@@ -7,8 +7,8 @@
  * model's state or with includes, is an `ActionRecord`. The mutations a
  * screen sends the models through are `action-mutations.test-d.ts`'.
  */
-import type { UpdateInput } from '@netvark/jsonapi-client';
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { UpdateInput } from '@nizam-os/jsonapi-client';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import type { ListState } from '../list/list-types';
 import type {
@@ -21,8 +21,8 @@ import type {
 
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { createClients, createTransport } from '@netvark/jsonapi-client';
-import { createDeclareResource } from '@netvark/resource-core';
+import { createClients, createTransport } from '@nizam-os/jsonapi-client';
+import { createDeclareResource } from '@nizam-os/resource-core';
 
 import { publicCatalog } from '../test-support/public-catalog';
 import { FIXTURE_REGISTRIES } from '../test-support/registries';

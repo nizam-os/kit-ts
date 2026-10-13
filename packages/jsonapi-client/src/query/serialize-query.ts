@@ -11,7 +11,7 @@
  * @ref https://url.spec.whatwg.org/#concept-urlencoded-serializer
  * @packageDocumentation
  */
-import type { AnyResource } from '@netvark/jsonapi-core';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
 
 import type { CustomValues, PageInput, Query } from './types';
 

@@ -6,9 +6,9 @@
 import type {
   OpenApiDocument,
   OpenApiOptions,
-} from '@netvark/resource-core/openapi';
+} from '@nizam-os/resource-core/openapi';
 
-import { openapi } from '@netvark/resource-core/openapi';
+import { openapi } from '@nizam-os/resource-core/openapi';
 
 import { APP_RESOURCES } from '../runtime/api.ts';
 import { APP_ERRORS } from '../runtime/domain.ts';

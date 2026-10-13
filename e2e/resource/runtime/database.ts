@@ -18,7 +18,7 @@
  * @ref https://www.postgresql.org/docs/18/sql-set-role.html
  * @ref https://www.postgresql.org/docs/18/auth-password.html
  */
-import type { DomainEvent } from '@netvark/resource-core/server';
+import type { DomainEvent } from '@nizam-os/resource-core/server';
 
 import type { Owner, Role } from './seed.ts';
 

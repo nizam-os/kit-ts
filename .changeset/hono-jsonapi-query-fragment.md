@@ -1,5 +1,5 @@
 ---
-'@netvark/hono-jsonapi': patch
+'@nizam-os/hono-jsonapi': patch
 ---
 
 `queryValidator` reads the query only up to the URL's fragment, and none when a `#` comes before any

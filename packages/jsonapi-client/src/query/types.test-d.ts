@@ -4,13 +4,13 @@
  * defined here, since an exported definition needs an annotation under
  * `isolatedDeclarations` and the point is what `defineResource` infers.
  */
-import type { AnyResource } from '@netvark/jsonapi-core';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
 
 import type { GetQuery, ListQuery, Query } from './types';
 
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { createDefineResource } from '@netvark/jsonapi-core';
+import { createDefineResource } from '@nizam-os/jsonapi-core';
 
 const defineResource = createDefineResource({ links: { base: '/api' } });
 

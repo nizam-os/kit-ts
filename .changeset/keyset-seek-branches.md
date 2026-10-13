@@ -1,8 +1,8 @@
 ---
-'@netvark/keyset-core': minor
-'@netvark/kysely-keyset': minor
-'@netvark/drizzle-keyset': minor
-'@netvark/kysely-resource': patch
+'@nizam-os/keyset-core': minor
+'@nizam-os/kysely-keyset': minor
+'@nizam-os/drizzle-keyset': minor
+'@nizam-os/kysely-resource': patch
 ---
 
 A page inside a tie of the first sort key, or after a value of a nullable first key, now reads about
@@ -21,4 +21,4 @@ branches runs as one select per branch, joined with `union all`.
 - The Kysely and Drizzle bindings reserve the value aliases as they reserve `keyset0`, `keyset1`,
   ...: a Drizzle `select` member named like one throws a `TypeError`, and both bindings strip them
   from the rows. The rows, their order, and the cursors do not change.
-- `@netvark/kysely-resource` runs its list statement the same way.
+- `@nizam-os/kysely-resource` runs its list statement the same way.

@@ -12,9 +12,9 @@ import type {
   PublicCatalog,
   PublicColumn,
   PublicTable,
-} from '@netvark/catalog-core';
-import type { DeclaredResource, FieldMeta } from '@netvark/resource-core';
-import type { PublicRow, ScopeValue } from '@netvark/resource-core/server';
+} from '@nizam-os/catalog-core';
+import type { DeclaredResource, FieldMeta } from '@nizam-os/resource-core';
+import type { PublicRow, ScopeValue } from '@nizam-os/resource-core/server';
 
 import { columnType } from './column-type.ts';
 import { parameterText } from './pg-text.ts';

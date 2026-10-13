@@ -1,8 +1,8 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
-`keysetRequest(resource, query)` on `@netvark/resource-core/server` builds the keyset request of a
+`keysetRequest(resource, query)` on `@nizam-os/resource-core/server` builds the keyset request of a
 query `parseQuery` parsed with a declared resource's JSON:API definition, typed by its keyset
 definition, so a list route hands keyset-core what it takes. It gives `isNull` its boolean and a
 single `in`, `nin`, `between`, or array value its list, joins the conditions and the `filter[or][n]`

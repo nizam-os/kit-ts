@@ -1,11 +1,11 @@
 /**
  * Drift checks for runtimes with sockets (Bun and Deno): the contacts
  * application on PGlite behind a socket server, compared with the reviewed
- * catalog through the built `@netvark/pg-catalog` and node-postgres.
+ * catalog through the built `@nizam-os/pg-catalog` and node-postgres.
  */
 import type { Checks } from './report.ts';
 
-import { drift } from '@netvark/pg-catalog';
+import { drift } from '@nizam-os/pg-catalog';
 
 import { contactsConfig, EXPECTED_CATALOG } from '../support/contacts.ts';
 import { openPgliteDatabase } from '../support/live-database.ts';

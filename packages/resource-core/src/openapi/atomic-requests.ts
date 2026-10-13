@@ -9,10 +9,10 @@
  * resource updates, with the target's linkage. An `href` is a string the
  * schema cannot tell apart by type, so the operations are `anyOf`.
  * @ref https://jsonapi.org/ext/atomic/#operation-objects
- * @ref https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md (sections 11.2 and 11.4)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (sections 11.2 and 11.4)
  * @packageDocumentation
  */
-import type { JsonSchema } from '@netvark/ban-core';
+import type { JsonSchema } from '@nizam-os/ban-core';
 
 import type { DeclaredInternals } from '../declare/declared-resource';
 

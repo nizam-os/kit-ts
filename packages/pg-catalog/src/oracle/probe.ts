@@ -9,8 +9,8 @@
  * @ref https://www.postgresql.org/docs/18/sql-createtable.html (TEMPORARY)
  * @packageDocumentation
  */
-import type { Catalog } from '@netvark/catalog-core';
-import type { OracleProbe } from '@netvark/resource-core/testing';
+import type { Catalog } from '@nizam-os/catalog-core';
+import type { OracleProbe } from '@nizam-os/resource-core/testing';
 
 import type { SqlSession } from '../target/session';
 

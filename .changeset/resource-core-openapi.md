@@ -1,8 +1,8 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
-New `@netvark/resource-core/openapi` entry. `openapi(resources, options)` builds the OpenAPI 3.1.2
+New `@nizam-os/resource-core/openapi` entry. `openapi(resources, options)` builds the OpenAPI 3.1.2
 document of the resources you serve: every declared operation and relationship endpoint, its query
 parameters from the declared filters, sorts, includes, and page bounds, its JSON:API documents, and
 an error response for each status it can answer with, listing its codes, whose error objects, and

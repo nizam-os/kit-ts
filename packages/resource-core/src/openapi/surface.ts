@@ -13,10 +13,10 @@
  * order means nothing: operations, operators, patterns; an object of a
  * fixed shape keeps its members' order. An enum's options keep their
  * order, which is PostgreSQL's sort order.
- * @ref https://github.com/netvark/netvark/blob/main/docs/resource/adr/0003-public-names-are-derived.md (the derived surface is snapshotted)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0003-public-names-are-derived.md (the derived surface is snapshotted)
  * @packageDocumentation
  */
-import type { Operator } from '@netvark/keyset-core';
+import type { Operator } from '@nizam-os/keyset-core';
 
 import type {
   AnyDeclaredResource,

@@ -1,6 +1,6 @@
 ---
-'@netvark/jsonapi-core': minor
-'@netvark/hono-jsonapi': minor
+'@nizam-os/jsonapi-core': minor
+'@nizam-os/hono-jsonapi': minor
 ---
 
 New `writable` option on `defineResource`: `{ create, update }` lists the fields each write accepts,

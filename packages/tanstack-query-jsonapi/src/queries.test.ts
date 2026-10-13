@@ -3,7 +3,7 @@ import type { BlogApi } from './test-support/fetch-double';
 import { InfiniteQueryObserver, QueryObserver } from '@tanstack/query-core';
 import { describe, expect, it, vi } from 'vitest';
 
-import { isResponseError } from '@netvark/jsonapi-client';
+import { isResponseError } from '@nizam-os/jsonapi-client';
 
 import { resourceQueries } from './queries';
 import { Tags } from './test-support/blog';

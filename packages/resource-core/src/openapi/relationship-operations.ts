@@ -9,7 +9,7 @@
  * @ref https://jsonapi.org/format/1.1/#crud-updating-to-one-relationships
  * @packageDocumentation
  */
-import type { ResourcePaths } from '@netvark/jsonapi-core';
+import type { ResourcePaths } from '@nizam-os/jsonapi-core';
 
 import type { DeclaredInternals } from '../declare/declared-resource';
 import type { RelationshipSpec } from '../schema/relationship-specs';

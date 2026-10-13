@@ -1,6 +1,6 @@
 /**
  * Tables of the names catalog (`../names.ts`) whose names cannot be a
- * resource type, as `@netvark/pg-catalog` extracts them. Not published with
+ * resource type, as `@nizam-os/pg-catalog` extracts them. Not published with
  * the package.
  * @packageDocumentation
  */

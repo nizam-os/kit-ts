@@ -18,12 +18,12 @@ variant on the raw number and prints nothing.
 
 ## Decision
 
-- `@netvark/paraglide-intl`'s `compile()` refuses, before it writes anything, every message that
+- `@nizam-os/paraglide-intl`'s `compile()` refuses, before it writes anything, every message that
   formats: an expression or a local declaration annotated with `number`, `datetime`, `date`, `time`,
   `relativetime`, or `icu:pound`. The error lists every finding at once, each with the message's
   key, its locale, and the annotation.
 - `formatters: 'allow'` turns the refusal off, for a project that accepts the engine's defaults.
-- The application formats with `@netvark/intl-core` and interpolates the string; a count keeps
+- The application formats with `@nizam-os/intl-core` and interpolates the string; a count keeps
   selecting its plural variant on the number.
 
 ## Consequences

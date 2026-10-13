@@ -1,19 +1,19 @@
-import type { BanError, JsonSchema } from '@netvark/hono-ban';
+import type { BanError, JsonSchema } from '@nizam-os/hono-ban';
 
 import type { RunningServer } from './support/server';
 
 import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
-import { PROBLEM_DETAILS_CONTENT_TYPE } from '@netvark/hono-ban/formats/problem-details';
+import { createBan } from '@nizam-os/hono-ban';
+import { PROBLEM_DETAILS_CONTENT_TYPE } from '@nizam-os/hono-ban/formats/problem-details';
 import {
   errorResponse,
   errorResponses,
   validationResponse,
   validationSchema,
-} from '@netvark/hono-ban/openapi';
-import { defaultHook } from '@netvark/hono-ban/zod';
+} from '@nizam-os/hono-ban/openapi';
+import { defaultHook } from '@nizam-os/hono-ban/zod';
 
 import { compileWithAjv } from './support/ajv';
 import { startServer } from './support/server';
@@ -24,7 +24,7 @@ import { startServer } from './support/server';
  * `errorResponse`, and `validationResponse`, then really throw them; each
  * body fetched over HTTP must validate (Ajv 2020-12, strict) against the
  * schema read back from the document, including a 422 produced by
- * `defaultHook` from `@netvark/hono-ban/zod` on an invalid request body. The sibling
+ * `defaultHook` from `@nizam-os/hono-ban/zod` on an invalid request body. The sibling
  * `openapi-document` suite covers the document shape and the 3.0 dialect.
  */
 

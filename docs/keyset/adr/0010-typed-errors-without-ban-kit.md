@@ -1,4 +1,4 @@
-# ADR 0010: Typed error classes with constant messages; no @netvark/ban-core dependency
+# ADR 0010: Typed error classes with constant messages; no @nizam-os/ban-core dependency
 
 - Status: accepted; amended by ADR-0019 (`InvalidFilterValueError` lists every refused value, in the
   order of the request's conditions, in `values`)
@@ -6,8 +6,8 @@
 
 ## Context
 
-The sibling library `@netvark/jsonapi-core` raises @netvark/ban-core errors, which carry an HTTP
-status and render as JSON:API error documents. @netvark/keyset-core sits below the HTTP layer: it
+The sibling library `@nizam-os/jsonapi-core` raises @nizam-os/ban-core errors, which carry an HTTP
+status and render as JSON:API error documents. @nizam-os/keyset-core sits below the HTTP layer: it
 runs in request handlers, but also in workers, scripts, and tests, and its consumers include API
 layers with error catalogs of their own. The HTTP mapping (status, the profile's error `type` links,
 `source.parameter`) is the API layer's decision. An error message that includes a request value
@@ -25,8 +25,8 @@ https://jsonapi.org/profiles/ethanresnick/cursor-pagination/#auto-id--errors
 - Messages are constant per class. No request value, column name, or SQL ever appears in `message`.
 - Definition mistakes are `TypeError`s thrown by `defineKeyset`; they are programming errors, not
   request errors.
-- The core has no dependency on @netvark/ban-core or any other library. The README documents the
-  mapping to the profile's error objects and to `@netvark/jsonapi-core`'s helpers.
+- The core has no dependency on @nizam-os/ban-core or any other library. The README documents the
+  mapping to the profile's error objects and to `@nizam-os/jsonapi-core`'s helpers.
 
 ## Consequences
 

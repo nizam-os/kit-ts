@@ -15,11 +15,11 @@ import { useForm } from '@tanstack/react-form';
 import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 
-import { fieldsOf, resourceForm } from '@netvark/resource-ui';
+import { fieldsOf, resourceForm } from '@nizam-os/resource-ui';
 import {
   bindResponseErrors,
   resourceFormOptions,
-} from '@netvark/tanstack-form-resource';
+} from '@nizam-os/tanstack-form-resource';
 
 import { contactMessages } from '../../localization/contact-messages.ts';
 import { Contacts } from '../../resources/contacts.ts';

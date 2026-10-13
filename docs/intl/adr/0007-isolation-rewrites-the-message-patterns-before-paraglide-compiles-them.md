@@ -34,7 +34,7 @@ pattern rewritten, the output is byte-identical to Paraglide's own `compile()`.
 
 ## Decision
 
-`@netvark/paraglide-intl`'s `compile()` is Paraglide's `compile()` with one step between the load
+`@nizam-os/paraglide-intl`'s `compile()` is Paraglide's `compile()` with one step between the load
 and the compile: for each message of an isolated locale, each variant's pattern with more than one
 part has each `expression` part replaced by a text part U+2068, the part, and a text part U+2069,
 written back with `upsertBundleNested()`. Before the output is written, each bidi control in its

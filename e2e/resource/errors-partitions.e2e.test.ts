@@ -15,7 +15,7 @@ import {
   constraintError,
   PARTITION_ROOT_SQL,
   partitionViolation,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import { Calls } from './resources/calls.ts';
 import { CONTACTS_SCHEMA, liveDatabases } from './support/oracle-database.ts';

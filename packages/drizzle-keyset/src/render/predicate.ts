@@ -21,13 +21,13 @@ import type {
   Predicate,
   Relation,
   TextSearchMode,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import type { RenderContext } from '../types';
 
 import { sql } from 'drizzle-orm';
 
-import { isSearchConfig } from '@netvark/keyset-core';
+import { isSearchConfig } from '@nizam-os/keyset-core';
 
 import { column, concat, correlation, renderTarget, table } from './target';
 

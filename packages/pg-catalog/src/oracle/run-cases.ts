@@ -6,12 +6,12 @@
  * disagreement as it stands. The probe is dropped after its case.
  * @packageDocumentation
  */
-import type { Catalog } from '@netvark/catalog-core';
+import type { Catalog } from '@nizam-os/catalog-core';
 import type {
   OracleCase,
   OracleFixture,
   WritableFixture,
-} from '@netvark/resource-core/testing';
+} from '@nizam-os/resource-core/testing';
 
 import type { SqlSession } from '../target/session';
 import type { Attempt } from './attempt';

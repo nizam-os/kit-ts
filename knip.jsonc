@@ -86,7 +86,7 @@
       "entry": [
         "smoke/worker.ts",
         "fixtures/*/*catalog.ts",
-        "fixtures/*/netvark.config.mjs",
+        "fixtures/*/pg-catalog.config.mjs",
         "fails/*.ts",
         "declarations/*.ts",
         "localization/transform-forms.ts",

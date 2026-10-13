@@ -5,7 +5,7 @@
  */
 import type { Context, Hono } from 'hono';
 
-import type { JsonApiEnv, ParsedQuery } from '@netvark/hono-jsonapi';
+import type { JsonApiEnv, ParsedQuery } from '@nizam-os/hono-jsonapi';
 
 import type { PersonView } from './resources.ts';
 import type {
@@ -29,7 +29,7 @@ import {
   toManyRelationshipDocument,
   toOneLinkage,
   toOneRelationshipDocument,
-} from '@netvark/hono-jsonapi';
+} from '@nizam-os/hono-jsonapi';
 
 import { Articles, BASE_URL, People, Tags } from './resources.ts';
 import { cursorOf } from './store.ts';

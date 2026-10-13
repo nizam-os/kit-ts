@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { defaultMessages } from '@netvark/resource-core';
+import { defaultMessages } from '@nizam-os/resource-core';
 
 import { messages } from '../test-support/messages';
 import {

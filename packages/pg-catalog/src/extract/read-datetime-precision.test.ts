@@ -4,7 +4,7 @@
  * (`'9999-12-31 23:59:59.999999'::timestamp(3)` is
  * `10000-01-01 00:00:00`), so a consumer must see `p`.
  */
-import type { Catalog, CatalogColumn } from '@netvark/catalog-core';
+import type { Catalog, CatalogColumn } from '@nizam-os/catalog-core';
 
 import { beforeAll, describe, expect, it } from 'vitest';
 

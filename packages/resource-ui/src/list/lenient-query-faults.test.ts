@@ -8,16 +8,16 @@
  * of the search and is thrown as it is. The double wraps jsonapi-core's
  * `parseQuery` and answers once.
  */
-import type * as JsonApiCore from '@netvark/jsonapi-core';
+import type * as JsonApiCore from '@nizam-os/jsonapi-core';
 
 import { describe, expect, it, vi } from 'vitest';
 
-import { jsonApiError, parseQuery } from '@netvark/jsonapi-core';
+import { jsonApiError, parseQuery } from '@nizam-os/jsonapi-core';
 
 import { Contacts } from '../test-support/resources';
 import { lenientQuery } from './lenient-query';
 
-vi.mock('@netvark/jsonapi-core', async (importOriginal) => {
+vi.mock('@nizam-os/jsonapi-core', async (importOriginal) => {
   const actual = await importOriginal<typeof JsonApiCore>();
   return { ...actual, parseQuery: vi.fn(actual.parseQuery) };
 });

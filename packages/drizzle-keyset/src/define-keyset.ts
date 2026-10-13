@@ -15,7 +15,7 @@ import type {
   DefineDefaultedKeyset as DefineCoreDefaultedKeyset,
   KeysetDefaults,
   NoRelations,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import type {
   ColumnsOf,
@@ -28,7 +28,7 @@ import type {
 } from './typed-init';
 import type { DrizzleKeyset, KeysetSchema } from './types';
 
-import { createDefineKeyset as createCoreDefineKeyset } from '@netvark/keyset-core';
+import { createDefineKeyset as createCoreDefineKeyset } from '@nizam-os/keyset-core';
 
 import { checkNames } from './check-names';
 import { paginate } from './paginate';

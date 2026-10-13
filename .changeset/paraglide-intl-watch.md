@@ -1,5 +1,5 @@
 ---
-'@netvark/paraglide-intl': minor
+'@nizam-os/paraglide-intl': minor
 ---
 
 `watch()` compiles as `compile()` does, then again whenever the settings, a catalog, a plugin loaded

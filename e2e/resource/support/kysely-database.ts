@@ -20,7 +20,7 @@ import { PGlite } from '@electric-sql/pglite';
 import { Kysely, PGliteDialect, PostgresDialect } from 'kysely';
 import pg from 'pg';
 
-import { contractFixture } from '@netvark/resource-core/testing';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { OUTBOX_TABLE } from './contract-database.ts';
 import { throwawayDatabase } from './oracle-database.ts';

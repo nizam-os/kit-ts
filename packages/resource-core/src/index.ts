@@ -1,6 +1,6 @@
 /**
- * `@netvark/resource-core`: one declaration per PostgreSQL table, keyed by
- * its database names and typed by the public catalog `@netvark/pg-catalog`
+ * `@nizam-os/resource-core`: one declaration per PostgreSQL table, keyed by
+ * its database names and typed by the public catalog `@nizam-os/pg-catalog`
  * extracts, from which the public API follows. See `docs/resource/SPEC.md`
  * for the contract.
  * @packageDocumentation

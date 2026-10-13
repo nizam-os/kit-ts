@@ -1,6 +1,6 @@
 /**
- * The type-level check of the public names `@netvark/keyset-core` and
- * `@netvark/jsonapi-core` take (SPEC 11.2), the twin of `checkName` in
+ * The type-level check of the public names `@nizam-os/keyset-core` and
+ * `@nizam-os/jsonapi-core` take (SPEC 11.2), the twin of `checkName` in
  * `declare/check-filters.ts`: the public name of a filtered or sortable
  * member is a keyset-core field name, and a filtered member takes no
  * member of `filter` the JSON:API definition reserves. Like the names
@@ -15,7 +15,7 @@
  * 15.5); a declaration without suspects costs a comparison.
  * @packageDocumentation
  */
-import type { PublicTable } from '@netvark/catalog-core';
+import type { PublicTable } from '@nizam-os/catalog-core';
 
 import type { Requirement } from '../declare/requirement';
 import type { Declaration, DeclaredMembers, MemberOf } from '../declare/types';
@@ -69,7 +69,7 @@ export type KeysetNameMessage<
   THasSearch extends boolean,
 > =
   IsFieldName<TName> extends false
-    ? `${TOption}: public name "${TName}" is outside @netvark/keyset-core's field names (${typeof FIELD_NAME_SYNTAX})`
+    ? `${TOption}: public name "${TName}" is outside @nizam-os/keyset-core's field names (${typeof FIELD_NAME_SYNTAX})`
     : TOption extends 'filter'
       ? TName extends ReservedFilterName<THasSearch>
         ? ReservedMessage<TName>

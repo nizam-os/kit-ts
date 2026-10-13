@@ -14,8 +14,8 @@
  * adds 15% instantiations (package README, performance notes).
  * @packageDocumentation
  */
-import type { PublicCatalog, PublicTable } from '@netvark/catalog-core';
-import type { FieldType, OperatorsOf } from '@netvark/keyset-core';
+import type { PublicCatalog, PublicTable } from '@nizam-os/catalog-core';
+import type { FieldType, OperatorsOf } from '@nizam-os/keyset-core';
 
 import type { KeysetTypeOf } from '../jsonapi/keyset-types';
 import type { IsNullable } from '../schema/member-types';

@@ -1,5 +1,5 @@
 /**
- * `@netvark/tanstack-query-jsonapi`: TanStack Query's options for a client's
+ * `@nizam-os/tanstack-query-jsonapi`: TanStack Query's options for a client's
  * reads and writes (SPEC 16), keyed by the request, for every adapter.
  * `resourceQueries` makes them from a client `createClients` returned, and
  * `operationsMutation` sends Atomic Operations (SPEC 17.4).

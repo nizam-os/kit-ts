@@ -1,8 +1,8 @@
-import type { AnyResource } from '@netvark/jsonapi-core';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
 
 import { describe, expect, it } from 'vitest';
 
-import { defineResource } from '@netvark/jsonapi-core';
+import { defineResource } from '@nizam-os/jsonapi-core';
 
 import { Articles, People, Tags } from '../test-support/blog';
 import { fetchDouble, jsonApi } from '../test-support/fetch-double';

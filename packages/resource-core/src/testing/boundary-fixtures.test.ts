@@ -1,4 +1,4 @@
-import type { PublicCheckConstraint, Rule } from '@netvark/catalog-core';
+import type { PublicCheckConstraint, Rule } from '@nizam-os/catalog-core';
 
 import type { BoundaryFixture } from './fixture';
 

@@ -4,15 +4,15 @@
  * parameter it came in as the request spelled it, so the path keyset-core
  * gives a refused value leads back to that parameter.
  */
-import type { Filter, NoRelations } from '@netvark/keyset-core';
+import type { Filter, NoRelations } from '@nizam-os/keyset-core';
 
 import { describe, expect, it } from 'vitest';
 
-import { parseQuery } from '@netvark/jsonapi-core';
+import { parseQuery } from '@nizam-os/jsonapi-core';
 import {
   createDefineKeyset,
   InvalidFilterValueError,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import { Kinds } from '../test-support/keyset-kinds';
 import { filterParameters, keysetRequest } from './keyset-request';

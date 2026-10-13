@@ -13,11 +13,11 @@ application: every release from there on works with the package.
 Running each package that declares a peer range on its floor, with one copy of the peer as an
 application has, found the claims unchecked (#142):
 
-- `@netvark/hono-resource` could not load on its floor, `hono` 4.12.34: `hono/utils/url` exports the
+- `@nizam-os/hono-resource` could not load on its floor, `hono` 4.12.34: `hono/utils/url` exports the
   `tryDecodeURIComponent` it imports from 4.13.0 on.
-- `@netvark/kysely-resource`'s tests could not run on its floor, `kysely` 0.28.0: they reach PGlite
+- `@nizam-os/kysely-resource`'s tests could not run on its floor, `kysely` 0.28.0: they reach PGlite
   through `PGliteDialect`, which 0.29.0 added.
-- No CI job ran the Hono packages, `@netvark/pg-catalog`, or `@netvark/kysely-resource` on their
+- No CI job ran the Hono packages, `@nizam-os/pg-catalog`, or `@nizam-os/kysely-resource` on their
   floors.
 - The Kysely and Hono ranges admitted releases with published advisories, though the families had
   already set floors at a security fix: ban DESIGN's "upstream security floor" for `hono`, and

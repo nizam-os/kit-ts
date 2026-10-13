@@ -13,7 +13,7 @@ import type {
   DomainEvent,
   DomainShape,
   Effect,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { KyselyTransaction } from '../storage/transaction';
 import type { KyselyStorage } from '../storage/types';

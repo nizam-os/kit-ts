@@ -1,11 +1,11 @@
-import type { PublicCatalog, PublicColumn } from '@netvark/catalog-core';
+import type { PublicCatalog, PublicColumn } from '@nizam-os/catalog-core';
 
 import type { TestDatabase } from '../test-support/database';
 
 import { sql } from 'kysely';
 import { afterAll, describe, expect, it } from 'vitest';
 
-import { contractFixture } from '@netvark/resource-core/testing';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { contractDatabase } from '../test-support/database';
 import { castType, columnOf, tableName, tableOf, typed } from './sql';

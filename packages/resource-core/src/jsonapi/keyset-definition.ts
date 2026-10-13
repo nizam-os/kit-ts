@@ -1,6 +1,6 @@
 /**
  * A declared resource's keyset definition (SPEC 11.2): the
- * `@netvark/keyset-core` `DefaultedKeysetInit` of its list, everything but
+ * `@nizam-os/keyset-core` `DefaultedKeysetInit` of its list, everything but
  * the cursor, whose secret is server configuration, so the server passes
  * it to its own `createDefineKeyset({ cursor })`. Fields are keyed by
  * public name, the vocabulary of the JSON:API definition beside it
@@ -8,14 +8,14 @@
  * names a field keyset-core plans. Every option is spelled out: keyset-core
  * reads an absent `operators` as every operator of the type, and a server's
  * keyset definer would fill an absent page bound with its own default.
- * @ref https://github.com/netvark/netvark/blob/main/docs/keyset/SPEC.md (sections 3, 3.4, and 3.6)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md (sections 3, 3.4, and 3.6)
  * @packageDocumentation
  */
 import type {
   ColumnFieldInit,
   DefaultedKeysetInit,
   SortInput,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import type { KeysetMember, KeysetMembers } from '../declare/check-filters';
 import type { ResolvedSearch } from '../declare/check-options';

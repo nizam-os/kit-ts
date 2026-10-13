@@ -1,5 +1,5 @@
 /**
- * `@netvark/intl-core`: hydration-safe formatting for any JavaScript
+ * `@nizam-os/intl-core`: hydration-safe formatting for any JavaScript
  * runtime. `createIntl` makes formatters that read the locale and the
  * reader's time zone on every call; `createTimeZone` resolves the reader's
  * zone from a cookie, the same during SSR and after hydration; `isolate`

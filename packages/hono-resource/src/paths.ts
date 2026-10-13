@@ -13,12 +13,12 @@
  * @ref https://github.com/honojs/hono/blob/v4.13.13/src/utils/url.ts (getPath: `path.replace(/%25/g, '%2525')`, then `tryDecodeURI`)
  * @packageDocumentation
  */
-import type { ResourcePaths } from '@netvark/hono-jsonapi';
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { ResourcePaths } from '@nizam-os/hono-jsonapi';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import { tryDecodeURI } from 'hono/utils/url';
 
-import { resourcePaths } from '@netvark/hono-jsonapi';
+import { resourcePaths } from '@nizam-os/hono-jsonapi';
 
 /** A relationship's routes: its relationship link's and its related link's, where the definition builds them. */
 interface RelationshipRoutes {

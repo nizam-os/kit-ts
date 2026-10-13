@@ -4,7 +4,7 @@
  * fails `tsc` where it is written.
  * @packageDocumentation
  */
-import type { PublicCatalog, PublicTable } from '@netvark/catalog-core';
+import type { PublicCatalog, PublicTable } from '@nizam-os/catalog-core';
 
 /** The catalog keys of the tables. */
 export type TableName<TCatalog extends PublicCatalog> =

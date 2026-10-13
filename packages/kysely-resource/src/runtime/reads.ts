@@ -12,7 +12,7 @@
  * @ref https://jsonapi.org/format/1.1/#fetching-includes
  * @packageDocumentation
  */
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 import type {
   DomainShape,
   ListOptions,
@@ -20,7 +20,7 @@ import type {
   ResourceBehavior,
   StorageListRequest,
   StoragePage,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { Run } from './operation';
 

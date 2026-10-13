@@ -1,6 +1,6 @@
 /**
  * `keysetRequest(resource, query)` (SPEC 11.2): what a list route hands
- * `@netvark/keyset-core` for what `@netvark/jsonapi-core`'s `parseQuery`
+ * `@nizam-os/keyset-core` for what `@nizam-os/jsonapi-core`'s `parseQuery`
  * returned on the same declared resource. Both definitions name members
  * by their public names, so only the shapes of values differ:
  * `parseQuery` yields text, or a list for a repeated parameter, and
@@ -10,7 +10,7 @@
  * value goes unchanged: keyset-core accepts each type's text form and
  * refuses the rest with its own `InvalidFilterValueError` (keyset SPEC
  * 4.3), which a route renders like any refusal of the plan.
- * @ref https://github.com/netvark/netvark/blob/main/docs/jsonapi/adr/0007-filter-grammar.md ("interpreting them is the application's job")
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0007-filter-grammar.md ("interpreting them is the application's job")
  * @packageDocumentation
  */
 import type {
@@ -18,7 +18,7 @@ import type {
   ParameterValue,
   ParsedFilter,
   ParsedQuery,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 import type {
   FieldInit,
   FieldsInit,
@@ -27,12 +27,12 @@ import type {
   NoRelations,
   Operator,
   SortableFieldOf,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import type { FilterParameter } from './runtime';
 import type { StorageListRequest } from './storage';
 
-import { isOperator, UnsupportedFilterError } from '@netvark/keyset-core';
+import { isOperator, UnsupportedFilterError } from '@nizam-os/keyset-core';
 
 import { ownValue } from '../internal/object';
 

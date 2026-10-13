@@ -13,7 +13,7 @@
  * @ref https://vuejs.org/api/reactivity-advanced.html#shallowref
  * @ref https://tanstack.com/query/v5/docs/framework/vue/guides/invalidations-from-mutations
  */
-import type { BulkAction, ListState } from '@netvark/resource-ui';
+import type { BulkAction, ListState } from '@nizam-os/resource-ui';
 
 import type {
   Contact,
@@ -23,7 +23,7 @@ import type {
 import { useMutation, useQuery } from '@tanstack/vue-query';
 import { defineComponent, h, shallowRef } from 'vue';
 
-import { bulkActions, fieldsOf, resourceList } from '@netvark/resource-ui';
+import { bulkActions, fieldsOf, resourceList } from '@nizam-os/resource-ui';
 
 import { contactMessages } from '../../localization/contact-messages.ts';
 import { m } from '../../localization/paraglide/messages.js';

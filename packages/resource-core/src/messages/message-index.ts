@@ -7,13 +7,13 @@
  * them, an enum's labels or an `enum` rule's values, or its elements'.
  * @packageDocumentation
  */
-import type { Catalog } from '@netvark/ban-core';
+import type { Catalog } from '@nizam-os/ban-core';
 
 import type { DeclaredResource } from '../declare/declared-resource';
 import type { ConstraintKind } from '../errors/error-entry';
 
-import { BUILTIN_CATALOG, resolveDefinition } from '@netvark/ban-core';
-import { ERROR_CODES } from '@netvark/jsonapi-core';
+import { BUILTIN_CATALOG, resolveDefinition } from '@nizam-os/ban-core';
+import { ERROR_CODES } from '@nizam-os/jsonapi-core';
 
 import { QUOTA_EXCEEDED_CODE } from '../errors/quota-exceeded';
 

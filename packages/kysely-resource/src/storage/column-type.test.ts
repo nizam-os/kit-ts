@@ -2,11 +2,11 @@ import type {
   PublicCatalog,
   PublicColumn,
   PublicDomain,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import { describe, expect, it } from 'vitest';
 
-import { contractFixture } from '@netvark/resource-core/testing';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { columnType } from './column-type';
 import { columnOf, tableOf } from './sql';

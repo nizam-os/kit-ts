@@ -6,12 +6,12 @@
  * resource's behavior by the key it is held under.
  * @packageDocumentation
  */
-import type { Catalog } from '@netvark/catalog-core';
-import type { ResourceBehavior, Scope } from '@netvark/resource-core/server';
+import type { Catalog } from '@nizam-os/catalog-core';
+import type { ResourceBehavior, Scope } from '@nizam-os/resource-core/server';
 
 import type { StorageConfig } from '../storage/options';
 
-import { isResourceBehavior } from '@netvark/resource-core/server';
+import { isResourceBehavior } from '@nizam-os/resource-core/server';
 
 import { checkKeys } from '../internal/kysely-options';
 import { isRecord } from '../internal/object';
@@ -133,7 +133,7 @@ export function bootContext(caller: string, options: unknown): BootContext {
     {
       whole: 'an object of behaviors keyed by type',
       member:
-        'a behavior defineResource returned (a second installed copy of @netvark/resource-core also fails this)',
+        'a behavior defineResource returned (a second installed copy of @nizam-os/resource-core also fails this)',
     },
   );
   const scopes = records(caller, 'scopes', options['scopes'], isBinding, {

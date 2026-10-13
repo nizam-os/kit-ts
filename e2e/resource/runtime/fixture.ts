@@ -8,12 +8,12 @@
  */
 import type { Kysely } from 'kysely';
 
-import type { Catalog } from '@netvark/catalog-core';
+import type { Catalog } from '@nizam-os/catalog-core';
 import type {
   ResourceInput,
   ResourceRuntime,
   RuntimeOptions,
-} from '@netvark/kysely-resource';
+} from '@nizam-os/kysely-resource';
 
 import type {
   AppActor,
@@ -23,11 +23,11 @@ import type {
   Services,
 } from './domain.ts';
 
-import { BanError } from '@netvark/ban-core';
+import { BanError } from '@nizam-os/ban-core';
 import {
   createKyselyStorage,
   createResourceRuntime,
-} from '@netvark/kysely-resource';
+} from '@nizam-os/kysely-resource';
 
 import { catalog } from '../fixtures/contacts/catalog.ts';
 import { publicCatalog } from '../fixtures/contacts/public-catalog.ts';
@@ -100,7 +100,7 @@ export const manager = member(1, [
 ]);
 export const globex = member(2, ['contacts:read', 'contacts:write']);
 
-/** A contact's attributes as `@netvark/jsonapi-core` parses a resource object. */
+/** A contact's attributes as `@nizam-os/jsonapi-core` parses a resource object. */
 export function contact(attributes: Record<string, unknown>): ResourceInput {
   return { attributes, relationships: {} };
 }

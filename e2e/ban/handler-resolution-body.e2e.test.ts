@@ -5,14 +5,14 @@ import type {
   EmptyCatalog,
   ErrorReport,
   HandlerOptions,
-} from '@netvark/hono-ban';
+} from '@nizam-os/hono-ban';
 
 import type { FetchApp, RunningServer } from './support/server';
 
 import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan, defineFormat } from '@netvark/hono-ban';
+import { createBan, defineFormat } from '@nizam-os/hono-ban';
 
 import { compileWithAjv } from './support/ajv';
 import { startServer } from './support/server';

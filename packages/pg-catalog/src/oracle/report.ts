@@ -15,7 +15,7 @@ export interface RuleDisagreement {
   readonly reason: string;
 }
 
-/** A case of `@netvark/resource-core`'s `oracleCases` and how it went. */
+/** A case of `@nizam-os/resource-core`'s `oracleCases` and how it went. */
 export interface RuleCaseReport {
   /** What the case tried: `contacts.email`, `meetings.during (codec range)`. */
   readonly subject: string;

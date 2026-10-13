@@ -7,8 +7,8 @@
  * @ref https://kysely-org.github.io/kysely-apidoc/classes/Kysely.html#withoutplugins
  * @packageDocumentation
  */
-import type { Keyset } from '@netvark/keyset-core';
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { Keyset } from '@nizam-os/keyset-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import type { KyselyStorage, KyselyStorageOptions } from './types';
 

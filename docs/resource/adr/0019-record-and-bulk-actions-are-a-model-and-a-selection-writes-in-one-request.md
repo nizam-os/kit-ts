@@ -42,7 +42,7 @@ https://marmelab.com/react-admin/Buttons.html @ref https://jsonapi.org/ext/atomi
 ## Decision
 
 - **Two models.** `recordActions(resource, options)` and `bulkActions(resource, options)` in
-  `@netvark/resource-ui` describe the actions the application names, each a removal or an update
+  `@nizam-os/resource-ui` describe the actions the application names, each a removal or an update
   with fixed values. The declaration must serve the write: `remove` or `update` declared, values of
   members the update writes that its write validator accepts. The types refuse any other, and so
   does each function, with `TypeError`, before it returns.
@@ -75,7 +75,7 @@ https://marmelab.com/react-admin/Buttons.html @ref https://jsonapi.org/ext/atomi
 A screen builds its row menu and its selection bar from two models and keeps its own markup. A bulk
 write never leaves part of a selection changed, so there is no partial result to report, and a
 refusal shows on the row it names. A record action's request is the single call, while a bulk
-action's needs the operations endpoint, which `@netvark/hono-resource` serves. Texts and `disabled`
+action's needs the operations endpoint, which `@nizam-os/hono-resource` serves. Texts and `disabled`
 see a selection's ids and count, not its records. Values a person chooses for a selection, such as a
 status picked in a dialog, are left to a later change: a form over chosen members that starts blank
 and writes each of them. For one record, that form is an update form already (SPEC 20.3).

@@ -9,7 +9,7 @@
  * floor.
  * @ref https://pglite.dev/docs/api#refresharraytypes
  */
-import type { CatalogColumn } from '@netvark/catalog-core';
+import type { CatalogColumn } from '@nizam-os/catalog-core';
 
 import type { SqlSession } from '../target/session';
 import type { OracleContext } from '../test-support/driver-oracle';

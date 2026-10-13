@@ -8,7 +8,7 @@
  * stated lengths allow at which a filler meets them, so `^[0-9]{14}$` is
  * probed at 14 code points.
  */
-import type { FieldLimits } from '@netvark/resource-core';
+import type { FieldLimits } from '@nizam-os/resource-core';
 
 import type { MetaProbe } from './meta-probes.ts';
 

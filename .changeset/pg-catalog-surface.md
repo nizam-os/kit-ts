@@ -1,5 +1,5 @@
 ---
-'@netvark/pg-catalog': minor
+'@nizam-os/pg-catalog': minor
 ---
 
 `surface` keeps a snapshot of your API's surface and fails CI when a change breaks a client.

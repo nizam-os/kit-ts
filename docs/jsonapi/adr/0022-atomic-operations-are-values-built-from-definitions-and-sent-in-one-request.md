@@ -77,7 +77,7 @@ https://jsonapi.org/format/1.1/#document-top-level
   the server answers (ADR 0017), and the definitions carry the cap for the screens that read it (ADR
   0023).
 - **The query binding.** `operationsMutation(transport, settings?)` in
-  `@netvark/tanstack-query-jsonapi` gives mutation options whose `mutationFn` sends the operations
+  `@nizam-os/tanstack-query-jsonapi` gives mutation options whose `mutationFn` sends the operations
   and whose `onSuccess` removes the `get` entries of every record a removal removed, invalidates
   every type the operations write and the keys `settings.invalidates` names, and returns that
   promise, as the single writes do (SPEC 16.4); its types hold only the members it sets (ADR 0020).
@@ -86,7 +86,7 @@ https://jsonapi.org/format/1.1/#document-top-level
 
 A change to a selection is one request that commits or fails whole, and a refusal names the record
 it is about. Operations are plain data a test compares and a model builds. The client reaches
-operations only at `<base>/operations`, where `@netvark/hono-resource` serves them; a server that
+operations only at `<base>/operations`, where `@nizam-os/hono-resource` serves them; a server that
 mounts the endpoint elsewhere is called by hand, as one whose links `resourcePaths` cannot read is.
 A result's record resolves no relationship, since the extension's results include nothing. A request
 that updates or removes what it creates is written as the create.

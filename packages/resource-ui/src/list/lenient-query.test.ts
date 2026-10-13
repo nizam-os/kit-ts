@@ -7,11 +7,11 @@
  * another shape is dropped member by member; and the state reads back to
  * the parameters it came from.
  */
-import type { AnyResource } from '@netvark/jsonapi-core';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
 
 import { describe, expect, it } from 'vitest';
 
-import { createDefineResource } from '@netvark/jsonapi-core';
+import { createDefineResource } from '@nizam-os/jsonapi-core';
 
 import { messages } from '../test-support/messages';
 import { Contacts, Organizations } from '../test-support/resources';

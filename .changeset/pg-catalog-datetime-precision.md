@@ -1,6 +1,6 @@
 ---
-'@netvark/pg-catalog': patch
-'@netvark/catalog-core': patch
+'@nizam-os/pg-catalog': patch
+'@nizam-os/catalog-core': patch
 ---
 
 Record the precision of `timestamp(p)`, `timestamptz(p)`, `time(p)`, and `timetz(p)` columns and

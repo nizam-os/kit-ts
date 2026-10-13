@@ -1,4 +1,4 @@
-# @netvark/hono-jsonapi
+# @nizam-os/hono-jsonapi
 
 [JSON:API 1.1](https://jsonapi.org/format/1.1/) for [Hono](https://hono.dev). Declare a resource
 once; get typed query parsing, document building with compound documents and sparse fieldsets,
@@ -6,10 +6,10 @@ request document validation with JSON Pointers, content negotiation, the
 [Cursor Pagination](https://jsonapi.org/profiles/ethanresnick/cursor-pagination/) profile, and the
 [Atomic Operations](https://jsonapi.org/ext/atomic/) extension. Every rule is a cited clause of the
 specification; where the specification leaves a choice to the server, the choice is written down in
-[`docs/jsonapi/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md).
+[`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md).
 
 This is the Hono adapter of
-[`@netvark/jsonapi-core`](https://www.npmjs.com/package/@netvark/jsonapi-core), the framework-free
+[`@nizam-os/jsonapi-core`](https://www.npmjs.com/package/@nizam-os/jsonapi-core), the framework-free
 core. Everything the core exports is re-exported here, so a Hono application imports from one
 package; what this package adds is the glue: the `jsonApi()` middleware, validators typed for
 `c.req.valid()`, `respond`, `readDocument`, `errorHandler` and `notFoundHandler`, and the operations
@@ -18,21 +18,21 @@ endpoint as a handler.
 ## Install
 
 ```bash
-pnpm add @netvark/hono-jsonapi hono @netvark/hono-ban
+pnpm add @nizam-os/hono-jsonapi hono @nizam-os/hono-ban
 ```
 
 Node 22.12+, Bun, Deno, and Cloudflare Workers are supported. CI runs the unit and end-to-end suites
 on Node 22 and 24, the unit suite on Hono 4.13.7, and a smoke test of both subpaths on Bun, Deno,
 and workerd. `hono >= 4.13.7`, the first release no published Hono advisory affects, and
-[`@netvark/hono-ban`](https://github.com/netvark/netvark) are the peer dependencies: every error is
-a @netvark/ban-core error and `errorHandler()` is a @netvark/hono-ban handler (see Errors).
+[`@nizam-os/hono-ban`](https://github.com/nizam-os/kit) are the peer dependencies: every error is
+a @nizam-os/ban-core error and `errorHandler()` is a @nizam-os/hono-ban handler (see Errors).
 Validators are accepted through [Standard Schema](https://standardschema.dev) (Zod 4, Valibot,
 ArkType, and others) without importing any of them.
 
 ## Quick start
 
 ```ts
-import type { JsonApiEnv } from '@netvark/hono-jsonapi';
+import type { JsonApiEnv } from '@nizam-os/hono-jsonapi';
 
 import { Hono } from 'hono';
 
@@ -45,7 +45,7 @@ import {
   queryValidator,
   resourceDocument,
   respond,
-} from '@netvark/hono-jsonapi';
+} from '@nizam-os/hono-jsonapi';
 
 const Articles = defineResource({
   type: 'articles',
@@ -187,7 +187,7 @@ Best practices:
 
   ```jsonc
   // .oxlintrc.json or an ESLint config
-  "no-restricted-imports": ["error", { "paths": [{ "name": "@netvark/jsonapi-core", "importNames": ["defineResource"], "message": "Import defineResource from resources/define.ts" }] }]
+  "no-restricted-imports": ["error", { "paths": [{ "name": "@nizam-os/jsonapi-core", "importNames": ["defineResource"], "message": "Import defineResource from resources/define.ts" }] }]
   ```
 
 - **Override only what deviates.** A builder written out wins over the derived one and the rest
@@ -301,7 +301,7 @@ with `attributes` typed as the validator's output. Every problem carries an RFC 
 `/data/attributes/title`, `/data/relationships/author/data/type`.
 
 ```ts
-import { bodyValidator, toManyLinkage, toOneLinkage } from '@netvark/hono-jsonapi';
+import { bodyValidator, toManyLinkage, toOneLinkage } from '@nizam-os/hono-jsonapi';
 
 app.post('/articles', bodyValidator(Articles, { operation: 'create' }), async (c) => {
   const { attributes, relationships } = c.req.valid('json');
@@ -354,8 +354,8 @@ application may mount every relationship's route and let the definition decide.
 
 ### Errors
 
-Every error is a [@netvark/ban-core](https://github.com/netvark/netvark) `BanError` from a closed
-catalog (`ERROR_CATALOG` over @netvark/ban-core's built-ins) in which each `code` fixes `status` and
+Every error is a [@nizam-os/ban-core](https://github.com/nizam-os/kit) `BanError` from a closed
+catalog (`ERROR_CATALOG` over @nizam-os/ban-core's built-ins) in which each `code` fixes `status` and
 `title`; `detail` and `source` vary per occurrence. `jsonApiError` builds one error object; a list
 of `errorItem`s reports several problems at once, each object with its own identity and the response
 status the specification derives from them.
@@ -380,13 +380,13 @@ throw jsonApiError([
 
 The details the package writes quote what the client sent only when it is a plain token, such as a
 member name or an id, and otherwise name the value without it; `source` still says where it was
-([ADR 0016](https://github.com/netvark/netvark/blob/main/docs/jsonapi/adr/0016-details-quote-request-text-as-plain-tokens.md)).
+([ADR 0016](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0016-details-quote-request-text-as-plain-tokens.md)).
 Write yours the same way: a 404 for `/articles/<script>` says the article does not exist, not which
 text the client typed.
 
-`errorHandler()` is [@netvark/hono-ban](https://github.com/netvark/netvark)'s handler over the same
+`errorHandler()` is [@nizam-os/hono-ban](https://github.com/nizam-os/kit)'s handler over the same
 catalog. It renders anything thrown: a `BanError` as is (this package's, the rejections the
-validators and `jsonApi()` throw, your own instance's, any other library's on @netvark/ban-core),
+validators and `jsonApi()` throw, your own instance's, any other library's on @nizam-os/ban-core),
 Hono's `HTTPException` by status, and everything else as a constant 500 that reveals nothing. Every
 response carries the error id in `X-Error-Id` and in each error object's `id`,
 `Cache-Control: no-store`, and `meta.traceId` from a W3C `traceparent`; the thrown value reaches
@@ -404,14 +404,14 @@ app.onError(
 ```
 
 `onReport`, `headers`, `map`, `transform`, `includeStack`, and the id and trace options are
-@netvark/hono-ban's; `document` adds top-level members to every error document and `format` is the
+@nizam-os/hono-ban's; `document` adds top-level members to every error document and `format` is the
 JSON:API format's own options. An application with entries of its own builds the instance itself
 with the catalog spread in and installs its `onError`; this package's errors render through it
 unchanged:
 
 ```ts
-import { createBan } from '@netvark/hono-ban';
-import { jsonApi as jsonApiFormat } from '@netvark/hono-ban/formats/json-api';
+import { createBan } from '@nizam-os/hono-ban';
+import { jsonApi as jsonApiFormat } from '@nizam-os/hono-ban/formats/json-api';
 
 const ban = createBan({
   errors: { ...ERROR_CATALOG, QUOTA_EXHAUSTED: { status: 429, title: 'Quota Exhausted' } },
@@ -447,7 +447,7 @@ app.use(
 
 ### Atomic operations
 
-`@netvark/hono-jsonapi/atomic` implements the extension over handlers you write per resource, typed
+`@nizam-os/hono-jsonapi/atomic` implements the extension over handlers you write per resource, typed
 by the definition. You own the transaction; the processor runs the operations in order inside it,
 resolves `lid` references to the ids earlier operations produced, answers with `atomic:results` in
 operation order (or `204` when no operation returned data), and points every error at the operation
@@ -458,10 +458,10 @@ middleware set.
 ```ts
 import type { Context } from 'hono';
 
-import type { ResourceHandlers } from '@netvark/hono-jsonapi/atomic';
+import type { ResourceHandlers } from '@nizam-os/hono-jsonapi/atomic';
 
-import { resourcePaths } from '@netvark/hono-jsonapi';
-import { atomicOperations } from '@netvark/hono-jsonapi/atomic';
+import { resourcePaths } from '@nizam-os/hono-jsonapi';
+import { atomicOperations } from '@nizam-os/hono-jsonapi/atomic';
 
 const articleHandlers: ResourceHandlers<typeof Articles, Transaction, Context<JsonApiEnv>> = {
   resource: Articles,
@@ -507,27 +507,27 @@ most the `atomic.max` the definitions share, 10 unless their definer's `atomic` 
 
 ### The core on its own
 
-Everything that is not a Hono hook comes from `@netvark/jsonapi-core` and is re-exported unchanged:
+Everything that is not a Hono hook comes from `@nizam-os/jsonapi-core` and is re-exported unchanged:
 `parseQuery`, `parseCreateDocument`, `parseUpdateDocument`, the relationship document parsers,
 `negotiate`, `paginationLinks`, the document builders, and `operationsProcessor` are pure functions
 over plain values, usable from a non-Hono handler, a worker, or a client that wants the same checks
 before sending. See the
-[`@netvark/jsonapi-core` README](https://www.npmjs.com/package/@netvark/jsonapi-core).
+[`@nizam-os/jsonapi-core` README](https://www.npmjs.com/package/@nizam-os/jsonapi-core).
 
 ## Modules
 
 | Subpath                        | What it holds                                                                                                                                                                              |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `@netvark/hono-jsonapi`        | All of `@netvark/jsonapi-core`, plus `jsonApi()`, `respond`, `respondError`, `readDocument`, `queryValidator`, `bodyValidator`, `relationshipValidator`, `errorHandler`, `notFoundHandler` |
-| `@netvark/hono-jsonapi/atomic` | All of `@netvark/jsonapi-core/atomic`, plus `atomicOperations()`                                                                                                                           |
+| `@nizam-os/hono-jsonapi`        | All of `@nizam-os/jsonapi-core`, plus `jsonApi()`, `respond`, `respondError`, `readDocument`, `queryValidator`, `bodyValidator`, `relationshipValidator`, `errorHandler`, `notFoundHandler` |
+| `@nizam-os/hono-jsonapi/atomic` | All of `@nizam-os/jsonapi-core/atomic`, plus `atomicOperations()`                                                                                                                           |
 
 ## Documentation
 
-- [`docs/jsonapi/DESIGN.md`](https://github.com/netvark/netvark/blob/main/docs/jsonapi/DESIGN.md):
+- [`docs/jsonapi/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/DESIGN.md):
   what the packages are, the principles, and the API by example
-- [`docs/jsonapi/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md): the
+- [`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md): the
   normative contract, section by section, with the tests that prove it
-- [`docs/jsonapi/adr/`](https://github.com/netvark/netvark/tree/main/docs/jsonapi/adr): the
+- [`docs/jsonapi/adr/`](https://github.com/nizam-os/kit/tree/main/docs/jsonapi/adr): the
   decisions, including every choice the specification leaves to the server
 
 ## License

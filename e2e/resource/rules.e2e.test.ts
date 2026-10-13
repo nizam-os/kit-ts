@@ -8,7 +8,7 @@
  * whose text the database refuses, and a catalog older than the
  * migrations.
  */
-import type { ExtractionConfig, RulesReport } from '@netvark/pg-catalog';
+import type { ExtractionConfig, RulesReport } from '@nizam-os/pg-catalog';
 
 import type { Period } from './support/time-range-text.ts';
 
@@ -19,9 +19,9 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 
-import { checkRules } from '@netvark/pg-catalog';
-import { createDeclareResource, defineValidator } from '@netvark/resource-core';
-import { oracleCases } from '@netvark/resource-core/testing';
+import { checkRules } from '@nizam-os/pg-catalog';
+import { createDeclareResource, defineValidator } from '@nizam-os/resource-core';
+import { oracleCases } from '@nizam-os/resource-core/testing';
 
 import { publicCatalog as contactsCatalog } from './fixtures/contacts/public-catalog.ts';
 import { Calls } from './resources/calls.ts';

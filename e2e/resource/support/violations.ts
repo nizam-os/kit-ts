@@ -5,7 +5,7 @@
  * seed holds what a duplicate, a missing reference, and an overlap need.
  * Values are SQL literals written here, never input.
  */
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import { Contacts } from '../resources/contacts.ts';
 import { Meetings } from '../resources/meetings.ts';

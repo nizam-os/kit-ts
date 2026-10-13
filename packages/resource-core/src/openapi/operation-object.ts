@@ -8,11 +8,11 @@
  * @ref https://jsonapi.org/format/1.1/#content-negotiation
  * @packageDocumentation
  */
-import type { JsonSchema } from '@netvark/ban-core';
+import type { JsonSchema } from '@nizam-os/ban-core';
 import type {
   ReferenceObject,
   ResponseObject,
-} from '@netvark/ban-core/openapi';
+} from '@nizam-os/ban-core/openapi';
 
 import type { DeclaredInternals } from '../declare/declared-resource';
 import type { DocumentOperation } from './operation-codes';

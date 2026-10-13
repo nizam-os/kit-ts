@@ -6,7 +6,7 @@
  * have any of them, and what its behaviors type passes where a host
  * takes the wide types.
  */
-import type { Page } from '@netvark/keyset-core';
+import type { Page } from '@nizam-os/keyset-core';
 
 import type { DeclaredResource } from '../declare/declared-resource';
 import type { Actor } from './domain-types';

@@ -1,5 +1,5 @@
 ---
-'@netvark/kysely-resource': minor
+'@nizam-os/kysely-resource': minor
 ---
 
 Requires `kysely` 0.29.0 or later. The tests run every query against PGlite through Kysely's

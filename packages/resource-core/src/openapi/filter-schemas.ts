@@ -1,22 +1,22 @@
 /**
  * The schema of each filter parameter (SPEC 11.2, 11.3, 13.1): the text
- * `@netvark/keyset-core` accepts for the member's keyset type (keyset SPEC
+ * `@nizam-os/keyset-core` accepts for the member's keyset type (keyset SPEC
  * 4.3), one value per parameter; a list for `in`, `nin`, `between`, and an
  * array's operators, sent as the parameter repeated, which
  * `keysetRequest` reads as a list; `true` or `false` for `isNull`. The
  * patterns spell keyset-core's own in the regular expression tokens JSON
  * Schema recommends; the dates keyset-core checks against the calendar
  * are left to the server.
- * @ref https://github.com/netvark/netvark/blob/main/docs/keyset/SPEC.md (sections 4.2 and 4.3)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md (sections 4.2 and 4.3)
  * @ref https://spec.openapis.org/oas/v3.1.2.html#style-values (form, exploded)
  * @packageDocumentation
  */
-import type { JsonSchema } from '@netvark/ban-core';
+import type { JsonSchema } from '@nizam-os/ban-core';
 import type {
   FieldInit,
   Operator,
   ScalarFieldType,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 const INTEGER = '^[+-]?[0-9]+$';
 const DECIMAL = '[+-]?([0-9]+\\.?[0-9]*|\\.[0-9]+)';

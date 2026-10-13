@@ -63,7 +63,7 @@ describe('the mapping, type-checked against the compiled messages', () => {
     await writeFile(
       join(dir, 'check.ts'),
       [
-        "import type { IssueInputs, Message } from '@netvark/resource-core';",
+        "import type { IssueInputs, Message } from '@nizam-os/resource-core';",
         "import { m } from './paraglide/messages.js';",
         "export const minLength: Message<IssueInputs['minLength']> = m.validation_min_length;",
         "export const maxLength: Message<IssueInputs['maxLength']> = m.validation_max_length;",

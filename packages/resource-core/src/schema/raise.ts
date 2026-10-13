@@ -1,6 +1,6 @@
 /**
  * How resource-core's own checks report (SPEC 6.4): a Zod `custom` issue
- * whose `params.netvark` holds the issue kind and the keyword's value, or a
+ * whose `params.nizam` holds the issue kind and the keyword's value, or a
  * validator's constraint code, so the mapping to `ResourceIssue` never
  * reads Zod's own codes or messages for them.
  * @ref https://zod.dev/api#check
@@ -12,11 +12,11 @@ import type { Violation } from './issue-kinds';
 
 import { CONSTRAINT_MESSAGE, issueMessage } from './issue-messages';
 
-/** What `params.netvark` holds: a kind and its `expected`, or a constraint code. */
+/** What `params.nizam` holds: a kind and its `expected`, or a constraint code. */
 export type IssueParams = Violation | { readonly code: string };
 
 /** The `params` key resource-core's issues carry. */
-export const PARAMS_KEY = 'netvark';
+export const PARAMS_KEY = 'nizam';
 
 interface RaiseOptions {
   /** Whether later checks of the same value are skipped: a value outside its wire form is not compared further. */

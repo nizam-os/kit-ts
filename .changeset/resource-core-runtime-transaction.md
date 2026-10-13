@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 The runtime contract gains `transaction(actor, work)`: `work` receives the domain `as(actor)` gives,

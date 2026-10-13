@@ -13,7 +13,7 @@ import {
   compile,
   isolate,
   MessageFormattingError,
-} from '@netvark/paraglide-intl';
+} from '@nizam-os/paraglide-intl';
 
 import { importMessages, message, writeProject } from './support/project';
 

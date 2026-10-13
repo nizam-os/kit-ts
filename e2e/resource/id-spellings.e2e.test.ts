@@ -16,7 +16,7 @@
  * @ref https://www.postgresql.org/docs/18/functions-string.html#FUNCTIONS-STRING-FORMAT
  * @ref https://www.postgresql.org/docs/18/datatype-character.html
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
 
 import type { OracleDatabase } from './support/oracle-database.ts';
 

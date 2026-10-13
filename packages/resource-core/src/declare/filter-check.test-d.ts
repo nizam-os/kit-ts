@@ -4,7 +4,7 @@ import type {
   PublicDomain,
   PublicTable,
   TypeKind,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import type { KeysetTypeOf } from '../jsonapi/keyset-types';
 import type { ContactsCatalog } from '../test-support/contacts';

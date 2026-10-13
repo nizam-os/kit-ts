@@ -1,4 +1,4 @@
-# @netvark/kysely-keyset
+# @nizam-os/kysely-keyset
 
 Keyset pagination for [Kysely](https://kysely.dev) on PostgreSQL. Declare once what a collection can
 sort, filter, and search on, checked against your `DB` interface; then `paginate` any select query
@@ -7,10 +7,10 @@ timestamps. The page semantics are those of the JSON:API
 [Cursor Pagination profile](https://jsonapi.org/profiles/ethanresnick/cursor-pagination/); every
 rule is a cited clause of the profile or the PostgreSQL manual, and every choice the profile leaves
 open is written down in
-[`docs/keyset/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/keyset/SPEC.md).
+[`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md).
 
 This is the Kysely adapter of
-[`@netvark/keyset-core`](https://www.npmjs.com/package/@netvark/keyset-core), the database-free
+[`@nizam-os/keyset-core`](https://www.npmjs.com/package/@nizam-os/keyset-core), the database-free
 core. Everything the core exports is re-exported here, so an application imports from one package;
 what this package adds is `createDefineKeyset<DB>()`, `paginate`, and the two render functions that
 turn the core's plan into Kysely expressions.
@@ -18,7 +18,7 @@ turn the core's plan into Kysely expressions.
 ## Install
 
 ```bash
-pnpm add @netvark/kysely-keyset kysely
+pnpm add @nizam-os/kysely-keyset kysely
 ```
 
 `kysely >= 0.28.17` is the peer dependency, the first release past Kysely's published SQL injection
@@ -34,7 +34,7 @@ PostgreSQL 14 and 18 servers, and a smoke test on Bun, Deno, and workerd.
 ```ts
 import type { DB } from './db'; // your Kysely database interface
 
-import { createDefineKeyset } from '@netvark/kysely-keyset';
+import { createDefineKeyset } from '@nizam-os/kysely-keyset';
 
 // keysets/define.ts: one definer for the whole application, holding what every keyset shares.
 export const defineKeyset = createDefineKeyset<DB>({
@@ -314,7 +314,7 @@ const page = await contacts.paginate(query, request, {
 
 `plan` and `paginate` reject a bad request before any query runs, with one of the core's
 `KeysetError` classes: a stable `code`, the detail in fields, a constant message. A JSON:API layer
-on [`@netvark/jsonapi-core`](https://github.com/netvark/netvark) maps them to the profile's error
+on [`@nizam-os/jsonapi-core`](https://github.com/nizam-os/kit) maps them to the profile's error
 objects:
 
 ```ts
@@ -324,8 +324,8 @@ import {
   maxPageSizeExceededError,
   rangePaginationNotSupportedError,
   unsupportedSortError,
-} from '@netvark/jsonapi-core';
-import { isKeysetError } from '@netvark/kysely-keyset';
+} from '@nizam-os/jsonapi-core';
+import { isKeysetError } from '@nizam-os/kysely-keyset';
 
 function toJsonApi(error: unknown): never {
   if (!isKeysetError(error)) throw error;
@@ -349,10 +349,10 @@ function toJsonApi(error: unknown): never {
 
 `error.fields` are the sort items as the client sent them; `unsupportedSortError` quotes one only
 when it is a plain token and otherwise writes `A sort field is not supported by this endpoint`
-([jsonapi ADR 0016](https://github.com/netvark/netvark/blob/main/docs/jsonapi/adr/0016-details-quote-request-text-as-plain-tokens.md)),
+([jsonapi ADR 0016](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0016-details-quote-request-text-as-plain-tokens.md)),
 so they pass through as they came. The `default` branch's `error.message` is constant.
 
-With `@netvark/jsonapi-core`, the parsed query's `page` is the request's `page`, and the page is the
+With `@nizam-os/jsonapi-core`, the parsed query's `page` is the request's `page`, and the page is the
 document's input:
 `paginatedDocument(Contacts, { rows: page.rows, next: page.next, prev: page.prev, total: page.total, cursor: (row) => page.cursor(row) }, { url, query })`.
 Keep both definitions' page bounds equal, since each applies its own default and max.
@@ -422,11 +422,11 @@ Keep both definitions' page bounds equal, since each applies its own default and
 
 ## Documentation
 
-- [`docs/keyset/DESIGN.md`](https://github.com/netvark/netvark/blob/main/docs/keyset/DESIGN.md):
+- [`docs/keyset/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/DESIGN.md):
   what the packages are, the principles, and the API by example
-- [`docs/keyset/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/keyset/SPEC.md): the
+- [`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md): the
   normative contract, section by section, with the tests that prove it
-- [`docs/keyset/adr/`](https://github.com/netvark/netvark/tree/main/docs/keyset/adr): the decisions,
+- [`docs/keyset/adr/`](https://github.com/nizam-os/kit/tree/main/docs/keyset/adr): the decisions,
   including every choice the profile leaves to the server
 
 ## License

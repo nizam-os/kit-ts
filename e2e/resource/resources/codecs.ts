@@ -8,7 +8,7 @@ import { z } from 'zod';
  * instants are in UTC, as the server reads them back; `pg-catalog rules
  * --check` holds them to it (`rules.e2e.test.ts`).
  */
-import { defineCodec } from '@netvark/resource-core';
+import { defineCodec } from '@nizam-os/resource-core';
 
 const instant = z.iso.datetime({ offset: true });
 

@@ -5,7 +5,7 @@ import type {
   Catalog,
   EmptyCatalog,
   Factory,
-} from '@netvark/ban-core';
+} from '@nizam-os/ban-core';
 
 import type { Ban } from './create-ban';
 
@@ -17,7 +17,7 @@ import { createBan } from './create-ban';
 type AppEnv = { Bindings: { DB: string }; Variables: { user: string } };
 declare const app: Hono<AppEnv>;
 
-describe('createBan (@netvark/hono-ban) types', () => {
+describe('createBan (@nizam-os/hono-ban) types', () => {
   it('returns the core instance plus onError', () => {
     const ban = createBan({ errors: { TEAPOT: { status: 418 } } });
     expectTypeOf(ban.TEAPOT).toEqualTypeOf<Factory>();

@@ -5,8 +5,8 @@
  * whose probe cannot be built reports its problem, and each case gets a
  * fresh probe.
  */
-import type { Catalog } from '@netvark/catalog-core';
-import type { OracleCase, OracleVerdict } from '@netvark/resource-core/testing';
+import type { Catalog } from '@nizam-os/catalog-core';
+import type { OracleCase, OracleVerdict } from '@nizam-os/resource-core/testing';
 
 import type { SqlSession } from '../target/session';
 

@@ -6,7 +6,7 @@
  */
 import { z } from 'zod';
 
-import { createDefineResource, defineResource } from '@netvark/jsonapi-core';
+import { createDefineResource, defineResource } from '@nizam-os/jsonapi-core';
 
 const defineLinked = createDefineResource({ links: { base: '/api' } });
 

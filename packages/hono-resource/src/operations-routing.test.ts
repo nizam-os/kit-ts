@@ -13,9 +13,9 @@ import type { TestEnv } from './test-support/app';
 import { Hono } from 'hono';
 import { describe, expect, it } from 'vitest';
 
-import { errorHandler, jsonApi } from '@netvark/hono-jsonapi';
-import { createDeclareResource } from '@netvark/resource-core';
-import { contractFixture } from '@netvark/resource-core/testing';
+import { errorHandler, jsonApi } from '@nizam-os/hono-jsonapi';
+import { createDeclareResource } from '@nizam-os/resource-core';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { jsonApiRoutes } from './routes';
 import { memberOf, testApp } from './test-support/app';

@@ -4,7 +4,7 @@
  * enum, and whether the column, or a domain on the way, is an array.
  * @packageDocumentation
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
 
 import { ownValue } from '../internal/object';
 

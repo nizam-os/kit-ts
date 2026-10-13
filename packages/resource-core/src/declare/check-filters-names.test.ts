@@ -24,7 +24,7 @@ describe('declareResource: the names keyset-core and jsonapi-core take (SPEC 11.
         }),
       ),
     ).toBe(
-      `contacts.fields.name.filter: public name "größe" is outside @netvark/keyset-core's field names ${SYNTAX}`,
+      `contacts.fields.name.filter: public name "größe" is outside @nizam-os/keyset-core's field names ${SYNTAX}`,
     );
     expect(
       typeErrorOf(
@@ -33,7 +33,7 @@ describe('declareResource: the names keyset-core and jsonapi-core take (SPEC 11.
         }),
       ),
     ).toBe(
-      `contacts.fields.name.sort: public name "full name" is outside @netvark/keyset-core's field names ${SYNTAX}`,
+      `contacts.fields.name.sort: public name "full name" is outside @nizam-os/keyset-core's field names ${SYNTAX}`,
     );
     expect(
       list({ fields: { name: { access: 'read', as: 'größe' } } }),
@@ -57,7 +57,7 @@ describe('declareResource: the names keyset-core and jsonapi-core take (SPEC 11.
         }),
       ),
     ).toBe(
-      `people.fields.prénom.sort: public name "prénom" is outside @netvark/keyset-core's field names ${SYNTAX}`,
+      `people.fields.prénom.sort: public name "prénom" is outside @nizam-os/keyset-core's field names ${SYNTAX}`,
     );
   });
 
@@ -136,13 +136,13 @@ describe('declareResource: the primary key keyset-core orders by (SPEC 11.2)', (
       enums: { void_kind: [] },
     };
     expect(typeErrorOf(keyed(catalog))).toBe(
-      'things: the primary key is an enum without values, which @netvark/keyset-core cannot order',
+      'things: the primary key is an enum without values, which @nizam-os/keyset-core cannot order',
     );
   });
 
   it('refuses a text key whose enum rules leave no value, and keeps one they leave', () => {
     expect(typeErrorOf(keyed(twoRules(['c'])))).toBe(
-      'things: the primary key is an enum without values, which @netvark/keyset-core cannot order',
+      'things: the primary key is an enum without values, which @nizam-os/keyset-core cannot order',
     );
     expect(keyed(twoRules(['b', 'c']))).not.toThrow();
   });

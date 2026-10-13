@@ -6,11 +6,11 @@
  * and the server answers with 403.
  * @ref https://jsonapi.org/format/1.1/#crud-updating-relationships
  */
-import type { IdentifierObject } from '@netvark/jsonapi-client';
+import type { IdentifierObject } from '@nizam-os/jsonapi-client';
 
 import { describe, expect, expectTypeOf, it } from 'vitest';
 
-import { isResponseError } from '@netvark/jsonapi-client';
+import { isResponseError } from '@nizam-os/jsonapi-client';
 
 import { refusal, useClientBlog } from './support/clients.ts';
 

@@ -1,5 +1,5 @@
 ---
-'@netvark/kysely-resource': minor
+'@nizam-os/kysely-resource': minor
 ---
 
 `runtime.transaction(actor, work)` runs every operation of the domain `work` receives in one

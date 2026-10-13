@@ -12,7 +12,7 @@ import type {
   PublicColumn,
   PublicConstraint,
   Rule,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import { describe, expect, it } from 'vitest';
 

@@ -11,7 +11,7 @@
  * @ref https://standardschema.dev
  * @packageDocumentation
  */
-import type { ResourceIssue } from '@netvark/resource-core';
+import type { ResourceIssue } from '@nizam-os/resource-core';
 
 import type {
   StandardIssue,
@@ -25,8 +25,8 @@ import { valueIn } from './form-values';
 import { validatorInput, writeOf } from './form-write';
 import { isBlank } from './value-kind';
 
-/** The vendor of the validators the `@netvark` packages make. */
-const VENDOR = 'netvark';
+/** The vendor of the validators the `@nizam-os` packages make. */
+const VENDOR = 'nizam';
 
 function memberText(
   plan: FormPlan,

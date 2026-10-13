@@ -1,4 +1,4 @@
-import type { Links } from '@netvark/jsonapi-core';
+import type { Links } from '@nizam-os/jsonapi-core';
 
 import type { AnyRecord } from '../document/types';
 import type { Answer } from '../test-support/fetch-double';

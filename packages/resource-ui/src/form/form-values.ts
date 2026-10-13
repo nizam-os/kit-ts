@@ -5,7 +5,7 @@
  * the member's input edits it, by one set of readers.
  * @packageDocumentation
  */
-import type { FieldMeta } from '@netvark/resource-core';
+import type { FieldMeta } from '@nizam-os/resource-core';
 
 import type { FieldDescriptor } from '../fields/fields-of';
 import type { FormOperation, FormRecord } from './form-types';

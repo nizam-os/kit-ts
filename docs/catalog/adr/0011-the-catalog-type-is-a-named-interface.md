@@ -8,7 +8,7 @@
 ADR 0004 wrote each catalog module as `export const catalog = <literal> as const;`, typed by
 `typeof catalog`. That type is the literal's, which has no name, so TypeScript prints it member by
 member wherever it appears in a message. A declaration library carries the catalog in its own types,
-so a mistake in a declaration of `@netvark/resource-core` printed the catalog, and TypeScript cut
+so a mistake in a declaration of `@nizam-os/resource-core` printed the catalog, and TypeScript cut
 the message short before the members the user wrote:
 
 ```text

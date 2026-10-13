@@ -1,8 +1,8 @@
-import type { DefaultedKeysetInit } from '@netvark/keyset-core';
+import type { DefaultedKeysetInit } from '@nizam-os/keyset-core';
 
 import { describe, expect, it } from 'vitest';
 
-import { defineKeyset } from '@netvark/keyset-core';
+import { defineKeyset } from '@nizam-os/keyset-core';
 
 import { createDeclareResource } from '../declare/create-declare-resource';
 import { contactsCatalog } from '../test-support/contacts';

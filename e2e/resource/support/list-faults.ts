@@ -11,13 +11,13 @@
  * @ref https://www.postgresql.org/docs/18/queries-order.html (NULLS FIRST is the default for DESC order)
  * @ref https://jsonapi.org/profiles/ethanresnick/cursor-pagination/ ("with offset–limit pagination, if an item from a prior page is deleted while the client is paginating, all subsequent results will be shifted forward by one")
  */
-import type { PageInput } from '@netvark/keyset-core';
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { PageInput } from '@nizam-os/keyset-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 import type {
   PublicRow,
   StorageListRequest,
   StoragePage,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { Fault } from './contract-faults.ts';
 import type { Adapter } from './faulty-adapters.ts';
@@ -27,7 +27,7 @@ import {
   DEFAULT_MAX_PAGE_SIZE,
   DEFAULT_PAGE_SIZE,
   PageSizeExceededError,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import { rewriting, wrapping } from './faulty-adapters.ts';
 

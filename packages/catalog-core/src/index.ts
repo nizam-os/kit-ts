@@ -1,6 +1,6 @@
 /**
- * `@netvark/catalog-core`: the PostgreSQL catalog model as TypeScript types
- * and the pure functions over it. `@netvark/pg-catalog` writes catalogs of
+ * `@nizam-os/catalog-core`: the PostgreSQL catalog model as TypeScript types
+ * and the pure functions over it. `@nizam-os/pg-catalog` writes catalogs of
  * this shape from your migrations; `toPublicCatalog` slices one for
  * browsers, `diffCatalogs` compares two, and `toCamelCase` and `toSnakeCase`
  * name keys as Kysely's CamelCasePlugin does. See `docs/catalog/SPEC.md` for

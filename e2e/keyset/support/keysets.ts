@@ -8,8 +8,8 @@ import type { CamelDB, DB } from './db.ts';
  * defined through both bindings, with the same field names, so the files
  * that run per binding (`bindings.ts`) page the same collections.
  */
-import { createDefineKeyset as createDrizzleDefineKeyset } from '@netvark/drizzle-keyset';
-import { createDefineKeyset } from '@netvark/kysely-keyset';
+import { createDefineKeyset as createDrizzleDefineKeyset } from '@nizam-os/drizzle-keyset';
+import { createDefineKeyset } from '@nizam-os/kysely-keyset';
 
 import { schema } from './drizzle-schema.ts';
 
@@ -186,7 +186,7 @@ const DRIZZLE_RELATIONS = {
   },
 } as const;
 
-/** The keysets above, through `@netvark/drizzle-keyset`. */
+/** The keysets above, through `@nizam-os/drizzle-keyset`. */
 export const drizzleKeysets = {
   contacts: defineDrizzle({
     table: 'contacts',

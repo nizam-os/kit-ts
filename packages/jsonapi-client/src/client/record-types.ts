@@ -10,7 +10,7 @@
  * record or its linkage, and such fields are optional.
  * @packageDocumentation
  */
-import type { TypesOf } from '@netvark/jsonapi-core';
+import type { TypesOf } from '@nizam-os/jsonapi-core';
 
 import type { AnyRecord, Identifier, RecordMembers } from '../document/types';
 import type {

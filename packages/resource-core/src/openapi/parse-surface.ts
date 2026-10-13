@@ -11,7 +11,7 @@ import type { Surface } from './surface';
 
 import { z } from 'zod/v4';
 
-import { OPERATORS } from '@netvark/keyset-core';
+import { OPERATORS } from '@nizam-os/keyset-core';
 
 import { OPERATIONS } from '../declare/check-options';
 import {

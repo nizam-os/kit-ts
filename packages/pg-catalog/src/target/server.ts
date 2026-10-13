@@ -15,12 +15,12 @@ import { PgCatalogError } from '../errors';
 // oxlint-disable-next-line import/no-named-as-default-member -- reason: node-postgres is CommonJS and documents `import pg from 'pg'; const { Client } = pg` for ESM
 const { Client } = pg;
 
-const NAME_PREFIX = 'netvark_catalog_';
+const NAME_PREFIX = 'nizam_catalog_';
 const NAME_BYTES = 8;
 const HEX = 16;
 const BYTE_DIGITS = 2;
 
-/** `netvark_catalog_` followed by 16 lowercase hex digits from a CSPRNG. */
+/** `nizam_catalog_` followed by 16 lowercase hex digits from a CSPRNG. */
 export function throwawayName(): string {
   const bytes = crypto.getRandomValues(new Uint8Array(NAME_BYTES));
   return (
@@ -137,7 +137,7 @@ async function dropDatabase(admin: pg.Client, name: string): Promise<void> {
 }
 
 /**
- * Creates `netvark_catalog_<random>` on the server the URL names and
+ * Creates `nizam_catalog_<random>` on the server the URL names and
  * returns a session connected to it; closing the session drops it. The
  * role needs `CREATEDB`.
  */

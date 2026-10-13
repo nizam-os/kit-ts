@@ -5,7 +5,7 @@
  * (SPEC 7.2), and every such CHECK over a written column names one.
  * @packageDocumentation
  */
-import type { PublicTable } from '@netvark/catalog-core';
+import type { PublicTable } from '@nizam-os/catalog-core';
 
 import type {
   ConstraintName,

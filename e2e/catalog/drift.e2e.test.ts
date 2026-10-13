@@ -8,7 +8,7 @@
  * Runs on PGlite behind a socket server, and on the server
  * `CATALOG_PG_URL` names.
  */
-import type { ExtractionConfig } from '@netvark/pg-catalog';
+import type { ExtractionConfig } from '@nizam-os/pg-catalog';
 
 import type { LiveDatabase } from './support/live-database';
 
@@ -16,7 +16,7 @@ import { randomBytes } from 'node:crypto';
 
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { drift, formatDiff } from '@netvark/pg-catalog';
+import { drift, formatDiff } from '@nizam-os/pg-catalog';
 
 import {
   contactsConfig,

@@ -54,17 +54,17 @@ describe('findConfigFile (SPEC 11.1)', () => {
       expect(await findConfigFile(directory)).toBe(join(directory, name));
     }
     expect(CONFIG_FILES).toEqual([
-      'netvark.config.ts',
-      'netvark.config.mts',
-      'netvark.config.js',
-      'netvark.config.mjs',
+      'pg-catalog.config.ts',
+      'pg-catalog.config.mts',
+      'pg-catalog.config.js',
+      'pg-catalog.config.mjs',
     ]);
   });
 });
 
 describe('loadConfigFile (SPEC 11.1)', () => {
   it('returns the validated default export', async () => {
-    const path = await write('netvark.config.mjs', VALID);
+    const path = await write('pg-catalog.config.mjs', VALID);
     expect(await loadConfigFile(path)).toEqual({
       migrations: 'migrations',
       out: { catalog: 'src/db/catalog.ts' },
@@ -80,45 +80,45 @@ describe('loadConfigFile (SPEC 11.1)', () => {
 
   it('reports a configuration that fails validation as config_invalid, naming the file and the option', async () => {
     const error = await loadFailure(
-      'netvark.config.mjs',
+      'pg-catalog.config.mjs',
       `export default { migrations: 'migrations', out: { catalog: 'c.ts', type: 'db.ts' } };`,
     );
     expect(error.code).toBe('config_invalid');
     expect(error.message).toBe(
-      'netvark.config.mjs: defineExtraction: out.type is not an option',
+      'pg-catalog.config.mjs: defineExtraction: out.type is not an option',
     );
     expect(error.cause).toBeInstanceOf(TypeError);
   });
 
   it('reports a module without a default export', async () => {
     const error = await loadFailure(
-      'netvark.config.mjs',
+      'pg-catalog.config.mjs',
       `export const config = { migrations: 'migrations' };`,
     );
     expect(error.code).toBe('config_invalid');
     expect(error.message).toBe(
-      'netvark.config.mjs has no default export; export default defineExtraction({ ... })',
+      'pg-catalog.config.mjs has no default export; export default defineExtraction({ ... })',
     );
   });
 
   it('reports a module that cannot be imported, with the reason', async () => {
     const error = await loadFailure(
-      'netvark.config.js',
+      'pg-catalog.config.js',
       `throw new Error('DATABASE_URL is required');`,
     );
     expect(error.code).toBe('config_invalid');
     expect(error.message).toBe(
-      'cannot load netvark.config.js: DATABASE_URL is required',
+      'cannot load pg-catalog.config.js: DATABASE_URL is required',
     );
     expect(error.cause).toBeInstanceOf(Error);
   });
 
   it('reports a syntax error as config_invalid', async () => {
     const error = await loadFailure(
-      'netvark.config.mjs',
+      'pg-catalog.config.mjs',
       'export default { migrations: ',
     );
     expect(error.code).toBe('config_invalid');
-    expect(error.message).toMatch(/^cannot load netvark\.config\.mjs: /u);
+    expect(error.message).toMatch(/^cannot load pg-catalog\.config\.mjs: /u);
   });
 });

@@ -1,10 +1,10 @@
 /**
- * `@netvark/resource-core/testing`, an optional peer dependency imported
+ * `@nizam-os/resource-core/testing`, an optional peer dependency imported
  * only when `rules --check` runs (SPEC 10.3, 14), as the PGlite target
  * imports PGlite (SPEC 6.1).
  * @packageDocumentation
  */
-import type { OracleCase, OracleOptions } from '@netvark/resource-core/testing';
+import type { OracleCase, OracleOptions } from '@nizam-os/resource-core/testing';
 
 import { PgCatalogError } from '../errors';
 
@@ -26,12 +26,12 @@ export interface OracleModule {
 /** Imports the testing entry; `resource_core_missing` with the reason when it cannot be loaded. */
 export async function importOracle(): Promise<OracleModule> {
   try {
-    return await import('@netvark/resource-core/testing');
+    return await import('@nizam-os/resource-core/testing');
   } catch (error) {
     const reason = error instanceof Error ? error.message : String(error);
     throw new PgCatalogError(
       'resource_core_missing',
-      `rules --check needs @netvark/resource-core, whose declarations it checks: ${reason}`,
+      `rules --check needs @nizam-os/resource-core, whose declarations it checks: ${reason}`,
       { cause: error },
     );
   }

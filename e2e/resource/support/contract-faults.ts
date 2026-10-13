@@ -8,7 +8,7 @@
  */
 import type { FaultyAdapter } from './faulty-adapters.ts';
 
-import { PARTITION_ROOT_SQL } from '@netvark/resource-core/server';
+import { PARTITION_ROOT_SQL } from '@nizam-os/resource-core/server';
 
 import { OUTBOX } from './contract-database.ts';
 import {

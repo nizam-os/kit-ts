@@ -4,7 +4,7 @@ import { defineProject } from 'vitest/config';
 
 /**
  * The binding's test project; the root `vitest.config.ts` runs it and owns
- * coverage. `@netvark/intl-core` resolves to its source through the `source`
+ * coverage. `@nizam-os/intl-core` resolves to its source through the `source`
  * condition (see tsconfig.json), so the tests run against the core as it is
  * edited, with no build first, as in CI.
  * @ref https://vitest.dev/guide/projects
@@ -20,7 +20,7 @@ const config: UserWorkspaceConfig = defineProject({
     },
   },
   test: {
-    name: '@netvark/paraglide-intl',
+    name: '@nizam-os/paraglide-intl',
     include: ['src/**/*.test.ts'],
     environment: 'node',
     restoreMocks: true,

@@ -34,7 +34,7 @@ import type {
   RecordOf,
   UpdateInput,
   WriteResult,
-} from '@netvark/jsonapi-client';
+} from '@nizam-os/jsonapi-client';
 
 import type { PageParam } from './pages';
 import type {

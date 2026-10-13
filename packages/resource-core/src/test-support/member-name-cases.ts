@@ -1,6 +1,6 @@
 /**
  * The member-name case table (SPEC 4.2): a name and whether JSON:API 1.1
- * allows it as a member name. `isMemberName` of `@netvark/jsonapi-core`
+ * allows it as a member name. `isMemberName` of `@nizam-os/jsonapi-core`
  * (`names/member-name.test.ts`) and the type-level `IsMemberName`
  * (`names/member-name.test-d.ts`) are both held to it. Every reserved
  * ASCII punctuation character appears once, between two letters. Not

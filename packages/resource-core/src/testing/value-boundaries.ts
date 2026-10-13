@@ -5,7 +5,7 @@
  * value has none: the codec's own fixtures cover it (SPEC 7.1).
  * @packageDocumentation
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
 
 import type { ValueForm, ValueSpec } from '../schema/value-form';
 import type { BoundaryFixture } from './fixture';

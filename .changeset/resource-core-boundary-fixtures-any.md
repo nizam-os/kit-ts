@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': patch
+'@nizam-os/resource-core': patch
 ---
 
 `boundaryFixtures` takes `AnyDeclaredResource`. Against the wide `DeclaredResource`, TypeScript

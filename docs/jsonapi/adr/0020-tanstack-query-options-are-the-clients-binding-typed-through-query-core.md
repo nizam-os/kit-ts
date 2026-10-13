@@ -9,7 +9,7 @@
 `resourceQueries(client)` keys TanStack Query by the request each call sends and invalidates a type
 after each write (resource ADR 0015). It reads the client alone: its `definition`, for
 `serializeQuery` (SPEC 15.5), its calls, and `pageCursors` (15.8). It was built in the resource
-family, as `@netvark/react-resource/query`, typed through `@tanstack/react-query`'s `queryOptions`,
+family, as `@nizam-os/react-resource/query`, typed through `@tanstack/react-query`'s `queryOptions`,
 `infiniteQueryOptions`, and `mutationOptions`, which exist only in the adapters. Root ADR 0010 binds
 such a library through its core and root ADR 0011 takes the core as an optional peer.
 
@@ -30,8 +30,8 @@ typed, `select` inferring from the data, and `getQueryData(key)` typed through t
 
 ## Decision
 
-- `resourceQueries` is the family's TanStack Query binding, `@netvark/tanstack-query-jsonapi` (root
-  ADR 0010). It takes `@netvark/jsonapi-client` as a peer, since the application hands it clients
+- `resourceQueries` is the family's TanStack Query binding, `@nizam-os/tanstack-query-jsonapi` (root
+  ADR 0010). It takes `@nizam-os/jsonapi-client` as a peer, since the application hands it clients
   (root ADR 0006), and `@tanstack/query-core` `^5.89.0` as an optional peer it imports only types
   from (root ADR 0011): it hands TanStack Query no value made with the core.
 - Its options are plain objects whose types hold only the members it sets, built from query-core's

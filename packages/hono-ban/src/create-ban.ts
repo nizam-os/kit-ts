@@ -10,9 +10,9 @@ import type {
   HandlerOptions as CoreHandlerOptions,
   NoReserved as CoreNoReserved,
   ReservedKey as CoreReservedKey,
-} from '@netvark/ban-core';
+} from '@nizam-os/ban-core';
 
-import { createBan as createCoreBan } from '@netvark/ban-core';
+import { createBan as createCoreBan } from '@nizam-os/ban-core';
 
 import { fromHttpException, passthroughResponse } from './http-exception';
 
@@ -22,7 +22,7 @@ export type HandlerOptions<
   TErrors extends Catalog = Catalog,
 > = CoreHandlerOptions<Context<E>, TErrors>;
 
-/** What this package adds to a `@netvark/ban-core` instance (SPEC 6.11). */
+/** What this package adds to a `@nizam-os/ban-core` instance (SPEC 6.11). */
 export interface HonoMembers<TErrors extends Catalog> {
   /**
    * The handler for `app.onError()`: `ban.handler()` fed with the request
@@ -59,7 +59,7 @@ function requestOf<E extends Env>(c: Context<E>): ErrorRequest {
 }
 
 /**
- * A `@netvark/ban-core` instance for Hono (SPEC 2, 6.11): the core's factories,
+ * A `@nizam-os/ban-core` instance for Hono (SPEC 2, 6.11): the core's factories,
  * helpers, and `handler`, plus `onError` for `app.onError()`. Installs
  * `fromHttpException` as the `adopt` hook, ahead of any hook passed in.
  */

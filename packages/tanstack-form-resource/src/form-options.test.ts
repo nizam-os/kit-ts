@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import { resourceForm } from '@netvark/resource-ui';
+import { resourceForm } from '@nizam-os/resource-ui';
 
 import { resourceFormOptions } from './form-options';
 import { mountForm, shown } from './test-support/forms';

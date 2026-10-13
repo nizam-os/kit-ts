@@ -1,6 +1,6 @@
 /**
  * The tables of the NOT ENFORCED catalog (`../unenforced.ts`), as
- * `@netvark/pg-catalog` extracts them on PostgreSQL 18, except two rules
+ * `@nizam-os/pg-catalog` extracts them on PostgreSQL 18, except two rules
  * written by hand: `imported_contacts_nickname_check` carries `notNull` and
  * `imported_contacts_status_check` the `enum` rule its expression states.
  * The extractor never writes a rule for a NOT ENFORCED CHECK (catalog ADR

@@ -4,9 +4,9 @@ import type { Kysely } from 'kysely';
  * The storage adapter's options and handle (SPEC 18.2).
  * @packageDocumentation
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
-import type { DefineDefaultedKeyset } from '@netvark/keyset-core';
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
+import type { DefineDefaultedKeyset } from '@nizam-os/keyset-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 import type {
   ListOptions,
   PublicRow,
@@ -14,7 +14,7 @@ import type {
   StorageAdapter,
   StorageListRequest,
   StoragePage,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { KyselyTransaction } from './transaction';
 

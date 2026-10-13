@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { defaultMessages } from '@netvark/resource-core';
+import { defaultMessages } from '@nizam-os/resource-core';
 
 import { messages } from '../test-support/messages';
 import { Contacts, Organizations, RESOURCES } from '../test-support/resources';
@@ -51,10 +51,10 @@ function issuesOf(changes: Record<string, unknown>) {
 }
 
 describe('the validator (resource SPEC 20.3, Standard Schema V1)', () => {
-  it('is a synchronous Standard Schema of vendor netvark, frozen', () => {
+  it('is a synchronous Standard Schema of vendor nizam, frozen', () => {
     const standard = edit.validator['~standard'];
     expect(standard.version).toBe(1);
-    expect(standard.vendor).toBe('netvark');
+    expect(standard.vendor).toBe('nizam');
     expect(Object.isFrozen(edit.validator)).toBe(true);
     expect(Object.isFrozen(standard)).toBe(true);
     expect(standard.validate(edit.defaultValues)).not.toBeInstanceOf(Promise);

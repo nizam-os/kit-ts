@@ -1,6 +1,6 @@
 /**
  * `runtime.transaction(actor, work)` (resource SPEC 12.10, 18.4) through
- * the built `@netvark/kysely-resource`, booted over the application's
+ * the built `@nizam-os/kysely-resource`, booted over the application's
  * role, on PGlite and on the server `RESOURCE_PG_URL` names: a contact and
  * a call that links it commit together with one event, or roll back
  * together on the first failure, which answers its declared code mapped
@@ -14,7 +14,7 @@
  * serializes two transactions of one organization.
  * @ref https://www.postgresql.org/docs/18/transaction-iso.html#XACT-READ-COMMITTED
  */
-import type { ResourceInput } from '@netvark/kysely-resource';
+import type { ResourceInput } from '@nizam-os/kysely-resource';
 
 import type { RuntimeDatabase } from './runtime/database.ts';
 import type { AppRuntime } from './runtime/fixture.ts';
@@ -33,7 +33,7 @@ import { ADA, ARCHIVED } from './runtime/seed.ts';
 /** A call `calls_even` stores (`runtime-partitions.e2e.test.ts`). */
 const CALL = '00000000-0000-4000-8000-0000000000c1';
 
-/** A call as `@netvark/jsonapi-core` parses its resource object. */
+/** A call as `@nizam-os/jsonapi-core` parses its resource object. */
 function call(id: string, contactId: string): ResourceInput {
   return {
     id,

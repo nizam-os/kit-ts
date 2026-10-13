@@ -1,12 +1,12 @@
 ---
-'@netvark/ban-core': major
+'@nizam-os/ban-core': major
 ---
 
-First release of `@netvark/ban-core`, the framework-free core extracted from hono-ban 1.x: the typed
+First release of `@nizam-os/ban-core`, the framework-free core extracted from hono-ban 1.x: the typed
 catalog and factories, `BanError`, the Problem Details, JSON:API, plain, Google API, and Stripe
 formats, `defineFormat`, the validation hooks and converters, the OpenAPI helpers, the OpenTelemetry
 adapter, the Postgres SQLSTATE mapper, and the testing utilities, under the same subpaths. It has no
-dependencies and no peer dependencies; `@netvark/hono-ban` 2.0 is the Hono adapter built on it.
+dependencies and no peer dependencies; `@nizam-os/hono-ban` 2.0 is the Hono adapter built on it.
 
 What differs from hono-ban 1.x:
 

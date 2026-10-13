@@ -2,7 +2,7 @@ import type { ErrorTransform } from './localize-errors';
 
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { createBan } from '@netvark/ban-core';
+import { createBan } from '@nizam-os/ban-core';
 
 import { Contacts, Organizations } from '../test-support/registry';
 import { defaultMessages } from './default-messages';

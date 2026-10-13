@@ -1,4 +1,4 @@
-import type { PublicCatalog } from '@netvark/catalog-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
 
 import { describe, expect, it } from 'vitest';
 

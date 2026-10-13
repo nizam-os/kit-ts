@@ -1,7 +1,7 @@
-# @netvark/keyset-core: implementation specification
+# @nizam-os/keyset-core: implementation specification
 
-- Status: normative for the 0.x line of `@netvark/keyset-core`, `@netvark/kysely-keyset`, and
-  `@netvark/drizzle-keyset`; `docs/keyset/DESIGN.md` explains the why
+- Status: normative for the 0.x line of `@nizam-os/keyset-core`, `@nizam-os/kysely-keyset`, and
+  `@nizam-os/drizzle-keyset`; `docs/keyset/DESIGN.md` explains the why
 
 The key words MUST, MUST NOT, SHOULD, and MAY are used as in RFC 2119. Every section names the
 source file that implements it and the tests that prove it. When this document and the code
@@ -20,31 +20,31 @@ Contents
 7. Pages
 8. Cursors
 9. Errors
-10. Kysely adapter (`@netvark/kysely-keyset`)
+10. Kysely adapter (`@nizam-os/kysely-keyset`)
 11. Test plan
 12. Packaging
 13. Constants
-14. Drizzle adapter (`@netvark/drizzle-keyset`)
+14. Drizzle adapter (`@nizam-os/drizzle-keyset`)
 
 ---
 
 ## 1. Public surface and module map
 
-Three packages, one repository (ADR 0004, ADR 0017). `@netvark/keyset-core` is the database-free
+Three packages, one repository (ADR 0004, ADR 0017). `@nizam-os/keyset-core` is the database-free
 core: every module is a function over plain values and none imports a query builder, a driver, or a
-runtime API beyond web standards (ADR 0002). `@netvark/kysely-keyset` is the Kysely adapter: it
-depends on `@netvark/keyset-core`, re-exports all of it (one import for a Kysely application), and
+runtime API beyond web standards (ADR 0002). `@nizam-os/kysely-keyset` is the Kysely adapter: it
+depends on `@nizam-os/keyset-core`, re-exports all of it (one import for a Kysely application), and
 adds the typed definer, `paginate`, and the render functions (section 10). `kysely >= 0.28.17`, the
 first release past Kysely's published SQL injection advisories (ADR 0018), is its only peer
-dependency. `@netvark/drizzle-keyset` is the Drizzle adapter, built the same way: the definer over
+dependency. `@nizam-os/drizzle-keyset` is the Drizzle adapter, built the same way: the definer over
 the application's schema object, whose keysets carry `paginate`, and the render functions (section
 14). `drizzle-orm >=0.45.2 <1.0.0` is its only peer dependency.
 
 | Package                   | Exports                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@netvark/keyset-core`    | Values: `defineKeyset`, `createDefineKeyset`, `createPlanner`, `finishPage`, `createCursorCodec`, `resolveSort`, `sortSignature`, `resolvePage`, `seekPredicate`, `keyAlias`, `checkScalar`, `operatorsFor`, `isOperator`, `isFieldName`, `isSearchConfig`, `escapeLike`, `isKeysetError`, the error classes `KeysetError`, `InvalidCursorError`, `UnsupportedSortError`, `UnsupportedFilterError`, `InvalidFilterError`, `InvalidFilterValueError`, `UnsupportedSearchError`, `InvalidPageSizeError`, `PageSizeExceededError`, `RangeNotSupportedError`, and the constants `OPERATORS`, `CURSOR_VERSION`, `MIN_SECRET_BYTES`, `DEFAULT_PAGE_SIZE`, `DEFAULT_MAX_PAGE_SIZE`; and every type in sections 3 to 9 (`KeysetInit`, `KeysetDefaults`, `DefaultedKeysetInit`, `DefineKeyset`, `DefineDefaultedKeyset`, `KeysetDefinition`, `Keyset`, `KeysetRequest`, `KeysetRequestOf`, `NoRelations`, the field and relation init and normalized types, `Filter` and its node types, `Operator`, `OperatorsOf`, `ScalarValue`, `ScalarCheck`, `SortInput`, `SortField`, `QueryPlan`, `PlanKey`, `Predicate`, `Target` and its kinds, `CursorValue`, `PlanOptions`, `CursorContext`, `CursorContextValue`, `PageInput`, `ResolvedPage`, `Page`, `FinishOptions`, `CursorCodec`, `CursorCodecOptions`, `CursorDecodeResult`, `InvalidCursorReason`, `InvalidFilterValue`, `KeysetErrorCode`) |
-| `@netvark/kysely-keyset`  | Everything of `@netvark/keyset-core` (the same bindings), plus its own `createDefineKeyset` (replacing the core's, 10.1), `paginate`, `renderPredicate`, `renderTarget`; and the types `DefineKeyset`, `DefineDefaultedKeyset` (replacing the core's), `KyselyKeyset`, `TypedKeysetInit`, `DefaultedTypedKeysetInit`, `TypedFieldsInit`, `TypedColumnFieldInit`, `TypedAggregateFieldInit`, `TypedRelationsInit`, `TypedRelationInit`, `TypedSearchInit`, `RelationsOf`, `PaginateOptions`, `QueryEvent`, `RenderContext`, `AnyDatabase`, `AnyExpressionBuilder`, `AnyQuery`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `@netvark/drizzle-keyset` | Everything of `@netvark/keyset-core` (the same bindings), plus its own `createDefineKeyset` (replacing the core's, 14.1), `renderPredicate`, `renderTarget`; and the types `DefineKeyset`, `DefineDefaultedKeyset` (replacing the core's), `DrizzleKeyset`, `TypedKeysetInit`, `DefaultedTypedKeysetInit`, `TypedFieldsInit`, `TypedColumnFieldInit`, `TypedAggregateFieldInit`, `TypedRelationsInit`, `TypedRelationInit`, `TypedSearchInit`, `RelationsOf`, `PaginateOptions`, `QueryEvent`, `RenderContext`, `KeysetDatabase`, `KeysetSchema`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `@nizam-os/keyset-core`    | Values: `defineKeyset`, `createDefineKeyset`, `createPlanner`, `finishPage`, `createCursorCodec`, `resolveSort`, `sortSignature`, `resolvePage`, `seekPredicate`, `keyAlias`, `checkScalar`, `operatorsFor`, `isOperator`, `isFieldName`, `isSearchConfig`, `escapeLike`, `isKeysetError`, the error classes `KeysetError`, `InvalidCursorError`, `UnsupportedSortError`, `UnsupportedFilterError`, `InvalidFilterError`, `InvalidFilterValueError`, `UnsupportedSearchError`, `InvalidPageSizeError`, `PageSizeExceededError`, `RangeNotSupportedError`, and the constants `OPERATORS`, `CURSOR_VERSION`, `MIN_SECRET_BYTES`, `DEFAULT_PAGE_SIZE`, `DEFAULT_MAX_PAGE_SIZE`; and every type in sections 3 to 9 (`KeysetInit`, `KeysetDefaults`, `DefaultedKeysetInit`, `DefineKeyset`, `DefineDefaultedKeyset`, `KeysetDefinition`, `Keyset`, `KeysetRequest`, `KeysetRequestOf`, `NoRelations`, the field and relation init and normalized types, `Filter` and its node types, `Operator`, `OperatorsOf`, `ScalarValue`, `ScalarCheck`, `SortInput`, `SortField`, `QueryPlan`, `PlanKey`, `Predicate`, `Target` and its kinds, `CursorValue`, `PlanOptions`, `CursorContext`, `CursorContextValue`, `PageInput`, `ResolvedPage`, `Page`, `FinishOptions`, `CursorCodec`, `CursorCodecOptions`, `CursorDecodeResult`, `InvalidCursorReason`, `InvalidFilterValue`, `KeysetErrorCode`) |
+| `@nizam-os/kysely-keyset`  | Everything of `@nizam-os/keyset-core` (the same bindings), plus its own `createDefineKeyset` (replacing the core's, 10.1), `paginate`, `renderPredicate`, `renderTarget`; and the types `DefineKeyset`, `DefineDefaultedKeyset` (replacing the core's), `KyselyKeyset`, `TypedKeysetInit`, `DefaultedTypedKeysetInit`, `TypedFieldsInit`, `TypedColumnFieldInit`, `TypedAggregateFieldInit`, `TypedRelationsInit`, `TypedRelationInit`, `TypedSearchInit`, `RelationsOf`, `PaginateOptions`, `QueryEvent`, `RenderContext`, `AnyDatabase`, `AnyExpressionBuilder`, `AnyQuery`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `@nizam-os/drizzle-keyset` | Everything of `@nizam-os/keyset-core` (the same bindings), plus its own `createDefineKeyset` (replacing the core's, 14.1), `renderPredicate`, `renderTarget`; and the types `DefineKeyset`, `DefineDefaultedKeyset` (replacing the core's), `DrizzleKeyset`, `TypedKeysetInit`, `DefaultedTypedKeysetInit`, `TypedFieldsInit`, `TypedColumnFieldInit`, `TypedAggregateFieldInit`, `TypedRelationsInit`, `TypedRelationInit`, `TypedSearchInit`, `RelationsOf`, `PaginateOptions`, `QueryEvent`, `RenderContext`, `KeysetDatabase`, `KeysetSchema`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 `e2e/keyset/package-surface.e2e.test.ts` asserts the exact value export list of the three packages
 against the built packages, that each adapter's re-exports are the core's own bindings, and that
@@ -91,7 +91,7 @@ packages/keyset-core/src/
   cursor/codec.ts              createCursorCodec(), CURSOR_VERSION, MIN_SECRET_BYTES (8)
   test-support/                the shared definition and helpers for the repository's own tests; not published
 packages/kysely-keyset/src/
-  index.ts                     root entry: re-exports @netvark/keyset-core, adds section 10
+  index.ts                     root entry: re-exports @nizam-os/keyset-core, adds section 10
   types.ts                     KyselyKeyset, PaginateOptions, QueryEvent, RenderContext, the widened Kysely shapes (10)
   define-keyset.ts             createDefineKeyset(), the Typed*Init types, DefaultedTypedKeysetInit, RelationsOf (10.1)
   render/target.ts             renderTarget(), concat() (10.2)
@@ -100,7 +100,7 @@ packages/kysely-keyset/src/
   paginate.ts                  paginate() (10.3)
   test-support/                a compile-only Kysely and a canned-rows driver; not published
 packages/drizzle-keyset/src/
-  index.ts                     root entry: re-exports @netvark/keyset-core, adds section 14
+  index.ts                     root entry: re-exports @nizam-os/keyset-core, adds section 14
   types.ts                     DrizzleKeyset, PaginateOptions, QueryEvent, RenderContext, KeysetDatabase, KeysetSchema (14)
   schema.ts                    tableOf(), columnOf(): the plan's names resolved in the schema object (14.2)
   typed-init.ts                the Typed*Init types, DefaultedTypedKeysetInit, RelationsOf (14.1)
@@ -701,7 +701,7 @@ Tests: `errors.test.ts`.
 
 ---
 
-## 10. Kysely adapter (`@netvark/kysely-keyset`, `packages/kysely-keyset/src/`)
+## 10. Kysely adapter (`@nizam-os/kysely-keyset`, `packages/kysely-keyset/src/`)
 
 ### 10.1 `createDefineKeyset<DB>(defaults?)` (`define-keyset.ts`)
 
@@ -811,7 +811,7 @@ stripped of both aliases).
 ## 11. Test plan
 
 One Vitest run over three projects (`packages/*/vitest.config.ts`), each with `typecheck` enabled
-for its `*.test-d.ts`; each adapter's project resolves `@netvark/keyset-core` from source (section
+for its `*.test-d.ts`; each adapter's project resolves `@nizam-os/keyset-core` from source (section
 12). V8 coverage thresholds of 90% for statements, branches, functions, and lines over
 `packages/*/src/` combined (the `index.ts` barrels excluded). Every test names the rule or choice it
 pins. The Kysely adapter's tests run against a compile-only Kysely (`DummyDriver`) and a driver that
@@ -825,13 +825,13 @@ answers canned rows while recording the compiled queries, the Drizzle adapter's 
 | Filter                              | `operators.test.ts`, `values.test.ts`, `condition.test.ts`, `condition-values.test.ts`, `condition-patterns.test.ts`, `normalize.test.ts`                                                                                                    | the operator table, value forms, each predicate mapping, tree shapes and paths                                                                         |
 | Sort, plan, page, cursor            | `resolve-sort.test.ts`, `plan.test.ts`, `plan-seek.test.ts`, `plan-cursors.test.ts`, `context.test.ts`, `seek.test.ts`, `seek-branches.test.ts`, `page-request.test.ts`, `finish.test.ts`, `codec.test.ts`                                   | tie-breaking, the context and the caller's context, inversion, every seek case and its branches, page bounds, links, the cursor format and its checks  |
 | Errors                              | `errors.test.ts`                                                                                                                                                                                                                             | constant messages, structured fields, the guard                                                                                                        |
-| Adapter (`@netvark/kysely-keyset`)  | `target.test.ts`, `predicate.test.ts`, `paginate.test.ts`, `paginate-order.test.ts`, `define-keyset.test.ts`, `define-keyset.test-d.ts`                                                                                                      | exact SQL and parameters for every target and predicate kind and every page shape; name checks against `DB`                                            |
-| Adapter (`@netvark/drizzle-keyset`) | `schema.test.ts`, `target.test.ts`, `predicate.test.ts`, `check-names.test.ts`, `paginate.test.ts`, `paginate-order.test.ts`, `paginate.test-d.ts`, `define-keyset.test.ts`, `define-keyset.test-d.ts`                                       | exact SQL and parameters for every target and predicate kind and every page shape; name checks against the schema, in the types and at definition time |
+| Adapter (`@nizam-os/kysely-keyset`)  | `target.test.ts`, `predicate.test.ts`, `paginate.test.ts`, `paginate-order.test.ts`, `define-keyset.test.ts`, `define-keyset.test-d.ts`                                                                                                      | exact SQL and parameters for every target and predicate kind and every page shape; name checks against `DB`                                            |
+| Adapter (`@nizam-os/drizzle-keyset`) | `schema.test.ts`, `target.test.ts`, `predicate.test.ts`, `check-names.test.ts`, `paginate.test.ts`, `paginate-order.test.ts`, `paginate.test-d.ts`, `define-keyset.test.ts`, `define-keyset.test-d.ts`                                       | exact SQL and parameters for every target and predicate kind and every page shape; name checks against the schema, in the types and at definition time |
 
 ### 11.1 End-to-end suite and invariants (`e2e/keyset/`)
 
-A private workspace package that depends on `@netvark/keyset-core`, `@netvark/kysely-keyset`, and
-`@netvark/drizzle-keyset` through `workspace:*`, so imports resolve through the published `exports`
+A private workspace package that depends on `@nizam-os/keyset-core`, `@nizam-os/kysely-keyset`, and
+`@nizam-os/drizzle-keyset` through `workspace:*`, so imports resolve through the published `exports`
 maps into each `dist/` (never the `source` condition) and `tsc` checks the emitted declarations.
 `e2e/keyset/support/` holds the schema (three tables: `contacts` with every field type and a
 generated `tsvector`, `contact_emails`, `work_history`) and a twelve-row seed with the cases keyset
@@ -924,10 +924,10 @@ request and every push to `main`.
   by each adapter's `tsconfig.json` (`customConditions`) and Vitest project
   (`ssr.resolve.conditions`); `publishConfig.exports` is the dist-only map `pnpm publish` and
   `pnpm pack` apply. CI fails when the build changes the committed maps.
-- `@netvark/keyset-core` has no dependencies. `@netvark/kysely-keyset` depends on
-  `@netvark/keyset-core` (`workspace:^`, written as a caret range on publish) and has
+- `@nizam-os/keyset-core` has no dependencies. `@nizam-os/kysely-keyset` depends on
+  `@nizam-os/keyset-core` (`workspace:^`, written as a caret range on publish) and has
   `kysely >= 0.28.17` as its only peer dependency; CI runs its unit tests on 0.28.17, the first
-  release no published Kysely advisory affects (ADR 0018). `@netvark/drizzle-keyset` depends on the
+  release no published Kysely advisory affects (ADR 0018). `@nizam-os/drizzle-keyset` depends on the
   core the same way and has `drizzle-orm >=0.45.2 <1.0.0` as its only peer dependency; CI runs its
   unit tests on 0.45.2 (ADR 0017).
 - `files` is `dist`, `CHANGELOG.md`, `LICENSE`, `README.md`. `sideEffects: false`.
@@ -954,7 +954,7 @@ request and every push to `main`.
 
 ---
 
-## 14. Drizzle adapter (`@netvark/drizzle-keyset`, `packages/drizzle-keyset/src/`)
+## 14. Drizzle adapter (`@nizam-os/drizzle-keyset`, `packages/drizzle-keyset/src/`)
 
 The second adapter (ADR 0017). It renders the plan as Drizzle `sql` and runs a select it builds
 itself. Names are the application's Drizzle schema's, resolved to Drizzle's own table and column
@@ -1101,7 +1101,7 @@ transaction, and a `withReplicas` database as `KeysetDatabase`.
 
 ### 14.4 End-to-end and smoke tests
 
-`e2e/keyset/` depends on `@netvark/drizzle-keyset` as well. `support/keysets.ts` defines each shared
+`e2e/keyset/` depends on `@nizam-os/drizzle-keyset` as well. `support/keysets.ts` defines each shared
 keyset a second time through a Drizzle definer over a Drizzle schema of the same tables
 (`support/drizzle-schema.ts`), with the same field names, and `support/bindings.ts` gives each
 binding a pager over a harness. The files that run plans against rows (`paginate`, `filters`,

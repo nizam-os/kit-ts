@@ -4,7 +4,7 @@
  * policy with it; `include` asks the policy for the relationship, then
  * reads each linked row once, leaving out what the actor cannot see.
  */
-import type { PublicRow } from '@netvark/resource-core/server';
+import type { PublicRow } from '@nizam-os/resource-core/server';
 
 import { afterAll, beforeEach, describe, expect, it } from 'vitest';
 

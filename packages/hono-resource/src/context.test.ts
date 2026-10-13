@@ -4,7 +4,7 @@
  * declares, fails the request with a `TypeError` that names it, which
  * the host's handler answers with 500.
  */
-import type { ResourceRuntime } from '@netvark/resource-core/server';
+import type { ResourceRuntime } from '@nizam-os/resource-core/server';
 
 import type { TestDomain } from './test-support/memory-runtime';
 

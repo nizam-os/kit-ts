@@ -24,8 +24,8 @@ import type {
  * @ref https://kysely-org.github.io/kysely-apidoc/classes/Kysely.html#transaction
  * @packageDocumentation
  */
-import type { AnyDatabase } from '@netvark/kysely-keyset';
-import type { ScopeValue } from '@netvark/resource-core/server';
+import type { AnyDatabase } from '@nizam-os/kysely-keyset';
+import type { ScopeValue } from '@nizam-os/resource-core/server';
 
 import { sql } from 'kysely';
 

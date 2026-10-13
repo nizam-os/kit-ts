@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 Every declared resource now exposes the form of its ids: `schema.id`, a Zod schema, and

@@ -13,18 +13,18 @@
  * @ref https://www.postgresql.org/docs/18/transaction-iso.html#XACT-READ-COMMITTED
  * @packageDocumentation
  */
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 import type {
   DomainShape,
   PublicRow,
   ResourceBehavior,
   ResourceInput,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { KyselyTransaction } from '../storage/transaction';
 import type { Run } from './operation';
 
-import { quotaExceeded, reject } from '@netvark/resource-core/server';
+import { quotaExceeded, reject } from '@nizam-os/resource-core/server';
 
 import { ownValue } from '../internal/object';
 import { recordEffects } from './events';

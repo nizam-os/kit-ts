@@ -4,7 +4,7 @@ import { defineProject } from 'vitest/config';
 
 /**
  * The binding's test project; the root `vitest.config.ts` runs it and owns
- * coverage. `@netvark/resource-ui` and `@netvark/resource-core` resolve to
+ * coverage. `@nizam-os/resource-ui` and `@nizam-os/resource-core` resolve to
  * their source through the `source` condition (see tsconfig.json), so the
  * tests declare their resources and messages against the cores as they
  * are edited. The tests drive a form-core `FormApi` and its `FieldApi`s,
@@ -23,7 +23,7 @@ const config: UserWorkspaceConfig = defineProject({
     },
   },
   test: {
-    name: '@netvark/tanstack-form-resource',
+    name: '@nizam-os/tanstack-form-resource',
     include: ['src/**/*.test.ts'],
     environment: 'node',
     restoreMocks: true,

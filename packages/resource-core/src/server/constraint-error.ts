@@ -5,7 +5,7 @@
  * `map` (typically `postgresMapper()`) then handles with its SQLSTATE
  * table. It runs inside the operation because only there are the
  * operation and the base of the document known. The driver error is found
- * and read by `@netvark/ban-core/postgresql`, so node-postgres, PGlite,
+ * and read by `@nizam-os/ban-core/postgresql`, so node-postgres, PGlite,
  * postgres.js, Neon, and Bun need no import here.
  *
  * A NOT NULL violation names its table and column but no constraint on any
@@ -29,18 +29,18 @@
  * @ref https://github.com/postgres/postgres/blob/REL_18_STABLE/src/backend/utils/adt/ri_triggers.c (ri_ReportViolation: ERRCODE_RESTRICT_VIOLATION)
  * @packageDocumentation
  */
-import type { PostgresErrorFields } from '@netvark/ban-core/postgresql';
+import type { PostgresErrorFields } from '@nizam-os/ban-core/postgresql';
 
 import type { DeclaredInternals } from '../declare/declared-resource';
 import type { ConstraintKind } from '../errors/error-entry';
 import type { ConstraintErrorOptions } from './constraint-options';
 import type { ViolationNames } from './violation-names';
 
-import { BanError, BUILTIN_CATALOG } from '@netvark/ban-core';
+import { BanError, BUILTIN_CATALOG } from '@nizam-os/ban-core';
 import {
   findPostgresError,
   readPostgresFields,
-} from '@netvark/ban-core/postgresql';
+} from '@nizam-os/ban-core/postgresql';
 
 import { notNullKey } from '../catalog/columns';
 import { ownValue } from '../internal/object';

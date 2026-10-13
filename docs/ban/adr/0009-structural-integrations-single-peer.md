@@ -1,7 +1,7 @@
 # ADR 0009: Integrations are typed structurally; hono is the only peer dependency
 
-- Status: accepted; amended by ADR-0016 (since the split, `@netvark/ban-core` has no peer dependency
-  and `@netvark/hono-ban` peers on `hono` alone; the structural-typing rule below is unchanged)
+- Status: accepted; amended by ADR-0016 (since the split, `@nizam-os/ban-core` has no peer dependency
+  and `@nizam-os/hono-ban` peers on `hono` alone; the structural-typing rule below is unchanged)
 - Date: 2026-09-07
 
 ## Context
@@ -10,7 +10,7 @@ The Zod, Valibot, Standard Schema, OpenAPI, and OpenTelemetry integrations each 
 defined by another package: a `ZodError`, a Valibot `BaseIssue`, a Standard Schema `Issue`, an
 OpenAPI Response Object, an OpenTelemetry `Span`. Importing those packages' types would make each an
 optional peer dependency, force consumers to install them to get clean declaration files, and tie
-@netvark/hono-ban releases to their major versions. hono-problem-details takes that route and lists
+@nizam-os/hono-ban releases to their major versions. hono-problem-details takes that route and lists
 five optional peers.
 
 ## Decision
@@ -22,9 +22,9 @@ five optional peers.
 - `hooks.test-d.ts` proves the hook functions are assignable to the real `@hono/zod-validator`,
   `@hono/zod-openapi`, `@hono/valibot-validator`, and `@hono/standard-validator` hook types, and the
   runtime tests exercise the real validators, so drift is caught in CI rather than by users.
-- `@netvark/hono-ban/openapi` returns plain OpenAPI Response Objects. `@hono/zod-openapi` accepts
+- `@nizam-os/hono-ban/openapi` returns plain OpenAPI Response Objects. `@hono/zod-openapi` accepts
   raw schema objects in `content[*].schema`, so no Zod wrapping helper exists.
-- `@netvark/hono-ban/testing` takes a `compile` function instead of depending on Ajv.
+- `@nizam-os/hono-ban/testing` takes a `compile` function instead of depending on Ajv.
 
 ## Consequences
 

@@ -3,7 +3,7 @@
  * 2.9), written independently of the recognizer so tests can hold its
  * rules against the database's verdicts.
  */
-import type { RangeBound, Rule } from '@netvark/catalog-core';
+import type { RangeBound, Rule } from '@nizam-os/catalog-core';
 
 /** Exact comparison of decimal strings: both scaled to the same number of fraction digits. */
 function compareDecimals(left: string, right: string): number {

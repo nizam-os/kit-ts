@@ -9,7 +9,7 @@
  * metadata states. A stated fact that no probe can test is reported as
  * `skipped`.
  */
-import type { FieldLimits, FieldMeta } from '@netvark/resource-core';
+import type { FieldLimits, FieldMeta } from '@nizam-os/resource-core';
 
 import type { NumberKind } from './meta-number-probes.ts';
 

@@ -6,7 +6,7 @@
  * validator would refuse values the table holds (catalog ADR 0010).
  * @packageDocumentation
  */
-import type { PublicTable } from '@netvark/catalog-core';
+import type { PublicTable } from '@nizam-os/catalog-core';
 
 import type { DefinerContext } from './check-config';
 import type { Declaration } from './types';

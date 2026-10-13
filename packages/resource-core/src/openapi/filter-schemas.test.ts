@@ -1,8 +1,8 @@
-import type { FieldInit, ScalarFieldType } from '@netvark/keyset-core';
+import type { FieldInit, ScalarFieldType } from '@nizam-os/keyset-core';
 
 import { describe, expect, it } from 'vitest';
 
-import { checkScalar } from '@netvark/keyset-core';
+import { checkScalar } from '@nizam-os/keyset-core';
 
 import { compileSchema } from '../test-support/openapi-ajv';
 import { filterSchema } from './filter-schemas';

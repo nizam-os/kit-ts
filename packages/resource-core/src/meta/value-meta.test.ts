@@ -7,7 +7,7 @@
  * `d1 AS int DEFAULT 1` inserts 2, and a `d1[]` column inserts `NULL`).
  * @ref https://www.postgresql.org/docs/18/sql-createdomain.html
  */
-import type { PublicColumn, Rule } from '@netvark/catalog-core';
+import type { PublicColumn, Rule } from '@nizam-os/catalog-core';
 
 import type { FieldLimits, FieldMeta } from './types';
 

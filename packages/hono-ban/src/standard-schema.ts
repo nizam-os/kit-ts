@@ -1,1 +1,1 @@
-export * from '@netvark/ban-core/standard-schema';
+export * from '@nizam-os/ban-core/standard-schema';

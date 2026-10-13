@@ -4,7 +4,7 @@ import { defineConfig } from 'tsdown';
 
 /**
  * Library build. ESM only, runtime neutral, declarations via oxc
- * (isolatedDeclarations), `@netvark/jsonapi-core` external as a dependency.
+ * (isolatedDeclarations), `@nizam-os/jsonapi-core` external as a dependency.
  * `exports` keeps package.json in sync with the entry map below: the
  * published map (`publishConfig.exports`) points at `dist/`, while the
  * in-repo map adds a `source` condition pointing at `src/`. publint and attw

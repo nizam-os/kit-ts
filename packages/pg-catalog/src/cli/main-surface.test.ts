@@ -55,7 +55,7 @@ function configFile(surface: string, teamFields?: object): string {
 beforeAll(async () => {
   project = await mkdtemp(join(tmpdir(), 'pg-catalog-surface-cli-'));
   const files: Readonly<Record<string, string>> = {
-    'netvark.config.mjs': configFile('api-surface.json'),
+    'pg-catalog.config.mjs': configFile('api-surface.json'),
     'fresh.config.mjs': configFile('fresh/api-surface.json'),
     'safe.config.mjs': configFile('api-surface.json', {
       name: { access: 'readWrite', filter: ['eq'] },

@@ -3,7 +3,7 @@
  * name, or an object named like a helper, Kysely's types, or `DB`, fail
  * with `name_collision` instead of writing a file that does not compile.
  */
-import type { Catalog } from '@netvark/catalog-core';
+import type { Catalog } from '@nizam-os/catalog-core';
 
 import { describe, expect, it } from 'vitest';
 

@@ -5,7 +5,7 @@
  * codec; the validators answer the CHECKs the rule translator does not
  * cover, including the `email` and `handle` domains' own.
  */
-import { createDeclareResource } from '@netvark/resource-core';
+import { createDeclareResource } from '@nizam-os/resource-core';
 
 import { publicCatalog } from '../fixtures/contacts/public-catalog.ts';
 import { codecs } from './codecs.ts';

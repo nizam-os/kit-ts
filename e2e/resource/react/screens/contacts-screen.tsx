@@ -13,7 +13,7 @@
  */
 import type { ReactElement } from 'react';
 
-import type { ListState } from '@netvark/resource-ui';
+import type { ListState } from '@nizam-os/resource-ui';
 
 import type { Contact, ContactQueries } from '../../support/contact-queries.ts';
 
@@ -34,7 +34,7 @@ import {
   useTable,
 } from '@tanstack/react-table';
 
-import { fieldsOf, resourceList } from '@netvark/resource-ui';
+import { fieldsOf, resourceList } from '@nizam-os/resource-ui';
 
 import { contactMessages } from '../../localization/contact-messages.ts';
 import { Contacts } from '../../resources/contacts.ts';

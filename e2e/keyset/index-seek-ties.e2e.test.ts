@@ -12,7 +12,7 @@
  * @ref https://www.postgresql.org/docs/current/indexes-ordering.html
  * @ref https://www.postgresql.org/docs/current/using-explain.html
  */
-import type { QueryEvent } from '@netvark/kysely-keyset';
+import type { QueryEvent } from '@nizam-os/kysely-keyset';
 
 import type { PlanNode } from './support/explain.ts';
 
@@ -22,8 +22,8 @@ import { Kysely, PostgresDialect } from 'kysely';
 import pg from 'pg';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createDefineKeyset as createDrizzleDefineKeyset } from '@netvark/drizzle-keyset';
-import { createDefineKeyset } from '@netvark/kysely-keyset';
+import { createDefineKeyset as createDrizzleDefineKeyset } from '@nizam-os/drizzle-keyset';
+import { createDefineKeyset } from '@nizam-os/kysely-keyset';
 
 import { explainPage, scansOf } from './support/explain.ts';
 import { SECRET } from './support/keysets.ts';

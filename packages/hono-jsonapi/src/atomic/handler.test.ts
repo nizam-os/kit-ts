@@ -1,6 +1,6 @@
 import type { Context } from 'hono';
 
-import type { AnyResourceHandlers } from '@netvark/jsonapi-core/atomic';
+import type { AnyResourceHandlers } from '@nizam-os/jsonapi-core/atomic';
 
 import type { JsonApiEnv } from '../types';
 
@@ -11,7 +11,7 @@ import {
   ATOMIC_OPERATIONS_EXTENSION,
   jsonApiError,
   defineResource,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import { errorHandler } from '../handlers';
 import { jsonApi } from '../middleware';

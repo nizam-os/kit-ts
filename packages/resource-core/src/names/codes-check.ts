@@ -8,7 +8,7 @@
  * as all the other checks together (SPEC 15.5).
  * @packageDocumentation
  */
-import type { PublicTable } from '@netvark/catalog-core';
+import type { PublicTable } from '@nizam-os/catalog-core';
 
 import type { ConstraintName, RuleKey } from '../catalog/types';
 import type { MemberColumn } from '../declare/members';

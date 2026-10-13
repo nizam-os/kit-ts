@@ -1,6 +1,6 @@
 /**
  * Declarations whose derived keyset or JSON:API resource
- * `@netvark/keyset-core` or `@netvark/jsonapi-core` would refuse (resource
+ * `@nizam-os/keyset-core` or `@nizam-os/jsonapi-core` would refuse (resource
  * SPEC 11.2, 14). Each `// error:` names a text the diagnostic on the next
  * line must contain.
  */
@@ -28,9 +28,9 @@ declareResource('contacts', {
 declareResource('contacts', {
   operations: ['list'],
   fields: {
-    // error: filter: public name "größe" is outside @netvark/keyset-core's field names (^[A-Za-z0-9][A-Za-z0-9_-]*$)
+    // error: filter: public name "größe" is outside @nizam-os/keyset-core's field names (^[A-Za-z0-9][A-Za-z0-9_-]*$)
     name: { access: 'read', as: 'größe', filter: ['eq'] },
-    // error: sort: public name "nick name" is outside @netvark/keyset-core's field names
+    // error: sort: public name "nick name" is outside @nizam-os/keyset-core's field names
     nickname: { access: 'read', as: 'nick name', sort: true },
     // error: filter: public name "or" is the filter disjunction, filter[or]
     email: { access: 'read', as: 'or', filter: ['eqi'] },
@@ -50,6 +50,6 @@ declareResource('contacts', {
 declareResource('contacts', {
   operations: ['list'],
   fields: {},
-  // error: search.config: "Simple" is not a text search configuration @netvark/keyset-core accepts (^[a-z_][a-z0-9_]{0,62}$)
+  // error: search.config: "Simple" is not a text search configuration @nizam-os/keyset-core accepts (^[a-z_][a-z0-9_]{0,62}$)
   search: { column: 'search', config: 'Simple' },
 });

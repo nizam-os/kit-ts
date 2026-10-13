@@ -11,15 +11,15 @@
  * @ref https://jsonapi.org/profiles/ethanresnick/cursor-pagination/
  * @packageDocumentation
  */
-import type { Query } from '@netvark/jsonapi-client';
-import type { AnyResource } from '@netvark/jsonapi-core';
-import type { Messages } from '@netvark/resource-core';
+import type { Query } from '@nizam-os/jsonapi-client';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
+import type { Messages } from '@nizam-os/resource-core';
 
 import type { ColumnFiltersUpdate } from './column-filters';
 import type { ListModel, ListResource } from './list-types';
 import type { SortingUpdate } from './sorting';
 
-import { serializeQuery } from '@netvark/jsonapi-client';
+import { serializeQuery } from '@nizam-os/jsonapi-client';
 
 import { descriptorsOf } from '../fields/fields-of';
 import { columnFiltersOf, filteredState } from './column-filters';

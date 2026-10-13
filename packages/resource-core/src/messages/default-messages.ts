@@ -9,7 +9,7 @@
  * is; one with Paraglide maps its own message functions instead.
  * @packageDocumentation
  */
-import type { Catalog, EmptyCatalog } from '@netvark/ban-core';
+import type { Catalog, EmptyCatalog } from '@nizam-os/ban-core';
 
 import type { AnyDeclaredResource } from '../declare/declared-resource';
 import type { RegistryCheck } from '../registry/registry-check';
@@ -17,8 +17,8 @@ import type { MessageIndex } from './message-index';
 import type { MessagesFor } from './messages-for';
 import type { ConstraintInputs, ErrorText, Label, Messages } from './types';
 
-import { BUILTIN_CATALOG, resolveDefinition } from '@netvark/ban-core';
-import { ERROR_CATALOG } from '@netvark/jsonapi-core';
+import { BUILTIN_CATALOG, resolveDefinition } from '@nizam-os/ban-core';
+import { ERROR_CATALOG } from '@nizam-os/jsonapi-core';
 
 import { KIND_DETAIL, KIND_STATUS } from '../errors/error-entry';
 import { QUOTA_EXCEEDED_CATALOG } from '../errors/quota-exceeded';

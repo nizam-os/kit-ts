@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { defineKeyset } from '@netvark/keyset-core';
+import { defineKeyset } from '@nizam-os/keyset-core';
 
 import { checkNames } from './check-names';
 import { CONTACTS, contacts } from './test-support/keysets';

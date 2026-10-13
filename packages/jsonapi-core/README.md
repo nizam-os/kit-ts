@@ -1,4 +1,4 @@
-# @netvark/jsonapi-core
+# @nizam-os/jsonapi-core
 
 [JSON:API 1.1](https://jsonapi.org/format/1.1/) for any JavaScript runtime, framework-free. Declare
 a resource once; get typed query parsing, document building with compound documents and sparse
@@ -7,20 +7,20 @@ fieldsets, request document validation with JSON Pointers, content negotiation, 
 [Atomic Operations](https://jsonapi.org/ext/atomic/) extension, all as functions over plain values.
 Every rule is a cited clause of the specification; where the specification leaves a choice to the
 server, the choice is written down in
-[`docs/jsonapi/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md).
+[`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md).
 
 Using [Hono](https://hono.dev)?
-[`@netvark/hono-jsonapi`](https://www.npmjs.com/package/@netvark/hono-jsonapi) wraps this package as
+[`@nizam-os/hono-jsonapi`](https://www.npmjs.com/package/@nizam-os/hono-jsonapi) wraps this package as
 middleware, validators, response helpers, and handlers, and re-exports all of it.
 
 ## Install
 
 ```bash
-pnpm add @netvark/jsonapi-core
+pnpm add @nizam-os/jsonapi-core
 ```
 
-[`@netvark/ban-core`](https://github.com/netvark/netvark) is the one dependency: every error is a
-@netvark/ban-core error, so an application's catalog and this package's share one model (see
+[`@nizam-os/ban-core`](https://github.com/nizam-os/kit) is the one dependency: every error is a
+@nizam-os/ban-core error, so an application's catalog and this package's share one model (see
 Errors). Node 22.12+, Bun, Deno, and Cloudflare Workers are supported; the package uses web
 standards only (`URL`, `URLSearchParams`, `JSON`) and never reads the environment. Validators are
 accepted through [Standard Schema](https://standardschema.dev) (Zod 4, Valibot, ArkType, and others)
@@ -42,7 +42,7 @@ import {
   negotiate,
   parseQuery,
   resourceDocument,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 const Articles = defineResource({
   type: 'articles',
@@ -196,7 +196,7 @@ Every definition also carries, in types only, what a client reads and writes:
 as a string, an attribute that may be `undefined` is optional), each relationship's type and
 cardinality, the filter operators, the include paths, whether the resource takes sparse fieldsets,
 paginates, and has a search parameter, the validators' inputs for a create and an update, and the
-fields each write takes. [`@netvark/jsonapi-client`](../jsonapi-client#readme) types its calls and
+fields each write takes. [`@nizam-os/jsonapi-client`](../jsonapi-client#readme) types its calls and
 records from it. The member, `'~types'`, is never present at runtime.
 
 ```ts
@@ -214,7 +214,7 @@ Best practices:
   types with `import type` and keep database code out of the modules that define resources.
 - **Publish them as declarations.** A package of shared definitions compiles with
   `declaration: true` and no annotations: every type an inferred definition names (`InferredTypes`,
-  `DefinitionOf`) is exported, so the emitted `.d.ts` imports only `@netvark/jsonapi-core`.
+  `DefinitionOf`) is exported, so the emitted `.d.ts` imports only `@nizam-os/jsonapi-core`.
 
 ### Links
 
@@ -233,7 +233,7 @@ Best practices:
 
   ```jsonc
   // .oxlintrc.json or an ESLint config
-  "no-restricted-imports": ["error", { "paths": [{ "name": "@netvark/jsonapi-core", "importNames": ["defineResource"], "message": "Import defineResource from resources/define.ts" }] }]
+  "no-restricted-imports": ["error", { "paths": [{ "name": "@nizam-os/jsonapi-core", "importNames": ["defineResource"], "message": "Import defineResource from resources/define.ts" }] }]
   ```
 
 - **Override only what deviates.** A builder written out wins over the derived one and the rest
@@ -269,9 +269,9 @@ resourcePaths(Articles);
 //   operations: '/api/v1/operations' }
 ```
 
-The OpenAPI document of [`@netvark/resource-core`](../resource-core#readme), the routes of
-[`@netvark/hono-resource`](../hono-resource#readme), and
-[`@netvark/jsonapi-client`](../jsonapi-client#readme) read paths only through it, so the document,
+The OpenAPI document of [`@nizam-os/resource-core`](../resource-core#readme), the routes of
+[`@nizam-os/hono-resource`](../hono-resource#readme), and
+[`@nizam-os/jsonapi-client`](../jsonapi-client#readme) read paths only through it, so the document,
 the routes, and the client name the URLs the links do. It throws `TypeError` when a definition has
 no `links.self`, when a link is neither an absolute URL nor a path starting with `/`, holds the id
 other than once, or carries a query or fragment, when `self` does not end with the id after the
@@ -415,10 +415,10 @@ const tags = parseToManyRelationshipDocument(await request.json(), { type: 'tags
 
 ### Errors
 
-Every error is a [@netvark/ban-core](https://github.com/netvark/netvark) `BanError` built by
-`jsonApiBan`, the package's @netvark/ban-core instance: a closed catalog (`ERROR_CATALOG` over
-@netvark/ban-core's built-ins) in which each `code` fixes `status` and `title`, rendered by
-@netvark/ban-core's JSON:API format. `jsonApiError` builds one error object; a list of `errorItem`s
+Every error is a [@nizam-os/ban-core](https://github.com/nizam-os/kit) `BanError` built by
+`jsonApiBan`, the package's @nizam-os/ban-core instance: a closed catalog (`ERROR_CATALOG` over
+@nizam-os/ban-core's built-ins) in which each `code` fixes `status` and `title`, rendered by
+@nizam-os/ban-core's JSON:API format. `jsonApiError` builds one error object; a list of `errorItem`s
 reports several problems at once, each object with its own identity and the response status the
 specification derives from them.
 
@@ -450,18 +450,18 @@ answers `Sort field "nme" is not supported by this endpoint`; `sort=<b>nme</b>` 
 
 Write your own details the same way: say what was wrong and leave the value to `source.pointer` or
 `source.parameter`, which JSON:API defines for programs to read
-([ADR 0016](https://github.com/netvark/netvark/blob/main/docs/jsonapi/adr/0016-details-quote-request-text-as-plain-tokens.md)).
+([ADR 0016](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0016-details-quote-request-text-as-plain-tokens.md)).
 
 `isBanError` narrows a caught error; `error.status` is the response status, `error.headers` the
 headers it carries (`Allow`, `Vary`), `errorDocument(error)` the document to send, and
 `error.getResponse()` a bare `Response`. For a fetch handler, `jsonApiBan.handler()` is
-@netvark/ban-core's framework-free handler: it renders anything thrown (a `BanError` as is,
+@nizam-os/ban-core's framework-free handler: it renders anything thrown (a `BanError` as is,
 everything else as a constant 500 that reveals nothing), adds `X-Error-Id` and
 `Cache-Control: no-store`, reads a W3C `traceparent` into `meta.traceId`, and calls `onReport` once
 with the thrown value as `cause`.
 
 ```ts
-import { fromRequest } from '@netvark/ban-core';
+import { fromRequest } from '@nizam-os/ban-core';
 
 const handle = jsonApiBan.handler({
   onReport: (report) => logger.error({ err: report.cause }, report.error.title),
@@ -474,8 +474,8 @@ instance renders any `BanError`, so this package's errors go through it unchange
 application's errors carry `links.type` under its `docsBaseUrl`:
 
 ```ts
-import { createBan } from '@netvark/ban-core';
-import { jsonApi } from '@netvark/ban-core/formats/json-api';
+import { createBan } from '@nizam-os/ban-core';
+import { jsonApi } from '@nizam-os/ban-core/formats/json-api';
 
 const ban = createBan({
   errors: { ...ERROR_CATALOG, QUOTA_EXHAUSTED: { status: 429, title: 'Quota Exhausted' } },
@@ -504,7 +504,7 @@ const negotiation = negotiate(
 
 ### Atomic operations
 
-`@netvark/jsonapi-core/atomic` implements the extension over handlers you write per resource, typed
+`@nizam-os/jsonapi-core/atomic` implements the extension over handlers you write per resource, typed
 by the definition. You own the transaction; the processor runs the operations in order inside it,
 resolves `lid` references to the ids earlier operations produced, builds `atomic:results` in
 operation order (or no document, for `204`), and points every error at the operation that failed. A
@@ -512,9 +512,9 @@ rejected `run` rolls everything back. Whatever you hand the processor per reques
 `Request`) reaches `transaction` and every handler as `ctx`.
 
 ```ts
-import type { ResourceHandlers } from '@netvark/jsonapi-core/atomic';
+import type { ResourceHandlers } from '@nizam-os/jsonapi-core/atomic';
 
-import { assertOperationsContentType, operationsProcessor } from '@netvark/jsonapi-core/atomic';
+import { assertOperationsContentType, operationsProcessor } from '@nizam-os/jsonapi-core/atomic';
 
 const articleHandlers: ResourceHandlers<typeof Articles, Transaction, Request> = {
   resource: Articles,
@@ -594,16 +594,16 @@ operation's failure.
 
 | Subpath                        | What it holds                                                                                                                                                          |
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@netvark/jsonapi-core`        | Resource definitions, documents, query parsing, request parsing, errors, content negotiation, cursor pagination, and the constants                                     |
-| `@netvark/jsonapi-core/atomic` | `operationsProcessor()`, `assertOperationsContentType()`, the operations document parser, and `DEFAULT_MAX_OPERATIONS`, a definition's `atomic.max` when it gives none |
+| `@nizam-os/jsonapi-core`        | Resource definitions, documents, query parsing, request parsing, errors, content negotiation, cursor pagination, and the constants                                     |
+| `@nizam-os/jsonapi-core/atomic` | `operationsProcessor()`, `assertOperationsContentType()`, the operations document parser, and `DEFAULT_MAX_OPERATIONS`, a definition's `atomic.max` when it gives none |
 
 ## Documentation
 
-- [`docs/jsonapi/DESIGN.md`](https://github.com/netvark/netvark/blob/main/docs/jsonapi/DESIGN.md):
+- [`docs/jsonapi/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/DESIGN.md):
   what the packages are, the principles, and the API by example
-- [`docs/jsonapi/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md): the
+- [`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md): the
   normative contract, section by section, with the tests that prove it
-- [`docs/jsonapi/adr/`](https://github.com/netvark/netvark/tree/main/docs/jsonapi/adr): the
+- [`docs/jsonapi/adr/`](https://github.com/nizam-os/kit/tree/main/docs/jsonapi/adr): the
   decisions, including every choice the specification leaves to the server
 
 ## License

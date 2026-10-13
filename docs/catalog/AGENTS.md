@@ -1,8 +1,8 @@
 # catalog family: instructions for coding agents
 
 Read with the root [`AGENTS.md`](../../AGENTS.md), which holds the rules every family shares; this
-file adds what is specific to `@netvark/catalog-core` (the database-free model) and
-`@netvark/pg-catalog` (the PostgreSQL extractor and CLI). Humans: see
+file adds what is specific to `@nizam-os/catalog-core` (the database-free model) and
+`@nizam-os/pg-catalog` (the PostgreSQL extractor and CLI). Humans: see
 [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Ground rules
@@ -55,7 +55,7 @@ never imports anything outside itself.
   (`kysely-node-postgres.ts`, `kysely-pglite.ts`) and the mapping over them (`kysely-mapping.ts`)
 - `commands/` `extractCatalog`, `extract`, `introspectCatalog`, `drift`, `formatDiff`
 - `config.ts`, `config-validate.ts`, `config-file.ts` `defineExtraction`, its checks, and loading
-  `netvark.config.*`
+  `pg-catalog.config.*`
 - `cli.ts`, `cli/arguments.ts`, `cli/main.ts` the bin, its argument parser, and `runCli`
 
 `e2e/catalog/`: the end-to-end suite, a private workspace package that consumes the built packages

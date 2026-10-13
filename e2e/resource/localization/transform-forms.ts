@@ -8,8 +8,8 @@
  */
 import type { Context } from 'hono';
 
-import { createBan } from '@netvark/hono-ban';
-import { localizeErrors } from '@netvark/resource-core';
+import { createBan } from '@nizam-os/hono-ban';
+import { localizeErrors } from '@nizam-os/resource-core';
 
 import { contactMessages } from './contact-messages.ts';
 

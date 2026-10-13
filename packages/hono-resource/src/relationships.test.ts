@@ -9,12 +9,12 @@
  * @ref https://jsonapi.org/format/1.1/#crud-updating-relationship-responses-403
  * @ref https://jsonapi.org/format/1.1/#fetching-resources-responses-200
  */
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import { describe, expect, it } from 'vitest';
 
-import { createDeclareResource } from '@netvark/resource-core';
-import { contractFixture } from '@netvark/resource-core/testing';
+import { createDeclareResource } from '@nizam-os/resource-core';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { testApp } from './test-support/app';
 import { memoryRuntime } from './test-support/memory-runtime';

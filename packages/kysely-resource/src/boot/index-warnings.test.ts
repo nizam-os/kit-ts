@@ -8,9 +8,9 @@ import type { TestDomain } from '../test-support/domain';
 
 import { describe, expect, it } from 'vitest';
 
-import { createDeclareResource } from '@netvark/resource-core';
-import { createDomainDefiners } from '@netvark/resource-core/server';
-import { contractFixture } from '@netvark/resource-core/testing';
+import { createDeclareResource } from '@nizam-os/resource-core';
+import { createDomainDefiners } from '@nizam-os/resource-core/server';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { tasksLike, withTable } from '../test-support/boot-catalog';
 import { bootOptions } from '../test-support/boot-options';

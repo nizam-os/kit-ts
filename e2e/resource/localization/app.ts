@@ -4,7 +4,7 @@
  * `Accept-Language`, `localizeErrors` rewrites the JSON:API error document
  * with the Paraglide messages, which read that locale, and the error
  * handler names it in `Content-Language` and varies on `Accept-Language`.
- * The 422 carries resource issues as `@netvark/jsonapi-core` items do
+ * The 422 carries resource issues as `@nizam-os/jsonapi-core` items do
  * (SPEC 9.3); the 409 is what `constraintError` makes of PostgreSQL's
  * refusal of a contact whose email another contact has (SPEC 9.5), on
  * PGlite with the contacts application's schema and seed.
@@ -15,18 +15,18 @@
 
 import type { Context } from 'hono';
 
-import type { ErrorItem } from '@netvark/hono-ban';
-import type { ResourceIssue } from '@netvark/resource-core';
+import type { ErrorItem } from '@nizam-os/hono-ban';
+import type { ResourceIssue } from '@nizam-os/resource-core';
 
 import type { OracleDatabase } from '../support/oracle-database.ts';
 
 import { Hono } from 'hono';
 
-import { createBan } from '@netvark/hono-ban';
-import { jsonApi } from '@netvark/hono-ban/formats/json-api';
-import { ERROR_CATALOG } from '@netvark/jsonapi-core';
-import { errorCatalog, localizeErrors } from '@netvark/resource-core';
-import { constraintError } from '@netvark/resource-core/server';
+import { createBan } from '@nizam-os/hono-ban';
+import { jsonApi } from '@nizam-os/hono-ban/formats/json-api';
+import { ERROR_CATALOG } from '@nizam-os/jsonapi-core';
+import { errorCatalog, localizeErrors } from '@nizam-os/resource-core';
+import { constraintError } from '@nizam-os/resource-core/server';
 
 import { Contacts } from '../resources/contacts.ts';
 import { CONTACTS_SCHEMA, openPglite } from '../support/oracle-database.ts';

@@ -5,8 +5,8 @@
  * where `fields` is read, so declaring a resource costs nothing here.
  * @packageDocumentation
  */
-import type { PublicTable } from '@netvark/catalog-core';
-import type { Operator } from '@netvark/keyset-core';
+import type { PublicTable } from '@nizam-os/catalog-core';
+import type { Operator } from '@nizam-os/keyset-core';
 
 import type { ResolveColumnType } from '../catalog/resolve-type';
 import type { DeclareContext } from '../declare/registries';

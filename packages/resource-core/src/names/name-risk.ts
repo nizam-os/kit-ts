@@ -7,7 +7,7 @@
  * reuses it for every declaration and every inference pass.
  * @packageDocumentation
  */
-import type { PublicTable } from '@netvark/catalog-core';
+import type { PublicTable } from '@nizam-os/catalog-core';
 
 import type { ColumnName, ForeignKeyColumn } from '../catalog/types';
 import type { PrototypeName, ResourceObjectMember } from './member-name';

@@ -15,7 +15,7 @@
  */
 import type { ValidationLogicFn } from '@tanstack/form-core';
 
-import type { FormModel } from '@netvark/resource-ui';
+import type { FormModel } from '@nizam-os/resource-ui';
 
 import { revalidateLogic } from '@tanstack/form-core';
 

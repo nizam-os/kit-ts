@@ -4,7 +4,7 @@
  * links name, and the Atomic Operations endpoint (SPEC 19.4) and the
  * OpenAPI document (SPEC 19.5) beside them, for the host to mount at `/`
  * behind `jsonApi()`, its error handler, and `notFound`. A route maps a request to an operation's input and its
- * result to a document: `@netvark/hono-jsonapi` negotiates, validates,
+ * result to a document: `@nizam-os/hono-jsonapi` negotiates, validates,
  * and builds documents, the runtime authorizes and runs, and the host's
  * ban renders every error.
  * @ref https://jsonapi.org/format/1.1/
@@ -13,11 +13,11 @@
  */
 import type { Env } from 'hono';
 
-import type { OpenApiOptions } from '@netvark/resource-core/openapi';
+import type { OpenApiOptions } from '@nizam-os/resource-core/openapi';
 import type {
   DomainShape,
   ResourceRuntime,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { ActorOf } from './actor';
 import type { RouteContext } from './context';

@@ -5,7 +5,7 @@
  * through the driver holds its table against the driver itself, and a
  * change to the table changes what is sent.
  */
-import type { CatalogColumn } from '@netvark/catalog-core';
+import type { CatalogColumn } from '@nizam-os/catalog-core';
 
 /** One value of each column type of `typesMigrations`, as PostgreSQL text, by the column's `type`. */
 const TEXT: ReadonlyMap<string, string> = new Map([

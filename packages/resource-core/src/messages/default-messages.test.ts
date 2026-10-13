@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { ERROR_CODES } from '@netvark/jsonapi-core';
+import { ERROR_CODES } from '@nizam-os/jsonapi-core';
 
 import { KIND_DETAIL, KIND_STATUS } from '../errors/error-entry';
 import {

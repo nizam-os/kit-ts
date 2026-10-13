@@ -1,8 +1,8 @@
 /**
  * The create form over the contacts application (resource SPEC 20.3,
- * 20.4): `resourceForm` from the built `@netvark/resource-ui`, with
+ * 20.4): `resourceForm` from the built `@nizam-os/resource-ui`, with
  * the application's Paraglide messages, writing through the built
- * `@netvark/jsonapi-client` to the contacts API served over a socket
+ * `@nizam-os/jsonapi-client` to the contacts API served over a socket
  * (`support/contacts-server.ts`), on PGlite and on the server
  * `RESOURCE_PG_URL` names. A person's input is the values a field
  * component holds, and nothing between the form and the database is
@@ -18,7 +18,7 @@ import type { Departure } from '../support/recorded-clients.ts';
 
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { resourceForm } from '@netvark/resource-ui';
+import { resourceForm } from '@nizam-os/resource-ui';
 
 import { contactMessages } from '../localization/contact-messages.ts';
 import { Contacts } from '../resources/contacts.ts';

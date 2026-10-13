@@ -8,7 +8,7 @@
  * read form here: only its storage codec reads its text.
  * @packageDocumentation
  */
-import type { PublicColumnDefault } from '@netvark/catalog-core';
+import type { PublicColumnDefault } from '@nizam-os/catalog-core';
 
 import type { ValueSpec } from '../schema/value-form';
 import type { ColumnType } from '../wire/column-type';

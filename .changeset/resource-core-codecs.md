@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 `defineCodec` and `defineValidator` declare the values a definer's `codecs` and `validators` hold.

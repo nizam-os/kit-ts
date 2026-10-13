@@ -3,15 +3,15 @@
  * the identity, the scope, the operations, search, sort, and page.
  * @packageDocumentation
  */
-import type { PublicColumn, PublicTable } from '@netvark/catalog-core';
-import type { PageCapabilitiesInit } from '@netvark/jsonapi-core';
-import type { SortInput, TextSearchMode } from '@netvark/keyset-core';
+import type { PublicColumn, PublicTable } from '@nizam-os/catalog-core';
+import type { PageCapabilitiesInit } from '@nizam-os/jsonapi-core';
+import type { SortInput, TextSearchMode } from '@nizam-os/keyset-core';
 
 import type { ResourceNames } from '../names/types';
 import type { DefinerContext } from './check-config';
 import type { Declaration, Operation } from './types';
 
-import { isSearchConfig } from '@netvark/keyset-core';
+import { isSearchConfig } from '@nizam-os/keyset-core';
 
 import {
   codecTypeName,
@@ -199,7 +199,7 @@ function checkSearchConfig(
 ): void {
   if (declared !== undefined && !isSearchConfig(declared)) {
     throw new TypeError(
-      `${table}.search.config: "${declared}" is not a text search configuration @netvark/keyset-core accepts (${SEARCH_CONFIG_SYNTAX})`,
+      `${table}.search.config: "${declared}" is not a text search configuration @nizam-os/keyset-core accepts (${SEARCH_CONFIG_SYNTAX})`,
     );
   }
   if (
@@ -208,7 +208,7 @@ function checkSearchConfig(
     !isSearchConfig(generated)
   ) {
     throw new TypeError(
-      `${table}.search.column: the column is generated with config "${generated}", which @netvark/keyset-core does not accept (${SEARCH_CONFIG_SYNTAX})`,
+      `${table}.search.column: the column is generated with config "${generated}", which @nizam-os/keyset-core does not accept (${SEARCH_CONFIG_SYNTAX})`,
     );
   }
 }

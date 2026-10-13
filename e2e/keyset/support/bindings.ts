@@ -1,7 +1,7 @@
 /**
  * A pager per binding (keyset SPEC 14.4): each shared keyset paginated
- * through `@netvark/kysely-keyset` over a harness's Kysely instance, and
- * through `@netvark/drizzle-keyset` over its Drizzle database, so a feature
+ * through `@nizam-os/kysely-keyset` over a harness's Kysely instance, and
+ * through `@nizam-os/drizzle-keyset` over its Drizzle database, so a feature
  * file runs every expectation once per binding. Both select `id` and
  * `first_name`, so rows compare across bindings.
  */
@@ -12,8 +12,8 @@ import type {
   Page,
   QueryEvent,
   RelationsInit,
-} from '@netvark/drizzle-keyset';
-import type { CursorContext, KyselyKeyset } from '@netvark/kysely-keyset';
+} from '@nizam-os/drizzle-keyset';
+import type { CursorContext, KyselyKeyset } from '@nizam-os/kysely-keyset';
 
 import type { Harness } from './db.ts';
 

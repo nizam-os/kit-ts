@@ -8,7 +8,7 @@
  * answer tells Acme nothing of Globex's ids. On PGlite and on the server
  * `RESOURCE_PG_URL` names, through the domain alone.
  */
-import type { ResourceInput } from '@netvark/kysely-resource';
+import type { ResourceInput } from '@nizam-os/kysely-resource';
 
 import type { RuntimeDatabase } from './runtime/database.ts';
 import type { AppRuntime } from './runtime/fixture.ts';
@@ -28,7 +28,7 @@ const NO_CONTACT = '00000000-0000-4000-8000-00000000dead';
 const CALL = '00000000-0000-4000-8000-0000000000c1';
 const OTHER_CALL = '00000000-0000-4000-8000-0000000000c2';
 
-/** A call as `@netvark/jsonapi-core` parses its resource object. */
+/** A call as `@nizam-os/jsonapi-core` parses its resource object. */
 function call(contact: string, id = CALL): ResourceInput {
   return {
     id,

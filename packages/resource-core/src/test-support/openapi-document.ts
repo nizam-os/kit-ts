@@ -11,7 +11,7 @@
  */
 import { openApiAjv } from './openapi-ajv';
 
-const DOCUMENT_ID = 'https://netvark.test/openapi.json';
+const DOCUMENT_ID = 'https://nizam-kit.test/openapi.json';
 const OPENAPI_MEMBERS = [
   'openapi',
   'info',

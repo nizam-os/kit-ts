@@ -4,7 +4,7 @@
  * form refuses, so every id has one spelling.
  * @packageDocumentation
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
 
 import type { ValueSpec } from '../schema/value-form';
 import type { BoundaryFixture } from './fixture';

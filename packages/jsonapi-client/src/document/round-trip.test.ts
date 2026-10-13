@@ -1,15 +1,15 @@
 /**
- * The round trip (SPEC 15.6): compound documents that `@netvark/jsonapi-core`
+ * The round trip (SPEC 15.6): compound documents that `@nizam-os/jsonapi-core`
  * builds from the blog's rows, for each query, sent as JSON text and
  * deserialized with the query's include paths, are the records the rows
  * describe: the fields the fieldsets keep, each relationship on a path
  * resolved and every other one linkage, in linkage order.
  */
-import type { Included } from '@netvark/jsonapi-core';
+import type { Included } from '@nizam-os/jsonapi-core';
 
 import { describe, expect, it } from 'vitest';
 
-import { collectionDocument, include, parseQuery } from '@netvark/jsonapi-core';
+import { collectionDocument, include, parseQuery } from '@nizam-os/jsonapi-core';
 
 import { Articles, People, Tags } from '../test-support/blog';
 import { deserialize } from './deserialize';

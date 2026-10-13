@@ -4,15 +4,15 @@
  * the application's CI would extract it after that migration: what boot's
  * tests check a composition against when the schema differs from the
  * application's own. The extraction's PGlite gets the extensions and
- * schemas `fixtures/contacts/netvark.config.mjs` names.
+ * schemas `fixtures/contacts/pg-catalog.config.mjs` names.
  * @ref https://documentation.red-gate.com/fd/migrations-271585107.html (versioned migrations run in version order, repeatable ones after them)
  */
-import type { Catalog, Migration } from '@netvark/pg-catalog';
+import type { Catalog, Migration } from '@nizam-os/pg-catalog';
 
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-import { extractCatalog } from '@netvark/pg-catalog';
+import { extractCatalog } from '@nizam-os/pg-catalog';
 
 import { CONTACTS_DIR } from '../support/paths.ts';
 

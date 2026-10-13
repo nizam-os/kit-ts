@@ -7,9 +7,9 @@
  * the key column. Runs on PGlite, and on the server `RESOURCE_PG_URL`
  * names.
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
-import type { DeclaredResource } from '@netvark/resource-core';
-import type { BoundaryFixture } from '@netvark/resource-core/testing';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
+import type { BoundaryFixture } from '@nizam-os/resource-core/testing';
 
 import type { ColumnType } from './support/column-type.ts';
 import type { OracleDatabase } from './support/oracle-database.ts';
@@ -18,7 +18,7 @@ import { isDeepStrictEqual } from 'node:util';
 
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { boundaryFixtures } from '@netvark/resource-core/testing';
+import { boundaryFixtures } from '@nizam-os/resource-core/testing';
 
 import { columnType } from './support/column-type.ts';
 import { oracleDatabases } from './support/oracle-database.ts';

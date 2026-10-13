@@ -1,4 +1,4 @@
-import type { PublicTable } from '@netvark/catalog-core';
+import type { PublicTable } from '@nizam-os/catalog-core';
 
 import type { Declaration } from '../declare/types';
 import type { NamesCatalog } from '../test-support/names';

@@ -1,5 +1,5 @@
 ---
-'@netvark/jsonapi-client': patch
+'@nizam-os/jsonapi-client': patch
 ---
 
 `setRelationship`, `addToRelationship`, and `removeFromRelationship` take only the relationships an

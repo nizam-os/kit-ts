@@ -8,7 +8,7 @@ import * as zm from 'zod/mini';
  * `defineCodec` and `defineValidator` made, and a fixture its schema
  * disagrees with fails at startup with a `TypeError` naming it.
  */
-import { defineCodec, defineValidator } from '@netvark/resource-core';
+import { defineCodec, defineValidator } from '@nizam-os/resource-core';
 
 import { publicCatalog } from './fixtures/contacts/public-catalog.ts';
 import { codecs } from './resources/codecs.ts';

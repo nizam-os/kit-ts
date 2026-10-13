@@ -6,7 +6,7 @@
  * Kysely instance uses `DummyDriver`, so the same module runs on Bun, Deno,
  * and workerd.
  */
-import type { QueryEvent } from '@netvark/kysely-keyset';
+import type { QueryEvent } from '@nizam-os/kysely-keyset';
 
 import type { Check } from './assert.ts';
 
@@ -22,7 +22,7 @@ import {
   createDefineKeyset,
   InvalidCursorError,
   isKeysetError,
-} from '@netvark/kysely-keyset';
+} from '@nizam-os/kysely-keyset';
 
 import { check, equal } from './assert.ts';
 import { DRIZZLE_CHECKS } from './drizzle-checks.ts';
@@ -214,7 +214,7 @@ export function report(result: SmokeResult): void {
   const total = result.passed + result.failures.length;
   if (result.failures.length === 0) {
     console.log(
-      `@netvark/keyset-core smoke: ${total} checks passed on ${result.runtime}`,
+      `@nizam-os/keyset-core smoke: ${total} checks passed on ${result.runtime}`,
     );
     return;
   }
@@ -222,6 +222,6 @@ export function report(result: SmokeResult): void {
     console.error(`FAIL ${failure}`);
   }
   throw new Error(
-    `@netvark/keyset-core smoke: ${result.failures.length} of ${total} checks failed on ${result.runtime}`,
+    `@nizam-os/keyset-core smoke: ${result.failures.length} of ${total} checks failed on ${result.runtime}`,
   );
 }

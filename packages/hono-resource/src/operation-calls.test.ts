@@ -7,7 +7,7 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import { errorObjects, isBanError, jsonApiError } from '@netvark/hono-jsonapi';
+import { errorObjects, isBanError, jsonApiError } from '@nizam-os/hono-jsonapi';
 
 import { OperationCalls } from './operation-calls';
 import { objectPath } from './pointers';

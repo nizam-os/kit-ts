@@ -5,7 +5,7 @@
 
 ## Context
 
-ADR 0004 gave `@netvark/kysely-keyset` the peer range `kysely >= 0.28.0`, the oldest release whose
+ADR 0004 gave `@nizam-os/kysely-keyset` the peer range `kysely >= 0.28.0`, the oldest release whose
 API the adapter uses, while CI ran its unit tests on 0.28.17. Every release before 0.28.17 is
 affected by at least one published high-severity SQL injection advisory:
 
@@ -21,7 +21,7 @@ None of them reaches the SQL `paginate` builds. It reads no JSON path, and its t
 PostgreSQL (ADR 0009). They reach the application: the adapter runs on the application's own copy of
 Kysely, and a range that admits 0.28.0 lets the application keep an affected one. The repository's
 other adapters already start their ranges past their peer's published advisories:
-`@netvark/hono-ban` at Hono's ("upstream security floor", ban DESIGN) and `@netvark/drizzle-keyset`
+`@nizam-os/hono-ban` at Hono's ("upstream security floor", ban DESIGN) and `@nizam-os/drizzle-keyset`
 at `drizzle-orm >=0.45.2` (CVE-2026-39356, ADR 0017).
 
 Measured: the adapter's typecheck and its 40 unit tests pass on Kysely 0.28.0 as on 0.28.17, so the
@@ -38,7 +38,7 @@ https://github.com/kysely-org/kysely/releases/tag/v0.29.0
 
 ## Decision
 
-- `kysely >= 0.28.17` is `@netvark/kysely-keyset`'s only peer dependency. This amends ADR 0004,
+- `kysely >= 0.28.17` is `@nizam-os/kysely-keyset`'s only peer dependency. This amends ADR 0004,
   which set `>= 0.28.0`; the rest of that decision stands.
 - CI's floor job runs the adapter's typecheck and unit tests on 0.28.17, the floor itself.
 

@@ -3,7 +3,7 @@
  * order from the responses given and records what each request sent, its
  * body read once as text. Never published.
  */
-import { JSON_API_MEDIA_TYPE } from '@netvark/jsonapi-core';
+import { JSON_API_MEDIA_TYPE } from '@nizam-os/jsonapi-core';
 
 /** What one request sent. */
 interface Sent {

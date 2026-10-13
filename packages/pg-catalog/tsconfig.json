@@ -4,7 +4,7 @@
   "compilerOptions": {
     // A Node.js package: it reads migration files and opens connections.
     "types": ["node"],
-    // Resolve `@netvark/catalog-core` to its source through the `source`
+    // Resolve `@nizam-os/catalog-core` to its source through the `source`
     // condition of its exports map, as the keyset binding does.
     // @ref https://tsdown.dev/options/package-exports#devexports
     // @ref https://www.typescriptlang.org/tsconfig/#customConditions

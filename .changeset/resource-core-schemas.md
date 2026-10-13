@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 Declared resources carry Zod schemas derived from the catalog and the declaration, so clients and
@@ -15,7 +15,7 @@ servers refuse what PostgreSQL would refuse or store differently.
   U+0000, unpaired surrogates, and other spellings of `int8` and `numeric` values, which travel as
   decimal strings.
 - `validate.create` and `validate.update` are Standard Schema validators of the attributes, and
-  `write.create` and `write.update` of a resource object as `@netvark/jsonapi-core` parses it, where
+  `write.create` and `write.update` of a resource object as `@nizam-os/jsonapi-core` parses it, where
   the CHECKs over a field and a relationship run. Their issues are `ResourceIssue`s, named by a JSON
   Schema keyword from `ISSUE_KINDS` or by a constraint's code, with constant messages that never
   repeat request data.
@@ -26,6 +26,6 @@ servers refuse what PostgreSQL would refuse or store differently.
   stays out, and the column's nullability decides `null`.
 - `Infer<typeof Resource>` gives the output types of all six schemas, with enum columns and `enum`
   rules narrowed to their values.
-- The new `@netvark/resource-core/testing` entry exports `boundaryFixtures(resource)`: labeled wire
+- The new `@nizam-os/resource-core/testing` entry exports `boundaryFixtures(resource)`: labeled wire
   values at and next to every limit of each field and relationship, which the package's own tests
   run through PostgreSQL 14 and 18.

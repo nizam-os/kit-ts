@@ -19,7 +19,7 @@ import type {
   ClientRelationship,
   RelationshipDefinition,
   ResourceIdentifier,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import type { Identifier } from '../document/types';
 import type { LinkageValue, LocalIdentifier } from './write-types';

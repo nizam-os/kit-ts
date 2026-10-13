@@ -1,11 +1,11 @@
-# @netvark/resource-core
+# @nizam-os/resource-core
 
 One declaration per PostgreSQL table, keyed by its database names and typed by the public catalog
-[`@netvark/pg-catalog`](https://www.npmjs.com/package/@netvark/pg-catalog) extracts from your
+[`@nizam-os/pg-catalog`](https://www.npmjs.com/package/@nizam-os/pg-catalog) extracts from your
 migrations. A wrong table, column, foreign key, constraint, codec, validator, or scope name fails
 `tsc` at the option that holds it, with the reason; the same mistake made from JavaScript throws a
 `TypeError` naming its path. Every rule is specified in
-[`docs/resource/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/resource/SPEC.md).
+[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md).
 
 Status: in development and unreleased. This line implements the definer, the declaration, the public
 names and codes derived from it, the wire forms and Zod schemas, `defineCodec` and
@@ -16,14 +16,14 @@ keyset definition a declaration derives (SPEC 9.4 and 11), the `server` subpath 
 `constraintError`, `relationshipTargets`, and the storage adapter contract and its suite, `list`
 included (SPEC 9.5 and 12), and the `openapi` entry: the OpenAPI document, the surface, and its diff
 (SPEC 13);
-[`docs/resource/README.md`](https://github.com/netvark/netvark/blob/main/docs/resource/README.md)
+[`docs/resource/README.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/README.md)
 shows where the family is going.
 
 ## Install
 
 ```bash
-pnpm add @netvark/resource-core zod
-pnpm add -D @netvark/pg-catalog @electric-sql/pglite
+pnpm add @nizam-os/resource-core zod
+pnpm add -D @nizam-os/pg-catalog @electric-sql/pglite
 ```
 
 `zod` 4.5 or later is a peer dependency: the first 4.x release whose `.max()` counts code points, as
@@ -38,8 +38,8 @@ safely because they only ever see the public catalog.
 List the tables your API serves in the extraction configuration, and run `pg-catalog extract`:
 
 ```ts
-// netvark.config.mjs
-import { defineExtraction } from '@netvark/pg-catalog';
+// pg-catalog.config.mjs
+import { defineExtraction } from '@nizam-os/pg-catalog';
 
 export default defineExtraction({
   migrations: 'migrations',
@@ -58,7 +58,7 @@ Configure the definer once, in the module the declarations import, with the code
 
 ```ts
 // resources/declare-resource.ts
-import { createDeclareResource } from '@netvark/resource-core';
+import { createDeclareResource } from '@nizam-os/resource-core';
 
 import { publicCatalog } from '../public-catalog';
 import { codecs } from './codecs';
@@ -124,7 +124,7 @@ Contacts.names.fields.get('createdAt'); // 'created_at'
 | `scope`                | a scope of the definer whose column the table has                                                                                                                              |
 | `clientIds`            | a primary key that accepts a client value: not a generated column and not an identity `ALWAYS` column                                                                          |
 | `search`               | a `tsvector` column; `config` equals the one the column is generated with, or is given, and is an unqualified name (`english`, not `pg_catalog.english`)                       |
-| `filter`, `sort`       | operators `@netvark/keyset-core` runs for the member's type, each once, at least one; `isNull` only on a nullable column; none on `json`, `jsonb`, a codec; no sort on arrays  |
+| `filter`, `sort`       | operators `@nizam-os/keyset-core` runs for the member's type, each once, at least one; `isNull` only on a nullable column; none on `json`, `jsonb`, a codec; no sort on arrays  |
 | `as`                   | on a member that filters or sorts, ASCII letters, digits, `_`, and `-`, starting with a letter or a digit; on a filtered member, not `or`, nor `q` with `search`               |
 | `sort.default`         | fields declared with `sort: true`, each once                                                                                                                                   |
 | `rules`                | constraint names and NOT NULL keys (`contacts_name_not_null`); a validator only on an enforced CHECK without a rule, and required on every such CHECK over a written column    |
@@ -193,7 +193,7 @@ ADR 0006).
 
 import { z } from 'zod';
 
-import { defineCodec } from '@netvark/resource-core';
+import { defineCodec } from '@nizam-os/resource-core';
 
 const instant = z.iso.datetime({ offset: true });
 
@@ -214,7 +214,7 @@ export const codecs = {
 
 import { z } from 'zod';
 
-import { defineValidator } from '@netvark/resource-core';
+import { defineValidator } from '@nizam-os/resource-core';
 
 export const validators = {
   lowercase: defineValidator({
@@ -249,7 +249,7 @@ handles.
 `pg-catalog rules --check` holds the fixtures, and every member's boundary values, to the database
 your migrations build: an `accept` fixture must be stored, a `reject` fixture refused by its CHECK,
 and a codec's fixture stored and read back as itself through a storage codec over text (see
-[`@netvark/pg-catalog`](https://github.com/netvark/netvark/tree/main/packages/pg-catalog#checking-declarations-against-the-database)).
+[`@nizam-os/pg-catalog`](https://github.com/nizam-os/kit/tree/main/packages/pg-catalog#checking-declarations-against-the-database)).
 A codec's fixtures are round-trip values, so write them as the server gives them back: the period
 above is in UTC, since `tstzrange` keeps instants, not offsets.
 
@@ -297,7 +297,7 @@ export const Notes = declareResource('notes', {
 ```
 
 A member that filters or sorts also names a query parameter, `filter[createdAt]` or
-`sort=-createdAt`, so its public name must be a field name `@netvark/keyset-core` accepts: ASCII
+`sort=-createdAt`, so its public name must be a field name `@nizam-os/keyset-core` accepts: ASCII
 letters, digits, `_`, and `-`, starting with a letter or a digit. A filtered member cannot be named
 `or`, which `filter` reserves for the disjunction, nor `q` when the resource has `search`, whose
 parameter is `filter[q]`. `priorität` above keeps its name because nothing filters or sorts by it;
@@ -323,7 +323,7 @@ CHECKs the catalog translates, its nullability, and its validators:
 | `schema.id`, `validate.id`                         | a resource id its key's form takes, output as the server sends it: a URL's or a client id | Zod's, `ResourceIssue`s |
 | `linkage.read`, `linkage.create`, `linkage.update` | the relationships, each `{ type, id }`, or `null` where the foreign key is nullable       | Zod's                   |
 | `validate.create`, `validate.update`               | the attributes, as Standard Schema validators                                             | `ResourceIssue`s        |
-| `write.create`, `write.update`                     | a resource object as `@netvark/jsonapi-core` parses it, `{ attributes, relationships }`   | `ResourceIssue`s        |
+| `write.create`, `write.update`                     | a resource object as `@nizam-os/jsonapi-core` parses it, `{ attributes, relationships }`   | `ResourceIssue`s        |
 
 `create` requires exactly the columns PostgreSQL requires on insert, `update` requires none, and
 both reject unknown keys; over JSON:API a declared member the operation does not write never reaches
@@ -383,7 +383,7 @@ constraint's code, carries the limit in `expected`, and has a constant English m
 repeats request data (SPEC 6.4). `Infer` gives the types of all six schemas:
 
 ```ts
-import type { Infer } from '@netvark/resource-core';
+import type { Infer } from '@nizam-os/resource-core';
 
 type NewContact = Infer<typeof Contacts>['create'];
 // kind?: 'person' | 'company', the enum's labels; name: string, required on insert
@@ -421,7 +421,7 @@ a stated limit was refused or changed (SPEC 15.4, 15.5).
 
 ## Testing at the limits
 
-`boundaryFixtures(resource)`, from `@netvark/resource-core/testing`, lists for each field and
+`boundaryFixtures(resource)`, from `@nizam-os/resource-core/testing`, lists for each field and
 relationship the wire values at and next to each of its limits, each with a label: the empty string,
 `maxLength 200, plus one`, `upper bound 5`, an unpaired surrogate, a seventh fraction digit. They
 are what this package's oracle writes into PostgreSQL 14 and 18, whose verdicts the schemas match
@@ -431,7 +431,7 @@ verdicts it flips:
 ```ts
 import { expect, it } from 'vitest';
 
-import { boundaryFixtures } from '@netvark/resource-core/testing';
+import { boundaryFixtures } from '@nizam-os/resource-core/testing';
 
 import { Contacts } from './contacts';
 
@@ -512,16 +512,16 @@ Neither has a NOT ENFORCED CHECK or foreign key, which PostgreSQL never raises; 
 fails `tsc`, and the foreign key still declares a relationship.
 
 `errorCatalog` assembles the codes of the resources the application serves, resource-core's
-`QUOTA_EXCEEDED`, and the application's own codes into one `@netvark/ban-core` catalog fragment. It
+`QUOTA_EXCEEDED`, and the application's own codes into one `@nizam-os/ban-core` catalog fragment. It
 checks the list as a registry (SPEC 4.2): each type once, each code from one constraint and taken by
-neither `@netvark/ban-core`, `@netvark/jsonapi-core`, nor the application, and each relationship's
+neither `@nizam-os/ban-core`, `@nizam-os/jsonapi-core`, nor the application, and each relationship's
 target in the list.
 
 ```ts
 // errors.ts
-import { createBan } from '@netvark/ban-core';
-import { ERROR_CATALOG } from '@netvark/jsonapi-core';
-import { errorCatalog } from '@netvark/resource-core';
+import { createBan } from '@nizam-os/ban-core';
+import { ERROR_CATALOG } from '@nizam-os/jsonapi-core';
+import { errorCatalog } from '@nizam-os/resource-core';
 
 import { Contacts } from './resources/contacts';
 import { Meetings } from './resources/meetings';
@@ -554,7 +554,7 @@ functions fit as the compiler emits them:
 
 ```ts
 // messages.ts
-import { defineMessages } from '@netvark/resource-core';
+import { defineMessages } from '@nizam-os/resource-core';
 
 import { APP_ERRORS } from './errors';
 import { m } from './paraglide/messages.js';
@@ -564,7 +564,7 @@ import { Organizations } from './resources/organizations';
 export const messages = defineMessages([Organizations, Contacts], APP_ERRORS, {
   errors: {
     NOT_FOUND: { title: m.not_found_title, detail: m.not_found_detail },
-    // every code of @netvark/jsonapi-core, QUOTA_EXCEEDED, and every code of APP_ERRORS
+    // every code of @nizam-os/jsonapi-core, QUOTA_EXCEEDED, and every code of APP_ERRORS
   },
   constraints: {
     unique: { title: m.conflict, detail: m.unique_detail }, // ({ field, fields })
@@ -584,7 +584,7 @@ A missing code, constraint kind, issue kind, member label, or option label fails
 an unknown key. Paraglide types each message with its variables across all locales, so a translation
 that uses a variable its kind does not receive fails the build too, in any locale. A derived code
 needs no entry, since its constraint kind's texts cover it; add one to `errors` only to override
-them. A `@netvark/ban-core` built-in needs none either, but give one to each your host throws
+them. A `@nizam-os/ban-core` built-in needs none either, but give one to each your host throws
 itself, such as the `UNAUTHORIZED` of its actor resolver: without an entry, that error keeps its
 English title and the detail your host wrote, in every language. A detail receives:
 
@@ -607,9 +607,9 @@ import type { Context } from 'hono';
 
 import { Hono } from 'hono';
 
-import { localizeErrors } from '@netvark/resource-core';
+import { localizeErrors } from '@nizam-os/resource-core';
 
-import { ban } from './errors'; // createBan from @netvark/hono-ban
+import { ban } from './errors'; // createBan from @nizam-os/hono-ban
 import { messages } from './messages';
 import { getLocale } from './paraglide/runtime.js';
 import { paraglideMiddleware } from './paraglide/server.js';
@@ -662,22 +662,22 @@ the ones the schemas already produce.
 A declared resource derives the two definitions a collection endpoint needs, from the same members
 and under the same public names (SPEC 11):
 
-- `Contacts.resource` is a `@netvark/jsonapi-core` resource: the attributes, the relationships,
+- `Contacts.resource` is a `@nizam-os/jsonapi-core` resource: the attributes, the relationships,
   `serialize` for public rows, the create and update validators of the served operations, the id's
   validator, which checks a create's client id with `clientIds` and matches an update's id to its
   URL's, the members each write accepts (`writable`), the definer's cap on one Atomic Operations
   request (`atomic.max`), and the capabilities `parseQuery` holds a request to: the declared sorts,
   the filters with their operators, the includes, `filter[q]` when the declaration has `search`, and
   the page bounds. It is built on first read, since it names each relationship target's type.
-- `Contacts.keyset` is a `@netvark/keyset-core` definition without the cursor: the same filters and
+- `Contacts.keyset` is a `@nizam-os/keyset-core` definition without the cursor: the same filters and
   sorts with each column's keyset type, the search column and its configuration, the key `id`, the
   default sort, and the same page bounds.
 
 The cursor secret is server configuration, so the server defines the keyset with its own definer:
 
 ```ts
-import { parseQuery } from '@netvark/jsonapi-core';
-import { createDefineKeyset } from '@netvark/keyset-core';
+import { parseQuery } from '@nizam-os/jsonapi-core';
+import { createDefineKeyset } from '@nizam-os/keyset-core';
 
 const defineKeyset = createDefineKeyset({ cursor: { secret: env.CURSOR_SECRET } });
 const contacts = defineKeyset(Contacts.keyset);
@@ -696,11 +696,11 @@ pointer, before any validator, policy, or statement runs; the relationship route
 operations refuse it the same way, so no route repeats the check.
 
 `Contacts.resource` also carries, in types only, what a client reads and writes (jsonapi SPEC 5.3),
-so [`@netvark/jsonapi-client`](../jsonapi-client#readme) types its calls from the declaration with
+so [`@nizam-os/jsonapi-client`](../jsonapi-client#readme) types its calls from the declaration with
 nothing generated:
 
 ```ts
-import type { TypesOf } from '@netvark/jsonapi-core';
+import type { TypesOf } from '@nizam-os/jsonapi-core';
 
 type Contact = TypesOf<typeof Contacts.resource>;
 // Contact['attributes']: { readonly kind: 'person' | 'company'; readonly name: string; ... }
@@ -717,16 +717,16 @@ refuses too, except a sort by `id`. The page bounds are resolved once for both, 
 accepts, the other accepts.
 
 A list route hands the keyset what `parseQuery` returned through `keysetRequest` from
-`@netvark/resource-core/server`. Only the shapes of values differ: `parseQuery` yields text, or a
+`@nizam-os/resource-core/server`. Only the shapes of values differ: `parseQuery` yields text, or a
 list for a repeated parameter, while keyset-core takes `isNull` as a boolean and `in`, `nin`,
 `between`, and an array field's operators as lists. `keysetRequest` converts those, joins the
 conditions and the `filter[or][n]` groups, passes `search` and the page as they are, and leaves
 `sort` out of a query without one, so the declared default applies (SPEC 11.2):
 
 ```ts
-import { respond } from '@netvark/hono-jsonapi';
-import { paginatedDocument, parseQuery } from '@netvark/jsonapi-core';
-import { keysetRequest } from '@netvark/resource-core/server';
+import { respond } from '@nizam-os/hono-jsonapi';
+import { paginatedDocument, parseQuery } from '@nizam-os/jsonapi-core';
+import { keysetRequest } from '@nizam-os/resource-core/server';
 
 app.get('/contacts', async (c) => {
   // ?filter[kind][in]=person&filter[or][0][name][startsWithi]=ada&filter[or][0][email]=ada@example.com
@@ -748,10 +748,10 @@ refused value's parameter with them.
 
 ## Server
 
-`@netvark/resource-core/server` holds what only a server composes, typed by your application's own
+`@nizam-os/resource-core/server` holds what only a server composes, typed by your application's own
 registries (SPEC 12): who acts and what they may do, each operation's behavior, tenant scopes,
 quotas, events, and the errors of rules and of the database. It touches no database: a storage
-adapter does, and a runtime runs each operation over one. `@netvark/kysely-resource` ships both.
+adapter does, and a runtime runs each operation over one. `@nizam-os/kysely-resource` ships both.
 
 ### The domain
 
@@ -760,11 +760,11 @@ code, or member fails `tsc`:
 
 ```ts
 // server/domain.ts
-import type { Actor } from '@netvark/resource-core/server';
+import type { Actor } from '@nizam-os/resource-core/server';
 
 import type { Services } from './services';
 
-import { createDomainDefiners } from '@netvark/resource-core/server';
+import { createDomainDefiners } from '@nizam-os/resource-core/server';
 
 import { Contacts } from '../resources/contacts';
 import { ContactCreated } from './registries';
@@ -823,7 +823,7 @@ id covers, such as `created_by`; `tsc` requires it exactly when the table has su
 
 `defineResource` freezes and records what it returns: `isResourceBehavior(value)` is `true` for
 exactly those objects and never for a copy, so a runtime refuses a behavior put together by hand,
-whose policy and operations nothing checked. `@netvark/kysely-resource` checks it at boot.
+whose policy and operations nothing checked. `@nizam-os/kysely-resource` checks it at boot.
 
 ### Scopes, quotas, and events
 
@@ -832,7 +832,7 @@ bindings against them:
 
 ```ts
 // server/registries.ts
-import type { QuotaContext, ScopeBindings } from '@netvark/resource-core/server';
+import type { QuotaContext, ScopeBindings } from '@nizam-os/resource-core/server';
 
 import type { scopes } from '../resources/declare-resource';
 import type { AppActor } from './domain';
@@ -840,7 +840,7 @@ import type { Services } from './services';
 
 import { z } from 'zod';
 
-import { defineEvent, defineQuota, defineScope } from '@netvark/resource-core/server';
+import { defineEvent, defineQuota, defineScope } from '@nizam-os/resource-core/server';
 
 export const SCOPES = {
   organization: defineScope({
@@ -882,14 +882,14 @@ The runtime turns what an operation threw into the client's error, once the oper
 has ended:
 
 ```ts
-import type { ResourceBehavior } from '@netvark/resource-core/server';
+import type { ResourceBehavior } from '@nizam-os/resource-core/server';
 
 import {
   constraintError,
   partitionViolation,
   Rejection,
   rejectionError,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 type Behavior = ResourceBehavior<AppDomain>;
 
@@ -911,7 +911,7 @@ const failure = async (
 fields, whichever driver threw it (node-postgres, PGlite, postgres.js, Neon, or Bun):
 `CONTACT_EMAIL_TAKEN` (409) with an item at `/data/attributes/email` and the driver error as
 `cause`. It returns `undefined` for an error it does not own, which your ban's `map`, typically
-`postgresMapper()` from `@netvark/ban-core/postgresql`, then answers by SQLSTATE. Every integrity
+`postgresMapper()` from `@nizam-os/ban-core/postgresql`, then answers by SQLSTATE. Every integrity
 violation of a remove is `CONFLICT` (409), since it belongs to a row that references the removed
 one: a foreign key that blocks the delete, or an `ON DELETE` action whose result breaks a constraint
 of the referencing row.
@@ -948,7 +948,7 @@ that are easy to get wrong.
 
 `list` pages with the resource's `keyset`. Define it once per resource with the server's
 `createDefineKeyset({ cursor })`, plan the request, which names members by their public names, and
-render the plan as `@netvark/kysely-keyset` does for Kysely:
+render the plan as `@nizam-os/kysely-keyset` does for Kysely:
 
 ```ts
 const keysets = new WeakMap<DeclaredResource, Keyset>();
@@ -967,17 +967,17 @@ async function list(tx, resource, request: StorageListRequest): Promise<StorageP
 ```
 
 The reference adapter's
-[`reference-list.ts`](https://github.com/netvark/netvark/blob/main/e2e/resource/support/reference-list.ts)
+[`reference-list.ts`](https://github.com/nizam-os/kit/blob/main/e2e/resource/support/reference-list.ts)
 renders every part of a declared resource's plan in plain SQL.
 
 ### The contract suite
 
-`storageContract` from `@netvark/resource-core/testing` checks an adapter against those obligations
+`storageContract` from `@nizam-os/resource-core/testing` checks an adapter against those obligations
 on its own fixture, under your test runner. Create a database from `contractFixture.migrations` plus
 your outbox, then:
 
 ```ts
-import { contractFixture, storageContract } from '@netvark/resource-core/testing';
+import { contractFixture, storageContract } from '@nizam-os/resource-core/testing';
 
 const harness = {
   adapter: createAdapter({
@@ -1008,7 +1008,7 @@ proving the locks.
 
 A runtime runs every operation in one transaction scoped to the actor: policy, rules, relationship
 targets, quota, write, and effects, so any failure rolls back everything, events included.
-[`@netvark/kysely-resource`](../kysely-resource/README.md) is the runtime for PostgreSQL through
+[`@nizam-os/kysely-resource`](../kysely-resource/README.md) is the runtime for PostgreSQL through
 Kysely: `createResourceRuntime` checks the composition at boot and runs this lifecycle for
 `runtime.as(actor)`. A runtime over another storage composes it the same way. An update, condensed:
 
@@ -1055,7 +1055,7 @@ targets up after the policy and the rules, so an actor they refuse learns nothin
 
 Take every resource's behavior as `ResourceBehavior<AppDomain>`. Every operation's complete
 lifecycle is in
-[`packages/kysely-resource/src/runtime/`](https://github.com/netvark/netvark/tree/main/packages/kysely-resource/src/runtime).
+[`packages/kysely-resource/src/runtime/`](https://github.com/nizam-os/kit/tree/main/packages/kysely-resource/src/runtime).
 
 A host or a worker takes a runtime by the contract this subpath types (SPEC 12.10), so it needs no
 query builder or driver to type the one it is given: `warnings`, `resources`, each behavior's
@@ -1067,7 +1067,7 @@ optional:
 
 ```ts
 // server/people.ts
-import type { ResourceRuntime } from '@netvark/resource-core/server';
+import type { ResourceRuntime } from '@nizam-os/resource-core/server';
 
 import type { AppActor, AppDomain, ContactsBehavior } from './domain';
 
@@ -1098,11 +1098,11 @@ export function typesOf(runtime: ResourceRuntime<AppDomain>): ReadonlyArray<stri
 
 ## OpenAPI and the API diff
 
-`@netvark/resource-core/openapi` documents the resources you serve as an OpenAPI 3.1.2 document, and
+`@nizam-os/resource-core/openapi` documents the resources you serve as an OpenAPI 3.1.2 document, and
 records what clients depend on as a surface you commit and diff (SPEC 13):
 
 ```ts
-import { openapi } from '@netvark/resource-core/openapi';
+import { openapi } from '@nizam-os/resource-core/openapi';
 
 export const document = openapi([Organizations, Contacts, Meetings], {
   info: { title: 'Contacts', version: '1.0.0' },
@@ -1121,7 +1121,7 @@ export const document = openapi([Organizations, Contacts, Meetings], {
 app.get('/openapi.json', (c) => c.json(document));
 ```
 
-A host on [`@netvark/hono-resource`](../hono-resource#the-openapi-document) passes the same options
+A host on [`@nizam-os/hono-resource`](../hono-resource#the-openapi-document) passes the same options
 as `jsonApiRoutes({ runtime, actor, openapi })`, and the routes serve the document of the runtime's
 resources at `<base>/openapi.json`.
 
@@ -1129,7 +1129,7 @@ Every operation the declarations serve has its path, parameters, request and res
 an error response for each status it can answer with, listing its codes; each code's error object is
 a component, written once and referenced, and so is the response of a status that carries one code,
 `components.responses['_error.<code>']`. Paths come from each resource's links, and an absolute base
-becomes the document's server. `@netvark/jsonapi-core`'s `resourcePaths(Contacts.resource)` returns
+becomes the document's server. `@nizam-os/jsonapi-core`'s `resourcePaths(Contacts.resource)` returns
 the same paths, the collection, the resource with its `{id}`, each relationship's, the Atomic
 Operations endpoint's, and the origin, for a host that mounts its routes where the document says
 they are and a client that calls them. The schemas admit every request the server accepts, and may
@@ -1155,15 +1155,15 @@ The surface is the part of the document a client can break on, as sorted JSON: i
 per type the operations, each member's access, form, limits, options, nullability, requiredness,
 operators, and sortability, the codes with their statuses, and the page bounds. Commit it next to
 the catalog and diff it in CI. `pg-catalog surface` writes it from the registry your
-`netvark.config.ts` names, and `pg-catalog surface --check` prints each change and exits 1 on a
-breaking one (see `@netvark/pg-catalog`'s README). From code, `parseSurface` reads a committed
+`pg-catalog.config.ts` names, and `pg-catalog surface --check` prints each change and exits 1 on a
+breaking one (see `@nizam-os/pg-catalog`'s README). From code, `parseSurface` reads a committed
 surface back, refusing a file of another `format` or with a member out of place, and `diffSurfaces`
 compares it:
 
 ```ts
 import { readFile } from 'node:fs/promises';
 
-import { diffSurfaces, parseSurface, surfaceOf } from '@netvark/resource-core/openapi';
+import { diffSurfaces, parseSurface, surfaceOf } from '@nizam-os/resource-core/openapi';
 
 const committed = parseSurface(JSON.parse(await readFile('api-surface.json', 'utf8')));
 const breaking = diffSurfaces(committed, surfaceOf(resources)).filter((change) => change.breaking);
@@ -1190,7 +1190,7 @@ option, operator, or code, a loosened limit, and a new default page size break n
 - **Return targets from arrow functions.** `target: () => Organizations`, never `Organizations`
   itself, which throws `TypeError` at runtime and fails `tsc`.
 - **Filter with what the planner runs.** Declare the operators of the member's keyset type
-  (`@netvark/keyset-core` SPEC 4.2): ordered comparisons for numbers and dates, patterns for text,
+  (`@nizam-os/keyset-core` SPEC 4.2): ordered comparisons for numbers and dates, patterns for text,
   `contains`, `containedBy`, and `overlaps` for arrays, `eq` and `in` for uuids and enums. A text
   column with a CHECK `IN (...)` is an enum, so `gt` and `contains` are refused there. Offer
   `isNull` only where the column can be null, and sort by scalars: an array, a `jsonb` column, and a
@@ -1294,7 +1294,7 @@ option, operator, or code, a loosened limit, and a new default page size break n
 - **Keep schemas synchronous.** A check that needs the database or another service belongs in server
   code, not in a validator.
 - **Validate a whole write with `write`.** On the server, pass the resource object
-  `@netvark/jsonapi-core` parsed to `write.create` or `write.update`: only they run the CHECKs over
+  `@nizam-os/jsonapi-core` parsed to `write.create` or `write.update`: only they run the CHECKs over
   a field and a relationship, and their issue paths start at `attributes` or `relationships`.
 - **Build forms from `fields`, validate with the schemas.** Mark a member required by `required`,
   never by `nullable`: a NOT NULL column with a default may be left out. Render `options` as a
@@ -1323,7 +1323,7 @@ option, operator, or code, a loosened limit, and a new default page size break n
 - **Keep `int8` and `numeric` values as strings.** Parse them with `BigInt` or a decimal library
   only to compute, and send the canonical spelling: `0.5`, not `.5`, `+0.5`, or `5e-1`.
 - **Cover every CHECK without a rule.** Name the validator in the declaration's `rules`, and a
-  domain's once in the definer's `domains`; prefer CHECKs `@netvark/pg-catalog` translates (length,
+  domain's once in the definer's `domains`; prefer CHECKs `@nizam-os/pg-catalog` translates (length,
   range, `IN`, `IS NOT NULL`, simple patterns), which need no code at all.
 - **Localize with your i18n library, by kind first.** One message per issue kind and per constraint
   kind covers every resource; override a derived code in `errors` only where the generic sentence is
@@ -1452,11 +1452,11 @@ and 129 MB to 0.52 s and 202 MB, and the GitLab slice's from 0.27 s and 151 MB t
 
 ## Documentation
 
-- [`docs/resource/DESIGN.md`](https://github.com/netvark/netvark/blob/main/docs/resource/DESIGN.md):
+- [`docs/resource/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/DESIGN.md):
   what the family is, the principles, and the API by example
-- [`docs/resource/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/resource/SPEC.md): the
+- [`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md): the
   normative contract, section by section, with the tests that prove it
-- [`docs/resource/adr/`](https://github.com/netvark/netvark/tree/main/docs/resource/adr): the
+- [`docs/resource/adr/`](https://github.com/nizam-os/kit/tree/main/docs/resource/adr): the
   decisions
 
 ## License

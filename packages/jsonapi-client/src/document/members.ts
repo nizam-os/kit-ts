@@ -20,7 +20,7 @@ import type {
   Relationship,
   ResourceIdentifier,
   ResourceLinkage,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import type { JsonRecord } from '../internal/object';
 

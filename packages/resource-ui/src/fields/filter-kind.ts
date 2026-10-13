@@ -5,7 +5,7 @@
  * which conditions the control may write.
  * @packageDocumentation
  */
-import type { FieldMeta } from '@netvark/resource-core';
+import type { FieldMeta } from '@nizam-os/resource-core';
 
 /**
  * The control a filter of a member takes: `reference` the target's ids,

@@ -1,7 +1,7 @@
 ---
-'@netvark/hono-ban': minor
-'@netvark/hono-jsonapi': minor
-'@netvark/hono-resource': minor
+'@nizam-os/hono-ban': minor
+'@nizam-os/hono-jsonapi': minor
+'@nizam-os/hono-resource': minor
 ---
 
 Requires `hono` 4.13.7 or later, the first release no published Hono advisory affects. 4.13.5 fixes

@@ -49,11 +49,11 @@ try {
   report(await runChecks(dispatch));
   report(
     await routeChecks(dispatch, '/client-checks'),
-    '@netvark/jsonapi-client',
+    '@nizam-os/jsonapi-client',
   );
   report(
     await routeChecks(dispatch, '/query-checks'),
-    '@netvark/tanstack-query-jsonapi',
+    '@nizam-os/tanstack-query-jsonapi',
   );
 } finally {
   await mf.dispose();

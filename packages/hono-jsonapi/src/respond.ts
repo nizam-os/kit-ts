@@ -10,7 +10,7 @@ import type { Context, Env, TypedResponse } from 'hono';
 import type { ContentfulStatusCode } from 'hono/utils/http-status';
 import type { JSONParsed } from 'hono/utils/types';
 
-import type { BanError, Document, DocumentBase } from '@netvark/jsonapi-core';
+import type { BanError, Document, DocumentBase } from '@nizam-os/jsonapi-core';
 
 import {
   JSON_API_MEDIA_TYPE,
@@ -18,7 +18,7 @@ import {
   formatJsonApiMediaType,
   isJsonApiMediaType,
   parseMediaType,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import { isRecord, ownMember } from './internal/object';
 

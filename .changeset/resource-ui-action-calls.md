@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-ui': patch
+'@nizam-os/resource-ui': patch
 ---
 
 Type each action of a model by the call its write makes. `recordActions` and `bulkActions` typed

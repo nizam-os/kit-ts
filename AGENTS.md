@@ -1,4 +1,4 @@
-# netvark: instructions for coding agents
+# Nizam Kit: instructions for coding agents
 
 This file is read by AI coding agents working in this repository. Humans: see `CONTRIBUTING.md`.
 Each family adds its own rules in `docs/<family>/AGENTS.md`, which the `CLAUDE.md` of every package
@@ -23,7 +23,7 @@ and e2e directory imports; read the family's file before changing that family.
   `e2e/*` and the package checks read `dist/`, and the e2e suites are the only checks that exercise
   `dist/`, the published `exports` maps, and a real host (HTTP, a database). `pnpm test:runtimes`
   (Bun, Deno, workerd smoke) needs `bun` and `deno` installed; CI runs it. Filter by package name to
-  work on one: `pnpm --filter @netvark/<name> test`.
+  work on one: `pnpm --filter @nizam-os/<name> test`.
 - Tests are colocated (`x.test.ts`, `x.test-d.ts`) and cover behavior, not implementation. A test
   earns its place by pinning a clause of the source, a choice recorded in the SPEC, or a regression.
   Coverage thresholds are enforced on the combined source of every package; do not lower them.
@@ -35,9 +35,9 @@ and e2e directory imports; read the family's file before changing that family.
   goes into structured fields, never into `message`.
 - No `process.env` at module scope, no Node-only APIs in `src/` (web standards only), no enums or
   parameter properties (`erasableSyntaxOnly`), no `any`, no `T[]`, no emojis. The two exceptions to
-  web standards only are build-time tools: `@netvark/pg-catalog`, which reads files and drives
+  web standards only are build-time tools: `@nizam-os/pg-catalog`, which reads files and drives
   PostgreSQL (`docs/catalog/adr/0002-a-database-free-core-and-a-postgresql-binding.md`), and
-  `@netvark/paraglide-intl`, which compiles Paraglide messages
+  `@nizam-os/paraglide-intl`, which compiles Paraglide messages
   (`docs/intl/adr/0002-a-framework-free-core-and-a-paraglide-binding.md`); both still read no
   environment at module scope.
 - A dependency that two or more workspace packages declare takes its version from the default
@@ -73,7 +73,7 @@ A pnpm workspace of six families:
 |          | `packages/resource-ui`    | `packages/hono-resource`          |                 |                |
 |          |                           | `packages/tanstack-form-resource` |                 |                |
 
-- `packages/<name>/`: one published package, `@netvark/<name>`. `src/` with colocated tests;
+- `packages/<name>/`: one published package, `@nizam-os/<name>`. `src/` with colocated tests;
   `tsdown.config.ts`, whose entry map becomes the `exports` map in `package.json` on build;
   `vitest.config.ts`, the package's Vitest project; `tsconfig.json`, which in a binding enables the
   `source` condition.

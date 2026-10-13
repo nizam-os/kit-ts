@@ -5,7 +5,7 @@
  * follows the metadata sends what the schemas accept.
  * @packageDocumentation
  */
-import type { Operator } from '@netvark/keyset-core';
+import type { Operator } from '@nizam-os/keyset-core';
 
 import type { Access } from '../declare/types';
 

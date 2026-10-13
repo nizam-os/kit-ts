@@ -1,5 +1,5 @@
 ---
-'@netvark/jsonapi-client': minor
+'@nizam-os/jsonapi-client': minor
 ---
 
 Every resource client exposes `definition`, the definition it was made from, typed as the one

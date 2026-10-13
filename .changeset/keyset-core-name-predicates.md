@@ -1,5 +1,5 @@
 ---
-'@netvark/keyset-core': minor
+'@nizam-os/keyset-core': minor
 ---
 
 Export `isFieldName` and `isSearchConfig`, the tests `defineKeyset` applies to field and relation

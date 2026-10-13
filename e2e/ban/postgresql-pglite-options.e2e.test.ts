@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { postgresMapper } from '@netvark/hono-ban/postgresql';
+import { postgresMapper } from '@nizam-os/hono-ban/postgresql';
 
 import { call, harness, useDatabase } from './support/pglite';
 

@@ -21,7 +21,7 @@ import type { ViolationNames } from './violation-names';
 import {
   findPostgresError,
   readPostgresFields,
-} from '@netvark/ban-core/postgresql';
+} from '@nizam-os/ban-core/postgresql';
 
 import { ownValue } from '../internal/object';
 import { checkOptions } from './constraint-options';

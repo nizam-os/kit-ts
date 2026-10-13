@@ -1,5 +1,5 @@
 /**
- * `filter` and `sort` against `@netvark/keyset-core` (SPEC 11.2, 11.3): a
+ * `filter` and `sort` against `@nizam-os/keyset-core` (SPEC 11.2, 11.3): a
  * member filters with the operators its keyset type accepts, `isNull` only
  * when it is effectively nullable, and sorts only by a scalar keyset type;
  * its public name becomes a keyset-core field name and takes no member of
@@ -7,18 +7,18 @@
  * keyset-core orders every page, has a keyset type. It runs once the
  * members' specs are known, since keyset types and nullability come from
  * them, so a declaration that passes derives definitions keyset-core and
- * `@netvark/jsonapi-core` accept; it returns the members with their keyset
+ * `@nizam-os/jsonapi-core` accept; it returns the members with their keyset
  * types, which the keyset definition is built from
  * (`jsonapi/keyset-definition.ts`). The type-level twins are
  * `FilterRequirement` in `filter-check.ts`, `KeysetNamesCheck` in
  * `names/keyset-names-check.ts`, and `IdentityCheck` in
  * `declaration-check.ts`.
- * @ref https://github.com/netvark/netvark/blob/main/docs/keyset/SPEC.md (sections 3, 4.2, and 5)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md (sections 3, 4.2, and 5)
  * @ref https://jsonapi.org/recommendations/#naming
  * @ref https://jsonapi.org/format/1.1/#document-member-names-allowed-characters (a space and non-ASCII characters: "not recommended, not URL safe")
  * @packageDocumentation
  */
-import type { Operator } from '@netvark/keyset-core';
+import type { Operator } from '@nizam-os/keyset-core';
 
 import type { KeysetType } from '../jsonapi/keyset-type';
 import type { MemberSpec } from '../schema/field-spec';
@@ -26,7 +26,7 @@ import type { ResourceSpecs } from '../schema/resource-specs';
 import type { ValueForm } from '../schema/value-form';
 import type { Declaration } from './types';
 
-import { isFieldName, operatorsFor } from '@netvark/keyset-core';
+import { isFieldName, operatorsFor } from '@nizam-os/keyset-core';
 
 import { ownValue } from '../internal/object';
 import { FIELD_NAME_SYNTAX } from '../jsonapi/keyset-names';
@@ -102,7 +102,7 @@ function checkName(
   const option = filtered ? 'filter' : 'sort';
   if (!isFieldName(name)) {
     throw new TypeError(
-      `${path}.${option}: public name "${name}" is outside @netvark/keyset-core's field names (${FIELD_NAME_SYNTAX})`,
+      `${path}.${option}: public name "${name}" is outside @nizam-os/keyset-core's field names (${FIELD_NAME_SYNTAX})`,
     );
   }
   if (filtered && name === FILTER_OR_MEMBER) {
@@ -158,7 +158,7 @@ export function checkFilters(
   const key = keysetTypeOf(specs.id.value);
   if (key === undefined) {
     throw new TypeError(
-      `${table}: the primary key is ${unkeyed(specs.id.value.form)}, which @netvark/keyset-core cannot order`,
+      `${table}: the primary key is ${unkeyed(specs.id.value.form)}, which @nizam-os/keyset-core cannot order`,
     );
   }
   const search = declaration.search !== undefined;

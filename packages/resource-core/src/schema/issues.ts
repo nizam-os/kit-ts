@@ -3,7 +3,7 @@
  * JSON Schema's validation keywords, or a validator's constraint code, with
  * the keyword's value as `expected` and an English message that holds no
  * request data. resource-core's own checks carry their kind in
- * `params.netvark`; the few built-in Zod issues the composed schemas raise
+ * `params.nizam`; the few built-in Zod issues the composed schemas raise
  * are read by their code and data, and anything a codec's schema raises is
  * `format` with the codec's name, since the codec owns that representation.
  * Run the schema with `reportInput`, so a missing member and `null` can be
@@ -21,7 +21,7 @@ import { ISSUE_KINDS } from './issue-kinds';
 import { CONSTRAINT_MESSAGE, issueMessage } from './issue-messages';
 import { PARAMS_KEY } from './raise';
 
-/** A schema issue: a Standard Schema issue and a `@netvark/ban-core` validation issue. */
+/** A schema issue: a Standard Schema issue and a `@nizam-os/ban-core` validation issue. */
 export interface ResourceIssue {
   /** English, constant per kind and parameter, never request data. */
   readonly message: string;

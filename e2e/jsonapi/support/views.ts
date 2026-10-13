@@ -3,12 +3,12 @@
  * their articles, an article or the 404 for a missing one, and the
  * included resources a query asks for.
  */
-import type { Included, ParsedQuery } from '@netvark/hono-jsonapi';
+import type { Included, ParsedQuery } from '@nizam-os/hono-jsonapi';
 
 import type { PersonView } from './resources.ts';
 import type { ArticleRow, PersonRow, Store } from './store.ts';
 
-import { include, jsonApiError } from '@netvark/hono-jsonapi';
+import { include, jsonApiError } from '@nizam-os/hono-jsonapi';
 
 import { Articles, People, Tags } from './resources.ts';
 

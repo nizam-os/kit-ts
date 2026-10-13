@@ -1,4 +1,4 @@
-# @netvark/keyset-core
+# @nizam-os/keyset-core
 
 Keyset pagination for any JavaScript runtime, database-free. Declare once what a collection can
 sort, filter, and search on; get a typed request, validation that rejects what the definition did
@@ -7,19 +7,19 @@ assembly with the semantics of the JSON:API
 [Cursor Pagination profile](https://jsonapi.org/profiles/ethanresnick/cursor-pagination/). Every
 rule is a cited clause of the profile or the PostgreSQL manual; where a choice is the library's, it
 is written down in
-[`docs/keyset/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/keyset/SPEC.md).
+[`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md).
 
 Using [Kysely](https://kysely.dev)?
-[`@netvark/kysely-keyset`](https://www.npmjs.com/package/@netvark/kysely-keyset) renders the plan
+[`@nizam-os/kysely-keyset`](https://www.npmjs.com/package/@nizam-os/kysely-keyset) renders the plan
 onto your select query and runs it, checks every name against your `DB` interface, and re-exports
 all of this package. Using [Drizzle](https://orm.drizzle.team)?
-[`@netvark/drizzle-keyset`](https://www.npmjs.com/package/@netvark/drizzle-keyset) does the same
+[`@nizam-os/drizzle-keyset`](https://www.npmjs.com/package/@nizam-os/drizzle-keyset) does the same
 over your Drizzle schema object, naming tables and columns as your code does.
 
 ## Install
 
 ```bash
-pnpm add @netvark/keyset-core
+pnpm add @nizam-os/keyset-core
 ```
 
 No dependencies. Node 22.12+, Bun, Deno, and Cloudflare Workers are supported; the package uses web
@@ -31,7 +31,7 @@ vocabulary is PostgreSQL's (`ILIKE`, array operators, `tsvector`, `NULLS FIRST` 
 Three calls: define, plan, page. You run the query in between, with whatever builds your SQL.
 
 ```ts
-import { defineKeyset } from '@netvark/keyset-core';
+import { defineKeyset } from '@nizam-os/keyset-core';
 
 const contacts = defineKeyset({
   table: 'contacts',
@@ -140,7 +140,7 @@ application share under every definition: the cursor options, the page bounds, a
 configuration.
 
 ```ts
-import { createDefineKeyset } from '@netvark/keyset-core';
+import { createDefineKeyset } from '@nizam-os/keyset-core';
 
 export const defineKeyset = createDefineKeyset({
   cursor: { secret: env.CURSOR_SECRET },
@@ -189,7 +189,7 @@ const page = await contacts.plan({
 
 `sort` is a list of `'field'`, `'-field'`, or `{ field, direction }`; the key is appended when not
 named. `filter` is a tree of conditions, `and`, `or`, `not`, and `{ relation, some }`; an API layer
-builds it from its own grammar (@netvark/jsonapi-core's parsed conditions map one to one). Values
+builds it from its own grammar (@nizam-os/jsonapi-core's parsed conditions map one to one). Values
 arrive as JSON or as the type's text form, because query strings carry text: `'18'`, `'true'`, and
 `'2024-01-31'` are accepted for an integer, a boolean, and a date. `search` is a term; blank means
 none. `page` carries `size`, `after`, and `before`.
@@ -235,11 +235,11 @@ which one disjunction is not inside a tie of the first key or after a value of a
 predicate tree has thirteen kinds (`and`, `or`, `not`, `literal`, `compare`, `null`, `in`,
 `between`, `like`, `array`, `exists`, `textSearch`) over three targets (a column, an aggregate
 subquery, a concatenation);
-[`docs/keyset/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/keyset/SPEC.md) section 6
+[`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md) section 6
 lists each with its SQL, and
-[`@netvark/kysely-keyset`](https://github.com/netvark/netvark/tree/main/packages/kysely-keyset) is
+[`@nizam-os/kysely-keyset`](https://github.com/nizam-os/kit/tree/main/packages/kysely-keyset) is
 the reference rendering in under two hundred lines, and
-[`@netvark/drizzle-keyset`](https://github.com/netvark/netvark/tree/main/packages/drizzle-keyset)
+[`@nizam-os/drizzle-keyset`](https://github.com/nizam-os/kit/tree/main/packages/drizzle-keyset)
 the same plan as Drizzle `sql`.
 
 Why text? A cursor must round-trip a value exactly, and drivers parse values for convenience, not
@@ -349,19 +349,19 @@ They map onto the profile's error objects: `UNSUPPORTED_SORT` is `unsupported-so
 `RANGE_NOT_SUPPORTED` is `range-pagination-not-supported`, and the rest are invalid query parameter
 errors with `source.parameter` `sort`, `filter`, `page[size]`, `page[after]`, or `page[before]`. The
 fields hold the request's own text (a sort item, a field path, a page size), so a layer that writes
-one into a detail quotes it only when it is a plain token, as `@netvark/jsonapi-core`'s builders do
-([jsonapi ADR 0016](https://github.com/netvark/netvark/blob/main/docs/jsonapi/adr/0016-details-quote-request-text-as-plain-tokens.md)).
+one into a detail quotes it only when it is a plain token, as `@nizam-os/jsonapi-core`'s builders do
+([jsonapi ADR 0016](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0016-details-quote-request-text-as-plain-tokens.md)).
 
 `INVALID_FILTER_VALUE` reports every condition whose value its field refuses, in the order of the
 request's conditions: each entry of `values` is one condition's `field`, `operator`, `expected`
 (`integer`, `date (YYYY-MM-DD)`, `one of "lead", "customer"`, ...), and `path`, its place in the
 tree (`['and', 2, 'or', 0]`), and a condition with several bad items is one entry. Give each entry
 its own invalid query parameter error, at the parameter its condition came in: an API layer that
-built the tree from its own grammar finds that parameter by the path, as `@netvark/resource-core`'s
-`filterParameters` does for `@netvark/jsonapi-core`'s, so a client fixes every value in one round
+built the tree from its own grammar finds that parameter by the path, as `@nizam-os/resource-core`'s
+`filterParameters` does for `@nizam-os/jsonapi-core`'s, so a client fixes every value in one round
 trip and matches each error to the input it sent. A malformed filter or an undeclared field or
 operator is reported alone, before any value
-([keyset ADR 0019](https://github.com/netvark/netvark/blob/main/docs/keyset/adr/0019-every-refused-filter-value-at-once.md)).
+([keyset ADR 0019](https://github.com/nizam-os/kit/blob/main/docs/keyset/adr/0019-every-refused-filter-value-at-once.md)).
 
 ```ts
 try {
@@ -376,11 +376,11 @@ try {
 
 ## Documentation
 
-- [`docs/keyset/DESIGN.md`](https://github.com/netvark/netvark/blob/main/docs/keyset/DESIGN.md):
+- [`docs/keyset/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/DESIGN.md):
   what the packages are, the principles, and the API by example
-- [`docs/keyset/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/keyset/SPEC.md): the
+- [`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md): the
   normative contract, section by section, with the tests that prove it
-- [`docs/keyset/adr/`](https://github.com/netvark/netvark/tree/main/docs/keyset/adr): the decisions,
+- [`docs/keyset/adr/`](https://github.com/nizam-os/kit/tree/main/docs/keyset/adr): the decisions,
   including every choice the profile leaves to the server
 
 ## License

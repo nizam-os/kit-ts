@@ -1,4 +1,4 @@
-import type { ErrorItem } from '@netvark/ban-core';
+import type { ErrorItem } from '@nizam-os/ban-core';
 
 import type { DerivedCode } from './message-index';
 

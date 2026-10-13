@@ -102,7 +102,7 @@ describe('declareResource: search, sort, and page (SPEC 3.7)', () => {
         }),
       ),
     ).toBe(
-      'documents.search.config: "pg_catalog.english" is not a text search configuration @netvark/keyset-core accepts (^[a-z_][a-z0-9_]{0,62}$)',
+      'documents.search.config: "pg_catalog.english" is not a text search configuration @nizam-os/keyset-core accepts (^[a-z_][a-z0-9_]{0,62}$)',
     );
     expect(
       typeErrorOf(() =>
@@ -113,7 +113,7 @@ describe('declareResource: search, sort, and page (SPEC 3.7)', () => {
         }),
       ),
     ).toBe(
-      'documents.search.column: the column is generated with config "app.unaccented", which @netvark/keyset-core does not accept (^[a-z_][a-z0-9_]{0,62}$)',
+      'documents.search.column: the column is generated with config "app.unaccented", which @nizam-os/keyset-core does not accept (^[a-z_][a-z0-9_]{0,62}$)',
     );
   });
 

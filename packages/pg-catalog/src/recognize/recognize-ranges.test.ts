@@ -1,4 +1,4 @@
-import type { Rule } from '@netvark/catalog-core';
+import type { Rule } from '@nizam-os/catalog-core';
 
 import type { CheckSubject } from './subject';
 

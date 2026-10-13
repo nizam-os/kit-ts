@@ -1,7 +1,7 @@
 {
-  "name": "@netvark/hono-resource",
+  "name": "@nizam-os/hono-resource",
   "version": "0.0.0",
-  "description": "Hono routes for a runtime of @netvark/resource-core declarations: every declared operation at the path its JSON:API links name, negotiated, validated, and answered by @netvark/hono-jsonapi, with no handler written per resource.",
+  "description": "Hono routes for a runtime of @nizam-os/resource-core declarations: every declared operation at the path its JSON:API links name, negotiated, validated, and answered by @nizam-os/hono-jsonapi, with no handler written per resource.",
   "keywords": [
     "api",
     "hono",
@@ -11,13 +11,13 @@
     "rest",
     "routes"
   ],
-  "homepage": "https://github.com/netvark/netvark/tree/main/packages/hono-resource#readme",
-  "bugs": "https://github.com/netvark/netvark/issues",
+  "homepage": "https://github.com/nizam-os/kit/tree/main/packages/hono-resource#readme",
+  "bugs": "https://github.com/nizam-os/kit/issues",
   "license": "MIT",
   "author": "Ali Issa (https://github.com/ali-issa)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netvark/netvark.git",
+    "url": "git+https://github.com/nizam-os/kit.git",
     "directory": "packages/hono-resource"
   },
   "files": [
@@ -52,15 +52,15 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@netvark/hono-ban": "workspace:^",
-    "@netvark/hono-jsonapi": "workspace:^",
-    "@netvark/resource-core": "workspace:^",
+    "@nizam-os/hono-ban": "workspace:^",
+    "@nizam-os/hono-jsonapi": "workspace:^",
+    "@nizam-os/resource-core": "workspace:^",
     "hono": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {
-    "@netvark/hono-jsonapi": "^0.1.0",
-    "@netvark/resource-core": "^0.1.0",
+    "@nizam-os/hono-jsonapi": "^0.1.0",
+    "@nizam-os/resource-core": "^0.1.0",
     "hono": ">=4.13.7"
   },
   "engines": {

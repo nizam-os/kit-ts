@@ -3,15 +3,15 @@
  * has effects, the storage needs an outbox table, and the table the
  * columns the insert writes and the relay reads.
  */
-import type { CatalogColumn, CatalogTable } from '@netvark/catalog-core';
+import type { CatalogColumn, CatalogTable } from '@nizam-os/catalog-core';
 
 import type { TestDomain } from '../test-support/domain';
 
 import { describe, expect, it } from 'vitest';
 
-import { createDeclareResource } from '@netvark/resource-core';
-import { createDomainDefiners } from '@netvark/resource-core/server';
-import { contractFixture } from '@netvark/resource-core/testing';
+import { createDeclareResource } from '@nizam-os/resource-core';
+import { createDomainDefiners } from '@nizam-os/resource-core/server';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { createKyselyStorage } from '../storage/create-storage';
 import { withoutTable, withTable } from '../test-support/boot-catalog';

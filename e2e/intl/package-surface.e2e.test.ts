@@ -11,8 +11,8 @@ import { fileURLToPath } from 'node:url';
 
 import { describe, expect, it } from 'vitest';
 
-import * as core from '@netvark/intl-core';
-import * as binding from '@netvark/paraglide-intl';
+import * as core from '@nizam-os/intl-core';
+import * as binding from '@nizam-os/paraglide-intl';
 
 function names(module: object): Array<string> {
   return Object.keys(module).toSorted();
@@ -43,11 +43,11 @@ const BINDING = [
 ].toSorted();
 
 describe('package surface', () => {
-  it('@netvark/intl-core exports the documented values', () => {
+  it('@nizam-os/intl-core exports the documented values', () => {
     expect(names(core)).toEqual(CORE);
   });
 
-  it("@netvark/paraglide-intl exports them too, as the core's own bindings", () => {
+  it("@nizam-os/paraglide-intl exports them too, as the core's own bindings", () => {
     expect(names(binding)).toEqual(BINDING);
     for (const name of CORE) {
       expect(Reflect.get(binding, name)).toBe(Reflect.get(core, name));
@@ -55,7 +55,7 @@ describe('package surface', () => {
   });
 
   it('ships every bidi control as an escape, never as the character', async () => {
-    for (const name of ['@netvark/intl-core', '@netvark/paraglide-intl']) {
+    for (const name of ['@nizam-os/intl-core', '@nizam-os/paraglide-intl']) {
       const dist = dirname(fileURLToPath(import.meta.resolve(name)));
       const files = await readdir(dist);
       expect(files.filter((file) => /^index\.m?js$/u.test(file))).toHaveLength(
@@ -72,17 +72,17 @@ describe('package surface', () => {
   });
 
   it('resolves package.json through the exports map', async () => {
-    const corePkg = (await import('@netvark/intl-core/package.json', {
+    const corePkg = (await import('@nizam-os/intl-core/package.json', {
       with: { type: 'json' },
     })) as {
       default: { name: string };
     };
-    expect(corePkg.default.name).toBe('@netvark/intl-core');
-    const bindingPkg = (await import('@netvark/paraglide-intl/package.json', {
+    expect(corePkg.default.name).toBe('@nizam-os/intl-core');
+    const bindingPkg = (await import('@nizam-os/paraglide-intl/package.json', {
       with: { type: 'json' },
     })) as {
       default: { name: string };
     };
-    expect(bindingPkg.default.name).toBe('@netvark/paraglide-intl');
+    expect(bindingPkg.default.name).toBe('@nizam-os/paraglide-intl');
   });
 });

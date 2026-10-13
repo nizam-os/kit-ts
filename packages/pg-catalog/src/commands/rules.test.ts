@@ -1,20 +1,20 @@
 /**
  * checkRules (SPEC 10.3) end to end: the resources of
- * `@netvark/resource-core` declared over the catalog extracted from the
+ * `@nizam-os/resource-core` declared over the catalog extracted from the
  * test application's migrations, replayed into PGlite (and the server
  * `CATALOG_PG_URL` names), agree with the database on every fixture; each
  * fault planted in a validator, a storage codec, or the catalog is
  * reported; and the configuration's mistakes fail before any replay.
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
 
 import type { ExtractionConfig, ResourcesConfig } from '../config';
 
 import { beforeAll, describe, expect, it } from 'vitest';
 import { z } from 'zod';
 
-import { toPublicCatalog } from '@netvark/catalog-core';
-import { defineValidator } from '@netvark/resource-core';
+import { toPublicCatalog } from '@nizam-os/catalog-core';
+import { defineValidator } from '@nizam-os/resource-core';
 
 import { PgCatalogError } from '../errors';
 import {

@@ -31,7 +31,7 @@ type Messages<
     : never;
 
 const NAMES =
-  "@netvark/keyset-core's field names (^[A-Za-z0-9][A-Za-z0-9_-]*$)";
+  "@nizam-os/keyset-core's field names (^[A-Za-z0-9][A-Za-z0-9_-]*$)";
 
 describe('KeysetNameMessage (SPEC 11.2)', () => {
   it('names a public name outside keyset-core field names at the option that uses it', () => {

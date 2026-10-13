@@ -2,15 +2,15 @@
 
 Declare a resource once, keyed by your PostgreSQL names, and get its public names, Zod schemas, form
 metadata, error codes, localized messages, JSON:API definition, keyset pagination, and OpenAPI
-document, all typed by the catalog `@netvark/pg-catalog` extracts from your migrations:
+document, all typed by the catalog `@nizam-os/pg-catalog` extracts from your migrations:
 
 | Package                                                                    | What it is                                                                                                                                                                                                                                                                                                                                                                                                   |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [`@netvark/resource-core`](../../packages/resource-core)                   | Declarations and everything derived from them, the typed messages and their localization, the `server` contracts (policies, scopes, quotas, rules, effects, the storage adapter contract), and OpenAPI. Runs in browsers and servers.                                                                                                                                                                        |
-| [`@netvark/kysely-resource`](../../packages/kysely-resource)               | The runtime over Kysely on PostgreSQL: the storage adapter, which runs each operation in one transaction scoped to the actor's tenant, for row security policies and its own scope predicate alike.                                                                                                                                                                                                          |
-| [`@netvark/hono-resource`](../../packages/hono-resource)                   | The routes on Hono: every operation a runtime runs, each relationship's links, the Atomic Operations endpoint over `runtime.transaction`, and the OpenAPI document, served where the declarations' links point, with the request's actor resolved once, any other method answered 405 with `Allow`, and `resourceTypeOf` for localized errors.                                                               |
-| [`@netvark/resource-ui`](../../packages/resource-ui)                       | A model of each declared resource's forms and lists, for any framework: labels and options from the application's messages, validation in the server's words, the write a form sends, refusals on their fields, and list state as TanStack Table v9 holds it. Imports no framework and nothing of TanStack.                                                                                                  |
-| [`@netvark/tanstack-form-resource`](../../packages/tanstack-form-resource) | [TanStack Form](https://tanstack.com/form/v1) options over those form models, which the form of every adapter takes, React's, Vue's, Solid's, Svelte's, Angular's, and Lit's, and a refused write's texts on their fields, through `@tanstack/form-core`. The client's calls go to TanStack Query through [`@netvark/tanstack-query-jsonapi`](../../packages/tanstack-query-jsonapi), of the jsonapi family. |
+| [`@nizam-os/resource-core`](../../packages/resource-core)                   | Declarations and everything derived from them, the typed messages and their localization, the `server` contracts (policies, scopes, quotas, rules, effects, the storage adapter contract), and OpenAPI. Runs in browsers and servers.                                                                                                                                                                        |
+| [`@nizam-os/kysely-resource`](../../packages/kysely-resource)               | The runtime over Kysely on PostgreSQL: the storage adapter, which runs each operation in one transaction scoped to the actor's tenant, for row security policies and its own scope predicate alike.                                                                                                                                                                                                          |
+| [`@nizam-os/hono-resource`](../../packages/hono-resource)                   | The routes on Hono: every operation a runtime runs, each relationship's links, the Atomic Operations endpoint over `runtime.transaction`, and the OpenAPI document, served where the declarations' links point, with the request's actor resolved once, any other method answered 405 with `Allow`, and `resourceTypeOf` for localized errors.                                                               |
+| [`@nizam-os/resource-ui`](../../packages/resource-ui)                       | A model of each declared resource's forms and lists, for any framework: labels and options from the application's messages, validation in the server's words, the write a form sends, refusals on their fields, and list state as TanStack Table v9 holds it. Imports no framework and nothing of TanStack.                                                                                                  |
+| [`@nizam-os/tanstack-form-resource`](../../packages/tanstack-form-resource) | [TanStack Form](https://tanstack.com/form/v1) options over those form models, which the form of every adapter takes, React's, Vue's, Solid's, Svelte's, Angular's, and Lit's, and a refused write's texts on their fields, through `@tanstack/form-core`. The client's calls go to TanStack Query through [`@nizam-os/tanstack-query-jsonapi`](../../packages/tanstack-query-jsonapi), of the jsonapi family. |
 
 Status: the 0.x line is in development and unreleased. Every choice is written down in
 [`SPEC.md`](SPEC.md).
@@ -18,8 +18,8 @@ Status: the 0.x line is in development and unreleased. Every choice is written d
 ## Install
 
 ```bash
-pnpm add @netvark/resource-core zod
-pnpm add -D @netvark/pg-catalog @electric-sql/pglite
+pnpm add @nizam-os/resource-core zod
+pnpm add -D @nizam-os/pg-catalog @electric-sql/pglite
 ```
 
 `zod` 4.5 or later is a peer dependency: from 4.5 on, `.min()` and `.max()` count code points, as
@@ -28,8 +28,8 @@ PostgreSQL does.
 ## Quick start
 
 ```ts
-// netvark.config.ts: expose the tables your API serves
-import { defineExtraction } from '@netvark/pg-catalog';
+// pg-catalog.config.ts: expose the tables your API serves
+import { defineExtraction } from '@nizam-os/pg-catalog';
 
 export default defineExtraction({
   migrations: 'db/migrations',
@@ -43,7 +43,7 @@ export default defineExtraction({
 
 ```ts
 // src/resources/declare.ts
-import { createDeclareResource } from '@netvark/resource-core';
+import { createDeclareResource } from '@nizam-os/resource-core';
 
 import { publicCatalog } from '../generated/public-catalog';
 
@@ -72,7 +72,7 @@ export const Contacts = declareResource('contacts', {
 ```
 
 ```ts
-import type { Infer } from '@netvark/resource-core';
+import type { Infer } from '@nizam-os/resource-core';
 
 Contacts.schema.create.parse({ name: 'Ada' }); // status and the rest default in the database
 Contacts.schema.update.parse({ status: 'archived' }); // the name stays as it is
@@ -107,8 +107,8 @@ type NewContact = Infer<typeof Contacts>['create']; // { name: string; status?: 
   transaction scoped to the actor, or several together with `runtime.transaction`, and
   `jsonApiRoutes({ runtime, actor })` serves the operations it runs at the paths the declarations'
   links name, so the links, the routes, and the OpenAPI paths never disagree.
-- **Definitions for the rest of the stack.** `Contacts.resource` is a `@netvark/jsonapi-core`
-  definition and `Contacts.keyset` a `@netvark/keyset-core` one, and `openapi([...])` documents
+- **Definitions for the rest of the stack.** `Contacts.resource` is a `@nizam-os/jsonapi-core`
+  definition and `Contacts.keyset` a `@nizam-os/keyset-core` one, and `openapi([...])` documents
   every operation, parameter, schema, and error code, with every example validated.
 
 ## Best practices
@@ -154,7 +154,7 @@ type NewContact = Infer<typeof Contacts>['create']; // { name: string; status?: 
   `Content-Language` from `getLocale()`, and vary on what the locale strategy read.
 - **Keep declarations browser-safe.** Declarations, codecs, validators, and messages go in modules a
   browser can import; policies, scopes, and quotas go in modules that import
-  `@netvark/resource-core/server`.
+  `@nizam-os/resource-core/server`.
 - **Run the gates in CI.** `pg-catalog extract --check` keeps the catalog current, `rules --check`
   runs the oracle, and `surface --check` blocks breaking changes the snapshot does not record.
 

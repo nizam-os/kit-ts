@@ -21,11 +21,11 @@ import type {
   PageInit,
   SortInit,
   TextSearchMode,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import type { KyselyKeyset } from './types';
 
-import { createDefineKeyset as createCoreDefineKeyset } from '@netvark/keyset-core';
+import { createDefineKeyset as createCoreDefineKeyset } from '@nizam-os/keyset-core';
 
 import { paginate } from './paginate';
 

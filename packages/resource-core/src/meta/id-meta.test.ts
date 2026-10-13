@@ -4,7 +4,7 @@
  * fraction digits, bounds, and options, and a `bool` key's id is `true` or
  * `false`, the two texts `id-schema.ts` accepts. One case per key type.
  */
-import type { PublicColumn, PublicConstraint } from '@netvark/catalog-core';
+import type { PublicColumn, PublicConstraint } from '@nizam-os/catalog-core';
 
 import type { FieldLimits } from './types';
 

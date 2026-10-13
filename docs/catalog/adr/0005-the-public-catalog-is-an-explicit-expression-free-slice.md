@@ -25,7 +25,7 @@ written for operators, and CHECK expressions that may reveal more than their rul
   domains those columns use, with the rules of the domain checks.
 - It drops comments, default and generation expressions, constraint and index definitions, CHECK
   expressions, indexes, row security, and policies.
-- `@netvark/catalog-core` computes the slice (`toPublicCatalog`), so its content is a pure function
+- `@nizam-os/catalog-core` computes the slice (`toPublicCatalog`), so its content is a pure function
   of the full catalog and the table list.
 
 ## Consequences

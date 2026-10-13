@@ -1,4 +1,4 @@
-# @netvark/pg-catalog
+# @nizam-os/pg-catalog
 
 Your PostgreSQL schema as committed TypeScript. It replays your SQL migrations into a fresh database
 (PGlite in-process, or a throwaway database on a server), reads PostgreSQL's own catalog, and writes
@@ -7,25 +7,25 @@ domain, written deterministically so the file is reviewed with the migration tha
 the same catalog it writes your Kysely types, `drift` compares a live database with it, and
 `rules --check` proves that the schemas of your declared resources agree with the database. Every
 choice is specified in
-[`docs/catalog/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/catalog/SPEC.md).
+[`docs/catalog/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/catalog/SPEC.md).
 
 ## Install
 
 ```bash
-pnpm add -D @netvark/pg-catalog @electric-sql/pglite
+pnpm add -D @nizam-os/pg-catalog @electric-sql/pglite
 ```
 
 Node 22.12+, Bun, and Deno. It depends on [`pg`](https://node-postgres.com) and on
-[`@netvark/catalog-core`](https://www.npmjs.com/package/@netvark/catalog-core), which it re-exports
+[`@nizam-os/catalog-core`](https://www.npmjs.com/package/@nizam-os/catalog-core), which it re-exports
 in full. `@electric-sql/pglite` (0.5, PostgreSQL 18) is an optional peer dependency: leave it out
-when you extract against a server. So is `@netvark/resource-core`, which only `rules --check` loads.
+when you extract against a server. So is `@nizam-os/resource-core`, which only `rules --check` loads.
 The generated files import nothing, so neither package reaches your application bundle.
 
 ## Quick start
 
 ```ts
-// netvark.config.ts
-import { defineExtraction } from '@netvark/pg-catalog';
+// pg-catalog.config.ts
+import { defineExtraction } from '@nizam-os/pg-catalog';
 
 export default defineExtraction({
   migrations: 'db/migrations',
@@ -87,9 +87,9 @@ its path. `drift` prints the differences, or with `--json` the `CatalogDiff` its
 change from it (see [The API surface](#the-api-surface)). Failures go to standard error as
 `pg-catalog: <message>`, and a mistake in the arguments adds a pointer to `--help`.
 
-Without `--config`, the CLI loads the first of `netvark.config.ts`, `netvark.config.mts`,
-`netvark.config.js`, and `netvark.config.mjs` in the working directory. Relative paths in it resolve
-against its own directory, so `pg-catalog extract --config db/netvark.config.ts` works from
+Without `--config`, the CLI loads the first of `pg-catalog.config.ts`, `pg-catalog.config.mts`,
+`pg-catalog.config.js`, and `pg-catalog.config.mjs` in the working directory. Relative paths in it resolve
+against its own directory, so `pg-catalog extract --config db/pg-catalog.config.ts` works from
 anywhere. Its default export must be a configuration. `defineExtraction` types it and checks it as
 the file loads: an unknown option (`postgres:` where `database:` was meant), an empty path, a
 `database` with both or neither of `pglite` and `url`, a system or duplicate schema, a
@@ -100,16 +100,16 @@ command that needs them, so `extract` never reads the variable behind a drift UR
 
 A TypeScript configuration needs a runtime that strips types: Node.js 22.18 or later, Bun, or Deno.
 On Node.js 22.12 to 22.17, set `NODE_OPTIONS=--experimental-strip-types`, or write
-`netvark.config.mjs`. Node.js strips types without compiling, so imports of your own modules carry
+`pg-catalog.config.mjs`. Node.js strips types without compiling, so imports of your own modules carry
 their extension (`'./db/migrations.ts'`), and `enum` and `namespace` are not available. Bun runs the
-CLI as `bunx --bun pg-catalog`, and Deno as `deno run -A npm:@netvark/pg-catalog`.
+CLI as `bunx --bun pg-catalog`, and Deno as `deno run -A npm:@nizam-os/pg-catalog`.
 
 The same commands are functions. `extract(config, { check, cwd })` returns the status of each file
 without printing anything, and relative paths resolve against `cwd`, which defaults to the working
 directory:
 
 ```ts
-import { extract } from '@netvark/pg-catalog';
+import { extract } from '@nizam-os/pg-catalog';
 
 const report = await extract(
   { migrations: 'db/migrations', out: { catalog: 'src/generated/catalog.ts' } },
@@ -121,7 +121,7 @@ const outdated = report.files.filter((file) => file.status !== 'unchanged');
 ## What it writes
 
 - **`catalog.ts`**: `export const catalog: ExtractedCatalog`, the full catalog of the configured
-  schemas (the model is described in `@netvark/catalog-core`). Expressions and definitions are
+  schemas (the model is described in `@nizam-os/catalog-core`). Expressions and definitions are
   PostgreSQL's own deparsed text; objects that belong to an extension, views, functions, sequences,
   and partitions are left out.
 - **`public-catalog.ts`** (with `out.public`): `export const publicCatalog: ExtractedPublicCatalog`,
@@ -137,7 +137,7 @@ in table order). Every file is rendered the same way from the same catalog, so t
 give the same bytes on every machine, and on PostgreSQL 14 to 18.
 
 ```ts
-// Generated by @netvark/pg-catalog. Do not edit: change the migrations and run `pg-catalog extract`.
+// Generated by @nizam-os/pg-catalog. Do not edit: change the migrations and run `pg-catalog extract`.
 const value = {
   "format": 3,
   ...
@@ -384,7 +384,7 @@ validator must cover it. From the repository's test schema:
   and `real` columns, get no rule but `notNull`: their comparisons are not the ones a rule
   describes. A domain's CHECK compares under the collation of the type the domain is declared over.
 - To enforce a rule in your application exactly as PostgreSQL does, follow
-  [`@netvark/catalog-core`'s README](https://github.com/netvark/netvark/tree/main/packages/catalog-core#enforcing-a-rule).
+  [`@nizam-os/catalog-core`'s README](https://github.com/nizam-os/kit/tree/main/packages/catalog-core#enforcing-a-rule).
 
 ## Migrations
 
@@ -424,7 +424,7 @@ exact major you run in production:
 database: { url: () => process.env['CATALOG_DATABASE_URL'] },
 ```
 
-Extraction creates `netvark_catalog_<random>` from `template0` with UTF-8 encoding, replays into it,
+Extraction creates `nizam_catalog_<random>` from `template0` with UTF-8 encoding, replays into it,
 reads it, and drops it, even when a migration fails, so the role needs `CREATEDB`. A function is
 called only when the URL is needed.
 
@@ -436,7 +436,7 @@ the environment's URL, reads the catalog with the queries `extract` uses inside 
 replays nothing and cannot write, even through a privileged role.
 
 ```ts
-// netvark.config.ts
+// pg-catalog.config.ts
 export default defineExtraction({
   migrations: 'db/migrations',
   schemas: ['public', 'audit'],
@@ -490,7 +490,7 @@ fail before any connection is made.
 ## Checking declarations against the database
 
 `pg-catalog rules --check` proves that the declared resources of
-[`@netvark/resource-core`](https://www.npmjs.com/package/@netvark/resource-core) agree with the
+[`@nizam-os/resource-core`](https://www.npmjs.com/package/@nizam-os/resource-core) agree with the
 database your migrations build. It replays the migrations, writes each fixture into a temporary copy
 of the columns it belongs to, with their types, collations, and the CHECKs that apply, and holds
 PostgreSQL's verdict against the schema's:
@@ -503,8 +503,8 @@ PostgreSQL's verdict against the schema's:
 - each codec's fixtures: written through its storage codec, stored, and read back as the same value.
 
 ```ts
-// netvark.config.ts
-import { defineExtraction } from '@netvark/pg-catalog';
+// pg-catalog.config.ts
+import { defineExtraction } from '@nizam-os/pg-catalog';
 
 import { timeRangeText } from './src/storage/time-range-text.ts';
 
@@ -522,7 +522,7 @@ export default defineExtraction({
 ```
 
 ```bash
-pnpm add -D @netvark/resource-core   # if it is not a dependency already
+pnpm add -D @nizam-os/resource-core   # if it is not a dependency already
 pnpm exec pg-catalog rules --check   # exit 1 on a disagreement
 ```
 
@@ -568,7 +568,7 @@ which may change between minor versions.
 `pg-catalog surface` writes the API surface of the declared resources, what their clients depend on,
 to a JSON file you commit: per type its operations, and per field and relationship its access, wire
 form, limits, options, nullability, requiredness, operators, and sortability, with the error codes
-and their statuses (`surfaceOf` of `@netvark/resource-core/openapi`). `pg-catalog surface --check`
+and their statuses (`surfaceOf` of `@nizam-os/resource-core/openapi`). `pg-catalog surface --check`
 compares the committed file with the declarations and prints each change, marked breaking when a
 client written against the file may fail: a type, operation, member, code, operator, or option
 removed; an access that loses a capability; a member that becomes required on create; a wire form,
@@ -576,7 +576,7 @@ format, or codec changed; a limit tightened. It exits 1 on a breaking change, an
 change is safe, such as a member, an operator, or an option added.
 
 ```ts
-// netvark.config.ts
+// pg-catalog.config.ts
 export default defineExtraction({
   migrations: 'db/migrations',
   out: {
@@ -645,7 +645,7 @@ and exits 2. `defineExtraction` throws a `TypeError` instead, since its mistakes
 | `camel_case_mismatch`   | with `camelCase`, names `CamelCasePlugin` would not turn back into themselves; all are listed                                                                       |
 | `catalog_unreadable`    | `drift` cannot read the committed catalog, or `parseCatalogModule` was given a file that is not a catalog module                                                    |
 | `catalog_format`        | `parseCatalogModule` was given a catalog written in another format                                                                                                  |
-| `resource_core_missing` | `rules --check` or `surface` cannot load `@netvark/resource-core`                                                                                                   |
+| `resource_core_missing` | `rules --check` or `surface` cannot load `@nizam-os/resource-core`                                                                                                   |
 | `registry_invalid`      | `resources.registry` returned anything but a list of declared resources, or the declarations or storage codecs are refused, such as a codec without a storage codec |
 | `surface_unreadable`    | `surface --check` found a surface file that is not JSON, or not a surface this version reads                                                                        |
 

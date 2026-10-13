@@ -1,7 +1,7 @@
 {
-  "name": "@netvark/hono-ban",
+  "name": "@nizam-os/hono-ban",
   "version": "1.3.0",
-  "description": "Structured, extensible HTTP errors for Hono, built on @netvark/ban-core. One API, any wire format: RFC 9457 Problem Details, JSON:API, Google API (AIP-193), Stripe, or your own.",
+  "description": "Structured, extensible HTTP errors for Hono, built on @nizam-os/ban-core. One API, any wire format: RFC 9457 Problem Details, JSON:API, Google API (AIP-193), Stripe, or your own.",
   "keywords": [
     "aip-193",
     "boom",
@@ -24,13 +24,13 @@
     "stripe",
     "zod"
   ],
-  "homepage": "https://github.com/netvark/netvark/tree/main/packages/hono-ban#readme",
-  "bugs": "https://github.com/netvark/netvark/issues",
+  "homepage": "https://github.com/nizam-os/kit/tree/main/packages/hono-ban#readme",
+  "bugs": "https://github.com/nizam-os/kit/issues",
   "license": "MIT",
   "author": "Ali Issa (https://github.com/ali-issa)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netvark/netvark.git",
+    "url": "git+https://github.com/nizam-os/kit.git",
     "directory": "packages/hono-ban"
   },
   "files": [
@@ -125,7 +125,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@netvark/ban-core": "workspace:^"
+    "@nizam-os/ban-core": "workspace:^"
   },
   "devDependencies": {
     "@hono/standard-validator": "catalog:",

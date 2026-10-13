@@ -8,15 +8,15 @@ import type { LogEvent } from 'kysely';
  * @ref https://kysely-org.github.io/kysely-apidoc/classes/PGliteDialect.html
  * @ref https://pglite.dev/docs/api
  */
-import type { DefineDefaultedKeyset } from '@netvark/keyset-core';
+import type { DefineDefaultedKeyset } from '@nizam-os/keyset-core';
 
 import type { KyselyStorageOptions, TextCodec } from '../storage/types';
 
 import { PGlite } from '@electric-sql/pglite';
 import { Kysely, PGliteDialect } from 'kysely';
 
-import { createDefineKeyset } from '@netvark/keyset-core';
-import { contractFixture } from '@netvark/resource-core/testing';
+import { createDefineKeyset } from '@nizam-os/keyset-core';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 /** The server's definer, holding the cursor secret the declarations leave out. */
 const DEFINE_KEYSET: DefineDefaultedKeyset = createDefineKeyset({

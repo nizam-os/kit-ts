@@ -10,7 +10,7 @@ import type {
   PublicColumn,
   PublicColumnDefault,
   PublicTable,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import type { DefinerContext } from '../declare/check-config';
 import type { Access, Declaration } from '../declare/types';

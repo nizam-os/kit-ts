@@ -11,9 +11,9 @@
  * @ref https://www.rfc-editor.org/rfc/rfc6901
  * @packageDocumentation
  */
-import type { ErrorItem } from '@netvark/hono-jsonapi';
+import type { ErrorItem } from '@nizam-os/hono-jsonapi';
 
-import { BanError, isBanError } from '@netvark/hono-jsonapi';
+import { BanError, isBanError } from '@nizam-os/hono-jsonapi';
 
 /** An item's path: RFC 6901 reference tokens. */
 export type Path = NonNullable<ErrorItem['path']>;

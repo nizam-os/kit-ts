@@ -10,12 +10,12 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import { isBanError } from '@netvark/ban-core';
+import { isBanError } from '@nizam-os/ban-core';
 import {
   errorObjects,
   parseCreateDocument,
   parseUpdateDocument,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import { untypedDeclare } from '../test-support/catalog-builder';
 import { issuesOf, outputOf } from '../test-support/validation';

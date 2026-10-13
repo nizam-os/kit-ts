@@ -1,19 +1,19 @@
 /**
- * `@netvark/pg-catalog`: replays your migrations into a throwaway
+ * `@nizam-os/pg-catalog`: replays your migrations into a throwaway
  * PostgreSQL (PGlite in-process, or a server), reads `pg_catalog`, and
  * writes the catalog as an `as const` TypeScript module exported through a
  * named interface, with Kysely types rendered from it when configured;
  * `drift` compares a live database with the committed catalog;
  * `checkRules` runs the fixtures of the declared resources of
- * `@netvark/resource-core` through their schemas and the replayed
+ * `@nizam-os/resource-core` through their schemas and the replayed
  * database; `writeSurface` and `checkSurface` keep the snapshot of their
  * API surface and tell a breaking change from a safe one;
  * `defineExtraction` checks the configuration the `pg-catalog` bin reads.
- * It re-exports all of `@netvark/catalog-core`, the model and the pure
+ * It re-exports all of `@nizam-os/catalog-core`, the model and the pure
  * functions over it. See `docs/catalog/SPEC.md` for the contract.
  * @packageDocumentation
  */
-export * from '@netvark/catalog-core';
+export * from '@nizam-os/catalog-core';
 export type {
   CatalogFileConfig,
   DatabaseConfig,

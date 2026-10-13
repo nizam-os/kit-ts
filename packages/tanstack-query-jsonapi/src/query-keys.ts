@@ -10,9 +10,9 @@
  * @ref https://tanstack.com/query/v5/docs/framework/react/guides/filters
  * @packageDocumentation
  */
-import type { Query } from '@netvark/jsonapi-client';
+import type { Query } from '@nizam-os/jsonapi-client';
 
-import { serializeQuery } from '@netvark/jsonapi-client';
+import { serializeQuery } from '@nizam-os/jsonapi-client';
 
 /** A definition as `serializeQuery` takes it. */
 export type KeyedDefinition = Parameters<typeof serializeQuery>[0];

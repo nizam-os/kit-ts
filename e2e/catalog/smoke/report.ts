@@ -56,7 +56,7 @@ export function report(result: SmokeResult): void {
   const total = result.passed + result.failures.length;
   if (result.failures.length === 0) {
     console.log(
-      `@netvark/catalog smoke: ${total} checks passed on ${result.runtime}`,
+      `@nizam-os/catalog smoke: ${total} checks passed on ${result.runtime}`,
     );
     return;
   }
@@ -64,6 +64,6 @@ export function report(result: SmokeResult): void {
     console.error(`FAIL ${failure}`);
   }
   throw new Error(
-    `@netvark/catalog smoke: ${result.failures.length} of ${total} checks failed on ${result.runtime}`,
+    `@nizam-os/catalog smoke: ${result.failures.length} of ${total} checks failed on ${result.runtime}`,
   );
 }

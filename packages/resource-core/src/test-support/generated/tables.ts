@@ -13,7 +13,7 @@ import type {
   PublicConstraint,
   PublicTable,
   Rule,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import type { TypeScope } from './domains';
 import type { Random } from './random';

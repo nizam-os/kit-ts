@@ -1,5 +1,5 @@
 ---
-'@netvark/jsonapi-core': patch
+'@nizam-os/jsonapi-core': patch
 ---
 
 Error details quote what the client sent only when it is a plain token: letters, digits, `_`, `-`,

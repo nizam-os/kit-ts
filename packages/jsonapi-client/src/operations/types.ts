@@ -12,7 +12,7 @@ import type {
   JsonApiObject,
   Links,
   Meta,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import type { RecordOf } from '../client/record-types';
 import type {

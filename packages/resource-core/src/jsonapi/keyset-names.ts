@@ -1,5 +1,5 @@
 /**
- * The names a declaration hands `@netvark/keyset-core` (SPEC 11.2): the
+ * The names a declaration hands `@nizam-os/keyset-core` (SPEC 11.2): the
  * public name of each filtered or sortable member, which becomes a field
  * name, and the search configuration, which adapters emit as a literal.
  * `IsFieldName` and `IsSearchConfig` are the type-level twins of
@@ -7,7 +7,7 @@
  * case table (`test-support/keyset-name-cases.ts`). Each reads a name one
  * character at a time in tail position, so TypeScript computes it once
  * per name and a long name stays far below the instantiation depth limit.
- * @ref https://github.com/netvark/netvark/blob/main/docs/keyset/SPEC.md (sections 3 and 3.4)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md (sections 3 and 3.4)
  * @ref https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#tailrec-conditional
  * @packageDocumentation
  */

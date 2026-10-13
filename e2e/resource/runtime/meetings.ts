@@ -8,15 +8,15 @@
  */
 import type { Kysely } from 'kysely';
 
-import type { ResourceRuntime } from '@netvark/kysely-resource';
+import type { ResourceRuntime } from '@nizam-os/kysely-resource';
 
 import type { AppDomain } from './domain.ts';
 
 import {
   createKyselyStorage,
   createResourceRuntime,
-} from '@netvark/kysely-resource';
-import { createDomainDefiners } from '@netvark/resource-core/server';
+} from '@nizam-os/kysely-resource';
+import { createDomainDefiners } from '@nizam-os/resource-core/server';
 
 import { publicCatalog } from '../fixtures/contacts/public-catalog.ts';
 import { Meetings } from '../resources/meetings.ts';

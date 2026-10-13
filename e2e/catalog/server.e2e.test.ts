@@ -12,7 +12,7 @@ import { join } from 'node:path';
 import pg from 'pg';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
-import { extract } from '@netvark/pg-catalog';
+import { extract } from '@nizam-os/pg-catalog';
 
 import {
   contactsConfig,
@@ -31,7 +31,7 @@ async function throwawayDatabases(): Promise<Array<string>> {
   await client.connect();
   try {
     const result = await client.query<{ datname: string }>(
-      "select datname from pg_database where datname like 'netvark\\_catalog\\_%'",
+      "select datname from pg_database where datname like 'nizam\\_catalog\\_%'",
     );
     return result.rows.map((row) => row.datname);
   } finally {

@@ -1,4 +1,4 @@
-import type { Catalog } from '@netvark/catalog-core';
+import type { Catalog } from '@nizam-os/catalog-core';
 
 import type { SqlSession } from '../target/session';
 
@@ -174,7 +174,7 @@ describe('readCatalog: reading (SPEC 2.1, 7.1)', () => {
       expect.objectContaining({
         code: 'unsupported_server',
         message:
-          '@netvark/pg-catalog needs PostgreSQL 14 or later; the server is PostgreSQL 13',
+          '@nizam-os/pg-catalog needs PostgreSQL 14 or later; the server is PostgreSQL 13',
       }),
     );
   });

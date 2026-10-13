@@ -6,7 +6,7 @@
  * production database shows no false drift. Configuration and file errors
  * fail before any connection is made.
  */
-import type { Catalog } from '@netvark/catalog-core';
+import type { Catalog } from '@nizam-os/catalog-core';
 
 import type { ExtractionConfig } from '../config';
 import type { TestDatabase } from '../test-support/live-database';
@@ -239,7 +239,7 @@ for (const [name, open] of DATABASES) {
 describe.skipIf(SERVER === undefined)(
   'introspectCatalog as a read-only role on CATALOG_PG_URL',
   () => {
-    const role = `netvark_drift_${randomBytes(SECRET_BYTES).toString('hex')}`;
+    const role = `nizam_drift_${randomBytes(SECRET_BYTES).toString('hex')}`;
     let live: TestDatabase;
     let roleUrl: string;
 

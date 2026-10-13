@@ -2,7 +2,7 @@ import type { DB } from './test-support/db';
 
 import { describe, expect, it } from 'vitest';
 
-import { createDefineKeyset as createCoreDefineKeyset } from '@netvark/keyset-core';
+import { createDefineKeyset as createCoreDefineKeyset } from '@nizam-os/keyset-core';
 
 import { createDefineKeyset } from './define-keyset';
 import { canned } from './test-support/db';

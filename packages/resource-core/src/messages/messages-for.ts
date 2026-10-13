@@ -1,9 +1,9 @@
 /**
  * `MessagesFor<TResources, TApp>` (SPEC 10.1), the type of the messages of
  * a list of resources: a title and detail for every code a response can
- * carry that no resource derives, `@netvark/jsonapi-core`'s, resource-core's
+ * carry that no resource derives, `@nizam-os/jsonapi-core`'s, resource-core's
  * `QUOTA_EXCEEDED`, and the application's; optional texts for the derived
- * codes and the other `@netvark/ban-core` built-ins; one title and detail
+ * codes and the other `@nizam-os/ban-core` built-ins; one title and detail
  * per constraint kind the derived codes have; a message per issue kind; a
  * label per public member of each resource; and a label per option of each
  * field that has options. Each message is a function typed with the inputs
@@ -13,8 +13,8 @@
  * `defineMessages` checks at runtime.
  * @packageDocumentation
  */
-import type { BuiltinKey, Catalog, EmptyCatalog } from '@netvark/ban-core';
-import type { ErrorCode } from '@netvark/jsonapi-core';
+import type { BuiltinKey, Catalog, EmptyCatalog } from '@nizam-os/ban-core';
+import type { ErrorCode } from '@nizam-os/jsonapi-core';
 
 import type { AnyDeclaredResource } from '../declare/declared-resource';
 import type { DeclareContext } from '../declare/registries';

@@ -2,8 +2,8 @@
 
 - Status: accepted; superseded in part by ADR-0016 (a form sends a cleared input as `null`, nullable
   or not), ADR-0017 (a refusal of several fields binds where a change to any of them clears it), and
-  ADR-0018 (the model and the TanStack Form binding are two packages, `@netvark/resource-ui` and
-  `@netvark/tanstack-form-resource`, and the TanStack Query binding is the jsonapi family's)
+  ADR-0018 (the model and the TanStack Form binding are two packages, `@nizam-os/resource-ui` and
+  `@nizam-os/tanstack-form-resource`, and the TanStack Query binding is the jsonapi family's)
 - Date: 2026-10-12
 
 ## Context
@@ -51,7 +51,7 @@ https://jsonapi.org/profiles/ethanresnick/cursor-pagination/
 
 ## Decision
 
-- **A model, then bindings.** The root entry of `@netvark/react-resource` is a framework-free model
+- **A model, then bindings.** The root entry of `@nizam-os/react-resource` is a framework-free model
   of a declared resource: field descriptors, a form model, the error mapping, and a list model. It
   imports neither React nor TanStack. `./query` binds it to TanStack Query and `./form` to TanStack
   Form, each with its library as an optional peer. Tables take the list model's state as TanStack
@@ -73,7 +73,7 @@ https://jsonapi.org/profiles/ethanresnick/cursor-pagination/
   banner. TanStack Form's binding writes them into `errorMap.onSubmit` and clears the previous ones.
 - **A query key is the request.** `[type, call, ...]` with the query serialized by `serializeQuery`,
   so two queries that make one request share one cache entry and invalidating `[type]` reaches every
-  list and record of the type; each write invalidates its type. `@netvark/jsonapi-client`'s clients
+  list and record of the type; each write invalidates its type. `@nizam-os/jsonapi-client`'s clients
   expose their `definition`, which the keys need.
 - **A list's state is its query.** Sorting maps to `sort` and column filters to `filter` one to one,
   any change other than paging drops `page[after]` and `page[before]`, paging follows the page's

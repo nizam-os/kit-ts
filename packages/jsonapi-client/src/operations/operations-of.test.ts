@@ -11,8 +11,8 @@ import {
   parseCreateDocument,
   parseToManyRelationshipDocument,
   parseUpdateDocument,
-} from '@netvark/jsonapi-core';
-import { parseOperationsDocument } from '@netvark/jsonapi-core/atomic';
+} from '@nizam-os/jsonapi-core';
+import { parseOperationsDocument } from '@nizam-os/jsonapi-core/atomic';
 
 import { Articles } from '../test-support/blog';
 import { operationsOf } from './operations-of';

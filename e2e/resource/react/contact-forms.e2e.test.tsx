@@ -1,8 +1,8 @@
 /**
  * The contacts application's forms on screen (resource SPEC 20.8): the
  * create and edit screens of `screens/`, rendered by React in jsdom with the
- * built `@netvark/resource-ui`, `@netvark/tanstack-form-resource`, and
- * `@netvark/tanstack-query-jsonapi`, for a person whose browser prefers
+ * built `@nizam-os/resource-ui`, `@nizam-os/tanstack-form-resource`, and
+ * `@nizam-os/tanstack-query-jsonapi`, for a person whose browser prefers
  * German, against the application served over a socket
  * (`support/contacts-server.ts`) on PGlite and on the server
  * `RESOURCE_PG_URL` names. Nothing between a keystroke and the database is

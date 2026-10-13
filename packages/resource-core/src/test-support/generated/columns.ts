@@ -6,7 +6,7 @@
  * Not published with the package.
  * @packageDocumentation
  */
-import type { PublicColumn } from '@netvark/catalog-core';
+import type { PublicColumn } from '@nizam-os/catalog-core';
 
 import type { TypeScope } from './domains';
 import type { Random } from './random';

@@ -8,8 +8,8 @@ import type { StorageListRequest } from './storage';
 
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { parseQuery } from '@netvark/jsonapi-core';
-import { createDefineKeyset } from '@netvark/keyset-core';
+import { parseQuery } from '@nizam-os/jsonapi-core';
+import { createDefineKeyset } from '@nizam-os/keyset-core';
 
 import { createDeclareResource } from '../declare/create-declare-resource';
 import { contactsCatalog } from '../test-support/contacts';

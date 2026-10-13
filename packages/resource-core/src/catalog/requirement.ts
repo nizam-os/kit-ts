@@ -14,7 +14,7 @@ import type {
   PublicCatalog,
   PublicColumn,
   PublicTable,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import { ownValue } from '../internal/object';
 

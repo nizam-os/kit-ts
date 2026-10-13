@@ -7,11 +7,11 @@
  * are refused.
  * @packageDocumentation
  */
-import type { AnyResource } from '@netvark/jsonapi-core';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
 
 import type { Clients } from './types';
 
-import { resourcePaths } from '@netvark/jsonapi-core';
+import { resourcePaths } from '@nizam-os/jsonapi-core';
 
 import { defineMember } from '../internal/object';
 import { Transport } from '../transport/transport';

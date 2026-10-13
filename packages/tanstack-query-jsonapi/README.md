@@ -1,7 +1,7 @@
-# @netvark/tanstack-query-jsonapi
+# @nizam-os/tanstack-query-jsonapi
 
 [TanStack Query](https://tanstack.com/query/v5) options for
-[`@netvark/jsonapi-client`](https://github.com/netvark/netvark/tree/main/packages/jsonapi-client#readme)'s
+[`@nizam-os/jsonapi-client`](https://github.com/nizam-os/kit/tree/main/packages/jsonapi-client#readme)'s
 calls, which the hooks of every adapter take as they are: React's, Vue's, Solid's, Svelte's, and
 Angular's. Each read is keyed by the request it sends, so two queries that send one request share
 one cache entry; a read passes the query's signal, so a cancelled query aborts its request; an
@@ -9,16 +9,16 @@ infinite list pages by the server's links; a write stays pending until the reads
 refetched; and writes that must commit together go in one Atomic Operations mutation. The options
 are plain objects typed with `@tanstack/query-core`, the core every adapter is built on, and the
 package imports no framework and no adapter. The contract is sections 16 and 17.4 of
-[`docs/jsonapi/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md), and the
+[`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md), and the
 decision behind it
-[ADR 0020](https://github.com/netvark/netvark/blob/main/docs/jsonapi/adr/0020-tanstack-query-options-are-the-clients-binding-typed-through-query-core.md).
+[ADR 0020](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0020-tanstack-query-options-are-the-clients-binding-typed-through-query-core.md).
 
 Status: in development and unreleased.
 
 ## Install
 
 ```bash
-pnpm add @netvark/tanstack-query-jsonapi @netvark/jsonapi-client
+pnpm add @nizam-os/tanstack-query-jsonapi @nizam-os/jsonapi-client
 pnpm add @tanstack/react-query
 ```
 
@@ -28,22 +28,22 @@ Svelte 5. Each depends on one exact release of `@tanstack/query-core`, which thi
 an optional peer from 5.89 and imports only types from, so it reads your adapter's copy. Do not list
 `@tanstack/query-core` yourself: a range of your own installs a second copy once a newer release is
 published, and a key tagged by one copy is untagged for the other copy's `getQueryData`
-([ADR 0011](https://github.com/netvark/netvark/blob/main/docs/adr/0011-a-binding-takes-the-core-an-adapter-brings-as-an-optional-peer.md)).
+([ADR 0011](https://github.com/nizam-os/kit/blob/main/docs/adr/0011-a-binding-takes-the-core-an-adapter-brings-as-an-optional-peer.md)).
 Under Yarn Plug'n'Play, which gives a package no peer its parent does not provide, list it at the
 exact release your adapter depends on, which `yarn why @tanstack/query-core` shows.
 
-`@netvark/jsonapi-client` is a peer dependency: the options call the clients your application makes
-([ADR 0006](https://github.com/netvark/netvark/blob/main/docs/adr/0006-a-binding-takes-the-packages-the-application-hands-it-values-from-as-peers.md)).
+`@nizam-os/jsonapi-client` is a peer dependency: the options call the clients your application makes
+([ADR 0006](https://github.com/nizam-os/kit/blob/main/docs/adr/0006-a-binding-takes-the-packages-the-application-hands-it-values-from-as-peers.md)).
 
 ## Queries
 
 `resourceQueries(client)` gives the reads and writes of one resource. Make them once per resource,
 beside the clients
-([Calls](https://github.com/netvark/netvark/tree/main/packages/jsonapi-client#calls)):
+([Calls](https://github.com/nizam-os/kit/tree/main/packages/jsonapi-client#calls)):
 
 ```ts
 // src/api/queries.ts
-import { resourceQueries } from '@netvark/tanstack-query-jsonapi';
+import { resourceQueries } from '@nizam-os/tanstack-query-jsonapi';
 
 import { clients } from './clients';
 
@@ -120,13 +120,13 @@ nothing.
 ## Atomic Operations
 
 `operationsMutation(transport)` sends the operations
-[`operationsOf`](https://github.com/netvark/netvark/tree/main/packages/jsonapi-client#atomic-operations)
+[`operationsOf`](https://github.com/nizam-os/kit/tree/main/packages/jsonapi-client#atomic-operations)
 builds in one request, which the server stores whole or not at all: a bulk action over a selection,
 or a record created with another linked to it by its `lid`. Make it once, beside the transport:
 
 ```ts
 // src/api/queries.ts
-import { operationsMutation } from '@netvark/tanstack-query-jsonapi';
+import { operationsMutation } from '@nizam-os/tanstack-query-jsonapi';
 
 import { transport } from './clients';
 
@@ -138,7 +138,7 @@ export const operations = operationsMutation(transport);
 import { Contacts } from '@acme/api/definitions';
 import { useMutation } from '@tanstack/react-query';
 
-import { operationsOf } from '@netvark/jsonapi-client';
+import { operationsOf } from '@nizam-os/jsonapi-client';
 
 import { operations } from '../api/queries';
 
@@ -161,7 +161,7 @@ export function ArchiveSelected({ ids }: { readonly ids: ReadonlyArray<string> }
 On success it removes the `get` entries of every record a removal removed, invalidates every type
 the operations write, `['contacts']` here, and each key `invalidates` names, and resolves once the
 reads shown have refetched, as a single write does. A refused request rejects with the client's
-`ResponseError` and invalidates nothing; `operationOf` from `@netvark/jsonapi-client` reads which
+`ResponseError` and invalidates nothing; `operationOf` from `@nizam-os/jsonapi-client` reads which
 operation each error points at. The `mutationKey` is `['operations']`, and the data the client's
 `OperationsResult`, a result per operation, each result's data `unknown` until a type argument
 narrows the operations: `operationsMutation<ReturnType<typeof contacts.update>>(transport)` takes
@@ -182,7 +182,7 @@ adapter's `infiniteQueryOptions` types them. Add your own options by spreading,
 adapter's `queryOptions`, `infiniteQueryOptions`, and `mutationOptions`. In Vue, spread a list's
 pages options instead of passing them to `infiniteQueryOptions`: Vue's `useInfiniteQuery` refuses
 what that helper returns for a key it was handed tagged
-([ADR 0021](https://github.com/netvark/netvark/blob/main/docs/jsonapi/adr/0021-a-lists-pages-key-is-tagged-as-the-adapters-tag-an-infinite-key.md)).
+([ADR 0021](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0021-a-lists-pages-key-is-tagged-as-the-adapters-tag-an-infinite-key.md)).
 
 ## Best practices
 
@@ -204,7 +204,7 @@ what that helper returns for a key it was handed tagged
 - **Do not retry a refusal.** In the browser TanStack Query retries a failed query three times by
   default, and a `4xx` answers the same each time; set `retry` in the `QueryClient`'s defaults:
   `retry: (failures, error) => failures < 3 && !(isResponseError(error) && error.status < 500)`,
-  with `isResponseError` from `@netvark/jsonapi-client`.
+  with `isResponseError` from `@nizam-os/jsonapi-client`.
 - **Page an infinite list with `fetchNextPage` and `fetchPreviousPage`.** It starts at the query's
   own `page.after` or `page.before`, keeps its `page.size`, follows the server's links, and ends a
   direction at a page without records.
@@ -225,17 +225,17 @@ what that helper returns for a key it was handed tagged
 
 ## Documentation
 
-- [`docs/jsonapi/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md),
+- [`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md),
   sections 16 and 17.4: the binding's contract, with the tests that prove it
-- [ADR 0020](https://github.com/netvark/netvark/blob/main/docs/jsonapi/adr/0020-tanstack-query-options-are-the-clients-binding-typed-through-query-core.md):
+- [ADR 0020](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0020-tanstack-query-options-are-the-clients-binding-typed-through-query-core.md):
   TanStack Query options are the clients' binding, typed through query-core, and
-  [ADR 0021](https://github.com/netvark/netvark/blob/main/docs/jsonapi/adr/0021-a-lists-pages-key-is-tagged-as-the-adapters-tag-an-infinite-key.md):
+  [ADR 0021](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0021-a-lists-pages-key-is-tagged-as-the-adapters-tag-an-infinite-key.md):
   a list's pages key is tagged as the adapters tag an infinite key
-- [ADR 0022](https://github.com/netvark/netvark/blob/main/docs/jsonapi/adr/0022-atomic-operations-are-values-built-from-definitions-and-sent-in-one-request.md):
+- [ADR 0022](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0022-atomic-operations-are-values-built-from-definitions-and-sent-in-one-request.md):
   Atomic Operations are values built from definitions and sent in one request
-- [ADR 0010](https://github.com/netvark/netvark/blob/main/docs/adr/0010-a-binding-to-a-library-with-a-framework-free-core-binds-the-core.md)
+- [ADR 0010](https://github.com/nizam-os/kit/blob/main/docs/adr/0010-a-binding-to-a-library-with-a-framework-free-core-binds-the-core.md)
   and
-  [ADR 0011](https://github.com/netvark/netvark/blob/main/docs/adr/0011-a-binding-takes-the-core-an-adapter-brings-as-an-optional-peer.md):
+  [ADR 0011](https://github.com/nizam-os/kit/blob/main/docs/adr/0011-a-binding-takes-the-core-an-adapter-brings-as-an-optional-peer.md):
   a binding binds a library's framework-free core, and takes it as an optional peer
 
 ## License

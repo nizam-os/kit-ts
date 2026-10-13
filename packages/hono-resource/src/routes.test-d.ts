@@ -5,16 +5,16 @@
  */
 import type { Context, Hono } from 'hono';
 
-import type { ResourceRuntime } from '@netvark/resource-core/server';
+import type { ResourceRuntime } from '@nizam-os/resource-core/server';
 
 import type { TestEnv } from './test-support/app';
 import type { Member, TestDomain } from './test-support/memory-runtime';
 
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { createDeclareResource } from '@netvark/resource-core';
-import { createDomainDefiners } from '@netvark/resource-core/server';
-import { contractFixture } from '@netvark/resource-core/testing';
+import { createDeclareResource } from '@nizam-os/resource-core';
+import { createDomainDefiners } from '@nizam-os/resource-core/server';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { jsonApiRoutes } from './routes';
 

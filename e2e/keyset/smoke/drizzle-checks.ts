@@ -8,14 +8,14 @@ import type { PgRemoteDatabase } from 'drizzle-orm/pg-proxy';
  * and workerd.
  * @ref https://orm.drizzle.team/docs/connect-drizzle-proxy
  */
-import type { QueryEvent } from '@netvark/drizzle-keyset';
+import type { QueryEvent } from '@nizam-os/drizzle-keyset';
 
 import type { Check } from './assert.ts';
 
 import { integer, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { drizzle } from 'drizzle-orm/pg-proxy';
 
-import { createDefineKeyset } from '@netvark/drizzle-keyset';
+import { createDefineKeyset } from '@nizam-os/drizzle-keyset';
 
 import { check, equal } from './assert.ts';
 

@@ -5,7 +5,7 @@
  * verdicts must agree. The committed modules are the ones the extract
  * suite proves byte-identical to what extraction writes.
  */
-import type { Catalog, PublicCatalog, Rule } from '@netvark/catalog-core';
+import type { Catalog, PublicCatalog, Rule } from '@nizam-os/catalog-core';
 
 import { readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';

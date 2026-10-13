@@ -7,10 +7,10 @@
  * a copy's row security or indexes on `tasks`, so every policy and index
  * it reads is as PostgreSQL printed it.
  */
-import type { Catalog, CatalogTable } from '@netvark/catalog-core';
+import type { Catalog, CatalogTable } from '@nizam-os/catalog-core';
 
-import { extractCatalog } from '@netvark/pg-catalog';
-import { contractFixture } from '@netvark/resource-core/testing';
+import { extractCatalog } from '@nizam-os/pg-catalog';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { OUTBOX_TABLE } from './domain-database';
 

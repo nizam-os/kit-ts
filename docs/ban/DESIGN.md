@@ -1,6 +1,6 @@
-# @netvark/ban-core and @netvark/hono-ban: design
+# @nizam-os/ban-core and @nizam-os/hono-ban: design
 
-This document describes what @netvark/ban-core 1.0 and @netvark/hono-ban 2.0 are, the API they
+This document describes what @nizam-os/ban-core 1.0 and @nizam-os/hono-ban 2.0 are, the API they
 expose, and how they are built.
 
 Architecture decisions referenced as ADR-NNNN live in `docs/ban/adr/`. The normative, field-by-field
@@ -9,8 +9,8 @@ behind it. When the two disagree, fix one in the same PR.
 
 ## 1. Purpose
 
-@netvark/ban-core is an HTTP error layer for any JavaScript runtime that speaks the fetch standard;
-@netvark/hono-ban is the same layer wired into Hono (ADR-0016). Together they give an application:
+@nizam-os/ban-core is an HTTP error layer for any JavaScript runtime that speaks the fetch standard;
+@nizam-os/hono-ban is the same layer wired into Hono (ADR-0016). Together they give an application:
 
 1. one way to create HTTP errors, with a typed catalog that the application extends;
 2. one handler that turns anything thrown into a well-formed response, safely, with `app.onError()`
@@ -20,7 +20,7 @@ behind it. When the two disagree, fix one in the same PR.
 4. validation, OpenAPI, and observability integrations that all derive from the same catalog and
    format, so documentation, responses, and logs cannot disagree.
 
-It is a library for teams who treat their error responses as an API contract. @netvark/ban-core
+It is a library for teams who treat their error responses as an API contract. @nizam-os/ban-core
 started life as hono-ban 1.x; the core was extracted so that a library of its own, a non-Hono
 service, or a test can build and render the same errors, and so that other adapters can be thin.
 
@@ -37,7 +37,7 @@ service, or a test can build and render the same errors, and so that other adapt
 ### Non-goals
 
 - Replacing your logger or tracer. The handler emits one `ErrorReport` per error and stops there.
-- Forwarding database or driver text to clients. `@netvark/ban-core/postgresql` maps Postgres errors
+- Forwarding database or driver text to clients. `@nizam-os/ban-core/postgresql` maps Postgres errors
   to catalog entries with constant messages (ADR-0015); other drivers go through `map` the same way,
   and no driver's `message`, `detail`, or `hint` is ever forwarded (ADR-0007).
 - Content negotiation between formats per request. One format per `createBan` instance. If demand
@@ -55,8 +55,8 @@ service, or a test can build and render the same errors, and so that other adapt
 7. **Typed catalog, no strings at call sites.** Custom errors are keys with inference, not
    `problem({ status, title })` literals repeated across handlers.
 8. **One id per error occurrence**, present in the body, the `X-Error-Id` header, and the report.
-9. **Small core, optional integrations.** @netvark/ban-core has no dependencies and no peer
-   dependencies; @netvark/hono-ban adds `hono` as its only peer (ADR-0016). The Zod, Valibot,
+9. **Small core, optional integrations.** @nizam-os/ban-core has no dependencies and no peer
+   dependencies; @nizam-os/hono-ban adds `hono` as its only peer (ADR-0016). The Zod, Valibot,
    Standard Schema, OpenAPI, and OpenTelemetry integrations are subpath exports that type the
    third-party objects they receive structurally and never import those packages (ADR-0009).
 10. **Errors are plain values; adapters adopt.** `BanError` extends `Error` and nothing else. An
@@ -71,7 +71,7 @@ service, or a test can build and render the same errors, and so that other adapt
 ```ts
 import { Hono } from 'hono';
 
-import { createBan } from '@netvark/hono-ban';
+import { createBan } from '@nizam-os/hono-ban';
 
 const ban = createBan();
 const app = new Hono();
@@ -87,10 +87,10 @@ app.get('/orders/:id', async (c) => {
 
 Default format is RFC 9457 Problem Details (section 4.4 explains the choice).
 
-Without Hono, the same instance comes from `@netvark/ban-core` and the handler is called directly:
+Without Hono, the same instance comes from `@nizam-os/ban-core` and the handler is called directly:
 
 ```ts
-import { createBan, fromRequest } from '@netvark/ban-core';
+import { createBan, fromRequest } from '@nizam-os/ban-core';
 
 const ban = createBan();
 const handle = ban.handler();
@@ -106,7 +106,7 @@ export default {
 };
 ```
 
-`@netvark/hono-ban`'s `createBan` is the core's plus `onError`, which feeds the Hono context's
+`@nizam-os/hono-ban`'s `createBan` is the core's plus `onError`, which feeds the Hono context's
 request facts to that same handler (section 4.5).
 
 ### 3.2 Options bag
@@ -154,7 +154,7 @@ type of `errors` rejects keys that shadow an instance member.
 ### 3.4 Guarding with narrowing
 
 ```ts
-import { assert } from '@netvark/hono-ban';
+import { assert } from '@nizam-os/hono-ban';
 
 const user = await users.find(id);
 assert(user, () => ban.notFound(`User ${id} does not exist`));
@@ -188,23 +188,23 @@ const ban = createBan({
 
 `map` is a single ordered function, not a class registry, so `instanceof` chains, discriminant
 checks, and third-party error shapes all work the same way, and subclasses match their parent.
-Postgres errors have a ready-made one: `postgresMapper()` from `@netvark/ban-core/postgresql` is
+Postgres errors have a ready-made one: `postgresMapper()` from `@nizam-os/ban-core/postgresql` is
 such a `map`, keyed on SQLSTATE, with constant client text and per-constraint overrides (section
 4.5, ADR-0015).
 
 `adopt` is the sibling hook for values that already describe an HTTP outcome, such as a framework's
 own exception class. It runs before `map`, inside `ban.from()` too, and what it returns counts as
-handled rather than unexpected. `@netvark/hono-ban` installs one for `HTTPException`; an application
+handled rather than unexpected. `@nizam-os/hono-ban` installs one for `HTTPException`; an application
 adds its own for, say, a fetch wrapper's error that carries an upstream status.
 
 ### 3.6 Formats
 
 ```ts
-import { googleApi } from '@netvark/ban-core/formats/google-api';
-import { jsonApi } from '@netvark/ban-core/formats/json-api';
-import { plain } from '@netvark/ban-core/formats/plain';
-import { problemDetails } from '@netvark/ban-core/formats/problem-details';
-import { stripe } from '@netvark/ban-core/formats/stripe';
+import { googleApi } from '@nizam-os/ban-core/formats/google-api';
+import { jsonApi } from '@nizam-os/ban-core/formats/json-api';
+import { plain } from '@nizam-os/ban-core/formats/plain';
+import { problemDetails } from '@nizam-os/ban-core/formats/problem-details';
+import { stripe } from '@nizam-os/ban-core/formats/stripe';
 
 createBan({ format: jsonApi() });
 createBan({ format: problemDetails({ typeBaseUrl: 'https://api.example.com/problems' }) });
@@ -218,7 +218,7 @@ A custom format with a schema:
 ```ts
 import { z } from 'zod';
 
-import { defineFormat } from '@netvark/ban-core';
+import { defineFormat } from '@nizam-os/ban-core';
 
 const legacy = defineFormat({
   name: 'legacy-envelope',
@@ -242,7 +242,7 @@ const ban = createBan({ format: legacy });
 ```ts
 import { OpenAPIHono } from '@hono/zod-openapi';
 
-import { defaultHook } from '@netvark/hono-ban/zod';
+import { defaultHook } from '@nizam-os/hono-ban/zod';
 
 const app = new OpenAPIHono({ defaultHook: defaultHook(ban) });
 ```
@@ -250,7 +250,7 @@ const app = new OpenAPIHono({ defaultHook: defaultHook(ban) });
 ```ts
 import { zValidator } from '@hono/zod-validator';
 
-import { hook } from '@netvark/hono-ban/zod';
+import { hook } from '@nizam-os/hono-ban/zod';
 
 app.post('/users', zValidator('json', UserSchema, hook(ban)), handler);
 ```
@@ -258,7 +258,7 @@ app.post('/users', zValidator('json', UserSchema, hook(ban)), handler);
 ```ts
 import { sValidator } from '@hono/standard-validator';
 
-import { hook } from '@netvark/hono-ban/standard-schema';
+import { hook } from '@nizam-os/hono-ban/standard-schema';
 
 app.post('/users', sValidator('json', UserSchema, hook(ban)), handler);
 ```
@@ -267,8 +267,8 @@ All three normalize issues into `ValidationIssue[]` and **throw**
 `ban.validation(issues, { location })`. Throwing rather than returning a `Response` from the hook
 sends validation errors through the same `onError` pipeline as everything else, so they get the
 error id, the `X-Error-Id` header, the report, and the trace id like any other error (section 4.7).
-The hooks are exported from `@netvark/ban-core/zod`, `@netvark/ban-core/valibot`, and
-`@netvark/ban-core/standard-schema` as well as under `@netvark/hono-ban/*`; they take a result
+The hooks are exported from `@nizam-os/ban-core/zod`, `@nizam-os/ban-core/valibot`, and
+`@nizam-os/ban-core/standard-schema` as well as under `@nizam-os/hono-ban/*`; they take a result
 object and need nothing from Hono.
 
 ### 3.8 OpenAPI
@@ -276,7 +276,7 @@ object and need nothing from Hono.
 ```ts
 import { createRoute } from '@hono/zod-openapi';
 
-import { errorResponse, errorResponses } from '@netvark/ban-core/openapi';
+import { errorResponse, errorResponses } from '@nizam-os/ban-core/openapi';
 
 createRoute({
   method: 'post',
@@ -331,7 +331,7 @@ carry `WWW-Authenticate`, a 405 `Allow`, a 407 `Proxy-Authenticate`. They travel
 the one with a grammar worth enforcing has a builder (ADR-0013).
 
 ```ts
-import { bearerChallenge } from '@netvark/ban-core';
+import { bearerChallenge } from '@nizam-os/ban-core';
 
 throw ban.unauthorized({
   headers: {
@@ -385,7 +385,7 @@ custom key that equals a built-in key overrides its definition (for example to c
 `BanError extends Error` (implemented in `packages/ban-core/src/core/ban-error.ts`). hono-ban 1.x
 extended Hono's `HTTPException`; the core cannot, and the two things that inheritance bought are
 covered another way (ADR-0018): Hono middleware that throws `HTTPException` is adopted into the
-catalog by `@netvark/hono-ban` (section 4.5), and `err.getResponse()` still renders in the
+catalog by `@nizam-os/hono-ban` (section 4.5), and `err.getResponse()` still renders in the
 configured format because the error carries a reference to its renderer. What was lost on purpose: a
 `BanError` that escapes without `app.onError(ban.onError())` is answered by Hono's default 500
 rather than by its own body, which is the same as any other error and is covered by the quick start.
@@ -478,13 +478,13 @@ literals with a conformance test (ADR-0003). @ref https://standardschema.dev
 `ban.handler(options)` returns `(thrown, request, ctx) => Promise<Response>`: the thrown value, the
 request facts (`method`, `path`, and a case-insensitive `header()`, which `fromRequest(request)`
 reads from a fetch `Request`), and a context of the caller's choosing that every callback receives.
-`@netvark/hono-ban`'s `ban.onError(options)` wraps it as a Hono `ErrorHandler` with the `Context` as
+`@nizam-os/hono-ban`'s `ban.onError(options)` wraps it as a Hono `ErrorHandler` with the `Context` as
 that context, so `requestId`, `traceId`, `transform`, and `onReport` see `c` exactly as in 1.x. The
 pipeline for a thrown value `err`:
 
 1. `BanError` → use as is.
 2. `adopt` → if the instance's hook returns a `BanError`, use it as a handled error.
-   `@netvark/hono-ban` installs `fromHttpException`: catalog entry by status,
+   `@nizam-os/hono-ban` installs `fromHttpException`: catalog entry by status,
    `detail = err.message`, headers from `err.res` preserved minus those describing its body. Hono's
    own validator throws `HTTPException(400, 'Malformed JSON in request body')`; it is matched by
    status and exact message, never by substring. An `HTTPException` outside the error classes (a
@@ -520,7 +520,7 @@ On Hono `TContext` is `Context<E>`; elsewhere it is whatever the host passes, or
 The step-by-step algorithm, the fallback path, header merge order, and every edge case are in SPEC
 section 6.
 
-`@netvark/ban-core/postgresql` supplies a `map` for Postgres driver errors.
+`@nizam-os/ban-core/postgresql` supplies a `map` for Postgres driver errors.
 `postgresMapper(options)` recognizes the error by its SQLSTATE and severity, directly or through an
 ORM wrapper's `cause`, and returns a catalog entry with constant text (409 for conflicts, 422 for
 rejected values, 503 for transient conditions) or `undefined` for codes it has no row for, so those
@@ -581,21 +581,21 @@ own `reason`, `expected`, and `received`, per-item `meta`, and an optional ident
 does under `mixedEntries`. A batch of domain checks or a JSON:API document with three unrelated
 problems builds the list directly: `ban.badRequest({ errors })`.
 
-Subpath exports (each also available as `@netvark/hono-ban/<name>`):
+Subpath exports (each also available as `@nizam-os/hono-ban/<name>`):
 
-- `@netvark/ban-core/zod`: `defaultHook(ban)` for `OpenAPIHono`, `hook(ban)` for `zValidator`, and
+- `@nizam-os/ban-core/zod`: `defaultHook(ban)` for `OpenAPIHono`, `hook(ban)` for `zValidator`, and
   `fromZodError(ban, error, location)`. Zod 3.25+ and 4.
-- `@netvark/ban-core/valibot`: `hook(ban)` for `@hono/valibot-validator` and
+- `@nizam-os/ban-core/valibot`: `hook(ban)` for `@hono/valibot-validator` and
   `fromValibotIssues(ban, issues, location)`, keeping Valibot's `type`, `expected`, and `received`
   on each issue.
-- `@netvark/ban-core/standard-schema`: `hook(ban)` for `@hono/standard-validator` and
+- `@nizam-os/ban-core/standard-schema`: `hook(ban)` for `@hono/standard-validator` and
   `fromIssues(ban, issues, location)`. Covers ArkType, Effect Schema, and any other Standard Schema
   library through one interface (path and message only, which is all the spec carries). @ref
   https://standardschema.dev
 
 ### 4.8 OpenAPI
 
-`@netvark/ban-core/openapi` exports `errorResponse(ban, statusOrKey, opts?)`,
+`@nizam-os/ban-core/openapi` exports `errorResponse(ban, statusOrKey, opts?)`,
 `errorResponses(ban, list)`, `errorSchema(ban, statusOrKey)`, `validationResponse(ban)`, and
 `validationSchema(ban)`. Schemas are JSON Schema 2020-12 objects, which OpenAPI 3.1 accepts
 directly; pass `{ dialect: 'openapi-3.0' }` to get `enum` instead of `const` for 3.0 documents.
@@ -614,7 +614,7 @@ that combines entries stays inline. `@hono/zod-openapi` accepts raw schema objec
 
 A conformance test in the repository renders every catalog entry in every built-in format and
 validates the body against `format.schema(entry)`.
-`assertFormatConformance(format, catalog, { compile })` is exported from `@netvark/ban-core/testing`
+`assertFormatConformance(format, catalog, { compile })` is exported from `@nizam-os/ban-core/testing`
 for custom formats; `compile` turns a JSON Schema into a validator so the package does not depend on
 Ajv (ADR-0009).
 
@@ -628,10 +628,10 @@ several error statuses are heuristically cacheable.
 
 ### 4.10 Runtime and packaging
 
-- Two packages, versioned independently (ADR-0016): `@netvark/ban-core` (the core) and
-  `@netvark/hono-ban` (the Hono adapter, depending on `@netvark/ban-core` with a caret range).
+- Two packages, versioned independently (ADR-0016): `@nizam-os/ban-core` (the core) and
+  `@nizam-os/hono-ban` (the Hono adapter, depending on `@nizam-os/ban-core` with a caret range).
 - ESM only, `platform: 'neutral'`, `engines.node >= 22.12`, `sideEffects: false` (ADR-0006).
-- `@netvark/ban-core` has no dependencies and no peers. `@netvark/hono-ban` has one peer,
+- `@nizam-os/ban-core` has no dependencies and no peers. `@nizam-os/hono-ban` has one peer,
   `hono >= 4.13.7` (upstream security floor: the first release no published Hono advisory affects,
   root ADR 0007). No optional peers anywhere: the integrations are typed structurally, so `zod`,
   `valibot`, `@hono/*` validators, `@standard-schema/spec`, `@opentelemetry/api`, and the Postgres
@@ -640,7 +640,7 @@ several error statuses are heuristically cacheable.
 - Subpath exports, identical in both packages: `.`, `./formats/json-api`,
   `./formats/problem-details`, `./formats/plain`, `./formats/google-api`, `./formats/stripe`,
   `./zod`, `./valibot`, `./standard-schema`, `./openapi`, `./otel`, `./postgresql`, `./testing`. A
-  `@netvark/hono-ban` subpath is a one-line re-export of the `@netvark/ban-core` one; only the root
+  `@nizam-os/hono-ban` subpath is a one-line re-export of the `@nizam-os/ban-core` one; only the root
   differs.
 
 ## 5. Package layout
@@ -674,7 +674,7 @@ Every module with behavior has `*.test.ts` beside it; types that are part of the
 
 ## 6. Comparison
 
-| Capability           | @netvark/ban-core 1.0 / @netvark/hono-ban 2.0                                  | hono-problem-details                                              | @hapi/boom         |
+| Capability           | @nizam-os/ban-core 1.0 / @nizam-os/hono-ban 2.0                                  | hono-problem-details                                              | @hapi/boom         |
 | -------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------- | ------------------ |
 | Formats              | RFC 9457, JSON:API, Google API (AIP-193), Stripe, plain, custom (schema-typed) | RFC 9457                                                          | flat               |
 | Catalog              | built-in plus typed custom keys as factories                                   | user registry, `create(key)`                                      | built-in factories |
@@ -685,7 +685,7 @@ Every module with behavior has `*.test.ts` beside it; types that are part of the
 | Observability        | `ErrorReport` with shared id, request id, trace id                             | `traceId` extension via OTel                                      | none               |
 | Handler safety       | never throws, once per error, constant 500 detail                              | never throws, constant 500 detail                                 | n/a                |
 | Runtime              | web standards only                                                             | web standards only                                                | Node               |
-| Framework            | none in the core; Hono through `@netvark/hono-ban`                             | Hono                                                              | none               |
+| Framework            | none in the core; Hono through `@nizam-os/hono-ban`                             | Hono                                                              | none               |
 
 Neither package depends on or wraps hono-problem-details.
 
@@ -693,7 +693,7 @@ Neither package depends on or wraps hono-problem-details.
 
 Everything described in this document has shipped and is covered by the unit, end-to-end, and
 runtime smoke suites (SPEC section 14). Adapters for other hosts (a `fetch`-native router, a Node
-`http` server) are the expected additions: each is a package that depends on `@netvark/ban-core`,
+`http` server) are the expected additions: each is a package that depends on `@nizam-os/ban-core`,
 installs an `adopt` hook for the host's own exceptions, and maps the host's request to
-`ErrorRequest`, the way `@netvark/hono-ban` does. Additive proposals start as a discussion
+`ErrorRequest`, the way `@nizam-os/hono-ban` does. Additive proposals start as a discussion
 (`CONTRIBUTING.md`).

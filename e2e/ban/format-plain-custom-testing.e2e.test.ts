@@ -3,13 +3,13 @@ import type { RunningServer } from './support/server';
 import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan, defineFormat } from '@netvark/hono-ban';
-import { plain } from '@netvark/hono-ban/formats/plain';
+import { createBan, defineFormat } from '@nizam-os/hono-ban';
+import { plain } from '@nizam-os/hono-ban/formats/plain';
 import {
   assertFormatConformance,
   expectBanError,
   renderError,
-} from '@netvark/hono-ban/testing';
+} from '@nizam-os/hono-ban/testing';
 
 import { compileWithAjv } from './support/ajv';
 import { startServer } from './support/server';
@@ -27,7 +27,7 @@ import { startServer } from './support/server';
 const TRACEPARENT = '00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01';
 const TRACE_ID = '4bf92f3577b34da6a3ce929d0e0e4736';
 
-describe('@netvark/hono-ban/testing helpers used by a consumer', () => {
+describe('@nizam-os/hono-ban/testing helpers used by a consumer', () => {
   const ban = createBan({ format: plain() });
   const shared = ban.conflict('Order 42 already exists', {
     meta: { resource: 'order' },

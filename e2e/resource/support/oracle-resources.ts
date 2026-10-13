@@ -5,7 +5,7 @@
  * holds the key tables' resources, whose ids the id suite checks (SPEC
  * 3.4).
  */
-import { createDeclareResource } from '@netvark/resource-core';
+import { createDeclareResource } from '@nizam-os/resource-core';
 
 import { publicCatalog } from '../fixtures/oracle/public-catalog.ts';
 

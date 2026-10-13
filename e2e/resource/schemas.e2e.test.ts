@@ -6,11 +6,11 @@
  * field and a relationship, the types `Infer` reads from the emitted
  * declarations, and the boundary fixtures of the `testing` entry.
  */
-import type { Infer, ResourceIssue } from '@netvark/resource-core';
+import type { Infer, ResourceIssue } from '@nizam-os/resource-core';
 
 import { describe, expect, expectTypeOf, it } from 'vitest';
 
-import { boundaryFixtures } from '@netvark/resource-core/testing';
+import { boundaryFixtures } from '@nizam-os/resource-core/testing';
 
 import { Contacts } from './resources/contacts.ts';
 import { Meetings } from './resources/meetings.ts';

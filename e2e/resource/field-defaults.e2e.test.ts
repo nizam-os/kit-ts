@@ -10,7 +10,7 @@
  * names.
  * @ref https://github.com/postgres/postgres/blob/REL_18_STABLE/src/backend/utils/adt/ruleutils.c (get_const_expr)
  */
-import type { FieldMeta } from '@netvark/resource-core';
+import type { FieldMeta } from '@nizam-os/resource-core';
 
 import type { DefaultsFixture, StoredRow } from './support/defaults-table.ts';
 import type { OracleDatabase } from './support/oracle-database.ts';

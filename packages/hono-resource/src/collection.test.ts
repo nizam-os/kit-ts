@@ -10,8 +10,8 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import { parseQuery } from '@netvark/hono-jsonapi';
-import { keysetRequest } from '@netvark/resource-core/server';
+import { parseQuery } from '@nizam-os/hono-jsonapi';
+import { keysetRequest } from '@nizam-os/resource-core/server';
 
 import { testApp } from './test-support/app';
 import { memoryRuntime } from './test-support/memory-runtime';

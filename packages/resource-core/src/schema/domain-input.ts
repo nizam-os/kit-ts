@@ -10,7 +10,7 @@ import type { output } from 'zod/v4/core';
  * NOT NULL columns use still needs a validator that accepts `null`.
  * @packageDocumentation
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
 
 import type { TypedRecord } from '../catalog/resolve-type';
 import type { CodecRegistry } from '../declare/registries';

@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 `Infer`, `ErrorCatalog`, and `errorCatalog` constrain their resources by the new

@@ -4,7 +4,7 @@
  * `dist/`, the way an installed copy is read, and the member stays absent
  * at runtime.
  */
-import type { TypesOf } from '@netvark/jsonapi-core';
+import type { TypesOf } from '@nizam-os/jsonapi-core';
 
 import type { People } from './support/resources.ts';
 

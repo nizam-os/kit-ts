@@ -7,7 +7,7 @@
  * either way.
  * @packageDocumentation
  */
-import type { ErrorCode } from '@netvark/jsonapi-core';
+import type { ErrorCode } from '@nizam-os/jsonapi-core';
 
 import type { QuotaExceededCatalog } from '../errors/quota-exceeded';
 import type { IssueKind } from '../schema/issue-kinds';
@@ -15,7 +15,7 @@ import type { IssueInputs, Message } from './types';
 
 import { enumMessage, issueMessage } from '../schema/issue-messages';
 
-/** The detail of each code of `@netvark/jsonapi-core` and of resource-core's own. */
+/** The detail of each code of `@nizam-os/jsonapi-core` and of resource-core's own. */
 export const CODE_DETAILS: Readonly<
   Record<ErrorCode | keyof QuotaExceededCatalog, string>
 > = Object.freeze({

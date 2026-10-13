@@ -1,5 +1,5 @@
 ---
-'@netvark/pg-catalog': minor
+'@nizam-os/pg-catalog': minor
 ---
 
 First release: your PostgreSQL schema as committed TypeScript.
@@ -19,4 +19,4 @@ First release: your PostgreSQL schema as committed TypeScript.
   every supported major.
 - `renderCatalogModule`, `renderPublicCatalogModule`, and `parseCatalogModule` write and read the
   modules; every failure is a `PgCatalogError` with a `code`.
-- Re-exports all of `@netvark/catalog-core`, so an application imports from one package.
+- Re-exports all of `@nizam-os/catalog-core`, so an application imports from one package.

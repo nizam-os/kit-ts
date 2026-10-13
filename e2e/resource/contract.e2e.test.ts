@@ -4,7 +4,7 @@
  * plain SQL over PGlite and over the server `RESOURCE_PG_URL` names, so
  * the obligations of SPEC 12.8 are implementable as written.
  */
-import type { ContractHarness } from '@netvark/resource-core/testing';
+import type { ContractHarness } from '@nizam-os/resource-core/testing';
 
 import type { ContractDatabase } from './support/contract-database.ts';
 import type { ReferenceTransaction } from './support/reference-sql.ts';
@@ -14,7 +14,7 @@ import { afterAll, beforeAll, describe, it } from 'vitest';
 import {
   contractFixture,
   storageContract,
-} from '@netvark/resource-core/testing';
+} from '@nizam-os/resource-core/testing';
 
 import {
   contractDatabases,

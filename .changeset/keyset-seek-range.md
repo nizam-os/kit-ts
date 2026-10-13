@@ -1,6 +1,6 @@
 ---
-'@netvark/keyset-core': minor
-'@netvark/kysely-keyset': minor
+'@nizam-os/keyset-core': minor
+'@nizam-os/kysely-keyset': minor
 ---
 
 A page deep in a list now costs one page: the seek leads with a range on the first sort key, so an

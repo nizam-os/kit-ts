@@ -7,7 +7,7 @@ import type {
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 
-import { isBanError } from '@netvark/ban-core';
+import { isBanError } from '@nizam-os/ban-core';
 
 import { errorObjects } from '../errors/json-api-error';
 import { defineResource } from '../resource/define-resource';

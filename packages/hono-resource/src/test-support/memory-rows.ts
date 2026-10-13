@@ -7,14 +7,14 @@
  * error until it is mapped, as a PostgreSQL violation is not (SPEC 18.5).
  * Not published with the package.
  */
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 import type {
   PublicRow,
   ResourceInput,
   StoragePage,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
-import { jsonApiError } from '@netvark/hono-jsonapi';
+import { jsonApiError } from '@nizam-os/hono-jsonapi';
 
 const PAGE_SIZE = 10;
 

@@ -13,7 +13,7 @@ import {
   FIRST_STRONG_ISOLATE,
   isolate,
   POP_DIRECTIONAL_ISOLATE,
-} from '@netvark/intl-core';
+} from '@nizam-os/intl-core';
 
 import { check, equal } from './assert.ts';
 import { MESSAGE_CHECKS } from './message-checks.ts';
@@ -104,7 +104,7 @@ export function report(result: SmokeResult): void {
   const total = result.passed + result.failures.length;
   if (result.failures.length === 0) {
     console.log(
-      `@netvark/intl smoke: ${total} checks passed on ${result.runtime}`,
+      `@nizam-os/intl smoke: ${total} checks passed on ${result.runtime}`,
     );
     return;
   }
@@ -112,6 +112,6 @@ export function report(result: SmokeResult): void {
     console.error(`FAIL ${failure}`);
   }
   throw new Error(
-    `@netvark/intl smoke: ${result.failures.length} of ${total} checks failed on ${result.runtime}`,
+    `@nizam-os/intl smoke: ${result.failures.length} of ${total} checks failed on ${result.runtime}`,
   );
 }

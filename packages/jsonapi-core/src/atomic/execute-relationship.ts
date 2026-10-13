@@ -7,7 +7,7 @@
  * @ref https://jsonapi.org/ext/atomic/#auto-id-updating-to-many-relationships
  * @packageDocumentation
  */
-import type { BanError, ErrorItem } from '@netvark/ban-core';
+import type { BanError, ErrorItem } from '@nizam-os/ban-core';
 
 import type { RelationshipDefinition } from '../resource/types';
 import type { Execution, OperationResult } from './execute-support';

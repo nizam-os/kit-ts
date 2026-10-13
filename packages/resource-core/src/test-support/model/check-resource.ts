@@ -8,7 +8,7 @@
  * Not published with the package.
  * @packageDocumentation
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
 
 import type { DeclaredResource } from '../../declare/declared-resource';
 import type { Subject } from './check-support';

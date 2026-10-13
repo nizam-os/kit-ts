@@ -1,7 +1,7 @@
 {
-  "name": "@netvark/kysely-resource",
+  "name": "@nizam-os/kysely-resource",
   "version": "0.0.0",
-  "description": "The Kysely runtime for @netvark/resource-core declarations on PostgreSQL: a storage adapter that sends and reads every value as text, scoped transactions inside row security, boot checks against the catalog and the connection, and a transactional outbox.",
+  "description": "The Kysely runtime for @nizam-os/resource-core declarations on PostgreSQL: a storage adapter that sends and reads every value as text, scoped transactions inside row security, boot checks against the catalog and the connection, and a transactional outbox.",
   "keywords": [
     "json-api",
     "kysely",
@@ -12,13 +12,13 @@
     "rls",
     "row-level-security"
   ],
-  "homepage": "https://github.com/netvark/netvark/tree/main/packages/kysely-resource#readme",
-  "bugs": "https://github.com/netvark/netvark/issues",
+  "homepage": "https://github.com/nizam-os/kit/tree/main/packages/kysely-resource#readme",
+  "bugs": "https://github.com/nizam-os/kit/issues",
   "license": "MIT",
   "author": "Ali Issa (https://github.com/ali-issa)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netvark/netvark.git",
+    "url": "git+https://github.com/nizam-os/kit.git",
     "directory": "packages/kysely-resource"
   },
   "files": [
@@ -53,22 +53,22 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@netvark/ban-core": "workspace:^",
-    "@netvark/catalog-core": "workspace:^",
-    "@netvark/jsonapi-core": "workspace:^",
-    "@netvark/kysely-keyset": "workspace:^"
+    "@nizam-os/ban-core": "workspace:^",
+    "@nizam-os/catalog-core": "workspace:^",
+    "@nizam-os/jsonapi-core": "workspace:^",
+    "@nizam-os/kysely-keyset": "workspace:^"
   },
   "devDependencies": {
     "@electric-sql/pglite": "catalog:",
-    "@netvark/keyset-core": "workspace:^",
-    "@netvark/pg-catalog": "workspace:^",
-    "@netvark/resource-core": "workspace:^",
+    "@nizam-os/keyset-core": "workspace:^",
+    "@nizam-os/pg-catalog": "workspace:^",
+    "@nizam-os/resource-core": "workspace:^",
     "kysely": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {
-    "@netvark/keyset-core": "^0.1.0",
-    "@netvark/resource-core": "^0.1.0",
+    "@nizam-os/keyset-core": "^0.1.0",
+    "@nizam-os/resource-core": "^0.1.0",
     "kysely": ">=0.29.0"
   },
   "engines": {

@@ -6,7 +6,7 @@
  * becomes the field's `limits` and the keywords of its OpenAPI schema.
  * @packageDocumentation
  */
-import type { LengthRule, RangeBound, RangeRule } from '@netvark/catalog-core';
+import type { LengthRule, RangeBound, RangeRule } from '@nizam-os/catalog-core';
 
 import { compareDecimals } from '../wire/decimal';
 

@@ -9,7 +9,7 @@
  * @ref https://jsonapi.org/format/1.1/#crud-updating-resource-relationships
  * @packageDocumentation
  */
-import type { ErrorItem } from '@netvark/ban-core';
+import type { ErrorItem } from '@nizam-os/ban-core';
 
 import type { StandardSchema } from '../internal/standard-schema-types';
 import type { AnyResource } from '../resource/types';

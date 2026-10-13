@@ -1,5 +1,5 @@
 ---
-'@netvark/intl-core': minor
+'@nizam-os/intl-core': minor
 ---
 
 `createIntl({ locale, timeZone, formattingLocales, cacheSize })` returns formatters for dates, date

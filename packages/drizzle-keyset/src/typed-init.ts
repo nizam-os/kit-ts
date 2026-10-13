@@ -20,7 +20,7 @@ import type {
   PageInit,
   SortInit,
   TextSearchMode,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 /** The keys of the schema's members that are PostgreSQL tables. */
 export type TablesOf<TSchema> = {

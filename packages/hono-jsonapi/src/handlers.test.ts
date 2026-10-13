@@ -4,9 +4,9 @@ import { Hono } from 'hono';
 import { HTTPException } from 'hono/http-exception';
 import { describe, expect, it, vi } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
-import { jsonApi } from '@netvark/hono-ban/formats/json-api';
-import { ERROR_CATALOG, jsonApiError } from '@netvark/jsonapi-core';
+import { createBan } from '@nizam-os/hono-ban';
+import { jsonApi } from '@nizam-os/hono-ban/formats/json-api';
+import { ERROR_CATALOG, jsonApiError } from '@nizam-os/jsonapi-core';
 
 import { errorHandler, notFoundHandler } from './handlers';
 
@@ -63,7 +63,7 @@ describe('errorHandler', () => {
     });
   });
 
-  it('adopts an HTTPException by status with @netvark/ban-core built-in identity', async () => {
+  it('adopts an HTTPException by status with @nizam-os/ban-core built-in identity', async () => {
     const withMessage = await thrown(
       new HTTPException(413, { message: 'Body exceeds 1 MiB' }),
     );
@@ -160,7 +160,7 @@ describe('errorHandler', () => {
     });
   });
 
-  it('is interchangeable with an application instance built on @netvark/hono-ban', async () => {
+  it('is interchangeable with an application instance built on @nizam-os/hono-ban', async () => {
     const ban = createBan({
       errors: { ...ERROR_CATALOG, QUOTA: { status: 429, title: 'Quota' } },
       format: jsonApi({ mixedEntries: true }),

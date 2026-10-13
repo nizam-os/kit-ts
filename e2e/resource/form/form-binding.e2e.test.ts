@@ -1,8 +1,8 @@
 /**
  * TanStack Form over the contacts application (resource SPEC 20.5, ADR
  * 0017): a form-core `FormApi` made with `resourceFormOptions` of the built
- * `@netvark/tanstack-form-resource`, as every adapter's form is made, whose
- * submit handler writes through the built `@netvark/jsonapi-client` to the
+ * `@nizam-os/tanstack-form-resource`, as every adapter's form is made, whose
+ * submit handler writes through the built `@nizam-os/jsonapi-client` to the
  * application served over a socket (`support/contacts-server.ts`, with
  * meetings, `runtime/meetings.ts`) and binds a refusal with
  * `bindResponseErrors`, as an application's handler does, on PGlite and on
@@ -15,7 +15,7 @@
  * changing either answers.
  * @ref https://tanstack.com/form/v1/docs/framework/react/guides/validation
  */
-import type { FormModel } from '@netvark/resource-ui';
+import type { FormModel } from '@nizam-os/resource-ui';
 
 import type { RuntimeDatabase } from '../runtime/database.ts';
 import type { ContactsServer } from '../support/contacts-server.ts';
@@ -24,12 +24,12 @@ import type { Departure } from '../support/recorded-clients.ts';
 import { FieldApi, FormApi } from '@tanstack/form-core';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { defaultMessages } from '@netvark/resource-core';
-import { resourceForm } from '@netvark/resource-ui';
+import { defaultMessages } from '@nizam-os/resource-core';
+import { resourceForm } from '@nizam-os/resource-ui';
 import {
   bindResponseErrors,
   resourceFormOptions,
-} from '@netvark/tanstack-form-resource';
+} from '@nizam-os/tanstack-form-resource';
 
 import { contactMessages } from '../localization/contact-messages.ts';
 import { Contacts } from '../resources/contacts.ts';

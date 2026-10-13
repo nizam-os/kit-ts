@@ -1,6 +1,6 @@
 /**
  * The addresses table of the names catalog (`../names.ts`), as
- * `@netvark/pg-catalog` extracts it: columns that are not plain
+ * `@nizam-os/pg-catalog` extracts it: columns that are not plain
  * (`names/name-risk.ts`), whose camelCase names coincide or are reserved, a
  * foreign key whose relationship name is reserved, and the two cases the
  * type-level check leaves to the runtime: a name ending in `-`, which only

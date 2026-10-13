@@ -135,7 +135,7 @@ describe('readWorkspace', () => {
     const names = readWorkspace(join(import.meta.dirname, '..', '..')).map(
       (manifest) => manifest.name,
     );
-    expect(names).toContain('@netvark/hono-ban');
-    expect(names).toContain('@netvark/kysely-keyset');
+    expect(names).toContain('@nizam-os/hono-ban');
+    expect(names).toContain('@nizam-os/kysely-keyset');
   });
 });

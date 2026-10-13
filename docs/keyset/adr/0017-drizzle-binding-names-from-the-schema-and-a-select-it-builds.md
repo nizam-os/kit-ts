@@ -37,8 +37,8 @@ properties of Drizzle decide how it must be built, measured on drizzle-orm 0.45.
 
 ## Decision
 
-- `@netvark/drizzle-keyset` is the Drizzle adapter, beside `@netvark/kysely-keyset`. It depends on
-  `@netvark/keyset-core` (`workspace:^`), re-exports it in full, and has
+- `@nizam-os/drizzle-keyset` is the Drizzle adapter, beside `@nizam-os/kysely-keyset`. It depends on
+  `@nizam-os/keyset-core` (`workspace:^`), re-exports it in full, and has
   `drizzle-orm >=0.45.2 <1.0.0` as its only peer dependency. CI runs its unit tests on 0.45.2, the
   floor.
 - Names are the schema's. `createDefineKeyset(schema, defaults?)` takes the schema object the

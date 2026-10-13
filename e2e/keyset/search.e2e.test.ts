@@ -9,7 +9,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
  * parameters; `%`, `_`, and tsquery syntax in them never escape.
  * @ref https://www.postgresql.org/docs/current/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES
  */
-import { UnsupportedSearchError } from '@netvark/kysely-keyset';
+import { UnsupportedSearchError } from '@nizam-os/kysely-keyset';
 
 import { BINDINGS } from './support/bindings.ts';
 import { openPglite } from './support/db.ts';

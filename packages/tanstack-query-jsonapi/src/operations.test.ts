@@ -6,7 +6,7 @@
  * first, the keys `invalidates` names, a refused request that invalidates
  * nothing, and the `TypeError`s.
  */
-import type { Transport } from '@netvark/jsonapi-client';
+import type { Transport } from '@nizam-os/jsonapi-client';
 
 import { MutationObserver } from '@tanstack/query-core';
 import { describe, expect, it, vi } from 'vitest';
@@ -15,7 +15,7 @@ import {
   isResponseError,
   operationOf,
   operationsOf,
-} from '@netvark/jsonapi-client';
+} from '@nizam-os/jsonapi-client';
 
 import { operationsMutation } from './operations';
 import { resourceQueries } from './queries';

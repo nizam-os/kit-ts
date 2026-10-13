@@ -36,7 +36,7 @@ handler (SPEC 6.3), and what it returns counts as handled: an adopted value is a
 outcome, not an unexpected failure. `ban.fromStatus(status, options)` is the building block for
 adopters (primary catalog entry by status, else a custom error).
 
-`@netvark/hono-ban`'s `createBan` installs `fromHttpException` as the adopter ahead of the caller's
+`@nizam-os/hono-ban`'s `createBan` installs `fromHttpException` as the adopter ahead of the caller's
 own. It keeps the 1.x rules: entry by status, `MALFORMED_JSON` for Hono's validator by exact
 message, `detail` from the message, response headers kept minus those describing the discarded body,
 `Content-Range` kept on 416. New in 2.0, `onError` answers an `HTTPException` outside the error
@@ -50,7 +50,7 @@ consequence.
 ## Consequences
 
 - The core has no framework import, type-level or otherwise, and the hook gives any adapter the same
-  leverage `@netvark/hono-ban` has.
+  leverage `@nizam-os/hono-ban` has.
 - Breaking for 1.x code that relied on `instanceof HTTPException` for a `BanError`, on
   `ContentfulStatusCode` in its own signatures, or on a `BanError` escaping the handler and still
   rendering through Hono's default handler.

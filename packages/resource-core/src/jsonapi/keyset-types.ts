@@ -14,8 +14,8 @@
  * notes).
  * @packageDocumentation
  */
-import type { PublicCatalog, PublicTable } from '@netvark/catalog-core';
-import type { FieldType } from '@netvark/keyset-core';
+import type { PublicCatalog, PublicTable } from '@nizam-os/catalog-core';
+import type { FieldType } from '@nizam-os/keyset-core';
 
 import type { ResolveColumnType } from '../catalog/resolve-type';
 import type { DomainEnumValues } from '../schema/value-types';

@@ -1,8 +1,8 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
-A new `@netvark/resource-core/server` entry holds what a server composes over the declarations,
+A new `@nizam-os/resource-core/server` entry holds what a server composes over the declarations,
 typed by the application's own permissions, quotas, services, and error codes.
 
 - `createDomainDefiners<TDomain>()` returns `definePolicy` and `defineResource`. A policy holds one
@@ -22,6 +22,6 @@ typed by the application's own permissions, quotas, services, and error codes.
   violation of a remove is `CONFLICT`.
 - `StorageAdapter<TTransaction>` is the contract a storage adapter implements, `lock` included,
   which holds the row an update or a remove decides on until the transaction ends.
-  `@netvark/resource-core/testing` adds `storageContract(harness)`, cases named after each of the
+  `@nizam-os/resource-core/testing` adds `storageContract(harness)`, cases named after each of the
   ten obligations, concurrent ones among them, and `contractFixture`, the schema, seed, catalog, and
   declarations they run on.

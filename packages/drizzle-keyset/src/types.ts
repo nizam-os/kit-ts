@@ -19,7 +19,7 @@ import type {
   KeysetRequestOf,
   Page,
   RelationsInit,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 /**
  * The application's Drizzle schema object, the one it hands `drizzle()`

@@ -1,6 +1,6 @@
 # intl: implementation specification
 
-- Status: normative for the 0.x line of `@netvark/intl-core` and `@netvark/paraglide-intl`;
+- Status: normative for the 0.x line of `@nizam-os/intl-core` and `@nizam-os/paraglide-intl`;
   `docs/intl/DESIGN.md` explains the why
 
 The key words MUST, MUST NOT, SHOULD, and MAY are used as in RFC 2119. Every section names the
@@ -16,7 +16,7 @@ Contents
 3. Formatters
 4. Time zones
 5. Errors
-6. Paraglide binding (`@netvark/paraglide-intl`)
+6. Paraglide binding (`@nizam-os/paraglide-intl`)
 7. Test plan
 8. Packaging and support
 9. Constants
@@ -25,16 +25,16 @@ Contents
 
 ## 1. Public surface and module map
 
-Two packages (ADR 0002). `@netvark/intl-core` is the core: web standards only, no dependencies,
-nothing imported from Paraglide or the inlang SDK. `@netvark/paraglide-intl` is the Paraglide
+Two packages (ADR 0002). `@nizam-os/intl-core` is the core: web standards only, no dependencies,
+nothing imported from Paraglide or the inlang SDK. `@nizam-os/paraglide-intl` is the Paraglide
 binding: it depends on the core through `workspace:^`, re-exports all of it, and adds `compile()`
 and `watch()`. `@inlang/paraglide-js` is its peer dependency, and it loads projects with the inlang
 SDK that Paraglide itself depends on (root ADR 0009).
 
 | Package                   | Exports                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@netvark/intl-core`      | Values: `isolate`, `createIntl`, `toTimeZone`, `detectTimeZone`, `timeZoneFromCookie`, `timeZoneCookie`, `createTimeZone`, and the constants `FIRST_STRONG_ISOLATE`, `POP_DIRECTIONAL_ISOLATE`, `DEFAULT_CACHE_SIZE`, `DEFAULT_TIME_ZONE`, `TIME_ZONE_COOKIE_MAX_AGE`. Types: `IntlOptions`, `IntlFormatters`, `DateInput`, `NumberInput`, `TimeZoneCookieOptions`, `TimeZoneOptions`, `TimeZoneResolver`, `RequestScope` |
-| `@netvark/paraglide-intl` | Everything of `@netvark/intl-core` (the same bindings), plus `compile`, `watch`, and `MessageFormattingError`; and the types `CompileOptions`, `CompileResult`, `FormattingFinding`, `WatchOptions`, `Watcher`                                                                                                                                                                                                            |
+| `@nizam-os/intl-core`      | Values: `isolate`, `createIntl`, `toTimeZone`, `detectTimeZone`, `timeZoneFromCookie`, `timeZoneCookie`, `createTimeZone`, and the constants `FIRST_STRONG_ISOLATE`, `POP_DIRECTIONAL_ISOLATE`, `DEFAULT_CACHE_SIZE`, `DEFAULT_TIME_ZONE`, `TIME_ZONE_COOKIE_MAX_AGE`. Types: `IntlOptions`, `IntlFormatters`, `DateInput`, `NumberInput`, `TimeZoneCookieOptions`, `TimeZoneOptions`, `TimeZoneResolver`, `RequestScope` |
+| `@nizam-os/paraglide-intl` | Everything of `@nizam-os/intl-core` (the same bindings), plus `compile`, `watch`, and `MessageFormattingError`; and the types `CompileOptions`, `CompileResult`, `FormattingFinding`, `WatchOptions`, `Watcher`                                                                                                                                                                                                            |
 
 `e2e/intl/package-surface.e2e.test.ts` asserts the exact value export list of both built packages
 and that the binding's re-exports are the core's own bindings.
@@ -267,7 +267,7 @@ function. No message contains a cookie, a header, a request URL, or a value read
 | `compile()`                   | `MessageFormattingError` | a message formats and `formatters` is `'refuse'` (6.3)                                                                                                                                                                                                                                                                                   |
 | `watch()`                     | `TypeError`              | the options are not an object; `onCompile` or `onError` is not a function; an option `compile()` refuses before reading anything (6.1 step 1). What a compile throws goes to `onError` (6.5)                                                                                                                                             |
 
-## 6. Paraglide binding (`@netvark/paraglide-intl`, `packages/paraglide-intl/src/`)
+## 6. Paraglide binding (`@nizam-os/paraglide-intl`, `packages/paraglide-intl/src/`)
 
 ### 6.1 `compile(options)` (`compile.ts`, `compile-options.ts`, `paraglide-sdk.ts`, ADR 0007)
 
@@ -528,8 +528,8 @@ compatibility dates before 2026-08-04 need.
 ## 8. Packaging and support
 
 ESM only, TypeScript declarations emitted with isolated declarations, `sideEffects: false`.
-`@netvark/intl-core` runs on Node 22.12+, Bun, Deno, Cloudflare Workers, and browsers.
-`@netvark/paraglide-intl` runs at build time on Node 22.12+, Bun, and Deno 2.6.10+; it reads and
+`@nizam-os/intl-core` runs on Node 22.12+, Bun, Deno, Cloudflare Workers, and browsers.
+`@nizam-os/paraglide-intl` runs at build time on Node 22.12+, Bun, and Deno 2.6.10+; it reads and
 writes files through the `fs` it is given (ADR 0002). inlang SDK 3.1 and 4 run their database in a
 `node:worker_threads` worker that Deno before 2.6.10 does not unref reliably
 ([denoland/deno#32161](https://github.com/denoland/deno/pull/32161)): there the compile finishes, as

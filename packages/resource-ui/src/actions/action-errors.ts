@@ -10,13 +10,13 @@
  * @ref https://jsonapi.org/ext/atomic/#processing-errors
  * @packageDocumentation
  */
-import type { ErrorObject } from '@netvark/jsonapi-core';
-import type { FieldMeta } from '@netvark/resource-core';
+import type { ErrorObject } from '@nizam-os/jsonapi-core';
+import type { FieldMeta } from '@nizam-os/resource-core';
 
 import type { FormErrors } from '../form/form-types';
 import type { SelectionErrors } from './action-types';
 
-import { isResponseError, operationOf } from '@netvark/jsonapi-client';
+import { isResponseError, operationOf } from '@nizam-os/jsonapi-client';
 
 import { NO_ERRORS, pointedMember, refusalTexts } from '../form/form-errors';
 import { partOf } from '../form/form-plan';

@@ -4,7 +4,7 @@ import { defineProject } from 'vitest/config';
 
 /**
  * The model's test project; the root `vitest.config.ts` runs it and owns
- * coverage. `@netvark/resource-core` resolves to its source through the
+ * coverage. `@nizam-os/resource-core` resolves to its source through the
  * `source` condition (see tsconfig.json), so the tests declare the fixture's
  * resources and messages against the core as it is edited. No test renders:
  * the model imports no framework, and its type tests read TanStack Table
@@ -19,7 +19,7 @@ const config: UserWorkspaceConfig = defineProject({
     },
   },
   test: {
-    name: '@netvark/resource-ui',
+    name: '@nizam-os/resource-ui',
     include: ['src/**/*.test.ts'],
     environment: 'node',
     restoreMocks: true,

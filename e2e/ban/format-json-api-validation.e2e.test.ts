@@ -10,30 +10,30 @@
  * the `meta.location`, `meta.name`, `code`, `expected`, and `received`
  * members, the shared `id`, `status`, `code`, and `title`, the string `'422'`
  * status, and that every document validates against `errorsSchema`. It
- * also runs `assertFormatConformance` from `@netvark/hono-ban/testing` over the whole
+ * also runs `assertFormatConformance` from `@nizam-os/hono-ban/testing` over the whole
  * catalog with Ajv. Non-validation documents live in
  * `format-json-api.e2e.test.ts`.
  * @ref https://jsonapi.org/format/1.1/#errors
  * @ref https://www.rfc-editor.org/rfc/rfc6901
  */
-import type { IssueLocation, ValidationIssue } from '@netvark/hono-ban';
+import type { IssueLocation, ValidationIssue } from '@nizam-os/hono-ban';
 import type {
   JsonApiBody,
   JsonApiErrorObject,
   JsonApiSource,
-} from '@netvark/hono-ban/formats/json-api';
+} from '@nizam-os/hono-ban/formats/json-api';
 
 import type { RunningServer } from './support/server';
 
 import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
+import { createBan } from '@nizam-os/hono-ban';
 import {
   JSON_API_CONTENT_TYPE,
   jsonApi,
-} from '@netvark/hono-ban/formats/json-api';
-import { assertFormatConformance } from '@netvark/hono-ban/testing';
+} from '@nizam-os/hono-ban/formats/json-api';
+import { assertFormatConformance } from '@nizam-os/hono-ban/testing';
 
 import { compileWithAjv, schemaErrors } from './support/ajv';
 import { startServer } from './support/server';

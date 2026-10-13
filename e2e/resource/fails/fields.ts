@@ -2,7 +2,7 @@
  * Fields the catalog does not allow (resource SPEC 3.1, 3.3, 3.6, 14). Each
  * `// error:` names a text the diagnostic on the next line must contain.
  */
-import { createDeclareResource } from '@netvark/resource-core';
+import { createDeclareResource } from '@nizam-os/resource-core';
 
 import { publicCatalog } from '../fixtures/contacts/public-catalog.ts';
 import { declareResource } from '../resources/declare-resource.ts';

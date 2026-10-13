@@ -11,7 +11,7 @@ import type {
   RangeBound,
   RangeRule,
   Rule,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import type { BinaryOperator, SqlNode } from '../sql/nodes';
 import type { CheckSubject } from './subject';

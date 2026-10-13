@@ -4,7 +4,7 @@
  * object `{ type, id }` with the target's type as a literal and the id in
  * the id form of the foreign-key column (`id-schema.ts`), or `null` when
  * the column is effectively nullable. The object is what
- * `@netvark/jsonapi-core` parses a document's `relationships` into: each
+ * `@nizam-os/jsonapi-core` parses a document's `relationships` into: each
  * relationship's `data`. An identifier's other members, such as `meta`,
  * are stripped. A relationship enters a validator as its id, or `null`
  * (SPEC 7.2), so a validator never reads a target's declaration.

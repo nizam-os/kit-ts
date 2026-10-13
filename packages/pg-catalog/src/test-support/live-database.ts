@@ -64,7 +64,7 @@ export async function pgliteDatabase(): Promise<TestDatabase> {
 
 /** A database of its own on the server, created from `template0` and dropped by `close`. */
 export async function serverDatabase(server: string): Promise<TestDatabase> {
-  const name = `netvark_drift_${randomBytes(NAME_BYTES).toString('hex')}`;
+  const name = `nizam_drift_${randomBytes(NAME_BYTES).toString('hex')}`;
   const admin = await connected(server);
   await admin.query(
     `create database ${name} template template0 encoding 'UTF8'`,

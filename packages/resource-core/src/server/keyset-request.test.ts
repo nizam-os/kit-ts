@@ -4,20 +4,20 @@
  * operator of every keyset type, and a value keyset-core refuses stays its
  * own error.
  */
-import type { FieldType } from '@netvark/keyset-core';
+import type { FieldType } from '@nizam-os/keyset-core';
 
 import type { StorageListRequest } from './storage';
 
 import { describe, expect, it } from 'vitest';
 
-import { parseQuery } from '@netvark/jsonapi-core';
+import { parseQuery } from '@nizam-os/jsonapi-core';
 import {
   createDefineKeyset,
   InvalidCursorError,
   InvalidFilterValueError,
   operatorsFor,
   UnsupportedFilterError,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import { KIND_TYPES, Kinds, MOODS } from '../test-support/keyset-kinds';
 import { keysetRequest } from './keyset-request';

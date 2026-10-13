@@ -1,4 +1,4 @@
-/** The contacts table of the unit-test catalog, as @netvark/pg-catalog extracts it from the contacts application of e2e/catalog. Not published with the package. */
+/** The contacts table of the unit-test catalog, as @nizam-os/pg-catalog extracts it from the contacts application of e2e/catalog. Not published with the package. */
 export const CONTACTS_TABLE = {
   schema: 'public',
   name: 'contacts',

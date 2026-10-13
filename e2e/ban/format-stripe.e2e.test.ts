@@ -16,17 +16,17 @@
  * @ref https://docs.stripe.com/api/errors
  * @ref https://github.com/stripe/stripe-node/blob/master/src/Error.ts (generateV1Error)
  */
-import type { IssueLocation, ValidationIssue } from '@netvark/hono-ban';
-import type { StripeBody } from '@netvark/hono-ban/formats/stripe';
+import type { IssueLocation, ValidationIssue } from '@nizam-os/hono-ban';
+import type { StripeBody } from '@nizam-os/hono-ban/formats/stripe';
 
 import type { RunningServer } from './support/server';
 
 import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
-import { stripe, STRIPE_CONTENT_TYPE } from '@netvark/hono-ban/formats/stripe';
-import { assertFormatConformance } from '@netvark/hono-ban/testing';
+import { createBan } from '@nizam-os/hono-ban';
+import { stripe, STRIPE_CONTENT_TYPE } from '@nizam-os/hono-ban/formats/stripe';
+import { assertFormatConformance } from '@nizam-os/hono-ban/testing';
 
 import { compileWithAjv, schemaErrors } from './support/ajv';
 import { startServer } from './support/server';

@@ -1,15 +1,15 @@
 /**
  * The atomic operations endpoint of the blog: typed handlers per resource
  * and a snapshot transaction that rolls the store back on failure. Under
- * `@netvark/hono-jsonapi` the handler context is the Hono `Context`.
+ * `@nizam-os/hono-jsonapi` the handler context is the Hono `Context`.
  */
 import type { Context } from 'hono';
 
-import type { JsonApiEnv } from '@netvark/hono-jsonapi';
+import type { JsonApiEnv } from '@nizam-os/hono-jsonapi';
 import type {
   AtomicOptions,
   ResourceHandlers,
-} from '@netvark/hono-jsonapi/atomic';
+} from '@nizam-os/hono-jsonapi/atomic';
 
 import type { ArticleRow, PersonRow, Store } from './store.ts';
 
@@ -17,7 +17,7 @@ import {
   jsonApiError,
   toManyLinkage,
   toOneLinkage,
-} from '@netvark/hono-jsonapi';
+} from '@nizam-os/hono-jsonapi';
 
 import { Articles, People } from './resources.ts';
 

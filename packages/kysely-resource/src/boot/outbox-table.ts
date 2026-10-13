@@ -6,8 +6,8 @@
  * whose behavior has effects.
  * @packageDocumentation
  */
-import type { CatalogColumn, CatalogTable } from '@netvark/catalog-core';
-import type { ResourceBehavior } from '@netvark/resource-core/server';
+import type { CatalogColumn, CatalogTable } from '@nizam-os/catalog-core';
+import type { ResourceBehavior } from '@nizam-os/resource-core/server';
 
 import type { BootContext } from './options';
 

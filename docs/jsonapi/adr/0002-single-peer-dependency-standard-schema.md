@@ -1,8 +1,8 @@
 # ADR 0002: `hono` is the only peer dependency; validators through Standard Schema
 
 - Status: accepted; scope narrowed by ADR-0013 (`hono` is the peer dependency of
-  `@netvark/hono-jsonapi`) and amended by ADR-0014 (`@netvark/jsonapi-core` depends on
-  `@netvark/ban-core`; `@netvark/hono-ban` is `@netvark/hono-jsonapi`'s second peer dependency). The
+  `@nizam-os/hono-jsonapi`) and amended by ADR-0014 (`@nizam-os/jsonapi-core` depends on
+  `@nizam-os/ban-core`; `@nizam-os/hono-ban` is `@nizam-os/hono-jsonapi`'s second peer dependency). The
   Standard Schema decision stands unchanged.
 - Date: 2026-10-08
 

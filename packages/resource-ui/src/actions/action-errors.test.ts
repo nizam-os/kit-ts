@@ -8,7 +8,7 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import { ResponseError } from '@netvark/jsonapi-client';
+import { ResponseError } from '@nizam-os/jsonapi-client';
 
 import { message, text } from '../test-support/messages';
 import { Contacts } from '../test-support/resources';
@@ -92,7 +92,7 @@ describe("a record action's refusal (resource SPEC 21.2)", () => {
 
   it('maps a ResponseError of another copy of the client, which carries the brand', () => {
     const foreign = {
-      [Symbol.for('@netvark/jsonapi-client/response-error')]: true,
+      [Symbol.for('@nizam-os/jsonapi-client/response-error')]: true,
       status: 422,
       errors: [at('/data/attributes/name', 'Zu lang.')],
     };
@@ -148,7 +148,7 @@ describe("a selection's refusal (resource SPEC 21.3)", () => {
 
   it('maps a ResponseError of another copy of the client, which carries the brand', () => {
     const foreign = {
-      [Symbol.for('@netvark/jsonapi-client/response-error')]: true,
+      [Symbol.for('@nizam-os/jsonapi-client/response-error')]: true,
       status: 404,
       errors: [at('/atomic:operations/0', 'Nicht gefunden.')],
     };

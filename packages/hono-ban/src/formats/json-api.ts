@@ -1,1 +1,1 @@
-export * from '@netvark/ban-core/formats/json-api';
+export * from '@nizam-os/ban-core/formats/json-api';

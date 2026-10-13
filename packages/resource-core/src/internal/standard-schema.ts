@@ -1,6 +1,6 @@
 /**
  * A structural copy of the Standard Schema V1 interface, vendored as
- * `@netvark/jsonapi-core` and `@netvark/ban-core` vendor theirs, so the
+ * `@nizam-os/jsonapi-core` and `@nizam-os/ban-core` vendor theirs, so the
  * declaration files never depend on `@standard-schema/spec`. Any object that
  * satisfies this interface satisfies the published one.
  * @ref https://standardschema.dev

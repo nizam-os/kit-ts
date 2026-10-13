@@ -1,8 +1,8 @@
 /**
  * A row's actions on screen (resource SPEC 21.5): the contacts list with a
  * menu in each row (`screens/contact-actions.tsx`), rendered by React in
- * jsdom with the built `@netvark/resource-ui` and
- * `@netvark/tanstack-query-jsonapi`, TanStack Query, and Table v9, for a
+ * jsdom with the built `@nizam-os/resource-ui` and
+ * `@nizam-os/tanstack-query-jsonapi`, TanStack Query, and Table v9, for a
  * person whose browser prefers German, against the application served over a
  * socket (`support/contacts-server.ts`) on PGlite and on the server
  * `RESOURCE_PG_URL` names. Nothing between a click and the database is

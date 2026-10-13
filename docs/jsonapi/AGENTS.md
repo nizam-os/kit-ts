@@ -1,9 +1,9 @@
 # jsonapi family: instructions for coding agents
 
 Read with the root [`AGENTS.md`](../../AGENTS.md), which holds the rules every family shares; this
-file adds what is specific to `@netvark/jsonapi-core` (the framework-free core),
-`@netvark/hono-jsonapi` (the Hono binding), `@netvark/jsonapi-client` (the typed client), and
-`@netvark/tanstack-query-jsonapi` (the client's TanStack Query binding). Humans: see
+file adds what is specific to `@nizam-os/jsonapi-core` (the framework-free core),
+`@nizam-os/hono-jsonapi` (the Hono binding), `@nizam-os/jsonapi-client` (the typed client), and
+`@nizam-os/tanstack-query-jsonapi` (the client's TanStack Query binding). Humans: see
 [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Ground rules
@@ -39,11 +39,11 @@ file adds what is specific to `@netvark/jsonapi-core` (the framework-free core),
 ## Repository map
 
 A pnpm workspace: `packages/jsonapi-core` (the framework-free core, published as
-`@netvark/jsonapi-core`), `packages/hono-jsonapi` (the Hono adapter, published as
-`@netvark/hono-jsonapi`, depends on the core and re-exports it), `packages/jsonapi-client` (the
-typed client, published as `@netvark/jsonapi-client`, depends on the core alone),
+`@nizam-os/jsonapi-core`), `packages/hono-jsonapi` (the Hono adapter, published as
+`@nizam-os/hono-jsonapi`, depends on the core and re-exports it), `packages/jsonapi-client` (the
+typed client, published as `@nizam-os/jsonapi-client`, depends on the core alone),
 `packages/tanstack-query-jsonapi` (the TanStack Query binding, published as
-`@netvark/tanstack-query-jsonapi`, takes the client as a peer and query-core as an optional peer it
+`@nizam-os/tanstack-query-jsonapi`, takes the client as a peer and query-core as an optional peer it
 imports types from), and `e2e/jsonapi/` (private). Root configs (`vitest.config.ts` with
 `test.projects`, `tsconfig.base.json`, `knip.jsonc`, `.oxlintrc.json`, `.oxfmtrc.json`) apply to all
 of them.
@@ -55,8 +55,8 @@ of them.
 - `media-type/` RFC 9110 media type and `Accept` parsing and serialization, the JSON:API media type
   and its `ext` and `profile` parameters
 - `negotiate/` the server content negotiation rules as a pure function
-- `errors/` the catalog fragment over @netvark/ban-core's built-ins, the `jsonApiBan` instance,
-  `jsonApiError` and `errorItem`; every error is a @netvark/ban-core `BanError`
+- `errors/` the catalog fragment over @nizam-os/ban-core's built-ins, the `jsonApiBan` instance,
+  `jsonApiError` and `errorItem`; every error is a @nizam-os/ban-core `BanError`
 - `document/` document and resource object types, member name rules, resource serialization,
   document builders, full linkage
 - `resource/` `defineResource`: the definition everything else reads from; `links.ts` derives links
@@ -64,17 +64,17 @@ of them.
 - `query/` `parseQuery`: `include`, `fields`, `sort`, `page`, `filter`, search, custom
 - `pagination/` the Cursor Pagination profile: links, meta, errors, `paginatedDocument`
 - `request/` request documents: identifiers, resource objects, relationship documents
-- `atomic/` the Atomic Operations extension (`@netvark/jsonapi-core/atomic`): `operationsProcessor`,
+- `atomic/` the Atomic Operations extension (`@nizam-os/jsonapi-core/atomic`): `operationsProcessor`,
   `assertOperationsContentType`, `errorAtOperation`, the document parser, lids, executors
 - `test-support/` the vendored JSON:API 1.0 JSON Schema and the Ajv conformance helper for the
   repository's own tests; not published
 
 `packages/hono-jsonapi/src/`:
 
-- `index.ts` re-exports `@netvark/jsonapi-core` and adds the Hono integration: `jsonApi()`
+- `index.ts` re-exports `@nizam-os/jsonapi-core` and adds the Hono integration: `jsonApi()`
   middleware (`middleware.ts`), `respond` (`respond.ts`), `readDocument` (`body.ts`), validators
   (`validators.ts`), `errorHandler` and `notFoundHandler` (`handlers.ts`)
-- `atomic/` re-exports `@netvark/jsonapi-core/atomic` and adds `atomicOperations()`, the operations
+- `atomic/` re-exports `@nizam-os/jsonapi-core/atomic` and adds `atomicOperations()`, the operations
   endpoint as a Hono handler
 
 `packages/jsonapi-client/src/` (SPEC 15.1):
@@ -110,8 +110,8 @@ of them.
   the test releases it (`fetch-double.ts`); not published
 
 `e2e/jsonapi/`: end-to-end suite, a private workspace package that consumes the built
-`@netvark/jsonapi-core`, `@netvark/hono-jsonapi`, `@netvark/jsonapi-client`, and
-`@netvark/tanstack-query-jsonapi` through `workspace:*` and drives a blog API over real HTTP with
+`@nizam-os/jsonapi-core`, `@nizam-os/hono-jsonapi`, `@nizam-os/jsonapi-client`, and
+`@nizam-os/tanstack-query-jsonapi` through `workspace:*` and drives a blog API over real HTTP with
 `@hono/node-server`, the `client-*` files through the client and `query/` through TanStack Query,
 whose `query/adapters/` type-checks the options with the hooks of React, Vue, Solid, Svelte, and
 Angular Query; never imports from `src/`. `e2e/jsonapi/smoke/` is the runtime smoke test (Bun, Deno,

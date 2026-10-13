@@ -14,7 +14,7 @@ JSON:API 1.1 fixes some statuses: 404 MUST when a request references a related r
 not exist, 409 MUST for a client-generated id that already exists, 409 MAY for a uniqueness
 violation on update, 403 MUST for an unsupported request to update a resource, and 403 MAY for an
 unsupported request to create one. Its examples report an invalid attribute as 422 with
-`source.pointer`. `@netvark/ban-core` fixes `code` and `title` per catalog entry (ban ADR 0011),
+`source.pointer`. `@nizam-os/ban-core` fixes `code` and `title` per catalog entry (ban ADR 0011),
 reports validator issues as `VALIDATION_FAILED` (422) with one item per issue whose `reason`,
 `expected`, and `received` the JSON:API format renders under `meta`, maps PostgreSQL errors through
 `postgresMapper` by constraint name or `table.column`, and makes the handler's `transform` the
@@ -44,9 +44,9 @@ https://json-schema.org/draft/2020-12/json-schema-validation
   may not be a declared resource, and an application that wants a specific code checks references in
   a `remove` rule (SPEC 12.4).
 - **The codes form a catalog fragment** that an application spreads into `createBan({ errors })`
-  next to `@netvark/jsonapi-core`'s `ERROR_CATALOG`. They are produced inside the operation, where
+  next to `@nizam-os/jsonapi-core`'s `ERROR_CATALOG`. They are produced inside the operation, where
   the operation and the pointer base are known: `constraintError` recognizes the driver error with
-  `@netvark/ban-core/postgresql`'s `findPostgresError` and `readPostgresFields`, and anything it
+  `@nizam-os/ban-core/postgresql`'s `findPostgresError` and `readPostgresFields`, and anything it
   does not own falls through to the ban's `map`, typically `postgresMapper()` for the SQLSTATE
   table. A global mapper sees neither which operation failed nor where its document starts.
 - **Localization** is a `transform` that replaces titles and details by code and item details by
@@ -61,10 +61,10 @@ under two codes, `VALIDATION_FAILED` with `maxLength` from the schema and the co
 the database; the second only appears when a writer bypassed the schema, which is itself worth
 seeing in a report.
 
-One sibling changes with this family: `@netvark/jsonapi-core` keeps an issue's `code` and `expected`
+One sibling changes with this family: `@nizam-os/jsonapi-core` keeps an issue's `code` and `expected`
 as the item's `reason` and `expected` when they are strings (ban-core's `ValidationIssue` members),
 an additive change (SPEC 9.3).
 
 Item pointers are built from a base the caller passes, `/data` for a single request and the
 operation's own `data` (`/atomic:operations/2/data`) inside Atomic Operations, because
-`@netvark/jsonapi-core`'s operation processor keeps an item's pointer when it has one.
+`@nizam-os/jsonapi-core`'s operation processor keeps an item's pointer when it has one.

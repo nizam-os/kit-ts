@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
-import { defineResource, isMemberName } from '@netvark/jsonapi-core';
+import { defineResource, isMemberName } from '@nizam-os/jsonapi-core';
 
 import { MEMBER_NAME_CASES } from '../test-support/member-name-cases';
 import { memberNameProblem, typeNameProblem } from './member-name';
 
-/** Whether `@netvark/jsonapi-core`'s `defineResource` accepts `name` as an attribute. */
+/** Whether `@nizam-os/jsonapi-core`'s `defineResource` accepts `name` as an attribute. */
 function acceptsAttribute(name: string): boolean {
   try {
     defineResource({
@@ -64,7 +64,7 @@ describe('memberNameProblem and typeNameProblem (SPEC 4.2)', () => {
     expect(memberNameProblem('createdAt')).toBeUndefined();
   });
 
-  it('refuses exactly what defineResource of @netvark/jsonapi-core refuses', () => {
+  it('refuses exactly what defineResource of @nizam-os/jsonapi-core refuses', () => {
     const names = [
       ...MEMBER_NAME_CASES.map(([name]) => name),
       'type',

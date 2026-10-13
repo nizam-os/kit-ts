@@ -5,7 +5,7 @@
 
 ## Context
 
-@netvark/hono-jsonapi replaces an internal JSON:API toolkit whose choices were made without a
+@nizam-os/hono-jsonapi replaces an internal JSON:API toolkit whose choices were made without a
 written rationale, so later readers could not tell a specification clause from a product convention
 from an accident, and the reasons were lost with the code. JSON:API leaves several choices to the
 server (the filter grammar, page size bounds, the set of error codes); those choices have to be

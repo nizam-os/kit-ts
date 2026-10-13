@@ -1,1 +1,1 @@
-export * from '@netvark/ban-core/zod';
+export * from '@nizam-os/ban-core/zod';

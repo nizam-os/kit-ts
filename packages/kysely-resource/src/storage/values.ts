@@ -9,9 +9,9 @@ import type {
   PublicCatalog,
   PublicColumn,
   PublicTable,
-} from '@netvark/catalog-core';
-import type { DeclaredResource, FieldMeta } from '@netvark/resource-core';
-import type { PublicRow } from '@netvark/resource-core/server';
+} from '@nizam-os/catalog-core';
+import type { DeclaredResource, FieldMeta } from '@nizam-os/resource-core';
+import type { PublicRow } from '@nizam-os/resource-core/server';
 
 import type { TextCodec } from './types';
 

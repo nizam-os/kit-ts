@@ -10,7 +10,7 @@
  * @ref https://jsonapi.org/format/1.1/#document-resource-object-relationships
  * @packageDocumentation
  */
-import type { JsonSchema } from '@netvark/ban-core';
+import type { JsonSchema } from '@nizam-os/ban-core';
 
 import type { Access } from '../declare/types';
 import type { FieldMeta } from '../meta/types';

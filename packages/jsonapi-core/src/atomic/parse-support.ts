@@ -3,7 +3,7 @@
  * for members a document part may not carry.
  * @packageDocumentation
  */
-import type { ErrorItem } from '@netvark/ban-core';
+import type { ErrorItem } from '@nizam-os/ban-core';
 
 import type { OperationTarget } from './types';
 

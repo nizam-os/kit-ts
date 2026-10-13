@@ -2,12 +2,12 @@
  * Keysets over the test database: one defined with the core (column names
  * as strings) and one with the typed definer.
  */
-import type { Keyset } from '@netvark/keyset-core';
+import type { Keyset } from '@nizam-os/keyset-core';
 
 import type { KyselyKeyset } from '../types';
 import type { DB } from './db';
 
-import { defineKeyset } from '@netvark/keyset-core';
+import { defineKeyset } from '@nizam-os/keyset-core';
 
 import { createDefineKeyset } from '../define-keyset';
 

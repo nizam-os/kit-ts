@@ -5,15 +5,15 @@
  * leaving the error id to the `X-Error-Id` header alone.
  * @ref https://google.aip.dev/193#errorinfo
  */
-import type { GoogleApiBody } from '@netvark/hono-ban/formats/google-api';
+import type { GoogleApiBody } from '@nizam-os/hono-ban/formats/google-api';
 
 import type { RunningServer } from './support/server';
 
 import { Hono } from 'hono';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
-import { googleApi } from '@netvark/hono-ban/formats/google-api';
+import { createBan } from '@nizam-os/hono-ban';
+import { googleApi } from '@nizam-os/hono-ban/formats/google-api';
 
 import { schemaErrors } from './support/ajv';
 import { startServer } from './support/server';

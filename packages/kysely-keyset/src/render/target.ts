@@ -14,7 +14,7 @@ import type {
   AggregateTarget,
   ConcatTarget,
   Target,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import type { AnyExpressionBuilder, RenderContext } from '../types';
 

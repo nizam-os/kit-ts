@@ -1,6 +1,6 @@
 /**
  * TanStack Query over the blog API (SPEC 16): the options
- * `resourceQueries` of the built `@netvark/tanstack-query-jsonapi` makes
+ * `resourceQueries` of the built `@nizam-os/tanstack-query-jsonapi` makes
  * from the built client's clients, read and written through query-core's
  * observers, which every adapter's hooks are made of, against the blog
  * served over a socket. A screen is an observer with a listener, as a
@@ -21,8 +21,8 @@ import {
 } from '@tanstack/query-core';
 import { describe, expect, it, vi } from 'vitest';
 
-import { isResponseError, pageCursors } from '@netvark/jsonapi-client';
-import { resourceQueries } from '@netvark/tanstack-query-jsonapi';
+import { isResponseError, pageCursors } from '@nizam-os/jsonapi-client';
+import { resourceQueries } from '@nizam-os/tanstack-query-jsonapi';
 
 import { useClientBlog } from '../support/clients.ts';
 

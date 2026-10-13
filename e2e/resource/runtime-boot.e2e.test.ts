@@ -24,7 +24,7 @@ import {
   BootError,
   checkResourceRuntime,
   createResourceRuntime,
-} from '@netvark/kysely-resource';
+} from '@nizam-os/kysely-resource';
 
 import { catalogAfter } from './runtime/catalog-variant.ts';
 import { runtimeDatabases } from './runtime/database.ts';

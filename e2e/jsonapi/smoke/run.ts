@@ -17,9 +17,9 @@ const dispatch: Dispatch = async (path, init) => app.request(path, init);
 report(await runChecks(dispatch));
 report(
   await routeChecks(dispatch, '/client-checks'),
-  '@netvark/jsonapi-client',
+  '@nizam-os/jsonapi-client',
 );
 report(
   await routeChecks(dispatch, '/query-checks'),
-  '@netvark/tanstack-query-jsonapi',
+  '@nizam-os/tanstack-query-jsonapi',
 );

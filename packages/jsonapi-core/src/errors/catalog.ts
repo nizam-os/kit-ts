@@ -1,14 +1,14 @@
 /**
  * The error catalog (SPEC 4.1). Every error this package emits carries one
- * of `ERROR_CODES`. `ERROR_CATALOG` holds the entries @netvark/ban-core does not ship,
- * in @netvark/ban-core's definition shape, so an application spreads them into its
+ * of `ERROR_CODES`. `ERROR_CATALOG` holds the entries @nizam-os/ban-core does not ship,
+ * in @nizam-os/ban-core's definition shape, so an application spreads them into its
  * own `createBan({ errors })` next to its own entries; the remaining codes
- * are @netvark/ban-core built-ins (same `status`, same `title`).
+ * are @nizam-os/ban-core built-ins (same `status`, same `title`).
  * @ref https://jsonapi.org/format/1.1/#error-objects
- * @ref https://github.com/netvark/netvark/blob/main/docs/jsonapi/SPEC.md (section 3: the built-in catalog, the definition shape)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (section 3: the built-in catalog, the definition shape)
  * @packageDocumentation
  */
-import type { ErrorDefinition } from '@netvark/ban-core';
+import type { ErrorDefinition } from '@nizam-os/ban-core';
 
 import {
   HTTP_BAD_REQUEST,
@@ -18,7 +18,7 @@ import {
   UNSUPPORTED_SORT_TYPE,
 } from '../internal/constants';
 
-/** The codes this package defines beyond @netvark/ban-core's built-in catalog. */
+/** The codes this package defines beyond @nizam-os/ban-core's built-in catalog. */
 export type JsonApiCatalogKey =
   | 'INVALID_QUERY_PARAMETER'
   | 'UNKNOWN_QUERY_PARAMETER'
@@ -33,7 +33,7 @@ export type JsonApiCatalog = Readonly<
   Record<JsonApiCatalogKey, ErrorDefinition>
 >;
 
-/** Every code the package emits: its own entries plus the @netvark/ban-core built-ins it uses. */
+/** Every code the package emits: its own entries plus the @nizam-os/ban-core built-ins it uses. */
 export type ErrorCode =
   | JsonApiCatalogKey
   | 'MALFORMED_JSON'

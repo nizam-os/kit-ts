@@ -7,8 +7,8 @@
  */
 import { afterAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { isBanError } from '@netvark/ban-core';
-import { Rejection } from '@netvark/resource-core/server';
+import { isBanError } from '@nizam-os/ban-core';
+import { Rejection } from '@nizam-os/resource-core/server';
 
 import { LOCKED, member, memberApi } from '../test-support/domain';
 import { outboxEvents } from '../test-support/domain-database';

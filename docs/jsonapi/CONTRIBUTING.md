@@ -1,7 +1,7 @@
 # Contributing to the jsonapi family
 
-`@netvark/jsonapi-core` (the framework-free core), `@netvark/hono-jsonapi` (the Hono binding),
-`@netvark/jsonapi-client` (the typed client), and `@netvark/tanstack-query-jsonapi` (the client's
+`@nizam-os/jsonapi-core` (the framework-free core), `@nizam-os/hono-jsonapi` (the Hono binding),
+`@nizam-os/jsonapi-client` (the typed client), and `@nizam-os/tanstack-query-jsonapi` (the client's
 TanStack Query binding). The root [`CONTRIBUTING.md`](../../CONTRIBUTING.md) covers setup, the
 quality gates, the shared conventions, commits, changesets, and releases; this guide adds what is
 specific to the family. Design intent lives in [`DESIGN.md`](DESIGN.md), the normative contract in
@@ -31,7 +31,7 @@ specific to the family. Design intent lives in [`DESIGN.md`](DESIGN.md), the nor
   published `exports` maps into `dist/` and its `tsc` run checks the emitted declarations. Each
   `*.e2e.test.ts` file starts the blog API in `e2e/jsonapi/support/` on `@hono/node-server` and
   asserts over `fetch`. Never import from `src/` there. Run one file with
-  `pnpm --filter @netvark/jsonapi-e2e exec vitest run <name>` after `pnpm build`.
+  `pnpm --filter @nizam-os/jsonapi-e2e exec vitest run <name>` after `pnpm build`.
 - **Client input is hostile.** Names from a request become object keys only through
   `internal/object.ts` or after a `PROTO_KEYS` check; reads of client-shaped objects use
   `Object.hasOwn`. See `SECURITY.md` for what counts as a vulnerability.
@@ -50,17 +50,17 @@ surface falls into one of these:
   (`packages/jsonapi-core/src/<name>/index.ts`, an entry in its `tsdown.config.ts`, a row in SPEC
   section 1, an `e2e/jsonapi/package-surface.e2e.test.ts` entry, a smoke check, an ADR, and a
   `minor` changeset), following `atomic/` as the precedent; what needs the HTTP layer gets a
-  matching subpath in `@netvark/hono-jsonapi` that re-exports it and adds the handler.
+  matching subpath in `@nizam-os/hono-jsonapi` that re-exports it and adds the handler.
 - **An adapter for another framework.** A new package `packages/<framework>-jsonapi/` following
-  `packages/hono-jsonapi/` as the precedent: depends on `@netvark/jsonapi-core` (`workspace:^`),
+  `packages/hono-jsonapi/` as the precedent: depends on `@nizam-os/jsonapi-core` (`workspace:^`),
   re-exports it in full, adds the framework's middleware, validators, response helpers, and a
   handler around `operationsProcessor` with the framework's request context as `TContext`. Its own
   e2e coverage joins `e2e/jsonapi/`.
 
 **Constraints every contribution inherits.**
 
-- `@netvark/jsonapi-core` depends on `@netvark/ban-core` and on nothing else; `hono` and
-  `@netvark/hono-ban` are `@netvark/hono-jsonapi`'s only peer dependencies (ADR 0014). Validators
+- `@nizam-os/jsonapi-core` depends on `@nizam-os/ban-core` and on nothing else; `hono` and
+  `@nizam-os/hono-ban` are `@nizam-os/hono-jsonapi`'s only peer dependencies (ADR 0014). Validators
   are consumed through the Standard Schema interface, whose types are vendored in
   `packages/jsonapi-core/src/internal/standard-schema-types.ts`; the packages never import Zod,
   Valibot, or ArkType (ADR 0002). The real libraries used in tests are devDependencies.

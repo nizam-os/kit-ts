@@ -1,6 +1,6 @@
 /**
  * The cases of obligation 5 (SPEC 12.8) about what `list` holds: pages by
- * the declared resource's keyset definition and `@netvark/keyset-core`'s
+ * the declared resource's keyset definition and `@nizam-os/keyset-core`'s
  * planner, filters and sorts addressed by public names. Over the tasks of
  * `list-data.ts`, each request walked through every page both ways: the
  * declared default sort; each sortable field in both directions, nulls

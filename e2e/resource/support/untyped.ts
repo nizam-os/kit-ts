@@ -2,7 +2,7 @@
  * The definer as JavaScript calls it, with its types erased, and the
  * message of the `TypeError` a call throws (resource SPEC 14).
  */
-import { createDeclareResource } from '@netvark/resource-core';
+import { createDeclareResource } from '@nizam-os/resource-core';
 
 import { declareResource } from '../resources/declare-resource.ts';
 

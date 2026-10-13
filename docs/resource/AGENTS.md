@@ -1,8 +1,8 @@
 # resource family: instructions for coding agents
 
 Read with the root [`AGENTS.md`](../../AGENTS.md), which holds the rules every family shares; this
-file adds what is specific to `@netvark/resource-core`, `@netvark/kysely-resource`,
-`@netvark/hono-resource`, and the bindings that will join them. Humans: see
+file adds what is specific to `@nizam-os/resource-core`, `@nizam-os/kysely-resource`,
+`@nizam-os/hono-resource`, and the bindings that will join them. Humans: see
 [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Ground rules
@@ -54,13 +54,13 @@ file adds what is specific to `@netvark/resource-core`, `@netvark/kysely-resourc
   request is checked against them before it is used as a key.
 - The runtime binds the core to Kysely and PostgreSQL and nothing else: `packages/kysely-resource/`
   imports Kysely, never a driver or a Node.js module, so it runs wherever a Kysely dialect does.
-  `@netvark/resource-core` and `@netvark/keyset-core` are its peers, since the application hands it
+  `@nizam-os/resource-core` and `@nizam-os/keyset-core` are its peers, since the application hands it
   declarations, behaviors, and the keyset definer made with its own copies (root ADR 0006). Its
   tests run on PGlite through Kysely's PGlite dialect, never on a mocked database, and what only a
   server shows (the isolation level, pooled connections) runs in `e2e/resource` on PostgreSQL 14
   and 18.
 - The routes bind the runtime contract to Hono and nothing else: `packages/hono-resource/` imports
-  Hono, `@netvark/hono-jsonapi`, and `@netvark/resource-core`, never a runtime, Kysely, or a Node.js
+  Hono, `@nizam-os/hono-jsonapi`, and `@nizam-os/resource-core`, never a runtime, Kysely, or a Node.js
   module, so any runtime of the contract runs behind it, wherever Hono runs (ADR 0013). The three
   are peers, since the application hands the routes values made with its own copies (root ADR 0006):
   never move them to `dependencies`. Its tests drive the routes with `app.request()` over a runtime
@@ -70,7 +70,7 @@ file adds what is specific to `@netvark/resource-core`, `@netvark/kysely-resourc
   Table import; the binding in `packages/tanstack-form-resource/` imports `@tanstack/form-core`, the
   core every TanStack Form adapter is built on, as an optional peer, and of it only
   `revalidateLogic` at runtime, never an adapter or a framework (root ADR 0010, root ADR 0011); and
-  the clients' TanStack Query options are `@netvark/tanstack-query-jsonapi`'s, of the jsonapi family
+  the clients' TanStack Query options are `@nizam-os/tanstack-query-jsonapi`'s, of the jsonapi family
   (jsonapi SPEC 16). Every text comes from the application's messages object, passed in, and is
   computed when it is asked for: no provider, no `useMessages`, no text built when a module loads
   (ADR 0014). Never render an error's `message`; a response's error objects are shown by their
@@ -88,11 +88,11 @@ file adds what is specific to `@netvark/resource-core`, `@netvark/kysely-resourc
   validates its search after every navigation; it names every member of the list query, `undefined`
   where the state holds none, since TanStack Router spreads the validated search over the URL's, so
   never drop an `undefined` member from it; it checks names and shapes, never values, which the
-  server words when it refuses them. `@netvark/resource-core` and `@netvark/jsonapi-client` are
-  peers of the model, and `@netvark/resource-ui` of the binding, since the application hands them
+  server words when it refuses them. `@nizam-os/resource-core` and `@nizam-os/jsonapi-client` are
+  peers of the model, and `@nizam-os/resource-ui` of the binding, since the application hands them
   declarations, messages, clients, and models made with its own copies. The model's e2e tests run
   over the built package in `e2e/resource/ui/`, and the query cache over the contacts server,
-  through `@netvark/tanstack-query-jsonapi` and query-core's observers, in `e2e/resource/query/`.
+  through `@nizam-os/tanstack-query-jsonapi` and query-core's observers, in `e2e/resource/query/`.
   The binding's tests drive a form-core `FormApi` and its `FieldApi`s, as every adapter's forms and
   fields are made, over resources declared on the storage contract's catalog, and import no
   framework; the binding over the contacts server runs in `e2e/resource/form/`, and each adapter's
@@ -116,7 +116,7 @@ file adds what is specific to `@netvark/resource-core`, `@netvark/kysely-resourc
 - `meta/`, `errors/`, `messages/` field metadata, codes, `errorCatalog`, messages and localization
 - `registry/` the checks every list of resources runs (types, codes, targets) and their type-level
   twin
-- `jsonapi/` the `@netvark/jsonapi-core` and `@netvark/keyset-core` definitions
+- `jsonapi/` the `@nizam-os/jsonapi-core` and `@nizam-os/keyset-core` definitions
 - `server/`, `openapi/`, `testing/` the three other entry points
 
 `packages/kysely-resource/src/` (SPEC 18.1):
@@ -147,7 +147,7 @@ file adds what is specific to `@netvark/resource-core`, `@netvark/kysely-resourc
   member
 - `internal/` reading a declared resource and the labels of its type in the messages, with the
   `TypeError`s of an argument that is neither; `test-support/` the fixture: migrations, the public
-  catalog `@netvark/pg-catalog` extracts from them (`e2e/resource` proves it current), resources,
+  catalog `@nizam-os/pg-catalog` extracts from them (`e2e/resource` proves it current), resources,
   and messages whose labels read a locale variable
 
 `packages/tanstack-form-resource/src/`:
@@ -162,7 +162,7 @@ file adds what is specific to `@netvark/resource-core`, `@netvark/kysely-resourc
 through `workspace:*` and never imports from `src/`: its fixture migrations and their extracted
 catalogs, declarations over them, `fails/` declarations that must not compile, the oracle, the
 reference storage adapter that proves the contract suite, the runtime smoke test, the model's tests
-over the built `@netvark/resource-ui` (`ui/`), the query cache over the contacts server (`query/`),
+over the built `@nizam-os/resource-ui` (`ui/`), the query cache over the contacts server (`query/`),
 the form binding over it and each TanStack Form adapter's types (`form/`), and the React and Vue
 screens (`react/screens/`, `vue/screens/`) that run against it.
 

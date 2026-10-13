@@ -1,6 +1,6 @@
 /**
  * Rewrites each committed public catalog from its migrations: the storage
- * contract's (resource SPEC 12.9) and the fixture of `@netvark/resource-ui`
+ * contract's (resource SPEC 12.9) and the fixture of `@nizam-os/resource-ui`
  * (SPEC 20.8). `pnpm run write:catalogs` after changing them.
  */
 import {

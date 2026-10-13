@@ -1,7 +1,7 @@
-# @netvark/keyset-core: design
+# @nizam-os/keyset-core: design
 
-This document describes what @netvark/keyset-core and its two adapters, @netvark/kysely-keyset and
-@netvark/drizzle-keyset, are, the API they expose, and how they are built.
+This document describes what @nizam-os/keyset-core and its two adapters, @nizam-os/kysely-keyset and
+@nizam-os/drizzle-keyset, are, the API they expose, and how they are built.
 
 Architecture decisions referenced as ADR-NNNN live in `docs/keyset/adr/`. The normative,
 clause-by-clause specification that implementers work from is `docs/keyset/SPEC.md`; this document
@@ -9,9 +9,9 @@ explains the intent behind it. When the two disagree, fix one in the same PR.
 
 ## 1. Purpose
 
-@netvark/keyset-core is the pagination layer between an API and a PostgreSQL database: a
-database-free core (`@netvark/keyset-core`) and two adapters that re-export it and add the SQL,
-`@netvark/kysely-keyset` for Kysely (ADR-0004) and `@netvark/drizzle-keyset` for Drizzle (ADR-0017).
+@nizam-os/keyset-core is the pagination layer between an API and a PostgreSQL database: a
+database-free core (`@nizam-os/keyset-core`) and two adapters that re-export it and add the SQL,
+`@nizam-os/kysely-keyset` for Kysely (ADR-0004) and `@nizam-os/drizzle-keyset` for Drizzle (ADR-0017).
 They give an application:
 
 1. one definition per collection, from which the request type, the validation, the seek predicate,
@@ -39,7 +39,7 @@ It is a library for teams who paginate large tables and want the hard cases hand
 - Teams on another query builder, a raw driver, or a client who want the planning, the cursors, and
   the page semantics without the SQL: the core hands them a plan to render.
 - Teams serving JSON:API who want the one published cursor profile, end to end:
-  `@netvark/jsonapi-core` parses the query and builds the document, @netvark/keyset-core runs the
+  `@nizam-os/jsonapi-core` parses the query and builds the document, @nizam-os/keyset-core runs the
   page in between.
 
 ### Non-goals
@@ -92,8 +92,8 @@ It is a library for teams who paginate large tables and want the hard cases hand
 
 ## 3. The API by example
 
-The examples use `@netvark/kysely-keyset`. `createDefineKeyset`, `paginate`, and the render
-functions are the adapter's; everything else is `@netvark/keyset-core`'s, and the core README shows
+The examples use `@nizam-os/kysely-keyset`. `createDefineKeyset`, `paginate`, and the render
+functions are the adapter's; everything else is `@nizam-os/keyset-core`'s, and the core README shows
 the same flow without Kysely. 3.7 shows the Drizzle adapter.
 
 ### 3.1 Minimal
@@ -195,7 +195,7 @@ const request: KeysetRequestOf<typeof contacts> = {
 ```
 
 The filter is a tree, not a grammar (ADR-0005): an API layer builds it from its own syntax
-(`@netvark/jsonapi-core`'s parsed conditions map one to one). Values arrive as JSON or as the type's
+(`@nizam-os/jsonapi-core`'s parsed conditions map one to one). Values arrive as JSON or as the type's
 text form, because query strings carry text. Values the types do not accept are one
 `InvalidFilterValueError` listing, for each such condition in request order, the field, the
 operator, and what was expected (ADR-0019), so a client fixes them all in one round trip.
@@ -265,10 +265,10 @@ try {
 ```
 
 Every request-time error is a `KeysetError` with a stable `code` and the detail in fields
-(ADR-0010). The example maps them to `@netvark/jsonapi-core`'s profile errors, one error object per
+(ADR-0010). The example maps them to `@nizam-os/jsonapi-core`'s profile errors, one error object per
 refused sort field and per refused filter value; any API layer does the same with its own catalog. A
 refused value's `path` leads to its condition in the tree, so a layer that built the tree from query
-parameters names the parameter the client sent, as `@netvark/resource-core`'s `filterParameters`
+parameters names the parameter the client sent, as `@nizam-os/resource-core`'s `filterParameters`
 does (ADR-0019); the example's `filter[<field>][<operator>]` is that grammar's canonical spelling.
 The fields hold the request's text, which `unsupportedSortError` quotes only when it is a plain
 token (jsonapi ADR 0016); a layer of its own does the same.
@@ -276,7 +276,7 @@ token (jsonapi ADR 0016); a layer of its own does the same.
 ### 3.7 With Drizzle
 
 ```ts
-import { createDefineKeyset } from '@netvark/drizzle-keyset';
+import { createDefineKeyset } from '@nizam-os/drizzle-keyset';
 
 import * as schema from './schema'; // your Drizzle tables
 
@@ -312,7 +312,7 @@ the Kysely adapter, so a definition with the same field names accepts the cursor
 ### 4.1 Modules
 
 ```
-@netvark/keyset-core (packages/keyset-core/src)
+@nizam-os/keyset-core (packages/keyset-core/src)
   internal     base64url, Web Crypto, prototype-safe objects, canonical JSON, LIKE escaping
   definition   defineKeyset: vocabularies, field and relation validation, the definition
   filter       the tree, the operator table, value checks, condition and tree normalization
@@ -321,12 +321,12 @@ the Kysely adapter, so a definition with the same field names accepts the cursor
   page         page request resolution, page assembly
   cursor       the codec: sign, verify, rotate, expire, bind to context
   errors       the request-time error classes
-@netvark/kysely-keyset (packages/kysely-keyset/src)
+@nizam-os/kysely-keyset (packages/kysely-keyset/src)
   define-keyset   createDefineKeyset<DB>(): names checked against DB, keysets with paginate
   paginate        the plan onto a select query: filter, total, seek, keys, order, limit
   page-query      the page statement: one select, or a union of the seek's branches
   render          targets and predicates as Kysely expressions
-@netvark/drizzle-keyset (packages/drizzle-keyset/src)
+@nizam-os/drizzle-keyset (packages/drizzle-keyset/src)
   define-keyset   createDefineKeyset(schema): names checked against the schema, keysets with paginate
   check-names     every name of a definition resolved in the schema at startup
   paginate        the select it builds: selection, where, filter, total, seek, keys, order, limit
@@ -334,10 +334,10 @@ the Kysely adapter, so a definition with the same field names accepts the cursor
   render          targets and predicates as Drizzle sql
 ```
 
-Imports form a DAG from `internal` outward. Nothing in `@netvark/keyset-core` imports a database
-library; it has no dependencies. `@netvark/kysely-keyset` imports `@netvark/keyset-core` and
+Imports form a DAG from `internal` outward. Nothing in `@nizam-os/keyset-core` imports a database
+library; it has no dependencies. `@nizam-os/kysely-keyset` imports `@nizam-os/keyset-core` and
 `kysely` and re-exports the core so applications see one package (ADR-0004);
-`@netvark/drizzle-keyset` does the same with `drizzle-orm` (ADR-0017). `import/no-cycle` is
+`@nizam-os/drizzle-keyset` does the same with `drizzle-orm` (ADR-0017). `import/no-cycle` is
 enforced.
 
 ### 4.2 Data flow for a page
@@ -400,13 +400,13 @@ checks from the schema object's type, `createDefineKeyset(schema, defaults?)`, a
 | 0001 | Record architecture decisions                                                                               |
 | 0002 | Web standards only; no ambient environment reads                                                            |
 | 0003 | ESM only, TypeScript 7 `isolatedDeclarations`, erasable syntax                                              |
-| 0004 | Two packages: the database-free core `@netvark/keyset-core` and the Kysely adapter `@netvark/kysely-keyset` |
+| 0004 | Two packages: the database-free core `@nizam-os/keyset-core` and the Kysely adapter `@nizam-os/kysely-keyset` |
 | 0005 | The filter is a typed tree with a per-type operator table                                                   |
 | 0006 | Cursors: HMAC-signed, versioned, bound to the request context, with expiry and rotation                     |
 | 0007 | Sort-key values travel as text under private aliases                                                        |
 | 0008 | The key is a mandatory tie-breaker; `NULLS LAST` forward, inverted on backward pages                        |
 | 0009 | PostgreSQL first                                                                                            |
-| 0010 | Typed error classes with constant messages; no @netvark/ban-core dependency                                 |
+| 0010 | Typed error classes with constant messages; no @nizam-os/ban-core dependency                                 |
 | 0011 | Definitions are validated at definition time, never at request time                                         |
 | 0012 | Totals are an opt-in second query; the base query must be a plain selection                                 |
 | 0013 | Page size bounds, defaults, and range requests                                                              |

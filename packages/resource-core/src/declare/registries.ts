@@ -5,7 +5,7 @@
  * each validator's name.
  * @packageDocumentation
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
 
 import type { Codec, Validator } from '../codecs/types';
 

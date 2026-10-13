@@ -14,20 +14,20 @@ import type {
   QuotaContext,
   ResourceBehavior,
   ResourceOperations,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { DomainOptions } from '../runtime/types';
 import type { KyselyStorage } from '../storage/types';
 
 import { z } from 'zod';
 
-import { createDeclareResource } from '@netvark/resource-core';
+import { createDeclareResource } from '@nizam-os/resource-core';
 import {
   createDomainDefiners,
   defineEvent,
   defineQuota,
-} from '@netvark/resource-core/server';
-import { contractFixture } from '@netvark/resource-core/testing';
+} from '@nizam-os/resource-core/server';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { createDomain } from '../runtime/domain';
 

@@ -1,24 +1,24 @@
 /**
  * What the adapter checks give each adapter's hooks (SPEC 16.5, 17.4): the
  * options `resourceQueries` and `operationsMutation` of the built
- * `@netvark/tanstack-query-jsonapi` make over clients of the blog's
+ * `@nizam-os/tanstack-query-jsonapi` make over clients of the blog's
  * definitions and their transport, the queries the checks pass, and, as
  * the oracle, what the client's own calls resolve to for the same queries
  * and operations. Read by the type check only: nothing here runs.
  */
-import type { CreateInput, Operation } from '@netvark/jsonapi-client';
-import type { UpdateVariables } from '@netvark/tanstack-query-jsonapi';
+import type { CreateInput, Operation } from '@nizam-os/jsonapi-client';
+import type { UpdateVariables } from '@nizam-os/tanstack-query-jsonapi';
 
 import {
   createClients,
   createTransport,
   operationsOf,
   sendOperations,
-} from '@netvark/jsonapi-client';
+} from '@nizam-os/jsonapi-client';
 import {
   operationsMutation,
   resourceQueries,
-} from '@netvark/tanstack-query-jsonapi';
+} from '@nizam-os/tanstack-query-jsonapi';
 
 import { Articles, People, Tags } from '../../support/resources.ts';
 

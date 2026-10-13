@@ -10,7 +10,7 @@
  * violate, since the database never raises it (catalog ADR 0010).
  * @packageDocumentation
  */
-import type { PublicConstraint, PublicTable } from '@netvark/catalog-core';
+import type { PublicConstraint, PublicTable } from '@nizam-os/catalog-core';
 
 import type { ColumnName, ConstraintName } from '../catalog/types';
 import type { MemberColumn, WrittenColumn } from '../declare/members';

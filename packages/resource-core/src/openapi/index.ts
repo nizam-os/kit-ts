@@ -1,9 +1,9 @@
 /**
- * `@netvark/resource-core/openapi` (SPEC 13): the OpenAPI document of a
+ * `@nizam-os/resource-core/openapi` (SPEC 13): the OpenAPI document of a
  * registry of declared resources, and the surface clients depend on with
  * the diff that tells a breaking change from a safe one and the parse
  * that reads a committed surface back. The paths come from
- * `@netvark/jsonapi-core`'s `resourcePaths`, the function a host mounts
+ * `@nizam-os/jsonapi-core`'s `resourcePaths`, the function a host mounts
  * its routes by and a client calls through.
  * @packageDocumentation
  */

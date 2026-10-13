@@ -1,10 +1,10 @@
-# @netvark/hono-ban
+# @nizam-os/hono-ban
 
 ## 1.3.0
 
 ### Minor Changes
 
-- [`dd1a1b1`](https://github.com/netvark/netvark/commit/dd1a1b1188aa722d263ab8592c26e1f097b63a51) Thanks [@ali-issa](https://github.com/ali-issa)! - `ban.validation()` accepts `cause`, and `hono-ban/postgresql` keeps its reporting contract for every
+- [`dd1a1b1`](https://github.com/nizam-os/kit/commit/dd1a1b1188aa722d263ab8592c26e1f097b63a51) Thanks [@ali-issa](https://github.com/ali-issa)! - `ban.validation()` accepts `cause`, and `hono-ban/postgresql` keeps its reporting contract for every
   mapping kind.
   
   - `ValidationOptions` gains an optional `cause`, stored on the error like every other `cause` and
@@ -19,7 +19,7 @@
 
 ### Minor Changes
 
-- [`4a17ce0`](https://github.com/netvark/netvark/commit/4a17ce0676177c9ceff6f877731ab8f7ce513e2b) Thanks [@ali-issa](https://github.com/ali-issa)! - Add `hono-ban/postgresql`: `postgresMapper(options?)` turns a Postgres driver error into a catalog
+- [`4a17ce0`](https://github.com/nizam-os/kit/commit/4a17ce0676177c9ceff6f877731ab8f7ce513e2b) Thanks [@ali-issa](https://github.com/ali-issa)! - Add `hono-ban/postgresql`: `postgresMapper(options?)` turns a Postgres driver error into a catalog
   entry by SQLSTATE with constant client-facing text, for `createBan({ map })` or
   `ban.onError({ map })`.
   
@@ -41,7 +41,7 @@
 
 ### Minor Changes
 
-- [`95a62e1`](https://github.com/netvark/netvark/commit/95a62e17f663f5f30522eda7fb76d4ef63b3487c) Thanks [@ali-issa](https://github.com/ali-issa)! - Validate options at construction instead of producing broken responses.
+- [`95a62e1`](https://github.com/nizam-os/kit/commit/95a62e17f663f5f30522eda7fb76d4ef63b3487c) Thanks [@ali-issa](https://github.com/ali-issa)! - Validate options at construction instead of producing broken responses.
   
   - `problemDetails()` throws `TypeError` when `traceIdMember` names a reserved member (`status`,
     `id`, `errors`, ...) or is not an RFC 9457 extension member name; `jsonApi()` rejects a
@@ -58,7 +58,7 @@
 
 ### Patch Changes
 
-- [`95a62e1`](https://github.com/netvark/netvark/commit/95a62e17f663f5f30522eda7fb76d4ef63b3487c) Thanks [@ali-issa](https://github.com/ali-issa)! - Keep every rendered validation body inside its own schema and the handler inside its guarantee.
+- [`95a62e1`](https://github.com/nizam-os/kit/commit/95a62e17f663f5f30522eda7fb76d4ef63b3487c) Thanks [@ali-issa](https://github.com/ali-issa)! - Keep every rendered validation body inside its own schema and the handler inside its guarantee.
   
   - `jsonApi()` renders one summary error object for `ban.validation([])` instead of an empty `errors`
     array its schema rejects; `googleApi()` omits `BadRequest` when there are no issues instead of
@@ -72,7 +72,7 @@
 
 ### Major Changes
 
-- [`efcb0b6`](https://github.com/netvark/netvark/commit/efcb0b6bd24a598bf0e8868bff9942ec248a7868) Thanks [@ali-issa](https://github.com/ali-issa)! - First 1.0 release. `createBan()` builds a typed error catalog with a factory per IANA status and per
+- [`efcb0b6`](https://github.com/nizam-os/kit/commit/efcb0b6bd24a598bf0e8868bff9942ec248a7868) Thanks [@ali-issa](https://github.com/ali-issa)! - First 1.0 release. `createBan()` builds a typed error catalog with a factory per IANA status and per
   custom entry, `ban.onError()` renders every thrown value once through a pluggable format (RFC 9457
   Problem Details by default; JSON:API, Google API (AIP-193), Stripe, and plain built in;
   `defineFormat()` for your own), validator hooks for Zod, Valibot, and Standard Schema throw into the

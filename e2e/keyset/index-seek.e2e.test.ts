@@ -10,7 +10,7 @@
  * @ref https://www.postgresql.org/docs/current/using-explain.html
  * @ref https://use-the-index-luke.com/sql/partial-results/fetch-next-page
  */
-import type { QueryEvent } from '@netvark/kysely-keyset';
+import type { QueryEvent } from '@nizam-os/kysely-keyset';
 
 import type { PlanNode } from './support/explain.ts';
 
@@ -18,7 +18,7 @@ import { Kysely, PostgresDialect } from 'kysely';
 import pg from 'pg';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createDefineKeyset } from '@netvark/kysely-keyset';
+import { createDefineKeyset } from '@nizam-os/kysely-keyset';
 
 import { explainPage, nodesOf, scansOf } from './support/explain.ts';
 import { SECRET } from './support/keysets.ts';

@@ -1,6 +1,6 @@
-import type { AnyDeclaredResource, StorageCodec } from '@netvark/resource-core';
-import type { SurfaceChange } from '@netvark/resource-core/openapi';
-import type { OracleCase } from '@netvark/resource-core/testing';
+import type { AnyDeclaredResource, StorageCodec } from '@nizam-os/resource-core';
+import type { SurfaceChange } from '@nizam-os/resource-core/openapi';
+import type { OracleCase } from '@nizam-os/resource-core/testing';
 
 import type { ExtractedFile, ExtractReport } from './commands/extract';
 import type {

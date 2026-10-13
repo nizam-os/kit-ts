@@ -5,7 +5,7 @@
  * `as`; the `contact` field, renamed `contactName`, leaves `contact` to
  * the relationship over `contact_id`; and `notes_priorität_check` derives
  * a code outside A-Z, so the declaration gives one. `priorität` keeps its
- * public name, a JSON:API member name but no `@netvark/keyset-core` field
+ * public name, a JSON:API member name but no `@nizam-os/keyset-core` field
  * name, so nothing filters or sorts by it (SPEC 11.2).
  */
 import { Contacts } from './contacts.ts';

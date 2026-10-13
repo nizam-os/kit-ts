@@ -3,26 +3,26 @@ import type { ZodType } from 'zod';
 /**
  * A small application for the rules tests (SPEC 10.3): migrations with a
  * CHECK of each kind the oracle tries, and the resources of
- * `@netvark/resource-core` declared over the public catalog extracted
+ * `@nizam-os/resource-core` declared over the public catalog extracted
  * from them, types erased. `teams.name` carries rules; `teams.code` a
  * table CHECK without one and the domain `handle` a domain CHECK without
  * one, each with its validator; `members` a CHECK over two members with
  * its validator; `teams.slots` an `int4range` behind a codec. Each
  * validator mirrors its CHECK: `strpos` finds a character in any locale.
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
-import type { Codec, Validator } from '@netvark/resource-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
+import type { Codec, Validator } from '@nizam-os/resource-core';
 
 import type { Migration } from '../migrations/load';
 
 import { z } from 'zod';
 
-import { toPublicCatalog } from '@netvark/catalog-core';
+import { toPublicCatalog } from '@nizam-os/catalog-core';
 import {
   createDeclareResource,
   defineCodec,
   defineValidator,
-} from '@netvark/resource-core';
+} from '@nizam-os/resource-core';
 
 import { extractCatalog } from '../commands/extract';
 

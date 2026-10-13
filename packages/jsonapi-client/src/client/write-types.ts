@@ -9,7 +9,7 @@
  * @ref https://jsonapi.org/ext/atomic/#operation-objects
  * @packageDocumentation
  */
-import type { ClientRelationship, TypesOf } from '@netvark/jsonapi-core';
+import type { ClientRelationship, TypesOf } from '@nizam-os/jsonapi-core';
 
 import type { Identifier } from '../document/types';
 import type {

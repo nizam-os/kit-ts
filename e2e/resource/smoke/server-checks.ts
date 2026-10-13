@@ -6,14 +6,14 @@
  * documented; and the storage contract's fixture declares and lists its
  * cases. No Node.js API, so the module runs on Bun, Deno, and workerd.
  */
-import type { StorageAdapter } from '@netvark/resource-core/server';
+import type { StorageAdapter } from '@nizam-os/resource-core/server';
 
 import type { Checks } from './report.ts';
 
 import { z } from 'zod';
 
-import { BanError } from '@netvark/ban-core';
-import { errorCatalog } from '@netvark/resource-core';
+import { BanError } from '@nizam-os/ban-core';
+import { errorCatalog } from '@nizam-os/resource-core';
 import {
   constraintError,
   createDomainDefiners,
@@ -24,11 +24,11 @@ import {
   Rejection,
   rejectionError,
   scopeValues,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 import {
   contractFixture,
   storageContract,
-} from '@netvark/resource-core/testing';
+} from '@nizam-os/resource-core/testing';
 
 import { Contacts } from '../resources/contacts.ts';
 import { Meetings } from '../resources/meetings.ts';

@@ -1,5 +1,5 @@
 ---
-'@netvark/pg-catalog': minor
+'@nizam-os/pg-catalog': minor
 ---
 
 `rules --check` proves that the schemas of your declared resources agree with the database your
@@ -17,6 +17,6 @@ migrations build.
   of them.
 - A table of `out.public.tables` that no declaration reads gets a warning.
 - `checkRules(config, { cwd })` returns the report, and `formatRules(report)` the text.
-- `@netvark/resource-core` is a new optional peer dependency, loaded only by this command; without
+- `@nizam-os/resource-core` is a new optional peer dependency, loaded only by this command; without
   it the command fails with `resource_core_missing`, and a registry it refuses fails with
   `registry_invalid`.

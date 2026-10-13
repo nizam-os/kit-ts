@@ -1,10 +1,10 @@
 /**
- * `@netvark/hono-ban`: @netvark/ban-core for Hono. Everything `@netvark/ban-core` exports, plus a
+ * `@nizam-os/hono-ban`: @nizam-os/ban-core for Hono. Everything `@nizam-os/ban-core` exports, plus a
  * `createBan` whose instances carry `onError` for `app.onError()` and adopt
  * Hono's `HTTPException`.
  * @packageDocumentation
  */
-export * from '@netvark/ban-core';
+export * from '@nizam-os/ban-core';
 
 export type {
   Ban,

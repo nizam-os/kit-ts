@@ -4,7 +4,7 @@
  * snapshot, and compare it with the committed catalog.
  * @packageDocumentation
  */
-import type { Catalog, CatalogDiff } from '@netvark/catalog-core';
+import type { Catalog, CatalogDiff } from '@nizam-os/catalog-core';
 
 import type { ExtractionConfig } from '../config';
 import type { SqlSession } from '../target/session';
@@ -13,7 +13,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import process from 'node:process';
 
-import { diffCatalogs } from '@netvark/catalog-core';
+import { diffCatalogs } from '@nizam-os/catalog-core';
 
 import { catalogFile, DEFAULT_SCHEMAS } from '../config';
 import { PgCatalogError } from '../errors';

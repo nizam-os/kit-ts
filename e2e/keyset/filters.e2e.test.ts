@@ -12,7 +12,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import {
   InvalidFilterValueError,
   UnsupportedFilterError,
-} from '@netvark/kysely-keyset';
+} from '@nizam-os/kysely-keyset';
 
 import { BINDINGS } from './support/bindings.ts';
 import { openPglite } from './support/db.ts';

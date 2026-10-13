@@ -12,12 +12,12 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import { errorHandler } from '@netvark/hono-jsonapi';
+import { errorHandler } from '@nizam-os/hono-jsonapi';
 import {
   defaultMessages,
   defineMessages,
   localizeErrors,
-} from '@netvark/resource-core';
+} from '@nizam-os/resource-core';
 
 import { resourceTypeOf } from './resource-type';
 import { testApp } from './test-support/app';

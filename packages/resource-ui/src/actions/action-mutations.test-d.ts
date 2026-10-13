@@ -17,12 +17,12 @@ import {
   createClients,
   createTransport,
   operationsOf,
-} from '@netvark/jsonapi-client';
-import { createDeclareResource } from '@netvark/resource-core';
+} from '@nizam-os/jsonapi-client';
+import { createDeclareResource } from '@nizam-os/resource-core';
 import {
   operationsMutation,
   resourceQueries,
-} from '@netvark/tanstack-query-jsonapi';
+} from '@nizam-os/tanstack-query-jsonapi';
 
 import { publicCatalog } from '../test-support/public-catalog';
 import { FIXTURE_REGISTRIES } from '../test-support/registries';

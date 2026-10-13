@@ -12,7 +12,7 @@ import type {
   Clients,
   Transport,
   TransportOptions,
-} from '@netvark/jsonapi-client';
+} from '@nizam-os/jsonapi-client';
 
 import type { RunningServer } from './server.ts';
 import type { Store } from './store.ts';
@@ -23,7 +23,7 @@ import {
   createClients,
   createTransport,
   ResponseError,
-} from '@netvark/jsonapi-client';
+} from '@nizam-os/jsonapi-client';
 
 import { createBlog } from './blog.ts';
 import { Articles, People, Tags } from './resources.ts';

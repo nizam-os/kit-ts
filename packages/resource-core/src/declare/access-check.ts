@@ -5,7 +5,7 @@
  * `check-columns.ts`.
  * @packageDocumentation
  */
-import type { PublicColumn } from '@netvark/catalog-core';
+import type { PublicColumn } from '@nizam-os/catalog-core';
 
 import type { Requirement } from './requirement';
 import type { Declaration } from './types';

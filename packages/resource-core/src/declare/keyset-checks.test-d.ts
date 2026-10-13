@@ -85,7 +85,7 @@ describe('the primary key keyset-core orders by (SPEC 11.2)', () => {
   it('refuses an enum key without labels where the table is named', () => {
     expectTypeOf<
       keyof IdentityCheck<Context, 'voids'>
-    >().toEqualTypeOf<'voids: the primary key is an enum without values, which @netvark/keyset-core cannot order'>();
+    >().toEqualTypeOf<'voids: the primary key is an enum without values, which @nizam-os/keyset-core cannot order'>();
     expectTypeOf<keyof IdentityCheck<Context, 'moods'>>().toBeNever();
     // @ts-expect-error void_kind has no labels
     declareResource('voids', { operations: ['get'], fields: {} });
@@ -100,7 +100,7 @@ describe('the search configuration keyset-core emits (SPEC 11.2)', () => {
         readonly column: 'body';
         readonly config: 'pg_catalog.english';
       }>
-    >().toEqualTypeOf<'search.config: "pg_catalog.english" is not a text search configuration @netvark/keyset-core accepts (^[a-z_][a-z0-9_]{0,62}$)'>();
+    >().toEqualTypeOf<'search.config: "pg_catalog.english" is not a text search configuration @nizam-os/keyset-core accepts (^[a-z_][a-z0-9_]{0,62}$)'>();
     expectTypeOf<
       SearchMessages<{ readonly column: 'body'; readonly config: 'english' }>
     >().toBeNever();
@@ -115,7 +115,7 @@ describe('the search configuration keyset-core emits (SPEC 11.2)', () => {
   it('refuses a generated configuration outside the regconfig syntax', () => {
     expectTypeOf<
       SearchMessages<{ readonly column: 'title' }>
-    >().toEqualTypeOf<'search.column: the column is generated with config "app.unaccented", which @netvark/keyset-core does not accept (^[a-z_][a-z0-9_]{0,62}$)'>();
+    >().toEqualTypeOf<'search.column: the column is generated with config "app.unaccented", which @nizam-os/keyset-core does not accept (^[a-z_][a-z0-9_]{0,62}$)'>();
     declareResource('documents', {
       operations: ['list'],
       fields: {},

@@ -1,6 +1,6 @@
 /**
  * The object schemas as Standard Schema V1 validators (SPEC 6.5), what a
- * `@netvark/jsonapi-core` definition validates attributes with: `validate`
+ * `@nizam-os/jsonapi-core` definition validates attributes with: `validate`
  * runs the schema synchronously and reports `ResourceIssue`s, never Zod's
  * own issues. The schema runs with `reportInput`, which the issue mapping
  * needs to tell a missing member and `null` from a wrong type; the input
@@ -17,7 +17,7 @@ import type { FindMember, ResourceIssue } from './issues';
 import { toResourceIssues } from './issues';
 
 /** The vendor of the validators resource-core makes. */
-const VENDOR = 'netvark';
+const VENDOR = 'nizam';
 
 /** A synchronous Standard Schema V1 validator whose issues are `ResourceIssue`s. */
 export type ResourceValidator<

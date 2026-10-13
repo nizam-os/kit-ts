@@ -6,7 +6,7 @@
  * constraint. This module combines terms; `terms.ts` reads each one.
  * @packageDocumentation
  */
-import type { LengthRule, RangeRule, Rule } from '@netvark/catalog-core';
+import type { LengthRule, RangeRule, Rule } from '@nizam-os/catalog-core';
 
 import type { SqlNode } from '../sql/nodes';
 import type { CheckSubject } from './subject';

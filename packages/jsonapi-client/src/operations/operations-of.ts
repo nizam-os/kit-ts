@@ -17,7 +17,7 @@
  * @ref https://jsonapi.org/ext/atomic/#auto-id-updating-to-many-relationships
  * @packageDocumentation
  */
-import type { AnyResource } from '@netvark/jsonapi-core';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
 
 import type { AnyLinkageInput, WriteInput } from '../client/request-documents';
 import type {

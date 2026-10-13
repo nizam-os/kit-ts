@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 A resource id now takes every spelling its key's write form takes and is output in the spelling the

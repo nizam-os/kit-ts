@@ -7,7 +7,7 @@ import {
   createCursorCodec,
   defineKeyset,
   keyAlias,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import { paginate } from './paginate';
 import { canned } from './test-support/db';

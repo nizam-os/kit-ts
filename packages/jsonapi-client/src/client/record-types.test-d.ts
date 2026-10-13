@@ -10,7 +10,7 @@ import type {
   Links,
   Meta,
   Relationships,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import type { AnyRecord, Identifier } from '../document/types';
 import type { ListQuery } from '../query/types';
@@ -18,7 +18,7 @@ import type { RecordOf } from './record-types';
 
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { createDefineResource } from '@netvark/jsonapi-core';
+import { createDefineResource } from '@nizam-os/jsonapi-core';
 
 const defineResource = createDefineResource({ links: { base: '/api' } });
 

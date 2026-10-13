@@ -1,5 +1,5 @@
 ---
-'@netvark/hono-resource': minor
+'@nizam-os/hono-resource': minor
 ---
 
 Serve the OpenAPI document and name the resource a request addressed for localized errors. With the

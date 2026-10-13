@@ -8,7 +8,7 @@
  * Not published with the package.
  * @packageDocumentation
  */
-import type { RangeBound, Rule } from '@netvark/catalog-core';
+import type { RangeBound, Rule } from '@nizam-os/catalog-core';
 
 import type { Random } from './random';
 

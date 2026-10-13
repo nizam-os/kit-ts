@@ -4,18 +4,18 @@
  * screen with bulk actions also makes, over the same transport, the
  * mutation that sends a selection's Atomic Operations (SPEC 21.3).
  */
-import type { RecordOf, Transport } from '@netvark/jsonapi-client';
+import type { RecordOf, Transport } from '@nizam-os/jsonapi-client';
 import type {
   OperationsOptions,
   ResourceQueries,
-} from '@netvark/tanstack-query-jsonapi';
+} from '@nizam-os/tanstack-query-jsonapi';
 
 import type { ContactClients, ContactDefinitions } from './recorded-clients.ts';
 
 import {
   operationsMutation,
   resourceQueries,
-} from '@netvark/tanstack-query-jsonapi';
+} from '@nizam-os/tanstack-query-jsonapi';
 
 import { contactClients } from './recorded-clients.ts';
 

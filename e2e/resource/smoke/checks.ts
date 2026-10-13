@@ -1,11 +1,11 @@
 /**
  * Runtime-neutral checks (resource SPEC 15.4, 16) over the built
- * `@netvark/resource-core`: the contacts application's declarations load,
+ * `@nizam-os/resource-core`: the contacts application's declarations load,
  * resolve, and derive their public names, the codecs and validators parse
  * their fixtures with the application's Zod, the composed schemas parse
  * and report issues, the field metadata describes the members and its
  * patterns compile with the flags `su`, the error catalog assembles and
- * renders through `@netvark/ban-core`, an error document is localized with
+ * renders through `@nizam-os/ban-core`, an error document is localized with
  * messages of the application's own, the derived JSON:API resource parses
  * a query whose sort the derived keyset plans, with cursors signed and
  * verified by the runtime's Web Crypto, and mistakes throw the documented
@@ -14,14 +14,14 @@
  * each runtime derives them here. No Node.js API, so the same module runs
  * on Bun, Deno, and workerd.
  */
-import type { FieldMeta } from '@netvark/resource-core';
+import type { FieldMeta } from '@nizam-os/resource-core';
 
 import type { Checks } from './report.ts';
 
-import { createBan, fromRequest } from '@netvark/ban-core';
-import { jsonApi } from '@netvark/ban-core/formats/json-api';
-import { ERROR_CATALOG, parseQuery } from '@netvark/jsonapi-core';
-import { createDefineKeyset } from '@netvark/keyset-core';
+import { createBan, fromRequest } from '@nizam-os/ban-core';
+import { jsonApi } from '@nizam-os/ban-core/formats/json-api';
+import { ERROR_CATALOG, parseQuery } from '@nizam-os/jsonapi-core';
+import { createDefineKeyset } from '@nizam-os/keyset-core';
 import {
   createDeclareResource,
   defaultMessages,
@@ -29,7 +29,7 @@ import {
   defineValidator,
   errorCatalog,
   localizeErrors,
-} from '@netvark/resource-core';
+} from '@nizam-os/resource-core';
 
 import { catalog } from '../fixtures/contacts/catalog.ts';
 import { Contacts } from '../resources/contacts.ts';

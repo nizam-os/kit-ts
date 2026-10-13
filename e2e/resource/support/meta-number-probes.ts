@@ -7,7 +7,7 @@
  * unit for a decimal, and the adjacent double for a float, so a probe past
  * a bound lies past it by the least a client can send.
  */
-import type { FieldLimits } from '@netvark/resource-core';
+import type { FieldLimits } from '@nizam-os/resource-core';
 
 import type { MetaProbe } from './meta-probes.ts';
 

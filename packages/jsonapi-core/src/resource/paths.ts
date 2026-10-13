@@ -6,8 +6,8 @@
  * `/operations` (ADR 0023). A link is built for a marker id of unreserved
  * characters, which `encodeURIComponent` keeps, and the marker becomes the
  * template `{id}`. An absolute link splits into its origin and its path.
- * The OpenAPI document of `@netvark/resource-core`, the routes of
- * `@netvark/hono-resource`, and `@netvark/jsonapi-client` read paths only
+ * The OpenAPI document of `@nizam-os/resource-core`, the routes of
+ * `@nizam-os/hono-resource`, and `@nizam-os/jsonapi-client` read paths only
  * through it, so all three name the same URLs (ADR 0017).
  * @ref https://jsonapi.org/recommendations/#urls
  * @ref https://jsonapi.org/ext/atomic/#processing (the extension's examples post to `/operations`)
@@ -31,7 +31,7 @@ export interface ResourcePaths {
   readonly operations: string;
 }
 
-const MARKER = 'netvark-resource-id';
+const MARKER = 'nizam-resource-id';
 const TEMPLATE = '{id}';
 /** Where the Atomic Operations endpoint sits under a base. */
 const OPERATIONS_SEGMENT = '/operations';

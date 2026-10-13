@@ -23,7 +23,7 @@ import type {
   ConcatTarget,
   Relation,
   Target,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 import type { RenderContext } from '../types';
 

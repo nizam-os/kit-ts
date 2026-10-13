@@ -202,7 +202,7 @@ describe('paginate', () => {
       { sort: ['age'] },
     );
     const plan = await contacts.plan({ sort: ['age'] });
-    const codec = await import('@netvark/keyset-core').then((m) =>
+    const codec = await import('@nizam-os/keyset-core').then((m) =>
       m.createCursorCodec(CONTACTS.cursor),
     );
     expect(await codec.decode(page.cursors[0]!, plan.context, 2)).toEqual({

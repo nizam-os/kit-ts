@@ -1,4 +1,4 @@
-import type { Catalog } from '@netvark/catalog-core';
+import type { Catalog } from '@nizam-os/catalog-core';
 
 import type { DeclareResource } from './declare-resource-type';
 import type { DeclareContext } from './registries';

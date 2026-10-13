@@ -8,8 +8,8 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import { createDeclareResource } from '@netvark/resource-core';
-import { contractFixture } from '@netvark/resource-core/testing';
+import { createDeclareResource } from '@nizam-os/resource-core';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { jsonApiRoutes } from './routes';
 import { testApp } from './test-support/app';

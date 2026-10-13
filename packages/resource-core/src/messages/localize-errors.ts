@@ -1,6 +1,6 @@
 /**
  * `localizeErrors(messages, { resource })` (SPEC 10.4): a `transform` for
- * `@netvark/ban-core`'s handler that rewrites the `title` and `detail` of
+ * `@nizam-os/ban-core`'s handler that rewrites the `title` and `detail` of
  * each object of a JSON:API error document with the application's
  * messages. Which message, and which inputs, is decided here, from the
  * object's code, the item it renders, and the resources; the language is
@@ -16,7 +16,7 @@
  * @ref https://paraglidejs.com/server-side-rendering
  * @packageDocumentation
  */
-import type { BanError, ErrorItem, HandlerOptions } from '@netvark/ban-core';
+import type { BanError, ErrorItem, HandlerOptions } from '@nizam-os/ban-core';
 
 import type { Dictionary } from './dictionary';
 import type { Messages } from './types';

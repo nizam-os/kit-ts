@@ -15,7 +15,7 @@
  * @ref https://github.com/honojs/hono/pull/5158 (`hono/utils/url` exports it from 4.13.0; the peer range starts later, at 4.13.7)
  * @packageDocumentation
  */
-import type { OperationTarget } from '@netvark/hono-jsonapi/atomic';
+import type { OperationTarget } from '@nizam-os/hono-jsonapi/atomic';
 
 import type { MountedResource, PathPlan } from './paths';
 

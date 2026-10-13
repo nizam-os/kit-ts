@@ -7,7 +7,7 @@
  * Paraglide's runtime decides when it loads whether it runs on a server.
  * @ref https://github.com/jsdom/jsdom#readme
  */
-import type { IntlFormatters } from '@netvark/intl-core';
+import type { IntlFormatters } from '@nizam-os/intl-core';
 
 import type { Messages } from './support/project';
 
@@ -24,8 +24,8 @@ import {
   createTimeZone,
   isolate,
   timeZoneCookie,
-} from '@netvark/intl-core';
-import { compile } from '@netvark/paraglide-intl';
+} from '@nizam-os/intl-core';
+import { compile } from '@nizam-os/paraglide-intl';
 
 import { CATALOGS } from './support/catalogs';
 import { importMessages, message, writeProject } from './support/project';

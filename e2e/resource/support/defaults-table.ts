@@ -9,14 +9,14 @@
  * @ref https://www.postgresql.org/docs/18/ddl-default.html
  * @ref https://www.postgresql.org/docs/18/arrays.html#ARRAYS-INPUT
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
-import type { DeclaredResource, FieldMeta } from '@netvark/resource-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
+import type { DeclaredResource, FieldMeta } from '@nizam-os/resource-core';
 
 import type { ColumnType } from './column-type.ts';
 import type { OracleDatabase } from './oracle-database.ts';
 
-import { toPublicCatalog } from '@netvark/catalog-core';
-import { createDeclareResource } from '@netvark/resource-core';
+import { toPublicCatalog } from '@nizam-os/catalog-core';
+import { createDeclareResource } from '@nizam-os/resource-core';
 
 import { catalogAfter } from '../runtime/catalog-variant.ts';
 import { columnType } from './column-type.ts';

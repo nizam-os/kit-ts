@@ -7,7 +7,7 @@
  * contract (SPEC 12.10).
  * @packageDocumentation
  */
-import type { Catalog } from '@netvark/catalog-core';
+import type { Catalog } from '@nizam-os/catalog-core';
 import type {
   DomainEvent,
   DomainShape,
@@ -15,7 +15,7 @@ import type {
   QuotaContext,
   RuntimeResources,
   Scope,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { KyselyStorage } from '../storage/types';
 

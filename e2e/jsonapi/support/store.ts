@@ -8,9 +8,9 @@ import type {
   PageRequest,
   ParsedFilter,
   SortField,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
-import { invalidCursor } from '@netvark/jsonapi-core';
+import { invalidCursor } from '@nizam-os/jsonapi-core';
 
 export interface PersonRow {
   readonly id: string;

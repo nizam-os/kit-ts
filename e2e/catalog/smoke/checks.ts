@@ -1,9 +1,9 @@
 /**
- * Runtime-neutral checks (SPEC 13.1) over the built `@netvark/catalog-core`:
+ * Runtime-neutral checks (SPEC 13.1) over the built `@nizam-os/catalog-core`:
  * slice and diff the generated contacts catalog. No database and no
  * Node.js API, so the same module runs on Bun, Deno, and workerd.
  */
-import type { Catalog } from '@netvark/catalog-core';
+import type { Catalog } from '@nizam-os/catalog-core';
 
 import type { Checks } from './report.ts';
 
@@ -11,7 +11,7 @@ import {
   CATALOG_FORMAT,
   diffCatalogs,
   toPublicCatalog,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import { catalog } from '../fixtures/contacts/expected/catalog.ts';
 import { publicCatalog } from '../fixtures/contacts/expected/public-catalog.ts';

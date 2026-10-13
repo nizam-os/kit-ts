@@ -1,5 +1,5 @@
 ---
-'@netvark/jsonapi-client': minor
+'@nizam-os/jsonapi-client': minor
 ---
 
 Send writes that must commit together in one Atomic Operations request. `operationsOf(definition)`

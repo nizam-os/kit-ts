@@ -31,7 +31,7 @@ attribute
 ## Decision
 
 - `isolate(value)` returns the value between U+2068 and U+2069.
-- `@netvark/paraglide-intl` isolates every interpolated value of every message in every locale by
+- `@nizam-os/paraglide-intl` isolates every interpolated value of every message in every locale by
   default; `isolate: false` turns it off and a list of locales limits it. A message that is only the
   value (`{name}`) is left bare, as in Fluent: there is no surrounding text to protect.
 - A number is isolated like any value: inside an isolate, digits resolve on their own, which is what

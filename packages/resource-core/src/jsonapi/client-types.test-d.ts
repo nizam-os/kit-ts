@@ -3,7 +3,7 @@
  * `TypesOf` reads from its JSON:API definition, computed from the
  * declaration and the catalog.
  */
-import type { JsonOf, ResourceTypes, TypesOf } from '@netvark/jsonapi-core';
+import type { JsonOf, ResourceTypes, TypesOf } from '@nizam-os/jsonapi-core';
 
 import type { DeclaredResource } from '../declare/declared-resource';
 import type { JsonData } from '../schema/value-types';

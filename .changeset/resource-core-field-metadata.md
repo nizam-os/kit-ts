@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 Declared resources gain `fields`, the metadata of each public field and relationship for forms,

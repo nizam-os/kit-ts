@@ -1,4 +1,4 @@
-# @netvark/drizzle-keyset
+# @nizam-os/drizzle-keyset
 
 Keyset pagination for [Drizzle ORM](https://orm.drizzle.team) on PostgreSQL. Declare once what a
 collection can sort, filter, and search on, named as your Drizzle schema names its tables and
@@ -7,10 +7,10 @@ walks, and microsecond timestamps. The page semantics are those of the JSON:API
 [Cursor Pagination profile](https://jsonapi.org/profiles/ethanresnick/cursor-pagination/); every
 rule is a cited clause of the profile or the PostgreSQL manual, and every choice the profile leaves
 open is written down in
-[`docs/keyset/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/keyset/SPEC.md).
+[`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md).
 
 This is the Drizzle adapter of
-[`@netvark/keyset-core`](https://www.npmjs.com/package/@netvark/keyset-core), the database-free
+[`@nizam-os/keyset-core`](https://www.npmjs.com/package/@nizam-os/keyset-core), the database-free
 core. Everything the core exports is re-exported here, so an application imports from one package;
 what this package adds is `createDefineKeyset(schema)`, whose keysets carry `paginate`, and the two
 render functions that turn the core's plan into Drizzle `sql`.
@@ -18,7 +18,7 @@ render functions that turn the core's plan into Drizzle `sql`.
 ## Install
 
 ```bash
-pnpm add @netvark/drizzle-keyset drizzle-orm
+pnpm add @nizam-os/drizzle-keyset drizzle-orm
 ```
 
 `drizzle-orm >=0.45.2 <1.0.0` is the peer dependency. 0.45.2 is the release that escapes quotes
@@ -31,7 +31,7 @@ test on Bun, Deno, and workerd.
 ## Quick start
 
 ```ts
-import { createDefineKeyset } from '@netvark/drizzle-keyset';
+import { createDefineKeyset } from '@nizam-os/drizzle-keyset';
 
 import * as schema from './schema'; // your Drizzle tables, the object you hand drizzle()
 
@@ -319,18 +319,18 @@ const page = await contactsKeyset.paginate(db, request, {
 
 `plan` and `paginate` reject a bad request before any query runs, with one of the core's
 `KeysetError` classes: a stable `code`, the detail in fields, a constant message. A JSON:API layer
-on [`@netvark/jsonapi-core`](https://www.npmjs.com/package/@netvark/jsonapi-core) maps them to the
+on [`@nizam-os/jsonapi-core`](https://www.npmjs.com/package/@nizam-os/jsonapi-core) maps them to the
 profile's error objects:
 
 ```ts
-import { isKeysetError } from '@netvark/drizzle-keyset';
+import { isKeysetError } from '@nizam-os/drizzle-keyset';
 import {
   invalidCursor,
   jsonApiError,
   maxPageSizeExceededError,
   rangePaginationNotSupportedError,
   unsupportedSortError,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 function toJsonApi(error: unknown): never {
   if (!isKeysetError(error)) throw error;
@@ -360,7 +360,7 @@ is constant.
 
 A cursor holds the sort keys' values as PostgreSQL prints them and a hash of the request; neither
 names a table or a column. So a Drizzle keyset and a
-[`@netvark/kysely-keyset`](https://www.npmjs.com/package/@netvark/kysely-keyset) keyset with the
+[`@nizam-os/kysely-keyset`](https://www.npmjs.com/package/@nizam-os/kysely-keyset) keyset with the
 same fields, sort, and secret read each other's cursors, and an API that moves from one binding to
 the other keeps its clients' cursors.
 
@@ -434,11 +434,11 @@ has one.
 
 ## Documentation
 
-- [`docs/keyset/DESIGN.md`](https://github.com/netvark/netvark/blob/main/docs/keyset/DESIGN.md):
+- [`docs/keyset/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/DESIGN.md):
   what the packages are, the principles, and the API by example
-- [`docs/keyset/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/keyset/SPEC.md): the
+- [`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md): the
   normative contract, section by section, with the tests that prove it; section 14 is this adapter
-- [`docs/keyset/adr/`](https://github.com/netvark/netvark/tree/main/docs/keyset/adr): the decisions,
+- [`docs/keyset/adr/`](https://github.com/nizam-os/kit/tree/main/docs/keyset/adr): the decisions,
   ADR 0017 among them for this adapter
 
 ## License

@@ -1,5 +1,5 @@
 ---
-'@netvark/hono-resource': minor
+'@nizam-os/hono-resource': minor
 ---
 
 Requires `hono` 4.13.0 or later. The operations endpoint decodes an operation's `href` with Hono's

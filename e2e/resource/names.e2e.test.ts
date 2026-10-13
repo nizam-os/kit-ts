@@ -6,7 +6,7 @@
  * TypeScript refuses; and a derived code that fails, which TypeScript
  * leaves to the runtime, throws when the declaration runs.
  */
-import type { ResourceNames } from '@netvark/resource-core';
+import type { ResourceNames } from '@nizam-os/resource-core';
 
 import { describe, expect, it } from 'vitest';
 

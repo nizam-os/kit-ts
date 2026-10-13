@@ -3,12 +3,12 @@
  * function reads replayed databases (`extract`) and live ones (`drift`).
  * @packageDocumentation
  */
-import type { Catalog, CatalogDomain } from '@netvark/catalog-core';
+import type { Catalog, CatalogDomain } from '@nizam-os/catalog-core';
 
 import type { SqlSession } from '../target/session';
 import type { DomainRow, EnumRow, TableRow } from './rows';
 
-import { CATALOG_FORMAT } from '@netvark/catalog-core';
+import { CATALOG_FORMAT } from '@nizam-os/catalog-core';
 
 import { PgCatalogError } from '../errors';
 import { compareCodeUnits } from '../internal/code-units';
@@ -41,7 +41,7 @@ async function serverVersion(session: SqlSession): Promise<number> {
   if (version < MINIMUM_SERVER_VERSION) {
     throw new PgCatalogError(
       'unsupported_server',
-      `@netvark/pg-catalog needs PostgreSQL 14 or later; the server is PostgreSQL ${Math.floor(version / MAJOR_DIVISOR)}`,
+      `@nizam-os/pg-catalog needs PostgreSQL 14 or later; the server is PostgreSQL ${Math.floor(version / MAJOR_DIVISOR)}`,
     );
   }
   return version;

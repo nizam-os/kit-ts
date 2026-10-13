@@ -10,9 +10,9 @@
  * database judges the others at the write (SPEC 6.2, 9.5).
  * @packageDocumentation
  */
-import type { UpdateInput } from '@netvark/jsonapi-client';
-import type { AnyResource } from '@netvark/jsonapi-core';
-import type { FieldMeta } from '@netvark/resource-core';
+import type { UpdateInput } from '@nizam-os/jsonapi-client';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
+import type { FieldMeta } from '@nizam-os/resource-core';
 
 import type { ActionResource } from './action-types';
 

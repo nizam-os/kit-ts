@@ -5,7 +5,7 @@
  * may name (SPEC 5.3). Types only; never exported.
  * @packageDocumentation
  */
-import type { TypesOf } from '@netvark/jsonapi-core';
+import type { TypesOf } from '@nizam-os/jsonapi-core';
 
 /** An object type's members, written out. */
 export type Simplify<TValue> = { readonly [K in keyof TValue]: TValue[K] };

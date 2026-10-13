@@ -12,7 +12,7 @@ import type {
   PublicCatalog,
   PublicColumn,
   PublicTable,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import type { IdSpelling } from '../catalog/id-spelling';
 import type {

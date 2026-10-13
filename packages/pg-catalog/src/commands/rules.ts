@@ -1,13 +1,13 @@
 /**
  * `checkRules` (SPEC 10.3, ADR 0012): runs every fixture of the declared
  * resources through their schemas and through the replayed database, and
- * reports where they disagree. `@netvark/resource-core/testing` builds
+ * reports where they disagree. `@nizam-os/resource-core/testing` builds
  * the cases from the registry (resource SPEC 7.3); this command replays
  * the migrations, writes each case's fixtures into copies of its columns,
  * and hands the database's verdicts to the cases' judges.
  * @packageDocumentation
  */
-import type { OracleCase } from '@netvark/resource-core/testing';
+import type { OracleCase } from '@nizam-os/resource-core/testing';
 
 import type { ExtractionConfig, ResourcesConfig } from '../config';
 import type { OracleModule } from '../oracle/oracle-module';
@@ -75,7 +75,7 @@ function casesOf(
  * Checks the declared resources `config.resources.registry` returns
  * against the database `config`'s migrations build. Fails with
  * `config_invalid` when `resources` is not configured,
- * `resource_core_missing` when `@netvark/resource-core` cannot be loaded,
+ * `resource_core_missing` when `@nizam-os/resource-core` cannot be loaded,
  * and `registry_invalid` when the registry function returns anything but
  * a list of objects or `oracleCases` refuses the registry or the storage
  * codecs; then as `extractCatalog` fails. What the registry function

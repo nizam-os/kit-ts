@@ -1,6 +1,6 @@
 import type { ContentfulStatusCode } from 'hono/utils/http-status';
 
-import type { ErrorReport } from '@netvark/hono-ban';
+import type { ErrorReport } from '@nizam-os/hono-ban';
 
 import type { RunningServer } from './support/server';
 
@@ -10,7 +10,7 @@ import { HTTPException } from 'hono/http-exception';
 import { validator } from 'hono/validator';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/hono-ban';
+import { createBan } from '@nizam-os/hono-ban';
 
 import { startServer } from './support/server';
 

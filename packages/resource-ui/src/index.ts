@@ -1,6 +1,6 @@
 /**
- * `@netvark/resource-ui`: forms, lists, and record and bulk actions from
- * `@netvark/resource-core` declarations, as models of a declared resource
+ * `@nizam-os/resource-ui`: forms, lists, and record and bulk actions from
+ * `@nizam-os/resource-core` declarations, as models of a declared resource
  * that import no framework and nothing of TanStack, so a screen on any
  * framework reads them (ADR 0018, ADR 0019). See `docs/resource/SPEC.md`,
  * sections 20 and 21, for the contract.

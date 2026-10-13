@@ -35,7 +35,7 @@ scanning the remainder at all". @ref https://www.postgresql.org/docs/current/ind
 @ref https://www.postgresql.org/docs/13/release-13.html ("Implement incremental sorting")
 
 Both remedies need to know which keys can hold nulls. Definitions already declare it (`nullable`,
-default `false`); `@netvark/resource-core` derives it from the catalog's `NOT NULL` constraints.
+default `false`); `@nizam-os/resource-core` derives it from the catalog's `NOT NULL` constraints.
 
 ## Decision
 

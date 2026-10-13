@@ -1,13 +1,13 @@
-# ADR 0013: Two packages: a framework-neutral core (`@netvark/jsonapi-core`) and the Hono adapter (`@netvark/hono-jsonapi`)
+# ADR 0013: Two packages: a framework-neutral core (`@nizam-os/jsonapi-core`) and the Hono adapter (`@nizam-os/hono-jsonapi`)
 
-- Status: accepted; the dependency statements amended by ADR-0014 (`@netvark/jsonapi-core` depends
-  on `@netvark/ban-core`, `@netvark/hono-jsonapi` also has `@netvark/hono-ban` as a peer dependency,
-  and `ErrorStatusCode` is @netvark/ban-core's)
+- Status: accepted; the dependency statements amended by ADR-0014 (`@nizam-os/jsonapi-core` depends
+  on `@nizam-os/ban-core`, `@nizam-os/hono-jsonapi` also has `@nizam-os/hono-ban` as a peer dependency,
+  and `ErrorStatusCode` is @nizam-os/ban-core's)
 - Date: 2026-10-08
 
 ## Context
 
-The library was first written as one package, `@netvark/hono-jsonapi`. Three quarters of its source
+The library was first written as one package, `@nizam-os/hono-jsonapi`. Three quarters of its source
 never touched Hono: resource definitions, documents, query and request parsing, negotiation,
 pagination, and the atomic executors are functions over strings, parsed JSON, and `URL`s. Hono
 reached the core in three places only: the `Context` stored on `OperationContext.c` and handed to
@@ -21,9 +21,9 @@ https://tanstack.com/query/latest/docs/framework/react/overview (one core, thin 
 
 ## Decision
 
-- Two packages in one pnpm workspace. `@netvark/jsonapi-core` is the core: no dependencies, no peer
-  dependencies, no framework or runtime API beyond web standards (ADR 0003). `@netvark/hono-jsonapi`
-  is the Hono adapter: it depends on `@netvark/jsonapi-core` (`workspace:^`, published as a caret
+- Two packages in one pnpm workspace. `@nizam-os/jsonapi-core` is the core: no dependencies, no peer
+  dependencies, no framework or runtime API beyond web standards (ADR 0003). `@nizam-os/hono-jsonapi`
+  is the Hono adapter: it depends on `@nizam-os/jsonapi-core` (`workspace:^`, published as a caret
   range), has `hono` as its only peer dependency (ADR 0002 now describes this package), and
   re-exports the core in full from both of its subpaths, so a Hono application imports from one
   package and a second copy of the core never enters the graph
@@ -38,12 +38,12 @@ https://tanstack.com/query/latest/docs/framework/react/overview (one core, thin 
 - `ErrorStatusCode` is the core's own literal union of the registered 4xx and 5xx codes (identical
   in membership to Hono's, so the adapter needs no assertions; ADR 0009).
 - Repository mechanics. Each package's `exports` map carries a `source` condition pointing at `src/`
-  (tsdown `devExports: 'source'`); `@netvark/hono-jsonapi`'s tsconfig and Vitest project enable that
+  (tsdown `devExports: 'source'`); `@nizam-os/hono-jsonapi`'s tsconfig and Vitest project enable that
   condition, so its type-check and tests run against the core as it is edited with no build in
   between, while the published map (`publishConfig.exports`, applied by `pnpm publish` and
   `pnpm pack`) and `e2e/jsonapi/` see only `dist/`. One Vitest run covers both packages through
   `test.projects`, with coverage thresholds over the combined source. Versions are independent;
-  Changesets bumps `@netvark/hono-jsonapi` by a patch whenever its `@netvark/jsonapi-core` range has
+  Changesets bumps `@nizam-os/hono-jsonapi` by a patch whenever its `@nizam-os/jsonapi-core` range has
   to move (`updateInternalDependencies: patch`), and each package has its own npm trusted publisher.
 
 ## Consequences

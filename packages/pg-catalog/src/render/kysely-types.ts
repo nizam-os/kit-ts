@@ -14,7 +14,7 @@ import type {
   CatalogColumn,
   CatalogDomain,
   CatalogTable,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import type { KyselyDriver, TypeOverride } from '../config';
 import type { MappingContext } from './kysely-mapping';

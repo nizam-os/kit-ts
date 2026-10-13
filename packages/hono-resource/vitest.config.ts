@@ -20,7 +20,7 @@ const config: UserWorkspaceConfig = defineProject({
     },
   },
   test: {
-    name: '@netvark/hono-resource',
+    name: '@nizam-os/hono-resource',
     include: ['src/**/*.test.ts'],
     environment: 'node',
     restoreMocks: true,

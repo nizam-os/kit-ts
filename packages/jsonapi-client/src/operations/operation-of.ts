@@ -10,7 +10,7 @@
  * @ref https://www.rfc-editor.org/rfc/rfc6901#section-4 (`array-index = %x30 / ( %x31-39 *(%x30-39) )`)
  * @packageDocumentation
  */
-import type { ErrorObject } from '@netvark/jsonapi-core';
+import type { ErrorObject } from '@nizam-os/jsonapi-core';
 
 import type { OperationPointer } from './types';
 

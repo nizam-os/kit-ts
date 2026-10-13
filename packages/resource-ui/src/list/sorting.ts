@@ -11,8 +11,8 @@
  * @ref https://jsonapi.org/format/1.1/#fetching-sorting
  * @packageDocumentation
  */
-import type { Query } from '@netvark/jsonapi-client';
-import type { AnyResource } from '@netvark/jsonapi-core';
+import type { Query } from '@nizam-os/jsonapi-client';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
 
 import type { ColumnSort, DefaultSortEntry } from './list-types';
 

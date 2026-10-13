@@ -9,7 +9,7 @@ import type { input } from 'zod/v4/core';
  * in `check-config.ts`.
  * @packageDocumentation
  */
-import type { PublicCatalog, PublicDomain } from '@netvark/catalog-core';
+import type { PublicCatalog, PublicDomain } from '@nizam-os/catalog-core';
 
 import type { IsCode } from '../names/code';
 import type { DomainInput } from '../schema/domain-input';

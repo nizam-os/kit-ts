@@ -9,7 +9,7 @@
 import type {
   PublicDomain,
   PublicDomainConstraint,
-} from '@netvark/catalog-core';
+} from '@nizam-os/catalog-core';
 
 import type { Random } from './random';
 import type { RuleSubject } from './rules';

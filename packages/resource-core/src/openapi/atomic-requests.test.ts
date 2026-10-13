@@ -2,7 +2,7 @@
  * The operations endpoint's request schema against the processor it
  * describes (SPEC 13.1, jsonapi SPEC 11.2 to 11.4): over one registry, each
  * operations document is accepted by the schema exactly when
- * `@netvark/jsonapi-core`'s processor runs it, but for what a schema
+ * `@nizam-os/jsonapi-core`'s processor runs it, but for what a schema
  * cannot judge as the processor does (`UNSTATED`): what an `href` names,
  * whether a `lid` was defined by an earlier `add`, a `lid` the processor
  * ignores beside the `id` that names the resource, and a non-nullable

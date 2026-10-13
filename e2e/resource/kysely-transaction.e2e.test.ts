@@ -1,6 +1,6 @@
 /**
  * The Kysely runtime's transaction protocol (resource SPEC 18.2) through the
- * built `@netvark/kysely-resource`: every transaction runs at READ
+ * built `@nizam-os/kysely-resource`: every transaction runs at READ
  * COMMITTED with the adapter's settings and the actor's scope parameter,
  * whatever the session's defaults, transactions on different connections
  * keep to their own scopes, a run that went on after a refused statement
@@ -9,16 +9,16 @@
  * start with other defaults (`support/kysely-database.ts`).
  * @ref https://www.postgresql.org/docs/18/functions-admin.html#FUNCTIONS-ADMIN-SET
  */
-import type { KyselyStorage } from '@netvark/kysely-resource';
+import type { KyselyStorage } from '@nizam-os/kysely-resource';
 
 import type { KyselyDatabase } from './support/kysely-database.ts';
 
 import { sql } from 'kysely';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createKyselyStorage } from '@netvark/kysely-resource';
-import { scopeValues } from '@netvark/resource-core/server';
-import { contractFixture } from '@netvark/resource-core/testing';
+import { createKyselyStorage } from '@nizam-os/kysely-resource';
+import { scopeValues } from '@nizam-os/resource-core/server';
+import { contractFixture } from '@nizam-os/resource-core/testing';
 
 import { DEFINE_KEYSET } from './support/keyset-definer.ts';
 import {

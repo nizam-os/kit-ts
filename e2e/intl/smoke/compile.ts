@@ -9,7 +9,7 @@
  */
 import { fileURLToPath } from 'node:url';
 
-import { compile } from '@netvark/paraglide-intl';
+import { compile } from '@nizam-os/paraglide-intl';
 
 import { CATALOGS } from '../support/catalogs.ts';
 import { writeProject } from '../support/project.ts';
@@ -25,4 +25,4 @@ if (warnings.length > 0) {
     `the smoke compile warned: ${warnings.map((warning) => warning.message).join('; ')}`,
   );
 }
-console.log(`@netvark/intl smoke: compiled the fixture on ${runtime()}`);
+console.log(`@nizam-os/intl smoke: compiled the fixture on ${runtime()}`);

@@ -1,7 +1,7 @@
 /**
  * Atomic Operations through TanStack Query over the blog API (SPEC 17.4):
  * the mutation options `operationsMutation` of the built
- * `@netvark/tanstack-query-jsonapi` makes over the built client's
+ * `@nizam-os/tanstack-query-jsonapi` makes over the built client's
  * transport, run through query-core's `MutationObserver`, which every
  * adapter's `useMutation` is made of, against the blog served over a
  * socket. A request settles once the reads a screen shows of every type
@@ -23,11 +23,11 @@ import {
   isResponseError,
   operationOf,
   operationsOf,
-} from '@netvark/jsonapi-client';
+} from '@nizam-os/jsonapi-client';
 import {
   operationsMutation,
   resourceQueries,
-} from '@netvark/tanstack-query-jsonapi';
+} from '@nizam-os/tanstack-query-jsonapi';
 
 import { useClientBlog } from '../support/clients.ts';
 import { Articles, People } from '../support/resources.ts';

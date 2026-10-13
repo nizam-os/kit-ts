@@ -13,7 +13,7 @@
  */
 import type { Kysely } from 'kysely';
 
-import type { AnyDatabase } from '@netvark/kysely-keyset';
+import type { AnyDatabase } from '@nizam-os/kysely-keyset';
 
 import type { BootContext } from './options';
 

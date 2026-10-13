@@ -1,6 +1,6 @@
 import type { Selectable } from 'kysely';
 
-import type { Page } from '@netvark/keyset-core';
+import type { Page } from '@nizam-os/keyset-core';
 
 import type { DefineDefaultedKeyset, DefineKeyset } from './define-keyset';
 import type { Contacts, DB } from './test-support/db';

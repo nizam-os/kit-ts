@@ -187,11 +187,11 @@ describe("this repository's CI workflow", () => {
 
   it('fails when the Kysely step leaves kysely-keyset on another kysely', () => {
     const text = mutated(
-      '--filter @netvark/kysely-keyset --filter @netvark/kysely-resource add',
-      '--filter @netvark/kysely-resource add',
+      '--filter @nizam-os/kysely-keyset --filter @nizam-os/kysely-resource add',
+      '--filter @nizam-os/kysely-resource add',
     );
     expect(check(text)).toContain(
-      '@netvark/kysely-resource: job test-kysely-floor runs its typecheck on kysely@0.29.0 with another kysely in @netvark/kysely-keyset, which it builds on',
+      '@nizam-os/kysely-resource: job test-kysely-floor runs its typecheck on kysely@0.29.0 with another kysely in @nizam-os/kysely-keyset, which it builds on',
     );
   });
 
@@ -204,11 +204,11 @@ describe("this repository's CI workflow", () => {
 
   it('fails when a floor job drops its tests', () => {
     const text = mutated(
-      '      - run: pnpm --filter @netvark/drizzle-keyset run test\n',
+      '      - run: pnpm --filter @nizam-os/drizzle-keyset run test\n',
       '',
     );
     expect(check(text)).toContain(
-      '@netvark/drizzle-keyset: no CI job runs its typecheck and tests on drizzle-orm@0.45.2, the floor of drizzle-orm >=0.45.2 <1.0.0',
+      '@nizam-os/drizzle-keyset: no CI job runs its typecheck and tests on drizzle-orm@0.45.2, the floor of drizzle-orm >=0.45.2 <1.0.0',
     );
   });
 });

@@ -10,7 +10,7 @@ import type { Check } from './assert.ts';
 
 import { m } from '#compiled-messages';
 
-import { createIntl, isolate } from '@netvark/intl-core';
+import { createIntl, isolate } from '@nizam-os/intl-core';
 
 import { equal } from './assert.ts';
 

@@ -1,6 +1,6 @@
 /**
  * `list` of the reference storage adapter (resource SPEC 12.8, obligation
- * 5): the request planned by `@netvark/keyset-core` with the declared
+ * 5): the request planned by `@nizam-os/keyset-core` with the declared
  * resource's keyset definition, and the plan rendered as plain SQL (keyset
  * SPEC 6). Column targets name the table by its bare name, which
  * PostgreSQL resolves against the schema-qualified table the statement
@@ -16,7 +16,7 @@
  * plan holds no `exists`, aggregate, or concatenation. The cursors are
  * bound to the transaction's scope values, each scope's name mapped to its
  * value (obligation 12), so a cursor of one scope is refused in another.
- * @ref https://github.com/netvark/netvark/blob/main/docs/keyset/SPEC.md (section 6, the query plan)
+ * @ref https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md (section 6, the query plan)
  * @ref https://www.postgresql.org/docs/18/queries-order.html (NULLS FIRST / LAST)
  * @ref https://www.postgresql.org/docs/18/functions-matching.html#FUNCTIONS-LIKE
  * @ref https://www.postgresql.org/docs/18/functions-array.html (`@>`, `<@`, `&&`)
@@ -31,13 +31,13 @@ import type {
   ScalarValue,
   Target,
   TextSearchMode,
-} from '@netvark/keyset-core';
-import type { DeclaredResource } from '@netvark/resource-core';
+} from '@nizam-os/keyset-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 import type {
   PublicRow,
   StorageListRequest,
   StoragePage,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { ReferenceTransaction, SqlContext } from './reference-sql.ts';
 

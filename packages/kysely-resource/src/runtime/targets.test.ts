@@ -4,7 +4,7 @@
  * write names up in the actor's scope first, and answers one it does not
  * find exactly as the foreign key answers a missing one.
  */
-import type { ErrorObject } from '@netvark/jsonapi-core';
+import type { ErrorObject } from '@nizam-os/jsonapi-core';
 
 import { afterAll, beforeEach, describe, expect, it } from 'vitest';
 

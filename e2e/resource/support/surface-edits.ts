@@ -5,7 +5,7 @@
  * filtered with `in` too, and `priority` no longer sortable. A registry of
  * each version, with the organizations its relationship targets.
  */
-import type { DeclaredResource } from '@netvark/resource-core';
+import type { DeclaredResource } from '@nizam-os/resource-core';
 
 import { Contacts } from '../resources/contacts.ts';
 import { declareResource } from '../resources/declare-resource.ts';

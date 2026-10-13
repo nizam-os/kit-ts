@@ -9,7 +9,7 @@
  * @ref https://jsonapi.org/format/1.1/#crud-creating-responses-403
  * @packageDocumentation
  */
-import { BanError } from '@netvark/ban-core';
+import { BanError } from '@nizam-os/ban-core';
 
 import {
   QUOTA_EXCEEDED_CATALOG,

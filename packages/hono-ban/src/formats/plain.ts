@@ -1,1 +1,1 @@
-export * from '@netvark/ban-core/formats/plain';
+export * from '@nizam-os/ban-core/formats/plain';

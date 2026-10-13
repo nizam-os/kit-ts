@@ -9,7 +9,7 @@ import { defineProject } from 'vitest/config';
  */
 const config: UserWorkspaceConfig = defineProject({
   test: {
-    name: '@netvark/ban-core',
+    name: '@nizam-os/ban-core',
     include: ['src/**/*.test.ts'],
     environment: 'node',
     restoreMocks: true,

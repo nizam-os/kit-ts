@@ -6,7 +6,7 @@
 
 # `packages/*` are the published packages, one directory per package, named
 # after the package without its scope (`packages/ban-core` is
-# `@netvark/ban-core`). A binding depends on its core through `workspace:^`.
+# `@nizam-os/ban-core`). A binding depends on its core through `workspace:^`.
 # `e2e/*` are private consumer packages, one per family, that install the
 # built packages through `workspace:*`, so their imports resolve through the
 # published `exports` maps into `dist/`.
@@ -40,7 +40,7 @@ catalog:
   kysely: 0.29.6
   miniflare: 4.20260730.0
   '@opentelemetry/api': 1.9.1
-  # A runtime dependency of @netvark/pg-catalog, so a caret range: `pnpm publish`
+  # A runtime dependency of @nizam-os/pg-catalog, so a caret range: `pnpm publish`
   # writes the entry as it stands, and applications share one copy of pg.
   pg: ^8.23.1
   postgres: 3.4.9
@@ -86,11 +86,11 @@ allowBuilds:
   vue-demi: false
   workerd: true
 
-# @netvark/hono-jsonapi declares `@netvark/hono-ban >= 2.0.0` (its API is the
+# @nizam-os/hono-jsonapi declares `@nizam-os/hono-ban >= 2.0.0` (its API is the
 # 2.0 one), and in this workspace it resolves to the working copy, which stays
 # at 1.3.0 until the pending major changeset is versioned. Remove this rule in
-# the "Version Packages" PR that bumps @netvark/hono-ban to 2.0.0.
+# the "Version Packages" PR that bumps @nizam-os/hono-ban to 2.0.0.
 # @ref https://pnpm.io/settings/peer-dependencies#peerdependencyrulesallowedversions
 peerDependencyRules:
   allowedVersions:
-    '@netvark/hono-jsonapi>@netvark/hono-ban': '1'
+    '@nizam-os/hono-jsonapi>@nizam-os/hono-ban': '1'

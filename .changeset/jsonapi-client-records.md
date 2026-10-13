@@ -1,5 +1,5 @@
 ---
-'@netvark/jsonapi-client': minor
+'@nizam-os/jsonapi-client': minor
 ---
 
 Reads responses. `deserialize(document, { include })` turns a JSON:API document into flat records,

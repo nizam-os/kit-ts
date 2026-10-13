@@ -6,7 +6,7 @@
  * @ref https://jsonapi.org/format/1.1/#fetching
  * @packageDocumentation
  */
-import type { TypesOf } from '@netvark/jsonapi-core';
+import type { TypesOf } from '@nizam-os/jsonapi-core';
 
 import type {
   FieldNameOf,

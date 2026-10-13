@@ -17,7 +17,7 @@ const config: UserWorkspaceConfig = defineProject({
     },
   },
   test: {
-    name: '@netvark/resource-core',
+    name: '@nizam-os/resource-core',
     include: ['src/**/*.test.ts'],
     environment: 'node',
     restoreMocks: true,

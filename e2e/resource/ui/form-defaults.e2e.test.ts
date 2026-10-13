@@ -1,6 +1,6 @@
 /**
  * A create form over a table's defaults (resource SPEC 20.3):
- * `resourceForm` from the built `@netvark/resource-ui`, over the table
+ * `resourceForm` from the built `@nizam-os/resource-ui`, over the table
  * of `support/defaults-table.ts`, starts each member from its default as
  * a read gives it, so the form shows what the database stores for a
  * member the person leaves alone. A create left alone writes nothing, and
@@ -10,15 +10,15 @@
  * constant outside the read form and an expression start blank. On PGlite
  * and on the server `RESOURCE_PG_URL` names.
  */
-import type { FieldMeta } from '@netvark/resource-core';
+import type { FieldMeta } from '@nizam-os/resource-core';
 
 import type { DefaultsFixture } from '../support/defaults-table.ts';
 import type { OracleDatabase } from '../support/oracle-database.ts';
 
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { defaultMessages } from '@netvark/resource-core';
-import { resourceForm } from '@netvark/resource-ui';
+import { defaultMessages } from '@nizam-os/resource-core';
+import { resourceForm } from '@nizam-os/resource-ui';
 
 import {
   DEFAULTS_MIGRATION,

@@ -1,11 +1,11 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
-First release of `@netvark/resource-core`, starting with the definer and the declaration.
+First release of `@nizam-os/resource-core`, starting with the definer and the declaration.
 
 - `createDeclareResource({ catalog, codecs, validators, scopes, domains, links, page })` binds a
-  `declareResource(table, declaration)` to the public catalog `@netvark/pg-catalog` extracts and to
+  `declareResource(table, declaration)` to the public catalog `@nizam-os/pg-catalog` extracts and to
   the application's registries. It refuses the full catalog, since declarations reach browsers, and
   a catalog of another format.
 - A declaration names its table, fields, relationships, constraints, codecs, validators, and scope

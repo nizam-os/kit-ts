@@ -1,6 +1,6 @@
 /**
- * `@netvark/jsonapi-client`: a typed fetch client for JSON:API 1.1 servers,
- * typed by the `@netvark/jsonapi-core` definitions the server is built
+ * `@nizam-os/jsonapi-client`: a typed fetch client for JSON:API 1.1 servers,
+ * typed by the `@nizam-os/jsonapi-core` definitions the server is built
  * from (SPEC 15).
  * @packageDocumentation
  */

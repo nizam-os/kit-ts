@@ -52,7 +52,7 @@ describe('declarations of exported definitions', () => {
     '%s names types only through package entry points',
     async (file) => {
       const emitted = await readFile(join(outDir, file), 'utf8');
-      expect(emitted).toContain('import("@netvark/jsonapi-core"');
+      expect(emitted).toContain('import("@nizam-os/jsonapi-core"');
       expect(emitted).not.toMatch(/node_modules|\/dist\//u);
     },
   );

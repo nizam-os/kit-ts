@@ -1,1 +1,1 @@
-export * from '@netvark/ban-core/openapi';
+export * from '@nizam-os/ban-core/openapi';

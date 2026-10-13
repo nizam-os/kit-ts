@@ -19,7 +19,7 @@ import type {
   ResourceDefinition,
   ResourceIdentifier,
   UpdateAttributesOf,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import { createMiddleware } from 'hono/factory';
 
@@ -30,7 +30,7 @@ import {
   parseToManyRelationshipDocument,
   parseToOneRelationshipDocument,
   parseUpdateDocument,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import { readDocument } from './body';
 

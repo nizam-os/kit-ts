@@ -1,8 +1,8 @@
-import type { AnyResource } from '@netvark/jsonapi-core';
+import type { AnyResource } from '@nizam-os/jsonapi-core';
 
 import { describe, expect, it } from 'vitest';
 
-import { createDefineResource } from '@netvark/jsonapi-core';
+import { createDefineResource } from '@nizam-os/jsonapi-core';
 
 import { createDeclareResource } from '../declare/create-declare-resource';
 import { contactsCatalog } from '../test-support/contacts';

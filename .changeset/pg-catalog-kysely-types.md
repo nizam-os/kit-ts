@@ -1,5 +1,5 @@
 ---
-'@netvark/pg-catalog': minor
+'@nizam-os/pg-catalog': minor
 ---
 
 Kysely types are generated from the same catalog, so the types and the catalog cannot disagree.

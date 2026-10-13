@@ -4,7 +4,7 @@
  * @ref https://jsonapi.org/ext/atomic/#operation-objects
  * @packageDocumentation
  */
-import type { ErrorItem } from '@netvark/ban-core';
+import type { ErrorItem } from '@nizam-os/ban-core';
 
 import type { ParseDocumentOptions } from './parse-support';
 import type { OperationTarget } from './types';

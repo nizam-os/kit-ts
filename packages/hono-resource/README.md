@@ -1,15 +1,15 @@
-# @netvark/hono-resource
+# @nizam-os/hono-resource
 
 [Hono](https://hono.dev) routes for a runtime of
-[`@netvark/resource-core`](https://github.com/netvark/netvark/tree/main/packages/resource-core)
+[`@nizam-os/resource-core`](https://github.com/nizam-os/kit/tree/main/packages/resource-core)
 declarations. `jsonApiRoutes` serves every declared operation at the path its JSON:API links name,
 with no handler written per resource:
-[`@netvark/hono-jsonapi`](https://github.com/netvark/netvark/tree/main/packages/hono-jsonapi)
+[`@nizam-os/hono-jsonapi`](https://github.com/nizam-os/kit/tree/main/packages/hono-jsonapi)
 negotiates, validates, and builds documents, the runtime authorizes and runs, and your error handler
 renders every error. Every choice is written down in
-[`docs/resource/SPEC.md`](https://github.com/netvark/netvark/blob/main/docs/resource/SPEC.md),
+[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md),
 section 19, and the decisions behind it in
-[ADR 0013](https://github.com/netvark/netvark/blob/main/docs/resource/adr/0013-hosts-take-the-runtime-contract-and-mount-where-the-links-point.md).
+[ADR 0013](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0013-hosts-take-the-runtime-contract-and-mount-where-the-links-point.md).
 
 Status: in development and unreleased. The collection, resource, relationship, and related routes,
 includes, the Atomic Operations endpoint, the OpenAPI document, and the 405 of every other method
@@ -19,15 +19,15 @@ localized errors.
 ## Install
 
 ```bash
-pnpm add @netvark/hono-resource @netvark/hono-jsonapi @netvark/hono-ban @netvark/resource-core hono zod
+pnpm add @nizam-os/hono-resource @nizam-os/hono-jsonapi @nizam-os/hono-ban @nizam-os/resource-core hono zod
 ```
 
-`hono >= 4.13.7`, `@netvark/hono-jsonapi`, and `@netvark/resource-core` are peer dependencies: your
+`hono >= 4.13.7`, `@nizam-os/hono-jsonapi`, and `@nizam-os/resource-core` are peer dependencies: your
 application declares the resources and mounts `jsonApi()` with its own copies, and the routes must
 work with those same copies
-([ADR 0006](https://github.com/netvark/netvark/blob/main/docs/adr/0006-a-binding-takes-the-packages-the-application-hands-it-values-from-as-peers.md)).
+([ADR 0006](https://github.com/nizam-os/kit/blob/main/docs/adr/0006-a-binding-takes-the-packages-the-application-hands-it-values-from-as-peers.md)).
 The routes import no runtime: any runtime of the contract runs behind them, such as
-[`@netvark/kysely-resource`](https://github.com/netvark/netvark/tree/main/packages/kysely-resource)'s.
+[`@nizam-os/kysely-resource`](https://github.com/nizam-os/kit/tree/main/packages/kysely-resource)'s.
 They run wherever Hono runs: Node 22.12+, Bun, Deno, and Cloudflare Workers. Hono 4.13.7 is the
 floor, the first release no published Hono advisory affects. Without the advisories it would be
 4.13.0: the operations endpoint decodes an `href` with Hono's own `tryDecodeURIComponent`, so it
@@ -51,7 +51,7 @@ Then mount the routes of the runtime at `/`, behind `jsonApi()` and your error h
 
 ```ts
 // src/server/app.ts
-import type { JsonApiVariables } from '@netvark/hono-jsonapi';
+import type { JsonApiVariables } from '@nizam-os/hono-jsonapi';
 
 import { Hono } from 'hono';
 
@@ -61,8 +61,8 @@ import {
   errorHandler,
   jsonApi,
   notFoundHandler,
-} from '@netvark/hono-jsonapi';
-import { jsonApiRoutes } from '@netvark/hono-resource';
+} from '@nizam-os/hono-jsonapi';
+import { jsonApiRoutes } from '@nizam-os/hono-resource';
 
 import { runtime } from './runtime'; // what createResourceRuntime resolved to
 import { sessionActor } from './session';
@@ -89,7 +89,7 @@ import type { Context } from 'hono';
 
 import type { AppEnv } from './app';
 
-import { jsonApiError } from '@netvark/hono-jsonapi';
+import { jsonApiError } from '@nizam-os/hono-jsonapi';
 
 export async function sessionActor(c: Context<AppEnv>): Promise<AppActor> {
   const session = await sessions.verify(c.req.header('Authorization'));
@@ -202,7 +202,7 @@ Accept: application/vnd.api+json; ext="https://jsonapi.org/ext/atomic"
 ## The OpenAPI document
 
 Pass `openapi`, the options of
-[`openapi`](https://github.com/netvark/netvark/tree/main/packages/resource-core#openapi-and-the-api-diff)
+[`openapi`](https://github.com/nizam-os/kit/tree/main/packages/resource-core#openapi-and-the-api-diff)
 without the resources, which are the runtime's, and the routes serve the document at
 `GET /api/openapi.json`, the base of your links followed by `/openapi.json`:
 
@@ -235,17 +235,17 @@ app.route(
 
 The routes throw and your ban renders. Build it with the JSON:API catalog, the codes of the
 runtime's resources, and your own, and localize with
-[`localizeErrors`](https://github.com/netvark/netvark/tree/main/packages/resource-core#messages-and-localization),
+[`localizeErrors`](https://github.com/nizam-os/kit/tree/main/packages/resource-core#messages-and-localization),
 which labels each member an error points at in the words of the resource the request addressed.
 `resourceTypeOf(c)` names that resource:
 
 ```ts
 // src/server/errors.ts
-import { createBan } from '@netvark/hono-ban';
-import { jsonApi } from '@netvark/hono-ban/formats/json-api';
-import { resourceTypeOf } from '@netvark/hono-resource';
-import { ERROR_CATALOG } from '@netvark/jsonapi-core';
-import { errorCatalog, localizeErrors } from '@netvark/resource-core';
+import { createBan } from '@nizam-os/hono-ban';
+import { jsonApi } from '@nizam-os/hono-ban/formats/json-api';
+import { resourceTypeOf } from '@nizam-os/hono-resource';
+import { ERROR_CATALOG } from '@nizam-os/jsonapi-core';
+import { errorCatalog, localizeErrors } from '@nizam-os/resource-core';
 
 import { messages } from '../i18n/messages'; // defineMessages over your Paraglide messages
 
@@ -287,7 +287,7 @@ With German messages that label a contact's `email` as `E-Mail`, a client that s
 
 The contacts application of this repository's end-to-end suite is a complete host composed this way,
 served over a socket and held to the document it serves:
-[`e2e/resource/support/contacts-server.ts`](https://github.com/netvark/netvark/tree/main/e2e/resource/support/contacts-server.ts).
+[`e2e/resource/support/contacts-server.ts`](https://github.com/nizam-os/kit/tree/main/e2e/resource/support/contacts-server.ts).
 
 ## Best practices
 
@@ -298,7 +298,7 @@ routes at `/api/api/...` while the links and the document still name `/api/...`.
 **Resolve the actor from the request's credentials alone.** `actor` runs once per request, before
 the query or the document is read, so a client without a session gets your `UNAUTHORIZED` and learns
 nothing about the resource from a 400. Throw the catalog's error, never return a guest actor you did
-not mean to have, and leave the body to the validators. `UNAUTHORIZED` is a `@netvark/ban-core`
+not mean to have, and leave the body to the validators. `UNAUTHORIZED` is a `@nizam-os/ban-core`
 built-in, which your messages need not cover, so give it an entry, or a German client reads that 401
 in English. A 405, and the 403 of an update a relationship does not support, answer without the
 actor: the OpenAPI document lists every path's methods to anyone.
@@ -339,11 +339,11 @@ mounting a second `jsonApiRoutes` of the same runtime would register every route
 
 ## Documentation
 
-- [SPEC section 19](https://github.com/netvark/netvark/blob/main/docs/resource/SPEC.md): the routes'
+- [SPEC section 19](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md): the routes'
   contract, and section 12.10 the runtime contract they take
-- [DESIGN](https://github.com/netvark/netvark/blob/main/docs/resource/DESIGN.md): what the resource
+- [DESIGN](https://github.com/nizam-os/kit/blob/main/docs/resource/DESIGN.md): what the resource
   family builds and why
-- [ADR 0013](https://github.com/netvark/netvark/blob/main/docs/resource/adr/0013-hosts-take-the-runtime-contract-and-mount-where-the-links-point.md):
+- [ADR 0013](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0013-hosts-take-the-runtime-contract-and-mount-where-the-links-point.md):
   the routes' decisions
 
 ## License

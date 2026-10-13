@@ -17,7 +17,7 @@ import type {
   ErrorDocument,
   ErrorObject,
   ErrorSource,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import type { JsonRecord } from '../internal/object';
 
@@ -25,7 +25,7 @@ import { jsonApiObjectOf, linksOf } from '../document/members';
 import { isRecord, ownMember } from '../internal/object';
 
 /** Marks a `ResponseError` across copies of the package, where `instanceof` fails. */
-const BRAND = Symbol.for('@netvark/jsonapi-client/response-error');
+const BRAND = Symbol.for('@nizam-os/jsonapi-client/response-error');
 
 const OBJECT_MEMBERS = ['id', 'status', 'code', 'title', 'detail'] as const;
 const SOURCE_MEMBERS = ['pointer', 'parameter', 'header'] as const;

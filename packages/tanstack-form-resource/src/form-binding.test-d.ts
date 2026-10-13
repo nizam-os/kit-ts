@@ -1,14 +1,14 @@
-import type { FormErrors } from '@netvark/resource-ui';
+import type { FormErrors } from '@nizam-os/resource-ui';
 
 import type { BindableForm } from './bind-errors';
 
 import { FieldApi, FormApi } from '@tanstack/form-core';
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { createClients, createTransport } from '@netvark/jsonapi-client';
-import { createDeclareResource } from '@netvark/resource-core';
-import { contractFixture } from '@netvark/resource-core/testing';
-import { resourceForm } from '@netvark/resource-ui';
+import { createClients, createTransport } from '@nizam-os/jsonapi-client';
+import { createDeclareResource } from '@nizam-os/resource-core';
+import { contractFixture } from '@nizam-os/resource-core/testing';
+import { resourceForm } from '@nizam-os/resource-ui';
 
 import { bindResponseErrors } from './bind-errors';
 import { resourceFormOptions } from './form-options';

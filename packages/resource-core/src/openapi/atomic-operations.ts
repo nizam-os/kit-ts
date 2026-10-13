@@ -15,11 +15,11 @@
  * @ref https://jsonapi.org/format/1.1/#document-member-names-allowed-characters
  * @packageDocumentation
  */
-import type { JsonSchema } from '@netvark/ban-core';
+import type { JsonSchema } from '@nizam-os/ban-core';
 import type {
   ReferenceObject,
   ResponseObject,
-} from '@netvark/ban-core/openapi';
+} from '@nizam-os/ban-core/openapi';
 
 import type { DeclaredInternals } from '../declare/declared-resource';
 import type { OperationObject } from './operation-object';
@@ -27,7 +27,7 @@ import type { OperationObject } from './operation-object';
 import {
   ATOMIC_OPERATIONS_EXTENSION,
   formatJsonApiMediaType,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import { declares, requestDocumentSchema } from './atomic-requests';
 import { schemaKey, schemaRef } from './component-names';

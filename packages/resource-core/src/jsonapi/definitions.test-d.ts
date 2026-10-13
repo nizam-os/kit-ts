@@ -9,7 +9,7 @@ import type {
   RelationshipNameOf,
   RowOf,
   UpdateAttributesOf,
-} from '@netvark/jsonapi-core';
+} from '@nizam-os/jsonapi-core';
 
 import type { DeclaredResource } from '../declare/declared-resource';
 import type { Infer } from '../schema/infer';
@@ -17,7 +17,7 @@ import type { PublicRowOf } from '../server/resource-types';
 
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { createDefineKeyset, defineKeyset } from '@netvark/keyset-core';
+import { createDefineKeyset, defineKeyset } from '@nizam-os/keyset-core';
 
 import { createDeclareResource } from '../declare/create-declare-resource';
 import { contactsCatalog } from '../test-support/contacts';

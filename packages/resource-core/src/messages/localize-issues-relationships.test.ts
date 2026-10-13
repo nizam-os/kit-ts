@@ -1,11 +1,11 @@
-import type { ErrorItem } from '@netvark/ban-core';
+import type { ErrorItem } from '@nizam-os/ban-core';
 
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 
-import { createBan, fromRequest } from '@netvark/ban-core';
-import { jsonApi } from '@netvark/ban-core/formats/json-api';
-import { ERROR_CATALOG } from '@netvark/jsonapi-core';
+import { createBan, fromRequest } from '@nizam-os/ban-core';
+import { jsonApi } from '@nizam-os/ban-core/formats/json-api';
+import { ERROR_CATALOG } from '@nizam-os/jsonapi-core';
 
 import { defineValidator } from '../codecs/define-validator';
 import { errorCatalog } from '../errors/error-catalog';

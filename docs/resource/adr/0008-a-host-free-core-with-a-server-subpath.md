@@ -8,9 +8,9 @@
 Declarations are imported by browsers (forms, the typed client) and by servers. Server behavior,
 such as policies, quotas, effects, and binding a scope to the session, must never reach a browser
 bundle, and storage needs a query builder, which a core must not import, not even its types (root
-`AGENTS.md`). The family's other packages each need a different slice: `@netvark/kysely-resource`
-runs the operations, `@netvark/hono-resource` serves them over HTTP, `@netvark/jsonapi-client` and
-`@netvark/react-resource` call them.
+`AGENTS.md`). The family's other packages each need a different slice: `@nizam-os/kysely-resource`
+runs the operations, `@nizam-os/hono-resource` serves them over HTTP, `@nizam-os/jsonapi-client` and
+`@nizam-os/react-resource` call them.
 
 Zod 4.5.0 (2026-08-28) made `.min()`, `.max()`, and `.length()` count Unicode code points instead of
 UTF-16 units, as PostgreSQL's `char_length` and `varchar(n)` do, and made `z.iso.datetime()` require
@@ -21,17 +21,17 @@ https://github.com/colinhacks/zod/pull/6441
 
 ## Decision
 
-- `@netvark/resource-core` (root) holds declarations, names, wire forms, schemas, the public facets
+- `@nizam-os/resource-core` (root) holds declarations, names, wire forms, schemas, the public facets
   of codecs and validators, the error catalog, messages, and localization. It runs in browsers.
-- `@netvark/resource-core/server` holds the domain definers, policies, behavior, scopes, quotas,
+- `@nizam-os/resource-core/server` holds the domain definers, policies, behavior, scopes, quotas,
   events, `reject`, and the storage adapter contract. It imports no database code; adapters
   implement the contract.
-- `@netvark/resource-core/openapi` builds the OpenAPI 3.1 document and the API diff, so the root
+- `@nizam-os/resource-core/openapi` builds the OpenAPI 3.1 document and the API diff, so the root
   stays small for browsers.
-- `@netvark/resource-core/testing` holds the storage contract suite, as framework-free cases an
+- `@nizam-os/resource-core/testing` holds the storage contract suite, as framework-free cases an
   adapter package runs under its own test runner, and the fixture generators the oracle uses.
-- Dependencies: `@netvark/catalog-core` (types), `@netvark/jsonapi-core`, `@netvark/keyset-core`,
-  and `@netvark/ban-core`. `zod` is a peer dependency with the range `^4.5.0`, pinned by a test of
+- Dependencies: `@nizam-os/catalog-core` (types), `@nizam-os/jsonapi-core`, `@nizam-os/keyset-core`,
+  and `@nizam-os/ban-core`. `zod` is a peer dependency with the range `^4.5.0`, pinned by a test of
   the length unit and by a CI job at the floor.
 
 ## Consequences

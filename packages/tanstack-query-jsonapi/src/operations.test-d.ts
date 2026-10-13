@@ -11,15 +11,15 @@ import type {
   OperationResult,
   OperationsResult,
   RecordOf,
-} from '@netvark/jsonapi-client';
+} from '@nizam-os/jsonapi-client';
 
 import type { OperationsOptions } from './query-types';
 
 import { MutationObserver, QueryClient } from '@tanstack/query-core';
 import { describe, expectTypeOf, it } from 'vitest';
 
-import { createTransport, operationsOf } from '@netvark/jsonapi-client';
-import { createDefineResource } from '@netvark/jsonapi-core';
+import { createTransport, operationsOf } from '@nizam-os/jsonapi-client';
+import { createDefineResource } from '@nizam-os/jsonapi-core';
 
 import { operationsMutation } from './operations';
 

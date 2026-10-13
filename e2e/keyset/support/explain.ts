@@ -8,7 +8,7 @@
  */
 import type pg from 'pg';
 
-import type { QueryEvent } from '@netvark/kysely-keyset';
+import type { QueryEvent } from '@nizam-os/kysely-keyset';
 
 /** One node of `EXPLAIN (FORMAT JSON)`. */
 export interface PlanNode {

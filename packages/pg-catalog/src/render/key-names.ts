@@ -5,9 +5,9 @@
  * @ref https://kysely.dev/docs/plugins#camel-case-plugin
  * @packageDocumentation
  */
-import type { CamelCaseOptions } from '@netvark/catalog-core';
+import type { CamelCaseOptions } from '@nizam-os/catalog-core';
 
-import { toCamelCase, toSnakeCase } from '@netvark/catalog-core';
+import { toCamelCase, toSnakeCase } from '@nizam-os/catalog-core';
 
 import { PgCatalogError } from '../errors';
 

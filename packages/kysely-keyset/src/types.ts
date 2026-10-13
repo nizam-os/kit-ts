@@ -12,7 +12,7 @@ import type {
   KeysetRequestOf,
   Page,
   RelationsInit,
-} from '@netvark/keyset-core';
+} from '@nizam-os/keyset-core';
 
 /**
  * The database shape rendering happens against: every table and column

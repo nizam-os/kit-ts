@@ -25,18 +25,18 @@ import type { ErrorObject } from 'ajv/dist/2020.js';
  * @ref https://ajv.js.org/api.html#ajv-addvocabulary-vocabulary-ajv
  * @ref https://www.rfc-editor.org/rfc/rfc6901
  */
-import type { OpenApiDocument } from '@netvark/resource-core/openapi';
+import type { OpenApiDocument } from '@nizam-os/resource-core/openapi';
 
 import type { Sent } from './http.ts';
 
 import addFormats from 'ajv-formats';
 import Ajv2020 from 'ajv/dist/2020.js';
 
-import { parseMediaType } from '@netvark/jsonapi-core';
+import { parseMediaType } from '@nizam-os/jsonapi-core';
 
 import { openApiFormats } from './openapi-formats.ts';
 
-const DOCUMENT_ID = 'https://e2e.netvark.test/openapi.json';
+const DOCUMENT_ID = 'https://e2e.nizam-kit.test/openapi.json';
 const OPENAPI_MEMBERS = ['openapi', 'info', 'servers', 'paths', 'components'];
 /** The prefix of an error object's component; the application's codes are spelled as they are. */
 const ERROR_REF = '#/components/schemas/_error.';

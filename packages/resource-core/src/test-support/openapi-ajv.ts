@@ -10,7 +10,7 @@
  * @ref https://ajv.js.org/json-schema.html#draft-2020-12
  * @packageDocumentation
  */
-import type { JsonSchema } from '@netvark/ban-core';
+import type { JsonSchema } from '@nizam-os/ban-core';
 
 import addFormats from 'ajv-formats';
 import Ajv2020 from 'ajv/dist/2020.js';

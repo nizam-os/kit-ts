@@ -18,7 +18,7 @@ import type {
   FormWriteOf,
 } from './form-types';
 
-import { localizeIssues } from '@netvark/resource-core';
+import { localizeIssues } from '@nizam-os/resource-core';
 
 import { descriptorsOf } from '../fields/fields-of';
 import { checkDeclared } from '../internal/declared';

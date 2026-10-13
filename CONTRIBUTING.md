@@ -1,12 +1,12 @@
 # Contributing
 
-Thanks for helping. This repository holds every `@netvark` package, grouped in families: ban
-(`@netvark/ban-core`, `@netvark/hono-ban`), catalog (`@netvark/catalog-core`,
-`@netvark/pg-catalog`), intl (`@netvark/intl-core`, `@netvark/paraglide-intl`), jsonapi
-(`@netvark/jsonapi-core`, `@netvark/hono-jsonapi`, `@netvark/jsonapi-client`,
-`@netvark/tanstack-query-jsonapi`), keyset (`@netvark/keyset-core`, `@netvark/kysely-keyset`,
-`@netvark/drizzle-keyset`), and resource (`@netvark/resource-core`, `@netvark/kysely-resource`,
-`@netvark/hono-resource`, `@netvark/resource-ui`, `@netvark/tanstack-form-resource`). This guide
+Thanks for helping. This repository holds every `@nizam-os` package, grouped in families: ban
+(`@nizam-os/ban-core`, `@nizam-os/hono-ban`), catalog (`@nizam-os/catalog-core`,
+`@nizam-os/pg-catalog`), intl (`@nizam-os/intl-core`, `@nizam-os/paraglide-intl`), jsonapi
+(`@nizam-os/jsonapi-core`, `@nizam-os/hono-jsonapi`, `@nizam-os/jsonapi-client`,
+`@nizam-os/tanstack-query-jsonapi`), keyset (`@nizam-os/keyset-core`, `@nizam-os/kysely-keyset`,
+`@nizam-os/drizzle-keyset`), and resource (`@nizam-os/resource-core`, `@nizam-os/kysely-resource`,
+`@nizam-os/hono-resource`, `@nizam-os/resource-ui`, `@nizam-os/tanstack-form-resource`). This guide
 covers what every family shares: setup, the quality gates, the conventions, commits, changesets, and
 releases. Each family adds its own guide with its layout, extension points, constraints, and
 checklist:
@@ -36,8 +36,8 @@ itself are in [`docs/adr/`](docs/adr).
 ## Setup
 
 ```bash
-git clone https://github.com/netvark/netvark.git
-cd netvark
+git clone https://github.com/nizam-os/kit.git
+cd kit
 pnpm install
 ```
 
@@ -68,23 +68,23 @@ else, `e2e/*` included, resolves `dist/`.
 | `pnpm format` / `lint:fix` | Apply formatting / autofixable lint fixes                              |
 
 CI runs the same commands, plus these packages' tests on the floors of their peer ranges:
-`@netvark/kysely-keyset` on Kysely 0.28.17, `@netvark/kysely-resource` on Kysely 0.29.0,
-`@netvark/drizzle-keyset` on drizzle-orm 0.45.2, `@netvark/resource-core` on Zod 4.5.0,
-`@netvark/tanstack-query-jsonapi` on TanStack Query's core 5.89.0, `@netvark/tanstack-form-resource`
-on TanStack Form's core 1.17.0, `@netvark/hono-ban`, `@netvark/hono-jsonapi`, and
-`@netvark/hono-resource` on Hono 4.13.7, `@netvark/pg-catalog` on PGlite 0.5.0, and
-`@netvark/paraglide-intl` on Paraglide JS 2.11.0. It also runs the keyset e2e suite on a PostgreSQL
-server, and `@netvark/pg-catalog`'s tests and the catalog e2e suite on PostgreSQL servers. A pull
+`@nizam-os/kysely-keyset` on Kysely 0.28.17, `@nizam-os/kysely-resource` on Kysely 0.29.0,
+`@nizam-os/drizzle-keyset` on drizzle-orm 0.45.2, `@nizam-os/resource-core` on Zod 4.5.0,
+`@nizam-os/tanstack-query-jsonapi` on TanStack Query's core 5.89.0, `@nizam-os/tanstack-form-resource`
+on TanStack Form's core 1.17.0, `@nizam-os/hono-ban`, `@nizam-os/hono-jsonapi`, and
+`@nizam-os/hono-resource` on Hono 4.13.7, `@nizam-os/pg-catalog` on PGlite 0.5.0, and
+`@nizam-os/paraglide-intl` on Paraglide JS 2.11.0. It also runs the keyset e2e suite on a PostgreSQL
+server, and `@nizam-os/pg-catalog`'s tests and the catalog e2e suite on PostgreSQL servers. A pull
 request must be green on all of them: the last CI job, `CI passed`, needs every other job and is the
 one check `main` requires ([ADR 0004](docs/adr/0004-protect-main-with-one-aggregate-check.md)), so a
 new CI job goes into its `needs` list. To work on one package or family, filter by name:
 
 ```bash
-pnpm --filter @netvark/keyset-core test
-pnpm --filter @netvark/kysely-keyset exec vitest run paginate
-pnpm --filter @netvark/keyset-e2e exec vitest run cursors        # after pnpm build
-KEYSET_PG_URL=postgres://postgres:postgres@localhost:5432/postgres pnpm --filter @netvark/keyset-e2e exec vitest run postgres
-CATALOG_PG_URL=postgres://postgres:postgres@localhost:5432/postgres pnpm --filter @netvark/pg-catalog test
+pnpm --filter @nizam-os/keyset-core test
+pnpm --filter @nizam-os/kysely-keyset exec vitest run paginate
+pnpm --filter @nizam-os/keyset-e2e exec vitest run cursors        # after pnpm build
+KEYSET_PG_URL=postgres://postgres:postgres@localhost:5432/postgres pnpm --filter @nizam-os/keyset-e2e exec vitest run postgres
+CATALOG_PG_URL=postgres://postgres:postgres@localhost:5432/postgres pnpm --filter @nizam-os/pg-catalog test
 ```
 
 ## Conventions
@@ -106,7 +106,7 @@ CATALOG_PG_URL=postgres://postgres:postgres@localhost:5432/postgres pnpm --filte
   depends on its family's packages through `workspace:*`, so its imports resolve through the
   published `exports` maps into `dist/` and its `tsc` run checks the emitted declarations. Never
   import from `src/` there. Run one file with
-  `pnpm --filter @netvark/<family>-e2e exec vitest run <name>` after `pnpm build`.
+  `pnpm --filter @nizam-os/<family>-e2e exec vitest run <name>` after `pnpm build`.
 - **Runtime smoke tests live in `e2e/<family>/smoke/`.** One module imports the family's packages;
   `run.ts` drives it in-process on Bun and Deno and `workerd.ts` bundles it with tsdown and runs it
   in Miniflare's workerd.

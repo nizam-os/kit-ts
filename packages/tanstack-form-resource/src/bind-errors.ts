@@ -19,7 +19,7 @@
  */
 import type { AnyFormApi } from '@tanstack/form-core';
 
-import type { FormErrors, FormModel } from '@netvark/resource-ui';
+import type { FormErrors, FormModel } from '@nizam-os/resource-ui';
 
 import { checkModel } from './form-model';
 import { isObject } from './internal/object';

@@ -17,7 +17,7 @@ import { expectTypeOf } from 'vitest';
 import {
   bindResponseErrors,
   resourceFormOptions,
-} from '@netvark/tanstack-form-resource';
+} from '@nizam-os/tanstack-form-resource';
 
 import { createContact, submitContact } from './contact-form.ts';
 

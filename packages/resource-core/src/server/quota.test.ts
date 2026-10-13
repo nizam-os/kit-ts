@@ -2,8 +2,8 @@ import type { Quota, QuotaContext } from './quota';
 
 import { describe, expect, expectTypeOf, it } from 'vitest';
 
-import { createBan } from '@netvark/ban-core';
-import { jsonApi } from '@netvark/ban-core/formats/json-api';
+import { createBan } from '@nizam-os/ban-core';
+import { jsonApi } from '@nizam-os/ban-core/formats/json-api';
 
 import { errorCatalog } from '../errors/error-catalog';
 import { Contacts, Organizations } from '../test-support/domain-resources';

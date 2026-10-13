@@ -7,7 +7,7 @@ import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
  * search it was issued for; it cannot be forged, reused elsewhere, or used
  * after its TTL; and it survives a secret rotation.
  */
-import { createDefineKeyset, InvalidCursorError } from '@netvark/kysely-keyset';
+import { createDefineKeyset, InvalidCursorError } from '@nizam-os/kysely-keyset';
 
 import { openPglite } from './support/db.ts';
 import {

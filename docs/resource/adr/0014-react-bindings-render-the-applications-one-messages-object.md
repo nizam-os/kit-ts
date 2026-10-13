@@ -1,12 +1,12 @@
 # ADR 0014: The React bindings render the application's one messages object
 
 - Status: accepted; applies ADR 0009 to the browser; amended by ADR-0018 (the functions it governs
-  are `@netvark/resource-ui`'s)
+  are `@nizam-os/resource-ui`'s)
 - Date: 2026-10-12
 
 ## Context
 
-The epic for `@netvark/react-resource` planned a provider taking "the locales from `defineMessages`
+The epic for `@nizam-os/react-resource` planned a provider taking "the locales from `defineMessages`
 and the current language", with `useMessages()` returning the typed messages (issue #45). ADR 0009
 decided otherwise for the whole family: there is one messages object per application, every message
 is a function that reads the locale itself, and no library of the family parses `Accept-Language` or
@@ -30,7 +30,7 @@ Three facts follow for a client library:
   A provider would only add a place where the type is lost and a second locale source that can
   disagree with the document's.
 - The server already renders the error documents in the request's locale (ADR 0009, SPEC 10.4), and
-  `@netvark/jsonapi-client` sends that locale on every request when the transport's `language` is
+  `@nizam-os/jsonapi-client` sends that locale on every request when the transport's `language` is
   `getLocale` (jsonapi SPEC 15.2). An error the server returns is in the reader's language before
   the client sees it. What the client renders itself is the issues of its own validation, which
   happen before any request.
@@ -41,13 +41,13 @@ https://paraglidejs.com/server-side-rendering
 
 ## Decision
 
-- **No provider and no `useMessages`.** Every function of `@netvark/react-resource` that renders
+- **No provider and no `useMessages`.** Every function of `@nizam-os/react-resource` that renders
   text takes the application's messages object, what `defineMessages` or `defaultMessages` returned,
   as an argument. The application imports it where it builds a form or a list.
 - **Texts are computed on call.** A field's label, an option's label, and an issue's message are
   computed when the binding is asked for them, during render, never when a module loads or a model
   is built. A model may be built once; its texts are not.
-- **The client renders its own issues with the server's rules.** `@netvark/resource-core` gains
+- **The client renders its own issues with the server's rules.** `@nizam-os/resource-core` gains
   `localizeIssues(messages)`, which gives an issue of `write.create` or `write.update` the detail
   `localizeErrors` gives the item the server makes of the same issue (SPEC 10.5). A value refused in
   the form reads as the server would answer it, in the same words.

@@ -14,7 +14,7 @@
 import type {
   OracleVerdict,
   WritableFixture,
-} from '@netvark/resource-core/testing';
+} from '@nizam-os/resource-core/testing';
 
 import type { SqlSession } from '../target/session';
 

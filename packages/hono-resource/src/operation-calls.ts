@@ -11,8 +11,8 @@
  */
 import type { Move } from './pointers';
 
-import { isBanError } from '@netvark/hono-jsonapi';
-import { errorAtOperation } from '@netvark/hono-jsonapi/atomic';
+import { isBanError } from '@nizam-os/hono-jsonapi';
+import { errorAtOperation } from '@nizam-os/hono-jsonapi/atomic';
 
 import { movedError } from './pointers';
 

@@ -8,7 +8,7 @@
  * covers nothing, so a required column behind it is a server value.
  * @packageDocumentation
  */
-import type { PublicTable } from '@netvark/catalog-core';
+import type { PublicTable } from '@nizam-os/catalog-core';
 
 import type {
   AnyDeclaredResource,

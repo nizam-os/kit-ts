@@ -9,7 +9,7 @@ import type { input } from 'zod/v4/core';
  * is not a member never runs (`multi-column.ts`), so it is not checked.
  * @packageDocumentation
  */
-import type { PublicTable } from '@netvark/catalog-core';
+import type { PublicTable } from '@nizam-os/catalog-core';
 
 import type { MemberColumn } from '../declare/members';
 import type { DeclareContext } from '../declare/registries';

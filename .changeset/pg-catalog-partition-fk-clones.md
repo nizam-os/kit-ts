@@ -1,5 +1,5 @@
 ---
-'@netvark/pg-catalog': patch
+'@nizam-os/pg-catalog': patch
 ---
 
 A foreign key that references a partitioned table is listed once. PostgreSQL also adds one clone of

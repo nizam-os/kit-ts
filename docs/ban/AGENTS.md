@@ -1,7 +1,7 @@
 # ban family: instructions for coding agents
 
 Read with the root [`AGENTS.md`](../../AGENTS.md), which holds the rules every family shares; this
-file adds what is specific to `@netvark/ban-core` (the framework-free core) and `@netvark/hono-ban`
+file adds what is specific to `@nizam-os/ban-core` (the framework-free core) and `@nizam-os/hono-ban`
 (the Hono binding). Humans: see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Ground rules
@@ -19,7 +19,7 @@ file adds what is specific to `@netvark/ban-core` (the framework-free core) and 
   `packages/ban-core/src/handler/` must keep the single-invocation and constant-500-detail tests
   green.
 - `packages/ban-core` imports nothing from Hono, not even types; anything that needs a Hono type
-  belongs in `packages/hono-ban`, which imports `@netvark/ban-core` by package name (resolved to the
+  belongs in `packages/hono-ban`, which imports `@nizam-os/ban-core` by package name (resolved to the
   core's `src/` in-repo through the `source` export condition).
 
 ## Repository map
@@ -33,7 +33,7 @@ file adds what is specific to `@netvark/ban-core` (the framework-free core) and 
 - `packages/ban-core/src/validation/` validation-issue normalization and validator hooks
 - `packages/ban-core/src/openapi/` response schema helpers
 - `packages/ban-core/src/observability/` the OpenTelemetry trace id adapter
-- `packages/ban-core/src/postgresql/` the Postgres SQLSTATE mapper (`@netvark/ban-core/postgresql`)
+- `packages/ban-core/src/postgresql/` the Postgres SQLSTATE mapper (`@nizam-os/ban-core/postgresql`)
 - `packages/ban-core/src/testing/` consumer test helpers and format conformance
 - `packages/ban-core/src/internal/` helpers that are never exported
 - `packages/ban-core/src/test-support/` helpers for the repository's own tests (Ajv compiler,
@@ -41,7 +41,7 @@ file adds what is specific to `@netvark/ban-core` (the framework-free core) and 
 - `packages/hono-ban/src/` the Hono adapter: `createBan` with `onError`, `HTTPException` adoption,
   one-line re-exports of every core subpath, and the tests that need Hono or its middleware
 - `e2e/ban/` end-to-end suite: a private workspace package that consumes the built
-  `@netvark/ban-core` and `@netvark/hono-ban` through `workspace:*` and drives them over real HTTP
+  `@nizam-os/ban-core` and `@nizam-os/hono-ban` through `workspace:*` and drives them over real HTTP
   with `@hono/node-server`; never imports from `src/`. `e2e/ban/smoke/` is the runtime smoke test
   (Bun, Deno, workerd)
 - `docs/ban/DESIGN.md` what we are building and why; `docs/ban/SPEC.md` the normative contract;

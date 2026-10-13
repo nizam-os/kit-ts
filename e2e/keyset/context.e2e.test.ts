@@ -1,6 +1,6 @@
 import type { Kysely } from 'kysely';
 
-import type { Page, QueryEvent } from '@netvark/kysely-keyset';
+import type { Page, QueryEvent } from '@nizam-os/kysely-keyset';
 
 import type { DB, Harness } from './support/db.ts';
 
@@ -20,8 +20,8 @@ import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { sql } from 'kysely';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { createDefineKeyset as createDrizzleDefineKeyset } from '@netvark/drizzle-keyset';
-import { createDefineKeyset, InvalidCursorError } from '@netvark/kysely-keyset';
+import { createDefineKeyset as createDrizzleDefineKeyset } from '@nizam-os/drizzle-keyset';
+import { createDefineKeyset, InvalidCursorError } from '@nizam-os/kysely-keyset';
 
 import { databases } from './support/db.ts';
 import { SECRET } from './support/keysets.ts';

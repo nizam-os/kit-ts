@@ -9,20 +9,20 @@
  * hands the events over once for every operation (`transaction.ts`).
  * @packageDocumentation
  */
-import type { Operation } from '@netvark/resource-core';
+import type { Operation } from '@nizam-os/resource-core';
 import type {
   DomainEvent,
   DomainShape,
   FilterParameter,
   ResourceBehavior,
-} from '@netvark/resource-core/server';
+} from '@nizam-os/resource-core/server';
 
 import type { StorageConfig } from '../storage/options';
 import type { KyselyTransaction } from '../storage/transaction';
 import type { Session, Work } from './session';
 import type { DomainOptions } from './types';
 
-import { scopeValues } from '@netvark/resource-core/server';
+import { scopeValues } from '@nizam-os/resource-core/server';
 
 import { afterCommit } from './events';
 import { operationFailure } from './failure';

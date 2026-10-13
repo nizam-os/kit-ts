@@ -3,9 +3,9 @@
  * test schema's names: table keys and column properties, as a Drizzle
  * application writes them.
  */
-import type { Keyset, Relation } from '@netvark/keyset-core';
+import type { Keyset, Relation } from '@nizam-os/keyset-core';
 
-import { defineKeyset } from '@netvark/keyset-core';
+import { defineKeyset } from '@nizam-os/keyset-core';
 
 export const CONTACTS = {
   table: 'contacts',

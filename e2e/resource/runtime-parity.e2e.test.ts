@@ -4,7 +4,7 @@
  * rendered by the API's error handler, is the error document the API
  * answers the same request with: the status, and every error but its
  * occurrence's `id`. The API is the one
- * `@netvark/hono-resource` will mount (`runtime/api.ts`); it adds no
+ * `@nizam-os/hono-resource` will mount (`runtime/api.ts`); it adds no
  * database of its own, so the suite runs on PGlite.
  * @ref https://jsonapi.org/format/1.1/#errors
  */
@@ -16,7 +16,7 @@ import type { Request, Sent } from './support/http.ts';
 import { Hono } from 'hono';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
-import { errorHandler } from '@netvark/hono-jsonapi';
+import { errorHandler } from '@nizam-os/hono-jsonapi';
 
 import { createApi } from './runtime/api.ts';
 import { openPgliteDatabase } from './runtime/database.ts';

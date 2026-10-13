@@ -4,7 +4,7 @@
  * table each driver gives (`kysely-node-postgres.ts`, `kysely-pglite.ts`).
  * @packageDocumentation
  */
-import type { TypeKind } from '@netvark/catalog-core';
+import type { TypeKind } from '@nizam-os/catalog-core';
 
 /** The helper types a generated file declares when it uses them. */
 export type Helper =

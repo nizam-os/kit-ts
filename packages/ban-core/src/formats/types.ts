@@ -19,14 +19,14 @@ export interface ErrorFormat<TBody = unknown> {
     ctx: RenderContext,
   ): TBody;
   schema(definition: ResolvedDefinition, ctx: SchemaContext): JsonSchema;
-  /** Schema of `renderErrors` bodies for the entry; `validationSchema()` in `@netvark/ban-core/openapi` reads it. */
+  /** Schema of `renderErrors` bodies for the entry; `validationSchema()` in `@nizam-os/ban-core/openapi` reads it. */
   errorsSchema(definition: ResolvedDefinition, ctx: SchemaContext): JsonSchema;
   /**
    * Present on a format whose `renderErrors` gives each item its own
    * identity, so one body can combine entries (SPEC 7.2.4): the schema of a
    * body whose objects each carry the identity of one of `definitions`,
    * each object a `{ $ref: ctx.objectRef(key) }` when `ctx.objectRef` is
-   * set. `errorResponses()` in `@netvark/ban-core/openapi` reads it.
+   * set. `errorResponses()` in `@nizam-os/ban-core/openapi` reads it.
    */
   mixedSchema?(
     definitions: ReadonlyArray<ResolvedDefinition>,
@@ -35,7 +35,7 @@ export interface ErrorFormat<TBody = unknown> {
   /**
    * The object of `definition` in the bodies `mixedSchema` describes, the
    * schema `ctx.objectRef` points at. `errorObjectSchemas()` in
-   * `@netvark/ban-core/openapi` reads it.
+   * `@nizam-os/ban-core/openapi` reads it.
    */
   objectSchema?(definition: ResolvedDefinition, ctx: SchemaContext): JsonSchema;
 }

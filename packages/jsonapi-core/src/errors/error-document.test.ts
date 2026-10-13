@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/ban-core';
-import { problemDetails } from '@netvark/ban-core/formats/problem-details';
+import { createBan } from '@nizam-os/ban-core';
+import { problemDetails } from '@nizam-os/ban-core/formats/problem-details';
 
 import { errorDocument, jsonApiError } from './json-api-error';
 

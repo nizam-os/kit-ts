@@ -7,7 +7,7 @@
  * PostgreSQL 14 and 18. `kysely-pglite-driver.test.ts` holds the PGlite
  * table the same way.
  */
-import type { CatalogColumn } from '@netvark/catalog-core';
+import type { CatalogColumn } from '@nizam-os/catalog-core';
 
 import type { SqlSession } from '../target/session';
 import type { OracleContext } from '../test-support/driver-oracle';

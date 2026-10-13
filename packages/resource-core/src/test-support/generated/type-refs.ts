@@ -5,7 +5,7 @@
  * Not published with the package.
  * @packageDocumentation
  */
-import type { PublicDomain, TypeKind } from '@netvark/catalog-core';
+import type { PublicDomain, TypeKind } from '@nizam-os/catalog-core';
 
 import type { Random } from './random';
 

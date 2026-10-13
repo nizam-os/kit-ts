@@ -1,5 +1,5 @@
 ---
-'@netvark/jsonapi-core': minor
+'@nizam-os/jsonapi-core': minor
 ---
 
 Every definition now carries, in types only, what a client reads and writes:

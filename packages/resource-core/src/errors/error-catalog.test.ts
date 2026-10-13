@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import { createBan } from '@netvark/ban-core';
-import { jsonApi } from '@netvark/ban-core/formats/json-api';
-import { ERROR_CATALOG } from '@netvark/jsonapi-core';
+import { createBan } from '@nizam-os/ban-core';
+import { jsonApi } from '@nizam-os/ban-core/formats/json-api';
+import { ERROR_CATALOG } from '@nizam-os/jsonapi-core';
 
 import { createDeclareResource } from '../declare/create-declare-resource';
 import { contactsCatalog } from '../test-support/contacts';

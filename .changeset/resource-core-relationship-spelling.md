@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': patch
+'@nizam-os/resource-core': patch
 ---
 
 `declareResource` refuses a relationship whose foreign key spells ids unlike the key it references,

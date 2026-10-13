@@ -7,7 +7,7 @@
  * the workerd bundle inlines every import of this file, so the Postgres
  * routes throw driver-shaped fixtures instead.
  */
-import type { ErrorReport } from '@netvark/hono-ban';
+import type { ErrorReport } from '@nizam-os/hono-ban';
 
 import { sValidator } from '@hono/standard-validator';
 import { vValidator } from '@hono/valibot-validator';
@@ -18,20 +18,20 @@ import { bearerAuth } from 'hono/bearer-auth';
 import * as v from 'valibot';
 import { z } from 'zod';
 
-import { createBan as createCoreBan, fromRequest } from '@netvark/ban-core';
-import { bearerChallenge, createBan } from '@netvark/hono-ban';
-import { googleApi } from '@netvark/hono-ban/formats/google-api';
-import { jsonApi } from '@netvark/hono-ban/formats/json-api';
-import { plain } from '@netvark/hono-ban/formats/plain';
-import { problemDetails } from '@netvark/hono-ban/formats/problem-details';
-import { stripe } from '@netvark/hono-ban/formats/stripe';
-import { errorResponses, validationResponse } from '@netvark/hono-ban/openapi';
-import { traceIdFromOtel } from '@netvark/hono-ban/otel';
-import { postgresMapper } from '@netvark/hono-ban/postgresql';
-import { hook as standardHook } from '@netvark/hono-ban/standard-schema';
-import { renderError } from '@netvark/hono-ban/testing';
-import { hook as valibotHook } from '@netvark/hono-ban/valibot';
-import { hook as zodHook } from '@netvark/hono-ban/zod';
+import { createBan as createCoreBan, fromRequest } from '@nizam-os/ban-core';
+import { bearerChallenge, createBan } from '@nizam-os/hono-ban';
+import { googleApi } from '@nizam-os/hono-ban/formats/google-api';
+import { jsonApi } from '@nizam-os/hono-ban/formats/json-api';
+import { plain } from '@nizam-os/hono-ban/formats/plain';
+import { problemDetails } from '@nizam-os/hono-ban/formats/problem-details';
+import { stripe } from '@nizam-os/hono-ban/formats/stripe';
+import { errorResponses, validationResponse } from '@nizam-os/hono-ban/openapi';
+import { traceIdFromOtel } from '@nizam-os/hono-ban/otel';
+import { postgresMapper } from '@nizam-os/hono-ban/postgresql';
+import { hook as standardHook } from '@nizam-os/hono-ban/standard-schema';
+import { renderError } from '@nizam-os/hono-ban/testing';
+import { hook as valibotHook } from '@nizam-os/hono-ban/valibot';
+import { hook as zodHook } from '@nizam-os/hono-ban/zod';
 
 import { DOCS_BASE_URL } from './checks.ts';
 

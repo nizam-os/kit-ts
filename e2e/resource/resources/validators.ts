@@ -14,7 +14,7 @@ import { z } from 'zod';
  * - `contactOrNotes`: `contact_id is not null or notes is not null`, over
  *   the public names, the relationship as its id.
  */
-import { defineValidator } from '@netvark/resource-core';
+import { defineValidator } from '@nizam-os/resource-core';
 
 export const validators = {
   email: defineValidator({

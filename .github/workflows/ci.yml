@@ -85,20 +85,20 @@ jobs:
         with:
           node-version-file: .node-version
       - run: pnpm install --frozen-lockfile
-      # @netvark/kysely-keyset declares `kysely >= 0.28.17`, the first release
+      # @nizam-os/kysely-keyset declares `kysely >= 0.28.17`, the first release
       # past Kysely's published SQL injection advisories (keyset ADR 0018); its
       # unit tests compile SQL through that floor. The e2e suite needs 0.29 for
       # the built-in PGlite dialect.
-      - run: pnpm --filter @netvark/kysely-keyset add --save-dev kysely@0.28.17
-      - run: pnpm --filter @netvark/kysely-keyset run typecheck
-      - run: pnpm --filter @netvark/kysely-keyset run test
-      # @netvark/kysely-resource declares `kysely >= 0.29.0`, the first
+      - run: pnpm --filter @nizam-os/kysely-keyset add --save-dev kysely@0.28.17
+      - run: pnpm --filter @nizam-os/kysely-keyset run typecheck
+      - run: pnpm --filter @nizam-os/kysely-keyset run test
+      # @nizam-os/kysely-resource declares `kysely >= 0.29.0`, the first
       # release with the PGlite dialect its tests run every query through. It
       # renders with kysely-keyset, so both go on 0.29.0: with two copies
       # their expression builders' types disagree.
-      - run: pnpm --filter @netvark/kysely-keyset --filter @netvark/kysely-resource add --save-dev kysely@0.29.0
-      - run: pnpm --filter @netvark/kysely-resource run typecheck
-      - run: pnpm --filter @netvark/kysely-resource run test
+      - run: pnpm --filter @nizam-os/kysely-keyset --filter @nizam-os/kysely-resource add --save-dev kysely@0.29.0
+      - run: pnpm --filter @nizam-os/kysely-resource run typecheck
+      - run: pnpm --filter @nizam-os/kysely-resource run test
 
   test-drizzle-floor:
     name: Test (drizzle-orm 0.45.2, the peer range floor)
@@ -114,13 +114,13 @@ jobs:
         with:
           node-version-file: .node-version
       - run: pnpm install --frozen-lockfile
-      # @netvark/drizzle-keyset declares `drizzle-orm >=0.45.2 <1.0.0`. The
+      # @nizam-os/drizzle-keyset declares `drizzle-orm >=0.45.2 <1.0.0`. The
       # API it uses is older; 0.45.2 is the floor because it is the first
       # release that doubles a quote inside an identifier (CVE-2026-39356,
       # pinned by render/target.test.ts). Its typecheck and tests run on it.
-      - run: pnpm --filter @netvark/drizzle-keyset add --save-dev drizzle-orm@0.45.2
-      - run: pnpm --filter @netvark/drizzle-keyset run typecheck
-      - run: pnpm --filter @netvark/drizzle-keyset run test
+      - run: pnpm --filter @nizam-os/drizzle-keyset add --save-dev drizzle-orm@0.45.2
+      - run: pnpm --filter @nizam-os/drizzle-keyset run typecheck
+      - run: pnpm --filter @nizam-os/drizzle-keyset run test
 
   test-zod-floor:
     name: Test (Zod 4.5, the peer range floor)
@@ -136,12 +136,12 @@ jobs:
         with:
           node-version-file: .node-version
       - run: pnpm install --frozen-lockfile
-      # @netvark/resource-core declares `zod ^4.5.0`, the first release whose
+      # @nizam-os/resource-core declares `zod ^4.5.0`, the first release whose
       # `.max()` counts code points as PostgreSQL's char_length does
       # (length.test.ts pins it); its unit tests run on that version.
-      - run: pnpm --filter @netvark/resource-core add --save-dev zod@4.5.0
-      - run: pnpm --filter @netvark/resource-core run typecheck
-      - run: pnpm --filter @netvark/resource-core run test
+      - run: pnpm --filter @nizam-os/resource-core add --save-dev zod@4.5.0
+      - run: pnpm --filter @nizam-os/resource-core run typecheck
+      - run: pnpm --filter @nizam-os/resource-core run test
 
   test-tanstack-query-floor:
     name: Test (TanStack Query 5.89, the peer range floor)
@@ -157,13 +157,13 @@ jobs:
         with:
           node-version-file: .node-version
       - run: pnpm install --frozen-lockfile
-      # @netvark/tanstack-query-jsonapi declares `@tanstack/query-core
+      # @nizam-os/tanstack-query-jsonapi declares `@tanstack/query-core
       # ^5.89.0`, the first release whose mutation callbacks receive the
       # `QueryClient` (`context.client`, jsonapi SPEC 16.7); its typecheck
       # and tests run on it.
-      - run: pnpm --filter @netvark/tanstack-query-jsonapi add --save-dev @tanstack/query-core@5.89.0
-      - run: pnpm --filter @netvark/tanstack-query-jsonapi run typecheck
-      - run: pnpm --filter @netvark/tanstack-query-jsonapi run test
+      - run: pnpm --filter @nizam-os/tanstack-query-jsonapi add --save-dev @tanstack/query-core@5.89.0
+      - run: pnpm --filter @nizam-os/tanstack-query-jsonapi run typecheck
+      - run: pnpm --filter @nizam-os/tanstack-query-jsonapi run test
 
   test-tanstack-form-floor:
     name: Test (TanStack Form 1.17, the peer range floor)
@@ -179,12 +179,12 @@ jobs:
         with:
           node-version-file: .node-version
       - run: pnpm install --frozen-lockfile
-      # @netvark/tanstack-form-resource declares `@tanstack/form-core
+      # @nizam-os/tanstack-form-resource declares `@tanstack/form-core
       # ^1.17.0`, the first release with `revalidateLogic` (resource SPEC
       # 20.9); its typecheck and tests run on it.
-      - run: pnpm --filter @netvark/tanstack-form-resource add --save-dev @tanstack/form-core@1.17.0
-      - run: pnpm --filter @netvark/tanstack-form-resource run typecheck
-      - run: pnpm --filter @netvark/tanstack-form-resource run test
+      - run: pnpm --filter @nizam-os/tanstack-form-resource add --save-dev @tanstack/form-core@1.17.0
+      - run: pnpm --filter @nizam-os/tanstack-form-resource run typecheck
+      - run: pnpm --filter @nizam-os/tanstack-form-resource run test
 
   test-hono-floor:
     name: Test (Hono 4.13.7, the peer range floor)
@@ -200,15 +200,15 @@ jobs:
         with:
           node-version-file: .node-version
       - run: pnpm install --frozen-lockfile
-      # @netvark/hono-ban, @netvark/hono-jsonapi, and @netvark/hono-resource
+      # @nizam-os/hono-ban, @nizam-os/hono-jsonapi, and @nizam-os/hono-resource
       # declare `hono >=4.13.7`, the first release no published Hono advisory
       # affects; hono-resource also needs 4.13.0's `hono/utils/url` export of
       # `tryDecodeURIComponent` (resource SPEC 19.8). The three go on one
       # hono, as an application has one: two copies make their `Context`
       # types disagree.
-      - run: pnpm --filter @netvark/hono-ban --filter @netvark/hono-jsonapi --filter @netvark/hono-resource add --save-dev hono@4.13.7
-      - run: pnpm --filter @netvark/hono-ban --filter @netvark/hono-jsonapi --filter @netvark/hono-resource run typecheck
-      - run: pnpm --filter @netvark/hono-ban --filter @netvark/hono-jsonapi --filter @netvark/hono-resource run test
+      - run: pnpm --filter @nizam-os/hono-ban --filter @nizam-os/hono-jsonapi --filter @nizam-os/hono-resource add --save-dev hono@4.13.7
+      - run: pnpm --filter @nizam-os/hono-ban --filter @nizam-os/hono-jsonapi --filter @nizam-os/hono-resource run typecheck
+      - run: pnpm --filter @nizam-os/hono-ban --filter @nizam-os/hono-jsonapi --filter @nizam-os/hono-resource run test
 
   test-pglite-floor:
     name: Test (PGlite 0.5.0, the peer range floor)
@@ -224,13 +224,13 @@ jobs:
         with:
           node-version-file: .node-version
       - run: pnpm install --frozen-lockfile
-      # @netvark/pg-catalog declares `@electric-sql/pglite ^0.5.0`, which its
+      # @nizam-os/pg-catalog declares `@electric-sql/pglite ^0.5.0`, which its
       # default target imports on demand; its typecheck and tests extract
       # catalogs through 0.5.0. The tests that need a server skip without
       # CATALOG_PG_URL, as in the test job.
-      - run: pnpm --filter @netvark/pg-catalog add --save-dev @electric-sql/pglite@0.5.0
-      - run: pnpm --filter @netvark/pg-catalog run typecheck
-      - run: pnpm --filter @netvark/pg-catalog run test
+      - run: pnpm --filter @nizam-os/pg-catalog add --save-dev @electric-sql/pglite@0.5.0
+      - run: pnpm --filter @nizam-os/pg-catalog run typecheck
+      - run: pnpm --filter @nizam-os/pg-catalog run test
 
   test-paraglide-floor:
     name: Test (Paraglide 2.11, the peer range floor, and 2.26, the last on SDK 3)
@@ -246,17 +246,17 @@ jobs:
         with:
           node-version-file: .node-version
       - run: pnpm install --frozen-lockfile
-      # @netvark/paraglide-intl declares `@inlang/paraglide-js >=2.11.0
+      # @nizam-os/paraglide-intl declares `@inlang/paraglide-js >=2.11.0
       # <3.0.0`: 2.11.0 is the first release that compiles markup. It loads
       # projects with the inlang SDK Paraglide depends on (root ADR 0009), so
       # its typecheck and tests run on 2.11.0, which depends on SDK 2, and on
       # 2.26.0, the last release on SDK 3; the test job runs SDK 4.
-      - run: pnpm --filter @netvark/paraglide-intl add --save-dev @inlang/paraglide-js@2.11.0
-      - run: pnpm --filter @netvark/paraglide-intl run typecheck
-      - run: pnpm --filter @netvark/paraglide-intl run test
-      - run: pnpm --filter @netvark/paraglide-intl add --save-dev @inlang/paraglide-js@2.26.0
-      - run: pnpm --filter @netvark/paraglide-intl run typecheck
-      - run: pnpm --filter @netvark/paraglide-intl run test
+      - run: pnpm --filter @nizam-os/paraglide-intl add --save-dev @inlang/paraglide-js@2.11.0
+      - run: pnpm --filter @nizam-os/paraglide-intl run typecheck
+      - run: pnpm --filter @nizam-os/paraglide-intl run test
+      - run: pnpm --filter @nizam-os/paraglide-intl add --save-dev @inlang/paraglide-js@2.26.0
+      - run: pnpm --filter @nizam-os/paraglide-intl run typecheck
+      - run: pnpm --filter @nizam-os/paraglide-intl run test
 
   build:
     name: Build and package checks
@@ -310,8 +310,8 @@ jobs:
       # install would. The keyset, catalog, and resource suites run on PGlite
       # here; PostgreSQL servers are the jobs below.
       - run: pnpm run build
-      - run: pnpm --filter @netvark/${{ matrix.family }}-e2e run typecheck
-      - run: pnpm --filter @netvark/${{ matrix.family }}-e2e run test
+      - run: pnpm --filter @nizam-os/${{ matrix.family }}-e2e run typecheck
+      - run: pnpm --filter @nizam-os/${{ matrix.family }}-e2e run test
 
   e2e-postgres:
     name: E2E (keyset, PostgreSQL ${{ matrix.postgres }} server)
@@ -349,7 +349,7 @@ jobs:
       # casts on the planner and executor production uses), and the feature
       # files that take their databases from databases() add the server to
       # PGlite. Without the variable those files run on PGlite alone.
-      - run: pnpm --filter @netvark/keyset-e2e exec vitest run
+      - run: pnpm --filter @nizam-os/keyset-e2e exec vitest run
         env:
           KEYSET_PG_URL: postgres://postgres:postgres@localhost:5432/postgres
 
@@ -393,8 +393,8 @@ jobs:
       # major and compares the bytes with the reviewed files PGlite produced,
       # reads every table back through Kysely with the generated types, and
       # finds no drift between this server and the committed catalog.
-      - run: pnpm --filter @netvark/pg-catalog run test
-      - run: pnpm --filter @netvark/catalog-e2e run test
+      - run: pnpm --filter @nizam-os/pg-catalog run test
+      - run: pnpm --filter @nizam-os/catalog-e2e run test
 
   e2e-resource-postgres:
     name: E2E (resource, PostgreSQL ${{ matrix.postgres }} server)
@@ -432,7 +432,7 @@ jobs:
       # as PGlite, in a throwaway UTF8 database, and holds PostgreSQL's
       # verdict against the schema's. Without the variable it runs on PGlite
       # alone.
-      - run: pnpm --filter @netvark/resource-e2e exec vitest run
+      - run: pnpm --filter @nizam-os/resource-e2e exec vitest run
         env:
           RESOURCE_PG_URL: postgres://postgres:postgres@localhost:5432/postgres
 

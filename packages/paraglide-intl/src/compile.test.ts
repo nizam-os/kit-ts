@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { compile as paraglideCompile } from '@inlang/paraglide-js';
 import { describe, expect, it } from 'vitest';
 
-import { isolate } from '@netvark/intl-core';
+import { isolate } from '@nizam-os/intl-core';
 
 import { compile } from './compile';
 import {

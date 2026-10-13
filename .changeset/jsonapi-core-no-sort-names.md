@@ -1,5 +1,5 @@
 ---
-'@netvark/jsonapi-core': patch
+'@nizam-os/jsonapi-core': patch
 ---
 
 A definition whose query declares no `sort` types its sort names as `never` instead of `string`, so

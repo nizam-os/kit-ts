@@ -1,6 +1,6 @@
 /**
  * The keyset name case tables (SPEC 11.2): a name and whether
- * `@netvark/keyset-core` accepts it as a field name, or as a search
+ * `@nizam-os/keyset-core` accepts it as a field name, or as a search
  * configuration. keyset-core's `isFieldName` and `isSearchConfig`
  * (`jsonapi/keyset-names.test.ts`) and the type-level `IsFieldName` and
  * `IsSearchConfig` (`jsonapi/keyset-names.test-d.ts`) are held to them.

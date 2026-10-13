@@ -7,7 +7,7 @@
  * @ref https://jsonapi.org/format/1.1/#document-resource-object-linkage
  * @packageDocumentation
  */
-import type { ErrorItem } from '@netvark/ban-core';
+import type { ErrorItem } from '@nizam-os/ban-core';
 
 import type {
   AnyResourceIdentifier,

@@ -5,13 +5,13 @@
  * conditions and groups in order, each condition at the parameter the
  * client wrote it as, search, and custom parameters.
  */
-import type { AnyResource, ParsedQuery } from '@netvark/jsonapi-core';
+import type { AnyResource, ParsedQuery } from '@nizam-os/jsonapi-core';
 
 import type { FilterValues, Query } from './types';
 
 import { describe, expect, it } from 'vitest';
 
-import { parseQuery } from '@netvark/jsonapi-core';
+import { parseQuery } from '@nizam-os/jsonapi-core';
 
 import { Articles, People, Tags } from '../test-support/blog';
 import { serializeQuery } from './serialize-query';

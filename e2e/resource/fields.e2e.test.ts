@@ -8,8 +8,8 @@
  * written into its key, on PGlite and on the server `RESOURCE_PG_URL`
  * names.
  */
-import type { PublicCatalog } from '@netvark/catalog-core';
-import type { DeclaredResource, FieldMeta } from '@netvark/resource-core';
+import type { PublicCatalog } from '@nizam-os/catalog-core';
+import type { DeclaredResource, FieldMeta } from '@nizam-os/resource-core';
 
 import type { ColumnType } from './support/column-type.ts';
 import type { MetaProbe } from './support/meta-probes.ts';

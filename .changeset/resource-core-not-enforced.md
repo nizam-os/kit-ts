@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 A NOT ENFORCED CHECK or foreign key (PostgreSQL 18) no longer reaches clients: the schemas apply no

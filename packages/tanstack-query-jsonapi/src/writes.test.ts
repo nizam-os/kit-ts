@@ -1,7 +1,7 @@
 import { MutationObserver, QueryObserver } from '@tanstack/query-core';
 import { describe, expect, it, vi } from 'vitest';
 
-import { isResponseError } from '@netvark/jsonapi-client';
+import { isResponseError } from '@nizam-os/jsonapi-client';
 
 import { resourceQueries } from './queries';
 import { article, blogApi, held, ok } from './test-support/fetch-double';

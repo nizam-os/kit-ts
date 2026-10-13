@@ -11,7 +11,7 @@
  * passes over its members.
  * @packageDocumentation
  */
-import type { PublicTable } from '@netvark/catalog-core';
+import type { PublicTable } from '@nizam-os/catalog-core';
 
 import type { MemberColumn } from '../declare/members';
 import type { Requirement } from '../declare/requirement';

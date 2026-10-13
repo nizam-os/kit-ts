@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-core': minor
+'@nizam-os/resource-core': minor
 ---
 
 The storage contract checks obligation 12: a cursor `list` issued in one scope is refused in another

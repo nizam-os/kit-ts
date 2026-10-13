@@ -1,5 +1,5 @@
 ---
-'@netvark/resource-ui': minor
+'@nizam-os/resource-ui': minor
 ---
 
 Add `resourceForm(resource, operation, options)`, a framework-free model of a create or an update
@@ -10,4 +10,4 @@ Standard Schema that runs the declaration's own write validator and puts each is
 the words the server gives the same refusal, a blank value reading as required. `write(values)`
 returns what the client's `create` or `update` takes: only the members the person changed, a cleared
 input as `null`. `errors(error)` places a refused write's error objects on the fields their pointers
-name, the rest for a banner. `@netvark/jsonapi-client` is a peer dependency.
+name, the rest for a banner. `@nizam-os/jsonapi-client` is a peer dependency.

@@ -1,6 +1,6 @@
 ---
-'@netvark/ban-core': minor
-'@netvark/hono-ban': minor
+'@nizam-os/ban-core': minor
+'@nizam-os/hono-ban': minor
 ---
 
 Document error titles as strings, so localized bodies conform. The Problem Details, JSON:API, and

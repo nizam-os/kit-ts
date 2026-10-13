@@ -18,7 +18,7 @@ const config: UserWorkspaceConfig = defineProject({
     },
   },
   test: {
-    name: '@netvark/kysely-resource',
+    name: '@nizam-os/kysely-resource',
     include: ['src/**/*.test.ts'],
     environment: 'node',
     restoreMocks: true,

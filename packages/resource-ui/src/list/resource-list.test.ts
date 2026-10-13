@@ -8,8 +8,8 @@
  */
 import { describe, expect, it } from 'vitest';
 
-import { paginationLinks } from '@netvark/jsonapi-core';
-import { defaultMessages } from '@netvark/resource-core';
+import { paginationLinks } from '@nizam-os/jsonapi-core';
+import { defaultMessages } from '@nizam-os/resource-core';
 
 import { messages } from '../test-support/messages';
 import { Contacts, Organizations, Plans } from '../test-support/resources';
