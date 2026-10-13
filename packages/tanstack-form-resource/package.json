@@ -50,10 +50,15 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
     "@nizam-os/jsonapi-client": "workspace:^",
     "@nizam-os/resource-core": "workspace:^",
     "@nizam-os/resource-ui": "workspace:^",
     "@tanstack/form-core": "catalog:",
+    "publint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {

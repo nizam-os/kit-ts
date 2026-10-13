@@ -59,11 +59,16 @@
     "@nizam-os/kysely-keyset": "workspace:^"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
     "@electric-sql/pglite": "catalog:",
     "@nizam-os/keyset-core": "workspace:^",
     "@nizam-os/pg-catalog": "workspace:^",
     "@nizam-os/resource-core": "workspace:^",
     "kysely": "catalog:",
+    "publint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {

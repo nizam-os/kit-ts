@@ -51,9 +51,14 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
     "@nizam-os/jsonapi-client": "workspace:^",
     "@nizam-os/jsonapi-core": "workspace:^",
-    "@tanstack/query-core": "catalog:"
+    "@tanstack/query-core": "catalog:",
+    "publint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   },
   "peerDependencies": {
     "@nizam-os/jsonapi-client": "^0.1.0",

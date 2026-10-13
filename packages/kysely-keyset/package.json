@@ -57,7 +57,12 @@
     "@nizam-os/keyset-core": "workspace:^"
   },
   "devDependencies": {
-    "kysely": "catalog:"
+    "@arethetypeswrong/cli": "catalog:",
+    "kysely": "catalog:",
+    "publint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   },
   "peerDependencies": {
     "kysely": ">=0.28.17"

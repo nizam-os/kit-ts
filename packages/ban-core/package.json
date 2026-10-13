@@ -123,11 +123,16 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
     "@opentelemetry/api": "catalog:",
     "ajv": "catalog:",
     "ajv-formats": "catalog:",
     "postgres": "catalog:",
+    "publint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
     "valibot": "catalog:",
+    "vitest": "catalog:",
     "zod": "catalog:"
   },
   "engines": {

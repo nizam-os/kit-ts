@@ -60,8 +60,13 @@
     "@nizam-os/ban-core": "workspace:^"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
     "ajv": "catalog:",
     "ajv-formats": "catalog:",
+    "publint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:",
     "zod": "catalog:"
   },
   "engines": {

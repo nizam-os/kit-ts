@@ -55,6 +55,13 @@
   "dependencies": {
     "@nizam-os/jsonapi-core": "workspace:^"
   },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
+    "publint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  },
   "engines": {
     "node": ">=22.12.0"
   }

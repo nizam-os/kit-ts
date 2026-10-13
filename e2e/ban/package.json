@@ -28,7 +28,7 @@
     "@types/pg": "catalog:",
     "ajv": "catalog:",
     "ajv-formats": "catalog:",
-    "drizzle-orm": "0.45.3",
+    "drizzle-orm": "catalog:",
     "hono": "catalog:",
     "miniflare": "catalog:",
     "pg": "catalog:",

@@ -51,6 +51,13 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
   },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
+    "publint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  },
   "engines": {
     "node": ">=22.12.0"
   }

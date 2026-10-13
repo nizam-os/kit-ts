@@ -55,11 +55,16 @@
     "@nizam-os/jsonapi-core": "workspace:^"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
     "@nizam-os/jsonapi-client": "workspace:^",
     "@nizam-os/resource-core": "workspace:^",
     "@nizam-os/tanstack-query-jsonapi": "workspace:^",
     "@tanstack/query-core": "catalog:",
     "@tanstack/table-core": "9.2.8",
+    "publint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {

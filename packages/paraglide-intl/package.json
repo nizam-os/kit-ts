@@ -56,9 +56,14 @@
     "@nizam-os/intl-core": "workspace:^"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
     "@inlang/paraglide-js": "catalog:",
     "@inlang/plugin-message-format": "catalog:",
-    "@types/node": "catalog:"
+    "@types/node": "catalog:",
+    "publint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   },
   "peerDependencies": {
     "@inlang/paraglide-js": ">=2.11.0 <3.0.0"

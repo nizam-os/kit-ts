@@ -128,12 +128,17 @@
     "@nizam-os/ban-core": "workspace:^"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
     "@hono/standard-validator": "catalog:",
     "@hono/valibot-validator": "catalog:",
     "@hono/zod-openapi": "catalog:",
     "@hono/zod-validator": "catalog:",
     "hono": "catalog:",
+    "publint": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
     "valibot": "catalog:",
+    "vitest": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {
