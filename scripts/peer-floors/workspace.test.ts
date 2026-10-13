@@ -4,7 +4,12 @@ import { join } from 'node:path';
 
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
-import { manifestOf, packageDirectories, readWorkspace } from './workspace.ts';
+import {
+  manifestOf,
+  packageDirectories,
+  readWorkspace,
+  workspaceRoot,
+} from './workspace.ts';
 
 let root: string;
 
@@ -101,6 +106,40 @@ describe('packageDirectories', () => {
       new TypeError('pnpm-workspace.yaml packages must be strings'),
     );
   });
+
+  it('keeps the directories under a tree and reads no glob outside it', async () => {
+    await writePackage('kit', { name: 'kit' });
+    await writePackage('kit/packages/a', { name: 'a' });
+    await writePackage('kit/packages/b', { name: 'b' });
+    await writePackage('other/c', { name: 'c' });
+    const globs = ['kit', 'kit/packages/*', 'other/*', 'absent/*'];
+    expect(packageDirectories(globs, root, 'kit')).toEqual([
+      'kit',
+      'kit/packages/a',
+      'kit/packages/b',
+    ]);
+    expect(packageDirectories(globs, root, 'kit/packages/a')).toEqual([
+      'kit/packages/a',
+    ]);
+    expect(() => packageDirectories(globs, root)).toThrow(/absent/u);
+  });
+});
+
+describe('workspaceRoot', () => {
+  it('finds the workspace file in the directory or above it', async () => {
+    await writeFile(join(root, 'pnpm-workspace.yaml'), 'packages: []\n');
+    await mkdir(join(root, 'kit/packages/a'), { recursive: true });
+    expect(workspaceRoot(root)).toBe(root);
+    expect(workspaceRoot(join(root, 'kit/packages/a'))).toBe(root);
+  });
+
+  it('refuses a tree with no workspace file above it', async () => {
+    const start = join(root, 'kit');
+    await mkdir(start);
+    expect(() => workspaceRoot(start)).toThrow(
+      new TypeError(`no pnpm-workspace.yaml at or above ${start}`),
+    );
+  });
 });
 
 describe('readWorkspace', () => {
@@ -122,6 +161,22 @@ describe('readWorkspace', () => {
         peerDependencies: { hono: '>=4.13.7' },
       },
     ]);
+  });
+
+  it('reads the workspace file above the tree and keeps only the packages under it', async () => {
+    await writeFile(
+      join(root, 'pnpm-workspace.yaml'),
+      'packages:\n  - kit\n  - kit/packages/*\n  - other/*\n',
+    );
+    await writePackage('kit', { name: '@x/kit' });
+    await writePackage('kit/packages/a', {
+      name: '@x/a',
+      peerDependencies: { hono: '>=4.13.7' },
+    });
+    await writePackage('other/b', { name: '@x/b' });
+    expect(
+      readWorkspace(join(root, 'kit')).map((manifest) => manifest.name),
+    ).toEqual(['@x/kit', '@x/a']);
   });
 
   it('refuses an empty workspace file', async () => {

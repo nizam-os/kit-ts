@@ -1,14 +1,17 @@
 /**
  * The workspace's package manifests, read from the directories the
- * `packages` globs of `pnpm-workspace.yaml` name. Only the forms this
- * repository uses are read, a directory and `<directory>/*`; any other glob
- * is a `TypeError`, so a new form fails here instead of hiding packages from
- * the floor checks.
+ * `packages` globs of the nearest `pnpm-workspace.yaml` name. The file is
+ * looked for in the tree's root and then in each directory above it, so the
+ * tree reads the same on its own and as part of a larger workspace, and only
+ * the packages under the tree are returned. Only the forms this repository
+ * uses are read, a directory and `<directory>/*`; any other glob is a
+ * `TypeError`, so a new form fails here instead of hiding packages from the
+ * floor checks.
  * @ref https://pnpm.io/pnpm-workspace_yaml
  * @packageDocumentation
  */
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { dirname, join, relative, resolve } from 'node:path';
 
 import { parse } from 'yaml';
 
@@ -73,10 +76,21 @@ export function manifestOf(json: unknown, file: string): Manifest {
   };
 }
 
-/** The package directories, relative to the root, that the `packages` globs name. */
+/** Whether `directory` is `tree` or inside it; the empty tree is the whole workspace. */
+function isUnder(directory: string, tree: string): boolean {
+  return tree === '' || directory === tree || directory.startsWith(`${tree}/`);
+}
+
+/**
+ * The package directories, relative to the workspace root, that the
+ * `packages` globs name, kept to those under `tree` (a directory relative to
+ * the root; the empty string is the whole workspace). A glob that cannot
+ * reach the tree is not read, so a sibling tree need not exist on disk.
+ */
 export function packageDirectories(
   globs: unknown,
   root: string,
+  tree = '',
 ): Array<string> {
   if (!Array.isArray(globs)) {
     throw new TypeError('pnpm-workspace.yaml must list its packages');
@@ -88,6 +102,9 @@ export function packageDirectories(
     }
     const children = CHILDREN.exec(glob)?.groups?.['directory'];
     if (children !== undefined) {
+      if (!isUnder(children, tree) && !isUnder(tree, children)) {
+        continue;
+      }
       const entries = readdirSync(join(root, children), {
         withFileTypes: true,
       });
@@ -95,13 +112,16 @@ export function packageDirectories(
         const directory = `${children}/${entry.name}`;
         if (
           entry.isDirectory() &&
+          isUnder(directory, tree) &&
           existsSync(join(root, directory, 'package.json'))
         ) {
           directories.push(directory);
         }
       }
     } else if (DIRECTORY.test(glob)) {
-      directories.push(glob);
+      if (isUnder(glob, tree)) {
+        directories.push(glob);
+      }
     } else {
       throw new TypeError(
         `the packages glob ${glob} is not one the floor checks read`,
@@ -111,17 +131,34 @@ export function packageDirectories(
   return directories.toSorted();
 }
 
+/** The nearest directory at or above `start` that holds a `pnpm-workspace.yaml`. */
+export function workspaceRoot(start: string): string {
+  let directory = resolve(start);
+  while (!existsSync(join(directory, 'pnpm-workspace.yaml'))) {
+    const parent = dirname(directory);
+    if (parent === directory) {
+      throw new TypeError(`no pnpm-workspace.yaml at or above ${start}`);
+    }
+    directory = parent;
+  }
+  return directory;
+}
+
 /** Every workspace package's manifest under `root`, in directory order. */
 export function readWorkspace(root: string): Array<Manifest> {
+  const workspace = workspaceRoot(root);
   const config: unknown = parse(
-    readFileSync(join(root, 'pnpm-workspace.yaml'), 'utf8'),
+    readFileSync(join(workspace, 'pnpm-workspace.yaml'), 'utf8'),
   );
   const globs: unknown = isObject(config)
     ? Reflect.get(config, 'packages')
     : undefined;
-  return packageDirectories(globs, root).map((directory) => {
+  const tree = relative(workspace, resolve(root));
+  return packageDirectories(globs, workspace, tree).map((directory) => {
     const file = `${directory}/package.json`;
-    const json: unknown = JSON.parse(readFileSync(join(root, file), 'utf8'));
+    const json: unknown = JSON.parse(
+      readFileSync(join(workspace, file), 'utf8'),
+    );
     return manifestOf(json, file);
   });
 }
