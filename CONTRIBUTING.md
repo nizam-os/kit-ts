@@ -22,6 +22,12 @@ Design intent lives in each family's `DESIGN.md`, the normative contract in its 
 decisions in its `adr/`; read those before proposing API changes. Decisions about the repository
 itself are in [`docs/adr/`](docs/adr).
 
+This repository is a mirror. The kit is developed as one tree of the Nizam suite's repository and
+exported here after each merge, history included; this repository's `pnpm-workspace.yaml` and
+`pnpm-lock.yaml` are written by the export. Pull requests are welcome here: they are reviewed here,
+land in the suite's repository, and arrive with the next export rather than through a merge commit
+of their own.
+
 ## Prerequisites
 
 - Node.js 24 (see `.node-version`; Node 22.12+ is supported at runtime and in CI)
