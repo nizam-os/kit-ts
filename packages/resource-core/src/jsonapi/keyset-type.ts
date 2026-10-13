@@ -7,7 +7,7 @@
  * do arrays of enums, since its arrays hold no enum, nor an enum without
  * values (no labels, or rules whose values do not meet), since its enums
  * need values.
- * @ref https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md (sections 3.1 and 4.2)
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/SPEC.md (sections 3.1 and 4.2)
  * @packageDocumentation
  */
 import type {

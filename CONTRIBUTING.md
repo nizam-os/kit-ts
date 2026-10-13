@@ -36,7 +36,7 @@ itself are in [`docs/adr/`](docs/adr).
 ## Setup
 
 ```bash
-git clone https://github.com/nizam-os/kit.git
+git clone https://github.com/nizam-os/kit-ts.git
 cd kit
 pnpm install
 ```

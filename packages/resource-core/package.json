@@ -13,13 +13,13 @@
     "schema",
     "zod"
   ],
-  "homepage": "https://github.com/nizam-os/kit/tree/main/packages/resource-core#readme",
-  "bugs": "https://github.com/nizam-os/kit/issues",
+  "homepage": "https://github.com/nizam-os/kit-ts/tree/main/packages/resource-core#readme",
+  "bugs": "https://github.com/nizam-os/kit-ts/issues",
   "license": "MIT",
   "author": "Ali Issa (https://github.com/ali-issa)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nizam-os/kit.git",
+    "url": "git+https://github.com/nizam-os/kit-ts.git",
     "directory": "packages/resource-core"
   },
   "files": [

@@ -8,7 +8,7 @@
  * `jsonapi`, `links`, and `meta` are open: a server adds its own.
  * @ref https://jsonapi.org/format/1.1/#document-top-level
  * @ref https://jsonapi.org/profiles/ethanresnick/cursor-pagination/
- * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (sections 7 and 8)
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/SPEC.md (sections 7 and 8)
  * @packageDocumentation
  */
 import type { JsonSchema } from '@nizam-os/ban-core';

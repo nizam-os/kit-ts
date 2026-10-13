@@ -7,7 +7,7 @@ fieldsets, request document validation with JSON Pointers, content negotiation, 
 [Atomic Operations](https://jsonapi.org/ext/atomic/) extension, all as functions over plain values.
 Every rule is a cited clause of the specification; where the specification leaves a choice to the
 server, the choice is written down in
-[`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md).
+[`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/SPEC.md).
 
 Using [Hono](https://hono.dev)?
 [`@nizam-os/hono-jsonapi`](https://www.npmjs.com/package/@nizam-os/hono-jsonapi) wraps this package
@@ -19,7 +19,7 @@ as middleware, validators, response helpers, and handlers, and re-exports all of
 pnpm add @nizam-os/jsonapi-core
 ```
 
-[`@nizam-os/ban-core`](https://github.com/nizam-os/kit) is the one dependency: every error is a
+[`@nizam-os/ban-core`](https://github.com/nizam-os/kit-ts) is the one dependency: every error is a
 @nizam-os/ban-core error, so an application's catalog and this package's share one model (see
 Errors). Node 22.12+, Bun, Deno, and Cloudflare Workers are supported; the package uses web
 standards only (`URL`, `URLSearchParams`, `JSON`) and never reads the environment. Validators are
@@ -415,7 +415,7 @@ const tags = parseToManyRelationshipDocument(await request.json(), { type: 'tags
 
 ### Errors
 
-Every error is a [@nizam-os/ban-core](https://github.com/nizam-os/kit) `BanError` built by
+Every error is a [@nizam-os/ban-core](https://github.com/nizam-os/kit-ts) `BanError` built by
 `jsonApiBan`, the package's @nizam-os/ban-core instance: a closed catalog (`ERROR_CATALOG` over
 @nizam-os/ban-core's built-ins) in which each `code` fixes `status` and `title`, rendered by
 @nizam-os/ban-core's JSON:API format. `jsonApiError` builds one error object; a list of `errorItem`s
@@ -450,7 +450,7 @@ answers `Sort field "nme" is not supported by this endpoint`; `sort=<b>nme</b>` 
 
 Write your own details the same way: say what was wrong and leave the value to `source.pointer` or
 `source.parameter`, which JSON:API defines for programs to read
-([ADR 0016](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0016-details-quote-request-text-as-plain-tokens.md)).
+([ADR 0016](https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/adr/0016-details-quote-request-text-as-plain-tokens.md)).
 
 `isBanError` narrows a caught error; `error.status` is the response status, `error.headers` the
 headers it carries (`Allow`, `Vary`), `errorDocument(error)` the document to send, and
@@ -599,12 +599,12 @@ operation's failure.
 
 ## Documentation
 
-- [`docs/jsonapi/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/DESIGN.md): what
-  the packages are, the principles, and the API by example
-- [`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md): the
+- [`docs/jsonapi/DESIGN.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/DESIGN.md):
+  what the packages are, the principles, and the API by example
+- [`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/SPEC.md): the
   normative contract, section by section, with the tests that prove it
-- [`docs/jsonapi/adr/`](https://github.com/nizam-os/kit/tree/main/docs/jsonapi/adr): the decisions,
-  including every choice the specification leaves to the server
+- [`docs/jsonapi/adr/`](https://github.com/nizam-os/kit-ts/tree/main/docs/jsonapi/adr): the
+  decisions, including every choice the specification leaves to the server
 
 ## License
 

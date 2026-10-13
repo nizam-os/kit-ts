@@ -5,7 +5,7 @@ One declaration per PostgreSQL table, keyed by its database names and typed by t
 migrations. A wrong table, column, foreign key, constraint, codec, validator, or scope name fails
 `tsc` at the option that holds it, with the reason; the same mistake made from JavaScript throws a
 `TypeError` naming its path. Every rule is specified in
-[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md).
+[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/SPEC.md).
 
 Status: in development and unreleased. This line implements the definer, the declaration, the public
 names and codes derived from it, the wire forms and Zod schemas, `defineCodec` and
@@ -16,8 +16,8 @@ keyset definition a declaration derives (SPEC 9.4 and 11), the `server` subpath 
 `constraintError`, `relationshipTargets`, and the storage adapter contract and its suite, `list`
 included (SPEC 9.5 and 12), and the `openapi` entry: the OpenAPI document, the surface, and its diff
 (SPEC 13);
-[`docs/resource/README.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/README.md) shows
-where the family is going.
+[`docs/resource/README.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/README.md)
+shows where the family is going.
 
 ## Install
 
@@ -249,7 +249,7 @@ handles.
 `pg-catalog rules --check` holds the fixtures, and every member's boundary values, to the database
 your migrations build: an `accept` fixture must be stored, a `reject` fixture refused by its CHECK,
 and a codec's fixture stored and read back as itself through a storage codec over text (see
-[`@nizam-os/pg-catalog`](https://github.com/nizam-os/kit/tree/main/packages/pg-catalog#checking-declarations-against-the-database)).
+[`@nizam-os/pg-catalog`](https://github.com/nizam-os/kit-ts/tree/main/packages/pg-catalog#checking-declarations-against-the-database)).
 A codec's fixtures are round-trip values, so write them as the server gives them back: the period
 above is in UTC, since `tstzrange` keeps instants, not offsets.
 
@@ -967,7 +967,7 @@ async function list(tx, resource, request: StorageListRequest): Promise<StorageP
 ```
 
 The reference adapter's
-[`reference-list.ts`](https://github.com/nizam-os/kit/blob/main/e2e/resource/support/reference-list.ts)
+[`reference-list.ts`](https://github.com/nizam-os/kit-ts/blob/main/e2e/resource/support/reference-list.ts)
 renders every part of a declared resource's plan in plain SQL.
 
 ### The contract suite
@@ -1055,7 +1055,7 @@ targets up after the policy and the rules, so an actor they refuse learns nothin
 
 Take every resource's behavior as `ResourceBehavior<AppDomain>`. Every operation's complete
 lifecycle is in
-[`packages/kysely-resource/src/runtime/`](https://github.com/nizam-os/kit/tree/main/packages/kysely-resource/src/runtime).
+[`packages/kysely-resource/src/runtime/`](https://github.com/nizam-os/kit-ts/tree/main/packages/kysely-resource/src/runtime).
 
 A host or a worker takes a runtime by the contract this subpath types (SPEC 12.10), so it needs no
 query builder or driver to type the one it is given: `warnings`, `resources`, each behavior's
@@ -1452,11 +1452,12 @@ and 129 MB to 0.52 s and 202 MB, and the GitLab slice's from 0.27 s and 151 MB t
 
 ## Documentation
 
-- [`docs/resource/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/DESIGN.md):
+- [`docs/resource/DESIGN.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/DESIGN.md):
   what the family is, the principles, and the API by example
-- [`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md): the
+- [`docs/resource/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/SPEC.md): the
   normative contract, section by section, with the tests that prove it
-- [`docs/resource/adr/`](https://github.com/nizam-os/kit/tree/main/docs/resource/adr): the decisions
+- [`docs/resource/adr/`](https://github.com/nizam-os/kit-ts/tree/main/docs/resource/adr): the
+  decisions
 
 ## License
 

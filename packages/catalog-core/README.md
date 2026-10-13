@@ -7,7 +7,7 @@ schemas you configure, as PostgreSQL itself built them.
 migrations as an `as const` module; this package is what reads it: the types, `toPublicCatalog` for
 the browser-safe slice, and `diffCatalogs` to compare two catalogs. Every member and rule is
 specified in
-[`docs/catalog/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/catalog/SPEC.md).
+[`docs/catalog/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/catalog/SPEC.md).
 
 ## Install
 

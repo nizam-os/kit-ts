@@ -20,7 +20,7 @@
 # publish exchanges the GitHub id-token for a short-lived npm token and npm
 # attaches provenance automatically. One-time setup on npmjs.com for each
 # package under the @nizam-os scope: Settings > Trusted publisher > GitHub
-# Actions, repository nizam-os/kit, workflow filename release.yml. pnpm
+# Actions, repository nizam-os/kit-ts, workflow filename release.yml. pnpm
 # publish also applies each package's publishConfig (the dist-only exports
 # map) and rewrites every workspace: range between the packages to the
 # published versions.

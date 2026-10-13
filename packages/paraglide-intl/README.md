@@ -7,9 +7,9 @@ every message is wrapped in Unicode isolates. `watch()` compiles again on each c
 development. It re-exports
 [`@nizam-os/intl-core`](https://www.npmjs.com/package/@nizam-os/intl-core), which formats dates and
 numbers and isolates values in your own strings. The rules are written down in
-[`docs/intl/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/intl/SPEC.md), and the
+[`docs/intl/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/intl/SPEC.md), and the
 decisions, with their measurements, in
-[`docs/intl/adr`](https://github.com/nizam-os/kit/tree/main/docs/intl/adr).
+[`docs/intl/adr`](https://github.com/nizam-os/kit-ts/tree/main/docs/intl/adr).
 
 ## Install
 
@@ -223,14 +223,14 @@ its own. Both examples are measured with Vite 8.3 on Node 24, Bun 1.4, and Deno 
 - **Remove bidi controls from names and other text you accept from users**, where you accept it:
   `value.replace(/\p{Bidi_Control}/gu, '')`. A value with an unmatched U+2069 of its own closes the
   isolate early
-  ([ADR 0006](https://github.com/nizam-os/kit/blob/main/docs/intl/adr/0006-every-interpolated-value-is-isolated-in-every-locale.md)).
+  ([ADR 0006](https://github.com/nizam-os/kit-ts/blob/main/docs/intl/adr/0006-every-interpolated-value-is-isolated-in-every-locale.md)).
 - **Format in code, not in the message**: dates and numbers through `@nizam-os/intl-core`, so a
   value reads the same in a sentence as in a table cell, and the plural on the raw count.
 - **Never interpolate into a message that is not displayed as text**: a URL, an `href`, an
   identifier. The isolates are characters and travel with the string.
 - **Check catalogs with `inlang check`** in CI: Paraglide renders the base locale for a missing
   translation and the message key for a missing plural form
-  ([ADR 0009](https://github.com/nizam-os/kit/blob/main/docs/intl/adr/0009-catalog-consistency-is-left-to-inlang-check.md)).
+  ([ADR 0009](https://github.com/nizam-os/kit-ts/blob/main/docs/intl/adr/0009-catalog-consistency-is-left-to-inlang-check.md)).
 
 ## License
 

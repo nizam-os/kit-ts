@@ -4,9 +4,9 @@ Hydration-safe formatting for any JavaScript runtime, built for server-rendered 
 localize with [Paraglide JS](https://inlang.com/m/gerre34r/library-inlang-paraglideJs) and usable
 without it. Every rule is a cited clause of Unicode, ECMA-402, or an RFC; where a choice is the
 library's, it is written down in
-[`docs/intl/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/intl/SPEC.md), and the
+[`docs/intl/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/intl/SPEC.md), and the
 decisions, with their measurements, in
-[`docs/intl/adr`](https://github.com/nizam-os/kit/tree/main/docs/intl/adr).
+[`docs/intl/adr`](https://github.com/nizam-os/kit-ts/tree/main/docs/intl/adr).
 
 Compiling Paraglide messages?
 [`@nizam-os/paraglide-intl`](https://www.npmjs.com/package/@nizam-os/paraglide-intl) wraps every
@@ -95,7 +95,7 @@ itself.
 
 During SSR the server sees the request, not the device, so the reader's zone comes from a cookie
 that both sides read before they render
-([ADR 0005](https://github.com/nizam-os/kit/blob/main/docs/intl/adr/0005-the-readers-time-zone-comes-from-a-cookie.md)).
+([ADR 0005](https://github.com/nizam-os/kit-ts/blob/main/docs/intl/adr/0005-the-readers-time-zone-comes-from-a-cookie.md)).
 
 ```ts
 // the server entry: each request formats in the zone of its cookie

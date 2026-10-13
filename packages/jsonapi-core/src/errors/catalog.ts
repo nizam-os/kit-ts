@@ -5,7 +5,7 @@
  * own `createBan({ errors })` next to its own entries; the remaining codes
  * are @nizam-os/ban-core built-ins (same `status`, same `title`).
  * @ref https://jsonapi.org/format/1.1/#error-objects
- * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (section 3: the built-in catalog, the definition shape)
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/SPEC.md (section 3: the built-in catalog, the definition shape)
  * @packageDocumentation
  */
 import type { ErrorDefinition } from '@nizam-os/ban-core';

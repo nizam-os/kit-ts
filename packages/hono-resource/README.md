@@ -1,15 +1,15 @@
 # @nizam-os/hono-resource
 
 [Hono](https://hono.dev) routes for a runtime of
-[`@nizam-os/resource-core`](https://github.com/nizam-os/kit/tree/main/packages/resource-core)
+[`@nizam-os/resource-core`](https://github.com/nizam-os/kit-ts/tree/main/packages/resource-core)
 declarations. `jsonApiRoutes` serves every declared operation at the path its JSON:API links name,
 with no handler written per resource:
-[`@nizam-os/hono-jsonapi`](https://github.com/nizam-os/kit/tree/main/packages/hono-jsonapi)
+[`@nizam-os/hono-jsonapi`](https://github.com/nizam-os/kit-ts/tree/main/packages/hono-jsonapi)
 negotiates, validates, and builds documents, the runtime authorizes and runs, and your error handler
 renders every error. Every choice is written down in
-[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md), section
-19, and the decisions behind it in
-[ADR 0013](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0013-hosts-take-the-runtime-contract-and-mount-where-the-links-point.md).
+[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/SPEC.md),
+section 19, and the decisions behind it in
+[ADR 0013](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/adr/0013-hosts-take-the-runtime-contract-and-mount-where-the-links-point.md).
 
 Status: in development and unreleased. The collection, resource, relationship, and related routes,
 includes, the Atomic Operations endpoint, the OpenAPI document, and the 405 of every other method
@@ -25,9 +25,9 @@ pnpm add @nizam-os/hono-resource @nizam-os/hono-jsonapi @nizam-os/hono-ban @niza
 `hono >= 4.13.7`, `@nizam-os/hono-jsonapi`, and `@nizam-os/resource-core` are peer dependencies:
 your application declares the resources and mounts `jsonApi()` with its own copies, and the routes
 must work with those same copies
-([ADR 0006](https://github.com/nizam-os/kit/blob/main/docs/adr/0006-a-binding-takes-the-packages-the-application-hands-it-values-from-as-peers.md)).
+([ADR 0006](https://github.com/nizam-os/kit-ts/blob/main/docs/adr/0006-a-binding-takes-the-packages-the-application-hands-it-values-from-as-peers.md)).
 The routes import no runtime: any runtime of the contract runs behind them, such as
-[`@nizam-os/kysely-resource`](https://github.com/nizam-os/kit/tree/main/packages/kysely-resource)'s.
+[`@nizam-os/kysely-resource`](https://github.com/nizam-os/kit-ts/tree/main/packages/kysely-resource)'s.
 They run wherever Hono runs: Node 22.12+, Bun, Deno, and Cloudflare Workers. Hono 4.13.7 is the
 floor, the first release no published Hono advisory affects. Without the advisories it would be
 4.13.0: the operations endpoint decodes an `href` with Hono's own `tryDecodeURIComponent`, so it
@@ -202,7 +202,7 @@ Accept: application/vnd.api+json; ext="https://jsonapi.org/ext/atomic"
 ## The OpenAPI document
 
 Pass `openapi`, the options of
-[`openapi`](https://github.com/nizam-os/kit/tree/main/packages/resource-core#openapi-and-the-api-diff)
+[`openapi`](https://github.com/nizam-os/kit-ts/tree/main/packages/resource-core#openapi-and-the-api-diff)
 without the resources, which are the runtime's, and the routes serve the document at
 `GET /api/openapi.json`, the base of your links followed by `/openapi.json`:
 
@@ -235,7 +235,7 @@ app.route(
 
 The routes throw and your ban renders. Build it with the JSON:API catalog, the codes of the
 runtime's resources, and your own, and localize with
-[`localizeErrors`](https://github.com/nizam-os/kit/tree/main/packages/resource-core#messages-and-localization),
+[`localizeErrors`](https://github.com/nizam-os/kit-ts/tree/main/packages/resource-core#messages-and-localization),
 which labels each member an error points at in the words of the resource the request addressed.
 `resourceTypeOf(c)` names that resource:
 
@@ -287,7 +287,7 @@ With German messages that label a contact's `email` as `E-Mail`, a client that s
 
 The contacts application of this repository's end-to-end suite is a complete host composed this way,
 served over a socket and held to the document it serves:
-[`e2e/resource/support/contacts-server.ts`](https://github.com/nizam-os/kit/tree/main/e2e/resource/support/contacts-server.ts).
+[`e2e/resource/support/contacts-server.ts`](https://github.com/nizam-os/kit-ts/tree/main/e2e/resource/support/contacts-server.ts).
 
 ## Best practices
 
@@ -339,11 +339,11 @@ mounting a second `jsonApiRoutes` of the same runtime would register every route
 
 ## Documentation
 
-- [SPEC section 19](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md): the routes'
+- [SPEC section 19](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/SPEC.md): the routes'
   contract, and section 12.10 the runtime contract they take
-- [DESIGN](https://github.com/nizam-os/kit/blob/main/docs/resource/DESIGN.md): what the resource
+- [DESIGN](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/DESIGN.md): what the resource
   family builds and why
-- [ADR 0013](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0013-hosts-take-the-runtime-contract-and-mount-where-the-links-point.md):
+- [ADR 0013](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/adr/0013-hosts-take-the-runtime-contract-and-mount-where-the-links-point.md):
   the routes' decisions
 
 ## License

@@ -1,18 +1,18 @@
 # @nizam-os/tanstack-form-resource
 
 [TanStack Form](https://tanstack.com/form/v1) options and refusals for
-[`@nizam-os/resource-ui`](https://github.com/nizam-os/kit/tree/main/packages/resource-ui#readme)'s
+[`@nizam-os/resource-ui`](https://github.com/nizam-os/kit-ts/tree/main/packages/resource-ui#readme)'s
 form models, which the form of every adapter takes as they are: React's, Vue's, Solid's, Svelte's,
 Angular's, and Lit's. `resourceFormOptions(model)` gives a form the model's values and its
 validator, run when the form is first submitted and on every change after, so nobody meets an error
 before submitting, and `bindResponseErrors(form, model, error)` puts a refused write's texts on
 their fields. The package binds `@tanstack/form-core`, the core every adapter is built on, and
 imports no framework and no adapter. The contract is section 20.5 of
-[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md), and the
-decisions behind it
-[ADR 0017](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0017-a-refusal-of-several-fields-binds-where-a-change-to-any-clears-it.md)
+[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/SPEC.md), and
+the decisions behind it
+[ADR 0017](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/adr/0017-a-refusal-of-several-fields-binds-where-a-change-to-any-clears-it.md)
 and
-[ADR 0018](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0018-forms-and-lists-are-a-model-and-a-tanstack-form-binding-in-two-packages.md).
+[ADR 0018](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/adr/0018-forms-and-lists-are-a-model-and-a-tanstack-form-binding-in-two-packages.md).
 
 Status: in development and unreleased.
 
@@ -30,19 +30,19 @@ from 1.17, the first release with `revalidateLogic`. It imports that function an
 it, so the form runs your adapter's copy. Do not list `@tanstack/form-core` yourself: a range of
 your own installs a second copy once a newer release is published, and the form then runs the
 validation logic of another release than its own
-([ADR 0011](https://github.com/nizam-os/kit/blob/main/docs/adr/0011-a-binding-takes-the-core-an-adapter-brings-as-an-optional-peer.md)).
+([ADR 0011](https://github.com/nizam-os/kit-ts/blob/main/docs/adr/0011-a-binding-takes-the-core-an-adapter-brings-as-an-optional-peer.md)).
 Under Yarn Plug'n'Play, which gives a package no peer its parent does not provide, list it at the
 exact release your adapter depends on, which `yarn why @tanstack/form-core` shows.
 
 `@nizam-os/resource-ui` is a peer dependency: the binding reads the form models your application
 builds with its own copy
-([ADR 0006](https://github.com/nizam-os/kit/blob/main/docs/adr/0006-a-binding-takes-the-packages-the-application-hands-it-values-from-as-peers.md)),
+([ADR 0006](https://github.com/nizam-os/kit-ts/blob/main/docs/adr/0006-a-binding-takes-the-packages-the-application-hands-it-values-from-as-peers.md)),
 and `@nizam-os/resource-core` and `@nizam-os/jsonapi-client` are its peers.
 
 ## Forms
 
 Build the model with `@nizam-os/resource-ui`'s
-[`resourceForm`](https://github.com/nizam-os/kit/tree/main/packages/resource-ui#forms):
+[`resourceForm`](https://github.com/nizam-os/kit-ts/tree/main/packages/resource-ui#forms):
 
 ```ts
 // src/contacts/forms.ts
@@ -119,7 +119,7 @@ export function CreateContact() {
 A real screen renders each member with the control its descriptor calls for; the loop keeps the
 example short. A screen that writes through TanStack Query sends `createContact.write(value)` to
 `mutateAsync` of the create from
-[`@nizam-os/tanstack-query-jsonapi`](https://github.com/nizam-os/kit/tree/main/packages/tanstack-query-jsonapi#queries)
+[`@nizam-os/tanstack-query-jsonapi`](https://github.com/nizam-os/kit-ts/tree/main/packages/tanstack-query-jsonapi#queries)
 instead.
 
 Every adapter takes the same options, as it takes its own, and `bindResponseErrors` takes the form
@@ -179,15 +179,15 @@ other error a field holds. An error that is no `ResponseError` of the client bin
 
 ## Documentation
 
-- [`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md),
+- [`docs/resource/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/SPEC.md),
   section 20.5: the binding's contract, with the tests that prove it
-- [ADR 0017](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0017-a-refusal-of-several-fields-binds-where-a-change-to-any-clears-it.md):
+- [ADR 0017](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/adr/0017-a-refusal-of-several-fields-binds-where-a-change-to-any-clears-it.md):
   a refusal of several fields binds where a change to any clears it, and
-  [ADR 0018](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0018-forms-and-lists-are-a-model-and-a-tanstack-form-binding-in-two-packages.md):
+  [ADR 0018](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/adr/0018-forms-and-lists-are-a-model-and-a-tanstack-form-binding-in-two-packages.md):
   forms and lists are a model and a TanStack Form binding in two packages
-- [ADR 0010](https://github.com/nizam-os/kit/blob/main/docs/adr/0010-a-binding-to-a-library-with-a-framework-free-core-binds-the-core.md)
+- [ADR 0010](https://github.com/nizam-os/kit-ts/blob/main/docs/adr/0010-a-binding-to-a-library-with-a-framework-free-core-binds-the-core.md)
   and
-  [ADR 0011](https://github.com/nizam-os/kit/blob/main/docs/adr/0011-a-binding-takes-the-core-an-adapter-brings-as-an-optional-peer.md):
+  [ADR 0011](https://github.com/nizam-os/kit-ts/blob/main/docs/adr/0011-a-binding-takes-the-core-an-adapter-brings-as-an-optional-peer.md):
   a binding binds a library's framework-free core, and takes it as an optional peer
 
 ## License

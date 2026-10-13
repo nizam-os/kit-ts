@@ -7,7 +7,7 @@ assembly with the semantics of the JSON:API
 [Cursor Pagination profile](https://jsonapi.org/profiles/ethanresnick/cursor-pagination/). Every
 rule is a cited clause of the profile or the PostgreSQL manual; where a choice is the library's, it
 is written down in
-[`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md).
+[`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/SPEC.md).
 
 Using [Kysely](https://kysely.dev)?
 [`@nizam-os/kysely-keyset`](https://www.npmjs.com/package/@nizam-os/kysely-keyset) renders the plan
@@ -235,12 +235,12 @@ which one disjunction is not inside a tie of the first key or after a value of a
 predicate tree has thirteen kinds (`and`, `or`, `not`, `literal`, `compare`, `null`, `in`,
 `between`, `like`, `array`, `exists`, `textSearch`) over three targets (a column, an aggregate
 subquery, a concatenation);
-[`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md) section 6
+[`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/SPEC.md) section 6
 lists each with its SQL, and
-[`@nizam-os/kysely-keyset`](https://github.com/nizam-os/kit/tree/main/packages/kysely-keyset) is the
-reference rendering in under two hundred lines, and
-[`@nizam-os/drizzle-keyset`](https://github.com/nizam-os/kit/tree/main/packages/drizzle-keyset) the
-same plan as Drizzle `sql`.
+[`@nizam-os/kysely-keyset`](https://github.com/nizam-os/kit-ts/tree/main/packages/kysely-keyset) is
+the reference rendering in under two hundred lines, and
+[`@nizam-os/drizzle-keyset`](https://github.com/nizam-os/kit-ts/tree/main/packages/drizzle-keyset)
+the same plan as Drizzle `sql`.
 
 Why text? A cursor must round-trip a value exactly, and drivers parse values for convenience, not
 exactness (a `timestamptz` becomes a millisecond `Date`, a `numeric` a string or a number). The
@@ -350,7 +350,7 @@ They map onto the profile's error objects: `UNSUPPORTED_SORT` is `unsupported-so
 errors with `source.parameter` `sort`, `filter`, `page[size]`, `page[after]`, or `page[before]`. The
 fields hold the request's own text (a sort item, a field path, a page size), so a layer that writes
 one into a detail quotes it only when it is a plain token, as `@nizam-os/jsonapi-core`'s builders do
-([jsonapi ADR 0016](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0016-details-quote-request-text-as-plain-tokens.md)).
+([jsonapi ADR 0016](https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/adr/0016-details-quote-request-text-as-plain-tokens.md)).
 
 `INVALID_FILTER_VALUE` reports every condition whose value its field refuses, in the order of the
 request's conditions: each entry of `values` is one condition's `field`, `operator`, `expected`
@@ -361,7 +361,7 @@ built the tree from its own grammar finds that parameter by the path, as `@nizam
 `filterParameters` does for `@nizam-os/jsonapi-core`'s, so a client fixes every value in one round
 trip and matches each error to the input it sent. A malformed filter or an undeclared field or
 operator is reported alone, before any value
-([keyset ADR 0019](https://github.com/nizam-os/kit/blob/main/docs/keyset/adr/0019-every-refused-filter-value-at-once.md)).
+([keyset ADR 0019](https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/adr/0019-every-refused-filter-value-at-once.md)).
 
 ```ts
 try {
@@ -376,11 +376,11 @@ try {
 
 ## Documentation
 
-- [`docs/keyset/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/DESIGN.md): what
-  the packages are, the principles, and the API by example
-- [`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md): the
+- [`docs/keyset/DESIGN.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/DESIGN.md):
+  what the packages are, the principles, and the API by example
+- [`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/SPEC.md): the
   normative contract, section by section, with the tests that prove it
-- [`docs/keyset/adr/`](https://github.com/nizam-os/kit/tree/main/docs/keyset/adr): the decisions,
+- [`docs/keyset/adr/`](https://github.com/nizam-os/kit-ts/tree/main/docs/keyset/adr): the decisions,
   including every choice the profile leaves to the server
 
 ## License

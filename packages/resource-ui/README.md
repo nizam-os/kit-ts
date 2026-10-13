@@ -1,21 +1,21 @@
 # @nizam-os/resource-ui
 
 Forms, lists, and record and bulk actions from
-[`@nizam-os/resource-core`](https://github.com/nizam-os/kit/tree/main/packages/resource-core)
+[`@nizam-os/resource-core`](https://github.com/nizam-os/kit-ts/tree/main/packages/resource-core)
 declarations, for any framework. A declared resource already knows each member's label, options,
 limits, and filters, which writes it serves, and the server's words for every refusal; this package
 models a form, a list screen, and the actions of a row and of a selection from them, so a screen
 restates none of them. It imports no framework and nothing of TanStack: a screen in React, Vue,
 Solid, Svelte, Angular, or Lit reads the same model, and TanStack Form and TanStack Table v9 take
 its values as they are. Every choice is written down in
-[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/resource/SPEC.md), sections
-20 and 21, and the decisions behind it in
-[ADR 0014](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0014-react-bindings-render-the-applications-one-messages-object.md),
-[ADR 0015](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0015-react-bindings-a-model-under-tanstack-query-form-and-table.md),
-[ADR 0016](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0016-a-form-sends-a-cleared-input-as-null.md),
-[ADR 0018](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0018-forms-and-lists-are-a-model-and-a-tanstack-form-binding-in-two-packages.md),
+[`docs/resource/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/SPEC.md),
+sections 20 and 21, and the decisions behind it in
+[ADR 0014](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/adr/0014-react-bindings-render-the-applications-one-messages-object.md),
+[ADR 0015](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/adr/0015-react-bindings-a-model-under-tanstack-query-form-and-table.md),
+[ADR 0016](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/adr/0016-a-form-sends-a-cleared-input-as-null.md),
+[ADR 0018](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/adr/0018-forms-and-lists-are-a-model-and-a-tanstack-form-binding-in-two-packages.md),
 and
-[ADR 0019](https://github.com/nizam-os/kit/blob/main/docs/resource/adr/0019-record-and-bulk-actions-are-a-model-and-a-selection-writes-in-one-request.md).
+[ADR 0019](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/adr/0019-record-and-bulk-actions-are-a-model-and-a-selection-writes-in-one-request.md).
 
 Status: in development and unreleased. Field descriptors (`fieldsOf`), the form model
 (`resourceForm`), the list model (`resourceList`), and record and bulk actions (`recordActions`,
@@ -30,16 +30,16 @@ pnpm add @nizam-os/resource-ui @nizam-os/resource-core @nizam-os/jsonapi-client
 `@nizam-os/resource-core` and `@nizam-os/jsonapi-client` are peer dependencies: your application
 declares the resources and defines its messages with its own copy of the one, and calls its API and
 catches its errors with its own copy of the other, and the model reads those same values
-([ADR 0006](https://github.com/nizam-os/kit/blob/main/docs/adr/0006-a-binding-takes-the-packages-the-application-hands-it-values-from-as-peers.md)).
+([ADR 0006](https://github.com/nizam-os/kit-ts/blob/main/docs/adr/0006-a-binding-takes-the-packages-the-application-hands-it-values-from-as-peers.md)).
 It needs no other peer and runs wherever JavaScript does, so server rendering on Node 22.12+, Bun,
 Deno, and Cloudflare Workers reads the same model as the browser.
 
 The screens bring their own form library and table, which take the model's values as they are: a
 form's validator is a [Standard Schema](https://standardschema.dev), and a list reads and writes
 [TanStack Table](https://tanstack.com/table/v9) v9's sorting and column filters as plain values.
-[`@nizam-os/tanstack-form-resource`](https://github.com/nizam-os/kit/tree/main/packages/tanstack-form-resource#readme)
+[`@nizam-os/tanstack-form-resource`](https://github.com/nizam-os/kit-ts/tree/main/packages/tanstack-form-resource#readme)
 binds a form model to the TanStack Form of any framework, and
-[`@nizam-os/tanstack-query-jsonapi`](https://github.com/nizam-os/kit/tree/main/packages/tanstack-query-jsonapi#readme)
+[`@nizam-os/tanstack-query-jsonapi`](https://github.com/nizam-os/kit-ts/tree/main/packages/tanstack-query-jsonapi#readme)
 gives the clients' calls to the TanStack Query of any framework. The examples below render with
 React; a screen in another framework makes the same calls.
 
@@ -173,7 +173,7 @@ async function submit(values: typeof createContact.defaultValues) {
 }
 ```
 
-[`@nizam-os/tanstack-form-resource`](https://github.com/nizam-os/kit/tree/main/packages/tanstack-form-resource#forms)
+[`@nizam-os/tanstack-form-resource`](https://github.com/nizam-os/kit-ts/tree/main/packages/tanstack-form-resource#forms)
 hands a form model to the TanStack Form of any framework and binds a refused write's texts to its
 fields.
 
@@ -234,7 +234,7 @@ Keep the state in the route's search. With [TanStack Router](https://tanstack.co
 `validateSearch` reads it, the query key follows it, and every change is a navigation, so Back, a
 reload, and a shared link open the same page. `contacts` holds the client's TanStack Query options,
 made by `resourceQueries(clients.contacts)` from
-[`@nizam-os/tanstack-query-jsonapi`](https://github.com/nizam-os/kit/tree/main/packages/tanstack-query-jsonapi#queries):
+[`@nizam-os/tanstack-query-jsonapi`](https://github.com/nizam-os/kit-ts/tree/main/packages/tanstack-query-jsonapi#queries):
 
 ```tsx
 // src/routes/contacts.tsx
@@ -516,7 +516,7 @@ Each model is a frozen record of its actions by name, in the order given:
 | `errors(error)`, `errors(error, ids)` | a refusal's texts: `{ fields, form }` for a record, as a form's; `{ records, form }` for a selection, each record's by its id |
 
 A row makes the client's own calls through
-[`@nizam-os/tanstack-query-jsonapi`](https://github.com/nizam-os/kit/tree/main/packages/tanstack-query-jsonapi)'s
+[`@nizam-os/tanstack-query-jsonapi`](https://github.com/nizam-os/kit-ts/tree/main/packages/tanstack-query-jsonapi)'s
 `resourceQueries`, and the bar sends the selection in one Atomic Operations request through its
 `operationsMutation`, which the server commits whole or not at all:
 

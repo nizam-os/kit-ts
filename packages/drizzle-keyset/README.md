@@ -7,7 +7,7 @@ walks, and microsecond timestamps. The page semantics are those of the JSON:API
 [Cursor Pagination profile](https://jsonapi.org/profiles/ethanresnick/cursor-pagination/); every
 rule is a cited clause of the profile or the PostgreSQL manual, and every choice the profile leaves
 open is written down in
-[`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md).
+[`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/SPEC.md).
 
 This is the Drizzle adapter of
 [`@nizam-os/keyset-core`](https://www.npmjs.com/package/@nizam-os/keyset-core), the database-free
@@ -434,11 +434,11 @@ has one.
 
 ## Documentation
 
-- [`docs/keyset/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/DESIGN.md): what
-  the packages are, the principles, and the API by example
-- [`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md): the
+- [`docs/keyset/DESIGN.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/DESIGN.md):
+  what the packages are, the principles, and the API by example
+- [`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/SPEC.md): the
   normative contract, section by section, with the tests that prove it; section 14 is this adapter
-- [`docs/keyset/adr/`](https://github.com/nizam-os/kit/tree/main/docs/keyset/adr): the decisions,
+- [`docs/keyset/adr/`](https://github.com/nizam-os/kit-ts/tree/main/docs/keyset/adr): the decisions,
   ADR 0017 among them for this adapter
 
 ## License

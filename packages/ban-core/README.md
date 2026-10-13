@@ -6,8 +6,9 @@ wire formats: RFC 9457 Problem Details, JSON:API, Google's AIP-193, and Stripe's
 built in, and your own shape is a `defineFormat` call away. No dependencies, no peer dependencies,
 web standards only.
 
-Using Hono? [@nizam-os/hono-ban](https://github.com/nizam-os/kit/tree/main/packages/hono-ban#readme)
-is this package plus `app.onError()` wiring and `HTTPException` adoption, under the same subpaths.
+Using Hono?
+[@nizam-os/hono-ban](https://github.com/nizam-os/kit-ts/tree/main/packages/hono-ban#readme) is this
+package plus `app.onError()` wiring and `HTTPException` adoption, under the same subpaths.
 
 ## Install
 
@@ -152,7 +153,7 @@ A package manager installs a second copy of `@nizam-os/ban-core` when two packag
 ask for ranges that cannot meet, such as `^0.1.0` and `^0.2.0`. Each `BanError` carries a brand from
 the global symbol registry, so `isBanError` and `instanceof BanError` recognize an error another
 copy built, and your handler answers it with its own status, code, and items instead of a 500
-([ADR 0019](https://github.com/nizam-os/kit/blob/main/docs/ban/adr/0019-a-ban-error-is-recognized-across-copies-by-a-registered-brand.md)).
+([ADR 0019](https://github.com/nizam-os/kit-ts/blob/main/docs/ban/adr/0019-a-ban-error-is-recognized-across-copies-by-a-registered-brand.md)).
 A copy whose errors have another shape is not recognized, so keep one copy where you can:
 `npm ls @nizam-os/ban-core` (or `pnpm why`) shows each, and upgrading the `@nizam-os` packages
 together keeps their ranges meeting.
@@ -248,7 +249,7 @@ throw ban.tooManyRequests({ headers: { 'Retry-After': '30' } });
 ```
 
 The full table with RFC references is in
-[`docs/ban/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/ban/SPEC.md) section 3.1.
+[`docs/ban/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/ban/SPEC.md) section 3.1.
 
 ### Pick a format
 
@@ -579,14 +580,14 @@ line can contain the failing row).
 
 ## Documentation
 
-- [`docs/ban/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/ban/DESIGN.md): goals, the
-  full API, architecture, security defaults, and roadmap
-- [`docs/ban/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/ban/SPEC.md): the normative
+- [`docs/ban/DESIGN.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/ban/DESIGN.md): goals,
+  the full API, architecture, security defaults, and roadmap
+- [`docs/ban/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/ban/SPEC.md): the normative
   implementation specification (exact types, catalog, rendering rules, handler algorithm, validator
   mappings, packaging, test plan)
-- [`docs/ban/adr/`](https://github.com/nizam-os/kit/blob/main/docs/ban/adr/): architecture decision
-  records
-- [`CONTRIBUTING.md`](https://github.com/nizam-os/kit/blob/main/CONTRIBUTING.md): setup, quality
+- [`docs/ban/adr/`](https://github.com/nizam-os/kit-ts/blob/main/docs/ban/adr/): architecture
+  decision records
+- [`CONTRIBUTING.md`](https://github.com/nizam-os/kit-ts/blob/main/CONTRIBUTING.md): setup, quality
   gates, release process
 
 ## Why

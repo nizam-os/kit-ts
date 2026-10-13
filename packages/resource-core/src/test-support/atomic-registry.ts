@@ -9,7 +9,7 @@
  * resources, which keep nothing, with an `href` resolver of the links'
  * URL design, so a test holds the document's schema to what the processor
  * accepts. Not published with the package.
- * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (section 11)
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/SPEC.md (section 11)
  * @packageDocumentation
  */
 import type { AnyResourceHandlers } from '@nizam-os/jsonapi-core/atomic';

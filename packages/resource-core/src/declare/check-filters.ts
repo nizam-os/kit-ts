@@ -13,7 +13,7 @@
  * `FilterRequirement` in `filter-check.ts`, `KeysetNamesCheck` in
  * `names/keyset-names-check.ts`, and `IdentityCheck` in
  * `declaration-check.ts`.
- * @ref https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md (sections 3, 4.2, and 5)
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/SPEC.md (sections 3, 4.2, and 5)
  * @ref https://jsonapi.org/recommendations/#naming
  * @ref https://jsonapi.org/format/1.1/#document-member-names-allowed-characters (a space and non-ASCII characters: "not recommended, not URL safe")
  * @packageDocumentation

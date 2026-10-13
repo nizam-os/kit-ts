@@ -1,7 +1,7 @@
 # @nizam-os/hono-ban
 
 Structured, extensible HTTP errors for [Hono](https://hono.dev), built on
-[@nizam-os/ban-core](https://github.com/nizam-os/kit/tree/main/packages/ban-core#readme). One API
+[@nizam-os/ban-core](https://github.com/nizam-os/kit-ts/tree/main/packages/ban-core#readme). One API
 for creating errors, one `onError` handler, and pluggable wire formats: RFC 9457 Problem Details,
 JSON:API, Google's AIP-193, and Stripe's error object are built in, and your own shape is a
 `defineFormat` call away.
@@ -514,14 +514,14 @@ the driver's own text (a driver's detail line can contain the failing row).
 
 ## Documentation
 
-- [`docs/ban/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/ban/DESIGN.md): goals, the
-  full API, architecture, security defaults, and roadmap
-- [`docs/ban/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/ban/SPEC.md): the normative
+- [`docs/ban/DESIGN.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/ban/DESIGN.md): goals,
+  the full API, architecture, security defaults, and roadmap
+- [`docs/ban/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/ban/SPEC.md): the normative
   implementation specification (exact types, catalog, rendering rules, handler algorithm, validator
   mappings, packaging, test plan)
-- [`docs/ban/adr/`](https://github.com/nizam-os/kit/blob/main/docs/ban/adr/): architecture decision
-  records
-- [`CONTRIBUTING.md`](https://github.com/nizam-os/kit/blob/main/CONTRIBUTING.md): setup, quality
+- [`docs/ban/adr/`](https://github.com/nizam-os/kit-ts/blob/main/docs/ban/adr/): architecture
+  decision records
+- [`CONTRIBUTING.md`](https://github.com/nizam-os/kit-ts/blob/main/CONTRIBUTING.md): setup, quality
   gates, release process
 - [`CHANGELOG.md`](./CHANGELOG.md): what changed in each release, including the 2.0 migration notes
 

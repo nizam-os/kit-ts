@@ -7,7 +7,7 @@
  * case table (`test-support/keyset-name-cases.ts`). Each reads a name one
  * character at a time in tail position, so TypeScript computes it once
  * per name and a long name stays far below the instantiation depth limit.
- * @ref https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md (sections 3 and 3.4)
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/SPEC.md (sections 3 and 3.4)
  * @ref https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#tailrec-conditional
  * @packageDocumentation
  */

@@ -18,7 +18,7 @@ import type { Expression, RawBuilder, SqlBool } from 'kysely';
  * limited again, since a union keeps no order (keyset ADR 0020).
  * With `total`, a second statement counts the rows of the scope the filter
  * selects. `list` never counts rows to find a page.
- * @ref https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md (section 6, the query plan)
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/SPEC.md (section 6, the query plan)
  * @ref https://www.postgresql.org/docs/18/queries-order.html (NULLS FIRST / LAST)
  * @ref https://www.postgresql.org/docs/18/queries-union.html (no order; LIMIT on an operand needs parentheses)
  * @packageDocumentation

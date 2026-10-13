@@ -9,7 +9,7 @@
  * comma separates the values of `sort`, `include`, and `fields`; a list
  * filter repeats its parameter.
  * @ref https://jsonapi.org/format/1.1/#fetching
- * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (sections 6.4 to 6.8)
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/SPEC.md (sections 6.4 to 6.8)
  * @ref https://jsonapi.org/profiles/ethanresnick/cursor-pagination/
  * @packageDocumentation
  */

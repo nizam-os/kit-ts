@@ -8,7 +8,7 @@
  * names a field keyset-core plans. Every option is spelled out: keyset-core
  * reads an absent `operators` as every operator of the type, and a server's
  * keyset definer would fill an absent page bound with its own default.
- * @ref https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md (sections 3, 3.4, and 3.6)
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/SPEC.md (sections 3, 3.4, and 3.6)
  * @packageDocumentation
  */
 import type {

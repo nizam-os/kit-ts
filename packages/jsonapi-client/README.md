@@ -9,7 +9,7 @@ each error's code. Nothing is generated: the client imports the definitions. It 
 only (`fetch`, `Request`, `Headers`, `URL`, `URLSearchParams`), so one build runs in browsers,
 workers, Node, Bun, and Deno. Writes that must commit together go in one request through the Atomic
 Operations extension. The contract is sections 15 and 17 of
-[`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md).
+[`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/SPEC.md).
 
 ## Install
 
@@ -378,15 +378,15 @@ server refuses a request over it with a 400, and a screen reads the cap from the
 
 ## Documentation
 
-- [`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md), sections
-  15 and 17: the client's contract, with the tests that prove it
-- [ADR 0017](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0017-a-typed-client-on-fetch-over-the-servers-definitions.md):
+- [`docs/jsonapi/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/SPEC.md),
+  sections 15 and 17: the client's contract, with the tests that prove it
+- [ADR 0017](https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/adr/0017-a-typed-client-on-fetch-over-the-servers-definitions.md):
   a typed client on fetch over the server's definitions
-- [ADR 0018](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0018-definitions-carry-the-types-a-client-reads-and-writes.md):
+- [ADR 0018](https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/adr/0018-definitions-carry-the-types-a-client-reads-and-writes.md):
   definitions carry the types a client reads and writes
-- [ADR 0022](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0022-atomic-operations-are-values-built-from-definitions-and-sent-in-one-request.md):
+- [ADR 0022](https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/adr/0022-atomic-operations-are-values-built-from-definitions-and-sent-in-one-request.md):
   Atomic Operations are values built from definitions and sent in one request
-- [ADR 0023](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0023-the-operations-endpoint-and-its-cap-are-the-definitions.md):
+- [ADR 0023](https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/adr/0023-the-operations-endpoint-and-its-cap-are-the-definitions.md):
   the operations endpoint and its cap are the definitions'
 
 ## License

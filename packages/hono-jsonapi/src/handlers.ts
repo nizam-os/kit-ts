@@ -8,7 +8,7 @@
  * status; anything else as a constant 500 that reveals nothing.
  * @ref https://jsonapi.org/format/1.1/#errors
  * @ref https://hono.dev/docs/api/hono#error-handling
- * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (section 6: the handler; section 7.2: the JSON:API format)
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/SPEC.md (section 6: the handler; section 7.2: the JSON:API format)
  * @packageDocumentation
  */
 import type { Env, ErrorHandler, NotFoundHandler } from 'hono';

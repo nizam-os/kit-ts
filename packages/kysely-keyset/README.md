@@ -7,7 +7,7 @@ timestamps. The page semantics are those of the JSON:API
 [Cursor Pagination profile](https://jsonapi.org/profiles/ethanresnick/cursor-pagination/); every
 rule is a cited clause of the profile or the PostgreSQL manual, and every choice the profile leaves
 open is written down in
-[`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md).
+[`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/SPEC.md).
 
 This is the Kysely adapter of
 [`@nizam-os/keyset-core`](https://www.npmjs.com/package/@nizam-os/keyset-core), the database-free
@@ -314,7 +314,7 @@ const page = await contacts.paginate(query, request, {
 
 `plan` and `paginate` reject a bad request before any query runs, with one of the core's
 `KeysetError` classes: a stable `code`, the detail in fields, a constant message. A JSON:API layer
-on [`@nizam-os/jsonapi-core`](https://github.com/nizam-os/kit) maps them to the profile's error
+on [`@nizam-os/jsonapi-core`](https://github.com/nizam-os/kit-ts) maps them to the profile's error
 objects:
 
 ```ts
@@ -349,7 +349,7 @@ function toJsonApi(error: unknown): never {
 
 `error.fields` are the sort items as the client sent them; `unsupportedSortError` quotes one only
 when it is a plain token and otherwise writes `A sort field is not supported by this endpoint`
-([jsonapi ADR 0016](https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0016-details-quote-request-text-as-plain-tokens.md)),
+([jsonapi ADR 0016](https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/adr/0016-details-quote-request-text-as-plain-tokens.md)),
 so they pass through as they came. The `default` branch's `error.message` is constant.
 
 With `@nizam-os/jsonapi-core`, the parsed query's `page` is the request's `page`, and the page is
@@ -422,11 +422,11 @@ Keep both definitions' page bounds equal, since each applies its own default and
 
 ## Documentation
 
-- [`docs/keyset/DESIGN.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/DESIGN.md): what
-  the packages are, the principles, and the API by example
-- [`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md): the
+- [`docs/keyset/DESIGN.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/DESIGN.md):
+  what the packages are, the principles, and the API by example
+- [`docs/keyset/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/SPEC.md): the
   normative contract, section by section, with the tests that prove it
-- [`docs/keyset/adr/`](https://github.com/nizam-os/kit/tree/main/docs/keyset/adr): the decisions,
+- [`docs/keyset/adr/`](https://github.com/nizam-os/kit-ts/tree/main/docs/keyset/adr): the decisions,
   including every choice the profile leaves to the server
 
 ## License

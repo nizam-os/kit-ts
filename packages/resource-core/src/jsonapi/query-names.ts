@@ -2,7 +2,7 @@
  * The members of `filter` a declared resource's JSON:API definition gives
  * a meaning of its own (SPEC 3.7, 11.1), which no filtered member may take:
  * `@nizam-os/jsonapi-core` refuses a filter field named after either.
- * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (sections 5.2 and 6.8)
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/SPEC.md (sections 5.2 and 6.8)
  * @packageDocumentation
  */
 

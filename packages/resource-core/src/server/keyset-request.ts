@@ -10,7 +10,7 @@
  * value goes unchanged: keyset-core accepts each type's text form and
  * refuses the rest with its own `InvalidFilterValueError` (keyset SPEC
  * 4.3), which a route renders like any refusal of the plan.
- * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/adr/0007-filter-grammar.md ("interpreting them is the application's job")
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/adr/0007-filter-grammar.md ("interpreting them is the application's job")
  * @packageDocumentation
  */
 import type {

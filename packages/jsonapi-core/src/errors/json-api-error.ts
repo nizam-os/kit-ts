@@ -13,7 +13,7 @@
  * for callers that build a response by hand.
  * @ref https://jsonapi.org/format/1.1/#errors
  * @ref https://jsonapi.org/format/1.1/#errors-processing
- * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (sections 4.2 and 7.2)
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/SPEC.md (sections 4.2 and 7.2)
  * @packageDocumentation
  */
 import type {

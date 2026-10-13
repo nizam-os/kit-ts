@@ -7,7 +7,7 @@
  * patterns spell keyset-core's own in the regular expression tokens JSON
  * Schema recommends; the dates keyset-core checks against the calendar
  * are left to the server.
- * @ref https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md (sections 4.2 and 4.3)
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/SPEC.md (sections 4.2 and 4.3)
  * @ref https://spec.openapis.org/oas/v3.1.2.html#style-values (form, exploded)
  * @packageDocumentation
  */

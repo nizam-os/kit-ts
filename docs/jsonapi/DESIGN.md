@@ -65,7 +65,7 @@ It is a library for teams who treat their JSON:API surface as a contract.
 6. **Web standards only. No ambient environment.** `URL`, `URLSearchParams`, `Response`, `btoa`;
    nothing reads `process` (ADR-0003).
 7. **One error model, shared with the application.** Every error is a
-   [@nizam-os/ban-core](https://github.com/nizam-os/kit) `BanError`; `@nizam-os/jsonapi-core`
+   [@nizam-os/ban-core](https://github.com/nizam-os/kit-ts) `BanError`; `@nizam-os/jsonapi-core`
    depends on `@nizam-os/ban-core` and on nothing else, imports no framework, and the adapter
    renders through `@nizam-os/hono-ban`, so an application's own catalog, this package's, and any
    other library's on @nizam-os/ban-core go through one handler (ADR-0014). Validators arrive

@@ -7,7 +7,7 @@ domain, written deterministically so the file is reviewed with the migration tha
 the same catalog it writes your Kysely types, `drift` compares a live database with it, and
 `rules --check` proves that the schemas of your declared resources agree with the database. Every
 choice is specified in
-[`docs/catalog/SPEC.md`](https://github.com/nizam-os/kit/blob/main/docs/catalog/SPEC.md).
+[`docs/catalog/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/catalog/SPEC.md).
 
 ## Install
 
@@ -385,7 +385,7 @@ validator must cover it. From the repository's test schema:
   and `real` columns, get no rule but `notNull`: their comparisons are not the ones a rule
   describes. A domain's CHECK compares under the collation of the type the domain is declared over.
 - To enforce a rule in your application exactly as PostgreSQL does, follow
-  [`@nizam-os/catalog-core`'s README](https://github.com/nizam-os/kit/tree/main/packages/catalog-core#enforcing-a-rule).
+  [`@nizam-os/catalog-core`'s README](https://github.com/nizam-os/kit-ts/tree/main/packages/catalog-core#enforcing-a-rule).
 
 ## Migrations
 

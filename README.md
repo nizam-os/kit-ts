@@ -90,7 +90,7 @@ name where it is published as a framework-free core plus framework adapters (`ta
 [ADR 0010](docs/adr/0010-a-binding-to-a-library-with-a-framework-free-core-binds-the-core.md)). The
 directory under `packages/` is the package name without the scope.
 [ADR 0003](docs/adr/0003-package-naming.md) records the rule; new packages are tracked as epics in
-the [issues](https://github.com/nizam-os/kit/issues?q=is%3Aissue+label%3Aepic).
+the [issues](https://github.com/nizam-os/kit-ts/issues?q=is%3Aissue+label%3Aepic).
 
 ## Repository
 

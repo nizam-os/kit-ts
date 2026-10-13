@@ -12,7 +12,7 @@
  * holds (`keyset-definition.ts`). It reads every relationship's target for
  * the target's type, so the declared resource builds it on first read
  * (SPEC 3.8).
- * @ref https://github.com/nizam-os/kit/blob/main/docs/jsonapi/SPEC.md (sections 5 and 5.2)
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/SPEC.md (sections 5 and 5.2)
  * @packageDocumentation
  */
 import type {

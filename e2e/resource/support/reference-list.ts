@@ -16,7 +16,7 @@
  * plan holds no `exists`, aggregate, or concatenation. The cursors are
  * bound to the transaction's scope values, each scope's name mapped to its
  * value (obligation 12), so a cursor of one scope is refused in another.
- * @ref https://github.com/nizam-os/kit/blob/main/docs/keyset/SPEC.md (section 6, the query plan)
+ * @ref https://github.com/nizam-os/kit-ts/blob/main/docs/keyset/SPEC.md (section 6, the query plan)
  * @ref https://www.postgresql.org/docs/18/queries-order.html (NULLS FIRST / LAST)
  * @ref https://www.postgresql.org/docs/18/functions-matching.html#FUNCTIONS-LIKE
  * @ref https://www.postgresql.org/docs/18/functions-array.html (`@>`, `<@`, `&&`)
