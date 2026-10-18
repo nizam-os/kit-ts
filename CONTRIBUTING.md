@@ -43,7 +43,7 @@ of their own.
 
 ```bash
 git clone https://github.com/nizam-os/kit-ts.git
-cd kit
+cd kit-ts
 pnpm install
 ```
 
@@ -82,8 +82,8 @@ CI runs the same commands, plus these packages' tests on the floors of their pee
 PGlite 0.5.0, and `@nizam-os/paraglide-intl` on Paraglide JS 2.11.0. It also runs the keyset e2e
 suite on a PostgreSQL server, and `@nizam-os/pg-catalog`'s tests and the catalog e2e suite on
 PostgreSQL servers. A pull request must be green on all of them: the last CI job, `CI passed`, needs
-every other job and is the one check `main` requires
-([ADR 0004](docs/adr/0004-protect-main-with-one-aggregate-check.md)), so a new CI job goes into its
+every other job and is the one status a pull request shows
+([ADR 0012](docs/adr/0012-main-is-written-by-the-export-alone.md)), so a new CI job goes into its
 `needs` list. To work on one package or family, filter by name:
 
 ```bash
@@ -193,9 +193,10 @@ Open an issue labeled `epic` first so the scope is settled before code exists, t
 - Keep pull requests focused: one epic, or a few related issues, per pull request, with one commit
   per issue. Each commit passes `pnpm check`, `pnpm test`, and the family's e2e suite on its own,
   carries its own changeset, and ends with `Closes #<issue>`. Describe the why in the body.
-- Merge a multi-commit pull request with **Rebase and merge** so `main` keeps one commit per issue;
-  a single-commit pull request may squash. Auto-merge is on: `gh pr merge --auto --rebase` merges
-  once `CI passed` succeeds (`docs/adr/0004-protect-main-with-one-aggregate-check.md`).
+- A pull request is not merged here: `main` is written by the export alone
+  ([ADR 0012](docs/adr/0012-main-is-written-by-the-export-alone.md)). Once it is approved, a
+  maintainer applies its commits where the kit is developed, with you as their author, and closes it
+  with a link to the exported commit.
 - Every user-visible change needs a changeset (next section). CI fails without one on
   `packages/*/src` changes. A source change users cannot see, such as a comment, a lint directive,
   or a test, takes an empty one: `pnpm changeset add --empty`.

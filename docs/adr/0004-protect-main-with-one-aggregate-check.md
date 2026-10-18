@@ -1,6 +1,6 @@
 # ADR 0004: Protect main with one aggregate check
 
-- Status: accepted
+- Status: superseded by ADR-0012 (main is written by the export alone)
 - Date: 2026-10-10
 - Amended: 2026-10-10, admin bypass removed after #63 merged before its checks finished
 - Amended: 2026-10-09, rebase merges allowed for pull requests that carry one commit per issue
