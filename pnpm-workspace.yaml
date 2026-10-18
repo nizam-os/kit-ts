@@ -1,0 +1,115 @@
+# The workspace file of the kit's public repository (nizam-os/kit-ts). The kit is developed as
+# one tree of the Nizam suite's pnpm workspace, which keeps no workspace file inside the tree, so
+# the export to the public repository writes this one: these settings, followed by the `catalog:`
+# rows of the suite's catalog that the packages reference. It is edited where the kit is
+# developed, never in the public repository, which takes no commits of its own.
+# @ref https://pnpm.io/workspaces
+# @ref https://pnpm.io/settings
+
+# `packages/*` are the published packages, one directory per package, named after the package
+# without its scope (`packages/ban-core` is `@nizam-os/ban-core`). A binding depends on its core
+# through `workspace:^`. `e2e/*` are private consumer packages, one per family, that install the
+# built packages through `workspace:*`, so their imports resolve through the published `exports`
+# maps into `dist/`.
+packages:
+  - packages/*
+  - e2e/*
+
+# Do not install versions published less than a day ago; most compromised releases are pulled
+# within hours.
+minimumReleaseAge: 1440
+
+# Refuse a version whose publisher verification is weaker than an earlier release's: a maintainer
+# who published with provenance and then publishes without it looks like a taken-over account. A
+# downgrade older than 90 days (in minutes) that is still on the registry is the legitimate lapse
+# it almost always is; a younger one fails the install until someone verifies it and lists it under
+# `trustPolicyExclude` as one exact version, pruned automatically once the lockfile moves on.
+# @ref https://pnpm.io/settings/dependency-resolution#trustpolicy
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 129600
+trustPolicyExcludePrune: true
+
+# Transitive dependencies may not come from git or tarball URLs.
+blockExoticSubdeps: true
+
+# Every dependency with an install script needs a ruling below; an install fails on one nobody has
+# ruled on. Allowed: lefthook downloads its binary in postinstall; workerd (miniflare, the e2e
+# smoke tests) selects its platform binary. Denied, because the script adds nothing we use:
+# vue-demi (Vue Query, the e2e suites' Vue checks) only switches its files to the installed Vue's
+# major, and it ships Vue 3's; esbuild only checks the binary its platform package installed.
+# @ref https://pnpm.io/settings/build#allowbuilds
+strictDepBuilds: true
+allowBuilds:
+  esbuild: false
+  lefthook: true
+  vue-demi: false
+  workerd: true
+
+# @nizam-os/hono-jsonapi declares `@nizam-os/hono-ban >= 2.0.0` (its API is the 2.0 one), and in
+# this workspace it resolves to the working copy, which stays at 1.3.0 until the pending major
+# changeset is versioned. Remove in the release that bumps @nizam-os/hono-ban to 2.0.0.
+# @ref https://pnpm.io/settings/peer-dependencies#peerdependencyrulesallowedversions
+peerDependencyRules:
+  allowedVersions:
+    '@nizam-os/hono-jsonapi>@nizam-os/hono-ban': '1'
+
+# One Version: the rows of the suite catalog these packages reference, written by the export.
+# @ref https://pnpm.io/catalogs
+catalog:
+  '@angular/common': 22.2.2
+  '@angular/core': 22.2.2
+  '@arethetypeswrong/cli': 0.18.5
+  '@changesets/changelog-github': 1.0.1
+  '@changesets/cli': 3.0.3
+  '@electric-sql/pglite': 0.5.9
+  '@electric-sql/pglite-socket': 0.2.12
+  '@hono/node-server': 2.1.4
+  '@hono/standard-validator': 0.4.0
+  '@hono/valibot-validator': 0.6.1
+  '@hono/zod-openapi': 1.6.3
+  '@hono/zod-validator': 0.9.1
+  '@inlang/paraglide-js': 2.27.0
+  '@inlang/plugin-message-format': 4.5.2
+  '@opentelemetry/api': 1.9.1
+  '@tanstack/form-core': 1.33.5
+  '@tanstack/query-core': 5.104.2
+  '@tanstack/react-form': 1.33.5
+  '@tanstack/react-query': 5.104.2
+  '@tanstack/react-router': 1.170.42
+  '@tanstack/react-table': 9.3.1
+  '@tanstack/vue-query': 5.104.2
+  '@testing-library/dom': 10.4.2
+  '@testing-library/react': 16.3.3
+  '@testing-library/user-event': 14.6.7
+  '@types/node': 24.19.2
+  '@types/pg': 8.23.1
+  '@types/react': 19.3.0
+  '@types/react-dom': 19.3.0
+  '@vitest/coverage-v8': 5.0.4
+  ajv: 8.20.0
+  ajv-formats: 3.0.1
+  drizzle-orm: 0.45.4
+  hono: 4.13.13
+  jsdom: 30.1.2
+  knip: 6.41.0
+  kysely: 0.29.6
+  lefthook: 2.2.1
+  miniflare: 4.20260730.0
+  oxfmt: 0.72.0
+  oxlint: 1.87.0
+  oxlint-tsgolint: 7.0.2004
+  pg: 8.23.1
+  postgres: 3.4.9
+  publint: 0.3.25
+  react: 19.3.0
+  react-dom: 19.3.0
+  rxjs: 7.8.2
+  solid-js: 1.9.17
+  svelte: 5.57.2
+  tsdown: 0.23.1
+  typescript: 7.0.2
+  valibot: 1.5.0
+  vitest: 5.0.4
+  vue: 3.5.43
+  yaml: 2.9.1
+  zod: 4.6.7
