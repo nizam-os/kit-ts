@@ -931,8 +931,10 @@ request and every push to `main`.
   core the same way and has `drizzle-orm >=0.45.2 <1.0.0` as its only peer dependency; CI runs its
   unit tests on 0.45.2 (ADR 0017).
 - `files` is `dist`, `CHANGELOG.md`, `LICENSE`, `README.md`. `sideEffects: false`.
-- Releases go through Changesets: a "Version Packages" PR, then `changeset publish` under npm
-  trusted publishing with provenance, one GitHub release per package.
+- Releases follow the repository's release process (root ADR 0013): Changesets versions the
+  packages, and the release workflow checks each packed tarball, stages it on npm through its
+  trusted publisher with provenance, and creates one GitHub release per package once a maintainer
+  has approved the version.
 
 ---
 

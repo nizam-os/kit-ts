@@ -29,12 +29,15 @@ const config: ViteUserConfig = defineConfig({
       // the list data and walks they page through, need a database: the
       // resource e2e suite runs each case, and each defect a case must
       // catch, against its reference adapter through the built package. The
-      // scripts' entry points only hand the repository to the checks; CI
-      // runs them.
+      // scripts' entry points only hand the repository, or the release
+      // directory, to the checks; CI runs them. The release scripts' test
+      // support builds their fixtures.
       exclude: [
         'packages/*/src/**/*.test.ts',
         'scripts/**/*.test.ts',
         'scripts/peer-floors/{check-jobs,audit-advisories}.ts',
+        'scripts/release/{pack,publish,github-release}.ts',
+        'scripts/release/test-support.ts',
         'packages/*/src/**/*.test-d.ts',
         'packages/*/src/test-support/**',
         'packages/*/src/index.ts',

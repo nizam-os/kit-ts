@@ -183,7 +183,9 @@ Open an issue labeled `epic` first so the scope is settled before code exists, t
    `docs/<family>` directory, copied from a sibling.
 5. Document it: the family `README.md`, `DESIGN.md`, `SPEC.md`, an ADR, the root `README.md` table,
    and the package dropdown in `.github/ISSUE_TEMPLATE/feature_request.yml`.
-6. Add a `minor` changeset for its first release.
+6. Add a `minor` changeset for its first release. npm has no trusted publisher for a package it does
+   not have yet, so a maintainer publishes its first version with a bootstrap token
+   ([Releases](#releases), "A package's first version").
 
 ## Commits and pull requests
 
@@ -203,22 +205,66 @@ Open an issue labeled `epic` first so the scope is settled before code exists, t
 
 ## Changesets and releases
 
-Releases are automated with [Changesets](https://github.com/changesets/changesets).
+Every user-visible change is described by a [Changesets](https://github.com/changesets/changesets)
+entry.
 
 1. In your branch run `pnpm changeset`, pick the package or packages that change, and pick `patch`,
    `minor`, or `major` for each. Write the entry for users, not for maintainers: what changed and
    what they have to do. The packages are versioned independently; a core change that a binding only
    passes through needs no entry for the binding (Changesets bumps its dependency range on its own).
 2. Commit the generated file under `.changeset/`.
-3. When your PR merges, the release workflow opens or updates a "Version Packages" PR that bumps
-   each affected package's `package.json` and `CHANGELOG.md`. The workflow is disabled until the
-   first releases (#51); `gh workflow enable release.yml` turns it back on.
-4. Merging that PR publishes the bumped packages to npm through trusted publishing (OIDC, with
-   provenance) and creates a GitHub release per package.
 
-For a prerelease line, run `pnpm changeset pre enter <tag>` on `main` and commit the resulting
-`.changeset/pre.json`; releases then publish under that npm dist-tag instead of `latest` until
+For a prerelease line, a maintainer runs `pnpm changeset pre enter <tag>` and commits the resulting
+`.changeset/pre.json`; releases then go to that npm dist-tag instead of `latest` until
 `pnpm changeset pre exit` is committed.
+
+### Releases
+
+A maintainer releases ([ADR 0013](docs/adr/0013-releases-are-checked-tarballs-staged-on-npm.md)):
+
+1. `changeset version`, where the kit is developed, turns the pending changesets into each affected
+   package's new version and `CHANGELOG.md` section. The version commit reaches `main` here with the
+   next export.
+2. That push runs the release workflow (`.github/workflows/release.yml`). It runs CI on the commit,
+   then `pnpm run release:pack`: `changeset pack` packs every public package whose version npm does
+   not have, and each tarball must hold only `package.json`, `README.md`, `LICENSE`, `CHANGELOG.md`
+   and `dist/`, carry a `package.json` that installs the same anywhere, go to the right dist-tag,
+   have a changelog section for its version, and pass a gitleaks scan. The job writes
+   `release.json`, which names each tarball by its SHA-512. A package at `0.0.0` was never versioned
+   and is left out.
+3. The maintainer approves the run's deployment to the `npm` environment. The publish job checks the
+   tarballs against the manifest and stages each version on npm through its trusted publisher, with
+   provenance. Nothing is public yet.
+4. The maintainer approves each staged version with two-factor authentication: the package's Staged
+   Packages tab on npmjs.com, or `npm stage approve <stage id>` (the job summary lists the ids).
+5. Once npm serves every version, the workflow tags the commit `<name>@<version>` and creates one
+   GitHub release per package with its changelog section. It waits an hour for the approvals; after
+   a later approval, rerun its failed job.
+
+`pnpm run release:pack --out-dir <empty directory>` shows what a release would pack and runs every
+check on it; it publishes nothing. It needs `gitleaks` on the `PATH`.
+
+#### A package's first version
+
+npm accepts a trusted publisher only for a package it already has, and staging a package it does not
+have publishes a public `0.0.0-stage` placeholder. So the publish job publishes a new package's
+first version directly, with a bootstrap token, and stops before publishing anything when it finds a
+new package and no token. The maintainer, with two-factor authentication on their npm account:
+
+1. Creates a granular access token on npmjs.com with read and write access to the `@nizam-os` scope
+   only and the shortest expiry that covers the release, and stores it in the environment
+   (`gh secret set NPM_BOOTSTRAP_TOKEN --env npm`).
+2. Approves the release run's deployment. Packages npm already has are staged as above.
+3. Once the new package is on npm, configures its trusted publisher, which may only stage:
+
+   ```sh
+   npm trust github @nizam-os/<name> --file release.yml --repo nizam-os/kit-ts --env npm --allow-stage-publish --yes
+   ```
+
+4. In the package's settings on npmjs.com, sets publishing access to "Require two-factor
+   authentication and disallow tokens".
+5. Revokes the token on npmjs.com and deletes the secret
+   (`gh secret delete NPM_BOOTSTRAP_TOKEN --env npm`).
 
 ## Architecture decisions
 

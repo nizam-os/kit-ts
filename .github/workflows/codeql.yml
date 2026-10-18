@@ -13,9 +13,6 @@ permissions: {}
 jobs:
   analyze:
     name: Analyze
-    # The Version PR is opened by github-actions[bot] with the workflow token
-    # and fails CodeQL at startup; its merge commit is scanned on push anyway.
-    if: github.event_name != 'pull_request' || !startsWith(github.head_ref, 'changeset-release/')
     runs-on: ubuntu-latest
     permissions:
       security-events: write

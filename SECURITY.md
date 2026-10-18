@@ -13,6 +13,14 @@ Include the package and version, a description of the issue, and a minimal repro
 one. You will get an acknowledgement within seven days. Fixes ship as a patch release of the
 affected package with a GitHub Security Advisory; reporters are credited unless they ask not to be.
 
+## Verifying a release
+
+Every version is built and published by this repository's release workflow, which attaches an npm
+provenance attestation naming the commit and the workflow run it came from; a version reaches npm
+only after a maintainer approves it. In your project, `npm audit signatures` checks the registry
+signatures and the provenance attestations of what you installed, and each version's page on
+npmjs.com links its source commit and build.
+
 ## Scope
 
 The packages parse untrusted requests and render responses: `@nizam-os/ban-core` and

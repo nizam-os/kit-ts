@@ -1,55 +1,74 @@
-# Release automation with Changesets.
+# Releases every package whose version npm does not have (root ADR 0013).
 #
-# On every push to main, `select-mode` reads the repository state and picks
-# one of:
-#   - `version`: pending changesets exist, so the "Version Packages" PR is
-#     opened or updated (bumps package.json and CHANGELOG.md);
-#   - `publish`: no pending changesets and at least one package
-#     (packages/*) holds a version that is not on npm, so `changeset publish`
-#     publishes those packages, tags the commit once per package, and
-#     creates a GitHub release for each;
-#   - `none`: nothing to do (running `version` here would open an empty PR).
-#
-# The CI workflow runs on the same push but as a separate workflow, so a
-# publish would not wait for it. The publish job therefore repeats the gates
-# on the exact commit it publishes (build, checks, unit and e2e suites) and
-# stops before `changeset publish` when any of them fail. The runtime smoke
-# tests stay in CI: they need Bun and Deno.
-#
-# Publishing uses npm trusted publishing (OIDC): no NPM_TOKEN secret. pnpm
-# publish exchanges the GitHub id-token for a short-lived npm token and npm
-# attaches provenance automatically. One-time setup on npmjs.com for each
-# package under the @nizam-os scope: Settings > Trusted publisher > GitHub
-# Actions, repository nizam-os/kit-ts, workflow filename release.yml. pnpm
-# publish also applies each package's publishConfig (the dist-only exports
-# map) and rewrites every workspace: range between the packages to the
-# published versions.
-# @ref https://changesets.dev/guide/automating#how-do-i-run-the-version-and-publish-commands
+# A release is a commit on main whose package.json versions npm lacks: the
+# version commit, written by `changeset version` where the kit is developed,
+# reaches this repository through the export. Each push to main runs:
+#   - `ci`: the whole CI workflow on this commit, so nothing is packed from a
+#     commit that fails it;
+#   - `pack`: `changeset pack` packs every public package whose version npm
+#     lacks (`pnpm pack` applies publishConfig and rewrites workspace:
+#     ranges), and scripts/release/pack.ts checks each tarball against an
+#     allowlist of paths and manifest fields, the dist-tag rules, its
+#     changelog, and gitleaks, then writes the manifest (release.json) that
+#     names each tarball by its SHA-512. Packages at 0.0.0 were never
+#     versioned and are left out. The manifest's SHA-256 and the artifact's
+#     id are the job's outputs;
+#   - `publish`: after the npm environment's reviewer approves, downloads that
+#     artifact by id, checks the manifest against the digest and every tarball
+#     against the manifest, and stages each version with npm trusted
+#     publishing (OIDC): npm keeps it unpublished until a maintainer approves
+#     it on npmjs.com with two-factor authentication. A package npm does not
+#     have yet cannot have a trusted publisher, so its first version is
+#     published with the environment's NPM_BOOTSTRAP_TOKEN, which is deleted
+#     once every package has its trusted publisher (CONTRIBUTING.md,
+#     "Releases"). This job installs nothing: its scripts use Node's built-in
+#     modules only;
+#   - `github-release`: waits until npm serves every version with the
+#     manifest's integrity, then tags the commit `<name>@<version>` and creates
+#     one GitHub release per package with its changelog section, none of them
+#     the latest. A rerun picks up where a run stopped.
+# Only `publish` can reach npm, and only it holds an id-token.
+# @ref https://changesets.dev/guide/cli#pack
+# @ref https://changesets.dev/guide/automating ("Staged Publishing does not work with Changesets")
+# @ref https://docs.npmjs.com/staged-publishing
 # @ref https://docs.npmjs.com/trusted-publishers
-# @ref https://github.com/pnpm/pnpm/releases/tag/v11.0.7 (OIDC in pnpm publish)
 name: Release
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions: {}
 
+# One release at a time, never cancelled: a newer push waits for the running
+# release to end instead of interrupting its publish.
 concurrency:
-  group: release-${{ github.ref }}
+  group: release
   cancel-in-progress: false
 
 env:
   FORCE_COLOR: 1
 
 jobs:
-  select-mode:
-    name: Select mode
+  ci:
+    name: CI
+    if: github.repository == 'nizam-os/kit-ts' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+    uses: ./.github/workflows/ci.yml
+
+  pack:
+    name: Pack and check
+    needs: ci
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: read
     outputs:
-      mode: ${{ steps.select-mode.outputs.mode }}
+      count: ${{ steps.pack.outputs.count }}
+      digest: ${{ steps.pack.outputs.digest }}
+      artifact-id: ${{ steps.upload.outputs.artifact-id }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -58,57 +77,81 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .node-version
+      # The tarball check runs gitleaks over every file a tarball holds. The
+      # archive is the release's own, checked against its SHA-256.
+      # @ref https://github.com/gitleaks/gitleaks/releases/tag/v8.30.1 (checksums.txt)
+      - name: Install gitleaks
+        env:
+          VERSION: 8.30.1
+          SHA256: 551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+        run: |
+          archive="$RUNNER_TEMP/gitleaks.tar.gz"
+          curl -fsSL --retry 3 -o "$archive" "https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}/gitleaks_${VERSION}_linux_x64.tar.gz"
+          echo "${SHA256}  ${archive}" | sha256sum --check --strict
+          mkdir "$RUNNER_TEMP/gitleaks"
+          tar -xzf "$archive" -C "$RUNNER_TEMP/gitleaks" gitleaks
+          echo "$RUNNER_TEMP/gitleaks" >> "$GITHUB_PATH"
       - run: pnpm install --frozen-lockfile
-      - id: select-mode
-        uses: changesets/action/select-mode@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
-
-  version:
-    name: Version PR
-    if: needs.select-mode.outputs.mode == 'version'
-    needs: select-mode
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: pnpm run build
+      - id: pack
+        run: pnpm run release:pack --out-dir "$RUNNER_TEMP/release"
+      - id: upload
+        if: steps.pack.outputs.count != '0'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          persist-credentials: false
-      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
-      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
-        with:
-          node-version-file: .node-version
-      - run: pnpm install --frozen-lockfile
-      - uses: changesets/action/version@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
-        with:
-          script: pnpm run changeset:version
-          commit-message: 'chore(release): version packages'
-          pr-title: 'chore(release): version packages'
+          name: release
+          path: ${{ runner.temp }}/release
+          if-no-files-found: error
+          retention-days: 30
 
   publish:
     name: Publish to npm
-    if: needs.select-mode.outputs.mode == 'publish'
-    needs: select-mode
+    needs: pack
+    if: needs.pack.outputs.count != '0'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: npm
     permissions:
-      contents: write
+      contents: read
       id-token: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+      # No registry-url: publish.ts writes npm's only configuration files.
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .node-version
-      - run: pnpm install --frozen-lockfile
-      # Gates on the commit being published; see the header comment. Same
-      # order as CONTRIBUTING.md: build first because the type-aware lint of
-      # e2e/ and the package checks read dist/.
-      - run: pnpm run build
-      - run: pnpm run check
-      - run: pnpm run test
-      - run: pnpm run test:e2e
-      - uses: changesets/action/publish@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          script: pnpm run release
+          artifact-ids: ${{ needs.pack.outputs.artifact-id }}
+          path: ${{ runner.temp }}/release
+      - run: node --experimental-strip-types scripts/release/publish.ts "$RUNNER_TEMP/release" "$DIGEST"
+        env:
+          DIGEST: ${{ needs.pack.outputs.digest }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_BOOTSTRAP_TOKEN }}
+
+  github-release:
+    name: Tag and GitHub releases
+    needs: [pack, publish]
+    runs-on: ubuntu-latest
+    # Up to an hour waiting for the staged versions' approval, then the
+    # releases; a rerun after a later approval waits again.
+    timeout-minutes: 90
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          artifact-ids: ${{ needs.pack.outputs.artifact-id }}
+          path: ${{ runner.temp }}/release
+      - run: node --experimental-strip-types scripts/release/github-release.ts "$RUNNER_TEMP/release" "$DIGEST" 60
+        env:
+          DIGEST: ${{ needs.pack.outputs.digest }}
+          GH_TOKEN: ${{ github.token }}

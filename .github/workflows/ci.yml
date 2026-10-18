@@ -1,16 +1,23 @@
 name: CI
 
+# A push to main runs this workflow from release.yml, which packs nothing
+# from a commit that fails it. `workflow_dispatch` runs it on main by hand.
 on:
-  push:
-    branches: [main]
   pull_request:
   merge_group:
+  workflow_call:
+  workflow_dispatch:
 
 permissions: {}
 
+# A newer commit cancels the run of an older one on the same pull request or
+# merge group. Called from release.yml, `github.workflow` and
+# `github.event_name` are the caller's, so a release's run has a group of its
+# own and is never cancelled.
+# @ref https://docs.github.com/en/actions/reference/workflows-and-actions/reusing-workflow-configurations
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'merge_group' }}
 
 env:
   FORCE_COLOR: 1
@@ -467,7 +474,7 @@ jobs:
 
   changeset:
     name: Changeset present
-    if: github.event_name == 'pull_request' && !startsWith(github.head_ref, 'changeset-release/')
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     permissions:
       contents: read

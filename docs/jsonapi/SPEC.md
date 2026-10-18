@@ -1107,8 +1107,9 @@ of `dist`, `CHANGELOG.md`, `LICENSE`, `README.md`, `engines.node >= 22.12.0`, an
   `@nizam-os/hono-ban` external. `publint --strict` and `attw --profile esm-only` run on every build
   and in `check:pkg`.
 - Versions are independent; Changesets patch-bumps `@nizam-os/hono-jsonapi` when its
-  `@nizam-os/jsonapi-core` range moves. Both are published with npm provenance through trusted
-  publishing (`release.yml`), one trusted publisher per package.
+  `@nizam-os/jsonapi-core` range moves. Each package is released through the repository's release
+  workflow (root ADR 0013): staged on npm through its own trusted publisher, with provenance, and
+  live once a maintainer approves it.
 
 ---
 

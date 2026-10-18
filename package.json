@@ -15,7 +15,6 @@
   "scripts": {
     "build": "pnpm -r --filter \"./packages/**\" --filter \"./e2e/**\" run build",
     "changeset": "changeset",
-    "changeset:version": "changeset version",
     "check": "pnpm run --sequential \"/^check:/\"",
     "audit:floors": "node --experimental-strip-types scripts/peer-floors/audit-advisories.ts",
     "check:deps": "knip",
@@ -28,7 +27,7 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "prepare": "lefthook install",
-    "release": "pnpm run build && changeset publish",
+    "release:pack": "node --experimental-strip-types scripts/release/pack.ts",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "pnpm run build && pnpm -r --workspace-concurrency=1 --filter \"./e2e/**\" run typecheck && pnpm -r --workspace-concurrency=1 --filter \"./e2e/**\" run test",

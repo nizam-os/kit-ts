@@ -13,8 +13,13 @@
   "workspaces": {
     ".": {
       // The scripts' entry points are found through the package.json scripts
-      // and their tests through the root Vitest config's `scripts` project.
-      "project": ["*.config.ts", "scripts/**/*.ts"]
+      // and the workflows, and their tests through the root Vitest config's
+      // `scripts` project. The release check runs gitleaks, which the release
+      // workflow installs from its checked release archive: no package
+      // provides it.
+      // @ref https://knip.dev/reference/configuration#ignorebinaries
+      "project": ["*.config.ts", "scripts/**/*.ts"],
+      "ignoreBinaries": ["gitleaks"]
     },
     "packages/*": {
       // Entries come from each package's tsdown config (knip's tsdown
