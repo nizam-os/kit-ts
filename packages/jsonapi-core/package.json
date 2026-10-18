@@ -1,6 +1,6 @@
 {
   "name": "@nizam-os/jsonapi-core",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "JSON:API 1.1 for any JavaScript runtime: resource definitions, documents, query parsing, request parsing, content negotiation, the Cursor Pagination profile, and the Atomic Operations extension. Framework-free.",
   "keywords": [
     "atomic-operations",

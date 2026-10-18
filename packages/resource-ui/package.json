@@ -1,6 +1,6 @@
 {
   "name": "@nizam-os/resource-ui",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Forms, lists, and record and bulk actions from @nizam-os/resource-core declarations, for any framework: labels and options from the application's messages, validation in the server's words, the write a form sends, refusals on their fields, list state as TanStack Table v9 holds it, and actions held to the writes the declaration serves, a selection's sent in one Atomic Operations request.",
   "keywords": [
     "atomic-operations",

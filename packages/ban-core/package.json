@@ -1,6 +1,6 @@
 {
   "name": "@nizam-os/ban-core",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Structured, extensible HTTP errors for any JavaScript runtime. One API, any wire format: RFC 9457 Problem Details, JSON:API, Google API (AIP-193), Stripe, or your own. Framework-free; @nizam-os/hono-ban is the Hono adapter.",
   "keywords": [
     "aip-193",

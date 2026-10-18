@@ -252,8 +252,9 @@ first version directly, with a bootstrap token, and stops before publishing anyt
 new package and no token. The maintainer, with two-factor authentication on their npm account:
 
 1. Creates a granular access token on npmjs.com with read and write access to the `@nizam-os` scope
-   only and the shortest expiry that covers the release, and stores it in the environment
-   (`gh secret set NPM_BOOTSTRAP_TOKEN --env npm`).
+   only, the shortest expiry that covers the release, and "Bypass two-factor authentication"
+   checked: npm leaves it unchecked, and the publish job cannot answer a two-factor challenge.
+   Stores it in the environment (`gh secret set NPM_BOOTSTRAP_TOKEN --env npm`).
 2. Approves the release run's deployment. Packages npm already has are staged as above.
 3. Once the new package is on npm, configures its trusted publisher, which may only stage:
 

@@ -1,6 +1,6 @@
 {
   "name": "@nizam-os/tanstack-form-resource",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "TanStack Form options and refusals for @nizam-os/resource-ui's form models, for every adapter: a form's values and validator from the model, and a refused write's texts on their fields.",
   "keywords": [
     "form-core",

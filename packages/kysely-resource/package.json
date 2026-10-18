@@ -1,6 +1,6 @@
 {
   "name": "@nizam-os/kysely-resource",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "The Kysely runtime for @nizam-os/resource-core declarations on PostgreSQL: a storage adapter that sends and reads every value as text, scoped transactions inside row security, boot checks against the catalog and the connection, and a transactional outbox.",
   "keywords": [
     "json-api",

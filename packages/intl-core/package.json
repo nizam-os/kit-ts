@@ -1,6 +1,6 @@
 {
   "name": "@nizam-os/intl-core",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Hydration-safe formatting for any JavaScript runtime: formatters that read the locale and the reader's time zone on every call through cached Intl objects built for pinned formatting tags, the reader's time zone from a cookie, and Unicode bidi isolation. No dependencies.",
   "keywords": [
     "bidi",

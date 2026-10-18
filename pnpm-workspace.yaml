@@ -45,14 +45,6 @@ allowBuilds:
   vue-demi: false
   workerd: true
 
-# @nizam-os/hono-jsonapi declares `@nizam-os/hono-ban >= 2.0.0` (its API is the 2.0 one), and in
-# this workspace it resolves to the working copy, which stays at 1.3.0 until the pending major
-# changeset is versioned. Remove in the release that bumps @nizam-os/hono-ban to 2.0.0.
-# @ref https://pnpm.io/settings/peer-dependencies#peerdependencyrulesallowedversions
-peerDependencyRules:
-  allowedVersions:
-    '@nizam-os/hono-jsonapi>@nizam-os/hono-ban': '1'
-
 # One Version: the rows of the suite catalog these packages reference, written by the export.
 # @ref https://pnpm.io/catalogs
 catalog:
