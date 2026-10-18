@@ -2,6 +2,8 @@
 
 - Status: accepted
 - Date: 2026-10-18
+- Amended: 2026-10-18 by ADR 0014, tags need write access and secret scanning runs without
+  non-provider patterns and validity checks, which GitHub does not accept on the organization's plan
 
 ## Context
 

@@ -6,8 +6,8 @@
  * until npm holds every version with the tarball's integrity, and stops
  * (to be rerun) when the wait runs out. A tag or release already there is
  * left as it is when it is this release's, and stops the job when it points
- * elsewhere. The repository's releases are immutable and the release
- * workflow is the only actor that may create tags. Node's builtins only.
+ * elsewhere. The repository's releases are immutable and its tags are never
+ * moved or deleted (root ADR 0014). Node's builtins only.
  * @ref https://docs.github.com/en/rest/releases/releases#create-a-release
  * @ref https://docs.github.com/en/rest/git/refs#get-a-reference
  * @packageDocumentation
