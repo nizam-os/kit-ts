@@ -1,6 +1,6 @@
 {
   "name": "@nizam-os/resource-core",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "One declaration per PostgreSQL table, keyed by its database names and typed by the catalog @nizam-os/pg-catalog extracts, from which the public API follows: public names, Zod schemas, field metadata, error codes, localized messages, JSON:API and keyset definitions, and OpenAPI. Runs in browsers and servers.",
   "keywords": [
     "api",

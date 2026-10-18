@@ -1,6 +1,6 @@
 {
   "name": "@nizam-os/catalog-core",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "The PostgreSQL catalog model as TypeScript types: tables, columns, constraints with the rules read from their CHECK expressions, indexes, row security policies, enums, and domains, plus the browser-safe public slice. Database-free, no dependencies.",
   "keywords": [
     "catalog",

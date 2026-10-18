@@ -1,6 +1,6 @@
 {
   "name": "@nizam-os/paraglide-intl",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Paraglide JS messages whose interpolated values display in place in left-to-right and right-to-left text: compile() wraps every interpolation in Unicode isolates before Paraglide compiles the project. Re-exports @nizam-os/intl-core.",
   "keywords": [
     "bidi",

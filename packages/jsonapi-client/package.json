@@ -1,6 +1,6 @@
 {
   "name": "@nizam-os/jsonapi-client",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A typed fetch client for JSON:API 1.1 servers: calls, queries, records, errors, and Atomic Operations typed from the @nizam-os/jsonapi-core definitions the server is built from, with nothing generated. Runs wherever fetch does.",
   "keywords": [
     "atomic-operations",

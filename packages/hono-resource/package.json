@@ -1,6 +1,6 @@
 {
   "name": "@nizam-os/hono-resource",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Hono routes for a runtime of @nizam-os/resource-core declarations: every declared operation at the path its JSON:API links name, negotiated, validated, and answered by @nizam-os/hono-jsonapi, with no handler written per resource.",
   "keywords": [
     "api",

@@ -1,6 +1,6 @@
 {
   "name": "@nizam-os/pg-catalog",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Your PostgreSQL schema as committed TypeScript: replays SQL migrations into PGlite or a throwaway database, reads pg_catalog, and writes a deterministic typed catalog of every table, column, constraint, index, policy, enum, and domain, with a browser-safe public slice.",
   "keywords": [
     "catalog",
