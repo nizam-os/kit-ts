@@ -233,8 +233,10 @@ A maintainer releases ([ADR 0013](docs/adr/0013-releases-are-checked-tarballs-st
    `release.json`, which names each tarball by its SHA-512. A package at `0.0.0` was never versioned
    and is left out.
 3. The maintainer approves the run's deployment to the `npm` environment. The publish job checks the
-   tarballs against the manifest and stages each version on npm through its trusted publisher, with
-   provenance. Nothing is public yet.
+   tarballs against the manifest and asks npm whether the trusted publisher of each package it would
+   stage accepts the workflow; when one does not, it stops before staging anything and names the
+   package. Then it stages each version on npm through its trusted publisher, with provenance.
+   Nothing is public yet.
 4. The maintainer approves each staged version with two-factor authentication: the package's Staged
    Packages tab on npmjs.com, or `npm stage approve <stage id>` (the job summary lists the ids).
 5. Once npm serves every version, the workflow tags the commit `<name>@<version>` and creates one
@@ -256,16 +258,33 @@ new package and no token. The maintainer, with two-factor authentication on thei
    checked: npm leaves it unchecked, and the publish job cannot answer a two-factor challenge.
    Stores it in the environment (`gh secret set NPM_BOOTSTRAP_TOKEN --env npm`).
 2. Approves the release run's deployment. Packages npm already has are staged as above.
-3. Once the new package is on npm, configures its trusted publisher, which may only stage:
-
-   ```sh
-   npm trust github @nizam-os/<name> --file release.yml --repo nizam-os/kit-ts --env npm --allow-stage-publish --yes
-   ```
-
-4. In the package's settings on npmjs.com, sets publishing access to "Require two-factor
-   authentication and disallow tokens".
-5. Revokes the token on npmjs.com and deletes the secret
+3. Once the new package is on npm, sets its publishing access to "Require two-factor authentication
+   and disallow tokens", in its settings on npmjs.com or with
+   `npm access set mfa=publish @nizam-os/<name>`.
+4. Revokes the token on npmjs.com and deletes the secret
    (`gh secret delete NPM_BOOTSTRAP_TOKEN --env npm`).
+
+Until its next release, nothing can publish the package without a maintainer's two-factor
+authentication. Its trusted publisher comes with that release: one configured now would expire
+first.
+
+#### A package's trusted publisher
+
+npm expires a trusted publisher configuration that has not completed a successful publish within 2
+days of its creation ([trusted publishing](https://docs.npmjs.com/trusted-publishers)). So the
+maintainer configures a package's trusted publisher, which may only stage, at most 2 days before the
+release that first stages the package, its second version:
+
+```sh
+npm trust github @nizam-os/<name> --file release.yml --repo nizam-os/kit-ts --env npm --allow-stage-publish --yes
+```
+
+Staging that release's version and approving it, both within the 2 days, validates the
+configuration, which then stays; npm does not say which of the two does.
+`npm trust list @nizam-os/<name>` shows a package's configurations; one that expired unused is
+revoked (`npm trust revoke @nizam-os/<name> --id=<id>`) and configured again. The publish job asks
+npm about every package it would stage before it stages anything, so a missing or expired trusted
+publisher stops the release before it starts, with the package's name.
 
 ## Architecture decisions
 

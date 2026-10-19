@@ -1,29 +1,14 @@
-import type { Release, ReleaseManifest } from './manifest.ts';
-import type { PublishDeps, RunNpm } from './publisher.ts';
+import type { ReleaseManifest } from './manifest.ts';
 import type { RegistryState } from './registry.ts';
 
 import { describe, expect, it } from 'vitest';
 
 import { npmArgs, npmReport, publishAll, publishSummary } from './publisher.ts';
+import { INTEGRITY, publishDeps, releaseOf } from './test-support.ts';
 
-const INTEGRITY = `sha512-${'A'.repeat(86)}==`;
 const OTHER = `sha512-${'B'.repeat(86)}==`;
 
-function releaseOf(name: string, version = '0.1.0'): Release {
-  const short = name.slice('@nizam-os/'.length);
-  return {
-    name,
-    version,
-    tag: 'latest',
-    file: `packages/nizam-os-${short}-${version}.tgz`,
-    integrity: INTEGRITY,
-    gitTag: `${name}@${version}`,
-    prerelease: false,
-    notes: '- x',
-  };
-}
-
-const CORE = releaseOf('@nizam-os/ban-core');
+const CORE = releaseOf('@nizam-os/ban-core', '0.1.0');
 const BINDING = releaseOf('@nizam-os/hono-ban', '1.4.0');
 const MANIFEST: ReleaseManifest = {
   version: 1,
@@ -31,51 +16,11 @@ const MANIFEST: ReleaseManifest = {
   releases: [CORE, BINDING],
 };
 
-interface Call {
-  readonly args: ReadonlyArray<string>;
-  readonly withToken: boolean;
-}
-
 function depsWith(
-  states: Readonly<Record<string, RegistryState>>,
-  options: { readonly hasToken?: boolean; readonly npm?: RunNpm } = {},
-): PublishDeps & {
-  readonly calls: Array<Call>;
-  readonly lines: Array<string>;
-} {
-  const calls: Array<Call> = [];
-  const lines: Array<string> = [];
-  return {
-    calls,
-    lines,
-    registry: async (name) => {
-      await Promise.resolve();
-      return states[name] ?? { exists: false };
-    },
-    npm:
-      options.npm ??
-      ((args, withToken) => {
-        calls.push({ args, withToken });
-        const name = args[0] === 'stage' ? args[2] : args[1];
-        const release = [CORE, BINDING].find(
-          (candidate) => candidate.file === name,
-        );
-        const stage =
-          args[0] === 'stage'
-            ? { stageId: `stage-${release?.name ?? ''}` }
-            : {};
-        return {
-          status: 0,
-          stdout: JSON.stringify({
-            [release?.name ?? '']: { integrity: INTEGRITY, ...stage },
-          }),
-        };
-      }),
-    hasToken: options.hasToken ?? false,
-    log: (line) => {
-      lines.push(line);
-    },
-  };
+  states: Parameters<typeof publishDeps>[1],
+  options?: Parameters<typeof publishDeps>[2],
+): ReturnType<typeof publishDeps> {
+  return publishDeps(MANIFEST.releases, states, options);
 }
 
 const PRESENT: RegistryState = {
@@ -153,6 +98,41 @@ describe('publishAll', () => {
       '@nizam-os/ban-core@0.1.0: staged (stage stage-@nizam-os/ban-core)',
       '@nizam-os/hono-ban@1.4.0: staged (stage stage-@nizam-os/hono-ban)',
     ]);
+  });
+
+  it('asks whether the trusted publisher accepts this workflow only for a package it stages', async () => {
+    const deps = depsWith(
+      {
+        '@nizam-os/ban-core': {
+          exists: true,
+          versions: new Map([['0.1.0', INTEGRITY]]),
+        },
+      },
+      { hasToken: true },
+    );
+    await publishAll(MANIFEST, deps);
+    expect(deps.asked).toEqual([]);
+    const staging = depsWith(
+      { '@nizam-os/ban-core': PRESENT, '@nizam-os/hono-ban': PRESENT },
+      { hasToken: true },
+    );
+    await publishAll(MANIFEST, staging);
+    expect(staging.asked).toEqual(['@nizam-os/ban-core', '@nizam-os/hono-ban']);
+  });
+
+  it('publishes nothing when a trusted publisher does not accept this workflow, and names the package', async () => {
+    const deps = depsWith(
+      { '@nizam-os/ban-core': PRESENT, '@nizam-os/hono-ban': PRESENT },
+      {
+        trust: {
+          '@nizam-os/hono-ban': { accepted: false, reason: 'npm said no' },
+        },
+      },
+    );
+    await expect(publishAll(MANIFEST, deps)).rejects.toThrow(
+      'nothing was published: @nizam-os/hono-ban cannot be staged: npm said no',
+    );
+    expect(deps.calls).toEqual([]);
   });
 
   it('publishes the first version of a package npm does not have with the bootstrap token', async () => {

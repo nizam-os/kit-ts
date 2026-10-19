@@ -2,6 +2,8 @@
 
 - Status: accepted
 - Date: 2026-10-18
+- Amended: 2026-10-18 by ADR 0015, a package's trusted publisher is configured for the release that
+  first stages it, and the publish job checks it before staging anything
 
 ## Context
 
