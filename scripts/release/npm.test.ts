@@ -21,6 +21,15 @@ import {
 import { npmArgs, npmReport } from './publisher.ts';
 import { packageEntries, releaseOf, tarballOf } from './test-support.ts';
 
+/**
+ * Whether the npm on the `PATH` is one the publish job runs: it refuses an
+ * npm without `npm stage` (publish.ts), such as Node 22's.
+ */
+const npmOfTheJob = ((): boolean => {
+  const npm = spawnSync('npm', ['--version'], { encoding: 'utf8' });
+  return npm.status === 0 && npmVersionProblem(npm.stdout) === undefined;
+})();
+
 let scratch: string;
 
 beforeEach(() => {
@@ -117,14 +126,12 @@ describe('npmRunner', () => {
     expect(readFileSync(join(scratch, 'global.npmrc'), 'utf8')).toBe('');
   });
 
-  it.each([
+  it.runIf(npmOfTheJob).each([
     { command: 'npm publish', stage: false },
     { command: 'npm stage publish', stage: true },
   ])(
     'runs npm itself, which reads $command as the publisher writes it',
     ({ stage }) => {
-      const npm = spawnSync('npm', ['--version'], { encoding: 'utf8' });
-      expect(npmVersionProblem(npm.stdout)).toBeUndefined();
       // Should npm take the tarball for a repository again, git fails at once
       // instead of reaching out to GitHub.
       vi.stubEnv('GIT_ALLOW_PROTOCOL', 'file');
