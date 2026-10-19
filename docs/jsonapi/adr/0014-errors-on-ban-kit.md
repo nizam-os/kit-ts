@@ -8,7 +8,7 @@
 The first error layer was this package's own: a `JsonApiError` class over error objects, a status
 table, factories per catalog entry, structural recognition for a second installed copy, and an
 `errorHandler` that mapped Hono's `HTTPException` by status.
-[@nizam-os/ban-core](https://github.com/nizam-os/kit-ts) is the same author's framework-free error
+[@nizam-os/ban-core](../../../packages/ban-core#readme) is the same author's framework-free error
 library: a catalog of definitions, one `BanError` class with a per-item `errors` list, a JSON:API
 format that renders those items as error objects with `source.pointer`, `source.parameter`, or
 `source.header`, a handler with an error id, W3C `traceparent`, a report hook, a body cap, and a

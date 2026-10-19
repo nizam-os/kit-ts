@@ -19,12 +19,12 @@ as middleware, validators, response helpers, and handlers, and re-exports all of
 pnpm add @nizam-os/jsonapi-core
 ```
 
-[`@nizam-os/ban-core`](https://github.com/nizam-os/kit-ts) is the one dependency: every error is a
-@nizam-os/ban-core error, so an application's catalog and this package's share one model (see
-Errors). Node 22.12+, Bun, Deno, and Cloudflare Workers are supported; the package uses web
-standards only (`URL`, `URLSearchParams`, `JSON`) and never reads the environment. Validators are
-accepted through [Standard Schema](https://standardschema.dev) (Zod 4, Valibot, ArkType, and others)
-without importing any of them.
+[`@nizam-os/ban-core`](https://github.com/nizam-os/kit-ts/tree/main/packages/ban-core#readme) is the
+one dependency: every error is a @nizam-os/ban-core error, so an application's catalog and this
+package's share one model (see Errors). Node 22.12+, Bun, Deno, and Cloudflare Workers are
+supported; the package uses web standards only (`URL`, `URLSearchParams`, `JSON`) and never reads
+the environment. Validators are accepted through [Standard Schema](https://standardschema.dev) (Zod
+4, Valibot, ArkType, and others) without importing any of them.
 
 ## Quick start
 
@@ -415,12 +415,13 @@ const tags = parseToManyRelationshipDocument(await request.json(), { type: 'tags
 
 ### Errors
 
-Every error is a [@nizam-os/ban-core](https://github.com/nizam-os/kit-ts) `BanError` built by
-`jsonApiBan`, the package's @nizam-os/ban-core instance: a closed catalog (`ERROR_CATALOG` over
-@nizam-os/ban-core's built-ins) in which each `code` fixes `status` and `title`, rendered by
-@nizam-os/ban-core's JSON:API format. `jsonApiError` builds one error object; a list of `errorItem`s
-reports several problems at once, each object with its own identity and the response status the
-specification derives from them.
+Every error is a
+[@nizam-os/ban-core](https://github.com/nizam-os/kit-ts/tree/main/packages/ban-core#readme)
+`BanError` built by `jsonApiBan`, the package's @nizam-os/ban-core instance: a closed catalog
+(`ERROR_CATALOG` over @nizam-os/ban-core's built-ins) in which each `code` fixes `status` and
+`title`, rendered by @nizam-os/ban-core's JSON:API format. `jsonApiError` builds one error object; a
+list of `errorItem`s reports several problems at once, each object with its own identity and the
+response status the specification derives from them.
 
 ```ts
 throw jsonApiError('NOT_FOUND', { detail: 'The article does not exist' });

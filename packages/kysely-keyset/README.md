@@ -314,8 +314,9 @@ const page = await contacts.paginate(query, request, {
 
 `plan` and `paginate` reject a bad request before any query runs, with one of the core's
 `KeysetError` classes: a stable `code`, the detail in fields, a constant message. A JSON:API layer
-on [`@nizam-os/jsonapi-core`](https://github.com/nizam-os/kit-ts) maps them to the profile's error
-objects:
+on
+[`@nizam-os/jsonapi-core`](https://github.com/nizam-os/kit-ts/tree/main/packages/jsonapi-core#readme)
+maps them to the profile's error objects:
 
 ```ts
 import {

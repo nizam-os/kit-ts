@@ -171,10 +171,10 @@ listing every parameter the endpoint does not support, because the definition de
 - **Content negotiation, cursor pagination, atomic operations**, each implemented from its text.
 - **Hostile input handled.** Member names, parameter names, and `lid` values never become prototype
   keys; server internals never reach a response.
-- **One error model.** Every error is a [@nizam-os/ban-core](https://github.com/nizam-os/kit-ts)
-  error from a closed catalog, and the Hono handler is @nizam-os/hono-ban's: an error id in the
-  header and the body, a report hook, and one handler for this library's errors, the application's
-  own catalog, and any other library on @nizam-os/ban-core.
+- **One error model.** Every error is a [@nizam-os/ban-core](../../packages/ban-core#readme) error
+  from a closed catalog, and the Hono handler is @nizam-os/hono-ban's: an error id in the header and
+  the body, a report hook, and one handler for this library's errors, the application's own catalog,
+  and any other library on @nizam-os/ban-core.
 
 The package READMEs walk through each area:
 [`@nizam-os/jsonapi-core`](../../packages/jsonapi-core/README.md) for the core API,

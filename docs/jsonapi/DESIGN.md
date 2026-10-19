@@ -65,11 +65,11 @@ It is a library for teams who treat their JSON:API surface as a contract.
 6. **Web standards only. No ambient environment.** `URL`, `URLSearchParams`, `Response`, `btoa`;
    nothing reads `process` (ADR-0003).
 7. **One error model, shared with the application.** Every error is a
-   [@nizam-os/ban-core](https://github.com/nizam-os/kit-ts) `BanError`; `@nizam-os/jsonapi-core`
-   depends on `@nizam-os/ban-core` and on nothing else, imports no framework, and the adapter
-   renders through `@nizam-os/hono-ban`, so an application's own catalog, this package's, and any
-   other library's on @nizam-os/ban-core go through one handler (ADR-0014). Validators arrive
-   through Standard Schema; the types are vendored (ADR-0002, ADR-0013).
+   [@nizam-os/ban-core](../../packages/ban-core#readme) `BanError`; `@nizam-os/jsonapi-core` depends
+   on `@nizam-os/ban-core` and on nothing else, imports no framework, and the adapter renders
+   through `@nizam-os/hono-ban`, so an application's own catalog, this package's, and any other
+   library's on @nizam-os/ban-core go through one handler (ADR-0014). Validators arrive through
+   Standard Schema; the types are vendored (ADR-0002, ADR-0013).
 8. **Headers follow the body.** `Content-Type` parameters are derived from the document's `jsonapi`
    object; `Location` from the created resource's `self` link (ADR-0005).
 9. **Client input is hostile.** Prototype keys are rejected wherever a name becomes a key; lookups
