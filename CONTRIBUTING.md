@@ -181,8 +181,9 @@ Open an issue labeled `epic` first so the scope is settled before code exists, t
    that drives it against a real host, and the smoke module. A new family gets a new `e2e/<family>`
    package, named in the `e2e` job's `family` matrix in `.github/workflows/ci.yml`, and a
    `docs/<family>` directory, copied from a sibling.
-5. Document it: the family `README.md`, `DESIGN.md`, `SPEC.md`, an ADR, the root `README.md` table,
-   and the package dropdown in `.github/ISSUE_TEMPLATE/feature_request.yml`.
+5. Document it: the family `README.md`, `DESIGN.md`, `SPEC.md`, an ADR, a bullet under its family in
+   the root `README.md` (a new family adds a section there), and the package dropdown in
+   `.github/ISSUE_TEMPLATE/feature_request.yml`.
 6. Add a `minor` changeset for its first release. npm has no trusted publisher for a package it does
    not have yet, so a maintainer publishes its first version with a bootstrap token
    ([Releases](#releases), "A package's first version").
