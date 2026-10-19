@@ -10,15 +10,14 @@ written down in
 section 18, and the decisions behind it in
 [ADR 0012](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/adr/0012-the-runtime-runs-declarations-over-the-storage-contract.md).
 
-Status: in development and unreleased. The storage adapter has its transaction protocol, scopes,
-reads and writes, keyset pages with totals, `many` for includes, quotas, row locks, and the outbox
-insert, and the runtime maps what an operation throws to the client's error (a rule's rejection, a
-keyset refusal, a PostgreSQL integrity violation through its declared code, partitions included).
-`relayOutbox` delivers the events operations recorded. `createResourceRuntime` checks the
-composition against the catalog and the role it connects as, then runs each operation as the actor
-through `runtime.as(actor)`, or several in one transaction through
-`runtime.transaction(actor, work)`; `checkResourceRuntime` runs the same static checks in CI,
-without a database.
+Status: in development. The storage adapter has its transaction protocol, scopes, reads and writes,
+keyset pages with totals, `many` for includes, quotas, row locks, and the outbox insert, and the
+runtime maps what an operation throws to the client's error (a rule's rejection, a keyset refusal, a
+PostgreSQL integrity violation through its declared code, partitions included). `relayOutbox`
+delivers the events operations recorded. `createResourceRuntime` checks the composition against the
+catalog and the role it connects as, then runs each operation as the actor through
+`runtime.as(actor)`, or several in one transaction through `runtime.transaction(actor, work)`;
+`checkResourceRuntime` runs the same static checks in CI, without a database.
 [`@nizam-os/hono-resource`](https://github.com/nizam-os/kit-ts/tree/main/packages/hono-resource)
 serves the runtime over HTTP on Hono.
 

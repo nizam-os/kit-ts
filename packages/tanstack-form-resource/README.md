@@ -14,7 +14,7 @@ the decisions behind it
 and
 [ADR 0018](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/adr/0018-forms-and-lists-are-a-model-and-a-tanstack-form-binding-in-two-packages.md).
 
-Status: in development and unreleased.
+Status: in development.
 
 ## Install
 

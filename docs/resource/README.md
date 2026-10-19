@@ -27,8 +27,7 @@ document, all typed by the catalog `@nizam-os/pg-catalog` extracts from your mig
   Query through [`@nizam-os/tanstack-query-jsonapi`](../../packages/tanstack-query-jsonapi#readme),
   of the jsonapi family.
 
-Status: the 0.x line is in development and unreleased. Every choice is written down in
-[`SPEC.md`](SPEC.md).
+Status: the 0.x line is in development. Every choice is written down in [`SPEC.md`](SPEC.md).
 
 ## Install
 
