@@ -11,10 +11,9 @@ renders every error. Every choice is written down in
 section 19, and the decisions behind it in
 [ADR 0013](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/adr/0013-hosts-take-the-runtime-contract-and-mount-where-the-links-point.md).
 
-Status: in development and unreleased. The collection, resource, relationship, and related routes,
-includes, the Atomic Operations endpoint, the OpenAPI document, and the 405 of every other method
-are served, and `resourceTypeOf` tells your error handler which resource a request addressed, for
-localized errors.
+Status: in development. The collection, resource, relationship, and related routes, includes, the
+Atomic Operations endpoint, the OpenAPI document, and the 405 of every other method are served, and
+`resourceTypeOf` tells your error handler which resource a request addressed, for localized errors.
 
 ## Install
 

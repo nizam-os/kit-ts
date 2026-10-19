@@ -3,10 +3,13 @@
 Formatting and message isolation for server-rendered applications that use
 [Paraglide JS](https://inlang.com/m/gerre34r/library-inlang-paraglideJs), as two packages:
 
-| Package                                                     | What it is                                                                                                                                                                                                                                                                                                    |
-| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@nizam-os/intl-core`](../../packages/intl-core)           | Formatters that read the locale and the reader's time zone on every call, each through a cached `Intl` object built for a formatting tag that names its calendar and digits; the reader's time zone from a cookie, the same during SSR and after hydration; `isolate()`. Web standards only, no dependencies. |
-| [`@nizam-os/paraglide-intl`](../../packages/paraglide-intl) | Paraglide's `compile()` with every interpolated value wrapped in Unicode bidi isolates and every message that formats a value refused, and `watch()`, which compiles again on each change in development. Re-exports the core.                                                                                |
+- [`@nizam-os/intl-core`](../../packages/intl-core#readme): formatters that read the locale and the
+  reader's time zone on every call, each through a cached `Intl` object built for a formatting tag
+  that names its calendar and digits; the reader's time zone from a cookie, the same during SSR and
+  after hydration; `isolate()`. Web standards only, no dependencies.
+- [`@nizam-os/paraglide-intl`](../../packages/paraglide-intl#readme): Paraglide's `compile()` with
+  every interpolated value wrapped in Unicode bidi isolates and every message that formats a value
+  refused, and `watch()`, which compiles again on each change in development. Re-exports the core.
 
 Why each piece exists, with the measurements, is in [`DESIGN.md`](DESIGN.md); the contract is in
 [`SPEC.md`](SPEC.md); the decisions are in [`adr/`](adr).

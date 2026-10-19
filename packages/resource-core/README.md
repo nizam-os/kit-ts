@@ -7,15 +7,14 @@ migrations. A wrong table, column, foreign key, constraint, codec, validator, or
 `TypeError` naming its path. Every rule is specified in
 [`docs/resource/SPEC.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/SPEC.md).
 
-Status: in development and unreleased. This line implements the definer, the declaration, the public
-names and codes derived from it, the wire forms and Zod schemas, `defineCodec` and
-`defineValidator`, the boundary fixtures of the `testing` entry (SPEC sections 2 to 7), and the
-derived error codes with `errorCatalog` (SPEC 9.1 and 9.2), field metadata (SPEC 8), messages with
-their localization (SPEC 10), the JSON:API resource, with the members each write accepts, and the
-keyset definition a declaration derives (SPEC 9.4 and 11), the `server` subpath with
-`constraintError`, `relationshipTargets`, and the storage adapter contract and its suite, `list`
-included (SPEC 9.5 and 12), and the `openapi` entry: the OpenAPI document, the surface, and its diff
-(SPEC 13);
+Status: in development. This line implements the definer, the declaration, the public names and
+codes derived from it, the wire forms and Zod schemas, `defineCodec` and `defineValidator`, the
+boundary fixtures of the `testing` entry (SPEC sections 2 to 7), and the derived error codes with
+`errorCatalog` (SPEC 9.1 and 9.2), field metadata (SPEC 8), messages with their localization (SPEC
+10), the JSON:API resource, with the members each write accepts, and the keyset definition a
+declaration derives (SPEC 9.4 and 11), the `server` subpath with `constraintError`,
+`relationshipTargets`, and the storage adapter contract and its suite, `list` included (SPEC 9.5 and
+12), and the `openapi` entry: the OpenAPI document, the surface, and its diff (SPEC 13);
 [`docs/resource/README.md`](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/README.md)
 shows where the family is going.
 

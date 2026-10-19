@@ -17,9 +17,8 @@ sections 20 and 21, and the decisions behind it in
 and
 [ADR 0019](https://github.com/nizam-os/kit-ts/blob/main/docs/resource/adr/0019-record-and-bulk-actions-are-a-model-and-a-selection-writes-in-one-request.md).
 
-Status: in development and unreleased. Field descriptors (`fieldsOf`), the form model
-(`resourceForm`), the list model (`resourceList`), and record and bulk actions (`recordActions`,
-`bulkActions`) have shipped.
+Status: in development. Field descriptors (`fieldsOf`), the form model (`resourceForm`), the list
+model (`resourceList`), and record and bulk actions (`recordActions`, `bulkActions`) have shipped.
 
 ## Install
 

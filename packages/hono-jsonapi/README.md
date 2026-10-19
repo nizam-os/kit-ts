@@ -24,10 +24,11 @@ pnpm add @nizam-os/hono-jsonapi hono @nizam-os/hono-ban
 Node 22.12+, Bun, Deno, and Cloudflare Workers are supported. CI runs the unit and end-to-end suites
 on Node 22 and 24, the unit suite on Hono 4.13.7, and a smoke test of both subpaths on Bun, Deno,
 and workerd. `hono >= 4.13.7`, the first release no published Hono advisory affects, and
-[`@nizam-os/hono-ban`](https://github.com/nizam-os/kit-ts) are the peer dependencies: every error is
-a @nizam-os/ban-core error and `errorHandler()` is a @nizam-os/hono-ban handler (see Errors).
-Validators are accepted through [Standard Schema](https://standardschema.dev) (Zod 4, Valibot,
-ArkType, and others) without importing any of them.
+[`@nizam-os/hono-ban`](https://github.com/nizam-os/kit-ts/tree/main/packages/hono-ban#readme) are
+the peer dependencies: every error is a @nizam-os/ban-core error and `errorHandler()` is a
+@nizam-os/hono-ban handler (see Errors). Validators are accepted through
+[Standard Schema](https://standardschema.dev) (Zod 4, Valibot, ArkType, and others) without
+importing any of them.
 
 ## Quick start
 
@@ -354,11 +355,12 @@ application may mount every relationship's route and let the definition decide.
 
 ### Errors
 
-Every error is a [@nizam-os/ban-core](https://github.com/nizam-os/kit-ts) `BanError` from a closed
-catalog (`ERROR_CATALOG` over @nizam-os/ban-core's built-ins) in which each `code` fixes `status`
-and `title`; `detail` and `source` vary per occurrence. `jsonApiError` builds one error object; a
-list of `errorItem`s reports several problems at once, each object with its own identity and the
-response status the specification derives from them.
+Every error is a
+[@nizam-os/ban-core](https://github.com/nizam-os/kit-ts/tree/main/packages/ban-core#readme)
+`BanError` from a closed catalog (`ERROR_CATALOG` over @nizam-os/ban-core's built-ins) in which each
+`code` fixes `status` and `title`; `detail` and `source` vary per occurrence. `jsonApiError` builds
+one error object; a list of `errorItem`s reports several problems at once, each object with its own
+identity and the response status the specification derives from them.
 
 ```ts
 throw jsonApiError('NOT_FOUND', { detail: 'The article does not exist' });
@@ -384,13 +386,14 @@ member name or an id, and otherwise name the value without it; `source` still sa
 Write yours the same way: a 404 for `/articles/<script>` says the article does not exist, not which
 text the client typed.
 
-`errorHandler()` is [@nizam-os/hono-ban](https://github.com/nizam-os/kit-ts)'s handler over the same
-catalog. It renders anything thrown: a `BanError` as is (this package's, the rejections the
-validators and `jsonApi()` throw, your own instance's, any other library's on @nizam-os/ban-core),
-Hono's `HTTPException` by status, and everything else as a constant 500 that reveals nothing. Every
-response carries the error id in `X-Error-Id` and in each error object's `id`,
-`Cache-Control: no-store`, and `meta.traceId` from a W3C `traceparent`; the thrown value reaches
-`onReport` as `report.cause`. `notFoundHandler()` gives unmatched routes the same shape.
+`errorHandler()` is
+[@nizam-os/hono-ban](https://github.com/nizam-os/kit-ts/tree/main/packages/hono-ban#readme)'s
+handler over the same catalog. It renders anything thrown: a `BanError` as is (this package's, the
+rejections the validators and `jsonApi()` throw, your own instance's, any other library's on
+@nizam-os/ban-core), Hono's `HTTPException` by status, and everything else as a constant 500 that
+reveals nothing. Every response carries the error id in `X-Error-Id` and in each error object's
+`id`, `Cache-Control: no-store`, and `meta.traceId` from a W3C `traceparent`; the thrown value
+reaches `onReport` as `report.cause`. `notFoundHandler()` gives unmatched routes the same shape.
 
 ```ts
 app.onError(

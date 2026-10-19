@@ -38,8 +38,8 @@ module is a function over plain values (strings, parsed JSON, `URL`s) and none i
 framework or a runtime API beyond web standards. `@nizam-os/hono-jsonapi` is the Hono adapter: it
 depends on `@nizam-os/jsonapi-core`, re-exports all of it (one import for a Hono application), and
 adds the middleware, validators, response helpers, error handlers, and the operations endpoint
-(sections 10 and 11.1). Errors are [@nizam-os/ban-core](https://github.com/nizam-os/kit-ts) errors
-(ADR 0014): `@nizam-os/jsonapi-core` depends on `@nizam-os/ban-core` and on nothing else;
+(sections 10 and 11.1). Errors are [@nizam-os/ban-core](../../packages/ban-core#readme) errors (ADR
+0014): `@nizam-os/jsonapi-core` depends on `@nizam-os/ban-core` and on nothing else;
 `@nizam-os/hono-jsonapi` has two peer dependencies, `hono` and `@nizam-os/hono-ban`,
 @nizam-os/ban-core's Hono adapter, through which its error handler renders (ADR 0002). Validators
 are consumed through Standard Schema V1, whose interfaces are vendored in

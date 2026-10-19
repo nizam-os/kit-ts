@@ -2,10 +2,15 @@
 
 Your SQL migrations, replayed and read back from PostgreSQL's own catalog, as committed TypeScript:
 
-| Package                                                 | What it is                                                                                                                                                                                                                                                                                                                                                                  |
-| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@nizam-os/catalog-core`](../../packages/catalog-core) | The catalog model as TypeScript types, plus two pure functions: `toPublicCatalog` (the browser-safe slice) and `diffCatalogs` (the structural comparison drift uses). No dependencies; runs on Node, Bun, Deno, Cloudflare Workers, and in browsers.                                                                                                                        |
-| [`@nizam-os/pg-catalog`](../../packages/pg-catalog)     | The extractor and its CLI: replays the migrations into PGlite or a throwaway database on a server, reads `pg_catalog`, translates the CHECK constraints it can translate exactly, and writes the full catalog, the public catalog, and Kysely types; `extract --check` keeps them current in CI and `drift` compares a live database with them. Node 22.12+, Bun, and Deno. |
+- [`@nizam-os/catalog-core`](../../packages/catalog-core#readme): the catalog model as TypeScript
+  types, plus two pure functions, `toPublicCatalog` (the browser-safe slice) and `diffCatalogs` (the
+  structural comparison drift uses). No dependencies; runs on Node, Bun, Deno, Cloudflare Workers,
+  and in browsers.
+- [`@nizam-os/pg-catalog`](../../packages/pg-catalog#readme): the extractor and its CLI. It replays
+  the migrations into PGlite or a throwaway database on a server, reads `pg_catalog`, translates the
+  CHECK constraints it can translate exactly, and writes the full catalog, the public catalog, and
+  Kysely types; `extract --check` keeps them current in CI and `drift` compares a live database with
+  them. Node 22.12+, Bun, and Deno.
 
 One extraction gives you every table, column, constraint (with PostgreSQL's deparsed expression and
 the rule read from it), index, row security policy, enum, and domain, written deterministically so

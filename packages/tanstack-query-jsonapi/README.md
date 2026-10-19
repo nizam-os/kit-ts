@@ -13,7 +13,7 @@ package imports no framework and no adapter. The contract is sections 16 and 17.
 decision behind it
 [ADR 0020](https://github.com/nizam-os/kit-ts/blob/main/docs/jsonapi/adr/0020-tanstack-query-options-are-the-clients-binding-typed-through-query-core.md).
 
-Status: in development and unreleased.
+Status: in development.
 
 ## Install
 
