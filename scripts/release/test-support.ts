@@ -17,6 +17,8 @@ import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { gzipSync } from 'node:zlib';
 
+import { tarballSpec } from './publisher.ts';
+
 /** The integrity every release of {@link releaseOf} carries. */
 export const INTEGRITY: string = `sha512-${'A'.repeat(86)}==`;
 
@@ -85,9 +87,9 @@ export function publishDeps(
       options.npm ??
       ((args, withToken) => {
         calls.push({ args, withToken });
-        const file = args[0] === 'stage' ? args[2] : args[1];
+        const spec = args[0] === 'stage' ? args[2] : args[1];
         const name =
-          releases.find((release) => release.file === file)?.name ?? '';
+          releases.find((release) => tarballSpec(release) === spec)?.name ?? '';
         const stage = args[0] === 'stage' ? { stageId: `stage-${name}` } : {};
         return {
           status: 0,

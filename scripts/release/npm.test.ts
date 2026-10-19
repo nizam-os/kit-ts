@@ -1,15 +1,25 @@
-import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import {
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { integrityOf } from './manifest.ts';
 import {
   npmEnvironment,
   npmRunner,
   npmVersionProblem,
   TOKEN_LINE,
 } from './npm.ts';
+import { npmArgs, npmReport } from './publisher.ts';
+import { packageEntries, releaseOf, tarballOf } from './test-support.ts';
 
 let scratch: string;
 
@@ -106,4 +116,43 @@ describe('npmRunner', () => {
     expect(readFileSync(join(scratch, 'none.npmrc'), 'utf8')).toBe('');
     expect(readFileSync(join(scratch, 'global.npmrc'), 'utf8')).toBe('');
   });
+
+  it.each([
+    { command: 'npm publish', stage: false },
+    { command: 'npm stage publish', stage: true },
+  ])(
+    'runs npm itself, which reads $command as the publisher writes it',
+    ({ stage }) => {
+      const npm = spawnSync('npm', ['--version'], { encoding: 'utf8' });
+      expect(npmVersionProblem(npm.stdout)).toBeUndefined();
+      // Should npm take the tarball for a repository again, git fails at once
+      // instead of reaching out to GitHub.
+      vi.stubEnv('GIT_ALLOW_PROTOCOL', 'file');
+      vi.stubEnv('NODE_AUTH_TOKEN', 'npm_dry-run');
+      const release = releaseOf('@nizam-os/ban-core', '0.1.0');
+      const tarball = tarballOf(packageEntries(release.name, release.version));
+      const directory = join(scratch, 'release');
+      mkdirSync(join(directory, 'packages'), { recursive: true });
+      writeFileSync(join(directory, release.file), tarball);
+      const configuration = join(scratch, 'npm');
+      mkdirSync(configuration);
+      // A dry run offline: npm reads the arguments and the tarball they name
+      // and reports what it would send, reaching no registry.
+      const result = npmRunner(directory, configuration)(
+        [
+          ...npmArgs(release, stage),
+          '--dry-run',
+          '--offline',
+          `--cache=${join(scratch, 'cache')}`,
+          '--loglevel=error',
+        ],
+        !stage,
+      );
+      expect(result.status).toBe(0);
+      expect(npmReport(result.stdout, release.name).integrity).toBe(
+        integrityOf(tarball),
+      );
+    },
+    60_000,
+  );
 });
