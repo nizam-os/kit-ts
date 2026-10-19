@@ -1,15 +1,107 @@
 /**
- * Tarballs for the release scripts' tests, written the way npm and pnpm write
- * them (POSIX ustar, gzipped), with switches to write each defect the reader
- * and the checks must refuse, and the output directory `changeset pack`
- * writes them into.
+ * Fixtures for the release scripts' tests: tarballs written the way npm and
+ * pnpm write them (POSIX ustar, gzipped), with switches to write each defect
+ * the reader and the checks must refuse, and the output directory `changeset
+ * pack` writes them into; releases as a manifest names them; and what
+ * publishing needs from outside, recorded.
  * @ref https://pubs.opengroup.org/onlinepubs/9799919799/utilities/pax.html#tag_20_94_13_06 (ustar Interchange Format)
  * @packageDocumentation
  */
+import type { Release } from './manifest.ts';
+import type { PublishDeps, RunNpm } from './publisher.ts';
+import type { RegistryState } from './registry.ts';
+import type { TrustAnswer } from './trust.ts';
+
 import { createHash } from 'node:crypto';
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { gzipSync } from 'node:zlib';
+
+/** The integrity every release of {@link releaseOf} carries. */
+export const INTEGRITY: string = `sha512-${'A'.repeat(86)}==`;
+
+/** A release of `name` at `version` as a manifest names it, on `next` when it is a prerelease. */
+export function releaseOf(
+  name: string,
+  version: string,
+  prerelease = false,
+): Release {
+  return {
+    name,
+    version,
+    tag: prerelease ? 'next' : 'latest',
+    file: `packages/${name.slice(1).replace('/', '-')}-${version}.tgz`,
+    integrity: INTEGRITY,
+    gitTag: `${name}@${version}`,
+    prerelease,
+    notes: `notes of ${version}`,
+  };
+}
+
+/** One run of npm that {@link publishDeps} recorded. */
+export interface NpmCall {
+  readonly args: ReadonlyArray<string>;
+  readonly withToken: boolean;
+}
+
+/**
+ * What publishing `releases` needs, over the registry `states` (a package
+ * missing from them is not on npm): npm succeeds, reporting the release's
+ * integrity and, for a stage, a stage id, unless `options.npm` runs instead;
+ * and every trusted publisher accepts, unless `options.trust` answers for it.
+ * Records npm's runs, the log, and the packages whose trusted publisher was
+ * asked.
+ */
+export function publishDeps(
+  releases: ReadonlyArray<Release>,
+  states: Readonly<Record<string, RegistryState>>,
+  options: {
+    readonly hasToken?: boolean;
+    readonly npm?: RunNpm;
+    readonly trust?: Readonly<Record<string, TrustAnswer>>;
+  } = {},
+): PublishDeps & {
+  readonly calls: Array<NpmCall>;
+  readonly lines: Array<string>;
+  readonly asked: Array<string>;
+} {
+  const calls: Array<NpmCall> = [];
+  const lines: Array<string> = [];
+  const asked: Array<string> = [];
+  return {
+    calls,
+    lines,
+    asked,
+    registry: async (name) => {
+      await Promise.resolve();
+      return states[name] ?? { exists: false };
+    },
+    trust: async (name) => {
+      await Promise.resolve();
+      asked.push(name);
+      return options.trust?.[name] ?? { accepted: true };
+    },
+    npm:
+      options.npm ??
+      ((args, withToken) => {
+        calls.push({ args, withToken });
+        const file = args[0] === 'stage' ? args[2] : args[1];
+        const name =
+          releases.find((release) => release.file === file)?.name ?? '';
+        const stage = args[0] === 'stage' ? { stageId: `stage-${name}` } : {};
+        return {
+          status: 0,
+          stdout: JSON.stringify({
+            [name]: { integrity: INTEGRITY, ...stage },
+          }),
+        };
+      }),
+    hasToken: options.hasToken ?? false,
+    log: (line) => {
+      lines.push(line);
+    },
+  };
+}
 
 /** One entry to write; `type` is the typeflag, `'0'` by default. */
 export interface FixtureEntry {

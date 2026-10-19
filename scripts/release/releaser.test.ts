@@ -1,26 +1,13 @@
 import type { GitHub } from './github.ts';
-import type { Release, ReleaseManifest } from './manifest.ts';
+import type { ReleaseManifest } from './manifest.ts';
 import type { ReadRegistry, RegistryState } from './registry.ts';
 
 import { describe, expect, it } from 'vitest';
 
 import { createReleases, waitUntilLive } from './releaser.ts';
+import { INTEGRITY, releaseOf } from './test-support.ts';
 
 const COMMIT = 'c'.repeat(40);
-const INTEGRITY = `sha512-${'A'.repeat(86)}==`;
-
-function releaseOf(name: string, version: string, prerelease = false): Release {
-  return {
-    name,
-    version,
-    tag: prerelease ? 'next' : 'latest',
-    file: `packages/${name.slice(1).replace('/', '-')}-${version}.tgz`,
-    integrity: INTEGRITY,
-    gitTag: `${name}@${version}`,
-    prerelease,
-    notes: `notes of ${version}`,
-  };
-}
 
 const CORE = releaseOf('@nizam-os/ban-core', '0.1.0');
 const NEXT = releaseOf('@nizam-os/hono-ban', '2.0.0-next.0', true);

@@ -15,14 +15,15 @@
 #     id are the job's outputs;
 #   - `publish`: after the npm environment's reviewer approves, downloads that
 #     artifact by id, checks the manifest against the digest and every tarball
-#     against the manifest, and stages each version with npm trusted
-#     publishing (OIDC): npm keeps it unpublished until a maintainer approves
-#     it on npmjs.com with two-factor authentication. A package npm does not
-#     have yet cannot have a trusted publisher, so its first version is
-#     published with the environment's NPM_BOOTSTRAP_TOKEN, which is deleted
-#     once every package has its trusted publisher (CONTRIBUTING.md,
-#     "Releases"). This job installs nothing: its scripts use Node's built-in
-#     modules only;
+#     against the manifest, asks npm whether each package it would stage has a
+#     trusted publisher that accepts this workflow, and only then stages each
+#     version with npm trusted publishing (OIDC): npm keeps it unpublished
+#     until a maintainer approves it on npmjs.com with two-factor
+#     authentication. A package npm does not have yet cannot have a trusted
+#     publisher, so its first version is published with the environment's
+#     NPM_BOOTSTRAP_TOKEN, which is deleted once the first versions are on npm
+#     (CONTRIBUTING.md, "Releases"). This job installs nothing: its scripts
+#     use Node's built-in modules only;
 #   - `github-release`: waits until npm serves every version with the
 #     manifest's integrity, then tags the commit `<name>@<version>` and creates
 #     one GitHub release per package with its changelog section, none of them

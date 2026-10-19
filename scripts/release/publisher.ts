@@ -12,6 +12,9 @@
  *   npm exchanges the job's OIDC token for one that can only stage, and the
  *   version goes live when a maintainer approves it on npm with two-factor
  *   authentication. No token is offered, so nothing else can authenticate.
+ *   Before anything is published, npm is asked whether each such package's
+ *   trusted publisher accepts this workflow (trust.ts): one that is missing,
+ *   or expired unused, stops the release before it starts.
  * - A package npm does not have yet cannot be staged by trusted publishing,
  *   which is configured on an existing package. Its first version is
  *   published with the bootstrap token, when the `npm` environment holds
@@ -29,6 +32,7 @@
  */
 import type { Release, ReleaseManifest } from './manifest.ts';
 import type { ReadRegistry, RegistryState } from './registry.ts';
+import type { CheckTrust } from './trust.ts';
 
 import { REGISTRY } from './registry.ts';
 
@@ -50,6 +54,8 @@ export type RunNpm = (
 export interface PublishDeps {
   readonly registry: ReadRegistry;
   readonly npm: RunNpm;
+  /** Whether a package's trusted publisher accepts this workflow. */
+  readonly trust: CheckTrust;
   /** Whether the `npm` environment holds the bootstrap token. */
   readonly hasToken: boolean;
   readonly log: (line: string) => void;
@@ -119,6 +125,21 @@ function blocker(
   return undefined;
 }
 
+/** Why trusted publishing cannot stage a release, or `undefined` when it can or need not. */
+async function trustBlocker(
+  release: Release,
+  state: RegistryState,
+  trust: CheckTrust,
+): Promise<string | undefined> {
+  if (!state.exists || state.versions.has(release.version)) {
+    return undefined;
+  }
+  const answer = await trust(release.name);
+  return answer.accepted
+    ? undefined
+    : `${release.name} cannot be staged: ${answer.reason}`;
+}
+
 function publishOne(
   release: Release,
   state: RegistryState,
@@ -168,7 +189,9 @@ export async function publishAll(
   const blockers: Array<string> = [];
   for (const release of manifest.releases) {
     const state = await deps.registry(release.name);
-    const problem = blocker(release, state, deps.hasToken);
+    const problem =
+      blocker(release, state, deps.hasToken) ??
+      (await trustBlocker(release, state, deps.trust));
     if (problem !== undefined) {
       blockers.push(problem);
     }

@@ -1,9 +1,12 @@
 /**
  * `node scripts/release/publish.ts <release directory> <manifest digest>`:
  * the publish job (root ADR 0013). Checks the manifest and the tarballs
- * against the digest the pack job passed on, then publishes or stages every
- * release in order (publisher.ts) and writes the job summary. The bootstrap
- * token, when the `npm` environment holds one, arrives as `NODE_AUTH_TOKEN`.
+ * against the digest the pack job passed on, asks npm whether each package to
+ * be staged has a trusted publisher for this workflow (trust.ts), then
+ * publishes or stages every release in order (publisher.ts) and writes the
+ * job summary. The bootstrap token, when the `npm` environment holds one,
+ * arrives as `NODE_AUTH_TOKEN`; GitHub's OIDC token request, as the
+ * `ACTIONS_ID_TOKEN_REQUEST_*` variables of a job that may write an id-token.
  * Imports Node's builtins only: the job installs nothing. Exits 1 on any
  * failure, 2 on a usage error.
  * @packageDocumentation
@@ -18,6 +21,7 @@ import { readManifest } from './manifest.ts';
 import { npmRunner, npmVersionProblem } from './npm.ts';
 import { publishAll, publishSummary } from './publisher.ts';
 import { registryReader } from './registry.ts';
+import { trustChecker } from './trust.ts';
 
 const EXIT_FAILED = 1;
 const EXIT_USAGE = 2;
@@ -41,6 +45,7 @@ try {
   const outcomes = await publishAll(manifest, {
     registry: registryReader(),
     npm: npmRunner(release, scratch),
+    trust: trustChecker(process.env),
     hasToken: (process.env['NODE_AUTH_TOKEN'] ?? '') !== '',
     log: (line) => {
       process.stdout.write(`${line}\n`);
