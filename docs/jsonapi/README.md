@@ -2,12 +2,27 @@
 
 [JSON:API 1.1](https://jsonapi.org/format/1.1/) for JavaScript, as four packages:
 
-| Package                                                                     | What it is                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@nizam-os/jsonapi-core`](../../packages/jsonapi-core)                     | The framework-free core: resource definitions, document building, typed query parsing, request document validation, content negotiation, the [Cursor Pagination](https://jsonapi.org/profiles/ethanresnick/cursor-pagination/) profile, and the [Atomic Operations](https://jsonapi.org/ext/atomic/) extension. Functions over plain values; runs on Node, Bun, Deno, and Cloudflare Workers; errors are [@nizam-os/ban-core](https://github.com/nizam-os/kit-ts) errors, its one dependency. |
-| [`@nizam-os/hono-jsonapi`](../../packages/hono-jsonapi)                     | The [Hono](https://hono.dev) adapter: content negotiation middleware, validators typed for `c.req.valid()`, response helpers, error handlers on [@nizam-os/hono-ban](https://github.com/nizam-os/kit-ts), and the operations endpoint as a handler. Re-exports the core in full, so a Hono application imports from one package.                                                                                                                                                              |
-| [`@nizam-os/jsonapi-client`](../../packages/jsonapi-client)                 | A typed client of a server built on the core: calls, queries, documents, and records typed by the definitions the server is built from, with nothing generated; errors keep their codes. Web standards only, so it runs in browsers, workers, Node, Bun, and Deno; `@nizam-os/jsonapi-core` is its one dependency.                                                                                                                                                                            |
-| [`@nizam-os/tanstack-query-jsonapi`](../../packages/tanstack-query-jsonapi) | [TanStack Query](https://tanstack.com/query/v5) options for the client's calls, which the hooks of every adapter take as they are: reads keyed by the request each sends, infinite lists by the server's links, and writes that stay pending until what they changed has refetched. No dependencies; the client is its peer, and TanStack Query's core an optional peer it imports types from.                                                                                                |
+- [`@nizam-os/jsonapi-core`](../../packages/jsonapi-core#readme): the framework-free core, with
+  resource definitions, document building, typed query parsing, request document validation, content
+  negotiation, the [Cursor Pagination](https://jsonapi.org/profiles/ethanresnick/cursor-pagination/)
+  profile, and the [Atomic Operations](https://jsonapi.org/ext/atomic/) extension. Functions over
+  plain values; runs on Node, Bun, Deno, and Cloudflare Workers; errors are
+  [`@nizam-os/ban-core`](../../packages/ban-core#readme) errors, its one dependency.
+- [`@nizam-os/hono-jsonapi`](../../packages/hono-jsonapi#readme): the [Hono](https://hono.dev)
+  adapter, with content negotiation middleware, validators typed for `c.req.valid()`, response
+  helpers, error handlers on [`@nizam-os/hono-ban`](../../packages/hono-ban#readme), and the
+  operations endpoint as a handler. Re-exports the core in full, so a Hono application imports from
+  one package.
+- [`@nizam-os/jsonapi-client`](../../packages/jsonapi-client#readme): a typed client of a server
+  built on the core. Calls, queries, documents, and records are typed by the definitions the server
+  is built from, with nothing generated, and errors keep their codes. Web standards only, so it runs
+  in browsers, workers, Node, Bun, and Deno; `@nizam-os/jsonapi-core` is its one dependency.
+- [`@nizam-os/tanstack-query-jsonapi`](../../packages/tanstack-query-jsonapi#readme):
+  [TanStack Query](https://tanstack.com/query/v5) options for the client's calls, which the hooks of
+  every adapter take as they are, with reads keyed by the request each sends, infinite lists by the
+  server's links, and writes that stay pending until what they changed has refetched. No
+  dependencies; the client is its peer, and TanStack Query's core an optional peer it imports types
+  from.
 
 Declare a resource once; everything else reads from the definition. Every rule is a cited clause of
 the specification; where the specification leaves a choice to the server, the choice is written down

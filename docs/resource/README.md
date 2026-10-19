@@ -4,13 +4,28 @@ Declare a resource once, keyed by your PostgreSQL names, and get its public name
 metadata, error codes, localized messages, JSON:API definition, keyset pagination, and OpenAPI
 document, all typed by the catalog `@nizam-os/pg-catalog` extracts from your migrations:
 
-| Package                                                                     | What it is                                                                                                                                                                                                                                                                                                                                                                                                    |
-| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@nizam-os/resource-core`](../../packages/resource-core)                   | Declarations and everything derived from them, the typed messages and their localization, the `server` contracts (policies, scopes, quotas, rules, effects, the storage adapter contract), and OpenAPI. Runs in browsers and servers.                                                                                                                                                                         |
-| [`@nizam-os/kysely-resource`](../../packages/kysely-resource)               | The runtime over Kysely on PostgreSQL: the storage adapter, which runs each operation in one transaction scoped to the actor's tenant, for row security policies and its own scope predicate alike.                                                                                                                                                                                                           |
-| [`@nizam-os/hono-resource`](../../packages/hono-resource)                   | The routes on Hono: every operation a runtime runs, each relationship's links, the Atomic Operations endpoint over `runtime.transaction`, and the OpenAPI document, served where the declarations' links point, with the request's actor resolved once, any other method answered 405 with `Allow`, and `resourceTypeOf` for localized errors.                                                                |
-| [`@nizam-os/resource-ui`](../../packages/resource-ui)                       | A model of each declared resource's forms and lists, for any framework: labels and options from the application's messages, validation in the server's words, the write a form sends, refusals on their fields, and list state as TanStack Table v9 holds it. Imports no framework and nothing of TanStack.                                                                                                   |
-| [`@nizam-os/tanstack-form-resource`](../../packages/tanstack-form-resource) | [TanStack Form](https://tanstack.com/form/v1) options over those form models, which the form of every adapter takes, React's, Vue's, Solid's, Svelte's, Angular's, and Lit's, and a refused write's texts on their fields, through `@tanstack/form-core`. The client's calls go to TanStack Query through [`@nizam-os/tanstack-query-jsonapi`](../../packages/tanstack-query-jsonapi), of the jsonapi family. |
+- [`@nizam-os/resource-core`](../../packages/resource-core#readme): declarations and everything
+  derived from them, the typed messages and their localization, the `server` contracts (policies,
+  scopes, quotas, rules, effects, the storage adapter contract), and OpenAPI. Runs in browsers and
+  servers.
+- [`@nizam-os/kysely-resource`](../../packages/kysely-resource#readme): the runtime over Kysely on
+  PostgreSQL. As the storage adapter, it runs each operation in one transaction scoped to the
+  actor's tenant, for row security policies and its own scope predicate alike.
+- [`@nizam-os/hono-resource`](../../packages/hono-resource#readme): the routes on Hono for every
+  operation a runtime runs, each relationship's links, the Atomic Operations endpoint over
+  `runtime.transaction`, and the OpenAPI document, served where the declarations' links point, with
+  the request's actor resolved once, any other method answered 405 with `Allow`, and
+  `resourceTypeOf` for localized errors.
+- [`@nizam-os/resource-ui`](../../packages/resource-ui#readme): a model of each declared resource's
+  forms and lists, for any framework, with labels and options from the application's messages,
+  validation in the server's words, the write a form sends, refusals on their fields, and list state
+  as TanStack Table v9 holds it. Imports no framework and nothing of TanStack.
+- [`@nizam-os/tanstack-form-resource`](../../packages/tanstack-form-resource#readme):
+  [TanStack Form](https://tanstack.com/form/v1) options over those form models, which the form of
+  every adapter takes, React's, Vue's, Solid's, Svelte's, Angular's, and Lit's, and a refused
+  write's texts on their fields, through `@tanstack/form-core`. The client's calls go to TanStack
+  Query through [`@nizam-os/tanstack-query-jsonapi`](../../packages/tanstack-query-jsonapi#readme),
+  of the jsonapi family.
 
 Status: the 0.x line is in development and unreleased. Every choice is written down in
 [`SPEC.md`](SPEC.md).
