@@ -32,7 +32,7 @@ describe('npmArgs', () => {
   it('publishes the tarball as built, with provenance, to the public registry', () => {
     expect(npmArgs(CORE, false)).toEqual([
       'publish',
-      'packages/nizam-os-ban-core-0.1.0.tgz',
+      './packages/nizam-os-ban-core-0.1.0.tgz',
       '--registry=https://registry.npmjs.org/',
       '--access=public',
       '--tag=latest',
@@ -43,7 +43,7 @@ describe('npmArgs', () => {
     expect(npmArgs({ ...CORE, tag: 'next' }, true).slice(0, 3)).toEqual([
       'stage',
       'publish',
-      'packages/nizam-os-ban-core-0.1.0.tgz',
+      './packages/nizam-os-ban-core-0.1.0.tgz',
     ]);
     expect(npmArgs({ ...CORE, tag: 'next' }, true)).toContain('--tag=next');
   });
@@ -91,8 +91,8 @@ describe('publishAll', () => {
     expect(
       deps.calls.map(({ args, withToken }) => [args[0], args[2], withToken]),
     ).toEqual([
-      ['stage', 'packages/nizam-os-ban-core-0.1.0.tgz', false],
-      ['stage', 'packages/nizam-os-hono-ban-1.4.0.tgz', false],
+      ['stage', './packages/nizam-os-ban-core-0.1.0.tgz', false],
+      ['stage', './packages/nizam-os-hono-ban-1.4.0.tgz', false],
     ]);
     expect(deps.lines).toEqual([
       '@nizam-os/ban-core@0.1.0: staged (stage stage-@nizam-os/ban-core)',

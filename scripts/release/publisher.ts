@@ -23,7 +23,8 @@
  * npm runs from the release directory with a user configuration of this
  * module's, and none of the job's `npm_config_*` variables, so no `.npmrc` of
  * the repository or the runner can change the registry or the credentials. It
- * publishes the tarball as built (no lifecycle scripts) with provenance.
+ * publishes the tarball as built (no lifecycle scripts), named by its path
+ * ({@link tarballSpec}), with provenance.
  * Node's builtins only: the publish job installs nothing.
  * @ref https://docs.npmjs.com/trusted-publishers
  * @ref https://docs.npmjs.com/staged-publishing
@@ -88,11 +89,24 @@ export function npmReport(
   };
 }
 
+/**
+ * The argument that names a release's tarball to npm, which runs from the
+ * release directory: the tarball's path there, starting with `./` as npm's
+ * documentation advises for a local path. Without it, npm reads the
+ * manifest's `packages/<name>-<version>.tgz` as a GitHub repository,
+ * `<user>/<repo>`, and tries to clone it.
+ * @ref https://docs.npmjs.com/cli/v11/using-npm/package-spec#tarballs
+ * @ref https://github.com/npm/cli/blob/v11.19.0/node_modules/npm-package-arg/lib/npa.js (`resolve`: a file spec, then a GitHub shorthand)
+ */
+export function tarballSpec(release: Release): string {
+  return `./${release.file}`;
+}
+
 /** The arguments of the npm command that publishes or stages a release. */
 export function npmArgs(release: Release, stage: boolean): Array<string> {
   return [
     ...(stage ? ['stage', 'publish'] : ['publish']),
-    release.file,
+    tarballSpec(release),
     `--registry=${REGISTRY}/`,
     '--access=public',
     `--tag=${release.tag}`,
